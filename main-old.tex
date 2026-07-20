@@ -1,0 +1,621 @@
+\documentclass{article}
+\input{preamble}
+
+\title{General Constructions of Permutation-Fair Dice}
+\author{
+Austin
+\and Tomáš Gavenčiak \\ 
+\small Charles University, Prague \\
+\and Bernhard Haeupler \\
+\small ETH Zurich \\
+\small \texttt{bernhard.haeupler@inf.ethz.ch}\\
+\and Václav Rozhoň \\ 
+\small{ETH Zurich}\\
+\small \texttt{rozhonv@ethz.ch}\\
+}
+
+%\renewcommand{\todo}[1]{}
+
+\begin{document}
+
+\maketitle
+
+\textcolor{red}{submission deadline FEB 20!!! \url{http://www.wikicfp.com/cfp/servlet/event.showcfp?eventid=177382&copyownerid=184710}}
+
+\begin{abstract}
+Picture a group of $n$ friends engaging in a game where they should play in a random order. They may each roll a die and line up according to the numbers rolled, though this may require re-rolls on ties. A natural question arises: Is it possible to design a set of dice with unique numbers on each side, ensuring that there are no ties and yet the permutation in which the $n$ friends line up is uniformly random? Such a set of dice is referred to as \emph{permutation-fair dice}.
+
+Previous efforts have successfully created permutation-fair dice for a limited number of players \cite{harshbarger2012whogoesfirst,ford2023go,purcell_improved} though the existence of a general construction for an arbitrary number of players remained an open question. This paper presents two constructive proofs confirming that permutation-fair dice can indeed be created for any number of players, linking the existence of permutation-fair dice to existence of ``fair'' strings with perfectly balanced counts of occurrences of every permutation of its symbols. We present several open questions related to the structure and design of permutation-fair dice and fair strings, and conclude with a proof that unfortunately the dice need to be exponentially large in $n$.
+\end{abstract}
+
+% Tomaš: Old abstract
+% \begin{abstract}
+% Picture a group of $n$ friends engaging in a game where their turn order is determined randomly. To achieve this, they each roll a die and line up according to the numbers rolled. The question arises: Is it possible to design a set of dice with unique numbers on each side, ensuring that the sequence in which the friends line up is completely random? These special dice are referred to as \emph{permutation-fair dice}.
+
+% There has been notable research into creating permutation-fair dice for small values of $n$ \cite{harshbarger2012whogoesfirst,ford2023go,purcell_improved}. However, it was unclear if such dice could be made for every possible number of players $n$. This paper presents two proofs confirming that permutation-fair dice can indeed be created for any number of players. Furthermore, we discuss several intriguing open questions related to the broader design principles of permutation-fair dice.
+% \end{abstract}
+
+\todo{@austin: I exchanged a few mails with Eric Harsbarger and people around him some time back, they sent me some papers that I put in the folder papers/ as they are probably hard to get online}
+%\todo{@austin: i am trying to keep the notation similar to Purcell's paper but I failed a couple of times, please feel free to refactor the notation}
+
+
+\section{Introduction}
+\label{sec:intro}
+This paper consider the following combinatorial problem. There are $n$ players and we have to design $n$ dies for them. Each die can have as many sides as we wish, let's say that the $i$-th die has $k_i$ sides. The task is to write the numbers $1, 2, \dots, \sum_{i = 1}^n k_i$ on the dice, each number exactly once, so that if each player simultaneously throws their die and we order the players according to the number they threw, they are ordered in a uniformly random permutation. Dice with this property are called \emph{permutation-fair}. 
+
+This problem was raised in 2010 by James Ernest \cite{Eric_webpage}. So far, it has been extensively analyzed from a practical perspective; namely we know quite a lot about how to construct permutation-fair dice for $n \le 6$. \cite{harshbarger2012whogoesfirst,ford2023go,purcell_improved}. 
+
+In this paper, we ask the following general question:
+
+\vspace{0.5em}
+\begin{mdframed}
+\begin{quote}
+ \begin{center}
+{\it Is there a set of $n$ permutation-fair dice for every $n$? }
+ \end{center}
+ \end{quote}
+\end{mdframed}
+\vspace{-0.5em}
+
+
+This paper shows two proofs that, indeed, there are such dice for every $n$. 
+
+\begin{theorem}
+\label{thm:main}
+For every $n$, there exists a set of $n$ permutation-fair dice. 
+\end{theorem}
+
+
+\paragraph{Connection to sampling}
+Construction of permutation-fair dice has a fundamental connection to computer science: Perhaps the simplest way of sampling a random permutation over $n$ elements in practice is to sample $n$ random real numbers and order them according to their size. 
+
+All numbers stored in the computer have finite precision, so to make this a valid Las Vegas randomized algorithm, we have to add that in the event (of vanishingly small probability) that there is some collision among the $n$ sampled numbers, we sample again, until the $n$ sampled numbers are distinct. The problem of fair dice essentially asks whether this is a fundamental issue; we want to adapt the algorithm so that the numbers are sampled from disjoint sets and thus we \emph{never} need to resample. While \cref{thm:main} shows that it is indeed possible to design such a sampling procedure, the lower bound from \cref{prop:lb2} suggests that it is hard to make this idea practical. It shows that a naive sampling procedure based on fair dice requires at least $\frac{n}{2} \cdot \log 2^{\Omega(n)} = \Omega(n^2)$ random bits to sample the player order, much more than the optimal $O(\log (n!)) = O(n \log n)$. 
+
+The connection between the discrete problem of designing permutation-fair dice and the idealized process where each player samples a random number from $[0,1]$ is the ultimate reason why Gaussian quadrature is needed in one of our proofs -- ultimately, designing permutation-fair dice reduces to solving a certain set of equations that one can solve in real numbers (because of the idealized process) in rational numbers. 
+
+\paragraph{Permutation-fair dice vs fair strings}
+%\todo{explain carefully why the two things are the same, this is an important todo}
+Sets of $n$ dice with all-disjoint face numbers can be very conveniently represented as strings over an alphabet of $n$ symbols, and we can then reduce the question of the existence of a permutation-fair dice to the existence of a fair string of a certain composition. 
+
+Given a set of dice, its string representation $s$ simply records on which dice each of the numbers $1, 2, \dots, \sum_{i = 1}^n k_i$ appears: $s[i]$ is the index of the dice with face $i$. For example, the representation of the set of three dice with face numbers $\{1,3,6,9,10,11\}$, $\{2,4,8\}$, and $\{5,7\}$ respectively is $12123132111$. Note that every string over the alphabet $1,2,\dots n$ with exactly $k_i$ occurrences of number $i$ for every $i=1, 2, \dots n$ corresponds to a set of $n$ dice with $k_1, k_2, \dots k_n$ sides respectively, by writing number $i$ on one of the faces of dice $s[i]$. 
+
+\smallskip
+This mapping not only establishes a convenient isomorphism between the two representations, but it also shows a fundamental equivalence between permutation-fair dice sets and counting permutation patterns in strings. This also allows us to focus on strings and their properties in the rest of the paper, relying on the following property: a set of dice is permutation-fair if and only if its string representation is a \textit{fair string}, that is every permutation of the alphabet of the string occurs the same number of times as a pattern in the string. See \cref{sec:preliminaries} for the full definition and more on fair strings. 
+
+\paragraph{Practical aspects}
+While the our results show that any permutation-fair sets of $n$ dice need to have exponential number of sides, there are several known optimal constructions for small values of $n$. In particular, for $n\leq 4$, the dice with the smallest possible number of total faces, the smallest possible largest die, and the smallest least common divisor of $\{k_i\}$ are all known~\cite{ford2023go, harshbarger2012whogoesfirst}. There are concrete dice set constructions for $4<n\leq 9$ at summarized at \cite{Eric_webpage}, though those are not known to be optimal. Our constructions yield dice sets of $2^{\Theta(n^2 \log n)}$ faces -- far from practical for even relatively small values of $n$.
+
+%\todo{maybe write a bit about what is known for $n \le 6$. Feel free to write anything that we have done but we have to be very careful to compare it with existing results then. }
+
+During our research, we have implemented a dynamic pruning parallel algorithm for finding all non-isomorphic fair strings for dice sets of given sizes, including $k,n$-fair strings, and we made it available for the interested reader\footnote{\url{https://github.com/gavento/permutation-fair-dice}}.
+%\todo{Tomáš: will add results for 5 dice if we find any (don't recall if we did previously.}
+
+\paragraph{Open questions}
+We believe there are many exciting open questions relevant to the existence of fair dice and their asymptotic size. We list some questions at the end of the paper. 
+
+\paragraph{Roadmap}
+The rest of the paper is structured as follows. In \cref{sec:related_work}, we discuss related work and how our work fits in. We discuss basic properties of permutation-fair dice in \cref{sec:preliminaries}. Next, we present the two proofs of \cref{thm:main} in \cref{sec:inductive_proof,sec:algebraic_proof}. We next prove a lower bound on the size of permutation-fair dice in \cref{sec:lower_bound} and discuss open problems in \cref{sec:open}. 
+
+\subsection{Related Work}
+\label{sec:related_work}
+
+There has been an interest in the construction of permutation-fair dice for $n \le 6$ \cite{Eric_webpage,harshbarger2012whogoesfirst,ford2023go,purcell_improved}. 
+Curiously, the techniques used to construct small permutation-fair dice for small values of $n$ are very similar to those we use to prove the general existence: Perhaps the most popular construction framework originally by Vanetti further developed by Ford~\cite{ford2023go} is the basis of our second proof of \cref{thm:main} in \cref{sec:algebraic_proof}. On the other hand, Purcell~\cite{purcell_improved} independently used the technique from \cref{sec:inductive_proof}, among other ideas, to construct small permutation-fair dice for $n = 6$. 
+
+A weaker property of a set of dice is to be \emph{place-fair} -- every player has the same probability $1/n$ of ending up at any position in the final order, but the relative order of players is not necessarily independent -- and \emph{go-first-fair} -- every player has the same probability of $1/n$ of being the first. Both of these properties are studied for small values of $n$ \cite{Eric_webpage,ford2023go}. 
+
+Another weakening of the permutation-fair property is asking for the shortest string over alphabet $[n]$ that contains every permutation as a subsequence at least once \cite{chvatal1972selected,newey1973notes,adleman1974short,koutas1975shortest,galbiati1976permutation,zualinescu2011shorter,kleitman1976lower,radomirovic2012construction} (see \cref{sec:preliminaries} for the equivalence between constructing permutation-fair dice and fair strings). See \cite[Section 4]{engen2020containing} for an overview of the work on this question. 
+
+\section{Preliminaries}
+\label{sec:preliminaries}
+
+In this subsection, we make a few mostly folklore observations about the fair dice problem that will be helpful later on. 
+We will use the following notation. A \emph{pattern} is a string such that no two letters of it are the same. The set $\Pi_{n,k}$ contains all $n\cdot (n-1) \cdot \dots \cdot (n-k+1)$ patterns of length $k$ that use letters $1, 2, \dots, n$. The set $\Pi_n$ is defined as $\Pi_{n,n}$ and contains all $n!$ patterns of length $n$ that contain each letter from $[n]$ exactly once. For a pattern $\pi$ we use $\pi[i]$ to denote the letter at position $i$ and  $\pi[i_1:i_2+1]$ to denote its substring with letters $\pi[i_1], \dots, \pi[i_2]$. 
+
+%\todo{I changed notation from permutation to pattern, please check in the rest of the paper}
+
+We notice that we can rephrase the question about dice as an equivalent question about a \emph{fair} string. 
+First we recall the string representation of a set of dice introduced in \cref{sec:intro} and formally define fair strings:
+
+\begin{definition}
+    A \textit{string representation} $s$ of a given a set of $n$ dice numbered $1, 2, \dots n$ and with $k_1, \dots k_n$ faces respectively is a string of length $\sum_{i = 1}^n k_i$ where $s[i]$ is the index of the dice containing the face with number $i$.
+\end{definition}
+
+As noted in \cref{sec:intro}, this establishes a bijection between sets of $[n]$ dice with faces numbered $1, \dots, K$ (where $K$ is the total number of faces) and strings of length $K$ over alphabet $[n]$, and this bijection can be narrowed down by specifying the number of sides $k_i$ for each dice.
+
+\begin{definition}
+\label{def:fair_string}
+    Given a string $s$ over alphabet $[n]$, we say that $s$ is \emph{$n$-fair} if every pattern $\pi \in \Pi_n$ occurs in $s$ as a subsequence the same number of times. 
+\end{definition}
+
+We use the following observation to reduce the central question to constructing fair strings:
+
+\begin{lemma}
+\label{lem:equivalence}
+    A set of dice is permutation-fair if and only if its string representation is fair.
+\end{lemma}
+\begin{proof}
+   Assume a set $n$ of dice with $k_1, \dots k_n$ faces, and its string representation $s$, and consider the following bijection between the possible results of dice throws and an instance of a pattern of a permutation of $[n]$ in $s$:
+   
+   The pattern occurrence corresponding to rolling faces $f_1, \dots f_n$ is $(s[f_1], s[f_2], \dots s[f_n])$. This pattern is indeed a permutation of $[n]$ as each $f_i$ belongs to a different die. On the other hand, given a permutation $\pi\in\Pi_n$ and its occurrence on positions $\{g_i\}$ as a pattern, i.e. $s[g_1]=\pi[1], \dots, s[g_n]=\pi[n]$, this in turn corresponds to rolling faces $(g_1, g_2, \dots g_n)$. By construction, the faces numbered $g_i$ are all on distinct dice.
+
+   With this bijection, the lemma then follows directly from the fact that each result of a dice throw is equally likely: $P(f_1, f_2, \dots f_n) = 1/\prod_{i=1}^n k_i$.
+\end{proof}
+
+Since we are going to count a susbsequences of $s$ a lot, let us set up a notation: We will use $C_{\pi}(s)$
+%todo{purcell has different notation, change? }
+to denote the count of a pattern $\pi$ as a subsequence. 
+
+For example, for the string $s = 122331$ we have $C_{1}(s) = C_{2}(s) = C_3(s) = 2$, i.e., it contains each letter the same number of times. However, $s$ is not fair because $C_{123}(s) = 4$ while $C_{321} = 0$. Fair strings do not need to have the same number of each letter, for example, the string $s' = 121$ is fair because $C_{12}(s') = C_{21}(s') = 1$, but $C_{1}(s') \not= C_2(s')$. 
+
+Next, we notice a few symmetries satisfied by fair strings that will be useful later. 
+
+First, we notice that we can relabel a fair string or restrict it to a subset of letters and it remains fair. 
+\begin{claim}
+\label{cl:relabeling}
+    Let $s$ be an $n$-fair string. Given a permutation $\tau$ on $n$ elements, the string $s^\tau$
+    %\todo{purcell has $\sigma(s)$}
+    defined by $s^\tau[j] = \tau(s[j])$ for $1 \le j \le |s|$ is $n$-fair. 
+    Restricting $s$ to any subset of its letters $S \subseteq [n]$ and relabelling the letters arbitrarily to $1, 2, \dots, |S|$ produces an $|S|$-fair string. 
+\end{claim}
+
+It is a useful fact that if we blow up the occurrence of each letter by the same constant factor, the string remains fair. 
+\begin{claim}
+\label{cl:blowup}
+    Let $s$ be a $n$-fair string. Pick any $i \in [n]$, choose a number $k \in \N$, and define $s'$ to be the string we get by replacing each occurrence of $i \in s$ by $k$ consecutive letters $i$. Then, $s'$ is also fair. 
+\end{claim}
+\begin{proof}
+Let us focus on any pattern $\pi \in \Pi_n$. We observe that any occurrence of $\pi$ in $s$ as a subsequence corresponds to $k$ occurrences of $\pi$ in $s'$. Due to our assumption that the count of all patterns in $s$ was the same, it thus remains the same also in $s'$.  
+\end{proof}
+
+\cref{cl:blowup} implies that if we can construct any fair string, we can also construct one where each letter occurs the same number of times. That is, each die can have the same number of sides. 
+
+\begin{corollary}
+    \label{cor:same}
+If there is an $n$-fair string $s$, there is also an $n$-fair string $s'$ of length at most $|s'| \le |s|^{n+1}$ where $C_1(s') = C_2(s') = \dots = C_n(s')$. 
+\end{corollary}
+\begin{proof}
+We use \cref{cl:blowup}: Each letter $i$ in $s$ is blown up by a factor $C_1(s) \cdot \dots C_{i-1}(s) \dots C_{i+1}(s) \dots C_n(s)$. Thus, every letter $i_0$ in $s'$ has the same count $C_{i_0}(s') = \prod_{i = 1}^n C_i(s)$. 
+\end{proof}
+
+\begin{lemma}
+\label{lem:counting_lemma}
+    Let $\pi \in \Pi_{n,k}$ be any pattern and $s$ an $n$-fair string. Let $C = C_{\pi'}(s)$ be the number of occurrences of any pattern $\pi' \in \Pi_n$ in $s$. Then, 
+    \begin{align}
+    \label{eq:counting_lemma}
+    C_{\pi}(s) = \frac{n \cdot (n-1) \cdot \dots \cdot (k+1) \cdot C}{\prod_{\ell \in [n], \ell \not\in \pi} C_{\ell}(s) }. 
+    \end{align}\todo{notation? }
+\end{lemma}
+\begin{proof}
+We will count in two ways the following quantity: 
+\[
+\sum_{\pi' \in \Pi'}C_{\pi'}(s)
+\]
+where $\Pi' \subseteq \Pi_n$ is the set of all patterns such that their restriction to the letters contained in $\pi$ gives the pattern $\pi$. 
+On one hand, we have  
+\[
+\sum_{\pi' \in \Pi_n}C_{\pi'}(s) 
+=n \cdot (n-1) \cdot \dots \cdot (k+1) \cdot C
+\]
+This is because each pattern in $\Pi'$ can be created by adding letters to the starting pattern $\pi$ arbitrarily. Each pattern in $\pi' \in \Pi'$ then has the same count $C = C_{\pi'}(s)$ in $s$. 
+On the other hand, we have  
+\[
+\sum_{\pi' \in \Pi_n}C_{\pi'}(s) 
+= C_{\pi}(s) \cdot \prod_{\ell \in [n], \ell \not\in \pi} C_{\ell}(s)
+\]
+since if we start with any occurrence of $\pi$ in $s$ and add an arbitrary occurrence of each letter $\ell \in [n], \ell \not\in \pi$ to it, we get an occurrence of some pattern $\pi' \in \Pi'$ in $s$. 
+
+\end{proof}
+
+As a corollary, we get that concatenating two fair strings often again yields a fair string. In particular, concatenating a fair string with itself has this property. We need to be a bit careful since this principle does not hold always. A counterexample is the two strings $s_A = 1112111$ and $s_B = 2221222$. While both of them are $2$-fair, their concatenation $s_A \circ s_B$ contains many more patterns $12$ than $21$. 
+
+\begin{corollary}
+\label{cor:concat}
+Let $s$ be an $n$-fair string. Then, the concatenated string $s' = s \circ s$ is also $n$-fair. 
+\end{corollary}
+\begin{proof}
+    Consider any two patterns $\pi_1, \pi_2 \in \Pi_n$. Their counts in $s'$ can be computed as 
+    \[
+    C_{\pi_i}(s') = \sum_{j = 0}^{n} C_{\pi_i[0:j]}(s) \cdot C_{\pi_i[j:n+1]}(s)
+    \]
+    where $i \in \{1,2\}$ and $\pi_i[0:j]$ is the first $j$ letters in $\pi_i$\todo{notation?}. 
+
+    However, for any fixed $j$, we can use the formula of \cref{lem:counting_lemma} to compute 
+    \[
+    C_{\pi_i[0:j]}(s) \cdot C_{\pi_i[j:n+1]}(s)
+    =    \frac{n\cdot (n-1) \cdot \dots\cdot j \cdot C \cdot n \cdot (n-1) \cdot \dots \cdot (n-j+1) \cdot C }{\prod_{\ell \in [n]} C_\ell(s)}
+    \]
+    does not depend on $i$. 
+\end{proof}
+
+\section{The First Construction}
+\label{sec:inductive_proof}
+
+We will now present the first proof of \cref{thm:main}. 
+We will build the fair string inductively. 
+%This is a natural approach and the first idea is to try to always build a fair string over $[n+1]$ given a fair string for $n$ but we choose a different route: 
+However, instead of showing how to design a $n$-fair string once we know a $(n-1)$-fair string, we will show how, starting with any string over $[n]$, we can construct strings over $[n]$ that are more and more symmetrical, until we generate a fair string. 
+
+\begin{definition}
+We say that a string $s$ over $[n]$ is $(k, n)$-fair if the value of $C_\pi(s)$ is the same for all patterns $\pi \in \Pi_{n,k}$.
+A string is $(\le k, n)$-fair if it is $(k, n)$-fair for all $1 \le k' \le k$. 
+\end{definition}
+
+In particular, an $n$-fair string is equivalently $(n, n)$-fair. The string $12\dots n$ is $(1,n)$-fair and the string $12\dots (n-1) n (n-1) \dots 2 1$ is both $(1,n)$-fair and $(2,n)$-fair. 
+
+$(k,n)$-fair strings are a bit better-behaved than $n$-fair strings; for example, a concatenation of any two $(k,n)$-fair strings is $(k,n)$-fair. 
+
+We will now show how to turn $(k,n)$-fair strings into $(k+1,n)$-fair ones; the construction is motivated by how known $2$-fair and $3$-fair strings look like. For example, $1221$ is a $2$-fair string that can be seen as ``created'' from a $(1,2)$-fair string $12$. Similarly, the string $s = 123\,213\, 312\, 321\, 132\, 213$ is $3$-fair string ``created'' from the $(1,3)$-fair string $123$; the following lemma at least explains why $s$ is $(2,3)$-fair. 
+
+\begin{lemma}[See also Theorem 2 in \cite{purcell_improved}]
+\label{lem:induction}
+For any $k<n$ the following holds. Given a $(\le k, n)$-fair string $s$ of length $\ell$, we can construct a $(\le k+1, n)$-fair string $s'$ of length $\ell \cdot n!$. 
+\end{lemma}
+\begin{proof}
+Recall that given a string $s$ over $[n]$ and a pattern $\tau \in \Pi_n$, we use $s^\tau$ to denote the string defined by renaming the letters of $s$ according to $\tau$. 
+
+We construct $s'$ simply by concatenating $s^{\tau_1} \circ s^{\tau_2} \circ \dots \circ s^{\tau_{n!}}$ where we listed the patterns $\tau_1, \dots, \tau_{n!} \in \Pi_n$ in an arbitrary order. 
+
+We will next prove that $s'$ is $(k+1, n)$-fair. Choose any two patterns $\pi_1, \pi_2 \in \Pi_{n,k}$; we will show that $C_{\pi_1}(s') = C_{\pi_2}(s')$. 
+To see that, we classify occurences of $\pi_1, \pi_2$ in $s'$ into \emph{types}, where each type is specified as $n!$ numbers summing up to $k$: the type specified which letters that particular occurence has in which one of the $n!$ parts that $s!$ consists of. 
+
+\todo{probably expand this proof}
+We notice that for all the types except of the $n!$ types where $\pi_1, \pi_2$ is fully inside one of the parts, we have that the number of occurences of $\pi_1, \pi_2$ in $s'$ of that type is the same by virtue of $s$ (and its renamings) being $k$-fair. The remaining $n!$ types contribute the same total number for both $\pi_1$ and $\pi_2$, by symmetry. 
+
+We can also make an analogous (in fact, easier) argument to prove that $s'$ is also $(1,n)$-, $(2,n)$-, \dots, $(k,n)$-fair, thus it is $(\le k+1,n)$-fair as needed. 
+\end{proof}
+
+As a corollary, we get the existence of a fair string, together with an upper bound on its size. 
+
+\begin{corollary}
+\label{cor:bound}
+    For every $n$, there is an $(\le n, n)$-fair string of length $2^{O(n^2 \log n)}$.  
+\end{corollary}
+\begin{proof}
+We start with the $1$-fair string $s_1 = 12 \dots n$. Then, we apply \cref{lem:induction} $n-1$ times. The final string $s$ has length $n \cdot (n!)^{n-1} = 2^{O(n^2 \log n)}$. 
+\end{proof}
+
+Finally, we remark that $n$-fair strings and $(\le n, n)$-fair strings are closely related. In fact, once each letter in an $n$-fair string occurs with the same frequency, the string is $(\le n, n)$-fair. 
+
+\begin{lemma}
+\label{lem:fair_implies_fairer}
+    Let $s$ be an $n$-fair string such that $C_1(s) = C_2(s) = \dots = C_n(s)$. Then, $s$ is $(\le n, n)$-fair. 
+\end{lemma}
+\begin{proof}
+    Choose any $k$ and any two patterns $\pi_1, \pi_2 \in \Pi_{n,k}$. We notice that the formula of  \cref{lem:counting_lemma}, together with the assumption of the lemma implies that $C_{\pi_1}(s) = C_{\pi_2}(s)$. 
+\end{proof}
+Note that together with \cref{cor:same}, we thus get that one can construct $(\le n, n)$-fair strings from $n$-fair ones, albeit with a large increase in their size. 
+
+
+\section{The Second Construction}
+\label{sec:algebraic_proof}
+
+Our second proof follows the general strategy described by Ford~\cite{ford2023go}; the basic version of their construction can be shown to work for any $n \le 8$ while our proof shows that a variant of their construction works always. 
+
+Motivated by \cref{cor:concat}, we will try to construct an $(n+1)$-fair string inductively by interlacing an already constructed $n$-fair string with letters $(n+1)$. Namely, given an $n$-fair string $s$, we will use $s(k_1, k_2, \dots, k_{m+1})$ to denote the following string: 
+
+\begin{align}
+\label{eq:construction}
+s(k_1, k_2, \dots, k_{m+1}) = \underbrace{(n+1) \dots (n+1)}_{k_1} \,\circ\, s \,\circ\, \underbrace{(n+1) \dots (n+1)}_{k_2} \,\circ\,  s \,\circ\, \;\dots\;  \,\circ\, \underbrace{(n+1) \dots (n+1)}_{k_{m+1}} 
+\end{align}
+%Note that $s(k_1, k_2, \dots, k_{m+1})$ has length $(m+1) \cdot |s| + \sum_{i = 1}^m k_i$. \todo{is it relevant?}
+
+First, we use \cref{lem:counting_lemma} to argue that for any $j$, any two patterns $\pi_1, \pi_2$ with $\pi_1[j] = \pi_2[j] = n+1$ have the same number of occurrences in $s(k_1, \dots, k_{m+1})$, regardless of the values of $k_1, \dots, k_{m+1}$. 
+\begin{lemma}
+    \label{lem:same_counts}
+    Given an $n$-fair string $s$, any nonnegative integers $k_1, \dots, k_{m+1}$, any $0 \le j \le n+1$, and any two patterns $\pi_1, \pi_2 \in \Pi_{n+1}$ with $\pi_1[j] = \pi_2[j] = n+1$, we have 
+    \[
+    C_{\pi_1}(s(k_1, \dots, k_{m+1})) = C_{\pi_2}(s(k_1, \dots, k_{m+1}))
+    \]
+\end{lemma}
+\begin{proof}
+    Consider two patterns $\pi_1, \pi_2$ from the statement and consider the expression $C_{\pi_\iota}(s(k_1, \dots, k_{m+1}))$ for $\iota \in \{1,2\}$. Using the assumption $\pi_\iota[j] = n+1$, we can write this count as
+    \[
+    C_{\pi_\iota}(s(k_1, \dots, k_{m+1})) 
+    = \sum_{i = 0}^{m} k_i \cdot C_{\pi_\iota[0:j]}(s^{i}) \cdot  C_{\pi_\iota[j+1:n+1]}(s^{m-i})
+    \]
+    Here, $s^i$ is a string we get by $i$ concatenations of $s$. 
+    We claim that the size of the expression $C_{\pi_\iota[0:j]}(s^{i}) \cdot  C_{\pi_\iota[j+1:n+1]}(s^{m-i})$ on the right-hand side is independent of $\iota$. To see this, we notice that this expression is counting the occurrences of $\pi_\iota$ in $s^{m-1}$ where we further require that $\pi_{\iota}[0:j]$ occurs in the first $i$ copies of $s$ and $\pi_{\iota}[j+1:n+1]$ occurs in the last $m-i$ copies of $s$. 
+    We can further split this expression into a summation over \emph{types} of occurrences based on how many letters of $\pi_\iota$ are in which copy of $s$. Formally, a type is a tuple $t_1, \dots, t_m$ such that each $t_i \ge 0$ and $\sum_{i = 1}^m t_i = n$. We can write
+    \[
+    C_{\pi_\iota[0:j]}(s^{i}) \cdot  C_{\pi_\iota[j+1:n+1]}(s^{m-i})
+    = \sum_{\substack{t_1, \dots, t_{m} \ge 0, \\ \sum_{i' = 1}^{i} t_{i'} = j, \\ \sum_{i' = i+1}^{m} t_{i'} = n-j}} 
+ \prod_{i' = 1}^{m} C_{\pi_\iota[t_1 + \dots + t_{i'-1} \,:\, t_1 + \dots + t_{i'} + 1]}(s).  
+    \]
+    However, for each particular type $t_1, \dots, t_{m}$, we can use \cref{lem:counting_lemma} to compute
+    \[
+     \prod_{i' = 1}^{m} C_{\pi_\iota[t_1 + \dots + t_{i'-1} \,:\, t_1 + \dots + t_{i'} + 1]}(s)  = \frac{f(t_1, \dots, t_{m}, s)}{\prod_{\ell \in [n]} C_\ell(s)^{m-1}}  
+    \]
+    where the function $f$ is a monstrosity we get after multiplying numerators in expressions coming from \cref{eq:counting_lemma}, while the denominator $\prod_{\ell \in [n]} C_\ell(s)^{m-1}$ is produced by multiplying denominators of \cref{eq:counting_lemma}. Importantly, the right hand side is not a function of $\iota$, as needed. \todo{pls check this argument carefully, would be great if it followed black box from \cref{cor:concat} but I dont see how to do it}
+\end{proof}
+As a corollary of \cref{lem:same_counts}, we conclude that there are only $n+1$ equations that $k_1, \dots, k_{m+1}$ need to satisfy for $s(k_1, \dots, k_{m+1})$ to be $(n+1)$-fair. 
+\begin{lemma}
+    \label{lem:inductive_construction_nice}
+    Given an $n$-fair string $s$ and any non-negative numbers $k_1, \dots, k_{m+1}$ that satisfy for each $0 \le j \le n$ that
+    \begin{align}
+    \label{eq:constraint}
+    \sum_{i = 0}^m  \frac{k_i}{\sum_{i' = 1}^{n+1} k_{i'}} \cdot \binom{n}{j} \cdot \left( \frac{i}{m} \right)^j \cdot\left( 1 - \frac{i}{m}\right)^{n-j}
+    = \frac{1}{n+1},
+\end{align}
+    we have that the string $s(k_1, \dots, k_{m+1})$ is $(n+1)$-fair. 
+\end{lemma}
+\cref{eq:constraint} has a natural probabilistic interpretation: The left-hand side computes the probability that if we choose a random pattern $\pi \in \Pi_{n+1}$ occurring in $s(k_1, \dots, k_{m+1})$, this pattern has $\pi(n+1) = j$. To see this, consider first sampling a random occurence of the letter $(n+1)$ in $s$. Next, condition on the value $i$ such that $(n+1)$ was sampled from the $i$-th run of letters $(n+1)$ in $s$. Next, sample all other letters of $\pi$ from $s(k_1, \dots, k_{m+1})$. The right-hand side is saying that the supposed $(n+1)$-fairness of $s(k_1, \dots, k_{m+1})$ implies that this probability has to be $1/(n+1)$. Satisfying \cref{eq:constraint} is necessary and \cref{lem:inductive_construction_nice} shows that also sufficient. 
+\begin{proof}
+Let $\Pi_{n+1}^j$ be the set of all patterns $\pi \in \Pi_{n+1}$ such that $\pi_j = n+1$. 
+Using \cref{lem:same_counts}, we conclude that to prove that $s(k_1, \dots, k_{m+1})$ is $n+1$-fair, it suffices to require that there is some constant $C$ such that for each $j$, we have 
+\[
+\sum_{\pi \in \Pi_{n+1}^j} C_\pi(s(k_1, \dots, k_{m+1})) = |\Pi_{n+1}^j| \cdot C = n! \cdot C. 
+\]
+Equivalently, it suffices if it holds that a uniformly random occurrence of a pattern $\pi \in \Pi_{n+1}$ in $s(k_1, \dots, k_{m+1})$ satisfies that $\pi \in \Pi_{n+1}^j$ with probability $n! / (n+1)! = 1/(n+1)$. 
+
+This probability can be computed as follows. Notice that a random occurrence of a pattern from $\Pi_{n+1}$ from $s(k_1, \dots, k_{m+1})$ can be sampled by sampling a random letter $1$ from that string, a random letter $2$ from that string, and so on. \todo{we can also rewrite these arguments to not use probability and use the horrible formulas that are counting stuff to make this precise. Maybe the current way is hiding some argument under the rug} Focusing on the letter $(n+1)$, we notice that it is sampled from the $i$-th run of length $k_i$ with probability $k_i / (\sum_{i' = 1}^{m+1} k_{i'})$. Given that the letter is sampled from the $i$-th run, the probability that the final sampled occurrence of $\pi$ is from $\Pi_{n+1}^j$ can then be computed as $\binom{n}{j} \cdot (i/m)^j \cdot (1 - i/m)^{n-j}$ since some $i$ of the remaining $m$ letters need to end up before the occurrence of $(m+1)$ which happens with probability $i/m$ per letter, and the remaining letters need to end up after that occurrence. This leads to \cref{eq:constraint}. 
+% Thus, it suffices to require that for each $0 \le j \le n$ we have
+% \[
+%     \sum_{i = 0}^m  \frac{k_i}{\sum_{i' = 1}^{n+1} k_{i'}} \cdot { n \choose j} \cdot \left( \frac{i}{m} \right)^j \cdot\left( 1 - \frac{i}{m}\right)^{n-j} = \frac{1}{n+1},
+% \] as we wanted to prove. 
+\end{proof}
+
+\paragraph{Connection with the idealized random process}
+It will be helpful to recall that fair dice with $n+1$ players are a discrete simulation of the following, idealized, randomized process. Every player chooses a random real from $[0,1]$ and the players order themselves by the size of their sampled number. In this idealized process, the probability of this process resulting in any particular order is, by symmetry, equal to $1/(n+1)!$. 
+Similarly, if we define $\Pi_n^j$ to be the set of patterns $\pi \in \Pi_{n+1}$ such that $\pi[j] = n+1$, we have that the probability of a pattern from $\Pi_{n+1}^j$ being sampled is $1/(n+1)$ (as this is equivalent to the probability that the $(n+1)$-th random real number is at the $j$-th position in the final order). 
+On the other hand, we can compute this as the following integral: We think of every possible value of $x$ that the $(n+1)$-th player may have sampled; for fixed $x$ we then compute the conditional probability that the other players sampled numbers so that the final pattern is $\pi$. We thus conclude that the following equation has to hold. \footnote{The equation below is a standard fact about Bernstein polynomials, see e.g. \cite{lorentz1986bernstein}. }
+\begin{align}
+\label{eq:integral}
+\int_{0}^1 \binom{n}{j} \cdot x^j \cdot (1-x)^{n-j} \,dx = \frac{1}{n+1}
+\end{align}
+Compare this equation with the condition of \cref{eq:constraint} that needs to be satisfied by $s(k_1, \dots, k_{m+1})$ in order to be $(n+1)$-fair. 
+We can now see the close link between the idealized randomized process and fair dice: Equations in \cref{eq:constraint} can be viewed as computing the value of an integral from \cref{eq:integral} on a discrete distribution over rational numbers $0, 1/m, \dots, m$. If the distribution were uniform distribution over $[0,1]$ (this is \cref{eq:integral}), then all constraints would be satisfied. The question is whether there is a discrete distribution that also satisfies all the constraints. \todo{important paragraph, please rewrite understanably} 
+
+To construct the discrete distribution, i.e., to construct the numbers $k_1, \dots, k_{n+1} \ge 0$, we will first observe that we may construct such numbers if we want our constraints to be satisfied approximately, with an arbitrary precision. 
+
+\begin{lemma}
+\label{lem:approximate}
+    For any $\eps > 0$, there is $m \in \N$ such that for every $0 \le j \le n$ we have
+    \begin{align}
+    \label{eq:approximate}
+        \left|\sum_{i = 0}^{m-1}  \frac{1}{m}  \left( \frac{i}{m} \right)^j 
+        -
+        \int_0^1 x^j \,dx
+        \right|
+        < \eps
+    \end{align}\todo{I think it is probably better to write the left sum as $\sum_{x \in \{0/m, \dots, (m-1)/m\}} x^j$}
+\end{lemma}
+\begin{proof}
+This is just a special case of how one can define Riemann integral by approximating an area by columns. 
+    \todo{what is the right buzzword for this statement? Maybe write a short proof?}
+\end{proof}
+
+We can now show how an $(n+1)$-fair string can be constructed from an $n$-fair one. 
+\begin{theorem}
+\label{thm:main_algebra}
+    Given any $n$-fair string $s$, there exists $m \in \N$ and nonnegative integers $k_1, \dots, k_{m+1}$ so that $s(k_1, k_2, \dots, k_{m+1})$ is $(n+1)$-fair. 
+\end{theorem}
+\begin{proof}
+    In view of \cref{lem:inductive_construction_nice}, it suffices to prove the existence of $k_1, \dots, k_{m+1} \in \N$ that satisfy constraints of \cref{eq:constraint}. 
+
+    To find such values, we first choose an $\eps > 0$ small enough so that the following argument works. 
+    We apply \cref{lem:approximate} with that $\eps$ to get a value $m$ which without loss of generality\todo{is it? perhaps repharse lemma a bit} is divisible by $n+1$. 
+    Let us define the weights $w_0, \dots, w_{m-1}$ as follows. For indices $0\cdot\frac{m}{n+1}, 1\cdot \frac{m}{n+1}, \dots, n\cdot \frac{m}{n+1}$, we define $w_{j'\cdot m/(n+1)} = 1/m + \delta_{j'}$ for $\delta_{j'}$ defined next. Else, we define $w_i = 1/m$.  
+    The variables $\delta_0, \dots, \delta_{n}$ are defined by a set of $n+1$ linear equations
+    \begin{align}
+        \label{eq:eq}
+        \sum_{i = 0}^{m-1} w_i \cdot \left( \frac{i}{m} \right)^j  = \int_0^1 x^j \,dx 
+    \end{align}
+    for each $0 \le j \le n$. 
+    Equivalently, we can use the definition of $w_i$ to write these equations in terms of $\delta_{j'}$ as
+    \begin{align}
+        \label{eq:eq2}
+        \sum_{j' = 0}^{n} \delta_{j'} \cdot \left( \frac{j'}{n+1} \right)^j  = \left( \int_0^1 x^j \,dx\, -  \sum_{i = 0}^{m-1}  \frac{1}{m}  \left( \frac{i}{m} \right)^j \right)
+    \end{align}
+    Notice that the right-hand side is some rational constant bounded in absolute value by $\eps$ by \cref{lem:approximate}. 
+    
+We next show that the set of equations in \cref{eq:eq2} can be solved. To see this, consider the matrix $A$ defined by $A_{jj'} = \left( \frac{j'}{n+1} \right)^j $. We will show that $A$ is regular by showing that it has full row-space. 
+Let $\alpha = (\alpha_0, \dots, \alpha_n)$ be a real vector such that $\alpha A = (0, \dots, 0)$. This equation can be interpreted as saying that the polynomial $P(x) = \alpha_0 x^0 + \dots + \alpha_n x^n$ satisfies $P(x) = 0$ for all $x \in \{ \frac{0}{n+1}, \dots, \frac{n}{n+1}\}$. The only polynomial of degree $n$ with $n+1$ roots is the zero polynomial, that is, the only possible $\alpha$ with this property is $\alpha = (0, \dots, 0)$ and we thus conclude that $A$ is regular. 
+
+Therefore, we can invert the matrix $A$ and compute the values $(\delta_0, \dots, \delta_n)$ as $(\delta_0, \dots, \delta_n) = A^{-1} b$ where $b_j$ is the right-hand side of \cref{eq:eq2}. 
+
+Next, we discuss the size of the values $\delta_i$. We notice that the matrix $A^{-1}$ is a matrix with rational coefficients whose numerator and denominator can be bounded as a function of $n$. In particular, choosing $\eps$ small enough in terms of $n$ allows us to conclude that for all $0 \le j' \le n$ we have $\delta_{j'} \ge -1$ and thus for all $0 \le i < m$ we have $w_i \ge 0$. Moreover, all values $w_i$ are rational. 
+
+Finally, notice that $x^j(1-x)^{n-j}$ is a polynomial of degree $n$ that can be thus written as a linear combination of polynomials $x^0, \dots, x^n$. Thus, \cref{eq:eq} implies that
+\begin{align}
+    \label{eq:almost}
+        \sum_{i = 0}^{m-1}  w_i \cdot \binom{n}{j} \cdot \left( \frac{i}{m} \right)^j \cdot\left( 1 - \frac{i}{m}\right)^{n-j}
+    = \int_0^1 \binom{n}{j} \cdot x^j \cdot\left( 1 - x\right)^{n-j}
+\end{align}
+Recall that we know from \cref{eq:integral} that the value of the integral on the right-hand-side is $1/(n+1)$. Next, we convert $w_i$'s to a common denominator $D$, i.e., we write $w_i = k_i/D$. Then we can rewrite the above equality as
+    \begin{align}
+    \sum_{i = 0}^m  \frac{k_i}{D} \cdot \binom{n}{j} \cdot \left( \frac{i}{m} \right)^j \cdot\left( 1 - \frac{i}{m}\right)^{n-j}
+    = \frac{1}{n+1}.
+\end{align}
+Finally, we notice that since we satisfy \cref{eq:eq} for $j = 0$, we have $\sum_{i = 0}^{m-1} w_i = \int_0^1 1 \,dx = 1$, i.e., $\sum_{i = 0}^{m-1} k_i = D$. Plugging this fact to the above equation, we conclude that \cref{eq:constraint} is satisfied as needed. 
+\end{proof}
+
+We remark that we believe that this construction can be optimized to yield $n$-fair strings of length roughly $2^{O(n^2 \log n)}$, similarly to the first construction. 
+
+\section{Lower Bound}
+\label{sec:lower_bound}
+
+
+To lower bound the size of any $n$-fair string, we will use a folklore divisibility argument (see e.g. Proposition 1 in \cite{purcell_improved}). 
+
+\begin{lemma}
+\label{prop:lb}
+    Any $n$-fair string has to have length $2^{\Omega(n)}$. 
+\end{lemma}
+\begin{proof}
+    Let $s$ be any $n$-fair string. We recall \cref{cl:relabeling} that says that if we restrict $s$ to any $n' < n$ letters, the resulting string $s'$ still has to be $n'$-fair. 
+    
+    This implies that for any prime $1 < p \le n$ and any subset $S \subseteq [n]$ with $|S| = p$, we know that at least one the letter counts $|C_{\ell_1}|, \ell \in S$, has to be divisible by $p$. Consequently, we know that for at least $n-p$ letter counts $|C_{\ell}(s)|$ we have $p \mid  |C_{\ell}(s)|$. 
+    
+    This observation allows us to lower bound the product of the values $|C_i(s)|, 1 \le i \le n$ as follows. We have:
+    \begin{align}
+    \prod_{i = 1}^n |C_i(s)| 
+    &\ge 2^{n-2 + 1} \cdot 3^{n-3 + 1} \cdot 5^{n-5 + 1} \cdot \dots \\
+    &\ge \prod_{ p \le n/2, \text{ $p$ a prime}}
+    p^{n/2}
+    \end{align}
+    The value of the product of all primes smaller than $k$ is called the primorial of $k$, and it is known that the primorial grows exponentially in $k$ \cite{finch2003mathematical}, i.e., we have 
+    \[
+    \prod_{ p \le n/2, \text{ $p$ a prime}} p = 2^{\Omega(n)}
+    \]
+    and thus we conclude that
+    \[
+    \prod_{i = 1}^n |C_i(s)| = 2^{\Omega(n^2)}
+    \]
+    and hence
+    \[
+    \max_{i = 1}^n |C_i(s)|
+    \ge \sqrt[n]{
+    \prod_{i = 1}^n |C_i(s)| 
+    }
+    = 2^{\Omega(n)}
+    \]
+    as needed. 
+    
+\end{proof}
+
+In fact, we can make the lower bound a bit more quantitative. 
+\begin{theorem}
+\label{prop:lb2}
+    For any $n$-fair string $s$ and any $\eps > 0$, we can find a subset $B \subseteq [n], |B| \ge (1-\eps) n$ such that for each $i \in B$ we have $C_i(s) = 2^{\Omega(\eps n)}$.     
+\end{theorem}
+\begin{proof}
+    Let $B$ be the set of the $(1- \eps) n$ letters $i$ in $s$ with the largest count $C_i(s)$. We notice that restricting $s$ to $[n] \setminus B$ (and relabelling the letters of that string) produces an $\eps n$-fair string which has length $2^{\Omega(\eps n)}$ by \cref{prop:lb}. Thus, at least one letter $i \in [n] \setminus B$ has $C_i(s) = 2^{\Omega(\eps n)}$ which proves the proposition by definition of $B$. 
+\end{proof}
+
+
+\section{Open Problems and Acknowledgements}
+\label{sec:open}
+
+We would like to understand the following questions. 
+
+\begin{enumerate}
+\item What is the asymptotic length of the shortest $n$-fair string? In particular, is it closer to $2^{\Theta(n)}$ or $2^{\Theta(n^2)}$? 
+\item What is the asymptotic length of the shortest $(\le n, n)$-fair string, or the string corresponding to place-fair or go-first-fair dice? (see \cref{sec:related_work})
+\item Can we prove that \emph{all} dice in a permutation-fair set have to have exponentially many sides? (cf. \cref{prop:lb2}) 
+\item What if we only want approximately permutation-fair dice where the distribution $D$ over the $n!$ possible orders are not required to be uniform, but we only require that, e.g., its $\ell_1$-distance from the uniform distribution is at most $0.1$ or that its $\ell_\infty$-distance from the uniform distribution is at most $0.1 / n!\,$? Is $n^{O(1)}$ sides enough? What are the guarantees of the randomized construction (that is, sample each letter of the string independently and uniformly from $[n]$)? 
+\end{enumerate}
+
+
+\paragraph{Acknowledgments}
+VR thanks Florian Haeupler for suggesting the problem, and James Grime, Eric Harshbarger, Michael Purcell, Josef Tkadlec, and several commenters of this video \cite{polylog_webpage} for many helpful discussions. 
+%VR is supported by the European Research Council (ERC) under the European Unions Horizon 2020 research and innovation programme (grant agreement No.~853109).
+TG acknowledges the support of Charles University grant PRIMUS/22/HUM/020.
+
+\bibliographystyle{alpha}
+\bibliography{ref}
+
+\end{document}
+
+
+\section{OLD}
+\paragraph{Connection with quadrature}
+It will be helpful to recall that fair dice with $n+1$ players are a discrete simulation of the following, idealized, randomized process. Every player chooses a random real from $[0,1]$ and the players order themselves by the size of their sampled number. In this idealized process, the probability of this process resulting in any particular order is, by symmetry, equal to $1/(n+1)!$. 
+
+Similarly, if we define $\Pi_n^j$ to be the set of patterns $\pi \in \Pi_{n+1}$ such that $\pi[j] = n+1$, we have that the probability of a pattern from $\Pi_{n+1}^j$ occurring is $1/(n+1)$ (as this is equivalent to the probability that the $(n+1)$-th random real number is at the $j$-th position in the final order). 
+On the other hand, we can compute this as the following integral: We think of every possible value of $x$ that the $(n+1)$-th player may have sampled; for fixed $x$ we then compute the conditional probability that the other players sampled numbers so that the final pattern is $\pi$. We thus conclude that the following equation has to hold. 
+\begin{align}
+\label{eq:integral}
+\int_{0}^1 {n+1 \choose j} \cdot x^j \cdot (1-x)^{n-j} \,dx = \frac{1}{n+1}
+\end{align}
+We can now see the link with the theory of numerical approximation of integrals: We have a set of equations from \cref{eq:constraint} that we need to satisfy. Each equation can be viewed as computing the value of an integral from \cref{eq:integral} on a discrete distribution over rational numbers $0, 1/m, \dots, m$. If the distribution were uniform distribution over $[0,1]$, then we have just seen that all constraints of \cref{eq:constraint} are satisfied; this is because the idealized continuous process behaves in a very simple way. The question is whether there is a discrete distribution that also satisfies all the constraints. \todo{important paragraph, please write understanably} 
+
+This leads to one of the fundamental questions of numerical analysis: how can we reliably estimate values of integrals by interpolating them, i.e., by computing the values of the integrated function on a discrete set of points and replacing the original integral by a certain weighted sum. 
+
+\paragraph{Newton-Cotes interpolation}
+This question is intensively studied for at least past 200 years. Fortunately for us, the classical interpolation methods are designed in such a way that the if the integrated function is a low-degree polynomial, the interpolating formula, in fact, gives an \emph{exact} answer.  For example, the famous Simpson's rule \cite[Section 4.3]{burden2011numerical_analysis} says that if we approximate the value of an integral of $P(x)$ as:
+\[
+\int_0^1 P(x) \, dx \approx \frac{1}{6} \left( P(0) + 4P(1/2) + P(1) \right),
+\]
+we, in fact, get equality whenever $P$ is a polynomial of degree at most $2$. While it may be a bit surprising that we can compute the value exactly for \emph{polynomials} of degree at most $2$, notice that it is enough to prove that this holds for polynomials $P_0(x) = 0, P_1(x) = x, P_2(x) = x^2$, thus we have only three equations that the three weights need to satisfy, solving those equations yields the weights $1,4,1$. 
+
+Simpson's rule is the special case of the so-called Newton-Cotes formula \cite[Section 4.3]{burden2011numerical_analysis} and the coefficients $1, 4, 1$ from this example are known as Cotes numbers \cite{cotes_oeis}. As an example, we can now conclude that for the $2$-fair string $s = 121$, we have that the string $s(1,4,1) = 312133331213$ is $3$-fair; this is the basic methodology of \citet{ford2023go}. 
+
+In general, Cotes numbers of $n$-th order are the $n+1$ integers $c_1^n, c_2^n, \dots, c_{n+1}^n$ with the property that for any polynomial $P$ of degree at most $n$ we have 
+\[
+\int_0^1 P(x) dx = \frac{1}{\sum_{i = 1}^{n+1} c_i^n} \cdot \sum_{i = 1}^{n+1} c_i^n P(\frac{i}{n+1})
+\]
+While Cotes numbers exist for every $n$\cite{?}, there is a catch: It turns out that Cotes numbers can be negative for $n \ge 8$ \cite{cotes_oeis}. Thus the framework based on Newton-Cotes interpolation yields only $8$-fair dice. The discussion so far is a straightforward generalization of ideas from \cite{ford2023go}, our main contribution is showing that if one replaces Newton-Cotes interpolation by the more powerful interpolation method of Gaussian quadrature, the framework implies existence of $n$-fair dice for every $n$. 
+
+\paragraph{Gaussian quadrature}
+%It remains to prove \cref{thm:gauss}. To this end, we need to recall Gaussian quadrature \cite{?} that, in fact, implies \cref{thm:gauss} almost directly. 
+Gaussian quadrature can be seen as a more clever variant of the Newton-Cotes interpolation method interpolating at fixed points $0, 1/(n+1), \dots, 1$ and preserving integrals of polynomials up to degree $n$. Gauss realized that if we use the freedom to interpolate the input function at some carefully chosen points, we get additional $n+1$ degrees of freedom that enable us to exactly compute the integrals of higher-degree polynomials. Formally, (the most basic version of) Gaussian quadrature can be seen as the following statement. 
+
+\begin{theorem}
+    \label{thm:gauss}\todo{find a citation for this. The book \cite{burden2011numerical_analysis} does not prove nonnegativity. Wikipedia (Gaussian quadrature) proves it but it would be good to have a better citation}
+    There exist $m$ reals $0 \le x_1 < \dots < x_m\le 1$ and $m$ positive reals $w_1, \dots, w_m$ such that for any polynomial $P$ of degree at most $2m-1$ we have:
+    \[
+    \int_0^1 P(x) \, dx = \sum_{i = 1}^m w_i \cdot P(x_i). 
+    \]
+\end{theorem}
+While the main strength of Gaussian curvature is the improved bound on the degree, the crucial property for us is instead that $w_1, \dots, w_n$ are positive. Unfortunately, both the interpolation points and the weights in Gaussian quadrature are not rational numbers, even for very small values of $n$\cite{gauss_wiki}. This is why we need to prove the following technical result about stability of full-rank matrices.  
+
+% \begin{definition}[Vandermonde matrix]
+% \label{def:vandermonde}
+% Given $m$ interpolation points $x_1 < x_2 < \dots < x_m$, the Vandermonde matrix $V(x_1, \dots, x_m) \in \R^{n \times m}$ is defined by $V(x_1, \dots, x_m)_{ji} = x_i^j$. \todo{maybe use transposed definition}
+% \end{definition}
+
+\begin{lemma}[Stability of full-rank matrices]
+    \label{lem:matrix_stability}
+Let $A \in \R^{n\times m}, m \ge n$ be a matrix of full rank. Let $x \in \R^m, y \in \R^n$ be arbitrary such that $Ax = y$. Then, for every $\eps > 0$ there exists $\delta > 0$ with the following property. 
+
+Let $A'$ be any matrix satisfying $||A'-A||_{\infty} < \delta$ and let $y'$ be arbitrary such that $||y'-y||_{\infty} < \delta$\todo{probably dont need this after all}. Then, there exists $x'$ with $||x'-x||_{\infty} < \eps$ such that $A'x'=y'$. 
+    % Let $V(p_1, \dots, p_m)$ be a Vandermonde matrix and $y \in \R^{n}$. Let $\kappa$ be any solution to the equation $V(p_1, \dots, p_m) \cdot \kappa = y$. 
+    % Then, for every $\eps > 0$ there exists $\delta > 0$ with the following property. 
+
+    % Choose any $p'_1, \dots, p'_m$ and $y'$ such that $|p'_i - p_i| < \delta$ for any $1 \le i \le m$ and, moreover, $|y_j - y'_j| < \delta$ for any $1 \le j \le n$. Then, there is a vector $\kappa'$ with $V(x'_1, \dots, x'_m) \cdot \kappa' = y'$ such that for each $1 \le i \le m$ we have $|\kappa_i - \kappa'_i| < \eps$.  
+\end{lemma}
+\begin{proof}\todo{please make this proof clear and precise, alternatively delete it and find an appropriate citation}
+Fix $A,x,y$. First, we note that for any $A'$ sufficiently close to $A$, we can have the value $||A'x - y||_{\infty} = ||(A'-A)x||_{\infty}$ as small as we want by continuity of linear functions.  
+Next, we note that since the space of full-rank matrices is open\todo{add citation or explain}, choosing $A'$ sufficiently close enough to $A$ implies that $A'$ is regular as well. 
+
+Recall that our task is to find $x'$ so that $A'x'= y'$ which can be equivalently rewritten as 
+\begin{align}
+    \label{eq:horrible}
+    A'(x'-x) = y' - A'x. 
+\end{align}
+However, we notice that $||y' - A'x||_{\infty} \le ||A'x - y||_{\infty} + ||y-y'||_{\infty}$. That is, the right hand side of \cref{eq:horrible} can be made as small as necessary in $\ell_{\infty}$. Using that $A'$ is full-rank and has thus finite condition number, we thus conclude that there is a solution $x'-x$ to \cref{eq:horrible} where $||x'-x||_{\infty}$ is arbitrarily small, as needed. \todo{the last sentence should be expanded, condition numbers probably defined etc.}
+\end{proof}
+
+We can now finish the proof. The idea is to apply the gaussian quadrature, but we then need to be careful with turning the solution with real numbers that it provides, to a solution that uses only rational numbers. \todo{I think we should be very careful here, usually it is very intuitive that real solutions can be rounded to rational ones, but now it is not 100 per cent clear because we want our equations to be satisfied exactly and not up to a small error. }
+\begin{theorem}
+\label{thm:main_algebraic}
+    Given any $n$-fair string $s$, there exists $m \in \N$ and nonnegative integers $k_1, \dots, k_{m+1}$ so that $s(k_1, k_2, \dots, k_{m+1})$ is $(n+1)$-fair. 
+\end{theorem}
+\begin{proof}\todo{pls check carefully}
+In view of \cref{lem:inductive_construction_nice}, it suffices to prove the existence of nonnegative integers $k_1, \dots, k_{m'+1}$ satisfying \cref{eq:constraint}. 
+
+To get those integers, we first use \cref{thm:gauss} with $m = n+10$ to get positive real numbers $w_1, \dots, w_{m}$ and rational numbers $0 \le x_1 < \dots < x_{m} \le 1$. These numbers in particular for each $0 \le j \le n$ satisfy
+\begin{align}
+\label{eq:mat2}
+    \sum_{i = 0}^m  w_i \cdot {n+1 \choose j} \cdot  x_i^j \cdot\left( 1 - x_i\right)^{n-j}
+    = \int_0^1 {n+1 \choose j} \cdot x ^j \cdot\left( 1 - x\right)^{n-j} \, dx
+    = \frac{1}{n+1},
+\end{align}
+by choosing $P_j(x) = {n+1 \choose j} \cdot x^j \cdot\left( 1 - x\right)^{n-j}$. 
+
+We will next consider putting coefficients in \cref{eq:mat2} together into rows of a matrix $A \in \R^{(n+2) \times m}$ so that the equations can be written as $A \cdot w = (1/(n+1), \dots, 1/(n+1))^T$ for $w = (w_1, \dots, w_m)^T$. We will next prove that the rank of $A$ is equal to $n+2$, i.e., its number of rows. 
+
+To see this, first define the matrix $\tilde{A}$ by scaling each row by $1/{n+1 \choose j}$; this preserves the rank of the rowspace. Also, if $x_0 = 0$ or $x_m = 1$, remove the respective columns from $\tilde{A}$. Next, consider any coefficients $\alpha = (\alpha_1, \dots, \alpha_{n+1})^T$ such $\alpha^T \tilde{A} = (0, \dots, 0)$. This in other words means that for each $2 \le i \le m-1$ (as we possibly deleted the first and the last column of $\tilde{A}$), we have 
+\[
+\sum_{j = 0}^n \alpha_i \cdot  x_i^j (1-x_i)^{n-j} = 0
+\]
+which we can rewrite as 
+\[
+\sum_{j = 0}^n \alpha_i \cdot \left( \frac{x_i}{1-x_i} \right)^{j} = 0. 
+\]
+This set of $m-2$ equations can be interpreted as saying that a certain polynomial of degree $n$ has at least $m-2$ roots $x_2/(1-x_2), \dots, x_{m-1}/(1-x_{m-1})$. However, by our choice of $m = n+10$, fundamental theorem of algebra implies that $\alpha$ is a zero vector, hence $\tilde{A}$, and thus $A$ has full rank. 
+
+Next, we apply \cref{lem:matrix_stability} to $A$. In particular, let $A'$ be such that we replace each term $ {n+1 \choose j} \cdot  x_i^j \cdot\left( 1 - x_i\right)^{n-j}$ by $ {n+1 \choose j} \cdot  (x'_i)^j \cdot\left( 1 - x'_i\right)^{n-j}$ where $x'_i$ is very close to $x_i$ and $x'_i \in \Q$. Choosing $x'_i$s sufficiently close to $x_i$s, we can conclude that there exist weights $w'_i$ such that all weights $w'_i \in \R^+$ are positive and \cref{eq:mat2} is still satisfied, i.e., we have
+\begin{align}
+\label{eq:mat_rational}
+    \sum_{i = 0}^m  w'_i \cdot {n+1 \choose j} \cdot  (x'_i)^j \cdot\left( 1 - x'_i\right)^{n-j}
+    = \frac{1}{n+1},
+\end{align}
+Next, we notice that since all coefficients in the set of linear equations \cref{eq:mat_rational} are rational numbers, the space of solutions $W$ to this set of equations is an affine subspace that can be written as $W = w_0 + \sum_{\iota = 1}^t \beta_\iota \cdot u_\iota$ of some dimension $t$ where both $w_0$ and all vectors $u_\iota$ have rational coordinates \cite{?}\todo{should be just gaussian elimination property?}. Recall that we know that $W$ contains a solution $w' = (w'_1, \dots, w'_m)$ where each $w'_i$ is positive; we write $w' = w_0 + \sum_{\iota = 1}^t \beta_\iota \cdot u_\iota$ for some particular values $\beta_\iota \in \R$. We round these values to nearby rational numbers $\beta_\iota' \in \Q$ to get a new solution $w'' = w_0 + \sum_{\iota = 1}^t \beta'_\iota \cdot u_\iota$ such that $w'' \in \Q^m$ while all values $w''_i$ are still positive. 
+
+We can now finish by rescaling all numbers $w_i''$ so that they are all positive integers. Similarly, we find a number $M$ so that all numbers $x_i'$ can be written as $x_i' = I / M$ for some $I \in \N$. 
+Finally, we define the numbers $k'_1, \dots, k'_{m'}$ so that each $k'_I = 0$, except that $k'_{I} = w''_i$ whenever $x'_i = I/M$. This is a solution to \cref{eq:constraint} which finishes the proof.  
+\end{proof}
+
+
