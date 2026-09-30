@@ -8,10 +8,11 @@
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{enumitem}
 \usepackage{xcolor}
+\usepackage[numbers]{natbib}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{
   pdftitle={General Constructions of Permutation-Fair Dice},
-  pdfauthor={Austin; Tomas Gavenciak; Bernhard Haeupler; Vaclav Rozhon},
+  pdfauthor={Austin Conner; Tomas Gavenciak; Bernhard Haeupler; Vaclav Rozhon},
   pdfsubject={Constructions and lower bounds for permutation-fair, place-fair, and go-first-fair dice},
   pdfkeywords={permutation-fair dice, permutation-fair strings, Hahn polynomials, positive quadrature, place fairness, go-first fairness}
 }
@@ -21,6 +22,7 @@
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{claim}[theorem]{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \theoremstyle{remark}
@@ -34,12 +36,40 @@
 \newcommand{\concat}{\mathbin{\circ}}
 \DeclareMathOperator{\lcm}{lcm}
 
+% Colored die labels used in the examples: 1=red, 2=green, 3=blue.
+\definecolor{dieRed}{HTML}{C8444F}
+\definecolor{dieGreen}{HTML}{23865A}
+\definecolor{dieBlue}{HTML}{326EB3}
+\newcommand{\dietile}[2]{%
+  \ensuremath{%
+    \vcenter{\hbox{%
+      \begingroup
+      \setlength{\fboxsep}{0pt}%
+      \colorbox{#1}{%
+        \makebox[1.35em][c]{%
+          \rule[-0.22em]{0pt}{1.35em}%
+          \color{white}\sffamily\bfseries #2%
+        }%
+      }%
+      \endgroup
+    }}\mkern1mu%
+  }%
+}
+\DeclareRobustCommand{\dieOne}{\dietile{dieRed}{1}}
+\DeclareRobustCommand{\dieTwo}{\dietile{dieGreen}{2}}
+\DeclareRobustCommand{\dieThree}{\dietile{dieBlue}{3}}
+
 \title{General Constructions of Permutation-Fair Dice}
 \author{%
-  Austin
+  \href{https://people.math.harvard.edu/~aconner/}{Austin Conner}\\
+  \small Department of Mathematics\\[-1mm]
+  \small Harvard University\\[-1mm]
+  \small\texttt{aconner@math.harvard.edu}
   \and
   Tom\'a\v{s} Gaven\v{c}iak\\
-  \small Charles University, Prague
+  \small Centre for Theoretical Study\\[-1mm]
+  \small Charles University, Prague\\[-1mm]
+  \small\texttt{gavenciak@cts.cuni.cz}
   \and
   Bernhard Haeupler\\
   \small ETH Zurich\\[-1mm]
@@ -52,17 +82,23 @@
 
 \begin{document}
 
+% Preserve the curated bibliography order and legacy citation numbers.
+\nocite{*}
+
 \maketitle
 
 \begin{abstract}
 Suppose that each of \(n\) players rolls a different die and the players are
-ordered by the numbers rolled.  Can the dice have pairwise disjoint labels, so
-that ties never occur, while every one of the \(n!\) resulting orders is equally
-likely?  Such dice are called \emph{permutation-fair}.  
-
-We give two general constructions of such dice. The first construction is elementary and achieves dice with $2^{\tilde O(n^2)}$ sides. We then improve this bound to $2^{\tilde O(n)}$ with using the literature on the quadrature, in particular the bounds of Wilson and Zaremba. We also provide a near-matching $2^{\Omega(n)}$ lower bound. 
-
-We also settle some related problems, including the asymptotically tight construction of go-first dice. 
+ordered by their rolls.  Can the dice use pairwise disjoint labels, so that
+ties are impossible, while all \(n!\) orders remain equally likely?  We give
+two general constructions.  An elementary symmetrization gives equal-sided
+dice with \((n!)^{n-1}=2^{O(n^2\log n)}\) faces each.  A Hahn-polynomial quadrature
+construction, using estimates of Wilson and Zaremba, gives \(n\) equal-sided
+dice with \(2^{O(n\log n)}\) faces each.  Conversely, every permutation-fair
+collection contains a die with \(2^{\Omega(n)}\) faces.  We also determine the exact
+optimum for full-set go-first fairness, construct equal-sided full-set
+place-fair dice with \(2n^{n-2}\) faces each for \(n\geq2\), and give
+polynomial-size dice whose order distribution is pointwise close to uniform.
 \end{abstract}
 
 \section{Introduction}
@@ -78,82 +114,184 @@ The problem was raised by James Ernest and has been studied extensively for
 small numbers of players; see, for example,
 \cite{harshbarger-web,harshbarger2012,ford2023,purcell}.  The basic existence
 question is deceptively simple: do permutation-fair dice exist for every
-\(n\)?  We answer it constructively, with the following quantitative bound.
+\(n\)?  We answer it constructively and quantify the number of faces needed.
 
-\begin{theorem}[Main theorem]\label{thm:main}
-For every \(n\geq 1\), there are \(n\) permutation-fair dice, all with the
-same number \(F_n\) of faces, such that
-\[
-  F_n=2^{O(n\log n)}.
-\]
-On the other hand, each permutation-fair dice have at least one die with $2^\Omega(n)$ sides. 
-\end{theorem}
-
-The dice problem can be seen as a finite-precision version of a standard method for sampling a random permutation: sample \(n\) independent real numbers and sort them. In theory, we assume continuous samples that are distinct with probability one. However, in practice, we sample from a finite space of samples that may (very rarely) collide. The natural solution to this unlikely edge case is to sample again. This work suggests that this special case cannot be dealt with easily -- making the supports disjoint requires exponentially more bits to sample. [tohle ucesat / rephrasovat]
-
+The dice problem can be viewed as a rigid finite-precision version of the
+random-key method for sampling a permutation.  In the usual method one draws
+\(n\) independent continuous keys and sorts them; ties occur with probability
+zero.  With finite keys, one normally tolerates a small collision probability
+or resamples when a collision occurs.  Neither option is allowed here: every
+player makes one independent uniform draw, the supports are pairwise
+disjoint, and the induced order must be exactly uniform.  This rigidity has a
+real cost.  Our lower bound shows that, for every fixed
+\(0<\varepsilon<1\), all but an \(\varepsilon\)-fraction of the players need
+supports of size \(2^{\Omega(\varepsilon n)}\), and hence
+\(\Omega(\varepsilon n)\) bits of entropy per draw.  This is a lower bound for
+this one-shot, disjoint-support representation, not for arbitrary algorithms
+that sample random permutations.
 
 \subsection{Our results}
 
-[explain connection with strings]
-The connection with strings is immediate and useful.  Read the face labels in
-increasing order and write down the owner of each face.  A roll of all dice is
-then an occurrence, as a subsequence, of a permutation of the alphabet.  Thus
-the dice are permutation-fair precisely when every permutation occurs equally often in the resulting string.
-
-\paragraph{First, elementary, construction}
-We present two constructions.  The first, in Section~\ref{sec:first}, starts
-from \(12\cdots n\) and repeatedly concatenates all relabellings of the current
-string. [few more sentences, small concrete picture showing this for n=3] It is elementary and robust, and gives length
-\(n(n!)^{n-1}=2^{O(n^2\log n)}\).
-
-\paragraph{Second construction}
-The sharper construction, in Section~\ref{sec:second}, develops the insertion
-framework of Ford, Grime, Harshbarger, and Pollock~\cite{ford2023}. 
-
-[state theorem here]
-
-To add a
-new symbol, we concatenate many copies of an existing permutation-fair string
-and place runs of the new symbol in the gaps. [small picture showing this for n=3] The required gap distribution is exactly a quadrature rule for Bernstein polynomials.  The weights we use are the classical discrete least-squares projection weights in a Hahn basis. Bounds of Zaremba and Wilson make these weights positive on the
-\((n+1)^2\)-point grid
+\paragraph{A three-die example.}
+It is useful to begin with a concrete instance.  Consider the string
 \[
-  \{0,1/N,\ldots,1\},\qquad N=n(n+2).
+  s=
+  \dieTwo\dieOne\dieThree\dieOne
+  \dieTwo\dieTwo\dieTwo\dieTwo
+  \dieOne\dieThree\dieOne\dieTwo.
 \]
-For the dice application, the essential additional quantitative fact is that
-the weights have a common denominator with only \(O(n\log n)\) bits.  The same
-degree-\(n\) rule can then be reused throughout the induction, so the
-denominators do not multiply from one level to the next.
+The \(j\)-th box specifies which die owns the face labelled \(j\); red,
+green, and blue represent dice \(1,2,3\), respectively.  Thus the string
+represents
+\[
+  \dieOne:\{2,4,9,11\},\qquad
+  \dieTwo:\{1,5,6,7,8,12\},\qquad
+  \dieThree:\{3,10\}.
+\]
+A joint roll chooses one occurrence of each box color, and their
+left-to-right order is the order of the rolled labels.  Each of the six
+possible orders occurs exactly eight times as a subsequence of \(s\).  Since
+there are \(4\cdot6\cdot2=48\) possible rolls, every order has probability
+\(8/48=1/6\).
 
+More generally, read all face labels in increasing order and record the owner
+of each face.  This turns any collection of dice into a string \(s\), in which
+symbol \(i\) occurs \(k_i\) times.  If \(C_\pi(s)\) denotes the number of
+occurrences of a permutation \(\pi\) as a subsequence of \(s\), then
+\[
+  \Pr[\text{order}=\pi]
+  =\frac{C_\pi(s)}{\prod_{i=1}^n k_i}.
+\]
+Consequently, the dice are permutation-fair exactly when all \(n!\)
+permutations occur equally often in \(s\).  This correspondence replaces a
+probabilistic question about dice by a combinatorial question about strings.
 
-\paragraph{Lower bound}
-Our lower
-bound in Section~\ref{sec:lower} shows that the supports cannot all be small:
-an exponential scale is unavoidable for an arbitrarily large fixed fraction
-of the dice, up to the precise quantifiers stated there.  
+\paragraph{The elementary construction.}
+Our first construction starts from \(12\cdots n\) and repeatedly
+concatenates all \(n!\) relabellings of the string obtained so far.  For
+\(n=3\), the first round is
+\[
+  \begin{aligned}
+  u_1&=\dieOne\dieTwo\dieThree,\\[.4em]
+  u_2&=
+  \dieOne\dieTwo\dieThree\mid
+  \dieOne\dieThree\dieTwo\mid
+  \dieTwo\dieOne\dieThree\mid
+  \dieTwo\dieThree\dieOne\mid
+  \dieThree\dieOne\dieTwo\mid
+  \dieThree\dieTwo\dieOne.
+  \end{aligned}
+\]
+The string \(u_2\) has equal counts for all two-symbol patterns.  Fix any
+ordering \(S_3=\{\tau_1,\ldots,\tau_6\}\).  Concatenating the six relabellings
+in that order gives
+\[
+  u_3=u_2^{\tau_1}\concat u_2^{\tau_2}\concat\cdots\concat u_2^{\tau_6},
+\]
+which is fully permutation-fair and has \(36\) occurrences of each symbol.
+In general, one round enforces symmetry for patterns one symbol longer, so
+\(n-1\) rounds suffice.
 
-[state theorem here]
+\begin{theorem}[Elementary construction
+  (informal version of Theorem~\ref{thm:first-size})]
+For every \(n\), there are \(n\) equal-sided permutation-fair dice with
+\(2^{O(n^2\log n)}\) faces each.
+\end{theorem}
 
-Together with XX, this yields thm 1. 
+This argument is elementary and robust, but it pays for symmetry by using all
+\(n!\) relabellings at every step.  Our second construction avoids this loss.
 
-\paragraph{Place fairness}
-Section~\ref{sec:weaker} treats weaker fairness notions.  The shortest
-full-set go-first-fair string has exactly \(n(n+1)/2\) symbols.  For exact
-place fairness we give \(n\) equal-sided dice with \(2n^{n-2}\) faces each
-for \(n\geq2\).
+\paragraph{The Hahn-polynomial construction.}
+Here is again the three-symbol picture first.  Using Simpson's degree-three
+quadrature rule, the successive strings are
+\[
+  v_1=\dieOne\dieOne\dieOne,
+  \qquad
+  v_2=
+  \dieTwo\mid
+  \dieOne\dieOne\dieOne\mid
+  \dieTwo\dieTwo\dieTwo\dieTwo\mid
+  \dieOne\dieOne\dieOne\mid
+  \dieTwo,
+\]
+\[
+  v_3=
+  \dieThree\dieThree\mid v_2\mid
+  \dieThree\dieThree\dieThree\dieThree
+  \dieThree\dieThree\dieThree\dieThree
+  \mid v_2\mid
+  \dieThree\dieThree.
+\]
+The first insertion uses gap lengths \((1,4,1)\), and the second uses
+\((2,8,2)\).  The final string has twelve occurrences of each symbol, and
+each full permutation occurs \(288\) times.
 
-\paragraph{Approximate permutation-fairness}
-Finally, the elementary string \((12\cdots n)^m\), with
-\(m=O(n^2/\varepsilon)\), is permutation-fair up to pointwise relative error
-\(\varepsilon\).
+In general, we add one new symbol at a time by separating copies of the old
+string with runs of the new symbol.  The condition on the gap lengths is
+exactly a quadrature identity for Bernstein polynomials.  Using Hahn
+polynomials and estimates of Wilson and Zaremba, we construct positive
+rational weights on an equally spaced grid.  Their common denominator has
+only \(O(n\log n)\) bits, and the same rule can be reused at every insertion
+step.
 
-\paragraph{Roadmap}
-The remainder of the paper is organized as follows.  Section~\ref{sec:prelim}
-introduces permutation-fair strings and records their elementary closure
-properties.
-Sections~\ref{sec:first} and~\ref{sec:second} give the two constructions.
-Section~\ref{sec:lower} proves the lower bounds, and Section~\ref{sec:weaker}
-develops the weaker and approximate variants.  We conclude with open problems
-in Section~\ref{sec:open}.
+\begin{theorem}[Hahn construction
+  (informal version of Theorem~\ref{thm:main})]
+For every \(n\), there are \(n\) equal-sided permutation-fair dice with
+\(2^{O(n\log n)}\) faces each.
+\end{theorem}
+
+\paragraph{Lower bounds.}
+Restricting a fair string to any \(p\) symbols, where \(p\) is prime, forces
+\(p\) to divide the product of their multiplicities.  Applying this
+observation simultaneously for many primes gives the following result.
+
+\begin{theorem}[Lower bound
+  (informal version of Theorem~\ref{thm:many-large})]
+Every permutation-fair collection of \(n\) dice contains a die with
+\(2^{\Omega(n)}\) faces.
+\end{theorem}
+
+Thus, if \(f(n)\) is the smallest possible value of the largest die in a
+permutation-fair collection, then
+\[
+  2^{\Omega(n)}\leq f(n)\leq2^{O(n\log n)}.
+\]
+The precise lower bound is stronger: for every fixed
+\(0<\varepsilon<1\), it forces \(2^{\Omega(\varepsilon n)}\) faces on at
+least \((1-\varepsilon)n\) dice.  For an individually prescribed die, we
+prove only the universal bound \(\lceil n/2\rceil\) in
+Theorem~\ref{thm:each-die-linear}, and conjecture that the true bound is
+exponential.
+
+\paragraph{Weaker and approximate notions.}
+Section~\ref{sec:weaker} contains three further results.
+
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=*,itemsep=.45em]
+  \item \textbf{Go-first fairness
+    (informal version of Theorem~\ref{thm:go-first-optimum}).}
+    Among full-set go-first-fair strings, allowing different multiplicities,
+    the minimum possible total length is exactly \(n(n+1)/2\).
+
+  \item \textbf{Place fairness
+    (informal version of Theorem~\ref{thm:place-prouhet}).}
+    For every \(n\geq2\), there are \(n\) equal-sided, full-set place-fair
+    dice with \(2n^{n-2}\) faces each.
+
+  \item \textbf{Approximate permutation fairness
+    (informal version of Theorem~\ref{thm:approximate}).}
+    For every \(n\geq2\) and \(0<\varepsilon\leq1\), taking
+    \(m=\lceil n(n-1)/\varepsilon\rceil=O(n^2/\varepsilon)\) in the periodic
+    string \((12\cdots n)^m\) gives every permutation probability within
+    relative error \(\varepsilon\) of \(1/n!\).
+\end{enumerate}
+
+\paragraph{Roadmap.}
+Section~\ref{sec:prelim} develops the string representation and the elementary
+symmetrization construction.  Section~\ref{sec:second} gives the sharper
+Hahn-polynomial construction.  Section~\ref{sec:lower} proves the lower
+bounds and discusses the per-die conjecture and its connection with rational
+quadrature.  Section~\ref{sec:weaker} treats go-first, place, and approximate
+fairness.  We conclude with open problems in Section~\ref{sec:open}.
 
 \subsection{Related work}
 
@@ -163,10 +301,13 @@ The insertion framework underlying our second construction originates in
 this literature; an early online account attributes an inductive version to
 Paul Vanetti~\cite{knoll2012}.  Ford et al. give five equal 60-sided
 hereditarily place-fair dice, unequal-sided permutation-fair examples, and
-five equal 180-sided permutation-fair dice~\cite{ford2023}.  Purcell develops further our symmetrization construction and uses it to construct five equal 120-sided permutation-fair dice~\cite{purcell}.  A computational
-construction due to Paul Meyer consists of five equal 60-sided dice and
-remains permutation-fair after restriction to every subset~\cite{meyer60}.
-We are not aware of a previous treatment of the exact full-set, unequal-multiplicity go-first
+five equal 180-sided permutation-fair dice~\cite{ford2023}.  Purcell develops
+the symmetrization construction further and uses it to construct five equal
+120-sided permutation-fair dice~\cite{purcell}.  A computational construction
+due to Paul Meyer consists of five equal 60-sided dice and remains
+permutation-fair after restriction to every subset~\cite{meyer60}.  We are
+likewise not aware of a
+previous treatment of the exact full-set, unequal-multiplicity go-first
 optimum proved in Section~\ref{sec:weaker}.
 
 A weaker string problem asks only that every permutation occur at least once
@@ -228,13 +369,13 @@ a possibly small exceptional die.
 
 \section{Permutation-fair strings and elementary construction}\label{sec:prelim}
 
+\subsection{Fair strings and their properties}
+
 Write \([n]=\{1,\ldots,n\}\).  A \emph{pattern} is a string with no repeated
 letter.  Let \(\PiSet_{n,k}\) be the set of all length-\(k\) patterns over
 \([n]\), and let \(\PiSet_n=\PiSet_{n,n}\).  For a pattern \(\pi\) and a string
 \(s\), write \(C_\pi(s)\) for the number of occurrences of \(\pi\) as a
 subsequence of \(s\).  We put \(C_\varnothing(s)=1\).
-
-\subsection{Elementary properties of fair strings}
 
 \begin{definition}[String representation]
 Let \(D_1,\ldots,D_n\) be dice whose face labels partition \([K]\).  Their
@@ -293,14 +434,18 @@ Section~\ref{sec:second}.
 If \(s\) is \(n\)-fair, there is an \(n\)-fair string \(s'\) in which every
 letter has the same multiplicity and
 \[
-  |s'|\leq |s|^{n+1}.
+  |s'|\leq |s|^n.
 \]
 \end{corollary}
 
 \begin{proof}
 If letter \(i\) occurs \(c_i\) times, blow it up by
 \(\prod_{j\neq i}c_j\).  Every letter then occurs \(\prod_jc_j\) times, so
-\(|s'|=n\prod_jc_j\leq n(|s|/n)^n\leq |s|^{n+1}\).
+\[
+  |s'|=n\prod_jc_j
+  \leq n\left(\frac{|s|}{n}\right)^n
+  \leq |s|^n.
+\]
 \end{proof}
 
 Full fairness determines all partial-pattern counts.
@@ -404,12 +549,14 @@ over all occupancy vectors proves that \(s'\) is
 \((\leq k+1,n)\)-fair.
 \end{proof}
 
-\begin{corollary}\label{cor:first-size}
-For every \(n\), there is a \((\leq n,n)\)-fair string of length
+\begin{theorem}[Elementary symmetrization]\label{thm:first-size}
+For every \(n\), there are \(n\) equal-sided permutation-fair dice with
+\((n!)^{n-1}\) faces each.  Equivalently, there is a
+\((\leq n,n)\)-fair string of length
 \[
   n(n!)^{n-1}=2^{O(n^2\log n)}.
 \]
-\end{corollary}
+\end{theorem}
 
 \begin{proof}
 The string \(s_1=12\cdots n\) is \((\leq1,n)\)-fair.  Apply
@@ -563,28 +710,54 @@ Here
 The case \(k=0\) is immediate.
 \end{proof}
 
-Symmetry gives \(I_k=0\) for odd \(k\).  Wilson's non-asymptotic estimate
-\cite[Eq.~(3.14)]{wilson-hahn} gives, for even \(k\geq2\) and
-\(N+1\geq(k+1)^2\),
+Wilson's aim was to quantify how closely Hahn polynomials on a uniform grid
+imitate their Jacobi limits~\cite{wilson-hahn}.  He developed an expansion in
+inverse powers of the grid size and used it to compare discrete and continuous
+least-squares expansions.  In the Legendre case he isolated the integrals
+\(I_k\): they measure the failure of the nonconstant discrete orthogonal basis
+to have zero continuous mean, and they also enter quadrature formulas on
+equidistant nodes.  In our argument they are precisely the coefficients that
+must be controlled in the projection weights below.
+
+\begin{lemma}[Wilson's integral estimate]\label{lem:wilson-integral}
+Let \(N\geq1\), let \(0\leq k\leq N\), and let \(Q_k\) and \(I_k\) be as
+above.  If \(k\) is odd, then \(I_k=0\).  If \(k\geq2\) is even and
+\(N+1\geq(k+1)^2\), then
 \begin{equation}\label{eq:I-wilson}
   0<-I_k\leq\frac{N+1}{N}
   \left(1+\frac{(k-1)(k+2)}{4(N-1)}\right).
 \end{equation}
-The condition holds for every \(k\leq n\), because
-\(N+1=(n+1)^2\geq(k+1)^2\).  Moreover, for \(n\geq2\),
+Consequently, for the choice \(N=n(n+2)\),
+\begin{equation}\label{eq:I-bound}
+  |I_k|<\frac32\qquad(1\leq k\leq n).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The reflection identity \(Q_k(N-x)=(-1)^kQ_k(x)\) gives
+\(I_k=(-1)^kI_k\), and hence the odd case.  Wilson writes our \(I_k\) as
+\(I_k(N+1)\).  For even \(k\), his lower estimate shows that \(-I_k>0\),
+while his non-asymptotic upper estimate is exactly~\eqref{eq:I-wilson}; see
+\cite[Sec.~3, Eqs.~(3.1) and (3.14)]{wilson-hahn}.
+
+For the consequence, when \(n=1\) the only index is \(k=1\), which is odd.
+If \(n\geq2\), then
+\(N+1=(n+1)^2\geq(k+1)^2\), and
 \[
   \frac{N+1}{N}\leq\frac98,
   \qquad
   \frac{(k-1)(k+2)}{4(N-1)}
   \leq\frac{(n-1)(n+2)}{4(N-1)}<\frac14.
 \]
-Thus the right-hand side of~\eqref{eq:I-wilson} is smaller than
-\(45/32<3/2\).  Together with the vanishing of the odd integrals (and the
-trivial case \(n=1\)), this gives
-\begin{equation}\label{eq:I-bound}
-  |I_k|<\frac32\qquad(1\leq k\leq n).
-\end{equation}
-The non-asymptotic form is important here because \(k\) grows with \(n\).
+Thus \(|I_k|<45/32<3/2\) for even \(k\), while the odd integrals vanish.
+\end{proof}
+
+Wilson's proof is genuinely finite-grid rather than merely asymptotic.  Using
+a recurrence due to Levit, he rewrites \(I_k\) as a weighted integral of a
+neighboring Hahn polynomial; its zeros yield convexity and endpoint bounds,
+and a coefficient-ratio argument turns those bounds into a geometric-series
+estimate.  The resulting quadratic relation between grid size and degree is
+exactly what is needed here, because \(k\) grows with \(n\).
 
 \subsection{Positive exact weights}
 
@@ -694,7 +867,25 @@ Finally, \(L\leq(n+1)!\), \(A_n\leq N^n\), and
 
 \subsection{Reusing one rule at every induction level}
 
-We can now complete the construction.  Start with
+\begin{theorem}[Hahn construction]\label{thm:main}
+For every \(n\geq1\), there are \(n\) equal-sided permutation-fair dice
+with \(F_n\) faces each, where, for \(N=n(n+2)\),
+\begin{equation}\label{eq:F-explicit}
+  \boxed{\begin{aligned}
+  F_n={}&(N+1)\lcm(1,\ldots,n+1)\fall{N}{n}\\
+        &{}\cdot(N+2)(N+3)\cdots(N+n+1)N^{n-1}.
+  \end{aligned}}
+\end{equation}
+In particular,
+\[
+  F_n=2^{O(n\log n)}.
+\]
+The corresponding string is \((\leq n,n)\)-fair.
+\end{theorem}
+
+\begin{proof}
+Use the positive weights and the denominator \(M\) constructed above, and
+start with
 \[
   s_1=1^M.
 \]
@@ -722,22 +913,16 @@ times.  The normalized gap weights are \(k_i/(NF_r)=W_i/N\), and
 polynomials.  Lemma~\ref{lem:insertion} therefore proves that the new string
 is \((r+1)\)-fair.
 
-Iterating to \(r=n\) proves Theorem~\ref{thm:main}.  More explicitly, all dice
-have
-\begin{equation}\label{eq:F-explicit}
-  \boxed{\begin{aligned}
-  F_n={}&(N+1)\lcm(1,\ldots,n+1)\fall{N}{n}\\
-        &{}\cdot(N+2)(N+3)\cdots(N+n+1)N^{n-1},\\
-  N={}&n(n+2).
-  \end{aligned}}
-\end{equation}
-Indeed, using \(N+1\leq2N\) and the estimates above,
+After \(n-1\) insertion steps, every symbol occurs \(MN^{n-1}\) times.
+Substituting the definition~\eqref{eq:M-def} of \(M\) gives
+\eqref{eq:F-explicit}.  Using \(N+1\leq2N\) and the estimates above,
 \[
   F_n\leq2^{n+1}(n+1)^{n+1}N^{3n}=2^{O(n\log n)}.
 \]
 The total string length is \(nF_n=2^{O(n\log n)}\).  Since all letter
 multiplicities are equal, Lemma~\ref{lem:equal-full-to-partial} also makes the
 final string \((\leq n,n)\)-fair.
+\end{proof}
 
 \begin{remark}[A three-die check]
 For \(n=3\), one may replace the general-purpose rule by Simpson's degree-three
@@ -746,8 +931,8 @@ rule on \(0,1,2\):
   (W_0,W_1,W_2)=\left(\frac13,\frac43,\frac13\right),
   \qquad N=2,\qquad M=3.
 \]
-Starting from \(s_1=111\), the first transition uses gap lengths \((1,4,1)\),
-and the second uses \((2,8,2)\).  The final string has twelve occurrences of
+Starting from \(s_1=\dieOne\dieOne\dieOne\), the first transition uses gap
+lengths \((1,4,1)\), and the second uses \((2,8,2)\).  The final string has twelve occurrences of
 each symbol; every one of the six full patterns occurs exactly \(288\) times.
 \end{remark}
 
@@ -757,7 +942,36 @@ changes the constants in the construction but not its
 
 \section{Lower bounds}\label{sec:lower}
 
-We use a divisibility argument. The general idea that divisibility lower bounds the sizes of permutation-fair dice seems to be folklore. 
+The main result of this section is the formal lower bound announced in the
+introduction.
+
+\begin{theorem}[Many dice are large]\label{thm:many-large}
+There is an absolute constant \(c>0\) such that, for every fixed
+\(0<\varepsilon<1\) and all sufficiently large \(n\), every
+permutation-fair collection with face counts \(k_1,\ldots,k_n\) satisfies
+\[
+  \bigl|\{i\in[n]: k_i\geq2^{c\varepsilon n}\}\bigr|
+  \geq (1-\varepsilon)n.
+\]
+\end{theorem}
+
+We prove two complementary kinds of lower bounds.  First, divisibility
+conditions obtained by restricting to subsets of the dice force an
+exponential number of faces on at least one die and, more strongly, on all
+but an arbitrarily small fixed fraction of the dice.  These conditions cannot
+control a prescribed die.  We therefore use a second, rank-based argument to
+prove a linear lower bound for every individual die.  We conjecture that the
+correct per-die bound is exponential, and give a one-way reduction showing
+that sufficiently small rational equal-weight quadratures would refute this
+conjecture.
+
+\subsection{Divisibility across restrictions}
+
+The first argument is arithmetic.  Divisibility obstructions are classical
+in the fair-dice literature; in the equal-sided setting, the corresponding
+primorial condition is recorded by Purcell~\cite{purcell}.  Applying the same
+idea after restriction to many different subsets gives a useful bound even
+when the dice have unequal numbers of faces.
 
 \begin{lemma}\label{lem:exp-lower}
 Every \(n\)-fair string has length \(2^{\Omega(n)}\).
@@ -783,33 +997,47 @@ The primorial estimate
 \(\max_i c_i\geq2^{\Omega(n)}\), and the string is at least that long.
 \end{proof}
 
-The argument says more than the existence of one large die.
+The lemma is the arithmetic input for the theorem stated at the beginning of
+the section.  Before drawing that conclusion, we record what this type of
+divisibility argument can and cannot detect.
 
-\begin{theorem}\label{thm:many-large}
-For every fixed \(0<\varepsilon<1\) and every \(n\)-fair string \(s\), there is a
-set \(B\subseteq[n]\) of size at least \((1-\varepsilon)n\) such that
+It is important not to overinterpret this argument.  For every subset
+\(S\subseteq[n]\), restriction and permutation fairness imply the basic
+divisibility condition
 \[
-  C_i(s)=2^{\Omega(\varepsilon n)}
-  \qquad\text{for every \(i\in B\)}.
+  |S|!\ \bigm|\ \prod_{i\in S}c_i.
 \]
-The implicit constant is absolute.
-\end{theorem}
-
-\begin{proof}
-Let \(B\) consist of the \(\lceil(1-\varepsilon)n\rceil\) letters of largest
-multiplicity.  Restrict \(s\) to the remaining letters.  The result is a fair
-string on \(\Theta(\varepsilon n)\) letters, so Lemma~\ref{lem:exp-lower}
-implies that at least one retained letter has multiplicity
-\(2^{\Omega(\varepsilon n)}\).  Every letter in \(B\) has at least that
-multiplicity by its definition.
-\end{proof}
+These conditions alone are compatible with one prescribed die having a
+single face: the multiplicity vector
+\[
+  (1,n!,n!,\ldots,n!)
+\]
+satisfies all of them.  This is not a construction of permutation-fair dice;
+it only shows that divisibility alone cannot prove a nontrivial lower bound
+for a die specified in advance.
 
 \subsection{A lower bound for each individual die}
 
-The preceding divisibility argument makes an arbitrarily large fixed fraction
-of the dice exponentially large, but it does not give a useful bound for a die
-specified in advance.
-The following different argument gives a linear bound for every die.
+The preceding argument makes an arbitrarily large fixed fraction of the dice
+exponentially large, but the exceptional set may contain any prescribed die.
+We believe that this is a limitation of the argument rather than a feature of
+the problem.
+
+\begin{conjecture}[Exponential size of every die]
+\label{conj:each-die-exponential}
+There is an absolute constant \(c>0\) such that, for all sufficiently large
+\(n\), every \(n\)-fair string \(s\) satisfies
+\[
+  \min_{i\in[n]} C_i(s)\geq 2^{cn}.
+\]
+Equivalently, every die in every permutation-fair set of \(n\) dice has
+\(2^{\Omega(n)}\) faces.
+\end{conjecture}
+
+We can currently prove only a linear lower bound for a prescribed die.  The
+proof also exposes a connection with moment representations and quadrature
+that both explains the limitation of the rank argument and gives a concrete
+possible route to refuting Conjecture~\ref{conj:each-die-exponential}.
 
 \begin{theorem}\label{thm:each-die-linear}
 In every permutation-fair set of \(n\) dice, each die has at least
@@ -884,9 +1112,11 @@ Since \(D_0\) was arbitrary, the result holds for every die.
 \begin{remark}[Sharpness in a small case]
 The word
 \[
-  \mathtt{BAXABBBBAXAB}
+  \dieTwo\dieOne\dieThree\dieOne
+  \dieTwo\dieTwo\dieTwo\dieTwo
+  \dieOne\dieThree\dieOne\dieTwo
 \]
-has multiplicities \((c_A,c_B,c_X)=(4,6,2)\), and each of its six full
+has multiplicities \((c_1,c_2,c_3)=(4,6,2)\), and each of its six full
 patterns occurs exactly eight times.  Thus Theorem~\ref{thm:each-die-linear}
 is sharp for a prescribed die when \(n=3\).
 \end{remark}
@@ -924,19 +1154,11 @@ latent-class models, and tensors are studied in
 allman-et-al2015,qi-comon-lim2016}.
 \end{remark}
 
-\begin{remark}[Divisibility alone does not isolate a die]
-For every \(S\subseteq[n]\) of size \(k\), restriction to \(S\) gives the
-necessary divisibility
-\[
-  k!\mid\prod_{i\in S}c_i.
-\]
-These conditions permit one multiplicity to be arbitrarily small: the vector
-\((1,n!,\ldots,n!)\) satisfies all of them.  Hence the subset-factorial
-divisibilities used above cannot by themselves prove that every die is
-exponentially large.
-\end{remark}
+\subsection{A rational-design route to counterexamples}
 
-\subsection{A rational-design reformulation}
+The preceding real-quadrature observation concerns only the local comparison
+tensor and does not by itself produce dice.  Rational nodes, however, can be
+converted into actual face positions by the following insertion construction.
 
 Call rational numbers \(x_1,\ldots,x_K\in[0,1]\) an equal-weight rational
 quadrature of degree \(r\) if
@@ -962,8 +1184,9 @@ and insert one occurrence of the new letter in gap \(i_\ell\) for every
 node \(x_\ell\); repeated nodes give a run in one gap.
 
 Consider a full pattern in which \(j\) old letters precede the new one.
-For a prescribed ordered set of \(j\) old letters, restriction and fairness
-show that the number of its occurrences in \(s^i\) is
+For a prescribed ordered list of \(j\) old letters,
+Corollary~\ref{cor:self-concat} and Lemma~\ref{lem:partial} show that the
+number of its occurrences in \(s^i\) is
 \[
   \frac{i^j}{j!}\prod_{q\text{ in the set}}c_q.
 \]
@@ -973,6 +1196,7 @@ The analogous count for the remaining \(r-j\) letters in the suffix
   \frac{(N-i)^{r-j}}{(r-j)!}
   \prod_{q\text{ in the complementary set}}c_q.
 \]
+Here and below, powers at boundary gaps use the convention \(0^0=1\).
 Consequently, a new-letter occurrence in gap \(i\) contributes
 \[
   \frac{N^r}{r!}\left(\prod_{q=1}^r c_q\right)b_{r,j}(i/N)
@@ -989,12 +1213,28 @@ is therefore \((r+1)\)-fair.
 \end{proof}
 
 \begin{corollary}\label{cor:rational-design-q3}
-If there are equal-weight rational quadratures of degree \(r\) with
-\(K_r=2^{o(r)}\) nodes for arbitrarily large \(r\), then there are
-permutation-fair sets with a distinguished die having \(2^{o(n)}\) faces.
-In particular, this would give a negative answer to the exponential version
-of Question~3.
+Suppose that there is an unbounded sequence \(r_\nu\) for which equal-weight
+rational quadratures of degree \(r_\nu\) exist with \(K_\nu\) nodes, where
+\[
+  \log K_\nu=o(r_\nu).
+\]
+Then Conjecture~\ref{conj:each-die-exponential} is false.
 \end{corollary}
+
+\begin{proof}
+For each \(r_\nu\), start with any \(r_\nu\)-fair string and apply
+Proposition~\ref{prop:rational-design-insertion}.  The resulting
+permutation-fair set has \(n_\nu=r_\nu+1\) dice, while the newly inserted die
+has exactly \(K_\nu=2^{o(n_\nu)}\) faces.  Since \(n_\nu\) is unbounded, this
+contradicts the conclusion of
+Conjecture~\ref{conj:each-die-exponential}.
+\end{proof}
+
+This reduction is only one-way.  A permutation-fair family with a small die
+need not arise from a symmetric one-parameter insertion rule: as the rank
+argument shows, after conditioning on a face, the probabilities \(p_{j,q}\)
+may depend on \(j\).  Thus lower bounds for rational interval quadrature would
+not by themselves prove Conjecture~\ref{conj:each-die-exponential}.
 
 Over the reals, equal-weight quadratures for the uniform interval measure
 need and suffice to have \(\Theta(r^2)\) nodes
@@ -1009,9 +1249,37 @@ that would imply the subexponential estimate required in
 Corollary~\ref{cor:rational-design-q3}.  Thus the exponential per-die question
 remains open; the reduction identifies a concrete Diophantine subproblem.
 
+For comparison, the Hahn rule of Section~\ref{sec:second} already gives an
+explicit rational equal-weight quadrature.  If \(M\) clears the denominators
+of its weights, repeat the node \(i/N\) exactly \(MW_i\) times.  Since
+\(\sum_iW_i=N\), this gives
+\[
+  K=MN=2^{O(r\log r)}
+\]
+nodes in degree \(r\).  What remains unknown is whether the number of rational
+nodes can be reduced to \(2^{o(r)}\).
+
 Combining Lemma~\ref{lem:exp-lower} with the Hahn construction leaves a
 logarithmic factor in the exponent between the best general lower and upper
 bounds.
+
+We finish by deriving the theorem stated at the beginning of the section from
+the preceding exponential-length calculation.
+
+\begin{proof}[Proof of Theorem~\ref{thm:many-large}]
+Let \(r=\lfloor\varepsilon n\rfloor\), and restrict a fair string to its
+\(r\) least frequent symbols.  By Lemma~\ref{lem:exp-lower}, the restricted
+string has length at least \(2^{c_0r}\) for some absolute \(c_0>0\), so one
+of these \(r\) symbols occurs at least \(2^{c_0r}/r\) times.  Each of the
+other \(n-r\) symbols occurs at least as often.  For fixed \(\varepsilon\)
+and sufficiently large \(n\),
+\[
+  \frac{2^{c_0r}}{r}\geq2^{(c_0/4)\varepsilon n}
+  \qquad\text{and}\qquad
+  n-r\geq(1-\varepsilon)n.
+\]
+This proves Theorem~\ref{thm:many-large} with \(c=c_0/4\).
+\end{proof}
 
 \section{Weaker notions and approximate fairness}\label{sec:weaker}
 
@@ -1078,54 +1346,39 @@ wins.  These two events are independent, and consequently
 Thus \(m_{i_k}\geq n-k+1\).  Summing over \(k\) proves the lower bound.
 \end{proof}
 
-If the convention is that the largest label goes first, reverse the string
-in~\eqref{eq:go-first-staircase}.  There is also an immediate equal-sided
-consequence.
-
-\begin{corollary}\label{cor:go-first-equal}
-There are full-set go-first-fair dice with a common number
-\[
-  \lcm(1,2,\ldots,n)=2^{O(n)}
-\]
-of faces.
-\end{corollary}
-
-\begin{proof}
-In the construction above the multiplicities are \(1,2,\ldots,n\).
-Put \(L=\lcm(1,\ldots,n)\), and replace every occurrence of a letter of
-multiplicity \(m_i\) by a run of \(L/m_i\) copies.  The relative order
-distribution is unchanged and every letter now occurs \(L\) times.
-The bound follows from the standard estimate
-\(\log\lcm(1,\ldots,n)=\Theta(n)\); see, for example,~\cite{finch2003}.
-\end{proof}
-
 The hereditary versions of go-first and place fairness are arithmetically
-more expensive.  If every die has \(m\) faces and every \(p\)-subset is
-go-first fair, then each die wins exactly \(m^p/p\) outcomes; hence
-\(p\mid m\) for every prime \(p\leq n\).  The same counting argument, at any
-fixed rank, applies to hereditary place fairness.  Therefore
+more expensive even when the dice may have different numbers of faces.  Let
+die \(i\) have \(m_i\) faces.  For every prime \(p\leq n\) and every
+\(p\)-element set \(S\), hereditary go-first fairness forces
+\(p\mid\prod_{i\in S}m_i\).  Hence at most \(p-1\) face counts can fail to
+be divisible by \(p\), and therefore
 \begin{equation}\label{eq:hereditary-primorial}
-  \operatorname{rad}(n!)
-  =\prod_{\substack{p\leq n\\p\ \mathrm{prime}}}p\mid m,
-  \qquad m=2^{\Omega(n)}.
+  \prod_{i=1}^n m_i
+  \geq\prod_{\substack{p\leq n\\p\ \mathrm{prime}}}p^{\,n-p+1}
+  =2^{\Theta(n^2)},
+  \qquad \max_i m_i\geq2^{\Omega(n)}.
 \end{equation}
-For permutation fairness no additional hereditary assumption is needed:
-Claim~\ref{clm:restriction-blowup}(i) shows that it is preserved under
-restriction.  The divisibility \(\operatorname{rad}(n!)\mid m\) for
-equal-sided permutation-fair dice is Proposition~1 of Purcell~\cite{purcell};
-Ford et al.~\cite{ford2023} explicitly observed the factors \(2,3,5\) in the
-five-die case.
-For full-set equal-sided go-first fairness, Theorem~\ref{thm:go-first-optimum}
-only forces \(m\geq n\), leaving a gap between \(n\) and the upper bound in
-Corollary~\ref{cor:go-first-equal}.
+The same argument at any fixed rank applies to hereditary place fairness.
+When all \(m_i\) equal \(m\), the argument recovers
+\(\operatorname{rad}(n!)\mid m\).
 
 \subsection{An exact place-fair construction}
 
-Exact place fairness reduces to a consecutive Prouhet--Tarry--Escott
-partition.  We first isolate the dice-specific reduction, then retain
-Prouhet's especially transparent digit-sum construction~\cite{prouhet1851},
-and finally invoke the stronger partition theorem of
-Choudhry~\cite{choudhry2020}.
+The Hahn construction already gives place-fair dice, as a consequence of
+full permutation fairness, with \(2^{O(n\log n)}\) faces per die.  Thus the
+construction below does not improve the asymptotic scale merely by weakening
+the notion of fairness.  Its interest is instead structural: the rank counts
+turn out to be controlled by equalities of moments through degree \(n-2\),
+bringing the classical problem of equal sums of like powers directly into
+the design of dice.  It gives a simple explicit construction independent of
+the Hahn machinery, and every improvement in consecutive multigrade
+partitions automatically yields place-fair dice with fewer faces.
+
+A useful route to exact place fairness is therefore a consecutive
+Prouhet--Tarry--Escott partition.  We first isolate the dice-specific
+reduction, then retain Prouhet's especially transparent digit-sum
+construction~\cite{prouhet1851}, and finally invoke the stronger partition
+theorem of Choudhry~\cite{choudhry2020}.
 
 Prouhet's construction and its relation to the later Tarry--Escott problem
 are discussed by Lehmer and Wright~\cite{lehmer1947,wright1949,wright1959}.
@@ -1260,8 +1513,54 @@ by Pollack and Trevi\~no~\cite{pollack-trevino2026}.
 
 \subsection{Approximate permutation fairness from inverse riffle shuffles}
 
-The periodic construction below is a dice realization of the classical
-inverse \(m\)-riffle shuffle.  Assign each letter an independent uniform level
+We now relax exact permutation fairness in the strongest natural pointwise
+way.  We ask that every permutation \(\pi\) have probability
+\[
+  \frac{1-\varepsilon}{n!}
+  \leq P(\pi)\leq
+  \frac{1+\varepsilon}{n!}.
+\]
+This is stronger than small total-variation distance: it prevents the error
+from being concentrated on a small collection of individually rare
+permutations.  The goal is to replace the exponentially large exact
+construction by dice with only polynomially many faces.
+
+A tempting approach is to take a uniformly random equal-composition string.
+Equivalently, give the \(m\) distinguishable faces of each die independent
+continuous random labels \(X_{i,a}\), and order all \(nm\) faces by these
+labels.  For a fixed permutation \(\pi\),
+\[
+  C_\pi
+  =\sum_{(a_1,\ldots,a_n)\in[m]^n}
+    \boldsymbol{1}\!\left\{
+      X_{\pi(1),a_{\pi(1)}}<\cdots<
+      X_{\pi(n),a_{\pi(n)}}\right\},
+  \qquad
+  \mathbb E C_\pi=\frac{m^n}{n!}.
+\]
+The difficulty is that the \(m^n\) summands overlap heavily.  Every face
+belongs to \(m^{n-1}\) summands, and every summand shares a face with
+\(O(nm^{n-1})\) others.  Resampling one face can change \(C_\pi\) by at most
+\(m^{n-1}\), so the direct bounded-differences estimate gives only
+\[
+  \Pr\!\left(
+    \left|C_\pi-\frac{m^n}{n!}\right|
+       \geq\varepsilon\frac{m^n}{n!}\right)
+  \leq
+  2\exp\!\left(
+     -\frac{2\varepsilon^2m}{n(n!)^2}\right).
+\]
+A union bound over the \(n!\) permutations would consequently require
+\(m\) of factorial size.  The most direct black-box applications of
+dependency-graph and certificate inequalities retain the same large-overlap
+parameter and therefore do not, without additional problem-specific input,
+yield the desired polynomial pointwise bound.  This does not rule out a
+sharper analysis tailored to the random construction.
+
+The periodic construction below bypasses this concentration problem: its
+pattern counts can be evaluated exactly through the descent statistic.  It is
+a realization by dice of the classical inverse \(m\)-riffle shuffle.  Assign each
+letter an independent uniform level
 in \([m]\), and stably sort the letters by their levels.  This produces the
 same order as choosing one occurrence of every letter in
 \((12\cdots n)^m\).  Its exact distribution is the classical
@@ -1375,9 +1674,9 @@ when, for example, \(0<\varepsilon\leq1/2\).  Thus the theorem is of the
 correct order within this periodic inverse-shuffle family for pointwise
 relative error, even though total variation alone mixes sooner.
 
-The quadratic dependence of total length on \(n\) cannot disappear even for
-fairness of the first-place marginals.  Indeed, suppose every die wins first
-with probability at most \((1+\delta)/n\).  In the first-occurrence notation
+At least quadratic total length is unavoidable even if one asks only for
+approximate fairness of the first-place marginals.  Indeed, suppose every die
+wins first with probability at most \((1+\delta)/n\).  In the first-occurrence notation
 from the proof of Theorem~\ref{thm:go-first-optimum},
 \[
   \Pr(E_k^c)\leq\frac{(k-1)(1+\delta)}n.
@@ -1412,23 +1711,23 @@ riffle-shuffle law into pointwise approximate dice fairness.
 Several basic questions remain.
 \begin{enumerate}[leftmargin=*,itemsep=0.5em]
   \item What is the asymptotic length of the shortest \(n\)-fair string?  The
-        present bounds are \(2^{\Omega(n)}\) and \(2^{O(n\log n)}\).  In
-        particular, can the upper bound be improved to \(2^{O(n)}\), or can a
-        matching \(2^{\Omega(n\log n)}\) lower bound be proved?  In the present
-        one-letter-at-a-time framework, positive equidistant quadrature
-        naturally requires a quadratic scale at degree \(r\); multiplying
-        those scales over all \(r\) leads to \(2^{\Theta(n\log n)}\).  A
-        \(2^{O(n)}\) construction may therefore require a batched or
-        non-incremental architecture.  Conversely, subset-factorial
-        divisibility alone cannot yield the stronger lower bound.
-  \item What is the shortest equal-composition, or equivalently
-        \((\leq n,n)\)-fair, string?  Does requiring equal-sided dice change
-        the answer by more than a polynomial factor?  If \(A_n\) and \(E_n\)
-        denote the arbitrary- and equal-composition optima, respectively,
-        Corollary~\ref{cor:equalize} and the exponential lower bound give
+        present bounds are \(2^{\Omega(n)}\) and \(2^{O(n\log n)}\).
+  \item What is the shortest equal-composition permutation-fair string,
+        equivalently the shortest \((\leq n,n)\)-fair string?  Indeed,
+        \((\leq n,n)\)-fairness includes both \((1,n)\)-fairness, which says
+        that all letters have equal multiplicity, and \((n,n)\)-fairness;
+        the converse is Lemma~\ref{lem:equal-full-to-partial}.  Does requiring
+        equal-sided dice change the answer by more than a polynomial factor?
+        If \(A_n\) and \(E_n\) denote the arbitrary- and equal-composition
+        optima, respectively, the proof of Corollary~\ref{cor:equalize} and
+        the exponential lower bound give
         \[
-          A_n\leq E_n\leq A_n^{n+1}=A_n^{O(\log A_n)}.
+          A_n\leq E_n
+          \leq n\left(\frac{A_n}{n}\right)^n
+          \leq A_n^n.
         \]
+        Since the exponential lower bound gives \(n=O(\log A_n)\), the last
+        quantity is \(A_n^{O(\log A_n)}\).
         Thus the generic equalization argument limits the possible gap to a
         quasipolynomial one, but no polynomial relation is known.
   \item Must \emph{every} die in a permutation-fair set have exponentially
@@ -1437,23 +1736,7 @@ Several basic questions remain.
         Theorem~\ref{thm:many-large} makes an arbitrarily large fixed fraction
         exponentially large.  Proposition~\ref{prop:rational-design-insertion}
         shows that a subexponential-size rational equal-weight interval design
-        would give a negative answer.  Can such rational designs be
-        constructed, or is there an exponential Diophantine obstruction?
-  \item What are the optimal common side counts for exact full-set go-first
-        and place fairness?  The current go-first bounds are
-        \[
-          n\leq m_{\mathrm{GF}}^{\mathrm{equal}}(n)
-          \leq\lcm(1,\ldots,n)=2^{O(n)},
-        \]
-        while Theorem~\ref{thm:place-prouhet} gives
-        \(m_{\mathrm{place}}^{\mathrm{equal}}(n)\leq2n^{n-2}\) for
-        \(n\geq2\).  For the
-        lower bound, the die owning the globally first face wins whenever it
-        selects that face, so fairness gives \(1/n\geq1/m\), or \(m\geq n\).
-        In
-        particular, do polynomially many sides suffice for exact full-set
-        place fairness?  The hereditary equal-sided versions already require
-        exponentially many sides by~\eqref{eq:hereditary-primorial}.
+        would give a negative answer.
 \end{enumerate}
 
 \paragraph{Acknowledgments.}
@@ -1462,528 +1745,10 @@ Eric Harshbarger, Michael Purcell, Josef Tkadlec, and commenters on the
 Polylog video~\cite{polylog-video} for helpful discussions.  T.G. acknowledges
 the support of Charles University grant PRIMUS/22/HUM/020.
 
-\begin{thebibliography}{99}
+\begingroup
 \sloppy
-
-\bibitem{adleman1974}
-Leonard Adleman.
-\newblock Short permutation strings.
-\newblock \emph{Discrete Mathematics}, 10(2):197--200, 1974.
-
-\bibitem{chvatal1972}
-Va\v{s}ek Chv\'atal, David A. Klarner, and Donald E. Knuth.
-\newblock Selected combinatorial research problems.
-\newblock Technical report, Computer Science Department, Stanford University,
-1972.
-
-\bibitem{cui2019}
-Zhen Cui, Jiacheng Xia, and Ziqing Xiang.
-\newblock Rational designs.
-\newblock \emph{Advances in Mathematics}, 352:541--571, 2019.
-\newblock \url{https://doi.org/10.1016/j.aim.2019.06.012}.
-
-\bibitem{dette1995}
-Holger Dette.
-\newblock New bounds for Hahn and Krawtchouk polynomials.
-\newblock \emph{SIAM Journal on Mathematical Analysis},
-26(6):1647--1659, 1995.
-\newblock \url{https://doi.org/10.1137/S0036141093255661}.
-
-\bibitem{engen2020}
-Michael Engen and Vincent Vatter.
-\newblock Containing all permutations.
-\newblock \emph{American Mathematical Monthly}, 128(1):4--24, 2021.
-\newblock \url{https://doi.org/10.1080/00029890.2021.1835384}.
-
-\bibitem{ford2023}
-Robert Ford, James Grime, Eric Harshbarger, and Brian Pollock.
-\newblock Go first dice for five players and beyond.
-\newblock \emph{Recreational Mathematics Magazine}, 10(17):75--87, 2023.
-\newblock \url{https://doi.org/10.2478/rmm-2023-0004}.
-
-\bibitem{finch2003}
-Steven R. Finch.
-\newblock \emph{Mathematical Constants}.
-\newblock Cambridge University Press, 2003.
-
-\bibitem{galbiati1976}
-Giulia Galbiati and Franco P. Preparata.
-\newblock On permutation-embedding sequences.
-\newblock \emph{SIAM Journal on Applied Mathematics}, 30(3):421--423, 1976.
-
-\bibitem{gilboa2017}
-Shoni Gilboa and Ron Peled.
-\newblock Chebyshev-type quadratures for doubling weights.
-\newblock \emph{Constructive Approximation}, 45(2):193--216, 2017.
-\newblock \url{https://doi.org/10.1007/s00365-016-9360-4}.
-
-\bibitem{harshbarger-web}
-Eric Harshbarger.
-\newblock ``Go first'' dice.
-\newblock \url{https://www.ericharshbarger.org/dice/go_first_dice.html}.
-
-\bibitem{harshbarger2012}
-Eric Harshbarger.
-\newblock Who goes first.
-\newblock \emph{Games Magazine}, 36(10), December 2012.
-
-\bibitem{kleitman1976}
-Daniel J. Kleitman and David J. Kwiatkowski.
-\newblock A lower bound on the length of a sequence containing all
-permutations as subsequences.
-\newblock \emph{Journal of Combinatorial Theory, Series A}, 21(2):129--136,
-1976.
-
-\bibitem{dlmf}
-NIST Digital Library of Mathematical Functions.
-\newblock Chapter 18: Orthogonal polynomials, Sections 18.19--18.20.
-\newblock \url{https://dlmf.nist.gov/18.19}, accessed July 2026.
-
-\bibitem{koekoek2010}
-Roelof Koekoek, Peter A. Lesky, and Ren\'e F. Swarttouw.
-\newblock \emph{Hypergeometric Orthogonal Polynomials and Their
-\(q\)-Analogues}.
-\newblock Springer Monographs in Mathematics. Springer, 2010.
-\newblock \url{https://doi.org/10.1007/978-3-642-05014-5}.
-
-\bibitem{koutas1975}
-P. J. Koutas and T. C. Hu.
-\newblock Shortest string containing all permutations.
-\newblock \emph{Discrete Mathematics}, 11(2):125--132, 1975.
-
-\bibitem{lorentz1986}
-G. G. Lorentz.
-\newblock \emph{Bernstein Polynomials}.
-\newblock Chelsea Publishing Company, 1986.
-
-\bibitem{newey1973}
-Malcolm Newey.
-\newblock Notes on a problem involving permutations as subsequences.
-\newblock Technical report, Computer Science Department, Stanford University,
-1973.
-
-\bibitem{polylog-video}
-Polylog.
-\newblock We designed special dice using math, but there's a catch.
-\newblock \url{https://www.youtube.com/watch?v=-64UT8yikng}.
-
-\bibitem{purcell}
-Michael Purcell.
-\newblock Building sets of permutation-fair dice.
-\newblock \emph{American Mathematical Monthly}, 131(7):595--607, 2024.
-\newblock \url{https://doi.org/10.1080/00029890.2024.2345576}.
-
-\bibitem{radomirovic2012}
-Sa\v{s}a Radomirovi\'c.
-\newblock A construction of short sequences containing all permutations of a
-set as subsequences.
-\newblock \emph{Electronic Journal of Combinatorics}, 19(4):P31, 2012.
-
-\bibitem{wilson-hahn}
-M. Wayne Wilson.
-\newblock On the Hahn polynomials.
-\newblock \emph{SIAM Journal on Mathematical Analysis}, 1(1):131--139, 1970.
-\newblock \url{https://doi.org/10.1137/0501013}.
-
-\bibitem{wilson-quadrature}
-M. Wayne Wilson.
-\newblock Necessary and sufficient conditions for equidistant quadrature
-formula.
-\newblock \emph{SIAM Journal on Numerical Analysis}, 7(1):134--141, 1970.
-\newblock \url{https://doi.org/10.1137/0707009}.
-
-\bibitem{zalinescu2011}
-Eugen Z\u{a}linescu.
-\newblock Shorter strings containing all \(k\)-element permutations.
-\newblock \emph{Information Processing Letters}, 111(12):605--608, 2011.
-
-% Prouhet--Tarry--Escott partitions and place fairness
-
-\bibitem{prouhet1851}
-Eug\`ene Prouhet.
-\newblock M\'emoire sur quelques relations entre les puissances des nombres.
-\newblock \emph{Comptes rendus de l'Acad\'emie des sciences de Paris},
-33:225--228, 1851.
-
-\bibitem{choudhry2020}
-Ajai Choudhry.
-\newblock An improvement of Prouhet's 1851 result on multigrade chains.
-\newblock \emph{International Journal of Number Theory},
-16(7):1425--1432, 2020.
-\newblock \url{https://doi.org/10.1142/S179304212050075X}.
-
-\bibitem{pollack-trevino2026}
-Paul Pollack and Enrique Trevi\~no.
-\newblock Partitioning powers into sets of equal sum.
-\newblock \emph{Rocky Mountain Journal of Mathematics},
-56(2):503--514, 2026.
-\newblock \url{https://doi.org/10.1216/rmj.2026.56.503}.
-
-\bibitem{lehmer1947}
-D.~H. Lehmer.
-\newblock The Tarry--Escott problem.
-\newblock \emph{Scripta Mathematica}, 13:37--41, 1947.
-
-\bibitem{wright1949}
-E.~M. Wright.
-\newblock Equal sums of like powers.
-\newblock \emph{Proceedings of the Edinburgh Mathematical Society},
-Series~2, 8:138--142, 1949.
-
-\bibitem{wright1959}
-E.~M. Wright.
-\newblock Prouhet's 1851 solution of the Tarry--Escott problem of 1910.
-\newblock \emph{American Mathematical Monthly}, 66(3):199--201, 1959.
-\newblock \url{https://doi.org/10.1080/00029890.1959.11989269}.
-
-\bibitem{roberts1964a}
-J.~B. Roberts.
-\newblock Splitting consecutive integers into classes with equal power sums.
-\newblock \emph{American Mathematical Monthly}, 71:25--37, 1964.
-\newblock \url{https://doi.org/10.1080/00029890.1964.11992196}.
-
-\bibitem{roberts1964b}
-J.~B. Roberts.
-\newblock Relations between the digits of numbers and equal sums of like
-powers.
-\newblock \emph{Canadian Journal of Mathematics}, 16:626--636, 1964.
-\newblock \url{https://doi.org/10.4153/CJM-1964-063-7}.
-
-\bibitem{bolker-et-al2016}
-Ethan Bolker, Carl Offner, Robert Richman, and Catalin Zara.
-\newblock The Prouhet--Tarry--Escott problem and generalized Thue--Morse
-sequences.
-\newblock \emph{Journal of Combinatorics}, 7(1):117--133, 2016.
-\newblock \url{https://doi.org/10.4310/JOC.2016.v7.n1.a5}.
-
-\bibitem{boyd1997}
-David W. Boyd.
-\newblock On a problem of Byrnes concerning polynomials with restricted
-coefficients.
-\newblock \emph{Mathematics of Computation}, 66(220):1697--1703, 1997.
-\newblock \url{https://doi.org/10.1090/S0025-5718-97-00892-2}.
-
-\bibitem{boyd2002}
-David W. Boyd.
-\newblock On a problem of Byrnes concerning polynomials with restricted
-coefficients. II.
-\newblock \emph{Mathematics of Computation}, 71(239):1205--1217, 2002.
-\newblock \url{https://doi.org/10.1090/S0025-5718-01-01360-6}.
-
-\bibitem{berend-golan2006}
-Daniel Berend and Shahar Golan.
-\newblock Littlewood polynomials with high order zeros.
-\newblock \emph{Mathematics of Computation}, 75(255):1541--1552, 2006.
-\newblock \url{https://doi.org/10.1090/S0025-5718-06-01848-5}.
-
-\bibitem{buhler-et-al2021}
-Joe Buhler, Shahar Golan, Rob Pratt, and Stan Wagon.
-\newblock Littlewood polynomials, spectral-null codes, and equipowerful
-partitions.
-\newblock \emph{Mathematics of Computation}, 90(329):1435--1453, 2021.
-\newblock \url{https://doi.org/10.1090/mcom/3612}.
-
-% Riffle shuffles, descents, and repeated permutation words
-
-\bibitem{stanley1972}
-Richard P. Stanley.
-\newblock \emph{Ordered Structures and Partitions}.
-\newblock Memoirs of the American Mathematical Society, No.~119, 1972.
-\newblock \url{https://doi.org/10.1090/memo/0119}.
-
-\bibitem{bayer-diaconis1992}
-Dave Bayer and Persi Diaconis.
-\newblock Trailing the dovetail shuffle to its lair.
-\newblock \emph{Annals of Applied Probability}, 2(2):294--313, 1992.
-\newblock \url{https://doi.org/10.1214/aoap/1177005705}.
-
-\bibitem{aldous-diaconis1986}
-David Aldous and Persi Diaconis.
-\newblock Shuffling cards and stopping times.
-\newblock \emph{American Mathematical Monthly}, 93(5):333--348, 1986.
-\newblock \url{https://doi.org/10.1080/00029890.1986.11971821}.
-
-\bibitem{diaconis-mcgrath-pitman1995}
-Persi Diaconis, Michael McGrath, and Jim Pitman.
-\newblock Riffle shuffles, cycles, and descents.
-\newblock \emph{Combinatorica}, 15:11--29, 1995.
-\newblock \url{https://doi.org/10.1007/BF01294457}.
-
-\bibitem{stanley2001}
-Richard P. Stanley.
-\newblock Generalized riffle shuffles and quasisymmetric functions.
-\newblock \emph{Annals of Combinatorics}, 5:479--491, 2001.
-\newblock \url{https://doi.org/10.1007/s00026-001-8023-7}.
-
-% Fair words, subword balance, and adjacent dice literature
-
-\bibitem{prodinger1979}
-Helmut Prodinger.
-\newblock On a generalization of the Dyck-language over a two letter
-alphabet.
-\newblock \emph{Discrete Mathematics}, 28(3):269--276, 1979.
-\newblock \url{https://doi.org/10.1016/0012-365X(79)90134-1}.
-
-\bibitem{cerny2007}
-Anton \v{C}ern\'y.
-\newblock On fairness of D0L systems.
-\newblock \emph{Discrete Applied Mathematics}, 155(13):1769--1773, 2007.
-\newblock \url{https://doi.org/10.1016/j.dam.2007.04.004}.
-
-\bibitem{salomaa2007}
-Arto Salomaa.
-\newblock Subword balance in binary words, languages and sequences.
-\newblock \emph{Fundamenta Informaticae}, 75(1--4):469--482, 2007.
-\newblock \url{https://doi.org/10.3233/FUN-2007-751-427}.
-
-\bibitem{cerny2008}
-Anton \v{C}ern\'y.
-\newblock On subword symmetry of words.
-\newblock \emph{International Journal of Foundations of Computer Science},
-19(1):243--250, 2008.
-\newblock \url{https://doi.org/10.1142/S0129054108005656}.
-
-\bibitem{cerny2009}
-Anton \v{C}ern\'y.
-\newblock On fair words.
-\newblock \emph{Journal of Automata, Languages and Combinatorics},
-14(2):163--174, 2009.
-\newblock \url{https://doi.org/10.25596/JALC-2009-163}.
-
-\bibitem{richomme2026}
-Gwena\"el Richomme.
-\newblock On some 2-binomial coefficients of binary words: geometrical
-interpretation, partitions of integers, and fair words.
-\newblock \emph{Theoretical Computer Science}, 1066:115732, 2026.
-\newblock \url{https://doi.org/10.1016/j.tcs.2025.115732}.
-
-\bibitem{meyer60}
-The Dice Lab.
-\newblock 5-player go first dice (construction discovered by Paul Meyer).
-\newblock \url{https://www.mathartfun.com/thedicelab.com/GFD5.html},
-accessed July 20, 2026.
-
-\bibitem{knoll2012}
-Byron Knoll.
-\newblock Five player go first dice.
-\newblock Blog post, 2012.
-\newblock \url{http://byronknoll.blogspot.se/2012/10/five-player-go-first-dice.html}.
-
-\bibitem{kronenthal-traldi2009}
-Brian G. Kronenthal and Lorenzo Traldi.
-\newblock Tied dice.
-\newblock \emph{Journal of Combinatorial Mathematics and Combinatorial
-Computing}, 68:85--96, 2009.
-\newblock
-\url{https://combinatorialpress.com/jcmcc-articles/volume-068/tied-dice/}.
-
-\bibitem{cooley-et-al2014}
-C. Cooley, W. Ella, M. Follett, E. Gilson, and L. Traldi.
-\newblock Tied dice II: some asymptotic results.
-\newblock \emph{Journal of Combinatorial Mathematics and Combinatorial
-Computing}, 90:241--248, 2014.
-\newblock
-\url{https://combinatorialpress.com/jcmcc-articles/volume-090/tied-dice-ii-some-asymptotic-results/}.
-
-\bibitem{schaefer-schweig2017}
-Alex Schaefer and Jay Schweig.
-\newblock Balanced nontransitive dice.
-\newblock \emph{College Mathematics Journal}, 48(1):10--16, 2017.
-\newblock \url{https://doi.org/10.4169/college.math.j.48.1.10}.
-
-\bibitem{hur-kim2021}
-Injo Hur and Yeansu Kim.
-\newblock Possible probability and irreducibility of balanced nontransitive
-dice.
-\newblock \emph{Journal of Mathematics}, 2021:6648248, 2021.
-\newblock \url{https://doi.org/10.1155/2021/6648248}.
-
-\bibitem{kim-et-al2024}
-Dohyeon Kim, Ringi Kim, Wonjun Lee, Yuhyeon Lim, and Yoojin So.
-\newblock Balanced nontransitive dice: existence and probability.
-\newblock \emph{Electronic Journal of Combinatorics}, 31(1):P1.21, 2024.
-\newblock \url{https://doi.org/10.37236/11918}.
-
-\bibitem{beniamini2025}
-Gal Beniamini, Nir Lavee, and Nati Linial.
-\newblock How balanced can permutations be?
-\newblock \emph{Combinatorica}, 45, Article~9, 2025.
-\newblock \url{https://doi.org/10.1007/s00493-024-00127-x}.
-
-% Equidistant, positive, and equal-weight quadrature
-
-\bibitem{wilson-algorithm}
-M. Wayne Wilson.
-\newblock A general algorithm for nonnegative quadrature formulas.
-\newblock \emph{Mathematics of Computation}, 23:253--258, 1969.
-\newblock \url{https://doi.org/10.1090/S0025-5718-1969-0242374-1}.
-
-\bibitem{wilson-least-squares}
-M. Wayne Wilson.
-\newblock Discrete least squares and quadrature formulas.
-\newblock \emph{Mathematics of Computation}, 24(110):271--282, 1970.
-\newblock \url{https://doi.org/10.1090/S0025-5718-1970-0275677-3}.
-
-\bibitem{zaremba1975}
-S.~K. Zaremba.
-\newblock Some properties of polynomials orthogonal over the set
-\(\langle1,2,\ldots,N\rangle\).
-\newblock \emph{Annali di Matematica Pura ed Applicata}, Series~IV,
-105:333--345, 1975.
-\newblock \url{https://doi.org/10.1007/BF02414937}.
-
-\bibitem{karlin-mcgregor1961}
-S. Karlin and J. McGregor.
-\newblock The Hahn polynomials, formulas and an application.
-\newblock \emph{Scripta Mathematica}, 26:33--46, 1961.
-
-\bibitem{huybrechs2009}
-Daan Huybrechs.
-\newblock Stable high-order quadrature rules with equidistant points.
-\newblock \emph{Journal of Computational and Applied Mathematics},
-231(2):933--947, 2009.
-\newblock \url{https://doi.org/10.1016/j.cam.2009.05.018}.
-
-\bibitem{glaubitz2020}
-Jan Glaubitz.
-\newblock Stable high order quadrature rules for scattered data and general
-weight functions.
-\newblock \emph{SIAM Journal on Numerical Analysis}, 58:2144--2164, 2020.
-\newblock \url{https://doi.org/10.1137/19M1257901}.
-
-\bibitem{cappellazzo-et-al2023}
-Francesca Cappellazzo, Wolfgang Erb, Alfredo E. Marchetti, and Davide Poggiali.
-\newblock On Kosloff Tal-Ezer least-squares quadrature formulas.
-\newblock \emph{BIT Numerical Mathematics}, 63, Article~15, 2023.
-\newblock \url{https://doi.org/10.1007/s10543-023-00948-0}.
-
-\bibitem{fejer1933}
-L. Fej\'er.
-\newblock Mechanische Quadraturen mit positiven Cotesschen Zahlen.
-\newblock \emph{Mathematische Zeitschrift}, 37:287--309, 1933.
-
-\bibitem{shohat1937}
-J. Shohat.
-\newblock On mechanical quadratures, in particular, with positive
-coefficients.
-\newblock \emph{Transactions of the American Mathematical Society},
-42:461--496, 1937.
-
-\bibitem{bernstein1937}
-S.~N. Bernstein.
-\newblock Sur les formules de quadrature de Cotes et Tchebycheff; and On
-quadrature formulas with positive coefficients.
-\newblock \emph{C. R. Acad. Sci. URSS}, 14:323--327; and
-\emph{Izv. Akad. Nauk SSSR Ser. Mat.}, 1(4):479--503, 1937.
-
-\bibitem{kuijlaars1993}
-A.~B.~J. Kuijlaars.
-\newblock The minimal number of nodes in Chebyshev type quadrature formulas.
-\newblock \emph{Indagationes Mathematicae}, 4(3):339--362, 1993.
-\newblock \url{https://doi.org/10.1016/0019-3577(93)90007-L}.
-
-\bibitem{kuijlaars1995}
-A.~B.~J. Kuijlaars.
-\newblock Chebyshev-type quadrature for Jacobi weight functions.
-\newblock \emph{Journal of Computational and Applied Mathematics},
-57:171--180, 1995.
-\newblock \url{https://doi.org/10.1016/0377-0427(93)E0243-F}.
-
-\bibitem{peled2010}
-Ron Peled.
-\newblock Simple universal bounds for Chebyshev-type quadratures.
-\newblock \emph{Journal of Approximation Theory}, 162(12):2317--2348, 2010.
-\newblock \url{https://doi.org/10.1016/j.jat.2010.08.002}.
-
-% Rational and topological designs
-
-\bibitem{seymour-zaslavsky1984}
-P.~D. Seymour and T. Zaslavsky.
-\newblock Averaging sets: a generalization of mean values and spherical
-designs.
-\newblock \emph{Advances in Mathematics}, 52(3):213--240, 1984.
-\newblock \url{https://doi.org/10.1016/0001-8708(84)90022-7}.
-
-\bibitem{arkhipov1985}
-G.~I. Arkhipov.
-\newblock On the Hilbert--Kamke problem.
-\newblock \emph{Mathematics of the USSR-Izvestiya}, 24(1):1--47, 1985.
-\newblock \url{https://doi.org/10.1070/IM1985v024n01ABEH001210}.
-
-\bibitem{kane2015}
-Daniel M. Kane.
-\newblock Small designs for path-connected spaces and path-connected
-homogeneous spaces.
-\newblock \emph{Transactions of the American Mathematical Society},
-367:6387--6414, 2015.
-\newblock \url{https://doi.org/10.1090/tran/6250}.
-
-% Exchangeability, moment tensors, and nonnegative rank
-
-\bibitem{definetti1937}
-Bruno de Finetti.
-\newblock La pr\'evision: ses lois logiques, ses sources subjectives.
-\newblock \emph{Annales de l'Institut Henri Poincar\'e}, 7(1):1--68, 1937.
-\newblock \url{http://www.numdam.org/item/AIHP_1937__7_1_1_0/}.
-
-\bibitem{hewitt-savage1955}
-Edwin Hewitt and Leonard J. Savage.
-\newblock Symmetric measures on Cartesian products.
-\newblock \emph{Transactions of the American Mathematical Society},
-80:470--501, 1955.
-\newblock \url{https://doi.org/10.1090/S0002-9947-1955-0076206-8}.
-
-\bibitem{diaconis-freedman1980}
-Persi Diaconis and David Freedman.
-\newblock Finite exchangeable sequences.
-\newblock \emph{Annals of Probability}, 8(4):745--764, 1980.
-\newblock \url{https://doi.org/10.1214/aop/1176994663}.
-
-\bibitem{fan-nie-zhou2019}
-Jinyan Fan, Jiawang Nie, and Anwa Zhou.
-\newblock Completely positive binary tensors.
-\newblock \emph{Mathematics of Operations Research}, 44(3):1087--1100, 2019.
-\newblock \url{https://doi.org/10.1287/moor.2018.0963}.
-
-\bibitem{blischke1964}
-W.~R. Blischke.
-\newblock Estimating the parameters of mixtures of binomial distributions.
-\newblock \emph{Journal of the American Statistical Association},
-59(306):510--528, 1964.
-\newblock \url{https://doi.org/10.1080/01621459.1964.10482176}.
-
-\bibitem{teicher1961}
-Henry Teicher.
-\newblock Identifiability of mixtures.
-\newblock \emph{Annals of Mathematical Statistics}, 32:244--248, 1961.
-\newblock \url{https://doi.org/10.1214/aoms/1177705155}.
-
-\bibitem{teicher1963}
-Henry Teicher.
-\newblock Identifiability of finite mixtures.
-\newblock \emph{Annals of Mathematical Statistics}, 34:1265--1269, 1963.
-\newblock \url{https://doi.org/10.1214/aoms/1177703862}.
-
-\bibitem{allman-matias-rhodes2009}
-Elizabeth S. Allman, Catherine Matias, and John A. Rhodes.
-\newblock Identifiability of parameters in latent structure models with many
-observed variables.
-\newblock \emph{Annals of Statistics}, 37(6A):3099--3132, 2009.
-\newblock \url{https://doi.org/10.1214/09-AOS689}.
-
-\bibitem{allman-et-al2015}
-Elizabeth S. Allman, John A. Rhodes, Bernd Sturmfels, and Piotr Zwiernik.
-\newblock Tensors of nonnegative rank two.
-\newblock \emph{Linear Algebra and its Applications}, 473:37--53, 2015.
-\newblock \url{https://doi.org/10.1016/j.laa.2013.10.046}.
-
-\bibitem{qi-comon-lim2016}
-Yang Qi, Pierre Comon, and Lek-Heng Lim.
-\newblock Semialgebraic geometry of nonnegative tensor rank.
-\newblock \emph{SIAM Journal on Matrix Analysis and Applications},
-37(4):1556--1580, 2016.
-\newblock \url{https://doi.org/10.1137/16M1063708}.
-
-\end{thebibliography}
+\bibliographystyle{unsrtnat}
+\bibliography{ref}
+\endgroup
 
 \end{document}
