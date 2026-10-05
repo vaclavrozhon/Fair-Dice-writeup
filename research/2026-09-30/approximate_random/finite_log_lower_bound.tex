@@ -1,0 +1,245 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prob}{\mathbb P}
+\newcommand{\Var}{\operatorname{Var}}
+\title{A sharp finite-regime lower bound for random palindrome blocks}
+\author{Research proof; two independent full reviews completed}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+Write $R_\sigma=n!P(\sigma)$ for $m$ independent uniformly relabelled
+palindrome blocks on $n$ labels. This note completes the lower bound for
+this random family, including the logarithm, by comparing small assignment
+problems with Gaussian ones. It concerns this family only.
+
+\begin{theorem}\label{thm:main}
+There are absolute constants $c,C>0$ and $n_0$ such that, for $n\geq n_0$
+and
+\[
+ m\geq Cn^{13/10}(\log n)^{1/5},
+\]
+\[
+ \Prob\left(\max_{\sigma\in S_n}|R_\sigma-1|
+       \geq c\frac{n^{13/4}\sqrt{\log n}}{m^{5/2}}\right)
+ \geq1-Cn^{-9/10}.
+\]
+Thus the previously proved sufficient scale
+$n^{13/10}(\log n)^{1/5}\varepsilon^{-2/5}$ matches the typical necessary
+scale for this construction in the large-block, small-error regime.
+\end{theorem}
+
+We use the notation and elementary estimates from the companion notes.
+Set
+\[
+ d=n-3,\quad w_i(a)=\binom da p_i^a(1-p_i)^{d-a},\quad
+ p_i=(i-1)/(m-1),\quad
+ h=\binom n3m^{-3}(1-1/m)^d.
+\]
+The triple projection is
+$S_\sigma=h\sum_i\sum_aw_i(a)\delta_{i,a}$, with
+$\delta(l,x,r)=\tfrac12-\tfrac32\mathbf1\{x<\min(l,r)\}$.
+For central starts $a\in[d/4,3d/4]$ and $m\geq n$,
+\begin{equation}\label{eq:weights}
+ \max_iw_i(a)\leq Cn^{-1/2},\qquad
+ c m n^{-3/2}\leq\sum_iw_i(a)^2\leq C m n^{-3/2}.
+\end{equation}
+These bounds follow from Stirling, the beta integral, and the Riemann-sum
+estimate for a unimodal function, as detailed in
+\emph{A matching power lower bound for random palindrome blocks}.
+
+\section{A smooth comparison inequality}
+\begin{lemma}\label{lem:comparison}
+Let $X_i$ be independent centered random vectors in $\mathbb R^D$, and
+let independent centered Gaussian vectors $G_i$ have the respective same
+covariance matrices. For $\beta>0$,
+\[
+ \left|\E F_\beta\Bigl(\sum_iX_i\Bigr)
+       -\E F_\beta\Bigl(\sum_iG_i\Bigr)\right|
+ \leq C\beta^2\sum_i\bigl(\E\|X_i\|_\infty^3+
+                              \E\|G_i\|_\infty^3\bigr),
+\]
+where $F_\beta(x)=\beta^{-1}\log\sum_{\alpha=1}^D e^{\beta x_\alpha}$.
+Also $\max_\alpha x_\alpha\leq F_\beta(x)
+\leq\max_\alpha x_\alpha+\beta^{-1}\log D$.
+\end{lemma}
+\begin{proof}
+For any direction $v$, the third directional derivative of $F_\beta$ is
+$\beta^2$ times the third centered moment of the numbers $v_\alpha$ under
+the softmax probabilities. Its absolute value is at most
+$8\beta^2\|v\|_\infty^3$. Replace the vectors one at a time and expand
+along the replaced vector through degree two. The first two Taylor terms
+cancel because means and covariance matrices match. The stated third-order
+remainder bound proves the lemma. The maximum inequalities are immediate.
+\end{proof}
+
+\section{One small assignment problem}
+Put $L=\lfloor n^{1/10}\rfloor$. Inside a window of $3L+4$ consecutive
+central positions, choose $L$ movable positions spaced by three, leaving
+two positions of padding at each end. Keep the other labels fixed and
+permute the $L$ movable labels arbitrarily among the movable positions.
+There are $D=L!$ choices $\pi$. Exactly three triple starts around each
+movable position can be affected. Their set $\mathcal A$ has size $3L$,
+and all corresponding triples lie inside this window.
+
+Let $T_\pi$ be the contribution of these starts to $S$ under assignment
+$\pi$, and normalize by
+\[
+ s_0=h\sqrt{m/n^{3/2}},\qquad
+ X_i(\pi)=\frac h{s_0}\sum_{a\in\mathcal A}
+                 w_i(a)\delta_{i,a}^{\pi}.
+\]
+Then $T_\pi/s_0=\sum_iX_i(\pi)$, a sum of independent centered vectors.
+Write $M_i=\max_{a\in\mathcal A}w_i(a)$. From \eqref{eq:weights},
+\begin{equation}\label{eq:Mthird}
+ \sum_iM_i^3\leq\sum_{a\in\mathcal A}\sum_iw_i(a)^3
+ \leq CL\frac m{n^2}.
+\end{equation}
+The deterministic bound on a single vector is
+\[
+ \|X_i\|_\infty\leq C L\frac{n^{3/4}}{\sqrt m}M_i.
+\]
+For each fixed target, valley covariances vanish beyond distance two and
+have uniformly bounded absolute row sums. Thus
+\[
+ \max_\pi\Var X_i(\pi)\leq CL\frac{n^{3/2}}m M_i^2.
+\]
+A Gaussian vector with coordinate variances at most $v^2$ satisfies
+$\E\|G\|_\infty^3\leq Cv^3(\log(2D))^{3/2}$, by the Gaussian tail bound
+and a union bound. Since $\log(2D)\leq CL\log L$, \eqref{eq:Mthird} gives
+\begin{equation}\label{eq:third}
+ \sum_i\bigl(\E\|X_i\|_\infty^3+\E\|G_i\|_\infty^3\bigr)
+ \leq C L^4(\log L)^{3/2}\frac{n^{1/4}}{\sqrt m}.
+\end{equation}
+
+The Gaussian vector $G=\sum_iG_i$ contains an independent assignment
+matrix. Specifically, let $u(l,x,r)$ be the canonical three-variable
+Hoeffding component of $\delta$, for which $\E u^2=1/20$.
+For each movable position $v$ and movable label $b$, project onto
+\[
+ \frac h{s_0}\bigl(w_i(v-1)
+        u(Y_{i,\lambda_v},Y_{i,b},Y_{i,\rho_v})\bigr)_{i=1}^m,
+\]
+where $\lambda_v,\rho_v$ are the two fixed adjacent anchors. Distinct such
+kernels are orthogonal, since their triples share at most two variables
+and $u$ is centered given any two. The corresponding Gaussian entries
+$Z_{v,b}$ are independent, and their variances satisfy
+\[
+ \Var Z_{v,b}=\frac{h^2}{20s_0^2}\sum_iw_i(v-1)^2\asymp1
+\]
+by \eqref{eq:weights}. Exactly as in the companion Gaussian-limit note,
+\[
+ G(\pi)=\sum_vZ_{v,\pi(v)}+H(\pi),
+\]
+with the centered Gaussian residual independent of the matrix. No limiting
+argument is used here: this is an orthogonal decomposition of the finite
+Gaussian surrogate with the given covariance matrix.
+Conditional Jensen and a greedy row-by-row assignment therefore give
+\begin{equation}\label{eq:gaussianmax}
+ \E\max_\pi G(\pi)\geq cL\sqrt{\log L}.
+\end{equation}
+Indeed the first $L/2$ rows each have at least $L/2$ fresh independent
+Gaussian columns with standard deviations bounded below, and later greedy
+increments have nonnegative expectations.
+
+Apply Lemma~\ref{lem:comparison} with
+$\beta=B\sqrt{\log L}$, where a sufficiently large absolute $B$ makes
+the smoothing error $(\log D)/\beta$ less than one fourth of
+\eqref{eq:gaussianmax}. The comparison error, divided by
+$L\sqrt{\log L}$, is at most
+\[
+ C L^3(\log L)^2\frac{n^{1/4}}{\sqrt m}
+ \leq C n^{-1/10}(\log n)^2=o(1)
+\]
+whenever $m\geq n^{13/10}$. Therefore, uniformly in this range,
+\begin{equation}\label{eq:chunkmean}
+ \E\bigl(\max_\pi T_\pi-\min_\pi T_\pi\bigr)
+ \geq c s_0L\sqrt{\log L}.
+\end{equation}
+We used only $\E\min_\pi T_\pi\leq0$, since each coordinate is centered.
+
+We also need a second-moment upper bound. For any fixed $\pi$,
+\[
+ \sum_i\Var X_i(\pi)\leq CL,\qquad
+ |X_i(\pi)|\leq C L n^{1/4}/\sqrt m.
+\]
+The elementary Bernstein moment estimate for a sum of bounded independent
+centered variables gives, for $q\geq2$,
+\[
+ \left\|\sum_iX_i(\pi)\right\|_q
+ \leq C\left(\sqrt{qL}+qL n^{1/4}/\sqrt m\right).
+\]
+This estimate follows by expanding each exponential moment, summing the
+geometric remainder using boundedness, and integrating the resulting
+Bernstein tail bound. Take $q=\max(2,\log(2D))$ and use
+$\|\max_\pi|X(\pi)|\|_q\leq D^{1/q}\max_\pi\|X(\pi)\|_q$.
+Since $L\leq n^{1/10}$ and $m\geq n^{13/10}$, this yields
+\begin{equation}\label{eq:chunksecond}
+ \E\bigl(\max_\pi T_\pi-\min_\pi T_\pi\bigr)^2
+ \leq C s_0^2L^2\log L.
+\end{equation}
+
+\section{Independent windows and the full distribution}
+Fit $Q\asymp n/L$ disjoint windows of the above type in the middle third
+of a base target. Permute their movable labels independently. The family
+$\mathcal F$ has $(L!)^Q$ members, at most $e^{n\log n}$.
+Every affected triple lies wholly in one window, so the range of the
+triple projection over this family is exactly the sum of the $Q$ individual
+ranges. These ranges are independent because their label sets are disjoint
+in every block. From \eqref{eq:chunkmean}, \eqref{eq:chunksecond}, and
+Chebyshev, with probability $1-O(Q^{-1})$,
+\[
+ \max_{\sigma\in\mathcal F}|S_\sigma|
+ \geq c Qs_0L\sqrt{\log L}
+ \geq c\frac{n^{13/4}\sqrt{\log n}}{m^{5/2}}.
+\]
+Here $h\asymp n^3/m^3$, $\log L\asymp\log n$, and
+$Q^{-1}=O(n^{-9/10})$.
+
+Put $A=n^{13/4}\sqrt{\log n}/m^{5/2}$ and $t=m/n$.
+The coefficient estimates in the refined upper-bound note, with
+$p=4n\log n$, give for $U_\sigma=R_\sigma-1-S_\sigma$
+\[
+ \|U_\sigma\|_p\leq C_1 A(A+t^{-1})
+\]
+for sufficiently large $n$ and $m\geq C_0n^{13/10}(\log n)^{1/5}$.
+For completeness, short-support levels $\ell\geq2$ contribute
+$O(A^2)$; the short-support first level of lengths $k\geq4$ contributes
+$O(A/t)$; the long-support tilted estimate is
+$\sqrt2\exp(-n\log t/12+4pn/t^4)\leq A/t$.
+These are the same coefficient-level estimates used in the earlier
+power-only lower bound, with the larger value of $p$.
+
+A union bound over $\mathcal F$ and Markov at threshold
+$e C_1A(A+t^{-1})$ fail with probability at most $e^{-3n\log n}$.
+Taking the absolute threshold constant $C_0$ large enough makes that
+remainder at most half of the triple-projection lower bound, because
+$A\leq C_0^{-5/2}$ and $t^{-1}\leq C_0^{-1}$.
+This proves Theorem~\ref{thm:main}.
+
+\paragraph{A threshold consequence.}
+For some fixed absolute $\varepsilon_0>0$, if
+$m=o(n^{13/10}(\log n)^{1/5})$, the probability of relative
+$\varepsilon_0$-fairness tends to zero. To see this, when $m$ is at least
+linear in $n$, restrict to $k$ labels with
+$m\asymp Ck^{13/10}(\log k)^{1/5}$ and apply the theorem; then
+$k\to\infty$, $k\leq n$, and the lower error is an absolute constant.
+For $m<n/(4e)$, outcome counting already forces an absent permutation.
+The remaining cases have $m\to\infty$ and admit the same restriction.
+Relative fairness is preserved by restriction because marginal relative
+errors are averages of full-order relative errors.
+
+\paragraph{Dependencies and scope.}
+The elementary binomial estimates and full nonlinear remainder estimates
+are proved in the companion notes
+\emph{A refined uniform bound for random palindrome blocks} and
+\emph{A matching power lower bound for random palindrome blocks}.
+The canonical variance $1/20$ and Gaussian assignment decomposition are
+proved in \emph{The logarithmic factor in the large-block Gaussian limit}.
+Here that decomposition is applied to a finite covariance-matched Gaussian
+surrogate, and Lemma~\ref{lem:comparison} supplies the quantitative step.
+No lower bound for general approximate dice constructions follows.
+\end{document}

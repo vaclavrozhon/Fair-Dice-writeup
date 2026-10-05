@@ -1,0 +1,17 @@
+Running HiGHS 1.2.0 [date: 2021-07-09, git hash: n/a]
+Copyright (c) 2022 ERGO-Code under MIT licence terms
+WARNING: No semi-integer/integer variables in model with non-empty integrality
+Presolving model
+164 rows, 1680 cols, 220080 nonzeros
+83 rows, 1680 cols, 95200 nonzeros
+Presolve : Reductions: rows 83(-82); columns 1680(-120); elements 95200(-140600)
+Solving the presolved LP
+Using EKK dual simplex solver - serial
+  Iteration        Objective     Infeasibilities num(sum)
+          0     0.0000000000e+00 Ph1: 0(0) 2s
+        416     2.0044365753e+06 2s
+Model   status      : Infeasible
+Simplex   iterations: 416
+Objective value     :  2.0043682935e+06
+HiGHS run time      :          2.53
+{"blocks": 15, "seed": 0, "status": 2, "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is At lower/fixed bound)", "solution": null}

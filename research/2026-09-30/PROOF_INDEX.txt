@@ -1,0 +1,48 @@
+Asymptotické výsledky a hlavní důkazy
+Výběr výsledků; výzkumný interval 30. 9. 2026, 13:05:56–23:05:56 UTC.
+
+Začněte českou zprávou VYSLEDKY.pdf (zdroj VYSLEDKY.tex).
+Všechny níže uvedené výsledky jsou asymptotické, nikoli výpočty malých n.
+main.tex nebyl v rámci této práce upravován.
+
+1. Jedna zadaná kostka má optimální minimum Theta(n^2).
+   size_bounds/QUADRATIC_PROOF_GUIDE.txt
+   independent_directions/elementary_quadratic_atom_bound.tex / .pdf
+   size_bounds/polynomial_exceptional_die.tex / .pdf
+   Horní konstrukce umožňuje každý celý K >= C n^2.
+
+2. Více malých kostek, včetně rostoucího počtu.
+   independent_directions/FIXED_K_PROOF_GUIDE.txt
+   independent_directions/fixed_number_polynomial_dice.tex / .pdf
+   size_bounds/uniform_fixed_number_complexity.tex / .pdf
+   k zadaných kostek má společný počet nejvýše
+       (n + 2^k + 2)^{exp(C k^2)}.
+   Zejména k = floor(c sqrt(log n)) dovoluje exp(sqrt n) stěn.
+   Ostatní kostky mohou mít velmi velký společný konečný počet stěn.
+
+3. Koncový profil na přirozené škále, jednotně až k s=0.
+   independent_directions/ENDPOINT_PROFILE_PROOF_GUIDE.txt
+   independent_directions/natural_scale_endpoint_profile.tex / .pdf
+   Pro každé pevné L a 0 <= s <= L platí
+       max_i |m(1-p_i)-s| <= C_L min(ms, sqrt(s/m) + 1/m).
+   Odpovídající dolní příklady existují pro každou kladnou koncovou
+   škálu i pro skutečné konečné kostky; s je určeno až na konstantní násobek:
+   independent_directions/intermediate_endpoint_sharpness.tex / .pdf
+   endpoint_profile_fluctuation_barrier.tex / .pdf
+   endpoint_profile_sharpness.tex / .pdf
+   finite_profile_realization.tex / .pdf
+
+4. Všechny dostatečně velké přípustné společné počty stěn.
+   size_bounds/factorial_order_eventual_conductor.tex / .pdf
+   size_bounds/order_doubling_prefix_completion.tex / .pdf
+   Nad exp(C n log(n+1)) stačí dělitelnost všemi prvočísly do n.
+
+Původní minimum celkové velikosti a polynomiální vyrovnání zůstávají
+otevřené. Zadané malé kostky v konstrukcích neurčují velikost celé rodiny.
+Hlavní řetězce prošly oddělenými interními matematickými kontrolami;
+nejde o formální strojový důkaz ani tvrzení o ověřené historické novosti.
+
+HLAVNI_DUKAZY.zip obsahuje zprávu, průvodce a jejich dohledané lokální
+závislosti. BUNDLE_CONTENTS.txt uvádí přesný obsah. Kompletní pracovní
+složka navíc uchovává starší mezivýsledky a neúspěšné směry; ty nejsou
+automaticky dalšími závislostmi aktuálních důkazů.

@@ -1,0 +1,295 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prob}{\mathbb P}
+\title{A refined uniform bound for random palindrome blocks}
+\author{Research note; independently reviewed by two other agents}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+Concatenate $m$ independently and uniformly relabelled palindrome blocks
+$\rho_i\rho_i^{\mathrm{rev}}$ on $n$ letters. Each resulting die has $2m$
+faces. Write $R_\sigma=n!P(\sigma)$ for an output permutation $\sigma$.
+
+\begin{theorem}\label{thm:main}
+For $n\geq3$ and $0<\varepsilon\leq1$, put
+\[
+ p=\max\left(2,\frac{\log(2n!)}{\log3}\right).
+\]
+If
+\[
+ m\geq 8n^{11/10}p^{1/5}\varepsilon^{-2/5},
+\]
+then with probability at least $1/2$,
+$|R_\sigma-1|\leq\varepsilon$ simultaneously for all $\sigma\in S_n$.
+Consequently
+$O(n^{13/10}(\log n)^{1/5}\varepsilon^{-2/5})$
+faces per die suffice for pointwise relative approximate fairness.
+\end{theorem}
+
+All logarithms are natural. There are no asymptotic restrictions on $n$
+or $\varepsilon$ in the theorem. The proof controls the entire nonlinear
+expansion, including segments of length greater than three.
+
+\section{Two elementary estimates}
+\begin{lemma}[Bounded multilinear chaos]\label{lem:chaos}
+Suppose independent centered random variables $Z_v$ satisfy $|Z_v|\leq b_v$.
+For a multilinear homogeneous polynomial
+$T=\sum_{|A|=\ell}c_A\prod_{v\in A}Z_v$ and $p\geq2$,
+\[
+ \|T\|_p\leq(2\sqrt{p-1})^\ell
+      \left(\sum_{|A|=\ell}c_A^2\prod_{v\in A}b_v^2\right)^{1/2}.
+\]
+\end{lemma}
+\begin{proof}
+Introduce independent copies $Z_v'$ and replace each $Z_v$ by $Z_v-Z_v'$.
+Conditional expectation over the copies recovers $T$, so Jensen applies.
+Each independent pair $(Z_v,Z_v')$ can be swapped, which multiplies its
+difference by an independent Rademacher sign and preserves the joint law.
+Conditional on the pairs, the degree-$\ell$ Rademacher
+hypercontractive inequality \cite{bonami,odonnell} bounds the $L^p$ norm by
+$(p-1)^{\ell/2}$ times the coefficient $\ell^2$ norm. Every difference is
+bounded by $2b_v$. The resulting bound is uniform in the pairs.
+\end{proof}
+
+For $g=(g_0,\ldots,g_\ell)$ a weak composition of $M>0$, let
+\[
+ C_d(g/M)=\sum_{a_0+\cdots+a_\ell=d}
+ \left[\frac{d!}{a_0!\cdots a_\ell!}
+       \prod_{j=0}^\ell(g_j/M)^{a_j}\right]^2
+\]
+be the collision probability of a multinomial distribution; $0^0=1$.
+\begin{lemma}[A lattice collision bound]\label{lem:lattice}
+For integers $\ell\geq1$, $d\geq0$ and $M\geq d+1$,
+\[
+ \sum_{g_0+\cdots+g_\ell=M}C_d(g/M)
+ \leq\left(\frac{108M}{\sqrt{d+1}}\right)^\ell.
+\]
+\end{lemma}
+\begin{proof}
+The maximum mass of a Poisson distribution of mean $\lambda\geq0$ is
+at most $2/\sqrt{1+\lambda}$, and the probability of $d$ under
+$\operatorname{Poisson}(d)$ is at least $1/(3\sqrt{d+1})$.
+These follow directly from Stirling's elementary factorial inequalities
+(the cases $d=0$ and $\lambda\leq1$ are immediate).
+Condition independent Poisson variables of means $dp_j$ on their sum
+being $d$. Since a collision probability is at most the maximum mass,
+\[
+ C_d(p)\leq3\,2^{\ell+1}\sqrt{d+1}
+              \prod_{j=0}^\ell(1+dp_j)^{-1/2}.
+\]
+For every $g$, some coordinate satisfies $g_j\geq M/(\ell+1)$.
+For this coordinate,
+$\sqrt{d+1}(1+dg_j/M)^{-1/2}\leq\sqrt{\ell+1}$.
+Sum over the possible choices of $j$, then drop the sum constraint on the
+remaining $\ell$ coordinates, each of which lies between $0$ and $M$.
+For the decreasing function $w(x)=(1+dx/M)^{-1/2}$,
+\[
+ \sum_{g=0}^M w(g)\leq 1+\int_0^M w(x)\,dx
+ \leq 1+\frac{2M}{\sqrt{d+1}}
+ \leq\frac{3M}{\sqrt{d+1}}.
+\]
+The middle bound also holds for $d=0$, and the last uses
+$M\geq d+1\geq\sqrt{d+1}$. Hence the desired sum is at most
+\[
+ 6(\ell+1)^{3/2}
+     \left(\frac{6M}{\sqrt{d+1}}\right)^\ell
+ \leq\left(\frac{108M}{\sqrt{d+1}}\right)^\ell,
+\]
+because $\ell+1\leq2^\ell$ and $6\leq6^\ell$.
+\end{proof}
+
+\section{The exact expansion and a coloring argument}
+Fix a target order $\sigma$. Let $L$ have the multinomial law with $n$ trials
+and $m$ equally likely cells. Split $\sigma$ into consecutive segments $A_i$
+of lengths $L_i$. If $q_i(A)$ is the probability of the prescribed order
+inside block $i$, set
+\[
+ \delta_i(A)=|A|!q_i(A)-1.
+\]
+For empty segments set $\delta_i=0$. Then, exactly,
+\[
+ R_\sigma=\E_L\prod_i(1+\delta_i(A_i)).
+\]
+Uniform relabelling gives $\E\delta_i(A)=0$. For $|A|\leq2$ the value is
+identically zero. For $k=|A|\geq3$,
+\[
+ |\delta_i(A)|\leq b_k:=k!2^{1-k}.
+\]
+Indeed any prescribed order occurs at most twice as a subsequence of one
+palindrome, so $q_i(A)\leq2^{1-k}$; also $b_k\geq1$.
+
+Represent $\rho_i$ by the relative order of independent continuous
+priorities $Y_{i,1},\ldots,Y_{i,n}$, indexed by the positions of $\sigma$.
+Write $\delta_{i,a,k}$ for the segment starting at position $a$ and having
+length $k$. For fixed $k$, the variables $\delta_{i,a,k}$ with $a$ in a
+fixed residue class modulo $k$ are independent: they use disjoint sets of
+priorities. Blocks are independent of each other as well.
+
+The degree-$\ell$ part of $R_\sigma-1$ has the form
+\[
+ T_\ell=\sum_{I,\,\boldsymbol k,\,\boldsymbol a}
+       c(I,\boldsymbol k,\boldsymbol a)
+       \prod_{j=1}^\ell\delta_{i_j,a_j,k_j},\qquad
+ I=\{i_1<\cdots<i_\ell\},\quad k_j\geq3.
+\]
+The coefficients are nonnegative probabilities of the corresponding block
+occupancy and segment start events. The starts must specify disjoint
+segments in their natural order.
+
+Here is a useful bound for any restriction $\mathcal D$ on the indices of
+this sum:
+\begin{equation}\label{eq:colored}
+ \|T_\ell^{\mathcal D}\|_p\leq(2\sqrt{p-1})^\ell
+ \left[\sum_{(I,\boldsymbol k,\boldsymbol a)\in\mathcal D}
+ c(I,\boldsymbol k,\boldsymbol a)^2
+          \prod_{j=1}^\ell\frac{k_j b_{k_j}^2}{q_{k_j}}\right]^{1/2},
+ \qquad q_k=2^{-(k-2)},\quad k\geq3.
+\end{equation}
+To prove it, independently for each block choose a size $K_i$ with
+probabilities $q_k$, and a uniform residue $B_i$ modulo $K_i$. Keep only
+terms with $k_j=K_{i_j}$ and $a_j\equiv B_{i_j}\pmod{k_j}$, multiplying
+their coefficients by $\prod_jk_j/q_{k_j}$.
+Averaging over these auxiliary choices recovers the original sum.
+Given the choices, all remaining variables are independent centered bounded
+random variables, so Lemma~\ref{lem:chaos} applies.
+Minkowski followed by Jensen for the square root gives \eqref{eq:colored},
+since the probability of retaining a term is $\prod_jq_{k_j}/k_j$.
+Sizes $K_i>n$ simply retain no terms.
+
+For fixed $I$ and lengths $\boldsymbol k$, write $s=\sum_jk_j$, $d=n-s$,
+and let
+\[
+ g_0=i_1-1,\quad g_j=i_{j+1}-i_j-1\ (1\leq j<\ell),\quad
+ g_\ell=m-i_\ell,\qquad M=\sum_jg_j=m-\ell.
+\]
+The unspecified blocks fall into these $\ell+1$ gaps. A choice of segment
+starts is equivalent to counts $a_0,\ldots,a_\ell$ of remaining labels in
+these gaps, summing to $d$. Direct summation of the multinomial law gives
+\begin{equation}\label{eq:coefficient}
+ c(I,\boldsymbol k,\boldsymbol a)
+ =\frac{n^{\underline{s}}}{m^s\prod_jk_j!}
+       (M/m)^d
+       \frac{d!}{a_0!\cdots a_\ell!}
+       \prod_{j=0}^\ell(g_j/M)^{a_j}.
+\end{equation}
+We henceforth use $\boldsymbol a$ for these gap counts rather than the
+equivalent starts. The map $I\mapsto\boldsymbol g$ is a bijection between
+$\ell$-subsets of $[m]$ and weak compositions of $m-\ell$.
+
+\section{Short total support}
+Split the expansion according to $s\leq n/2$ and $s>n/2$, writing their
+sums as $T^{\mathrm{short}}$ and $T^{\mathrm{long}}$.
+Assume $m\geq n$, as guaranteed in the theorem. For short support,
+$d\geq n/2$ and
+$M=m-\ell\geq d+2\ell\geq d+1$.
+Using \eqref{eq:coefficient}, the square sum in \eqref{eq:colored} is at most
+\[
+ \sum_{\boldsymbol k:\,s\leq n/2}
+ \prod_{j=1}^\ell\left[
+       (n/m)^{2k_j}2^{2-2k_j}\frac{k_j}{q_{k_j}}\right]
+ \sum_{g_0+\cdots+g_\ell=M}C_d(g/M).
+\]
+Here we dropped $(M/m)^{2d}\leq1$ and used
+$n^{\underline{s}}\leq n^s$. Lemma~\ref{lem:lattice} bounds the collision
+sum by $(160m/\sqrt n)^\ell$, since $108\sqrt2<160$.
+The length sum separates after extending it to all $k_j\geq3$. For
+$z=n^2/(2m^2)\leq1/2$,
+\[
+ \sum_{k\geq3}(n/m)^{2k}2^{2-2k}\frac{k}{q_k}
+ =\sum_{k\geq3}kz^k
+ =\frac{z^3(3-2z)}{(1-z)^2}
+ \leq8z^3=\frac{n^6}{m^6}.
+\]
+Consequently, putting
+\[
+ a=2\sqrt{160}\,\frac{n^{11/4}\sqrt p}{m^{5/2}},
+\]
+we have
+\begin{equation}\label{eq:short}
+ \|T^{\mathrm{short}}\|_p\leq\sum_{\ell\geq1}a^\ell
+ =\frac a{1-a}\qquad(a<1).
+\end{equation}
+
+\section{Long total support}
+For long support, bound each collision probability by one and sum over
+$I$, obtaining $\binom m\ell\leq m^\ell/\ell!$.
+For any $\theta\geq1$, the condition $s>n/2$ allows us to multiply the
+nonnegative summand by the upper bound $\theta^{s-n/2}$.
+Equation~\eqref{eq:colored} gives
+\[
+ \|T_\ell^{\mathrm{long}}\|_p
+ \leq\theta^{-n/4}\frac{A_\theta^\ell}{\sqrt{\ell!}},
+ \qquad
+ A_\theta=2\sqrt{pm}
+   \left(\sum_{k\geq3}k
+           \left(\frac{\theta n^2}{2m^2}\right)^k\right)^{1/2}.
+\]
+Set $t=m/n\geq1$ and $\theta=t^{1/3}$. The power-series argument is
+$1/(2t^{5/3})\leq1/2$, so
+\[
+ A_\theta^2\leq4pm\,t^{-5}=\frac{4pn}{t^4}.
+\]
+Cauchy--Schwarz gives
+$\sum_{\ell\geq0}A^\ell/\sqrt{\ell!}\leq\sqrt2e^{A^2}$.
+Thus
+\begin{equation}\label{eq:long}
+ \|T^{\mathrm{long}}\|_p
+ \leq\sqrt2\exp\left(-\frac n{12}\log t+\frac{4pn}{t^4}\right).
+\end{equation}
+
+\section{Constants and the simultaneous guarantee}
+The theorem's assumption implies
+$t\geq8n^{1/10}p^{1/5}\varepsilon^{-2/5}\geq8$ and $a\leq\varepsilon/6$,
+because $2\sqrt{160}/8^{5/2}<1/6$.
+Equation~\eqref{eq:short} therefore gives
+$\|T^{\mathrm{short}}\|_p\leq\varepsilon/5$.
+Also $p\leq n^2$ for $n\geq3$, whence
+\[
+ \frac{4p}{t^4}\leq\frac1{1024}(p/n^2)^{1/5}
+                  \varepsilon^{8/5}
+ \leq\frac1{1024}\leq\frac{\log t}{24}.
+\]
+For $n\geq60$, \eqref{eq:long} now yields
+\[
+ \|T^{\mathrm{long}}\|_p
+ \leq\sqrt2\,t^{-n/24}
+ \leq\sqrt2\,8^{-5/2}\varepsilon
+ =\frac\varepsilon{128}.
+\]
+We conclude that $\|R_\sigma-1\|_p<\varepsilon/3$.
+
+For completeness the finitely many cases $3\leq n<60$ follow from the
+simpler blockwise canonical-kernel bound, reproduced here. If $F_I$ is the
+part of the product expansion using exactly the selected blocks $I$, then
+its separate centering and the selected-cell multinomial marginal give
+\[
+ \|F_I\|_\infty\leq\beta^{|I|},\qquad
+ \beta=\sum_{k\geq3}2^{1-k}(n/m)^k
+      =\frac{n^3}{4m^3(1-n/(2m))}\leq\frac{n^3}{2m^3}.
+\]
+Iterated symmetrization in the independent block variables, followed by
+the same Rademacher hypercontractivity argument, gives
+\[
+ \|R_\sigma-1\|_p\leq
+ \sum_{\ell\geq1}\frac{b^\ell}{\sqrt{\ell!}}
+ \leq\frac b{1-b},\qquad
+ b=2\beta\sqrt{mp}\leq\frac{n^3\sqrt p}{m^{5/2}}
+ \leq\frac{60^{1/4}}{8^{5/2}}\varepsilon<\frac\varepsilon4.
+\]
+Thus again $\|R_\sigma-1\|_p\leq\varepsilon/3$.
+For every $n\geq3$, Markov and a union bound give
+\[
+ \Prob\bigl(\exists\sigma:\ |R_\sigma-1|>\varepsilon\bigr)
+ \leq n!3^{-p}\leq\frac12.
+\]
+This proves Theorem~\ref{thm:main}.
+
+\begin{thebibliography}{9}
+\bibitem{bonami} Aline Bonami, \emph{\'Etude des coefficients de Fourier des fonctions de $L^p(G)$}, Annales de l'Institut Fourier \textbf{20} (1970), no.~2, 335--402, \href{https://aif.centre-mersenne.org/item/AIF_1970__20_2_335_0/}{doi:10.5802/aif.357}.
+\bibitem{odonnell} Ryan O'Donnell, \emph{Analysis of Boolean Functions}, Cambridge University Press, 2014, Theorem~9.21; \href{https://www.cs.cmu.edu/~odonnell/papers/Analysis-of-Boolean-Functions-by-Ryan-ODonnell.pdf}{author's complete manuscript}.
+\end{thebibliography}
+\end{document}

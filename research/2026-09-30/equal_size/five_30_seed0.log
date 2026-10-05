@@ -1,0 +1,32 @@
+Running HiGHS 1.2.0 [date: 2021-07-09, git hash: n/a]
+Copyright (c) 2022 ERGO-Code under MIT licence terms
+Presolving model
+164 rows, 1680 cols, 220080 nonzeros
+164 rows, 840 cols, 59940 nonzeros
+164 rows, 840 cols, 59940 nonzeros
+
+Solving MIP model with:
+   164 rows
+   840 cols (840 binary, 0 integer, 0 implied int., 0 continuous)
+   59940 nonzeros
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+     Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   -13.56781093    inf                  inf        0      0      0         0     0.6s
+
+Solving report
+  Status            Infeasible
+  Primal bound      inf
+  Dual bound        inf
+  Gap               inf
+  Solution status   -
+  Timing            0.79 (total)
+                    0.54 (presolve)
+                    0.00 (postsolve)
+  Nodes             1
+  LP iterations     291 (total)
+                    0 (strong br.)
+                    0 (separation)
+                    0 (heuristics)
+{"blocks": 15, "seed": 0, "status": 2, "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is At lower/fixed bound)", "solution": null}

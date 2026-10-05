@@ -1,0 +1,13 @@
+{
+  "m": 4,
+  "n": 5,
+  "K": 16,
+  "radius": "1/2560",
+  "correction_identities": 16,
+  "kernel_moments": 4,
+  "positive_density_lower_bound": "1/2",
+  "constant_density_intervals": 145,
+  "orders_enumerated": 120,
+  "source_certificate": "research/2026-09-30/exceptional/local_m4.json",
+  "scope": "Remaining orders follow from the proved disjoint-density response lemma, not enumeration."
+}

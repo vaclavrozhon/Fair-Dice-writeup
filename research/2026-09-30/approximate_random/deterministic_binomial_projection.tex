@@ -1,0 +1,153 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\title{A deterministic lower bound for the binomial triple projection}
+\author{Research note; independently reviewed by two other agents}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+Let $\rho_1,\ldots,\rho_m$ be arbitrary permutations of $[n]$, with no
+randomness or independence assumption. On distinct labels put
+\[
+ \delta_i(a,b,c)=\frac12-\frac32
+    \mathbf1\{\rho_i(b)<\rho_i(a),\rho_i(b)<\rho_i(c)\}.
+\]
+Write $d=n-3$, $p_i=(i-1)/(m-1)$, and
+\[
+ w_i(a)=\binom da p_i^a(1-p_i)^{d-a},\qquad
+ h=\binom n3m^{-3}(1-1/m)^{n-3}.
+\]
+The triple contribution in the palindrome expansion is the following
+function on target permutations:
+\[
+ S(\sigma)=h\sum_{a=0}^{d}\sum_{i=1}^m
+ w_i(a)\delta_i(\sigma_{a+1},\sigma_{a+2},\sigma_{a+3}).
+\]
+The terminology ``projection'' refers to the decomposition for the
+independent random model. The displayed function itself makes sense for
+every deterministic block sequence.
+
+\begin{theorem}\label{main}
+There are absolute constants $c_0,c_1>0$ and $n_0$ such that, for
+$n\ge n_0$ and
+\[
+ n\le m\le c_0 n^{3/2},
+\]
+every choice of the block permutations satisfies
+\[
+ \max_{\sigma\in S_n}S(\sigma)-\min_{\sigma\in S_n}S(\sigma)
+ \ge c_1\frac{n^{13/4}}{m^{5/2}}.
+\]
+The range is witnessed by independent middle-pair swaps in disjoint
+six-label windows in the central third of the target permutation.
+\end{theorem}
+
+\paragraph{Scope.}
+This theorem concerns the displayed linear contribution. It is not a
+lower bound for the complete ordering error of arbitrary deterministic
+palindrome sequences. The other terms can depend strongly on the block
+sequence; the probabilistic remainder bounds for independent blocks
+cannot be used for a deterministic sequence.
+
+\begin{lemma}[Central binomial weights]\label{weights}
+For $d$ sufficiently large, $d/4\le a\le3d/4$, and $m\ge d+3$, put
+$Z_a=\sum_iw_i(a)$. There are absolute constants $C,c>0$ such that
+\[
+ c\frac md\le Z_a\le C\frac md,
+ \qquad c\frac m{d^{3/2}}\le\sum_iw_i(a)^2
+                           \le C\frac m{d^{3/2}},
+\]
+\[
+ \qquad
+ \sum_i|w_i(a+r)-w_i(a)|\le C\frac m{d^{3/2}}
+ \quad (|r|\le3),
+\]
+provided the shifted indices also lie in $[d/4,3d/4]$. In particular,
+the normalized weights $\mu_i=w_i(a)/Z_a$ satisfy
+$\sum_i\mu_i^2\asymp\sqrt d/m$.
+\end{lemma}
+\begin{proof}
+Let $f_a(p)=\binom da p^a(1-p)^{d-a}$. It is unimodal, has integral
+$1/(d+1)$, and, by Stirling's bounds, maximum at most $C/\sqrt d$
+uniformly over central $a$. For a function $f$ of bounded variation,
+its sum on the grid of mesh $1/(m-1)$ differs from $(m-1)\int f$ by
+at most its total variation plus endpoint terms. Consequently the
+error for $f_a$ is $O(d^{-1/2})$, proving the estimates for $Z_a$.
+For the squared weights, the beta integral and the same Stirling bounds
+give
+\[
+ \int_0^1 f_a(p)^2\,dp
+ =\frac{\binom da^2}{(2d+1)\binom{2d}{2a}}
+ \asymp d^{-3/2}.
+\]
+The squared function is unimodal with maximum $O(d^{-1})$, so its
+grid error is $O(d^{-1})$, smaller than its main term for $m\ge d+3$
+and sufficiently large $d$. This proves the squared-weight estimate.
+
+For neighboring indices, let
+$g(p)=\binom{d+1}{a+1}p^{a+1}(1-p)^{d-a}$. Direct differentiation gives
+\[
+ g'(p)=(d+1)(f_a(p)-f_{a+1}(p)).
+\]
+Thus $\int|f_a-f_{a+1}|=2\max g/(d+1)=O(d^{-3/2})$.
+The total variation of $|f_a-f_{a+1}|$ is at most the sum of the
+variations of $f_a,f_{a+1}$, hence is $O(d^{-1/2})$. The grid estimate
+therefore gives $O(md^{-3/2}+d^{-1/2})=O(md^{-3/2})$.
+Telescoping proves the claim for all the stated shifts.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{main}]
+Use the weighted six-window theorem in the companion note
+\emph{Weighted collision bounds for triple minima and six-window
+swaps}: for a weighted permutation family on a set of $N$ labels with
+$\kappa=\sum_i\mu_i^2$ and $N\ge C_*/\kappa$, some six distinct
+labels have a middle-pair swap changing the sum of their four consecutive
+triple scores by at least $c_*\sqrt\kappa$. Its constants are absolute,
+and its conclusion is preserved on restriction to a label subset.
+
+Fix $J=\lfloor n/40\rfloor$ disjoint six-position windows in the central
+third of the target order; a harmless increase in $n_0$ ensures that
+this is possible. Fill these windows successively with labels, always
+using labels not used in earlier windows. At every step at least
+$n-6J\ge n/2$ labels are available. If $a$ is the start of the first
+of the four affected triples in the current window, all starts
+$a,a+1,a+2,a+3$ are central.
+
+Take the distribution $\mu_i=w_i(a)/Z_a$. By Lemma~\ref{weights},
+$\kappa\asymp\sqrt n/m$. We can choose $c_0$ sufficiently small that
+$n/2\ge C_*/\kappa$. Apply the weighted six-window theorem on the
+unused labels. It supplies six labels and a swap with absolute
+normalized score difference at least
+$c n^{1/4}/\sqrt m$.
+
+Replace each constant weight
+$w_i(a)$ by the actual weight $w_i(a+r)$ in its corresponding triple,
+for $r=0,1,2,3$. Lemma~\ref{weights} bounds the resulting normalized
+change by
+\[
+ \frac2{Z_a}\sum_{r=0}^3\sum_i|w_i(a+r)-w_i(a)|
+       \le \frac C{\sqrt n}.
+\]
+After decreasing $c_0$ once more, this error is less than half the
+supplied swap difference. Thus the actual change in $S$ from this window
+is at least
+\[
+ c\,h Z_a\frac{n^{1/4}}{\sqrt m}
+ \ge c\,h\frac mn\frac{n^{1/4}}{\sqrt m}.
+\]
+Repeat for all windows and put the remaining labels arbitrarily in the
+remaining positions. The two exterior labels on each side of each
+swapped pair stay fixed, so all affected triples lie inside their
+own window. The effects of the $J$ binary choices are exactly additive.
+Hence the range is at least the sum of the $J$ absolute changes.
+Using $J\ge cn$ and $h\ge c n^3/m^3$ proves
+\[
+ \operatorname{range}(S)
+ \ge c n\frac{n^3}{m^3}\frac mn\frac{n^{1/4}}{\sqrt m}
+ =c\frac{n^{13/4}}{m^{5/2}},
+\]
+as required.
+\end{proof}
+\end{document}

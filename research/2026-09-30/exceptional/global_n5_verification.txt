@@ -1,0 +1,4 @@
+Exact global density certificate: n=5, distinguished faces=16
+Verified 16 correction identities, 4 kernel moments, disjoint supports, normalized positive densities
+Density deviations < 1/2; 145 rational constant-density intervals
+Independent exact integration: all 120 orders equal 1/120

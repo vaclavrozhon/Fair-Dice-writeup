@@ -1,0 +1,377 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[provide=*,czech]{babel}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,array,needspace,hyperref}
+\setlength{\emergencystretch}{2em}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,
+pdftitle={Asymptotické otevřené problémy o férových kostkách},
+pdfauthor={Výzkumné poznámky k rukopisu Fair-Dice-writeup}}
+\newtheorem{veta}{Věta}
+\newcommand{\soubor}[1]{\par\smallskip\noindent\path{#1}\par\smallskip}
+\title{Asymptotické otevřené problémy o férových kostkách\\
+\large Výsledky a mapa důkazů}
+\author{Výzkumné poznámky k rukopisu \texttt{Fair-Dice-writeup}}
+\date{30. září--1. října 2026}
+\begin{document}\maketitle
+
+Nejvýraznější výsledek se týká třetí otázky v závěru článku:
+\emph{exponenciální dolní mez pro každou jednotlivou kostku neplatí.}
+Navíc lze určit správný asymptotický řád minima pro jednu zadanou kostku:
+je to $\Theta(n^2)$. Otázky optimální celkové velikosti a polynomiálního
+vyrovnání počtů stěn zůstávají otevřené.
+
+Zpráva se soustředí na obecná tvrzení pro rostoucí $n$. Hlavní důkazy o kvadratickém minimu, více malých kostkách a koncovém profilu prošly
+třemi oddělenými matematickými kontrolami spolupracujících agentů. Jde o interní kontrolu důkazů,
+nikoli strojovou formalizaci nebo externí recenzní řízení. Rešerše
+neopravňuje k definitivnímu tvrzení o historické novosti všech výsledků.
+Zdrojový článek nebyl v rámci této práce přepisován.
+
+\section{Tři původní otázky}
+
+Označme $A_n$ nejmenší celkový počet stěn v permutačně férové rodině
+$n$ konečných rovnoměrných kostek a $E_n$ stejné minimum při požadavku
+stejných počtů stěn. Dále nechť $g(n)$ je nejmenší počet stěn jedné
+zadané kostky; ostatní kostky mohou být libovolně velké.
+
+\begin{center}
+\begin{tabular}{>{\raggedright\arraybackslash}p{.31\textwidth}>{\raggedright\arraybackslash}p{.61\textwidth}}
+\toprule
+Otázka & Výsledek\\
+\midrule
+Asymptotika $A_n$ & Stále $\exp(\Omega(n))\le A_n\le
+\exp(O(n\log n))$. Mezera nebyla uzavřena.\\[4pt]
+Je $E_n\le A_n^C$? & Otevřeno. Dostáváme alespoň
+$E_n\le A_n^{O(\log n)}=A_n^{O(\log\log A_n)}$.\\[4pt]
+Musí být každá kostka exponenciální? & Ne. Platí
+$g(n)=\Theta(n^2)$, a dokonce lze předepsat každý dostatečně velký
+kvadratický počet stěn.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Uvedený kvazipolynomiální odhad pro $E_n$ je elementárním důsledkem
+již známé absolutní horní meze $\exp(O(n\log n))$ a exponenciální
+dolní meze pro $A_n$. Nejde o nový vyrovnávací postup aplikovaný na
+optimální nevyrovnanou rodinu. Konstrukce se $C(n!)^2$ stěnami na každé
+kostce zpřesňuje explicitní horní mez, ale nemění její známý asymptotický řád.
+\soubor{size_bounds/factorial_squared_construction.tex}
+\soubor{size_bounds/equalization_notes.tex}
+
+\Needspace{11\baselineskip}
+\section{Jedna zadaná kostka: přesně kvadratický řád}
+
+\begin{veta}
+Existují absolutní konstanty $c,C>0$ takové, že:
+\begin{enumerate}
+\item každá jednotlivá kostka v permutačně férové rodině $n$ konečných
+rovnoměrných kostek má alespoň $cn^2$ stěn;
+\item pro každé celé $K\ge Cn^2$ existuje taková rodina, v níž má
+zadaná kostka přesně $K$ stěn;
+\item ostatních $n-1$ kostek v této konstrukci může mít jeden společný
+konečný počet stěn.
+\end{enumerate}
+\end{veta}
+
+Počet stěn ostatních kostek v horní konstrukci může být velmi velký.
+Věta tedy neřeší minimum součtu stěn a je slučitelná s tím, že téměř
+všechny kostky musejí být exponenciálně velké.
+
+\subsection*{Myšlenka horní konstrukce}
+
+Reálná rovnoměrná kvadratura stupně $O(n)$ potřebuje jen $O(n^2)$ uzlů.
+Existenci pro každý dostatečně velký počet uzlů dává rovnoměrný případ
+věty Gilboy a Peleda; viz
+\href{https://arxiv.org/abs/1507.01505}{Chebyshev-type quadratures for doubling weights,
+Theorem 1.1}. Uzly se nejprve regularizují, aby byly různé a uvnitř
+intervalu. Poté se aproximují racionálními čísly.
+
+Vzniklou malou chybu neopravujeme přidáváním stěn zadané kostce.
+Opravují ji malé racionální změny hustot ostatních kostek, lokalizované
+kolem různých uzlů. Každá změna má nulové plné momenty do potřebného
+stupně. Díky disjunktním podporám v integrálu pořadí zaniknou všechny
+vyšší smíšené členy. Zbývající lineární člen je přesně derivace chyby
+kvadratury. Vandermondovy soustavy umožní tuto chybu odstranit.
+
+Nakonec jsou všechny hustoty kladné racionální schodové funkce.
+Každý interval konstantních hustot lze nahradit již známým konečným
+férovým blokem s vhodně násobenými počty jednotlivých písmen.
+Tím vznikne rodina skutečných konečných rovnoměrných kostek.
+
+\soubor{size_bounds/polynomial_exceptional_die.tex}
+\soubor{size_bounds/centered_bump_simplification.tex}
+\soubor{rational_designs/asymptotic/every_large_exceptional_size.tex}
+
+\subsection*{Myšlenka dolní meze}
+
+Uspořádáme stěny zadané kostky a zapíšeme $p_i(q)$ pro podíl stěn
+$i$té jiné kostky pod její $q$tou stěnou. Sloupce jsou neklesající a
+férovost dává přesné smíšené momenty
+\[
+ \mathbb E_w\prod_{i\in S}p_i=\frac1{|S|+1},\qquad m=n-1.
+\]
+Pro tuto část důkazu dokonce stačí, aby zadaná kostka vyhrávala každý
+podsoubor, který ji obsahuje, s pravděpodobností převrácené velikosti
+tohoto podsouboru.
+
+Závěrečná kontrola přinesla krátký elementární důkaz. Monotónní řádky
+spojíme pomocnou spojitou křivkou. Pro dva sloupce a bod této křivky
+je součin rozdílů od jejich hodnot v tomto bodě nezáporný na všech
+řádcích. Sloupce rozdělíme do disjunktních dvojic; v každé dvojici
+zvolíme první okamžik, kdy některý sloupec dosáhne předepsané hodnoty.
+Jeden kořen příslušného skalárního součinu je pak přesně předepsaný,
+druhý leží pod ním. Přesné smíšené momenty dovolují jeho střední
+hodnotu vypočítat jednorozměrným integrálem.
+
+Gaussova kvadratura nejprve ukáže, že v posledním řádku je
+každé $p_i$ alespoň $1-C/m^2$. Gaussova--Radauova kvadratura
+s koncovým uzlem $1$ pak ze součinu dvojic vytvoří normalizovaný nezáporný test,
+jehož integrál je $O(m^{-2})$ a jehož hodnota na posledním řádku
+je zdola omezená. Proto je váha posledního řádku $O(m^{-2})$.
+Jelikož u rovnoměrné kostky je váha každé stěny $1/K$,
+dostáváme $K\ge cm^2$. Důkaz dává například explicitní mez
+$K\ge(n-1)^2/200$.
+
+Potřebné kvadraturní skutečnosti jsou v důkazu odvozeny z elementárních
+identit Legendreových polynomů. Starší analytický důkaz pomocí
+Laguerrových polynomů zůstává uložený; pro tento výsledek už není nutný.
+\soubor{size_bounds/QUADRATIC_PROOF_GUIDE.txt}
+\soubor{independent_directions/elementary_quadratic_atom_bound.tex}
+\soubor{size_bounds/quadratic_per_die_lower_bound.tex}
+
+\section{Více zadaných malých kostek}
+
+\begin{veta}
+Pro každé pevné $k$ existují konstanty $C_k,c_k>0$ takové, že pro
+všechna dostatečně velká $n$ má některá úplně konečná permutačně
+férová rodina $k$ zadaných kostek se stejným počtem stěn, nejvýše
+$C_k n^{c_k}$. Ostatních $n-k$ kostek může mít jiný společný
+konečný počet stěn.
+\end{veta}
+
+Závislost na $k$ se podařilo řídit jednotně. Existuje absolutní $C$
+takové, že pro $n>k\ge1$ lze společný počet stěn zadaných kostek
+omezit výrazem
+\[
+ S\le(n+2^k+2)^{\exp(Ck^2)}.
+\]
+Pro nějaké absolutní $c>0$ tedy může mít
+$\lfloor c\sqrt{\log n}\rfloor$ zadaných kostek každá nejvýše
+$\exp(\sqrt n)$ stěn. Pro $k=o(\sqrt{\log n})$ dostáváme
+$S\le\exp(n^{o(1)})$. Jde o subexponenciální velikosti rostoucího
+počtu zadaných kostek; ostatní kostky mohou zůstat velmi velké.
+Jednotný polynomiální odhad $n^C$ pro rostoucí $k$ tím získán není.
+Pro dvě kostky dává samostatná,
+kvantitativnější konstrukce počty $O(n^6)$ a $O(n^{162})$; tyto
+exponenty rovněž nebyly optimalizovány.
+
+Důkaz postupně odděluje z pevného počtu původně rovnoměrných
+spojitých proměnných jednotlivé hustoty. Jejich podpory leží v
+čistých intervalech: v každém intervalu je kladná právě jedna
+z těchto hustot. Přidávaná proměnná proto může ve stejném intervalu
+potkat nejvýše jednu starší proměnnou. Pro zachování všech pořadí
+stačí lokálně zachovat uspořádané polynomiální momenty dvojice.
+
+Klíčové je společně řídit jmenovatele napříč všemi intervaly.
+Při každém kroku se udržuje zásoba nízkých momentů na jednom
+polynomiálním racionálním rastru. Pro získání výstupních momentů do
+stupně $q$ stačí vstupní zásoba do stupně $2q+1$. Konečný počet kroků
+proto vyžaduje jen pevnou počáteční zásobu. Oddělené Legendreovy
+perturbace zajišťují polynomiální podmíněnost momentových soustav.
+Stejný malý racionální podblok soustavy ve všech intervalech pak
+zajišťuje jeden společný jmenovatel; samotné oddělené odhady
+jmenovatelů jednotlivých řešení by nestačily.
+
+Kladnost při dokončování hustot se dokazuje pomocí podílového odhadu
+polynomů modulo nízké momenty v jednotlivých intervalech. Všechny
+intervaly lze udržet polynomiálně široké. Kvadratura uvnitř čistých
+intervalů a zobecněná lokální korekce nakonec převedou celou rodinu
+na skutečné konečné kostky, při zachování polynomiálních počtů stěn
+zadaných $k$ kostek.
+
+\soubor{independent_directions/fixed_number_polynomial_dice.tex}
+\soubor{size_bounds/synchronized_local_moment_completion.tex}
+\soubor{size_bounds/uniform_grid_moment_refinement.tex}
+\soubor{size_bounds/clustered_multi_exceptional_lifting.tex}
+\soubor{size_bounds/two_polynomial_exceptional_dice.tex}
+\soubor{independent_directions/FIXED_K_PROOF_GUIDE.txt}
+\soubor{size_bounds/uniform_prefix_conditioning.tex}
+\soubor{size_bounds/uniform_fixed_number_complexity.tex}
+
+\section{Další asymptotické výsledky}
+
+\paragraph{Všechny dostatečně velké přípustné velikosti.}
+Položme $P_n=\prod_{p\le n}p$. Existuje absolutní konstanta $C$ taková,
+že každý celý počet $M\ge\exp(Cn\log(n+1))$ dělitelný $P_n$ lze
+realizovat jako společný počet stěn permutačně férových $n$ kostek.
+Nad touto hranicí tedy již nejsou další aritmetické překážky.
+
+Pomocná konstrukce doplní každé počáteční slovo $u$ doslova jako prefix
+férového slova se společným počtem stěn nejvýše
+$(|u|+1)\exp(O(n\log(n+1)))$.
+Přesnost podpisu slova se při jednotlivých krocích zhruba zdvojnásobuje.
+Relabelování vychází z publikované věty Kuperberga, Lovetta a Peleda o
+\href{https://arxiv.org/abs/1302.4295}{$t$-rovnoměrných množinách permutací};
+stejné součty mocnin řídí pozice bloků a zruší přepravované chyby.
+Krátký podepsaný férový cíl a růstový odhad pro kladné zlomky pak dají
+dvě realizovatelné velikosti $A,A+P_n$. Jejich kladné kombinace vyplní
+všechny dostatečně velké násobky $P_n$. Minimum celkové velikosti tím
+zůstává mezi původními dvěma asymptotickými řády.
+\soubor{size_bounds/order_doubling_prefix_completion.tex}
+\soubor{size_bounds/factorial_order_eventual_conductor.tex}
+
+\paragraph{Co brání jednoduchému rozměrovému důkazu.}
+Pro férová slova, jejichž parametrizace vahami stěn má plnou hodnost
+v prostoru redukovaných Lieových podpisů, je optimální délka
+$\exp(\Theta(n\log n))$. Případná konstrukce délky $\exp(O(n))$
+tedy musí mít singulární parametrizaci. Tento odhad se na všechna
+férová slova nevztahuje. Obecné konstrukce ukazují, že i velmi mnoho
+různých uspořádaných prefixových souřadnic může být totožných.
+Samotné momenty na disjunktních množinách písmen navíc připouštějí
+kladné semidefinitní doplnění s malou hodností. Silnější dolní mez
+pro celkovou velikost by musela využít další strukturu skutečného slova.
+\soubor{size_bounds/regular_fair_realizations_and_rank_barrier.tex}
+\soubor{independent_directions/prefix_signature_rank_obstruction.tex}
+\soubor{rational_designs/asymptotic/squarefree_prefix_gram_barrier.tex}
+\soubor{size_bounds/fair_signature_hankel_rank.tex}
+
+\paragraph{Přibližná férovost.}
+Jestliže pro každé úplné pořadí $\pi$ platí
+$|n!\Pr(\pi)-1|\le\varepsilon\le1/2$, pak má každá kostka alespoň
+\[
+ c n\min\{n,\log(1/\varepsilon)\}
+\]
+stěn. Pro pevnou chybu je tato mez lineární; pro exponenciálně malou
+chybu je kvadratická. Důkaz přesné dolní meze lze stabilizovat, protože
+chyba polynomiálního testu stupně $d$ roste jako
+$\varepsilon\exp(O(d))$, bez dodatečného faktoru $n^d$.
+Při $\varepsilon=0$ rozumíme $\log(1/\varepsilon)=+\infty$.
+\soubor{rational_designs/asymptotic/sharp_approximate_per_die_lower_bound.tex}
+
+Randomizovaná konstrukce z palindromických bloků dává opačný odhad
+\[
+ O\!\left(n^{13/10}(\log n)^{1/5}\varepsilon^{-2/5}\right)
+\]
+stěn na kostku. Pro pevné $\varepsilon$ tedy zůstává zajímavá mezera
+mezi lineární dolní mezí a touto horní mezí.
+\soubor{approximate_random/refined_random_palindrome_bound.tex}
+
+\paragraph{Racionální skalární kvadratura.}
+Je-li $R_r$ nejmenší počet stejně vážených racionálních uzlů kvadratury
+rovnoměrné míry na intervalu, přesné do stupně $r$, přičemž uzly se
+mohou opakovat, platí
+\[
+ 2^{2\lfloor r/2\rfloor}\le R_r\le2^r+O(2^{r/2}).
+\]
+Zejména pro sudé $r$ je $R_r/2^r\to1$. Horní mez používá publikovanou
+lokální teorii a kruhovou metodu; nejde o tvrzení o novosti této
+číselněteoretické části. Tento výsledek vysvětluje, proč protipříklad
+k exponenciálnímu počtu stěn jednotlivé kostky musel využít rozdílné
+srovnávací sloupce, nikoli malou racionální skalární kvadraturu.
+\soubor{independent_directions/optimized_two_adic_filter.tex}
+\soubor{size_bounds/mitkin_sharp_rational_upper.tex}
+
+\paragraph{Struktura srovnávacích sloupců.}
+V obecném monotónním modelu smíšených momentů položme
+$u_i=1-p_i$ a $s=\sum_i u_i$. Platí ostrý relativní odhad
+\[
+ \max_i m(1-p_i)\le C(s+1/m),\qquad s=\sum_i(1-p_i).
+\]
+Navíc pro každé pevné $L<\infty$ platí jednotně až ke kraji
+\[
+ \max_i|m(1-p_i)-s|\le C_L R_m(s),\qquad
+ R_m(s)=\min\{ms,\sqrt{s/m}+1/m\},
+ \qquad 0\le s\le L.
+\]
+Na každém pevném kladném rozsahu je tedy chyba $O(m^{-1/2})$.
+Pro každou škálu $\lambda\in(0,L]$ existují skutečné konečné rovnoměrné
+férové kostky s řádkem, kde $s\asymp_L\lambda$ a chyba je alespoň
+$c_L R_m(\lambda)$. Obálka je tedy ostrá na všech omezených koncových
+škálách. Příklady předepisují $s$ až na konstantní násobek, nikoli jeho
+přesnou hodnotu. Gaussovy uzly dávají větev $\lambda\ge1/m$;
+Legendreova perturbace s proměnnou amplitudou pokrývá menší škály.
+Přenos na skutečné kostky neposkytuje odhad počtu stěn: aproximuje
+skalární momentovou míru pravidelnou kvadraturou a využívá libovolně
+malých korekcí v konstrukci jedné zadané kostky.
+Z horního odhadu také plyne relativní sbližování
+$m(1-p_i)/s\to1$, stejnoměrně ve všech sloupcích, kdykoli $ms\to\infty$
+a $s\le L$.
+Pro obecné kladné váhy řádků navíc platí
+$w_q\le C_L(\sqrt{s_q}/m^{3/2}+m^{-2})$.
+Ostrost této poslední meze je doložena ve váženém modelu;
+odpovídající optimální počty stěn rovnoměrných kostek z ní nevyvozujeme.
+\soubor{sharp_endpoint_relative_balance.tex}
+\soubor{endpoint_profile_sharpness.tex}
+\soubor{endpoint_profile_fluctuation_barrier.tex}
+\soubor{finite_profile_realization.tex}
+\soubor{rational_designs/asymptotic/quantitative_uniform_endpoint_profile.tex}
+\soubor{independent_directions/optimal_interior_endpoint_profile.tex}
+\soubor{rational_designs/asymptotic/variable_jackson_endpoint_kernel.tex}
+\soubor{independent_directions/natural_scale_endpoint_profile.tex}
+\soubor{independent_directions/intermediate_endpoint_sharpness.tex}
+\soubor{rational_designs/asymptotic/natural_scale_row_atoms.tex}
+\soubor{independent_directions/ENDPOINT_PROFILE_PROOF_GUIDE.txt}
+
+\section{Otázky, které nyní vypadají nejzajímavěji}
+
+\begin{enumerate}
+\item \textbf{Původní mezera pro celkovou velikost.}
+Lze dosáhnout $\exp(O(n))$ celkových stěn, nebo platí silnější
+dolní mez? Dosavadní aritmetické překážky samy rozlišení nedávají.
+
+\item \textbf{Polynomiální vyrovnání.}
+Lze z nerovnoměrných počtů stěn přejít ke stejným počtům za
+polynomiální cenu? Samotné vyrovnání četností bloků nestačí:
+pořadí výběrů z různých bloků může férovost porušit.
+
+\item \textbf{Ostré minimum pro dvě zadané kostky.}
+Mohou mít obě jen $O(n^2)$ stěn? Současná konstrukce dává
+polynomiální, ale velmi hrubou horní mez. Metoda s alespoň $m^2$
+uzly v každé čisté skupině má vlastní kubickou bariéru; její prosté
+optimalizování proto ke kvadratickému výsledku nestačí.
+Viz \path{size_bounds/clustered_lifting_cubic_barrier.tex}.
+
+\item \textbf{Rostoucí počet malých kostek.}
+Pro každé pevné $k$ je polynomiální existence vyřešena a exponent lze
+omezit $\exp(O(k^2))$. Lze tuto závislost výrazně zlepšit?
+Jsou-li všechny malé kostky omezeny
+stejným $n^C$, pak nutně $k\le(2C+o(1))\log n$.
+Pokud by šlo dosáhnout $c\log N$ kostek s nejvýše $N^C$ stěnami,
+s absolutními $c,C>0$, omezování na jejich podsoubory by už dalo
+$A_r=\exp(O(r))$ a vyřešilo první původní otázku. Současná věta
+pro pevné $k$ takový závěr nedává. Viz
+\path{many_small_dice_reduction.tex}.
+
+\item \textbf{Pevná přibližná chyba.}
+Stačí $n^{1+o(1)}$ stěn na každé kostce? Nebo je univerzálně nutný
+větší než lineární řád? Výsledky pro jednu konkrétní randomizovanou
+konstrukci neposkytují dolní mez pro všechny konstrukce.
+
+\item \textbf{Profil na rostoucím rozsahu.}
+Na každém pevném omezeném rozsahu $s$ je již dokázán odhad
+$C_L(\sqrt{s/m}+1/m)$, včetně kraje $s=0$.
+Jak optimálně závisí konstanta $C_L$ na $L$? Lze obdobně ostré
+sbližování popsat pro rostoucí $s=s(m)$ a postupně až ve středu profilu?
+\end{enumerate}
+
+\section{Jak číst uložené podklady}
+
+Pro první čtení doporučuji horní konstrukci jedné malé kostky,
+poté \path{size_bounds/QUADRATIC_PROOF_GUIDE.txt} a závěrečnou kvadratickou
+dolní mez. Důkazy pro pevný počet malých kostek tvoří samostatnou větev a nejsou
+závislostí výsledku $g(n)=\Theta(n^2)$.
+Jejich nejkratší mapa je
+\path{independent_directions/FIXED_K_PROOF_GUIDE.txt}.
+Jednotnou závislost na $k$ rozepisuje také
+\path{size_bounds/FIXED_K_PROOF_GUIDE.txt}.
+
+Soubory \path{ASYMPTOTIC_STATUS.txt}, \path{PROGRESS.txt} a
+\path{ROOT_REVIEW.txt} zachycují aktuální stav, průběh a kontroly.
+Stručný audit výsledného balíku je v \path{FINAL_REVIEW.txt}.
+Ve složce jsou zachovány i starší mezivýsledky a neúspěšné směry.
+Jejich přítomnost neznamená, že jsou dalšími potřebnými částmi
+aktuálního důkazu. U výsledků v této zprávě existují souběžné zdrojové
+soubory \texttt{.tex} a zkompilované \texttt{.pdf}.
+
+\end{document}

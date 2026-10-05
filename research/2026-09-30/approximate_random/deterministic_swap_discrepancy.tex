@@ -1,0 +1,168 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\del}{\delta}
+\title{Deterministic six-window discrepancy for short permutation families}
+\author{Research note; independently reviewed by two other agents}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+For a probability distribution $\mu$ supported on $q$ permutations of
+$[n]$, define, on distinct labels,
+\[
+ \del(a,b,c)=\frac12-\frac32
+       \Pr_{\rho\sim\mu}(\rho(b)<\rho(a),\rho(b)<\rho(c)).
+\]
+Thus $|\del|\le1$, $\del(a,b,c)=\del(c,b,a)$, and the sum over the
+three choices of center is zero. For a target permutation $\sigma$, put
+\[
+ F(\sigma)=\sum_{j=1}^{n-2}
+       \del(\sigma_j,\sigma_{j+1},\sigma_{j+2}).
+\]
+This is a constant-position-weight version of the triple contribution
+in the palindrome construction. The conclusions below are about this
+linear statistic, not the full nonlinear fair-order probabilities.
+
+\begin{theorem}\label{main}
+There are absolute constants $C,c>0$ such that, if $n\ge Cq$, some six
+distinct labels have an interior middle-pair swap which changes their
+four-triple path score by at least $c/\sqrt q$.
+If $n\ge2Cq$, then
+\[
+ \max_\sigma F(\sigma)-\min_\sigma F(\sigma)
+       \ge c\frac n{\sqrt q}.
+\]
+The second conclusion can be witnessed on a family of independent swaps
+in disjoint six-label windows.
+\end{theorem}
+
+For any six labels define the swap difference
+\begin{align*}
+ D(a,b,c,d,e,f)={}&\del(a,b,c)+\del(b,c,d)+\del(c,d,e)+\del(d,e,f)\\
+ &-\del(a,b,d)-\del(b,d,c)-\del(d,c,e)-\del(c,e,f).
+\end{align*}
+
+\begin{lemma}[Small swaps force a pair coboundary]\label{coboundary}
+Let $\del$ be any function on distinct triples with the symmetry,
+center-sum identity, and bound $|\del|\le1$ stated above. Suppose
+$|D(a,b,c,d,e,f)|\le\eta$ for every six distinct labels. Then there
+is an antisymmetric array $a_{ij}=-a_{ji}$, with $|a_{ij}|\le3/2$,
+such that, for all distinct $b,c,d$,
+\[
+ |\del(b,c,d)-a_{cb}-a_{cd}|\le\eta+\frac{128}{n}.
+\]
+\end{lemma}
+\begin{proof}
+Extend $\del$ to be zero when labels repeat, so all its identities
+remain valid. All averages in this proof are uniform over all $n$ labels,
+with replacement. Define
+\[
+ U_b(c)=\mathbb E_a\del(a,b,c),\qquad
+ r_b=\mathbb E_c U_b(c),\qquad s_c=\mathbb E_b U_b(c).
+\]
+Averaging the center-sum identity gives $s_c=-r_c/2$ and
+$\mathbb E_c r_c=0$. Set
+\[
+ K_b(c,d)=\del(b,c,d)-\del(b,d,c)+U_b(c)-U_b(d),
+\]
+\[
+ V(c,d)=\mathbb E_b K_b(c,d)
+       =U_c(d)-U_d(c)-r_c/2+r_d/2.
+\]
+For fixed distinct $b,c,d,e$, averaging $D(a,b,c,d,e,f)$ over $a,f$
+gives exactly $K_b(c,d)-K_e(c,d)$. The probability that the six labels
+are not distinct is at most $9/n$, and $|D|\le8$. Consequently
+\[
+ |K_b(c,d)-K_e(c,d)|\le\eta+72/n.
+\]
+Averaging over $e$, including the at most three exceptional values, and
+using $|K_b-K_e|\le8$, yields, for distinct $b,c,d$,
+\[
+ |K_b(c,d)-V(c,d)|\le\zeta:=\eta+96/n.\tag{2}
+\]
+
+For distinct $b,c$, average (2) over $d$. The exceptional two values
+contribute at most $14/n$, since $|K_b-V|\le7$. Directly averaging
+the definitions gives
+\[
+ \left|2U_b(c)+2U_c(b)-r_b-r_c\right|
+       \le\zeta+14/n=: \zeta_2.\tag{3}
+\]
+Indeed, $\mathbb E_d[K_b(c,d)-V(c,d)]$ equals the expression inside
+the absolute value in (3).
+Put
+\[
+ S_{bc}=U_b(c)+U_c(b)-(r_b+r_c)/2,
+ \qquad
+ a_{bc}=\frac{U_b(c)-U_c(b)}2+\frac{r_c-r_b}4.
+\]
+Then $|S_{bc}|\le\zeta_2/2$, $a$ is antisymmetric, and $|a_{bc}|\le3/2$.
+Use the center-sum identity to write $3\del(b,c,d)$ as the sum of its
+differences with the other two centers. Apply (2) to each difference.
+After substituting the definitions, this gives
+\[
+ 3\bigl(\del(b,c,d)-a_{cb}-a_{cd}\bigr)
+   =-\tfrac12S_{cb}-\tfrac12S_{cd}+S_{bd}+E,
+ \qquad |E|\le2\zeta.
+\]
+The absolute value is at most $\zeta_2+2\zeta$, proving the stated
+bound (in fact $\eta+101/n$ is enough).
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{main}]
+Let $\eta$ be the largest absolute six-label swap difference, and take
+$a$ from Lemma~\ref{coboundary}. Write $m=n-1$,
+$\tau=\eta+128/n$, and
+$p_{ij}=\Pr(\rho(i)<\rho(j))$. Define
+\[
+ d_{ij}=p_{ij}-\frac13+\frac43a_{ij}.
+\]
+Antisymmetry and $p_{ij}+p_{ji}=1$ imply
+$d_{ij}+d_{ji}=1/3$. Hence some $i$ satisfies
+$\sum_{j\ne i}d_{ij}\ge m/6$.
+
+As before, form the Gram matrix $G$ of the $m$ indicator vectors
+$\mathbf1_{\rho(i)<\rho(j)}$ in the weighted $q$-dimensional space.
+It has rank at most $q$, diagonal $p_{ij}$, and off-diagonal
+\[
+ G_{jk}=\frac13-\frac23\del(j,i,k)
+       =\frac13-\frac23(a_{ij}+a_{ik})+E_{jk},
+ \qquad |E_{jk}|\le\frac23\tau.
+\]
+Subtract the displayed rank-at-most-two additive matrix, including its
+diagonal, to obtain $B=\operatorname{diag}(d_{ij})+E$, where $E$ has
+zero diagonal. Then $B$ is symmetric with rank at most $q+2$,
+$\operatorname{tr}B\ge m/6$, and $|d_{ij}|\le8/3$. Thus
+\[
+ \frac m6\le\sqrt{q+2}\,\|B\|_F
+ \le\sqrt{q+2}\left(\frac83\sqrt m+\frac23\tau m\right).
+\]
+It follows that
+\[
+ \eta\ge\frac1{4\sqrt{q+2}}-\frac4{\sqrt{n-1}}-\frac{128}{n}.
+\]
+For example, $n\ge2^{16}q+1$ makes the right side at least
+$1/(64\sqrt q)$.
+
+The argument is hereditary under restricting to unused labels. Greedily
+choose disjoint six-label windows while at least $2^{16}q+1$ labels
+remain. In each, permit only the swap of its middle two labels; the
+outer two labels on each side stay fixed. Every affected triple lies
+entirely in that window. On the resulting binary family of target
+permutations, $F$ is therefore a constant plus a sum of independent
+binary choices with coefficients $D_j$. Its range is exactly
+$\sum_j|D_j|$. For $n$ at least twice a sufficiently large constant
+times $q$, there are at least $c n$ windows, proving the result.
+\end{proof}
+
+\paragraph{Further refinement and remaining obstacle.}
+The companion notes \emph{Weighted collision bounds for triple minima
+and six-window swaps} and \emph{A deterministic lower bound for the
+binomial triple projection} strengthen this result to weighted effective
+support and prove a lower bound of order $n^{13/4}/M^{5/2}$ for the
+actual binomial triple contribution whenever $n\le M\le c n^{3/2}$.
+These extensions have also been independently reviewed. Control of the
+full deterministic nonlinear remainder remains open.
+\end{document}

@@ -1,0 +1,13 @@
+{
+  "m": 20,
+  "n": 21,
+  "K": 400,
+  "radius": "1/1600000",
+  "correction_identities": 400,
+  "kernel_moments": 20,
+  "positive_density_lower_bound": "1/2",
+  "constant_density_intervals": 16401,
+  "orders_enumerated": 0,
+  "source_certificate": "research/2026-09-30/rational_designs/local_model_m20.json",
+  "scope": "Remaining orders follow from the proved disjoint-density response lemma, not enumeration."
+}

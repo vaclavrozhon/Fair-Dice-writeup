@@ -1,0 +1,126 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\title{A necessary inverse-dimension floor in endpoint balance}
+\author{Research note; independently reviewed}
+\date{30 September 2026}
+\begin{document}\maketitle
+The quantitative endpoint statements concern monotone columns satisfying
+\[
+ \mathbb E_w\prod_{i\in S}p_i=\frac1{|S|+1}
+ \qquad(S\subseteq[m]),\qquad
+ u_i=1-p_i,\quad s=\sum_i u_i.
+\]
+They must allow a nonzero additive error even arbitrarily near the
+endpoint. We first give an exact tensor example and then transfer
+its asymptotic inequalities to a fully permutation-fair family of
+finite uniform dice.
+
+\begin{proposition}
+For every $m\ge2$ there is a finite positive-weight monotone tensor
+satisfying the displayed moments and having a last row with
+\[
+ s=\max_i u_i\asymp m^{-2},\qquad
+ \max_i|mu_i-s|\asymp m^{-1}.
+\]
+Consequently a uniform endpoint-profile error $o(m^{-1})$ is impossible
+in this class. Neither $\max_i mu_i\le Cs$ nor
+$\max_i mu_i\le C(s+o(m^{-1}))$ can hold with an absolute constant.
+\end{proposition}
+\begin{proof}
+Let $r\in\{m,m+1\}$ be odd, let $P_r$ be the Legendre polynomial
+normalized by $P_r(1)=1$, and set
+\[
+ \varepsilon=\frac1{2r(r+1)},\qquad
+ p_1(t)=t-\varepsilon P_r(2t-1),\qquad
+ p_i(t)=t\quad(2\le i\le m).
+\]
+The classical bounds $|P_j(x)|\le1$ and
+$|P_r'(x)|\le r(r+1)/2$ on $[-1,1]$ give $p_1'(t)\ge1/2$.
+For completeness, the first bound follows from the integral identity
+\[
+ P_j(x)=\frac1\pi\int_0^\pi
+       (x+i\sqrt{1-x^2}\cos\phi)^j\,d\phi;
+\]
+the integrand has modulus at most one. The derivative expansion
+$P_r'=\sum_{0\le j<r,\ r-j\text{ odd}}(2j+1)P_j$, obtained by
+telescoping $P_{j+1}'-P_{j-1}'=(2j+1)P_j$, proves the second bound.
+These identities also follow directly from the Legendre generating
+function. Since $r$ is odd, $p_1(0)=\varepsilon$ and
+$p_1(1)=1-\varepsilon$. Thus every $p_i$ is increasing and takes values
+in $[0,1]$.
+
+Under uniform measure on $[0,1]$, a product over $k$ columns is either
+$t^k$ or $t^k-\varepsilon t^{k-1}P_r(2t-1)$. Orthogonality of the
+shifted Legendre polynomial to all degrees below $r$ makes its integral
+$1/(k+1)$ in both cases, since $k-1\le m-1<r$.
+
+We record an elementary positive quadrature with both endpoints to
+make the example finite. For an integer $K\ge3$, let $J$ be the
+degree-$(K-2)$ orthogonal polynomial for weight $t(1-t)$ on $[0,1]$.
+Its roots are simple and interior. Take these roots and the two
+endpoints as nodes, with interpolatory weights. Polynomial division
+by $t(1-t)J(t)$ shows that this rule is exact through degree $2K-3$:
+the quotient has degree at most $K-3$, and its integral against
+$t(1-t)J$ is zero by orthogonality. All weights are positive. For an
+interior root $a$, apply exactness to
+$t(1-t)(J(t)/(t-a))^2$; only the node $a$ contributes, and the integral
+is strictly positive. For the endpoints use $(1-t)J(t)^2$ and
+$tJ(t)^2$, respectively.
+
+Choose $K=r+2$. Every product of the columns has degree at most
+$r+m-1\le2r-1$, so this positive rule preserves all the required
+moments. Evaluate the columns at its ordered nodes. At its last node
+$t=1$ we have $u_1=\varepsilon$ and $u_i=0$ for $i>1$. Hence
+$s=\varepsilon$ and $mu_1-s=(m-1)\varepsilon$, which are the claimed
+orders. The asserted failures of uniform bounds follow immediately.
+\end{proof}
+
+\begin{corollary}[Actual finite uniform dice]
+For all sufficiently large $m$ there is a permutation-fair family of
+$m+1$ finite uniform dice and a face of one die whose comparison row
+satisfies
+\[
+ s\asymp m^{-2},\qquad
+ \max_i|m(1-p_i)-s|\asymp m^{-1}.
+\]
+Thus the inverse-dimension additive floor is necessary even for
+actual finite uniform dice. No face-count bound is asserted.
+\end{corollary}
+\begin{proof}
+Keep $r,\varepsilon$ from the preceding proof. Define a probability
+measure $\sigma$ on $[0,1]$ with mass $\varepsilon$ at each endpoint
+and interior density
+\[
+ f(t)=1-2\varepsilon P_r'(2t-1).
+\]
+The preceding derivative bound gives $1/2\le f\le3/2$, and its
+interior CDF is $F_\sigma(t)=t-\varepsilon P_r(2t-1)$.
+For $1\le j\le m$, integration by parts and Legendre orthogonality
+give
+\[
+ \int x^j\,d\sigma(x)
+ =1-j\int_0^1t^{j-1}F_\sigma(t)\,dt
+ =\frac1{j+1}.
+\]
+Take $t=1-\varepsilon/(100m)$. Since $f\le3/2$,
+$1-F_\sigma(t)=\varepsilon+O(\varepsilon/m)$.
+Use \path{finite_profile_realization.tex} with
+$\rho=\varepsilon/(100m)$. At the resulting old-die face,
+\[
+ 1-p_1=\varepsilon+O(\varepsilon/m),\qquad
+ 0\le1-p_i\le\frac{\varepsilon}{50m}\quad(i\ge2).
+\]
+Consequently $s\asymp\varepsilon\asymp m^{-2}$ and
+$m(1-p_1)-s\asymp m\varepsilon\asymp m^{-1}$.
+The upper bound for every column follows from the same inequalities.
+\end{proof}
+
+The Legendre derivative identities are also recorded in the
+\href{https://dlmf.nist.gov/18.9}{NIST Digital Library of Mathematical
+Functions, Section 18.9}. The proof above supplies the estimates used
+here. This example does not contradict a quadratic lower bound on
+equal row counts or on the number of faces of an individual die.
+\end{document}

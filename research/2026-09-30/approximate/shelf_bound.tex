@@ -1,0 +1,128 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\fall}[2]{#1^{\underline{#2}}}
+\title{A finite pointwise bound for alternating-block dice}
+\author{Research notes, 30 September 2026}
+\date{}
+\begin{document}
+\maketitle
+
+\paragraph{Status and attribution.}
+The construction below is a dice realization of the classical shelf shuffle,
+up to reversing labels or inverting the permutation. Its pointwise mixing
+scale is already established by Diaconis, Fulman, and Holmes,
+\emph{Analysis of casino shelf shuffling machines}, Annals of Applied
+Probability 23 (2013), 1692--1720,
+\href{https://arxiv.org/abs/1107.2961}{arXiv:1107.2961}, Theorem 3.4.
+The purpose here is a self-contained finite-parameter estimate suitable for
+the fair-dice article. It improves that article's stated approximate
+construction; it does not solve the exact-fairness open problems.
+
+For $n\geq2$, let
+\[
+ B_n=12\cdots n\,n\cdots21,\qquad s_{n,m}=B_n^m.
+\]
+Each die has $2m$ faces. Let $P_{n,m}(\pi)$ be its order distribution.
+
+\begin{theorem}
+For $n\geq3$ and $m>n/2$, every permutation satisfies
+\[
+ 1-\frac{n(n-1)(n-2)}{6m^2}
+ \leq n!P_{n,m}(\pi)
+ \leq
+ \exp\left(\frac{n(n-1)(n-2)}{12(m^2-n^2/4)}\right).
+\]
+Consequently, for $0<\varepsilon\leq1$, the choice
+\[
+ m=\left\lceil\sqrt{\frac{n^2}{4}
+          +\frac{n(n-1)(n-2)}{6\varepsilon}}\right\rceil
+\]
+gives $|n!P_{n,m}(\pi)-1|\leq\varepsilon$ for every $\pi$.
+Thus $O(n^{3/2}\varepsilon^{-1/2})$ faces per die suffice.
+For $n=2$, the word $1221$ is already exactly fair.
+\end{theorem}
+
+\begin{proof}
+Represent each chosen face by a uniform level in $[m]$ and a uniform choice
+of one of the two occurrences within that level. A block restricted to any
+two letters is pairwise fair. Conditional on every occupied level containing
+at most two dice, the output permutation is uniform: the allocation of dice
+to levels is invariant under relabelling, and the order of each two-die cell
+is a fair independent binary choice. A union bound over triples therefore
+gives
+\[
+ P_{n,m}(\pi)\geq\frac1{n!}
+ \Pr(\text{no level contains three dice})
+ \geq\frac1{n!}\left(1-\binom n3m^{-2}\right).
+\]
+
+For the upper bound, a prescribed order of $r\geq1$ different letters has
+at most two occurrences as a subsequence of $B_n$. Indeed, such an order
+must increase and then decrease, and the only possible ambiguity is which
+of the two occurrences of its largest letter is selected. Its conditional
+probability within one level is therefore at most $2^{1-r}$.
+For any fixed full permutation, distributing its consecutive segments among
+the $m$ levels gives
+\[
+ P_{n,m}(\pi)
+ \leq m^{-n}[z^n]
+       \left(1+\sum_{r\geq1}2^{1-r}z^r\right)^m
+ =m^{-n}[z^n]\left(\frac{1+z/2}{1-z/2}\right)^m.
+\]
+In fact equality holds for the increasing permutation, because every
+consecutive segment of that permutation is admissible.
+After the substitution $t=mz$, the right side, multiplied by $n!$, is
+\[
+ n![t^n]\exp\left(t+
+       \sum_{j\geq1}\frac{t^{2j+1}}
+                 {(2j+1)2^{2j}m^{2j}}\right).
+\]
+When the exponential is expanded, a choice of terms of total degree $d$
+contributes the falling factorial $\fall nd$. The elementary inequality
+\[
+ \fall n{d_1+\cdots+d_a}
+ \leq\prod_{b=1}^a\fall n{d_b}
+ \qquad(d_b\geq0,\ \sum_b d_b\leq n)
+\]
+allows the contributions of distinct non-linear terms to be separated.
+Terms whose total degree exceeds $n$ only increase the resulting bound.
+It follows that
+\[
+ n!P_{n,m}(\pi)\leq
+ \exp\left(\sum_{1\leq j\leq(n-1)/2}
+ \frac{\fall n{2j+1}}{(2j+1)2^{2j}m^{2j}}\right).
+\]
+Since $\fall n{2j+1}\leq\fall n3\,n^{2j-2}$ and $2j+1\geq3$, this is at
+most
+\[
+ \exp\left(\frac{\fall n3}{12m^2}
+       \sum_{j\geq1}\left(\frac{n^2}{4m^2}\right)^{j-1}\right),
+\]
+which is the asserted upper bound. For the specified $m$, its exponent is
+at most $\varepsilon/2$, and $e^{\varepsilon/2}\leq1+\varepsilon$ on
+$0\leq\varepsilon\leq1$. The lower error is at most $\varepsilon$.
+\end{proof}
+
+\paragraph{A finite obstruction for this family.}
+The coefficient calculation for the increasing permutation is exact and
+has nonnegative terms. Keeping the first nonconstant term gives
+\[
+ n!P_{n,m}(12\cdots n)-1
+ \geq\frac{n(n-1)(n-2)}{12m^2}.
+\]
+Thus relative error at most $\varepsilon$ in this family requires
+$m^2\geq n(n-1)(n-2)/(12\varepsilon)$. The sufficient bound above is
+within an asymptotic factor $\sqrt2$ in the number of faces when
+$n/\varepsilon\to\infty$. This also shows directly, without an asymptotic
+shuffle theorem, the sharp $n^{3/2}/\sqrt\varepsilon$ scale for this family.
+
+\paragraph{Verification.}
+The accompanying \texttt{verify\_shelf.py} computes subsequence counts using
+integer arithmetic, checks every permutation for small $n,m$, compares the
+maximum with the generating-function formula, and checks the stated bounds.
+The proof, rather than numerical agreement, establishes the arbitrary-size
+claims.
+\end{document}

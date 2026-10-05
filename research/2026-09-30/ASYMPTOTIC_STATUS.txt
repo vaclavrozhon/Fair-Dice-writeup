@@ -1,0 +1,139 @@
+ASYMPTOTIC RESEARCH STATUS — TEN-HOUR TASK COMPLETED
+Completed after 2026-09-30, 23:05:56 UTC; ten-hour period verified by the clock tool.
+Requested period: 13:05:56–23:05:56 UTC (ten hours).
+
+User scope: asymptotic questions and general theorems; no small-n search.
+Start with VYSLEDKY.pdf and PROOF_INDEX.txt. The previous chronological
+status file is preserved as ASYMPTOTIC_STATUS_HISTORY.txt. Historical
+claims marked 'not proved yet' there are superseded by this current file.
+main.tex was not edited by this research task.
+
+ORIGINAL QUESTIONS
+
+1. Minimum total size A_n: OPEN.
+   exp(Omega(n)) <= A_n <= exp(O(n log n)); neither gap-closing direction
+   has been proved. The C(n!)^2 equal-face construction improves an explicit
+   construction, not this asymptotic order.
+
+2. Polynomial equalization E_n <= A_n^C: OPEN.
+   The elementary combination of already known absolute size bounds gives
+   E_n <= A_n^{O(log n)} = A_n^{O(log log A_n)}.
+   This is a synthesis of known bounds, not a new equalization algorithm.
+   Method-specific obstructions do not disprove polynomial equalization.
+
+3. Every individual die exponential: FALSE.
+   If g(n) minimizes the size of one specified die while allowing the others
+   any finite sizes, then g(n)=Theta(n^2). Every die has >=c n^2 faces, and
+   every integer K>=C n^2 can be prescribed as the specified die's exact size.
+   The remaining n-1 dice can have a common, possibly enormous, finite size.
+   Guide: size_bounds/QUADRATIC_PROOF_GUIDE.txt.
+   Main lower proof: independent_directions/elementary_quadratic_atom_bound.tex.
+   Final simplification: a self-contained Gaussian/Radau paired-threshold
+   argument proves each last coordinate >=1-pi^2/(m+1)^2 and terminal
+   weight <=200/m^2. Thus each die has >=(n-1)^2/200 faces. Three full
+   independent internal reviews passed. The long analytic lower proof
+   is no longer needed for this theorem; its inputs remain relevant to
+   the separate profile branch.
+   Upper proof:
+   size_bounds/polynomial_exceptional_die.tex;
+   rational_designs/asymptotic/every_large_exceptional_size.tex.
+   Lower-bound hypothesis can be weakened to exact winning probabilities
+   for all subsets containing the distinguished die.
+
+MORE SMALL DICE
+
+For every fixed k, k specified dice can have the same polynomial number
+of faces. More uniformly, for every n>k>=1,
+    S <= (n+2^k+2)^{exp(C k^2)}
+for an absolute C. All n dice are finite and permutation-fair; the other
+n-k dice can share a much larger finite count.
+Consequences: k=floor(c sqrt(log n)) permits S<=exp(sqrt n), and
+k=o(sqrt(log n)) permits S<=exp(n^{o(1)}).
+This does not give n^C for a growing k with one fixed exponent C.
+The initial common denominator lcm(1,...,2^k) is explicitly charged;
+uncontrolled high polynomial-coefficient denominators do not enter S.
+Guides: independent_directions/FIXED_K_PROOF_GUIDE.txt;
+size_bounds/FIXED_K_PROOF_GUIDE.txt.
+Main uniform theorem: size_bounds/uniform_fixed_number_complexity.tex.
+
+OPTIMAL BOUNDED ENDPOINT PROFILE
+
+For arbitrary positive-weight monotone tensors with exact mixed moments,
+put s=sum_i(1-p_i), with m columns. For each fixed L,
+    max_i |m(1-p_i)-s| <= C_L R_m(s),  0<=s<=L,
+    R_m(s)=min{m s, sqrt(s/m)+1/m}.
+For every positive scale lambda<=L, actual finite uniform fair dice have
+a row with s comparable to lambda and deviation >=c_L R_m(lambda).
+The comparison constants are uniform in m and lambda. Exact prescribed s
+and efficient face counts are not asserted by these sharpness examples.
+Consequently relative synchronization holds uniformly when ms tends to
+infinity, and this threshold cannot be weakened in general.
+
+For arbitrary positive row weights, also
+    w_q <= C_L (sqrt(s_q)/m^{3/2} + 1/m^2),  0<=s_q<=L.
+Matching examples for this atom bound are proved in the weighted tensor
+class; matching face counts of actual uniform dice are not claimed.
+Guide: independent_directions/ENDPOINT_PROFILE_PROOF_GUIDE.txt.
+Main assembly: independent_directions/natural_scale_endpoint_profile.tex.
+All-scale sharpness: independent_directions/intermediate_endpoint_sharpness.tex.
+Analytic input: rational_designs/asymptotic/variable_jackson_endpoint_kernel.tex.
+Row weights: rational_designs/asymptotic/natural_scale_row_atoms.tex.
+The older sqrt(log m/m) Poisson-kernel route is historical; the final
+finite-Jackson route removes the logarithm and includes s=0.
+
+OTHER ASYMPTOTIC RESULTS
+
+* Every common face count M>=exp(C n log(n+1)) divisible by all primes
+  <=n is attainable. Every positive word u is literally a prefix of a
+  fair equal-count word of size (|u|+1)exp(O(n log(n+1))) per die.
+  size_bounds/order_doubling_prefix_completion.tex;
+  size_bounds/factorial_order_eventual_conductor.tex.
+
+* Regular fair words, whose endpoint signature derivative has full rank,
+  have minimum length exp(Theta(n log n)). This is a restriction to regular
+  realizations, not a lower bound for all fair words.
+  size_bounds/regular_fair_realizations_and_rank_barrier.tex.
+
+* Pointwise relative epsilon-approximate permutation fairness, epsilon<=1/2:
+  each die needs >=c n min(n,log(1/epsilon)) faces; equal-face constructions
+  use O(n^(13/10)(log n)^(1/5)epsilon^(-2/5)) faces per die.
+  At epsilon=0 the lower bound is interpreted by log(1/0)=infinity.
+  rational_designs/asymptotic/sharp_approximate_per_die_lower_bound.tex;
+  approximate_random/refined_random_palindrome_bound.tex.
+
+* Rational equal-weight degree-r interval quadrature, allowing repeated
+  nodes, has minimum cardinality
+      2^{2 floor(r/2)} <= R_r <= 2^r+O(2^{r/2}).
+  For even r, R_r/2^r tends to one. The upper bound applies published
+  Mit'kin local theory and circle-method results; no novelty is claimed
+  for those inputs. This scalar obstruction does not obstruct differing
+  comparison columns in the polynomial exceptional-die constructions.
+
+* Arithmetic conditions alone have total-size minimum exp((1/2+o(1))n)
+  and equal-count minimum exp((1+o(1))n). These are arithmetic relaxations,
+  not constructions of fair dice.
+
+PRINCIPAL REMAINING QUESTIONS
+
+- Close the exponential versus exp(O(n log n)) total-size gap.
+- Prove or disprove polynomial equalization.
+- Can two specified dice both have O(n^2) faces? Existing polynomial
+  constructions and a cubic barrier for one lifting method do not settle it.
+- Improve the exp(O(k^2)) exponent dependence. Obtain growing k with a
+  fixed polynomial n^C: k=Omega(log n) would already imply A_r=exp(O(r)).
+- Does fixed pointwise relative approximate fairness admit n^{1+o(1)}
+  faces per die, or require a stronger lower bound?
+- Determine optimal dependence on L in the endpoint profile and extend
+  sharp estimates to growing endpoint windows / the central range.
+
+REVIEW STATUS AND LIMITS
+
+All principal new theorem chains have separate internal mathematical
+reviews by three collaborating agents. The auxiliary approximate bounds
+and rational scalar bounds have been re-audited for quantifiers.
+This is not machine formalization or external peer review, and does not
+establish exhaustive historical novelty. Source TeX files are authoritative;
+current PDFs accompany the main proofs. The review bundle contains the
+report, guides, and their local source dependencies, with historical notes
+clearly distinguished in the guides. No unreviewed candidate is listed as
+a proved result above. Final time, document, reference, and archive checks passed.

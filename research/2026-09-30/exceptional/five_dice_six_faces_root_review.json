@@ -1,0 +1,9 @@
+{
+  "n": 5,
+  "distinguished_faces": 6,
+  "full_orders_independently_enumerated": 120,
+  "probability": "1/120",
+  "positive_normalized_density": true,
+  "cells": 28,
+  "source": "research/2026-09-30/independent_directions/five_dice_six_face_density_certificate.json"
+}

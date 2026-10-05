@@ -1,0 +1,72 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{proposition}{Proposition}
+\title{Four equal dice with every sufficiently large admissible face count}
+\author{Research certificate, 30 September 2026}
+\date{}
+\begin{document}
+\maketitle
+
+This note gives a small explicit certificate. Four18-sided fair dice
+already appear in Ford, Grime, Harshbarger and Pollock,
+\emph{Go First Dice for Five Players and Beyond} (2023), p.~87,
+\href{https://doi.org/10.2478/rmm-2023-0004}{doi:10.2478/rmm-2023-0004}.
+The word below was found independently; no novelty is claimed for the
+existence of18-sided examples or the concatenation consequence. Write a die collection as a word, assigning increasing
+integer labels to successive positions.
+
+\begin{proposition}
+Four permutation-fair equal-sided dice exist with $M$ faces each for every
+multiple $M$ of $6$ with $M\ge12$.
+\end{proposition}
+\begin{proof}
+Define three palindrome blocks
+\[
+ A=12033021,\qquad B=32011023,\qquad C=02133120.
+\]
+The words
+\[
+ W_{12}=ABCCBA,\qquad W_{18}=ABCCABBCA
+\]
+have respectively $12$ and $18$ occurrences of each of the four letters.
+Their distinct-letter subsequence counts are as follows; each entry in
+a column applies to every ordered pattern of that length.
+\[
+\begin{array}{c|rrrr}
+ &1&2&3&4\\\hline
+ W_{12}&12&72&288&864\\
+ W_{18}&18&162&972&4374
+\end{array}
+\]
+These integers can be checked directly by the following recurrence.
+For each pattern $p_1\cdots p_k$, initialize $d_0=1$ and $d_j=0$ for
+$1\le j\le k$. Read the word from left to right. At a letter $x$, update
+$d_j\gets d_j+d_{j-1}$ whenever $p_j=x$, processing indices in decreasing
+order. The final $d_k$ counts the desired subsequences. The companion
+program and independent certificate check all $64$ nonempty patterns.
+The displayed fourth-order counts are respectively $12^4/24$ and
+$18^4/24$, proving fairness.
+
+Concatenating equal-composition fair words preserves fairness: for a
+fixed length-$k$ pattern, selecting its first $j$ letters from a block
+with count $a$ and its remaining letters from one with count $b$ gives
+$a^j b^{k-j}/(j!(k-j)!)$ occurrences. Summation over $j$ gives
+$(a+b)^k/k!$.
+Every integer $M/6\ge2$ is $2u+3v$ with nonnegative integers $u,v$.
+Concatenating $u$ copies of $W_{12}$ and $v$ copies of $W_{18}$ proves
+the assertion.
+\end{proof}
+
+In particular, the tempting stronger condition
+$v_p(M)\ge\lfloor n/p\rfloor$ for equal-sided fair dice is false:
+$n=4$, $M=18$, and $p=2$ give a counterexample. The example makes no
+assertion about the exceptional count $M=6$.
+
+\paragraph{Reproducibility.}
+\path{search_palindrome_18.cpp} enumerates all triples of relabelled
+palindrome blocks, retains the $192$ three-wise fair triples, and finds
+three of their $24$ distinct fourth-order defect vectors summing to zero.
+\path{four_dice_18_faces_root_check.json} records a separate Python
+integer dynamic-programming verification of the resulting word.
+\end{document}
