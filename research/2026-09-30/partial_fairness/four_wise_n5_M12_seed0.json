@@ -1,9 +1,0 @@
-{
-  "n": 5,
-  "blocks": 6,
-  "faces": 12,
-  "status": 2,
-  "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is At lower/fixed bound)",
-  "elapsed": 0.44177097699139267,
-  "solution": null
-}
