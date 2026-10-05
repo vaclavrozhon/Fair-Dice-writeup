@@ -1,7 +1,0 @@
-{
-  "n": 5,
-  "faces": 12,
-  "word": "001122333322110044444444433110022220011332211003333001122444",
-  "construction": "Insert three 4s at gap8 and one atgap24 in four-die six-face seed; blow up old letters by2 andnew by3.",
-  "verified": true
-}

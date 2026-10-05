@@ -1,3 +1,0 @@
-seed defect range -1248 992 distinct orbit 720
-Stored pairs 259560 keys 259560 seconds 0.779494854999939
-{"source": "../partial_fairness/triple_winner_half_n6_M6_seed0.json", "pairs": 259560, "projection_keys": 259560, "projection_matches": 0, "solution": null, "seconds": 1.1936976950091776, "exhaustive": true}

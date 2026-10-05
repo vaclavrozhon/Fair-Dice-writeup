@@ -1,2 +1,0 @@
-start n=7, M=6, seed=0
-{"n": 7, "faces": 6, "seed": 0, "status": "INFEASIBLE", "elapsed": 29.201744499994675, "word": null}
