@@ -1,0 +1,5 @@
+{
+  "blocks": 12,
+  "lp_status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+  "strict_separator": false
+}

@@ -1,0 +1,45 @@
+{"r": 2, "p": 2, "b": 1, "a": 4, "M": 16, "precision": 14, "inverse_valuation": -1, "residual_valuation": 14, "pivots": [8196, 8069]}
+{"r": 2, "p": 3, "b": 0, "a": 2, "M": 9, "precision": 13, "inverse_valuation": 0, "residual_valuation": 13, "pivots": [212268, 1382020]}
+{"r": 2, "p": 5, "b": 0, "a": 2, "M": 25, "precision": 13, "inverse_valuation": 0, "residual_valuation": 13, "pivots": [419377150, 801325676]}
+{"r": 2, "p": 7, "b": 0, "a": 2, "M": 49, "precision": 13, "inverse_valuation": 0, "residual_valuation": 13, "pivots": [81962330576, 14926678656]}
+{"r": 2, "p": 11, "b": 0, "a": 2, "M": 121, "precision": 13, "inverse_valuation": 0, "residual_valuation": 13, "pivots": [25058993991658, 9463718145014]}
+{"r": 3, "p": 2, "b": 2, "a": 6, "M": 64, "precision": 15, "inverse_valuation": -2, "residual_valuation": 15, "pivots": [32072, 9889, 21562]}
+{"r": 3, "p": 3, "b": 1, "a": 4, "M": 81, "precision": 14, "inverse_valuation": -1, "residual_valuation": 14, "pivots": [3512646, 1147798, 119288]}
+{"r": 3, "p": 5, "b": 0, "a": 2, "M": 25, "precision": 13, "inverse_valuation": 0, "residual_valuation": 13, "pivots": [954744625, 78353851, 187604352]}
+{"r": 3, "p": 7, "b": 0, "a": 2, "M": 49, "precision": 13, "inverse_valuation": 0, "residual_valuation": 13, "pivots": [88705270066, 45053015064, 60019734511]}
+{"r": 3, "p": 11, "b": 0, "a": 2, "M": 121, "precision": 13, "inverse_valuation": 0, "residual_valuation": 13, "pivots": [6996968707223, 2573811171427, 24951932258024]}
+{"r": 4, "p": 2, "b": 3, "a": 8, "M": 256, "precision": 16, "inverse_valuation": -3, "residual_valuation": 16, "pivots": [60688, 24369, 41138, 37779]}
+{"r": 4, "p": 3, "b": 2, "a": 6, "M": 729, "precision": 15, "inverse_valuation": -1, "residual_valuation": 16, "pivots": [13873518, 13694023, 2315549, 12898281]}
+{"r": 4, "p": 5, "b": 0, "a": 2, "M": 25, "precision": 13, "inverse_valuation": 0, "residual_valuation": 13, "pivots": [705662280, 808802136, 836505692, 90435848]}
+{"r": 4, "p": 7, "b": 0, "a": 2, "M": 49, "precision": 13, "inverse_valuation": 0, "residual_valuation": 13, "pivots": [3860146353, 35583578815, 38559743266, 18885540803]}
+{"r": 4, "p": 11, "b": 0, "a": 2, "M": 121, "precision": 13, "inverse_valuation": 0, "residual_valuation": 13, "pivots": [15871529792063, 11771340848829, 23352629422619, 18049924217097]}
+{"r": 5, "p": 2, "b": 5, "a": 12, "M": 4096, "precision": 18, "inverse_valuation": -4, "residual_valuation": 19, "pivots": [35968, 40193, 18434, 226051, 205700]}
+{"r": 5, "p": 3, "b": 2, "a": 6, "M": 729, "precision": 15, "inverse_valuation": -2, "residual_valuation": 15, "pivots": [3391227, 6966811, 11874926, 266169, 5933335]}
+{"r": 5, "p": 5, "b": 1, "a": 4, "M": 625, "precision": 14, "inverse_valuation": -1, "residual_valuation": 14, "pivots": [1553319375, 2685843876, 2698534002, 1484747878, 3784391129]}
+{"r": 5, "p": 7, "b": 0, "a": 2, "M": 49, "precision": 13, "inverse_valuation": 0, "residual_valuation": 13, "pivots": [4160017043, 63689307074, 53542270161, 49917660684, 22468764686]}
+{"r": 5, "p": 11, "b": 0, "a": 2, "M": 121, "precision": 13, "inverse_valuation": 0, "residual_valuation": 13, "pivots": [16854734964727, 29408714133525, 12680004075554, 20569229594213, 24055453656524]}
+{"r": 6, "p": 2, "b": 5, "a": 12, "M": 4096, "precision": 18, "inverse_valuation": -5, "residual_valuation": 18, "pivots": [126016, 63041, 191874, 85379, 219716, 102469]}
+{"r": 6, "p": 3, "b": 2, "a": 6, "M": 729, "precision": 15, "inverse_valuation": -2, "residual_valuation": 15, "pivots": [14182884, 12394324, 8059124, 13271016, 2316658, 6906281]}
+{"r": 6, "p": 5, "b": 2, "a": 6, "M": 15625, "precision": 15, "inverse_valuation": -1, "residual_valuation": 15, "pivots": [4418775000, 7623003126, 23271646877, 6847509378, 28400450004, 20869287505]}
+{"r": 6, "p": 7, "b": 0, "a": 2, "M": 49, "precision": 13, "inverse_valuation": 0, "residual_valuation": 13, "pivots": [43074219503, 72605670782, 86151765184, 34357400836, 95549814966, 55817169196]}
+{"r": 6, "p": 11, "b": 0, "a": 2, "M": 121, "precision": 13, "inverse_valuation": 0, "residual_valuation": 13, "pivots": [6399630638489, 8225491422435, 30444403713704, 11972354388877, 23274041422053, 23252214838990]}
+{"r": 7, "p": 2, "b": 6, "a": 14, "M": 16384, "precision": 19, "inverse_valuation": -6, "residual_valuation": 21, "pivots": [432256, 392193, 243330, 172035, 391556, 377861, 96134]}
+{"r": 7, "p": 3, "b": 3, "a": 8, "M": 6561, "precision": 16, "inverse_valuation": -3, "residual_valuation": 16, "pivots": [21834765, 11542501, 3564326, 21277326, 37540345, 15921851, 38985711]}
+{"r": 7, "p": 5, "b": 2, "a": 6, "M": 15625, "precision": 15, "inverse_valuation": -1, "residual_valuation": 15, "pivots": [24949243750, 8951909376, 15066568752, 1511571878, 26298887504, 29522412505, 15647656256]}
+{"r": 7, "p": 7, "b": 1, "a": 4, "M": 2401, "precision": 14, "inverse_valuation": -1, "residual_valuation": 14, "pivots": [564889961587, 227285174257, 594327869361, 635585556448, 390661849351, 360370944141, 617991127921]}
+{"r": 7, "p": 11, "b": 0, "a": 2, "M": 121, "precision": 13, "inverse_valuation": 0, "residual_valuation": 13, "pivots": [18369814061214, 33809401720667, 27939101478554, 8021086054435, 27254354917024, 17655119620110, 5041970716481]}
+{"r": 8, "p": 2, "b": 7, "a": 16, "M": 65536, "precision": 20, "inverse_valuation": -7, "residual_valuation": 21, "pivots": [942336, 931585, 967938, 58115, 246532, 320773, 382726, 377095]}
+{"r": 8, "p": 3, "b": 3, "a": 8, "M": 6561, "precision": 16, "inverse_valuation": -3, "residual_valuation": 16, "pivots": [41806611, 38382418, 9275798, 25897161, 1998517, 34125224, 572190, 41655634]}
+{"r": 8, "p": 5, "b": 2, "a": 6, "M": 15625, "precision": 15, "inverse_valuation": -1, "residual_valuation": 15, "pivots": [14989940000, 25043285626, 15809861877, 29941500003, 26638490629, 28284588130, 1441045631, 10317116257]}
+{"r": 8, "p": 7, "b": 2, "a": 6, "M": 117649, "precision": 15, "inverse_valuation": -1, "residual_valuation": 15, "pivots": [3720537791222, 3053159098984, 2159264719719, 1036229147922, 3698217557402, 481112257554, 744761095084, 4090043787137]}
+{"r": 8, "p": 11, "b": 0, "a": 2, "M": 121, "precision": 13, "inverse_valuation": 0, "residual_valuation": 13, "pivots": [19160233361687, 25344923784236, 19793458465772, 16993827624524, 32093174826288, 30982594501941, 8205584019045, 20039764128930]}
+{"r": 9, "p": 2, "b": 10, "a": 22, "M": 4194304, "precision": 23, "inverse_valuation": -8, "residual_valuation": 24, "pivots": [2367488, 2015233, 2998274, 1032195, 2097156, 3162117, 1196038, 2179079, 1826824]}
+{"r": 9, "p": 3, "b": 4, "a": 10, "M": 59049, "precision": 17, "inverse_valuation": -4, "residual_valuation": 17, "pivots": [5373459, 96071995, 101217278, 38880489, 92970832, 93624017, 20168520, 42330850, 90522854]}
+{"r": 9, "p": 5, "b": 2, "a": 6, "M": 15625, "precision": 15, "inverse_valuation": -2, "residual_valuation": 15, "pivots": [12289386250, 10443809376, 18895606877, 8452119378, 17567696879, 3018723130, 18757181256, 1451936882, 554211883]}
+{"r": 9, "p": 7, "b": 2, "a": 6, "M": 117649, "precision": 15, "inverse_valuation": -1, "residual_valuation": 15, "pivots": [2395584753387, 1264831356769, 2169070646220, 2373063440618, 670728545834, 2496169623099, 3467459312981, 2869208820163, 1277208955961]}
+{"r": 9, "p": 11, "b": 0, "a": 2, "M": 121, "precision": 13, "inverse_valuation": 0, "residual_valuation": 13, "pivots": [21916019256406, 27472846065996, 17029886589377, 22866074710416, 30209878434377, 21299869959461, 20936248393594, 13194539715177, 32210909731558]}
+{"r": 10, "p": 2, "b": 10, "a": 22, "M": 4194304, "precision": 23, "inverse_valuation": -9, "residual_valuation": 23, "pivots": [4198400, 6508545, 1802242, 6619139, 2105348, 3153925, 3997702, 3375111, 5722120, 6557705]}
+{"r": 10, "p": 3, "b": 6, "a": 14, "M": 4782969, "precision": 19, "inverse_valuation": -4, "residual_valuation": 19, "pivots": [333233190, 865481194, 694829585, 225271938, 1004364445, 162680000, 1070912670, 472214860, 301563251, 102016998]}
+{"r": 10, "p": 5, "b": 2, "a": 6, "M": 15625, "precision": 15, "inverse_valuation": -2, "residual_valuation": 15, "pivots": [18018368750, 2804685626, 22668430002, 16652511253, 16020116879, 16821225005, 20468430006, 30296301257, 21914507508, 17318830009]}
+{"r": 10, "p": 7, "b": 2, "a": 6, "M": 117649, "precision": 15, "inverse_valuation": -1, "residual_valuation": 15, "pivots": [164988117217, 4305248716105, 258226227051, 3738596442129, 3335387335508, 1967023715865, 4356078798490, 1112192838281, 1169167156494, 3323977617844]}
+{"r": 10, "p": 11, "b": 0, "a": 2, "M": 121, "precision": 13, "inverse_valuation": 0, "residual_valuation": 13, "pivots": [6094839351887, 26334150161100, 30078654632457, 2756281061251, 19987533119547, 25808792236639, 23725773461088, 30073570520220, 13666867625364, 28609810686818]}

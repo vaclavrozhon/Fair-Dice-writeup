@@ -1,0 +1,50 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{proposition}{Proposition}
+\title{A denominator obstruction for five-row local models}
+\author{Research note; independently reviewed}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+\begin{proposition}
+A rational five-row, four-column comparison model in centered
+coordinates $x=2p-1$ cannot have all its entries in $\mathbb Z_2$. Thus at least one entry has even denominator
+in lowest terms. No real monotonicity assumption is needed.
+\end{proposition}
+\begin{proof}
+Suppose the entries $x_{j,i}$ are 2-adic integers. The nonempty
+square-free coordinate sums must be zero in odd degree, $5/3$ in
+degree two, and $1$ in degree four. Modulo two these moments, together
+with the empty sum $5$, determine the parity of the multiplicity of
+each row pattern in $\mathbb F_2^4$. Boolean inclusion--exclusion gives
+odd multiplicity for exactly the five patterns
+\[
+ (1,1,1,1),\ (0,1,1,1),\ (1,0,1,1),\ (1,1,0,1),\ (1,1,1,0).
+\]
+For completeness, the parity for a pattern whose support has size $k$
+is $\sum_{s=k}^4\binom{4-k}{s-k}m_s$, where
+$(m_0,m_1,m_2,m_3,m_4)=(1,0,1,0,1)$; it equals one precisely for
+$k=3,4$. Since there are only five rows, each displayed pattern occurs
+exactly once.
+
+Label the all-ones row by $*$ and the row missing coordinate $i$ by
+$i$. Write $x_{j,t}=b_{j,t}+2y_{j,t}$ with the displayed Boolean base
+matrix $b$, and put $a_{ji}=y_{j,i}\pmod2$. The first moments modulo
+four give $\sum_t y_{j,t}=0\pmod2$, since $\sum_t b_{j,t}=4$.
+For $j\ne k$, the pair base sum is three, and the required pair sum
+$5/3$ also equals three modulo four. Its first-order expansion
+therefore gives
+\[
+ a_{jk}+a_{kj}=0\pmod2.
+\]
+For a triple of distinct columns $j,k,l$, the Boolean base sum is two.
+The first-order correction, divided by two and taken modulo two, is
+\[
+ (a_{jk}+a_{kj})+(a_{jl}+a_{lj})+(a_{kl}+a_{lk})=0.
+\]
+The triple sum is consequently two modulo four, whereas it is
+required to be zero. This contradiction proves the assertion.
+\end{proof}
+The proposition is only a denominator restriction. It does not
+exclude points over $\mathbb Q_2$ with negative valuations.
+\end{document}

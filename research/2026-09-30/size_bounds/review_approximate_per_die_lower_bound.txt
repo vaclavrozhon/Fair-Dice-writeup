@@ -1,0 +1,22 @@
+Independent mathematical review, 30 September 2026
+Reviewer: size_bounds agent
+File: ../rational_designs/asymptotic/approximate_per_die_lower_bound.tex
+Result: PASS, with a minor explicit-model wording request.
+
+Checked every displayed bound. The coefficient for one designated
+failure is (k+1)/m, the bad-prefix comparison includes zero entries,
+and the nonnormalized moment induction gives the stated error.
+The choice d=floor(H/(16 log 3)) makes both Laguerre errors vanish
+uniformly as H grows. The conversion from the posterior endpoint atom
+to the original row weight is correct. For bounded H, the mass bound
+eta(G)>=1/4 at m>=36 and the exponential moment at z=1/2 imply a good
+row with lambda<=16; this supplies the necessary uniform linear bound.
+Complementing columns and reversing rows preserves the hypotheses.
+
+The dice corollary should explicitly retain the paper's convention of
+no ties between different dice. Without that convention, strict-order
+bounds alone do not make a comparison-pattern event exactly the stated
+union of strict orders. The underlying monotone-tensor theorem has no
+such issue. This wording request was sent to the author.
+
+This is an independent mathematical review, not formal verification.

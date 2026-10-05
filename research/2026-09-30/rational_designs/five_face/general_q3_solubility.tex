@@ -1,0 +1,60 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{proposition}{Proposition}
+\title{A 3-adic point on the five-row comparison variety}
+\author{Exact computational certificate; independently reviewed}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+\begin{proposition}
+There are four columns $x_1,\ldots,x_4\in\mathbb Q_3^5$ satisfying
+\[
+ \frac15\sum_{i=1}^5\prod_{j\in S}x_{j,i}
+ =\begin{cases}0,&|S|\text{ odd},\\1/(|S|+1),&|S|\text{ even},\end{cases}
+ \qquad \varnothing\ne S\subseteq\{1,2,3,4\}.
+\]
+In particular, failure of local solubility over $\mathbb Q_3$ cannot
+exclude a rational five-row comparison model.
+\end{proposition}
+\begin{proof}
+Write $x_j=z_j/3$. The desired integral polynomial equations are
+\[
+ F_S(z):=\sum_{i=1}^5\prod_{j\in S}z_{j,i}-b_S=0,
+ \quad b_S=\begin{cases}15,&|S|=2,\\81,&|S|=4,\\0,&|S|\text{ odd}.\end{cases}
+\]
+Take the following four initial columns:
+\[
+ z_1=(1,7,3,15,1),\quad z_2=(19,25,3,15,19),
+ \quad z_3=(2,15,7,11,19),\quad z_4=(5,11,15,0,23).
+\]
+Order the nonempty subsets first by size and then lexicographically.
+The residual vector is
+\[
+\begin{split}
+(27,81,54,54,432,297,135,945,837,702,\\
+5562,2592,1917,12933,38232),
+\end{split}
+\]
+so every entry is divisible by $27$. Flatten the variables column by
+column, using indices $0,\ldots,19$. The Jacobian minor using all
+15 equations and variable indices
+\[
+0,1,2,3,5,6,7,8,10,12,15,16,17,18,19
+\]
+has determinant $13966477728153600$, of 3-adic valuation one.
+These integer calculations are reproduced by
+\texttt{lift\_general\_q3.py}, and recorded in
+\texttt{general\_q3\_hensel\_certificate.json}.
+
+Fix the other five coordinates. If $J$ denotes this square Jacobian
+at the displayed point, its inverse has entries in $3^{-1}\mathbb Z_3$
+by the adjugate formula. On the ball $z+9\mathbb Z_3^{15}$ the map
+$y\mapsto y-J^{-1}F(y)$ preserves the ball: its displacement at the
+center lies in $9\mathbb Z_3^{15}$, and its derivative has entries in
+$3\mathbb Z_3$. It is therefore a strict contraction on this complete
+ball. Its fixed point is an exact zero of $F$, proving the assertion.
+\end{proof}
+This is a local-solubility certificate only. It asserts neither a
+rational point nor a monotone real point, and does not address other
+primes or the realization of a local model by actual dice.
+\end{document}

@@ -1,0 +1,264 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prob}{\mathbb P}
+\newcommand{\Var}{\operatorname{Var}}
+\title{A matching power lower bound for random palindrome blocks}
+\author{Research note; independently reviewed by two other agents}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+Let $m$ independent uniformly relabelled palindrome blocks on $n$ labels
+be concatenated, and put $R_\sigma=n!P(\sigma)$.
+All constants below are absolute; inequalities stated for sufficiently
+large $n$ can be absorbed into one absolute threshold $n_0$.
+
+\begin{theorem}\label{thm:lower}
+There exist constants $c,C>0$ and $n_0$ such that, whenever
+$n\geq n_0$ and $m\geq Cn^{13/10}$,
+\[
+ \Prob\left(\max_{\sigma\in S_n}|R_\sigma-1|
+       \geq c\frac{n^{13/4}}{m^{5/2}}\right)\geq1-\frac Cn.
+\]
+This is a lower bound for the specified random construction, not for
+arbitrary collections of dice. Together with the accompanying uniform
+upper bound, it matches the powers of $n$ and of the error tolerance,
+up to the factor $(\log n)^{1/5}$ in the sufficient face count.
+\end{theorem}
+
+\section{Triple projection and central binomial weights}
+Represent each block permutation by independent continuous priorities
+$Y_{i,1},\ldots,Y_{i,n}$. For a target order, a consecutive triple has
+internal ratio $3!q$ equal to zero if its middle priority is the smallest,
+and equal to $3/2$ otherwise. Put
+\[
+ \delta_{i,a}=\frac12-\frac32\mathbf1\{\text{the middle of the triple
+ starting at }a\text{ has smallest priority}\}.
+\]
+It is centered. The part of the exact Hoeffding expansion using one block
+and precisely three labels is
+\begin{equation}\label{eq:triple}
+ S_\sigma=h\sum_{i=1}^m\sum_{a=0}^{d}w_i(a)\delta_{i,a},
+ \quad d=n-3,\quad
+ w_i(a)=\binom da p_i^a(1-p_i)^{d-a},\quad
+ p_i=\frac{i-1}{m-1},
+\end{equation}
+where
+\[
+ h=\binom n3m^{-3}(1-1/m)^{n-3}.
+\]
+For $m\geq n\geq6$, $h\asymp n^3/m^3$. Formula~\eqref{eq:triple}
+follows either by conditioning on the three labels occupying a specified
+block, or by setting $\ell=1,k_1=3$ in the exact gap-count coefficient
+formula of the companion upper-bound note.
+
+\begin{lemma}\label{lem:binomial}
+For sufficiently large $d$, integers $a$ with $d/4\leq a\leq3d/4$, and
+$m\geq d+3$,
+\[
+ \sup_{0\leq p\leq1}\binom da p^a(1-p)^{d-a}\leq\frac C{\sqrt d},
+ \qquad
+ c\frac m{d^{3/2}}\leq\sum_{i=1}^m w_i(a)^2
+                \leq C\frac m{d^{3/2}}.
+\]
+\end{lemma}
+\begin{proof}
+The maximum is attained at $p=a/d$. Stirling's factorial bounds, uniformly
+for $a/d\in[1/4,3/4]$, give the first estimate. The beta integral is
+\[
+ \int_0^1\binom da^2p^{2a}(1-p)^{2d-2a}\,dp
+ =\frac{\binom da^2}{(2d+1)\binom{2d}{2a}}
+ \asymp d^{-3/2},
+\]
+again uniformly by the same bounds. The integrand is nonnegative and
+unimodal with maximum $O(1/d)$. Its sum over the equally spaced grid with
+$m$ points differs from $(m-1)$ times its integral by at most twice that
+maximum. Since $m\geq d+3$, this error is a vanishing proportion of the
+main term as $d\to\infty$.
+\end{proof}
+
+\section{Independent local swaps produce a large range}
+Start from the target order $(1,\ldots,n)$, using positions numbered from
+zero. Choose $J\asymp n$ disjoint windows of six consecutive positions in
+the middle third of this order. In each window allow the two middle
+positions to be swapped, independently of the choices in the other
+windows. This defines a family $\mathcal F$ of $2^J$ target orders.
+Every affected triple start lies in $[d/4,3d/4]$ for sufficiently large $n$.
+
+If the two swapped positions of window $j$ are $u,u+1$, only the four
+triple starts $u-2,u-1,u,u+1$ are affected. Define $D_j$ to be the change
+in $S_\sigma$ caused by making this swap, leaving all other windows in
+the original order. Its form is
+\[
+ D_j=h\sum_{i=1}^m B_{i,j},\qquad
+ B_{i,j}=\sum_{a=u-2}^{u+1}w_i(a)
+              (\delta_{i,a}^{\mathrm{swapped}}-\delta_{i,a}^{\mathrm{original}}).
+\]
+The $B_{i,j}$ are centered and independent over both $i$ and $j$: each
+uses only the six priorities in its own window of its own block.
+Moreover the effect of the choices is additive, so the range of $S$ on
+the family is exactly
+\begin{equation}\label{eq:range}
+ \max_{\sigma\in\mathcal F}S_\sigma-
+ \min_{\sigma\in\mathcal F}S_\sigma=\sum_{j=1}^J|D_j|.
+\end{equation}
+
+A simple event prevents cancellation in the variance of each local swap.
+Suppose the relative ranks of the six priorities are
+\[
+ (6,1,3,2,4,5).
+\]
+Swapping the middle positions changes them to $(6,1,2,3,4,5)$ and removes
+exactly the valley with triple start $u$. The other three affected valley
+indicators are unchanged. Thus $B_{i,j}=(3/2)w_i(u)$ on this event.
+The reverse rank event gives $B_{i,j}=-(3/2)w_i(u)$. Each event has
+probability $1/6!$. Consequently
+\begin{equation}\label{eq:variance}
+ \E B_{i,j}^2\geq\frac1{160}w_i(u)^2.
+\end{equation}
+On the other hand, each valley-indicator difference is at most one in
+absolute value, whence
+\[
+ \E B_{i,j}^2\leq9\sum_{a=u-2}^{u+1}w_i(a)^2,
+ \qquad |B_{i,j}|\leq Cn^{-1/2}
+\]
+by Lemma~\ref{lem:binomial}. Independence over blocks and the lemma give,
+with $V=h^2m/n^{3/2}$,
+\[
+ cV\leq\E D_j^2\leq CV.
+\]
+The fourth-moment formula for a sum of independent centered variables and
+the uniform bound on $B_{i,j}$ imply
+\[
+ \E D_j^4\leq3(\E D_j^2)^2
+       +\frac{Ch^2}{n}\E D_j^2
+ \leq CV^2.
+\]
+The last step uses $(h^2/n)/V=\sqrt n/m\leq1$.
+Moment interpolation now yields
+\[
+ \E|D_j|\geq\frac{(\E D_j^2)^{3/2}}{(\E D_j^4)^{1/2}}
+               \geq c\sqrt V.
+\]
+The different $D_j$ are independent. Therefore the sum in
+\eqref{eq:range} has expectation at least $cJ\sqrt V$ and variance at most
+$CJV$. Chebyshev's inequality shows that, with probability $1-O(1/n)$,
+\begin{equation}\label{eq:triplelower}
+ \max_{\sigma\in\mathcal F}|S_\sigma|
+ \geq\frac12\sum_j|D_j|
+ \geq c n h\sqrt{m/n^{3/2}}
+ \geq c\frac{n^{13/4}}{m^{5/2}}.
+\end{equation}
+Notice that a union bound over all $n!$ targets was not used.
+
+\section{The complete nonlinear remainder on the binary family}
+Write $R_\sigma-1=S_\sigma+U_\sigma$ and put
+\[
+ A=\frac{n^{13/4}}{m^{5/2}},\qquad t=m/n.
+\]
+We record explicitly the strengthened remainder estimate extracted from
+the companion proof \emph{A refined uniform bound for random palindrome
+blocks}.
+For $p=4n$, $m\geq C_0 n^{13/10}$ with a sufficiently large absolute
+$C_0$, and sufficiently large $n$,
+\begin{equation}\label{eq:remainder}
+ \|U_\sigma\|_p\leq C_1 A(A+t^{-1}).
+\end{equation}
+Here $C_1$ does not depend on $C_0,n,m$. To verify this, split the exact
+expansion by its total selected segment length $s$ as in that proof.
+For $s\leq n/2$, its colored coefficient estimate gives, for each
+Hoeffding level $\ell$,
+\[
+ \|T_\ell^{\mathrm{short}}\|_p\leq a^\ell,
+ \qquad a=2\sqrt{160}\,n^{11/4}\sqrt p/m^{5/2}=C_2 A.
+\]
+The levels $\ell\geq2$ contribute at most $a^2/(1-a)$.
+In level one, remove segments of length three, which give exactly
+$S_\sigma$ for $n\geq6$. The remaining size sum, with
+$z=n^2/(2m^2)\leq1/2$, satisfies
+\[
+ \sum_{k\geq4}kz^k
+ =\frac{z^4(4-3z)}{(1-z)^2}\leq10z^4
+ \leq\frac{n^8}{m^8}.
+\]
+This gives the level-one remainder bound $a/t$.
+For $s>n/2$, the same tilted generating-function estimate is
+\[
+ \|T^{\mathrm{long}}\|_p
+ \leq\sqrt2\exp\left(-\frac n{12}\log t+\frac{4pn}{t^4}\right).
+\]
+Since $p=4n$ and $t\geq C_0 n^{3/10}$, for sufficiently large $n$ this is
+at most $\sqrt2t^{-n/24}\leq A/t$.
+Choosing $C_0$ so that $a\leq1/2$ proves \eqref{eq:remainder}.
+
+Markov's inequality and $|\mathcal F|\leq2^n$ show that, except on an
+event of probability at most $2^ne^{-4n}$,
+\[
+ \max_{\sigma\in\mathcal F}|U_\sigma|
+ \leq eC_1 A(A+t^{-1}).
+\]
+Choose the absolute constant $C_0$ large enough that this is less than
+half the lower bound in \eqref{eq:triplelower}; indeed
+$A\leq C_0^{-5/2}$ and $t^{-1}\leq C_0^{-1}$.
+Combining the two probability estimates proves Theorem~\ref{thm:lower}.
+
+\begin{corollary}\label{cor:threshold}
+There is an absolute $\varepsilon_0>0$ such that if
+$m=m(n)=o(n^{13/10})$, then the probability that the random palindrome
+construction is pointwise relatively $\varepsilon_0$-fair tends to zero.
+\end{corollary}
+\begin{proof}
+If $m<n/(4e)$, then for sufficiently large $n$, $(2m)^n<n!$; some output
+order has probability zero, so its relative error is one.
+Otherwise $m\to\infty$. Choose
+$k=\lfloor(m/(2C))^{10/13}\rfloor$, where $C$ is the threshold constant
+in Theorem~\ref{thm:lower}. Then $k\to\infty$, $k\leq n$ eventually, and
+$m\geq Ck^{13/10}$. Restrict the construction to any fixed $k$ labels.
+The induced blocks are again independent uniform random palindromes,
+and $k^{13/4}/m^{5/2}$ is bounded below by a positive absolute constant.
+The theorem therefore gives a fixed positive lower bound for the maximal
+relative error of this restriction, with probability tending to one.
+Every relative error of a marginal order is an average of the full-order
+relative errors. Hence the full construction has at least as large a
+maximum relative error. Choose $\varepsilon_0$ below the obtained constant.
+\end{proof}
+
+\section{An exact covariance identity for the triple process}
+For one block, zero-extend any finitely supported weights $(w_a)$ to all
+integers. The centered valley variables have covariances
+\[
+ \operatorname{Cov}(\delta_a,\delta_{a+j})=
+ \begin{cases}1/2,&j=0,\\-1/4,&|j|=1,\\1/20,&|j|=2,\\0,&|j|\geq3.\end{cases}
+\]
+Adjacent valleys cannot occur together. For distance two the joint
+probability is
+$\int_0^1(x-x^2/2)^2\,dx=2/15$, which proves the displayed values.
+If $\Delta w_a=w_{a+1}-w_a$, direct expansion gives
+\[
+ \Var\Bigl(\sum_aw_a\delta_a\Bigr)
+ =\frac1{10}\|w\|_2^2+\frac1{20}\|\Delta w\|_2^2
+                  +\frac1{20}\|\Delta^2w\|_2^2.
+\]
+In particular, the cancellations between neighboring valleys do not remove
+the variance of a slowly varying weighted sum.
+For binomial weights of degree $d$, the exact integral identity
+\[
+ \int_0^1\sum_{a=0}^d\binom da^2p^{2a}(1-p)^{2d-2a}\,dp
+ =\frac{4^d}{(2d+1)\binom{2d}d}
+ \sim\frac{\sqrt\pi}{2\sqrt d}
+\]
+follows by the beta integral and the convolution identity
+$\sum_a\binom{2a}a\binom{2d-2a}{d-a}=4^d$.
+
+\paragraph{Dependency.}
+The remainder estimate uses the complete coefficient-level inequalities,
+not merely the final theorem, in
+\texttt{refined\_random\_palindrome\_bound.tex}. That companion proof cites
+the primary hypercontractivity source and was independently reviewed by
+two other agents. No claim of a lower bound for general approximately fair
+dice is intended here.
+\end{document}

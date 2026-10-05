@@ -1,0 +1,109 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\title{A linear face bound already follows from three-wise fairness}
+\author{Research note, 30 September 2026}
+\date{}
+\begin{document}
+\maketitle
+
+Here three-wise permutation fairness means that every restriction to at
+most three dice is permutation-fair. The dice are independent, uniform on
+their finite face sets, and all labels across dice are distinct. Write
+$c_i$ for the number of faces of die $i$. These conclusions are much weaker
+than the new per-die lower bound for full permutation fairness; their point
+is that only triple restrictions are used.
+
+\begin{theorem}\label{thm:main}
+Every three-wise permutation-fair collection of $n\ge3$ dice satisfies
+\[
+ \sum_{i=1}^n c_i\ge\binom n2.
+\]
+If every die has the same number $M$ of faces, then either $M\ge n-1$,
+or $M\ge(n+3)/2$. In particular, for $n\ge5$ one has
+$M\ge(n+3)/2$.
+\end{theorem}
+
+Let $F_j$ be the cumulative distribution function of die $j$, and define
+\[
+ d_{ij}=\mathbb E[F_j(X_i)^2]-\frac13\qquad(i\ne j).
+\]
+Pair fairness gives $\mathbb E F_j(X_i)=1/2$, so this is also
+$\mathbb E(F_j(X_i)-1/2)^2-1/12$.
+
+\begin{lemma}[A positive discrepancy for every pair]\label{lem:path}
+For two pair-fair dice with disjoint labels,
+\[
+ d_{ij}+d_{ji}
+ =\frac12\int_\gamma(x-y)^2\,d(x+y)
+ \ge\frac1{24}\left(c_i^{-2}+c_j^{-2}\right)>0,
+\]
+where $\gamma$ is the axis-parallel path of their two cumulative
+distribution functions, from $(0,0)$ to $(1,1)$.
+\end{lemma}
+\begin{proof}
+At an $i$-face interpolate the jump of $F_i$ by a horizontal segment;
+at a $j$-face use a vertical segment. Distinct labels make these steps
+unambiguous. Since the other coordinate is constant during each step,
+\[
+ \int_\gamma y^2\,dx=\mathbb E F_j(X_i)^2,
+ \qquad
+ \int_\gamma x^2\,dy=\mathbb E F_i(X_j)^2.
+\]
+Put $A=\int_\gamma(y^2\,dx+x^2\,dy)$. The identities
+\[
+ \int_\gamma(x^2\,dx+y^2\,dy)=\frac23,
+ \qquad
+ \int_\gamma d(x^2y+xy^2)=2
+\]
+give
+\[
+ \int_\gamma(x-y)^2\,d(x+y)=2A-\frac43.
+\]
+This proves the equality. On a horizontal segment of length $a$, the
+integral of $(x-y)^2$ is at least $a^3/12$, with the minimum attained
+when the segment is centered at $x=y$. There are $c_i$ such segments of
+length $1/c_i$. The analogous vertical estimate proves the lower bound.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Fix $i$. Regard the centered vectors
+$v_j=(F_j(x)-1/2)_{x\text{ a face of }i}$, $j\ne i$, as vectors in
+the mean-zero subspace of $\mathbb R^{c_i}$, with normalized inner product.
+For distinct $j,k\ne i$, three-wise fairness gives
+\[
+ \mathbb E F_j(X_i)F_k(X_i)
+ =\Pr(X_j<X_i,\ X_k<X_i)=\frac13.
+\]
+Consequently their Gram matrix is
+\[
+ G_i=D_i+\frac1{12}{\bf1}{\bf1}^{T},
+ \qquad D_i=\operatorname{diag}(d_{ij}:j\ne i).
+\]
+Since $\operatorname{rank}G_i\le c_i-1$, the diagonal matrix $D_i$
+has rank at most $c_i$. Thus at most $c_i$ entries $d_{ij}$ are nonzero.
+By Lemma~\ref{lem:path}, each unordered pair $\{i,j\}$ supplies at least
+one nonzero directed entry, giving $\binom n2\le\sum_i c_i$.
+
+For the refinement, assume $c_i=M<n-1$ for every $i$. The rank bound
+forces a zero entry $d_{ia}=0$ in each row. Write $\rho=1/12$ and
+$e_j=v_j-v_a$. Then $\|v_a\|^2=\rho$, all $e_j$ are orthogonal to
+$v_a$, and distinct $e_j$ are mutually orthogonal, because all off-diagonal
+Gram entries equal $\rho$. Moreover $d_{ij}=\|e_j\|^2\ge0$.
+The vectors live in a space of dimension $M-1$, and $v_a\ne0$, so at
+most $M-2$ of the $d_{ij}$ are positive. Again every unordered pair has
+a positive directed entry. Hence $\binom n2\le n(M-2)$, as claimed.
+\end{proof}
+
+\paragraph{Implication for block constructions.}
+A universal collection of short blocks which is already exactly
+three-wise fair cannot have a bounded number of faces per die as the
+alphabet size grows. In particular, replacing the two-face palindromic
+blocks in the random approximation construction by exact three-wise fair
+blocks costs at least linearly many faces. This rules out that particular
+constant-cost upgrade; it is not a lower bound for general approximate
+fairness.
+
+\end{document}

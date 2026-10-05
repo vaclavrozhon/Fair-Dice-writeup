@@ -1,0 +1,228 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\title{Linear independence of distinct fair CDFs and a concatenation barrier}
+\author{Research proof; independent mathematical reviews completed}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+\section{The general CDF theorem}
+The following extension of the rank-two calculation was found by the
+root collaborator and independently checked by the size-bounds agent.
+
+\begin{theorem}\label{cdf}
+Let $n\ge3$ and let independent variables $X_1,\ldots,X_n$ have
+continuous distribution functions $F_1,\ldots,F_n$ on a common compact
+interval, rescaled to $[0,1]$. Suppose every ordering of every triple
+has probability $1/6$. Then:
+\begin{enumerate}
+\item Every nonzero linear relation among the $F_i$ is supported on
+indices having the same distribution function.
+\item The distinct functions among $F_1,\ldots,F_n$ are linearly independent.
+\item At most one distinct distribution function occurs more than once.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+For distinct $j,k$ set
+\[
+ d_{kj}=\int_0^1 F_j^2\,dF_k-\frac13.
+\]
+All Stieltjes integrals below are valid for continuous distribution
+functions. Triple fairness gives
+$\int F_iF_j\,dF_k=1/3$ when $i,j,k$ are pairwise distinct.
+Integration by parts also gives
+\[
+ \int F_kF_j\,dF_k=\frac12-\frac12\int F_k^2\,dF_j
+ =\frac13-\frac12d_{jk}.
+\]
+Suppose $\sum_i a_iF_i=0$. Evaluating at $1$ gives $\sum_i a_i=0$.
+Multiplying by $F_j$ and integrating against $dF_k$, with $j\ne k$,
+therefore yields
+\[
+ 0=a_jd_{kj}-\frac12a_kd_{jk}.
+\]
+Swapping $j,k$ gives $0=a_kd_{jk}-a_jd_{kj}/2$. Consequently
+\begin{equation}\label{products}
+ a_jd_{kj}=a_kd_{jk}=0\qquad(j\ne k).
+\end{equation}
+
+For any two continuous distribution functions $F,G$, integration by
+parts yields the nonnegative identity
+\begin{equation}\label{pairdivergence}
+ \int F^2\,dG+\int G^2\,dF-\frac23
+   =\frac12\int(F-G)^2\,d(F+G).
+\end{equation}
+Its right-hand side is zero exactly when $F=G$.
+Indeed write $D=F-G$, $S=F+G$; monotonicity implies
+$|D(t)-D(s)|\le S(t)-S(s)$ for $s\le t$.
+If, say, $D(t)=d>0$, choose the last $s<t$ with $D(s)=d/2$.
+Then $D\ge d/2$ on $[s,t]$ and $S(t)-S(s)\ge d/2$, so the integral
+on the right is at least $d^3/16>0$. The case $d<0$ is analogous.
+
+If $a_j,a_k$ are both nonzero, \eqref{products} implies
+$d_{kj}=d_{jk}=0$. Equation~\eqref{pairdivergence} then forces $F_j=F_k$.
+This proves the first assertion and, by choosing one representative of
+each distinct function, the second.
+Finally, if two different functions each occurred at least twice, the
+relation between two copies of the first function would imply
+$d_{kj}=0$ in one direction, and the relation between two copies of the
+second would imply $d_{jk}=0$. The same identity would force the two
+functions to coincide, a contradiction.
+\end{proof}
+
+\begin{corollary}[Exact rank of the block-count matrix]\label{rank}
+Let a triple-fair word on $n\ge3$ letters be a concatenation of
+permutation-fair blocks with positive multiplicities $v_i^{(g)}$.
+Put $C_i=\sum_gv_i^{(g)}$ and let $Q$ be the matrix with columns
+\[
+ q_i=(v_i^{(g)}/C_i)_{g=1}^s.
+\]
+If the block-count matrix has rank $r$, then $Q$ has exactly $r$
+distinct columns, those columns are linearly independent, and at most
+one of them is repeated. In particular, when all normalized letter
+profiles are distinct, the block-count vectors span all of
+$\mathbb R^n$.
+\end{corollary}
+\begin{proof}
+Replace each block by a time interval of any fixed positive length,
+and each die by constant density in that interval with mass
+$v_i^{(g)}/C_i$. Independent choices of blocks have exactly the same
+probabilities as in the word. Conditional on choosing a common block,
+the order of every chosen subset is uniform by the fairness of the
+block, matching independent uniform positions in an interval. Thus all
+order probabilities, in particular triple fairness, are preserved.
+Linear relations between the resulting CDFs are exactly linear relations
+between the columns of $Q$: differentiation gives one direction, and
+integration with zero initial values gives the other.
+Theorem~\ref{cdf} proves the result, since column normalization does not
+change the rank of the original count matrix.
+\end{proof}
+
+\section{The rank-two calculation and equalization consequences}
+The following direct proof is retained because it makes the rank-two
+obstruction explicit in two scalar integrals.
+
+\begin{theorem}\label{density}
+Let $n\ge3$. Suppose independent random variables $X_1,\ldots,X_n$ on
+$[0,1]$ have bounded densities
+\[
+ f_i(t)=1+a_i h(t),\qquad \int_0^1h(t)\,dt=0,
+\]
+where $h$ is nonzero on a set of positive measure. If every ordering of
+every triple has probability $1/6$, then all but at most one of the
+coefficients $a_i$ are equal.
+\end{theorem}
+\begin{proof}
+Put $H(t)=\int_0^t h(x)\,dx$, so the distribution function of $X_i$ is
+$F_i(t)=t+a_iH(t)$. Let
+\[
+ U=\int_0^1 tH(t)\,dt,\qquad V=\int_0^1H(t)^2\,dt>0.
+\]
+The strict positivity of $V$ follows from absolute continuity of $H$ and
+the hypothesis on $h$. For pairwise distinct $i,j,k$, triple fairness
+implies
+\[
+ \Pr(X_i<X_j,\ X_k<X_j)=\int_0^1F_i(t)F_k(t)f_j(t)\,dt=\frac13.
+\]
+Since $H(0)=H(1)=0$, integration by parts gives
+\[
+ \int t^2h=-2U,\qquad
+ \int tHh=-\frac V2,\qquad \int H^2h=0.
+\]
+Expanding the preceding probability therefore yields
+\begin{equation}\label{identity}
+ 2U(a_i+a_k-2a_j)
+  +V\bigl(2a_i a_k-a_j(a_i+a_k)\bigr)=0.
+\end{equation}
+Set $b_i=a_i+2U/V$. Equation~\eqref{identity} is exactly
+\[
+ 2b_i b_k=b_j(b_i+b_k).
+\]
+Subtract the equation with middle index $i$ from the one with middle
+index $j$ to obtain
+\[
+ 3b_k(b_i-b_j)=0\qquad(i,j,k\text{ pairwise distinct}).
+\]
+If all $b_i$ are equal, the conclusion follows. Otherwise choose
+$b_i\ne b_j$. Every $b_k$ outside this pair is zero. Since $n\ge3$,
+there is such a $k$; the equation with middle index $j$ then gives
+$b_i b_j=0$. Hence at most one $b_i$ is nonzero, again proving the claim.
+\end{proof}
+
+\begin{theorem}\label{blocks}
+Let $W$ be a concatenation of permutation-fair words $W_1,\ldots,W_s$
+on the same $n\ge3$ letters, each having positive multiplicities.
+Write $v^{(g)}\in\mathbb R_{>0}^n$ for the multiplicity vector of block
+$g$, and $C_i=\sum_gv_i^{(g)}$ for the total multiplicities.
+Suppose the vectors $v^{(g)}$ span a space of dimension at most two.
+If $W$ is triple-fair, then there is an index $e$ such that
+\[
+ \frac{v_i^{(g)}}{C_i}=\frac{v_j^{(g)}}{C_j}
+ \quad\text{for every }g\text{ and all }i,j\ne e.
+\]
+Thus all but at most one letter must have the same distribution over the
+blocks.
+\end{theorem}
+\begin{proof}
+The normalized block-mass vectors
+$q^{(g)}=(v_i^{(g)}/C_i)_{i=1}^n$ span a space of dimension at most two,
+contain the vector $\mathbf1=\sum_gq^{(g)}$ in their span, and have
+strictly positive entries. Choose any positive cell lengths $\lambda_g$
+summing to one and represent each die by constant density
+$q_i^{(g)}/\lambda_g$ on cell $g$.
+This model has exactly the same ordering probabilities as the original
+concatenation: the independent block choices have the same masses, and
+within each chosen block every restriction of its fair word has uniform
+relative order, just as independent uniforms in a common interval do.
+
+One may choose cell lengths so that the density vectors lie on an affine
+line through $\mathbf1$. Indeed choose any linear functional $L$ on the
+span with $L(\mathbf1)=1$ and $L(q^{(g)})>0$ for all $g$, for example
+$L(x)=n^{-1}\sum_i x_i$. Put $\lambda_g=L(q^{(g)})$.
+Then each density vector $q^{(g)}/\lambda_g$ belongs to the affine slice
+$L(x)=1$. If the span has dimension one, every density is $\mathbf1$ and
+the claim is immediate. Otherwise the slice is a line, so
+\[
+ f_i(t)=1+a_i h(t)
+\]
+for a fixed vector $a$ and a bounded piecewise-constant scalar $h$.
+The vector $a$ is nonconstant because $L(a)=0$ and $a\ne0$; the density
+normalizations imply $\int h=0$. If $h$ vanishes identically the claim
+is again immediate. Otherwise Theorem~\ref{density} says all but one
+$a_i$ are equal, hence all but one density profile and block-mass profile
+are identical.
+\end{proof}
+
+\begin{corollary}[Two block types]\label{two}
+Let $c,d\in\mathbb R_{>0}^n$ and let a word be formed from positive
+scaled permutation-fair blocks of count vector $c$ or $d$, with at least
+one block of each type. If the concatenation is triple-fair, then the
+ratios $c_i/d_i$ are equal for all but at most one index $i$.
+\end{corollary}
+\begin{proof}
+Apply Theorem~\ref{blocks}. On all nonexceptional indices $i,j$, both
+$c_i/C_i=c_j/C_j$ and $d_i/C_i=d_j/C_j$ hold, giving the assertion.
+\end{proof}
+
+\begin{corollary}[A transposition cannot equalize]
+Let $W$ be permutation-fair on $n\ge3$ letters, and suppose letters
+$i,j$ have different multiplicities. No concatenation using positive
+scaled copies of $W$ and of its relabelling by the transposition $(ij)$,
+with at least one of each type, is triple-fair.
+\end{corollary}
+\begin{proof}
+The ratios of the two count vectors are $q,q^{-1},1$ on $i,j$ and any
+other letter, where $q>0$ and $q\ne1$. These three ratios are distinct,
+contradicting Corollary~\ref{two}.
+\end{proof}
+
+\paragraph{Scope.}
+The CDF theorem gives a structural rank obstruction for all such
+concatenations; its two-type corollary excludes simple transposition
+averaging. It gives no quantitative size lower bound for general
+equalization and no lower bound on the true equal-composition optimum.
+The same argument applies to triple-fair blocks; full permutation
+fairness of each block is more than is needed.
+\end{document}

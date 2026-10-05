@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "checks": 220,
+  "degrees": "2..12",
+  "method": "exact Fraction step bounds and exact rational Sturm root counts"
+}

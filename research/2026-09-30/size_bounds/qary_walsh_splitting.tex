@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\wt}{\operatorname{wt}}
+\title{Prime-ary Walsh splitting and proper cells in even dimension}
+\author{Companion to \texttt{walsh\_positive\_splitting.tex}}
+\date{30 September 2026}
+\begin{document}\maketitle
+\noindent\textbf{Status.} Independently mathematically reviewed;
+not formally verified. These are continuous-density
+constructions. Neither theorem claims an improved finite-dice size bound.
+The proper-cell variant was independently proposed by two collaborating
+agents. The prime-ary variant increases the ratio of the total uniform
+drift to the drift spent in fully active cells.
+
+Fix a prime $q$, a primitive $q$th root $\zeta$, and a total-degree
+cutoff $n$. Use formal generators $H$ and $Y_{i,a}$, where $i\in[n]$
+and $a\in\mathbb F_q^*$, over $\mathbb Q(\zeta)$. Quotient the
+associative algebra by all words containing two $Y$ letters with the
+same first index $i$, and by all terms of degree above $n$. For
+$b\in\mathbb F_q^n$, let $\rho_b(H)=H$ and
+$\rho_b(Y_{i,a})=\zeta^{ab_i}Y_{i,a}$.
+Starting with $W_0=\exp(H+\sum_{i,a}Y_{i,a})$, set
+\[
+ W_\ell=\prod_{t=0}^{q-1}\rho_{t b_\ell}(W_{\ell-1}),
+\]
+in the displayed order.
+A nonzero monomial determines a frequency vector $v\in\mathbb F_q^n$:
+its coordinate is $a$ if $Y_{i,a}$ occurs, and zero otherwise.
+
+\begin{lemma}\label{filter}
+If $B_\ell$ has rows $b_1,\ldots,b_\ell$, every log term with frequency
+$v\ne0$ has degree at least $1+\wt(B_\ell v)$. The zero-frequency
+terms equal $q^\ell H$.
+\end{lemma}
+\begin{proof}
+At level zero, the assertion is immediate. In the BCH expansion for
+$q$ factors, the linear sum multiplies frequency $v$ by
+$\sum_{t=0}^{q-1}\zeta^{t b_\ell\cdot v}$, which is zero when the new
+coordinate is nonzero. A nonlinear term is a bracket of $k\ge2$
+components with disjoint first-index supports (otherwise it vanishes).
+Its degree is at least $k$ plus the sum of the previous Hamming weights,
+which is at least $k+\wt(B_{\ell-1}v)$. This allows the new required
+weight to increase by one. Zero frequency can occur for a nonzero
+monomial only when no $Y$ occurs, since each first index appears at most
+once; all brackets composed only of $H$ vanish.
+\end{proof}
+
+\begin{theorem}\label{qpath}
+For each fixed prime $q$, there are $q^{O_q(n)}$ equal rational cells
+supporting a permutation-fair family of continuous densities
+$f_i\in\{0,q\}$. The activity indicators on a uniformly selected cell
+are independent with probability $1/q$. In particular, the total mass
+contributed to each die by cells on which all $n$ dice are active is
+exactly $q^{1-n}$.
+\end{theorem}
+\begin{proof}
+Choose a matrix $B\in\mathbb F_q^{L\times n}$ of rank $n$ such that
+all nonzero images have weight at least $n$, with $L=O_q(n)$.
+For completeness, independent uniform rows give a binomial weight with
+mean $L(1-1/q)$ for every nonzero input. Taking $L$ a sufficiently large
+constant multiple of $n$, a Chernoff bound and the union bound over
+$q^n-1$ inputs prove existence.
+Lemma~\ref{filter} gives $\log W_L=q^L H$. Substitute
+$H=\sum_iX_i$ and $Y_{i,a}=X_i$ in the reduced algebra. The substitution
+respects the repeated-first-index ideal. A factor indexed by
+$t\in\mathbb F_q^L$ has coefficient
+\[
+ 1+\sum_{a\ne0}\zeta^{a(B^Tt)_i}
+ =q\,\boldsymbol1_{(B^Tt)_i=0}
+\]
+on $X_i$. Thus all velocities are real, nonnegative, and rational.
+After rescaling cell duration by $q^{-L}$, the signature is
+$\exp(\sum_iX_i)$. Surjectivity of $B^T$ makes its values uniform on
+$\mathbb F_q^n$, which proves the activity and mass assertions.
+\end{proof}
+
+\begin{theorem}\label{proper}
+For each even $n\ge2$ and each fixed prime $q$, there is an exact fair
+continuous family with $q^{O_q(n)}$ equal rational cells, with densities
+in $\{0,q\}$, such that every cell has at least one inactive die.
+\end{theorem}
+\begin{proof}
+Choose the rows of $B$ in the hyperplane $\boldsymbol1^\perp$, with
+\[
+ \ker B=\mathbb F_q\boldsymbol1,
+ \qquad \wt(Bv)\ge n\quad(v\notin\ker B).
+\]
+The same random-row argument on the quotient gives $L=O_q(n)$.
+The proof of Lemma~\ref{filter} applies without injectivity: it kills
+every nonkernel frequency. A nonzero kernel frequency has every
+coordinate nonzero, so any surviving term uses all $n$ distinct first
+indices and has degree exactly $n$, with no $H$ letters. Hence
+\[
+ \log W_L=q^L H+E_n,
+\]
+where $E_n$ is homogeneous of degree $n$ and is central after truncation.
+Apply a fixed phase $c\in\mathbb F_q^n$ with $\sum_i c_i\ne0$ before
+substitution. The factors now have activity characterized by
+$(B^Tt+c)_i=0$. Since every $B^Tt$ has coordinate sum zero, no factor
+has all coordinates active. The log still has the form $q^LH+E'_n$.
+
+Append the same list of exponential factors in reverse order.
+Reversing a product of exponentials of degree-one elements multiplies
+its degree-$d$ log term by $(-1)^{d+1}$: word reversal is an
+antiautomorphism and acts by that sign on a homogeneous Lie polynomial.
+Since $n$ is even, the reversed log is $q^LH-E'_n$. Centrality now
+shows that the concatenation has log $2q^LH$ exactly. Normalize the
+cell durations by $1/(2q^L)$. All cells remain proper.
+\end{proof}
+
+\begin{corollary}
+For $q=2$ and even $n$, the final reversal in Theorem~\ref{proper}
+can be omitted by choosing the first row of $B$ to be $\boldsymbol1$.
+\end{corollary}
+\begin{proof}
+That row lies in $\boldsymbol1^\perp$ because $n$ is even. Add enough
+independent random rows afterwards to obtain the same distance property.
+Setting $H=0$ in the first symmetrization gives
+$\exp(\sum_iY_i)\exp(-\sum_iY_i)=1$. Every later symmetrization, and
+every fixed phase, preserves this identity. Thus every nonzero log error
+contains at least one $H$. A surviving nonzero kernel frequency also
+requires all $n$ distinct $Y_i$, so its degree exceeds the cutoff $n$.
+\end{proof}
+
+\noindent\textbf{Limits.} Theorem~\ref{proper} allows activity as large
+as $n-1$, so naive recursive finiteization still gives a poor recurrence.
+Theorem~\ref{qpath} supplies a drift ratio $q^{n-1}$, but a quantitative
+positive absorption lemma is still required to remove its full cells.
+The cell count measures geometric complexity of continuous densities;
+it is not the face count of a finite equiprobable die.
+\end{document}

@@ -1,0 +1,173 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\E}{\mathbb E}
+\title{A qualitative strengthening of the three-halves endpoint bound}
+\author{Research proof: independently reviewed}
+\date{30 September 2026}
+\begin{document}\maketitle
+\noindent\textbf{Status.} Complete proof, independently reviewed by the root and rational-design
+research agents. Its endpoint-profile and variance-sensitive Laguerre
+inputs have also been independently reviewed. This qualitative result is
+superseded by the stronger near-quadratic bootstrap; it is retained as
+a separate structural argument. No explicit exponent exceeding $3/2$
+is claimed in this note.
+
+Let a sequence of monotone uniform-interval comparison tensors have
+$m\to\infty$ columns, arbitrary positive row weights, and
+$\E_w\prod_{j\in S}p_j=1/(|S|+1)$. Put $u_j=1-p_j$, $s=\sum_j u_j$,
+$\ell=\lfloor m/4\rfloor$, $N=m-\ell$, $\alpha=\ell/m$, and
+$z_j=\ell u_j$. Define the row range
+\[
+ H_m=\max_j z_j-\min_j z_j.
+\]
+The previously reviewed uniform endpoint-profile theorem, combined
+with finite mean-deficit balance, gives
+\begin{equation}\label{profile}
+ \sup_{s\le L}H_m\longrightarrow0\qquad(L<\infty\text{ fixed}).
+\end{equation}
+Indeed, for $s\le L$ the finite bound gives $\max u_j=O_L(1/m)$,
+so all entries are positive and $\lambda=\sum u_j/(1-u_j)=s+O_L(1/m)$.
+The endpoint profile then states uniformly that $m u_j=s+o(1)$.
+The same finite bound gives globally
+\begin{equation}\label{global}
+ H_m\le C(s+1),\qquad
+ \E_w(s+1)^a e^{-cs}\le C_{a,c}/m
+\end{equation}
+for every fixed $a\ge0,c>0$.
+
+We use the mixture $\mu(q)=(\ell+1)w_q\E_B A_B(q)$,
+$A_B=\prod_{j\in B}p_j$, where $B$ is a uniform $\ell$-subset, and
+$x=\alpha s$. Exact polarization expectations equal the beta law
+$b_\ell(z)=(\ell+1)\ell^{-1}(1-z/\ell)^\ell$ on $[0,\ell]$.
+
+\begin{lemma}[Range-sensitive comparison]\label{compare}
+Fix $\kappa>0$ and put $d=\lfloor\kappa\sqrt m\rfloor$.
+Let $Q_a(z)=\sum_{j=0}^d c_{aj}L_j(\theta z)$ for a fixed sufficiently
+small $\theta>0$, and let $B_a=\sum_j|c_{aj}|$, $B=B_1B_2$.
+Uniformly over these coefficients,
+\[
+ |\E_\mu Q_1(x)Q_2(x)-\beta_\ell(Q_1Q_2)|
+ =o(Bd/m).
+\tag{1}
+\]
+\end{lemma}
+\begin{proof}
+We detail why each formerly $O(Bd/m)$ error acquires a little-oh factor.
+For a complementary subset $R$, let $v=N^{-1}\sum_{j\in R}z_j$.
+The centered variance satisfies the sharper estimate
+\[
+ \sigma^2=\sum_{j\in R}(z_j-v)^2\le NH_m v.
+\tag{2}
+\]
+To see this, write $a=\min_{j\in R}z_j$ and $b=\max_{j\in R}z_j$.
+The variance is at most $(b-v)(v-a)\le H_m v$ times $N$.
+
+The all-complex Cauchy estimate and the off-diagonal Gaussian Laguerre
+bound give respectively
+\[
+ \frac{|e_k(z-v)|}{\binom Nk}
+ \le(\sqrt e\,\sigma\sqrt k/N)^k,
+ \qquad
+ \frac{|(Q_1Q_2)^{(k)}(v)|}{k!}
+ \le B e^{\theta v}(2\sqrt{\theta d/v})^k/k!.
+\]
+At $v=0$ the centered error vanishes identically. For $k=2$, using (2),
+the normalized integrated error is at most
+\[
+ C B\frac d m\,m\E_w[H_m e^{-cs}]=o(Bd/m).
+\]
+Here \eqref{profile} handles $s\le L$ and \eqref{global} makes the
+$s>L$ contribution uniformly small as $L\to\infty$.
+For all $k\ge3$ we use the coarser $H_m\le C(s+1)$ and the factorial
+weighted-moment bound. As in the variance-sensitive polarization lemma,
+their total is
+\[
+ O\left(B(d/m)^{3/2}\right)=o(Bd/m).
+\]
+This proves the improved polarization comparison.
+
+For the mixture comparison, work first on $s\le m/256$, where
+$p_i\ge1/2$. Under the success-weighted subset law put $\Delta=v-x$.
+The exact bias formula and the identity
+$\sum_j(u_j-s/m)^2\le (\max u_j-\min u_j)s$ give
+\[
+ 0\le\E\Delta\le C H_m x/m.
+\tag{3}
+\]
+For the variance, the subset size is fixed. Thus subtracting
+$a=\min_jz_j$ from every sampled coefficient leaves its variance
+unchanged. The remaining coefficients are nonnegative, so the negative
+pairwise inclusion covariances imply
+\[
+ \operatorname{Var}\Delta
+ \le N^{-2}\sum_j(z_j-a)^2
+ \le N^{-2}H_m\sum_jz_j
+ \le C H_m x/m.
+\tag{4}
+\]
+Consequently $\E\Delta^2\le C H_m x/m+C H_m^2x^2/m^2$.
+
+The off-diagonal derivative bounds are
+$|P'(x)|\le C B\sqrt{d/x}e^{\theta x}$ and
+$|P''(z)|\le C Bd e^{\theta z}/z$ for $P=Q_1Q_2$.
+The integral Taylor remainder obeys
+\[
+ |P(v)-P(x)-P'(x)(v-x)|
+ \le C Bd e^{\theta\max(x,v)}\frac{(v-x)^2}{x}
+\tag{5}
+\]
+for $x>0$, including $v=0$. Indeed, with $v=x+\Delta$,
+$(1-t)/(x+t\Delta)\le1/x$ for $0\le t<1$ and $v\ge0$.
+At $x=0$ all deficits and all errors vanish.
+Combining (3)--(5), averaging with $\overline A\le e^{-\alpha s}$,
+and normalizing yields a bound of the form
+\[
+ C B\frac d m\,m\E_w\left[
+   (H_m(1+s)+H_m^2(1+s)/m)e^{-cs}\right]
+ =o(Bd/m)
+\]
+by \eqref{profile}--\eqref{global}. The region $s>m/256$ has
+exponentially small error by the previously established crude
+uniform-subset comparison, even for $d=O_\kappa(\sqrt m)$.
+This proves (1).
+\end{proof}
+
+\begin{theorem}
+Under the tensor hypotheses above,
+\[
+ m^{3/2}\max\{w_1,w_K\}\longrightarrow0.
+\]
+In particular the exceptional-die optimum satisfies
+$g(n)/n^{3/2}\to\infty$.
+\end{theorem}
+\begin{proof}
+Use the same scaled Laguerre taper
+$T_d(y)=\sum_{j<d}(1-j/d)L_j(y)$ and
+$R_d(z)=(2/(\theta d)-z)T_d(\theta z)^2$.
+Its beta expectation is bounded below by a fixed positive constant.
+The recurrence identity
+$yT_d=d^{-1}\sum_{j<d}L_j-L_d$ factors $R_d$ into Laguerre sums
+with coefficient norms $O(d)$ and $O(1)$. Lemma~\ref{compare} therefore
+gives an error $o(d^2/m)=o_\kappa(1)$ for every fixed $\kappa$.
+Hence the last row satisfies $x_K<2/(\theta d)$ for all sufficiently
+large $m$.
+
+The normalized Christoffel square at this row has coefficient norm
+$O(1)$, value one there, and beta integral $O(1/d)$.
+Lemma~\ref{compare} gives
+\[
+ \mu(K)\le C/d+o(d/m)=\frac{C}{\kappa\sqrt m}
+                       +o_\kappa(m^{-1/2}).
+\]
+Also $s_K=O(1/d)$, so every $A_B(K)\ge1-s_K\ge1/2$ eventually.
+Thus
+\[
+ \limsup_{m\to\infty}m^{3/2}w_K\le C/\kappa.
+\]
+Since $\kappa>0$ was arbitrary, the limit is zero. Reversal and
+complementation give the first-row statement. Equal weights give
+the asserted consequence for dice.
+\end{proof}
+\end{document}

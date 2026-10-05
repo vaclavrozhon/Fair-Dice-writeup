@@ -1,0 +1,178 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=26mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\title{Integer quadrature rounding gives $C(n!)^2$ fair dice}
+\author{Research notes, 30 September 2026}
+\date{}
+\begin{document}
+\maketitle
+\noindent\textbf{Status.} Complete proof with independent mathematical reviews completed
+by two collaborating agents. These reviews are not machine-checked formal
+verification. The asymptotic class remains $\exp(O(n\log n))$, but the
+leading coefficient in the exponent matches the whole-copy insertion
+barrier proved in the companion note.
+
+\begin{theorem}\label{thm:main}
+There is an absolute positive integer $C$ such that, for every $n\ge1$,
+there are $n$ equal-sided permutation-fair dice with
+\[
+ F_n=C(n!)^2
+\]
+faces each. One explicit admissible choice is $C=2^{25}$.
+The construction adds one letter at a time, using $(r+1)^2$ unchanged
+copies in the step from $r$ letters to $r+1$ letters.
+\end{theorem}
+
+The improvement comes from replacing common-denominator clearing of the
+specific Hahn weights by rounding and exact integer corrections in a
+unimodular binomial basis. The existing positivity estimates are retained.
+
+\begin{lemma}[Integer quadrature rounding]\label{lem:round}
+Let $N\ge r\ge1$, and suppose $w_0,\ldots,w_N$ form an exact degree-$r$
+quadrature for the uniform probability measure on $[0,1]$, supported at
+$i/N$, with $w_i\ge\eta>0$. Define
+\[
+ \mu_j=\int_0^1\binom{Nx}{j}\,dx\qquad(0\le j\le r).
+\]
+Suppose $K$ is a positive integer such that all $K\mu_j$ are integers.
+If
+\[
+ K\eta\ge1+\max_{0\le i\le r}
+       \sum_{j=i}^r\binom ji\binom{N+1}{j+1},
+\]
+then there are nonnegative integers $k_0,\ldots,k_N$ with
+$\sum_i k_i=K$ whose normalized weights $k_i/K$ give another exact
+degree-$r$ quadrature on this grid.
+\end{lemma}
+\begin{proof}
+Set $a_i=\lfloor Kw_i\rfloor$ and
+\[
+ b_j=K\mu_j-\sum_{i=0}^Na_i\binom ij.
+\]
+The $b_j$ are integers. Exactness and $0\le Kw_i-a_i<1$ give
+\[
+ 0\le b_j\le\sum_{i=0}^N\binom ij=\binom{N+1}{j+1}.
+\]
+The transposed Pascal matrix on nodes $0,\ldots,r$ is unimodular.
+Its inverse gives integer corrections
+\[
+ d_i=\sum_{j=i}^r(-1)^{j-i}\binom ji b_j\qquad(0\le i\le r),
+\]
+which satisfy $\sum_{i=0}^r d_i\binom ij=b_j$ for every $j\le r$.
+Put $k_i=a_i+d_i$ for $i\le r$, and $k_i=a_i$ otherwise.
+The assumed bound and $a_i\ge K\eta-1$ imply $k_i\ge0$.
+The corrected binomial moments are exact; these polynomials span the
+degree-$r$ space. The zeroth moment gives $\sum_i k_i=K$.
+\end{proof}
+
+\begin{lemma}[The required moment denominators]
+For integer $N$ and $0\le j\le r$, the denominator of $\mu_j$ divides
+\[
+ r!\operatorname{lcm}(1,2,\ldots,r+1).
+\]
+In particular $((r+1)!)^2\mu_j$ is an integer.
+\end{lemma}
+\begin{proof}
+$j!\binom{Nx}{j}$ is a polynomial in $x$ with integer coefficients.
+Integrating its monomials introduces only denominators $1,\ldots,j+1$.
+Thus the denominator divides $j!\operatorname{lcm}(1,\ldots,j+1)$,
+which divides the displayed quantity and then $((r+1)!)^2$.
+\end{proof}
+
+\begin{lemma}[A uniform positive starting quadrature]\label{lem:positive}
+For every $r\ge1$ and $N=(r+1)^2$, the Wilson--Hahn projection weights
+give an exact degree-$r$ uniform quadrature on $i/N$ satisfying
+\[
+ w_i>\frac1{8N}\qquad(0\le i\le N).
+\]
+\end{lemma}
+\begin{proof}
+Use the manuscript's Hahn polynomials with largest grid index $N$.
+Its estimates apply for $N\ge r(r+2)$, and show, for $r\ge2$, that the
+unnormalized weights satisfy
+\[
+ W_i>\frac{N-3r(r+3)/4}{N+1}>\frac18.
+\]
+The last inequality follows from
+$7(r+1)^2-6r(r+3)-1=(r-2)^2+2>0$.
+For $r=1$, all $W_i=N/(N+1)>1/8$ directly. Normalize by $N$.
+The applicability of the manuscript estimates uses
+$r(r+1)\le N$ for Zaremba's nodal bound and
+$(r+1)^2\le N+1$ for Wilson's integral estimate.
+\end{proof}
+
+\begin{lemma}[An absolute scaling constant suffices]\label{lem:constant}
+For every integer $s\ge2$,
+\[
+ \frac{8s^2\left(2^s\binom{s^2+1}{s}+1\right)}{(s!)^2}<2^{25}.
+\]
+\end{lemma}
+\begin{proof}
+The second summand, $8s^2/(s!)^2$, is at most $8$.
+For the first, use
+\[
+ \binom{s^2+1}{s}\le\frac{s^{2s}e^{1/s}}{s!},
+ \qquad s!\ge\sqrt{2\pi s}(s/e)^s.
+\]
+It is consequently at most
+\[
+ \frac{8e^{1/s}}{(2\pi)^{3/2}}\sqrt{s}
+       \left(\frac{2e^3}{s}\right)^s
+ <\sqrt{s}\left(\frac{81/2}{s}\right)^s.
+\]
+Here $\pi>3$ and $e<2.72$ justify both strict inequalities, uniformly
+for $s\ge2$. Since $\sqrt{s}<2e^{s/16}$ and
+$\sup_{u>0}(a/u)^u=e^{a/e}$, this is bounded by
+\[
+ 2\exp\left(\frac{81}{2}e^{-15/16}\right)<2e^{16}.
+\]
+The inequality $e^{15/16}>81/32$ follows by retaining its first five
+Taylor terms. Finally
+$2e^{16}+8<2(11/4)^{16}+8<2^{25}$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Start with the one-letter string $s_1=1^C$, where $C=2^{25}$.
+Suppose $s_r$ is $r$-fair and every letter occurs $C(r!)^2$ times.
+Set
+\[
+ N=(r+1)^2,\qquad K=C((r+1)!)^2.
+\]
+The old letters each occur $NC(r!)^2=K$ times in $N$ copies of $s_r$.
+The moment-denominator lemma says $K\mu_j$ is integral for every $j\le r$.
+Use the starting quadrature from Lemma~\ref{lem:positive}.
+Because $N=(r+1)^2$, the binomial coefficients
+$\binom{N+1}{j+1}$ increase for $0\le j\le r$, and hence
+\[
+ \sum_{j=i}^r\binom ji\binom{N+1}{j+1}
+ \le\binom{N+1}{r+1}\binom{r+1}{i+1}
+ \le2^{r+1}\binom{N+1}{r+1}.
+\]
+Lemma~\ref{lem:constant}, with $s=r+1$, verifies the sufficient
+positivity condition in Lemma~\ref{lem:round}, using $\eta=1/(8N)$.
+Obtain integer gap lengths $k_i$ of total $K$ and exact degree-$r$
+Bernstein moments. The insertion criterion proves that the resulting
+string $s_{r+1}$ is permutation-fair. Its new and old letters all occur
+$K$ times, completing the induction.
+\end{proof}
+
+\begin{corollary}[Optimal leading exponent within whole-copy insertion]
+The constructed dice satisfy
+\[
+ \log F_n=2n\log n-2n+O(\log n).
+\]
+The companion insertion-barrier note proves that every one-letter-at-a-time
+whole-copy insertion construction has an oldest die with
+$\log F_n\ge2n\log n-O(n)$. Thus the leading coefficient $2$ is
+optimal for that framework.
+\end{corollary}
+
+The constant is deliberately conservative. An exact finite check of the
+displayed sufficient ratio for $2\le s\le128$ gives a maximum below
+$2^{22}$ (near $s=15$); an additional tail estimate would certify that
+smaller constant. This optimization has no bearing on the asymptotic result.
+
+\end{document}

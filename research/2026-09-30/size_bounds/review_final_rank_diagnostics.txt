@@ -1,0 +1,27 @@
+Final asymptotic rank diagnostics
+30 September 2026
+
+1. all_gap_singularity_inheritance.tex: new general corollary
+   For every r>=5,n>=2r, a fully fair positive n-word can fail
+   all-gap endpoint surjectivity throughdegree r. Projection onto the
+   fixed five-letter singular seed factors through truncation. The
+   actual face-weight differential is a subspace and also fails.
+   Root and rational collaborator checked the extension. Its stored
+   exact seed certificate predates the user's no-small-search steering;
+   no new enumeration was performed.
+
+2. fair_signature_hankel_rank.tex: root+rational full reviews PASS.
+   Zero-on-repeated reduced fair coefficient series has Hankel rank2^n.
+   Its ordinary nonnegative completion sum_{j<=n}H^j/j! has rankn+1.
+   Neither is a finite axis-word construction or a face-count bound.
+   Actual word repeated-letter coefficients and endpoint tangent rank
+   are explicitly distinguished.
+
+3. Independent full review by size_bounds of
+   ../rational_designs/asymptotic/squarefree_prefix_gram_barrier.tex:
+   PASS. Disjoint-support prefix Gram entries equal
+   1/[a!b!(a+b+1)], admitting the scalar t^a/a! rank<=r+1 completion.
+   The continuous diagonal path realizes it with tangent rank at most
+   n+(r-1)(n-1), but is not a finite axis path. The reduced shuffle
+   quotient cannot simply zero repeated products while preserving
+   positivity. These are method limitations, not a resolution of Q1.

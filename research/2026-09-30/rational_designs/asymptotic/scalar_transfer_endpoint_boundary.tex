@@ -1,0 +1,146 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newcommand{\E}{\mathbb E}
+\emergencystretch=2em
+\title{Local scalar-transfer rigidity at strictly constrained endpoints}
+\author{Research note; independently reviewed}
+\date{30 September 2026}
+\begin{document}\maketitle
+This extends the regular interior-boundary result in
+\path{../../independent_directions/scalar_transfer_boundary.tex}.
+The statement explicitly assumes strict endpoint signs. It makes no
+claim about endpoint strata where the normal derivative vanishes.
+
+\begin{theorem}
+Fix $m\ge2$ and a scalar array $a:[K]\to[0,1]$, nondecreasing,
+with at most $m-1$ distinct levels in $(0,1)$. Give its rows fixed
+positive probability weights. Endpoint levels $0$ and $1$ may also
+occur. Suppose a degree-$m$ polynomial
+\[
+ P(t)=\sigma t^m+\sum_{s=0}^{m-1}\gamma_s t^s,
+ \qquad \sigma\in\{-1,1\},
+\]
+has the following properties:
+\begin{itemize}
+\item $P'(a_l)=0$ at every interior level;
+\item $P''(a_l)>0$ at every interior level containing at least two rows;
+\item $P'(0)>0$ if the level $0$ occurs, and $P'(1)<0$ if level $1$ occurs.
+\end{itemize}
+Then, in a neighborhood of the scalar array with all columns equal
+to $a$, every nondecreasing $[0,1]$-valued array $x_1,\ldots,x_m$
+with exchangeable mixed moments
+\[
+ \E\prod_{j\in S}x_j=\mu_{|S|}
+\]
+and with $\mu_s=\E a^s$ for $1\le s<m$ satisfies
+\[
+ \sigma(\mu_m-\E a^m)\ge0.
+\]
+In the equality case all endpoint blocks are unchanged; on every
+interior block all columns have mean $a_l$, and at most one column is
+nonconstant. Thus all mixed moments through degree $m$ equal those
+of the original scalar array.
+\end{theorem}
+\begin{proof}
+All constants depend only on the fixed scalar array and $m$.
+Let $\delta=\max_{j,q}|x_j(q)-a(q)|$.
+On each interior level block write
+\[
+ x_j=a_l+b_{jl}+e_j,\qquad \E_l e_j=0,
+\]
+where $\E_l$ is the conditional weighted mean on that block. Put
+\[
+ C_{lij}=\E_l(e_i e_j)\ge0,
+ \qquad S=\sum_{l\text{ interior}}\sum_{i<j}C_{lij},
+ \qquad B=\max_{j,l\text{ interior}}|b_{jl}|.
+\]
+If there are no interior levels, take $B=S=0$.
+For endpoint blocks put $b_{j0}=\E_0 x_j\ge0$ and
+$b_{j1}=\E_1(x_j-1)\le0$, omitting absent blocks, and set
+\[
+ T=\sum_j(b_{j0}-b_{j1})\ge0.
+\]
+
+We use the elementary inequality
+$\E_l|fg|\le3\E_l(fg)$ for two nondecreasing mean-zero functions.
+Indeed, represent them as positive combinations of centered steps
+$h_s(u)=\mathbf1_{u\ge s}-(1-s)$ after embedding the weighted block
+in $[0,1]$. For $s\le t$,
+\[
+ \E h_s h_t=s(1-t),\qquad
+ \E|h_s h_t|=s(1-t)[1+2(t-s)]\le3s(1-t).
+\]
+Consequently, any product of at least two distinct interior errors
+has absolute mean at most $3(2\delta)^{s-2}C_{lij}$, where $s$ is
+its number of factors and $i,j$ are any two of them.
+
+The lower mixed moments of the block-constant interior means differ
+from their prescribed scalar values by $O(S+T)$. Here interior
+fluctuations contribute $O(S)$, while endpoint blocks contribute
+$O(T)$ because their deviations have one fixed sign and are bounded
+by $\delta$.
+The derivative of the lower-moment map in the interior variables
+$b_{jl}$ is injective. A kernel vector would satisfy, for every
+$s$-element column set $I$, $1\le s<m$,
+\[
+ \sum_{j\in I}\sum_{l\text{ interior}} w_l a_l^{s-1}b_{jl}=0,
+\]
+where $w_l$ is the fixed block weight. Comparing sets differing in one
+index makes each inner sum zero. The first $r$ equations, where $r$
+is the number of interior levels, form an invertible weighted
+Vandermonde system for each column. A bounded left inverse and Taylor
+expansion therefore give
+$B\le C(S+T+B^2)$, hence
+\[
+ B=O(S+T)
+\]
+after shrinking the neighborhood.
+
+The symmetric multiaffine polarization of $P$ at a row
+$(a_l+d_1,\ldots,a_l+d_m)$ is
+\[
+ P(a_l)+\sum_{s=1}^m\frac{P^{(s)}(a_l)}{s!}
+                  \frac{e_s(d_1,\ldots,d_m)}{\binom ms}.
+\]
+On interior blocks the linear term vanishes. Their quadratic main
+term is
+\[
+ \sum_{l\text{ interior}} w_l\frac{P''(a_l)}{m(m-1)}
+                    \sum_{i<j}C_{lij}.
+\]
+Singleton blocks contribute no covariance. Thus this term is at least
+$cS$ if $S$ can be nonzero; all errors, including products of block
+mean shifts, are $O(\delta S+(S+T)^2)$.
+
+On an endpoint block, every deviation $d_j=x_j-a_l$ has the same
+sign. A product of $s\ge2$ of them has absolute mean at most
+$\delta^{s-1}\E_l|d_j|$ for any chosen factor. Hence the endpoint
+contribution is its linear term plus $O(\delta T)$. By the strict
+endpoint signs and the positive block weights, its linear term is
+at least $cT$.
+Combining the two types of blocks gives
+\[
+ \E\operatorname{Pol}(P)(x_1,\ldots,x_m)-\E P(a)
+ \ge c(S+T)-C\bigl(\delta(S+T)+(S+T)^2\bigr)\ge0
+\]
+for sufficiently small $\delta$, with strict inequality if $S+T>0$.
+Exchangeability and the prescribed lower moments identify the left
+side as $\sigma(\mu_m-\E a^m)$.
+
+Equality forces $S=T=0$, hence $B=0$. The endpoint blocks are fixed
+because their mean one-sided deviations vanish. On an interior block,
+zero covariance between two monotone centered functions forces one to
+be constant: the monotone covariance formula has a strictly positive
+first--last term if both vary. Thus at most one column varies on that
+block, and its mean is the scalar level. Every distinct-coordinate
+product has the scalar block mean, proving the equality statement.
+\end{proof}
+
+At a scalar constrained local minimum, the usual one-sided endpoint
+conditions give weak signs $P'(0)\ge0$ and $P'(1)\le0$. The theorem
+covers the strictly complementary case. Vanishing endpoint derivatives,
+singular interior strata, and global components remain outside its
+scope. In particular this note does not establish general scalar
+transfer or a universal quadratic per-die lower bound.
+\end{document}

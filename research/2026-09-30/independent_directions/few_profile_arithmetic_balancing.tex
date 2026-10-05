@@ -1,0 +1,117 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\E}{\mathbb E}
+\title{Arithmetic balancing using logarithmically many fair-block profiles}
+\author{Argument by the rational-design research agent; written and checked independently}
+\date{30 September 2026}
+\begin{document}\maketitle
+\noindent\textbf{Scope.} This note concerns only the arithmetic of block
+multiplicities. It does not prove that concatenating the resulting
+fair blocks preserves permutation fairness, and therefore does not
+resolve polynomial equalization. Indeed, $n$ cyclic relabelings of any
+word already balance its multiplicities, with total length $n$ times
+the original length. The point here is to reduce the number of block
+profiles to $O(\log n)$ while retaining polynomial total length.
+
+\begin{lemma}\label{gcd}
+Let $c_1,\ldots,c_n$ be positive integers and $q\ge1$. There are
+permutations $\sigma_1,\ldots,\sigma_q$ for which
+\[
+ L:=\operatorname{lcm}_{i\in[n]}
+       \gcd(c_{\sigma_1(i)},\ldots,c_{\sigma_q(i)})
+ \le\left(\prod_{i=1}^n c_i\right)^{n^{1/q}/n}.
+\]
+\end{lemma}
+\begin{proof}
+Choose the $q$ permutations independently and uniformly.
+For a prime $p$ and $a\ge1$, let $k_{p,a}$ count the indices $j$
+with $p^a\mid c_j$, and put $x=k_{p,a}/n$.
+The event $p^a\mid L$ requires at least one coordinate $i$ whose
+$q$ selected multiplicities are all divisible by $p^a$.
+The union bound gives
+\[
+ \Pr(p^a\mid L)\le\min(1,nx^q)\le n^{1/q}x.
+\]
+The final inequality follows by splitting at $x=n^{-1/q}$.
+Therefore
+\[
+ \E\log L
+ \le\frac{n^{1/q}}n\sum_{p,a}k_{p,a}\log p
+ =\frac{n^{1/q}}n\sum_i\log c_i.
+\]
+At least one tuple of permutations has logarithm no larger than its
+expectation, proving the result.
+\end{proof}
+
+\begin{lemma}[A positive coin bound]\label{coin}
+Let $a_1,\ldots,a_q\le H$ be positive integers of greatest common
+divisor $g$. Every multiple $C$ of $g$ with $C\ge qH+H^2$ has a
+representation $C=\sum_{t=1}^q b_ta_t$ with all $b_t$ positive integers.
+\end{lemma}
+\begin{proof}
+Subtract one copy of every generator. It remains to represent a
+multiple $C'$ of $g$ with $C'\ge H^2$ by nonnegative coefficients.
+Divide the generators by $g$, and let $a$ be their minimum.
+The directed residue graph modulo $a$, with each generator allowed
+as a step, is strongly connected because the scaled gcd is one.
+A shortest path from zero to any residue has at most $a-1$ edges.
+It therefore represents that residue by a nonnegative combination
+of scaled generators of total value at most $(a-1)H/g$.
+In the original units this value is at most $(a-1)H\le H^2$.
+Choose the residue of $C'/g$ and add copies of the minimum generator
+to reach $C'$. Restoring the initially subtracted generators makes
+all coefficients positive.
+\end{proof}
+
+\begin{theorem}\label{balance}
+Let $s$ be a permutation-fair word on $n\ge2$ letters, with
+multiplicities $c_i$, length $A=\sum_i c_i$, and $H=\max_i c_i$.
+There are $q=\lceil\log_2 n\rceil$ permutation-fair words
+$s_1,\ldots,s_q$, each obtained by relabeling $s$ and independently
+blowing up occurrences of each letter, whose combined multiplicity
+of every letter is the same integer $C$, with
+\[
+ C\le qH+2H^2,
+ \qquad \sum_t|s_t|=nC\le3A^3.
+\]
+\end{theorem}
+\begin{proof}
+Use Lemma~\ref{gcd}. Since $n^{1/q}\le2$ and the geometric mean is
+at most $H$, its resulting $L$ satisfies $L\le H^2$.
+Let $C$ be the least multiple of $L$ no smaller than $qH+H^2$.
+Then $C\le qH+2H^2$.
+For each coordinate $i$, its $q$ generators $c_{\sigma_t(i)}$
+have gcd dividing $L$, hence dividing $C$. Lemma~\ref{coin} gives
+positive integers $b_{ti}$ with
+\[
+ \sum_{t=1}^q b_{ti}c_{\sigma_t(i)}=C.
+\]
+Relabel $s$ according to $\sigma_t$, then replace every occurrence
+of letter $i$ by $b_{ti}$ consecutive copies. Every full-pattern
+count is multiplied by $\prod_i b_{ti}$, so each resulting word
+$s_t$ is still permutation-fair. Its $i$-multiplicity is
+$b_{ti}c_{\sigma_t(i)}$, giving the asserted common total.
+Finally $n,q,H\le A$, so $n(qH+2H^2)\le3A^3$.
+\end{proof}
+
+\paragraph{The remaining geometric obstruction.}
+The concatenation $s_1\cdots s_q$ is balanced in multiplicities,
+but its order probabilities include selections spanning different
+blocks. Their contribution is not controlled by the arithmetic
+identities above. A construction that eliminated these cross-block
+defects at cost exponential only in the number $q$ of profiles would
+make the lemma relevant to polynomial equalization. No such
+construction is established here. There is an additional concrete
+barrier: if only these $q$ profile directions are reordered or repeated,
+the block-profile matrix has rank at most $q$. The independently proved
+continuous CDF-rank theorem in
+\path{../size_bounds/two_dimensional_equalization_barrier.tex} then
+forces at most $q$ distinct normalized letter profiles, with at most
+one profile allowed to repeat. Thus at least $n-q+1$ letters must
+share one profile whenever such a concatenation is three-wise fair.
+For generic output profiles this fails, regardless of the number of
+repetitions. Any eventual geometric use of the arithmetic lemma would
+therefore need new profile directions or additional shared structure.
+\end{document}

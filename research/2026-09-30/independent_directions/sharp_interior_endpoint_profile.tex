@@ -1,0 +1,271 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}
+\newcommand{\E}{\mathbb E}
+\title{An almost square-root rate for the interior endpoint profile}
+\author{Complete theorem; independently reviewed}
+\date{30 September 2026}
+\begin{document}\maketitle
+
+\begin{theorem}\label{main}
+Let $p_1,\ldots,p_m$ be nondecreasing functions on a finite ordered
+row set with positive probability weights $w$, and suppose
+\[
+ \E_w\prod_{j\in S}p_j=\frac1{|S|+1}\qquad(S\subseteq[m]),
+ \qquad 0\le p_j\le1.
+\]
+Put $u_j=1-p_j$ and $s=\sum_j u_j$. For every fixed
+$0<\delta<L<\infty$, uniformly over columns and rows with
+$\delta\le s\le L$,
+\[
+ \max_j|m u_j-s|\le C_{\delta,L}\sqrt{\frac{\log m}{m}}
+\]
+for all sufficiently large $m$.
+\end{theorem}
+
+The constants are independent of the number of rows and of their
+positive weights. The fixed lower cutoff $\delta>0$ is part of the
+statement; no estimate at the endpoint $s=0$ is claimed here.
+
+\paragraph{Inputs and their precise roles.}
+This proof uses the independently reviewed notes
+\begin{enumerate}
+\item \path{../rational_designs/asymptotic/quantitative_uniform_endpoint_profile.tex}:
+ on every fixed bounded $s$-interval, $\max_j|m u_j-s|\le m^{-\alpha}$
+ for some fixed $\alpha>0$, after decreasing the exponent to absorb
+ logarithms;
+\item \path{marked_cancellation_identity.tex}: the exact marked
+ identity, centered coefficient estimate, all-tilt subset
+ concentration, and localization-preserving subset comparisons;
+\item \path{../localized_laguerre_kernel_derivatives.tex}: the
+ all-orders localized complex-derivative bounds for the positive
+ Laguerre Poisson kernel;
+\item \path{../rational_designs/asymptotic/global_laguerre_spectral_truncation.tex}:
+ global marked and unmarked residuals after truncation at differential
+ order $J=O(\log m)$, and their off-annulus tail bounds;
+\item \path{../size_bounds/localized_profile_maximum_principle.tex}:
+ the localized mass-absorption lemma. We spell out the final
+ weighted maximum argument below to handle the different deleted
+ column coordinates explicitly.
+\end{enumerate}
+No scalar transfer conjecture, rationality, or equal-weight assumption
+enters the argument.
+
+\paragraph{Coordinates and probability measures.}
+Fix a marked column $i$, and set
+\[
+ M=m-1,\quad \ell=\lfloor M/4\rfloor,\quad N=M-\ell,
+ \quad z_j=\ell u_j.
+\]
+For a uniformly selected $\ell$-subset $B$ of the other $M$ indices,
+let $R$ be its complement and put
+\[
+ A_B=\prod_{j\in B}p_j,\quad
+ v_B=\frac1N\sum_{j\in R}z_j,\quad
+ x_i=\frac1M\sum_{j\ne i}z_j,\quad h_i=z_i-x_i.
+\]
+Write $\overline A_i=\E_BA_B$ and define the row measure
+\[
+ d\mu_i=(\ell+1)\overline A_i\,dw.
+\]
+It has total mass one by the mixed-moment identities.
+The scalar reference probability measure is
+\[
+ d\beta_\ell(x)=\frac{\ell+1}{\ell}
+ (1-x/\ell)^\ell\boldsymbol1_{[0,\ell]}(x)\,dx.
+\]
+Its density is bounded above and below on every fixed positive
+compact interval, uniformly for large $m$.
+
+For a fixed large exponent $A$, use the choices in the global
+spectral-truncation theorem:
+\[
+ \tau=C_A\frac{\log m}{m},\qquad b=\sqrt\tau,
+ \qquad J=\lceil B_A\log m\rceil.
+\]
+All constants are fixed before taking $m$ large. Write $K_\tau(x,a)$
+for the positive Laguerre Poisson kernel. On positive compact
+intervals it has Gaussian upper bounds at scale $b$ and a lower
+bound $c/b$ whenever $|x-a|\le b$.
+
+\begin{lemma}[The two actual localized comparisons]\label{comparisons}
+Fix a compact positive interval of test centers. There is a larger
+fixed compact interval $W\subset(0,\infty)$ of row coordinates such
+that, uniformly over marked columns and test centers, the following
+bounds hold. Let
+$H(q)=\max_j z_j(q)-\min_j z_j(q)$, including the marked column.
+Then
+\begin{align}
+ |\mu_i(K_\tau(x_i,a))-\beta_\ell(K_\tau(\cdot,a))|
+ &\le \frac C{m\tau}\int_{x_i\in W}
+                H^2K_{c\tau}(x_i,a)\,d\mu_i+m^{-A},\label{unmarked}\\
+ |\mu_i(h_iK_\tau(x_i,a))|
+ &\le \frac C m\int_{x_i\in W}
+ H^2(1+b^{-1}+Hb^{-2})K_{c\tau}(x_i,a)\,d\mu_i+m^{-A}.
+ \label{marked}
+\end{align}
+Here $c$ is a fixed enlargement factor. On $W$ one has
+$H\le R_m\le m^{-\alpha}$ for some fixed $\alpha>0$.
+Kernel tails outside $W$, with any fixed polynomially bounded
+prefactors used in these formulas, are negligible.
+\end{lemma}
+\begin{proof}
+Choose $W$ from the off-annulus theorem in the global truncation
+note, enlarging it if necessary. Its row coordinate there is
+$s_{-i}=\sum_{j\ne i}u_j=(M/\ell)x_i$; the conversion changes only
+fixed endpoints. On $W$, the finite balance bound
+$z_i\le C(s_{-i}+1)$ makes the full $s$ bounded. The prior profile
+theorem therefore gives $H\le m^{-\alpha}$ after weakening a power.
+All $z_j$ then lie in a fixed positive compact interval, since their
+unmarked mean is $x_i$, and $p_j\ge1/2$ for sufficiently large $m$.
+
+The global unmarked differential residual compares the reference
+integral to
+\[
+ (\ell+1)\E_w\E_B A_B
+ \sum_{k=0}^J \frac{K_\tau^{(k)}(v_B,a)}{k!}a_k,
+ \qquad
+ a_k=\frac{e_k((z_j-v_B)_{j\in R})}{\binom Nk}.
+\]
+The off-annulus theorem removes rows outside $W$ with error
+$m^{-A}$, even with absolute values on each summand. On $W$, the
+centered local derivative estimate bounds the terms $k\ge2$ by
+$CH^2/(m\tau)$ times a broader kernel. Average under the
+success-weighted subset law, then use its all-tilt concentration to
+keep that envelope at $x_i$. The localized subset Taylor comparison
+replaces $K_\tau(v_B,a)$ by $K_\tau(x_i,a)$ with the same bound.
+This proves \eqref{unmarked}.
+
+For the marked identity the global residual is
+\[
+ (\ell+1)\E_w\E_B A_B\left[(z_i-v_B)K_\tau(v_B,a)
+ -\sum_{k=2}^J\left\{
+ \frac{(v_B-z_i)K_\tau^{(k)}(v_B,a)}{k!}
+ +\frac{K_\tau^{(k-1)}(v_B,a)}{(k-1)!}\right\}a_k\right].
+\]
+It is at most $m^{-A}$ in absolute value. On $W$, the finite
+differential sum is bounded by
+$C[H^2/(mb)+H^3/(mb^2)]$ times a broader kernel, by the direct
+marked kernel lemma. The localized subset comparison replaces
+$(z_i-v_B)K_\tau(v_B,a)$ by $h_iK_\tau(x_i,a)$ with error
+$CH^2(1+b^{-1}+Hb^{-2})/m$ times such a kernel. This proves
+\eqref{marked}.
+
+The pure scalar kernels outside $W$ have exponentially small
+Gaussian tails because their centers lie in the smaller fixed
+interval. Every row measure $\mu_i$ has mass one, and the row
+coordinates and the auxiliary factors are at most polynomial in
+$m$. Thus these scalar tails are negligible too. Increasing the
+initial exponent $A$ absorbs the fixed number of residuals.
+\end{proof}
+
+\paragraph{Uniform local mass.}
+On $W$, $H\le R_m$, so \eqref{unmarked} is bounded by
+\[
+ \epsilon_m\mu_i(K_{c\tau}(x_i,a))+m^{-A},
+ \qquad \epsilon_m=\frac{CR_m^2}{m\tau}\longrightarrow0.
+\]
+Apply the mass-absorption lemma on an enlarged fixed annulus.
+Consequently, on any prescribed smaller annulus $I$, uniformly in
+$i$ and the center $a$,
+\begin{equation}\label{mass}
+ \mu_i(|x_i-a|\le b)\le Cb,\qquad
+ c\le\mu_i(K_\tau(x_i,a))\le C.
+\end{equation}
+Broader kernel masses are also bounded. Gaussian integration over
+length-$b$ intervals gives, for $r\ge b$ within that annulus,
+\begin{equation}\label{tail}
+ \int_{|x_i-a|\ge r}K_\tau(x_i,a)\,d\mu_i
+       \le C e^{-cr^2/b^2}+O(m^{-A}).
+\end{equation}
+The outer annulus for this step is chosen strictly larger than $I$,
+so the constants remain uniform up to the boundaries of $I$.
+
+\paragraph{A common coordinate for all marked columns.}
+Put
+\[
+ y=\frac\ell m s,\qquad h_i^*=z_i-y.
+\]
+The exact identities
+\begin{equation}\label{conversion}
+ x_i=y-\frac{h_i^*}{M},\qquad
+ h_i=\frac mM h_i^*,\qquad
+ H=\max_j h_j^*-\min_j h_j^*
+\end{equation}
+will avoid comparing maxima in different deleted coordinates.
+Choose a fixed positive annulus $I=[a_-,a_+]$, and a strictly
+smaller $I_0$, so that all target rows $\delta\le s\le L$ have
+$y\in I_0$ for large $m$. On a fixed enlargement of $I$ the prior
+profile estimate gives $|h_i^*|\le R_m\le m^{-\alpha}$.
+Let $\phi(y)=\min(y-a_-,a_+-y)$ on $I$, and set
+\[
+ D=\max_{i,\,\text{rows with }y\in I}\phi(y)|h_i^*|.
+\]
+If the row set here is empty, the target assertion is vacuous.
+
+Suppose $D>C_*b$. Select a maximizing row and column $i$, write
+$y_0$ for its common coordinate, $\Delta=|h_i^*(y_0)|$, and
+$d_0=\phi(y_0)$. Then
+\[
+ d_0=D/\Delta\ge C_*b/R_m,\qquad d_0/b\longrightarrow\infty
+\]
+at a polynomial rate. Also $\Delta\ge c_I C_*b$.
+For every row with $|y-y_0|\le d_0/2$, weighted maximality implies
+\begin{equation}\label{localrange}
+ |h_j^*(y)|\le C\Delta\quad\hbox{for all }j,
+ \qquad H(y)\le C\Delta.
+\end{equation}
+Any row whose $x_i$ lies in the fixed test annulus has bounded
+$s_{-i}$, and finite balance then makes its full $s$ bounded. Thus it
+lies in a fixed $y$-enlargement where the prior profile estimate
+applies, even if it was not initially described by its $y$ coordinate.
+Moreover, $|x_i-y|\le R_m/M=o(b)$ on the entire enlarged annulus,
+by \eqref{conversion}. Thus \eqref{localrange} holds on a fixed
+smaller $x_i$-neighborhood of the selected deleted coordinate
+$x_0=y_0-h_i^*(y_0)/M$. The cutoff weights there are comparable to
+$d_0$. Rows not in this neighborhood are separated from $x_0$ by
+a fixed multiple of $d_0$, apart from negligible $o(b)$ shifts.
+
+\paragraph{A one-sided positive test.}
+Choose fixed $B_0$ large enough for the Gaussian tails in
+\eqref{tail}, and then set $A_0=2B_0$. If the selected deviation is
+positive, center the kernel at $a=x_0+A_0b$; if it is negative,
+take $a=x_0-A_0b$. Both centers remain inside $I$.
+Consider the positive case. Whenever $|x_i-a|\le B_0b$, one has
+$x_i>x_0$ strictly. The monotone ordering of the columns then gives
+$z_i\ge z_i(x_0)$, even if there are other flat rows. Therefore
+\[
+ h_i(x_i)\ge h_i(x_0)-(x_i-x_0)
+ \ge\frac mM\Delta-(A_0+B_0)b\ge\Delta/2,
+\]
+provided $C_*$ was chosen large enough. For a negative selected
+deviation the same argument to the left gives $h_i\le-\Delta/2$.
+
+The kernel mass on this favorable window is bounded below by a
+positive constant using \eqref{mass}--\eqref{tail}, after choosing
+$B_0$ sufficiently large. In the surrounding $d_0/4$ neighborhood,
+\eqref{localrange} bounds $|h_i|$ by $C\Delta$, so its opposite-sign
+contribution outside the favorable window is as small a fixed
+multiple of $\Delta$ as desired. Outside that neighborhood the
+Gaussian factor is $\exp[-c(d_0/b)^2]$. Since $d_0/b$ grows
+polynomially, every polynomial row factor is absorbed. It follows
+that
+\begin{equation}\label{positive}
+ |\mu_i(h_iK_\tau(x_i,a))|\ge c\Delta.
+\end{equation}
+
+On the other hand, \eqref{marked}, the local range bound, bounded
+broader kernel mass, and the same negligible far tails give
+\[
+ |\mu_i(h_iK_\tau(x_i,a))|
+ \le\frac{C\Delta^2}{m}(1+b^{-1}+\Delta b^{-2})+m^{-A}
+ =o(\Delta).
+\]
+Indeed $mb^2=C_A\log m$, $mb\to\infty$, and
+$\Delta\le R_m\to0$, whereas $\Delta\ge c_I C_*b$.
+This contradicts \eqref{positive}. Hence $D\le C_*b$.
+On $I_0$ the cutoff is bounded below, so $|h_i^*|\le Cb$.
+Finally $m u_i-s=(m/\ell)h_i^*$ and $m/\ell$ is bounded.
+This proves Theorem~\ref{main}.
+\end{document}

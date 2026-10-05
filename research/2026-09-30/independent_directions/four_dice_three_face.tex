@@ -1,0 +1,102 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref,longtable}
+\newtheorem{theorem}{Theorem}
+\title{Four permutation-fair dice with a three-face die}
+\author{Exact construction and certificate, 30 September 2026}
+\date{}
+\begin{document}
+\maketitle
+\noindent\textbf{Status.} Verified twice by independent exact-arithmetic
+programs, including direct integer subsequence counting. This is an
+existence result, not an optimization of the other three dice.
+
+\begin{theorem}
+There are four permutation-fair uniform dice with face counts
+\[
+ \begin{split}
+ K_A&=163693699141790847787594200000,\\
+ K_B&=3055345920,\qquad K_C=5508,\qquad K_D=3.
+ \end{split}
+\]
+Consequently, the minimum possible size of a prescribed die in a
+four-die permutation-fair set is exactly three, using the universal
+$n-1$ lower bound established in the companion monotone-tensor note.
+\end{theorem}
+
+\paragraph{The exact certificate.}
+The table below specifies a run-length word. A row labelled $(i,k)$ means
+$k$ consecutive occurrences of die $i$; the rows are concatenated in order.
+Number all letters in this expanded word consecutively, and assign each
+number to the indicated die. All labels are distinct. There are exactly
+three occurrences of $D$.
+
+For verification without expanding the very large runs, start with
+$C_{\varnothing}=1$ and all other partial-pattern counts zero. Reading a
+run $i^k$, simultaneously update
+\[
+ C_{\pi i}\ \leftarrow\ C_{\pi i}+kC_\pi
+ \qquad(i\notin\pi).
+\]
+No pattern has a repeated letter, so it can select at most one occurrence
+from the current run; this recurrence is exact. Applied to the table, it
+gives for every $\pi\in S_4$
+\[
+ C_\pi=\frac{K_AK_BK_CK_D}{24}.
+\]
+The independent program \texttt{verify\_simple\_three\_face\_construction.py}
+checks this identity by integer arithmetic, and separately checks all
+weighted order probabilities by rational arithmetic. The machine-readable
+run table is \texttt{four\_dice\_three\_face\_simple\_integer.json}.
+
+\paragraph{How the example was found.}
+At the three faces of $D$, the cumulative probabilities of the old dice
+are
+\[
+\begin{array}{c|ccc}
+ &D\text{ face 1}&D\text{ face 2}&D\text{ face 3}\\\hline
+ A&1/7&71/140&17/20\\
+ B&5/33&47/96&907/1056\\
+ C&133/918&77/153&23/27.
+\end{array}
+\]
+Their centered versions $y_j=2p_j-1$ satisfy
+\[
+ \sum_qy_j(q)=0,\qquad
+ \sum_qy_i(q)y_j(q)=1\ (i\ne j),\qquad
+ \sum_qy_A(q)y_B(q)y_C(q)=0.
+\]
+These identities give each subset of dice the probability prescribed by
+a uniform ranking of being exactly the set below $D$. They alone do not
+ensure the full order law. Four interval blocks
+were then filled with positive rational weighted dice. A linear program
+solved the remaining order constraints; rational elimination converted its
+solution into an exact certificate before any assertion of fairness.
+
+The construction uses the classical three-die fair word
+\[
+ \mathtt{abccba\ bcaacb\ cabbac}
+\]
+as a local starting point, recorded in Purcell,
+\emph{Building Sets of Permutation-Fair Dice}, Example 5,
+\href{https://doi.org/10.1080/00029890.2024.2345576}
+{doi:10.1080/00029890.2024.2345576}.
+The four rational density tilts used for $B$ are
+\[
+ -\frac{121}{95},\quad\frac{39391}{83895},\quad
+ -\frac{319}{7020},\quad-\frac25.
+\]
+Die $C$ has six equal-weight atoms within each interval. The weights of
+$A$ are the exact solution of the final linear system. Clearing the three
+old dice's denominators gives the integer word below and leaves $D$ with
+three faces.
+
+\small
+\begin{longtable}{rcr}
+\text{Run}&\text{Die}&\text{Length}\\\hline
+\endfirsthead
+\text{Run}&\text{Die}&\text{Length}\\\hline
+\endhead
+\input{four_dice_three_face_runs.tex}
+\end{longtable}
+\end{document}

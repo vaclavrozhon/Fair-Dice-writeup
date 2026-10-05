@@ -1,0 +1,8 @@
+Independent review of size_bounds/denominator_depth_refinement.tex
+30 September 2026, rational_designs agent
+
+Full proof checked. No gap found. In particular: the two coefficient ranges
+k<p^a and k>=p^a, composition coefficient estimates, rational trace divided
+by p, nested ceiling simplification, E<=floor(r/(p-1)), and positive unit
+count divisibility all hold. The statement is conditional on denominator
+depth and does not improve the unconditional exponential lower bound.

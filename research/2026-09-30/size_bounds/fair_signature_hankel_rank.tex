@@ -1,0 +1,82 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{proposition}{Proposition}
+\title{The fair reduced signature has exponential Hankel rank}
+\author{Algebraic diagnostic; two independent mathematical reviews completed}
+\date{30 September 2026}
+\begin{document}\maketitle
+Fix positive counts $c_1,\ldots,c_n$. Regard the reduced fair signature
+as an ordinary noncommutative polynomial by setting
+\[
+ F(w)=\begin{cases}
+ \displaystyle\frac{\prod_{i\in S(w)}c_i}{|w|!},
+       &\text{if every letter in $w$ is distinct},\\
+ 0,&\text{otherwise}.
+ \end{cases}
+\]
+The empty word has coefficient one. Its Hankel matrix is the matrix
+$\mathcal H=(F(uv))_{u,v}$ indexed by all finite words.
+
+\begin{proposition}
+Over $\mathbb R$, $\operatorname{rank}\mathcal H=2^n$.
+\end{proposition}
+\begin{proof}
+If $u$ repeats a letter, its whole row is zero. Otherwise the row
+depends only on its support $S(u)$: the entry is zero if the column
+repeats a letter or its support meets $S(u)$, and otherwise depends
+only on the union of their supports. There are $2^n$ possible
+supports, proving the upper bound.
+
+For each subset $S$ choose one word listing its elements. Restrict
+rows to these words and columns to words listing $T^c$, for all
+subsets $T$. The entry is nonzero exactly when $S\subseteq T$.
+Order both index sets by increasing cardinality, with identical
+orders within each cardinality. This matrix is upper triangular,
+and its diagonal entries are all
+\[
+ \frac{\prod_{i=1}^n c_i}{n!}>0.
+\]
+Thus its rank is $2^n$.
+\end{proof}
+
+There is also a direct positive weighted automaton with $2^n$ states.
+A state records the set $S$ of letters already read. Reading
+$i\notin S$ moves to $S\cup\{i\}$ with weight $c_i/(|S|+1)$;
+repeated letters have no transition. Start at the empty set and give
+every state terminal weight one. The product of transition weights
+is exactly $F(w)$.
+
+\begin{proposition}[A still smaller ordinary completion]
+Let $H=\sum_i c_iX_i$ and define the ordinary noncommutative
+polynomial $E=\sum_{j=0}^n H^j/j!$, without setting repeated-letter
+coefficients to zero. It agrees with all prescribed squarefree fair
+coefficients, has nonnegative coefficients, and has Hankel rank $n+1$.
+\end{proposition}
+\begin{proof}
+For a word $u$ of length at most $n$, divide its Hankel row by the
+positive product of its letter weights, with repetitions counted.
+The resulting row depends only on $|u|$. Longer rows are zero,
+so rank is at most $n+1$. Choose rows $X_1^a$ and columns $X_1^b$
+for $0\le a,b\le n$. After positive row and column rescaling,
+the entries are $1/(a+b)!$ if $a+b\le n$, and zero otherwise.
+Reverse the order of the columns. The resulting triangular matrix
+has diagonal entries $1/n!$, proving the lower bound.
+\end{proof}
+
+\paragraph{Scope.}
+These are representations of coefficient data, not constructions
+of fair dice. A positive axis word has uncontrolled repeated-letter
+coefficients before passage to the reduced algebra; setting these to
+zero changes its ordinary Hankel matrix. Consequently no face-count
+upper or lower bound follows merely by comparing this rank with the
+length of a word. Nor does the result bound the rank of the endpoint
+\emph{differential}, whose reduced Lie target has factorial dimension.
+The reduced target has an exponential-size prefix--suffix linear
+representation, whereas its squarefree constraints admit an ordinary
+nonnegative completion of rank only $n+1$. The latter is the truncated
+signature of a simultaneous straight path, not of a finite positive
+axis word. Thus positivity and the unspecified repeated-letter data
+cannot be discarded when seeking a factorial obstruction by
+prefix--suffix moment rank.
+\end{document}

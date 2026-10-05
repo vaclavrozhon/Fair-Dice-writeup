@@ -1,0 +1,55 @@
+Independent review, 30 September 2026
+Reviewer: size_bounds research agent
+
+Target 1: ../rational_designs/p_adic_lower_bound.tex
+Verdict: no gap found.
+
+The root-of-unity trace identity gives rational integer coefficients in the
+binomial basis. The valuation inequality j>=(p-1)v_p(j+1) has equality only
+at j=0,p-1, so the inverse Gregory series has the claimed unit coefficients
+at indices divisible by p-1. The congruence pi^(p-1)/p=-1 modulo pi follows
+from the cyclotomic equation, including the p=2 case after reduction.
+
+The truncated unit-indicator error has valuation at least
+ceil((r+1)/(p-1)-1)=floor(r/(p-1)). For W_N,h, coefficients with k<p gain
+the additional factor p from binom(N,k); those with k>=p already satisfy
+the needed bound from pi_h^k. Every W coefficient has w-valuation at least
+p. Hence the individual contributions with outer index j and total degree
+k have w-valuation at least both (p-1)j and ceil((p-1)k/p). This proves
+that evaluation and regrouping are legitimate: modulo pi^L only finitely
+many j,k can contribute. The final rationality-based rounding is
+ceil((ceil((p-1)(r+1)/p)-(p-1))/(p-1))=floor(r/p).
+The normalization by the smallest denominator exponent supplies at least
+one unit node, so the final count is a positive ordinary integer.
+
+Target 2: ../rational_designs/polynomial_local_models.tex
+Verdict: no gap found, conditional on the cited standard O(d^2) real
+Chebyshev quadrature existence theorem, which is used explicitly.
+
+The regularization lemma correctly starts with degree 2m+2. A quadrature
+with at most m+1 distinct support points would annihilate the square of
+its vanishing polynomial, contradicting its positive integral. Therefore
+there are at least m+2 support points and at least m interior ones. The
+chosen pivot Jacobian has columns (s*u_q^(s-1))_{s=1}^m and is a scaled
+Vandermonde matrix, hence invertible.
+
+For a repeated free coordinate coinciding with a pivot, changing that free
+coordinate alone forces the corresponding pivot derivative to -1 and
+all other pivot derivatives to zero. Thus the collision equation has
+derivative -2 and is not identically zero. A sufficiently small open set
+of free-coordinate perturbations moves endpoints inward. A finite union
+of proper analytic zero sets cannot cover this open set. Other collisions
+are already absent and stay absent after shrinking the neighborhood.
+This justifies interior, distinct, equal-weight nodes with K=O(m^2).
+
+The rational correction systems are invertible near the chosen distinct
+real nodes, and their right sides vanish at the real design. Therefore all
+corrections tend to zero, allowing strict monotonicity to be preserved.
+At each index at most one correction is nonzero, so all higher correction
+products vanish exactly. The moment equation for an s-element subset is
+mu_s+s*a_s=1/(s+1), with no hidden averaging over subsets.
+Expanding the complementary factors gives the full local comparison law.
+Rational increasing CDF values can indeed be realized by uniform finite
+dice after clearing their individual denominators and placing faces in the
+specified gaps. This proves only the distinguished-die comparisons;
+it does not assert the full order law of the other dice.

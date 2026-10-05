@@ -1,0 +1,13 @@
+30 September 2026
+
+Full independent mathematical review of independent_directions/marked_cancellation_identity.tex: PASS, including the exact cancellation, centered coefficient bound, success-weighted bias/variance, all-tilt subGaussian estimate, localization-preserving subset Taylor comparison, and localized marked differential sum. Checked moment normalization, index-disjointness, degree cutoff, derivative shift, a2 sign, H-squared bias scale, and derivative-(k-1) sum H²/(N sqrt(tau)).
+
+Full independent mathematical review of root localized_laguerre_kernel_derivatives.tex: PASS. Checked exact relation between K and radial Gaussian B, complex square-root modulus domination, two Gaussian broadenings to 4tau, optimal Cauchy radius/crossover, and both centered coefficient series. The note separates finite differential sums from justified spectral truncation.
+
+Full independent mathematical review of rational_designs/asymptotic/global_laguerre_spectral_truncation.tex: PASS, including the unmarked companion and full off-annulus appendix. Checked integrated variance/Gaussian cancellation, exponential reserve, Gamma/factorial ratios, high differential-order truncation, low-order spectral gamma tail, constants chosen kappa then B then C_A, uniform complex bound, small/large Cauchy radii, and uniform-subset Hoeffding bad-event estimate. One minor explanation should use exp(t(z_j-x)/N) in the Maclaurin line; the displayed mgf formula is correct.
+
+The companion localized_profile_maximum_principle.tex remains explicitly CONDITIONAL on localized comparison and tail estimates. Its final linear-cutoff proof has completed full reviews by root, independent_directions, and rational_designs. It is not by itself the final tensor-profile theorem. Mass absorption must be applied on a larger fixed annulus than the subsequent marked cutoff, to keep mass constants uniform.
+
+These are mathematical peer reviews, not formal verification.
+
+Further full reviews: PASS for root bernstein_walsh_polarization_tail.tex, rational_designs/asymptotic/finite_jackson_endpoint_kernel.tex including the off-annulus appendix, and independent_directions/optimal_interior_endpoint_profile.tex. Checked the all-order complex Bernstein bound, lower/upper variance regimes, finite positive polynomial localization, endpoint-crossing inverse-cosine radius, polynomial off-annulus tails, and the polynomial-tail weighted maximum argument. No gap found. The log-free O(m^(-1/2)) profile theorem does not depend on the intermediate logarithmic square-root theorem.

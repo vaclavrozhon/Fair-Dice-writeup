@@ -1,0 +1,126 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\title{A sharp obstruction at the weak triple-minimum support bound}
+\author{Research note: weighted Gram matrices and row leverage}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+Let a probability distribution on $q$ permutations of $n$ labels have
+positive row weights $w_1,\ldots,w_q$. Suppose each member of every
+triple is its earliest label with probability $1/3$. Pairwise
+unbiasedness is not assumed.
+
+\begin{theorem}\label{support}
+For $n\ge5$, such a distribution has $q\ge n$.
+For $n=4$, the sharp bound is $q\ge3$.
+\end{theorem}
+\begin{proof}
+For distinct labels $i,j$, put $p_{ij}=\Pr(i<j)$. The triple-minimum
+condition implies $1/3\le p_{ij}\le2/3$.
+Call $i$ bad if $p_{ij}=1/3$ for some opponent $j$, and good otherwise.
+For a bad label, every event $i<j,i<k$ already has the same probability
+as $i<j$. Thus $i<j$ forces $i<k$ almost surely for every other label
+$k$, and the bad label is globally first with probability exactly
+$1/3$. There are at most three bad labels.
+
+Fix a pivot $i$ and let $C$ be the $q\times(n-1)$ zero--one matrix
+whose opponent column $j$ records the event $i<j$. Write
+$W=\operatorname{diag}(w_1,\ldots,w_q)$, $e_j=p_{ij}-1/3$, and
+$D=\operatorname{diag}(e_j)$. Then
+\begin{equation}\label{gram}
+ G=C^{\mathsf T}WC=D+\tfrac13\mathbf1\mathbf1^{\mathsf T},
+ \qquad C^{\mathsf T}w=e+\tfrac13\mathbf1.
+\end{equation}
+If $q<n-1$, all $e_j>0$ would make $G$ have rank $n-1>q$.
+Hence every pivot would be bad, forcing $n\le3$. This proves
+$q\ge n-1$ when $n\ge4$.
+
+It remains to exclude $q=n-1$ for $n\ge5$. For a good pivot all
+$e_j>0$, so $G$ and the now square matrix $C$ are invertible.
+The solution $v=C^{-1}\mathbf1$ can be found from \eqref{gram}:
+Sherman--Morrison gives
+\begin{equation}\label{v}
+ v_j=1-\frac{\alpha}{e_j},\qquad
+ \alpha=\frac{(q-1)/3}{1+\frac13\sum_j e_j^{-1}}>0.
+\end{equation}
+Thus $v_j<1$ for every $j$. A row of $C$ with zero or one entries
+equal to one cannot have scalar product one with $v$. Every good
+pivot therefore has at least two labels after it in every row.
+
+The last two positions of every permutation must consequently be
+bad labels. If there were at most two bad labels, they would occupy
+these positions in every row and never be first, a contradiction.
+Thus there are exactly three bad labels, each first with probability
+$1/3$, and $q-2$ good labels.
+
+For a fixed good label $a$, sum its minimum probabilities over the
+three pairs of bad labels. The total is one. In every row at least
+one bad label precedes $a$, so a row contributes at most one to this
+sum. Since all weights are positive, every row contributes one:
+exactly one bad label precedes $a$. Hence every permutation consists
+of its first bad label, then all good labels, then the other two bad
+labels. In particular, for good $a$ and bad $b$,
+\begin{equation}\label{badpair}
+ p_{ab}=2/3.
+\end{equation}
+
+For two good labels $a,c$, let $r=p_{ac}$, and let $x_b$ be the
+probability of $a<c$ in the rows beginning with bad label $b$.
+Outside these rows, both $a,c$ precede $b$, so the minimum condition
+on $\{a,c,b\}$ gives $r-x_b=1/3$. Summing over the three bad labels
+gives $r=3(r-1/3)$, and therefore
+\begin{equation}\label{goodpair}
+ p_{ac}=1/2.
+\end{equation}
+
+Return to a good pivot's matrix. Equations \eqref{badpair} and
+\eqref{goodpair} mean that $D$ has three entries $1/3$ (bad
+opponents) and $q-3$ entries $1/6$ (good opponents). Put
+$u=D^{-1}\mathbf1$, so these entries of $u$ are respectively three
+and six. Direct inversion of \eqref{gram} gives
+\[
+ G^{-1}=D^{-1}-\frac{uu^{\mathsf T}}{6(q-1)},\qquad
+ CG^{-1}C^{\mathsf T}=W^{-1}.
+\]
+Fix a row of weight $w_s$. If this good pivot has $\ell$ other good
+labels after it, it also has exactly two bad labels after it.
+The diagonal entry of the last matrix identity is thus
+\begin{equation}\label{leverage}
+ \frac1{w_s}=6t-\frac{6t^2}{q-1},\qquad t=\ell+1.
+\end{equation}
+In the same row, as the pivot ranges over all good labels, $t$ takes
+every value $1,\ldots,q-2$. If $q\ge5$, comparison of $t=1$ and
+$t=2$ in \eqref{leverage} would force $q=4$, a contradiction.
+If $q=4$, \eqref{leverage} forces every row weight to be $1/4$.
+No event can then have probability $1/3$, again a contradiction.
+This excludes equality for every $n\ge5$.
+
+For $n=4$, the three equally weighted permutations
+$1203,3201,0213$ satisfy the required triple-minimum condition,
+so the bound $q\ge3$ is sharp.
+\end{proof}
+
+The proof applies to arbitrary positive row weights. In the
+equal-weight case one additionally has $3\mid q$, so
+$q\ge3\lceil n/3\rceil$ for $n\ge5$.
+
+The equality argument also describes every four-label, three-row
+example: all weights are $1/3$; one label always occupies the second
+position; each of the other three labels is first once, and the
+remaining two positions can be ordered arbitrarily.
+
+\paragraph{Verification and companion arguments.}
+The weighted argument was independently derived and checked in two
+parallel research threads. It uses no enumeration or optimization
+solver. The earlier uniform-weight determinant proof is preserved
+in \path{weak_minimum_uniform_determinant.tex}; it forces
+$3h-1$ to be a square modulo three when $q=3h=n-1$, $h\ge2$.
+The note \path{six_weak_minimum_permutations.tex} gives another
+independent argument for $q=6,n=7$. Small exact profile calculations
+are retained in \path{check_weak_minimum_profiles.py} and its JSON
+output, but are not needed for Theorem~\ref{support}.
+No claim of literature novelty is made here.
+\end{document}

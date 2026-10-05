@@ -1,0 +1,246 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\PP}{\mathcal P}
+\title{Rational box smoothing with polynomial-denominator conditional means}
+\author{Proof independently reviewed by size\_bounds and independent\_directions}
+\date{30 September 2026}
+\begin{document}\maketitle
+Throughout, ``polynomial'' means bounded by a fixed power of $m+1$,
+with constants allowed to depend on fixed parameters but not on $m$.
+The statement keeps the number of auxiliary rank features fixed.
+It does not bound denominators of higher conditional moments.
+
+\begin{theorem}\label{main}
+Fix $h$. Suppose $K$ is polynomial in $m\ge2$, the nodes
+$0<b_1<\cdots<b_K<1$ have gaps, including endpoint gaps, at least
+an inverse polynomial, and $\psi_{\ell q}$, $1\le\ell\le h$, are
+rational features with polynomially bounded absolute values and
+polynomial common denominator. Suppose
+\[
+ T_{\ell j}=K^{-1}\sum_{q=1}^K\psi_{\ell q}b_q^j
+ \quad(0\le j\le m)
+\]
+are rational, and that the $h$ numbers $T_{\ell1}$ have polynomial
+common denominator. Finally, let $\phi_j$ be the orthonormal shifted
+Legendre polynomials and assume the evaluation family
+\[
+ \psi_{\ell q}\phi_j(b_q),\qquad 1\le\ell\le h,\quad 0\le j<m,
+\]
+has empirical Gram matrix bounded below by an inverse polynomial.
+
+Then there exist disjoint rational intervals
+$I_q=[c_q-\epsilon,c_q+\epsilon]\subset(0,1)$, with positive
+$\epsilon$ an inverse polynomial and with all their endpoints on
+one polynomial rational grid, and rational numbers $a_q$ with
+$|a_q|\le1/2$, such that the probability measure assigning each
+$I_q$ mass $1/K$ and conditional density
+\begin{equation}\label{density}
+ \frac1{2\epsilon}\left[1+a_q\left(
+       \frac{(x-c_q)^2}{\epsilon^2}-\frac13\right)\right]
+\end{equation}
+satisfies
+\[
+ \sum_q\psi_{\ell q}\int_{I_q}x^j\,d\beta(x)=T_{\ell j}
+ \quad(0\le j\le m).
+\]
+Each box has conditional mean exactly $c_q$, hence these means
+have a polynomial common denominator. All conditional moments are
+rational. The centers can be made closer than any prescribed inverse
+polynomial to the original nodes by adjusting the fixed exponents.
+\end{theorem}
+\begin{proof}
+All spaces below have polynomial dimension. Polynomial evaluation,
+first- and higher fixed-order derivative norms on $[0,1]$ are
+polynomial in $m$; intervals will remain inside $[0,1]$.
+We first replace the atoms by \emph{uniform} boxes and solve the
+resulting moment problem over the reals, before rational rounding.
+
+Choose rational $\epsilon=(m+1)^{-A}$ with $A$ a sufficiently large
+fixed integer. For centers $c$, consider the nonconstant moment map
+of the uniform boxes with feature weights $\psi_{\ell q}$.
+Use the basis $f_j(t)=\int_0^t\phi_{j-1}(u)du$, $1\le j\le m$,
+instead of powers. Its derivative at zero box width and centers $b$
+is $K^{-1}$ times the stated evaluation family. The Gram hypothesis
+gives a fixed right inverse with polynomial norm from Euclidean
+residuals to maximum center displacement.
+Uniform-box averaging changes each baseline moment by
+$O(\operatorname{poly}(m)\epsilon^2)$, since its first centered
+moment is zero. Its Jacobian differs by the same type of bound.
+The usual fixed-inverse contraction therefore gives real centers
+\[
+ c_q^*=b_q+O(\operatorname{poly}(m)\epsilon^2)
+\]
+whose uniform boxes satisfy every target moment exactly. Choose $A$
+large enough to preserve all node and endpoint gaps. The derivative
+bounds in this contraction are polynomial; no denominator assertion
+is made about $c^*$.
+
+\medskip\noindent\emph{Rounding while preserving all first moments.}
+The degree-one equations are exactly
+\begin{equation}\label{linear}
+ K^{-1}\sum_q\psi_{\ell q}c_q=T_{\ell1}.
+\end{equation}
+The feature matrix $(\psi_{\ell q})$ has rank $h$ and polynomial
+Gram lower bound, as a subfamily of the assumed evaluation matrix.
+Since $h$ is fixed, Cauchy--Binet supplies an $h\times h$ column
+minor with polynomially bounded inverse. Round every $c_q^*$ to a
+multiple of $1/L$, where $L=(m+1)^B$ with $B$ a sufficiently large
+fixed integer, and correct only these $h$ selected centers to restore
+\eqref{linear}. The resulting centers $c_q$ are rational and
+\[
+ \max_q|c_q-c_q^*|\le\operatorname{poly}(m)/L.
+\]
+They have a polynomial common denominator: the feature entries and
+targets in~\eqref{linear} have polynomial common denominators, the
+minor has fixed size, and Cramer's rule multiplies only a fixed number
+of such denominators and bounded determinant numerators. Increasing
+$B$ retains disjointness of the rational boxes and all endpoint gaps.
+
+\medskip\noindent\emph{Correcting higher moments without moving the means.}
+Use for the remaining equations the rationally rescalable basis
+\[
+ g_j(t)=\int_0^t(t-u)\phi_{j-2}(u)du,
+       \qquad 2\le j\le m.
+\]
+Together with $1,t$, these span $\PP_m$. Add the density corrections
+in~\eqref{density}; these preserve each box's mass and mean, because
+for uniform $U$ on $[-1,1]$,
+\[
+ \mathbb E(U^2-1/3)=\mathbb E[U(U^2-1/3)]=0,
+ \qquad \mathbb E[U^2(U^2-1/3)]=4/45.
+\]
+The response matrix $V$ of the remaining equations is exactly linear
+in the $a_q$. Taylor expansion gives
+\[
+ V_{(\ell,j),q}
+ =\frac{\psi_{\ell q}}K\mathbb E\bigl[
+      g_j(c_q+\epsilon U)(U^2-1/3)\bigr]
+ =\frac{2\epsilon^2}{45K}\psi_{\ell q}\phi_{j-2}(c_q)
+       +O(\operatorname{poly}(m)\epsilon^4/K).
+\]
+The Gram hypothesis, center closeness, and sufficiently large $A$
+therefore give a right inverse of $V$ with norm at most
+$\epsilon^{-2}\operatorname{poly}(m)$. The moment residual after
+center rounding is only $\operatorname{poly}(m)/L$, because the
+uniform boxes at $c^*$ were exact. Consequently the linear system
+has a solution with
+\[
+ \|a\|_\infty\le\operatorname{poly}(m)/(L\epsilon^2)\le1/2
+\]
+if $B$ is sufficiently large after $A$ is fixed.
+
+The solution may be taken rational without sacrificing this bound.
+Indeed, rescale each $g_j$ to remove its normalizing square root;
+then $V$ and the residual vector are rational. The minimum Euclidean
+norm solution $V^\top(VV^\top)^{-1}e$ is rational. It is unchanged
+by any invertible rescaling of the equation rows, so the polynomial
+bounds established in the orthonormal basis still apply.
+
+The bracket in~\eqref{density} lies between $2/3$ and $4/3$, proving
+positivity. It is even about $c_q$, so its conditional mean is $c_q$.
+Rational coefficients and endpoints give rational conditional moments.
+All required equations hold because the constant and linear ones were
+preserved separately and the remaining spanning equations were solved.
+Finally, increasing $A$ and then $B$ gives any fixed inverse-polynomial
+center accuracy while all denominators claimed in the theorem remain
+polynomial.
+\end{proof}
+
+\begin{theorem}[A fixed number of polynomial-denominator moments]\label{fixedmoments}
+Fix integers $h,s\ge1$, and assume $m\ge s+1$. Under the hypotheses
+of Theorem~\ref{main}, strengthen the arithmetic assumption by requiring
+all $T_{\ell j}$, $1\le\ell\le h$, $1\le j\le s$, to have a
+polynomial common denominator. Then there are rational boxes on one polynomial grid and positive
+rational conditional densities of degree at most $s+1$, preserving all
+the target weighted moments, for which \emph{all} conditional box moments
+through degree $s$ have one polynomial common denominator. Each box has
+mass $1/K$, and the center accuracy can be prescribed as before. The
+conditional mean need not equal the box center in this extension. Density
+bounds may be taken to be $1/2$ and $3/2$ relative to the uniform density
+of the box.
+\end{theorem}
+\begin{proof}
+First solve the real uniform-box problem exactly, obtaining the centers
+$c_q^*$ as before. Let $\mu_{qj}^*$ be the conditional moment of degree
+$j$ of the uniform box centered at $c_q^*$. Choose rational centers
+$c_q$ on a fine common polynomial grid, and keep the common rational
+halfwidth $\epsilon$. For each $1\le j\le s$, round all the numbers
+$\mu_{qj}^*$ to a common polynomial grid and correct the same fixed
+$h$ selected entries to impose
+\[
+ K^{-1}\sum_q\psi_{\ell q}\mu_{qj}=T_{\ell j},\qquad1\le\ell\le h.
+\]
+The fixed-size minor argument proves that all $\mu_{qj}$ have a
+polynomial common denominator and differ from $\mu_{qj}^*$ by at most
+$\operatorname{poly}(m)/L$. There are only the fixed number $hs$ of
+additional corrected entries. Take $\mu_{q0}=1$.
+
+In the uniform coordinate $u=(x-c_q)/\epsilon$, use the first $s$
+Legendre modes to realize these conditional moments:
+\[
+ 1+\sum_{l=1}^s a_{ql}P_l(u).
+\]
+For raw moment $j$, the response of mode $l$ is
+$\mathbb E[(c_q+\epsilon U)^jP_l(U)]$. It vanishes when $j<l$,
+and at $j=l$ equals $\epsilon^l\mathbb E[U^lP_l(U)]$, a nonzero
+rational constant times $\epsilon^l$. This fixed-size triangular
+system has rational inverse of norm at most $C_s\epsilon^{-s}$
+for $0\le c_q\le1$. Thus it realizes the prescribed moments with
+\[
+ |a_{ql}|\le\operatorname{poly}(m)/(L\epsilon^s).
+\]
+They may be made as small as desired by increasing the polynomial
+exponent in $L$.
+
+It remains to restore all higher global moments. These low-mode
+adjustments and center rounding have produced residual at most
+$\operatorname{poly}(m)/(L\epsilon^s)$ in a polynomially bounded
+basis. Add one further coefficient $a_{q,s+1}P_{s+1}(u)$ on each box.
+It preserves every already fixed conditional moment of degree at
+most $s$. For the remaining global equations use functions $g_j$,
+$j=s+1,\ldots,m$, whose $(s+1)$st derivatives are respectively
+$\phi_0,\ldots,\phi_{m-s-1}$ and whose first $s+1$ Taylor coefficients
+at zero vanish. The response matrix divided by $\epsilon^{s+1}$
+converges, with polynomial error $O(\operatorname{poly}(m)\epsilon)$,
+to a nonzero rational constant times the evaluation subfamily
+$K^{-1}\psi_{\ell q}\phi_{j-s-1}(b_q)$. Its right inverse therefore
+has norm at most $\epsilon^{-(s+1)}\operatorname{poly}(m)$.
+The rational minimum-norm solve, after harmless row rescaling, gives
+\[
+ |a_{q,s+1}|\le\operatorname{poly}(m)/(L\epsilon^{2s+1}).
+\]
+Choose first the fixed exponent in $\epsilon$ and then the one in $L$
+large enough that $\sum_{l=1}^{s+1}|a_{ql}|\le1/2$ for every box.
+Since $|P_l|\le1$ on $[-1,1]$, all densities have the asserted bounds.
+Their endpoints and coefficients are rational, and their first $s$
+conditional moments are the prescribed polynomial-denominator numbers.
+Every required global moment is exact. All parameters are polynomial
+for fixed $h,s$, as claimed.
+\end{proof}
+
+\paragraph{Arithmetic used by a synchronized family of applications.}
+The fixed-minor rounding equations use $K T_{\ell j}$, rather than
+$T_{\ell j}$ themselves. Thus if several applications use the same
+rational feature minor, a common grid for the quantities $K T_{\ell j}$
+and for all other rounded entries suffices to synchronize their output
+low-moment denominators. This observation does not itself construct
+such a shared minor or synchronize affine changes of interval.
+
+\paragraph{Application to cumulative mass and first moment.}
+The relevant fixed feature family is $\psi=(1,r_0,r_1)$, where $r_0$
+is a rational cumulative mass and $r_1$ a rational cumulative first
+moment. The trinary Legendre argument conditions this family when its
+real baseline is
+\[
+ 1,\quad R=t-\eta H_d,\quad M(t)=\int_0^t uR'(u)du.
+\]
+After sufficiently fine polynomial rational rounding, the empirical
+Gram hypothesis remains valid. The targets of degree one are fixed
+rational numbers in the intended uniform-moment construction. The
+lemma thus produces rational pure boxes with polynomial-denominator
+masses, endpoints, and means. Their higher moments may have much
+larger denominators, which is deliberately outside the conclusion.
+\end{document}

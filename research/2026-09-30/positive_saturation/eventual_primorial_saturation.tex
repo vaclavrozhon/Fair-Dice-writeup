@@ -1,0 +1,175 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\A}{\mathcal A}
+\newcommand{\Pp}{P_n}
+\title{Every sufficiently large primorial multiple is an equal fair-die size}
+\author{Research proof; two independent full reviews completed}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+Fix $n\ge1$ and put $P_n=\prod_{p\le n}p$, the empty product being one.
+A positive word on $n$ letters is fair with equal count $M$ if each letter
+occurs $M$ times and every ordering of every subset $S$ occurs as a
+subsequence exactly $M^{|S|}/|S|!$ times. The condition on all $n$-letter
+orders implies these subset conditions by marginalization, so this is
+precisely the usual notion of equal-sized fair dice.
+
+\begin{theorem}\label{main}
+For each $n$ there is an integer $N_n$ such that equal-sized $n$-fair dice
+with $M$ faces per die exist for every $M\ge N_n$ divisible by $P_n$.
+Conversely, every feasible equal count is divisible by $P_n$.
+More specifically, there is a feasible $L$ for which $L+P_n$ is also
+feasible. Thus, writing $a=L/P_n$, every $P_n k$ with
+$k\ge a(a-1)$ is feasible.
+\end{theorem}
+
+The prefix-completion step is a direct refinement of the manuscript's
+already stated symmetrization lemma (also restated as Theorem 8 in
+Purcell's paper~\cite{purcell}). The new
+consequence here comes from combining this completion property with
+positive right fractions and the signed-integrality characterization.
+
+The proof is constructive, but the present construction gives no useful
+bound of the form $N_n=\exp(O(n))$. It therefore settles eventual
+arithmetic feasibility, not the manuscript's shortest-word question.
+
+\section*{The reduced signature algebra}
+Let $\A_{\mathbb Q}$ have basis the empty word and all words of distinct
+letters $X_1,\ldots,X_n$. Products concatenate words with disjoint letter
+sets and are zero otherwise. Its positive-degree ideal is nilpotent.
+The signature of a positive word $i_1\cdots i_s$ is
+\[
+ \operatorname{sig}(i_1\cdots i_s)=\prod_{j=1}^s(1+X_{i_j}).
+\]
+Its coefficients count subsequences with distinct letters. Set
+$S=X_1+\cdots+X_n$ and $T_M=\exp(MS)$. Equal-count fairness is exactly
+$\operatorname{sig}(w)=T_M$. In particular, $T_M T_N=T_{M+N}$.
+Let $\mathcal S$ be the monoid of positive signatures, including the
+empty word, and let $G$ be the group it generates. The inverse of
+$1+X_i$ is $1-X_i$. Every element of $G$ has a finite logarithm which
+is a Lie polynomial in the $X_i$, by the finite BCH formula.
+
+\begin{lemma}[Vanishing invariant Lie polynomials]\label{invariant}
+If a homogeneous Lie polynomial $L$ of degree $k>1$ in $\A_{\mathbb Q}$
+is invariant under all permutations of the $n$ letters, then $L=0$.
+\end{lemma}
+\begin{proof}
+Every degree-$k$ associative word with distinct letters is in one orbit
+under the permutations. Thus $L$ must have the same coefficient $b$ on
+every such word. Map $\A_{\mathbb Q}$ to the commutative algebra
+$\mathbb Q[x_1,\ldots,x_n]/(x_1^2,\ldots,x_n^2)$. Every Lie polynomial
+of degree greater than one maps to zero. But the coefficient of each
+squarefree degree-$k$ monomial in the image of $L$ is $k!b$.
+Consequently $b=0$.
+\end{proof}
+
+\begin{lemma}[Universal positive prefix completion]\label{completion}
+Every positive word $u$ is a literal prefix of an equal-count fair word.
+If no letter occurs more than $B$ times in $u$, a completion with count
+$B(n!)^{n-1}$ per letter exists. For the empty word one may choose any
+positive $B$.
+\end{lemma}
+\begin{proof}
+Append letters until every count is $B$, obtaining a word $w$ with
+$\log\operatorname{sig}(w)=BS+$ terms of degree at least two.
+Suppose inductively that a positive word $w$ has
+\[
+ \log\operatorname{sig}(w)=C S+L_k+\text{terms of degree greater than }k,
+ \qquad k\ge2,
+\]
+where all degrees $2,\ldots,k-1$ vanish. Concatenate the $n!$ relabelings
+$\sigma(w)$, with the identity permutation first. In the BCH logarithm
+of this product, the degree-one term is $n!CS$ and the degree-$k$ term
+is $\sum_{\sigma\in\mathfrak S_n}\sigma(L_k)$. Indeed, the degree-one
+terms are all proportional to $S$ and commute, while any bracket
+involving a degree-$k$ term has degree at least $k+1$.
+The degree-$k$ sum vanishes by Lemma~\ref{invariant}. The new word
+therefore has no defect through degree $k$, and retains $w$ as a literal
+prefix. Apply this operation for $k=2,\ldots,n$. There are no degrees
+above $n$ in the algebra, so the resulting signature is
+$T_{B(n!)^{n-1}}$.
+\end{proof}
+
+\begin{lemma}[Clearing a signed signature by a fair word]\label{clearing}
+For every $g\in G$ there is a positive integer $L$ with
+$T_L\in\mathcal S$ and $gT_L\in\mathcal S$.
+\end{lemma}
+\begin{proof}
+First, any $u,v\in\mathcal S$ have a common right multiple in
+$\mathcal S$. By Lemma~\ref{completion}, write
+$u u'=T_A$ and $v v'=T_B$, with positive $A,B$ and $u',v'\in\mathcal S$.
+Then
+\[
+ u(u'T_B)=v(v'T_A)=T_{A+B}.
+\]
+It follows directly that every element of $G$ is a right fraction
+$a b^{-1}$, where $a,b\in\mathcal S$. For completeness, right fractions
+contain all generators and inverses. They are closed under products:
+if $b x=c y$ is a common right multiple, then
+\[
+ (a b^{-1})(c d^{-1})=a x(d y)^{-1}.
+\]
+Now complete $b$ to a fair signature, writing $b b'=T_L$ with
+$b'\in\mathcal S$ and positive $L$. Then
+$gT_L=a b'\in\mathcal S$.
+\end{proof}
+
+\section*{The arithmetic input and conclusion}
+We use the following signed-signature theorem proved separately in
+\path{size_bounds/signed_fair_signatures.tex}:
+\[
+ \exp\Big(\sum_i c_iX_i\Big)\in G
+ \quad\Longleftrightarrow\quad
+ |I|!\mid\prod_{i\in I}c_i\quad(\varnothing\ne I\subseteq[n]),
+ \qquad c_i\in\mathbb Z.
+\]
+For clarity, its sufficiency is elementary: correct homogeneous errors
+successively in the integral multilinear Lie basis
+$[X_{i_1},[\cdots,[X_{i_{k-1}},X_a]]\cdots]$, whose coefficients are
+read from the associative words ending in $X_a$. Nested group
+commutators realize $1+B$ for these basis brackets exactly, because
+products repeating a letter vanish. This writes every integral fair
+signature as a signed word.
+
+For equal $c_i=M$, the divisibility conditions hold precisely when
+$P_n\mid M$. Necessity follows by taking a subset of size $p$ for every
+prime $p\le n$. Conversely, if $p\mid M$, then
+$v_p(k!)\le k\le k v_p(M)$ for every $k\le n$; primes exceeding $n$
+do not divide $k!$. In particular $T_{P_n}\in G$.
+
+Apply Lemma~\ref{clearing} to $g=T_{P_n}$. Both $T_L$ and
+$T_{L+P_n}$ are positive fair signatures. Necessarily $P_n\mid L$.
+Let $a=L/P_n$. Concatenation realizes all nonnegative integer
+combinations of the consecutive integers $a$ and $a+1$, multiplied
+by $P_n$. Every integer $k\ge a(a-1)$ is such a combination: writing
+$k=qa+r$ with $0\le r<a$, one has $q\ge a-1\ge r$, and hence
+$k=(q-r)a+r(a+1)$. This proves Theorem~\ref{main}.
+
+\paragraph{What the proof does and does not use.}
+No general nilpotent-semigroup saturation theorem is needed. The
+special ingredient is the vanishing of permutation-invariant
+multilinear Lie errors, which gives literal positive prefix completion.
+The noncentrality of the fair ray causes no problem after establishing
+the common-right-multiple property; one never commutes a fair block
+past an arbitrary signed word.
+
+\paragraph{Independent checks.}
+Two collaborators independently checked the complete proof, including
+the invariant-Lie argument and the order of multiplication in the
+right-fraction identity. The companion exact script verifies the
+completion construction for 20 inputs with $1\le n\le4$, using actual
+positive words, testing the literal prefix and every subset-order count.
+All checks passed.
+\begin{thebibliography}{1}
+\bibitem{purcell}
+M. Purcell, Building Sets of Permutation-Fair Dice,
+\emph{American Mathematical Monthly} 131 (2024), 595--607.
+\href{https://doi.org/10.1080/00029890.2024.2345576}{doi:10.1080/00029890.2024.2345576}.
+Theorem 8 attributes the symmetrization construction to the prior
+Polylog exposition.
+\end{thebibliography}
+\end{document}

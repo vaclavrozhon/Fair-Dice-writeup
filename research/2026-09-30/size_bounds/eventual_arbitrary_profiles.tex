@@ -1,0 +1,139 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\title{Eventual arithmetic sufficiency on every positive count ray}
+\author{Extension of the positive-prefix completion argument}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+Fix a positive integer vector $c=(c_1,\ldots,c_n)$. Set
+\[
+ R(c)=\prod_{\substack{p\le n\text{ prime}\\
+              |\{i:p\nmid c_i\}|\ge p}}p.
+\]
+The empty product is one. The subset-divisibility characterization says
+that the vector $tc$ satisfies every necessary factorial divisibility
+condition if and only if $R(c)\mid t$.
+Indeed, at least $p$ counts not divisible by $p$ supply a violating
+$p$-subset. Conversely, if at most $p-1$ counts are $p$-units, every
+$k$-subset with $k\ge p$ has product valuation at least
+$k-p+1\ge(k-1)/(p-1)\ge v_p(k!)$; for $k<p$ the requirement is empty.
+Applying this criterion after multiplication by $t$ proves the claim.
+
+\begin{theorem}\label{main}
+For every positive integer vector $c$ there is a finite threshold
+$N(c)$ such that, for every integer $t\ge N(c)$, a permutation-fair
+family with face-count vector $tc$ exists if and only if $R(c)\mid t$.
+More specifically, some positive integer $A$ has both $Ac$ and
+$(A+R(c))c$ feasible. Every multiple of $R(c)$ at least
+$A(A-R(c))/R(c)$ is consequently a feasible dilation.
+\end{theorem}
+
+The conclusion concerns sufficiently large dilations of a fixed profile.
+It does not bound the minimum total number of faces sharply, nor imply
+that the undilated arithmetic conditions are sufficient.
+
+Use the reduced squarefree algebra and signed-signature theorem from
+\texttt{signed\_fair\_signatures.tex}. Put
+\[
+ H_c=\sum_i c_iX_i,\qquad T_t^{(c)}=\exp(tH_c),\qquad
+ D=\operatorname{lcm}(c_1,\ldots,c_n).
+\]
+The signature $T_t^{(c)}$ is exactly fairness with counts $tc$ whenever
+it is represented by a positive word.
+
+\begin{lemma}[Weighted prefix completion]\label{completion}
+Every positive word is a literal prefix of a fair positive word with
+count vector $Ac$ for some positive integer $A$. More quantitatively,
+if $B\ge1$ and the starting word has at most $Bc_i$ occurrences of
+letter $i$, one may take
+\[
+ A=B\prod_{k=2}^n\bigl(D^k+(n!-1)D\bigr).
+\]
+\end{lemma}
+\begin{proof}
+Append letters until the count vector is exactly $Bc$. Define weighted
+relabelings by
+\[
+ \psi_\sigma(X_i)=\frac{c_{\sigma(i)}}{c_i}X_{\sigma(i)}
+ \qquad(\sigma\in S_n).
+\]
+These are a group action by algebra automorphisms, they fix $H_c$, and
+they are conjugate to ordinary relabelings by the diagonal change
+$X_i\mapsto c_iX_i$. Thus a homogeneous Lie polynomial of degree
+$k>1$ invariant under every $\psi_\sigma$ is zero, by the invariant-Lie
+lemma in the positive-completion note.
+
+Suppose the current positive word $w$ has
+\[
+ \log\operatorname{sig}(w)=BH_c+E_k+\text{terms of degree greater than }k,
+\]
+with all errors in degrees $2,\ldots,k-1$ zero.
+Let $\delta_D$ be the dilation $X_i\mapsto DX_i$.
+For every nonidentity permutation $\sigma$, the image of $w$ under
+$\delta_D\psi_\sigma$ is an ordinary positive word: replace each
+letter $i$ by $D c_{\sigma(i)}/c_i$ copies of $\sigma(i)$.
+All these multiplicities are positive integers.
+
+Concatenate first $D^k$ copies of $w$, and then these transformed
+words for every $\sigma\ne\mathrm{id}$. The first block has logarithm
+\[
+ D^k BH_c+D^k E_k+\cdots,
+\]
+whereas the block for $\sigma\ne\mathrm{id}$ has logarithm
+\[
+ DBH_c+D^k\psi_\sigma(E_k)+\cdots.
+\]
+All degree-one terms are proportional to $H_c$ and commute.
+Any BCH bracket involving an error has degree at least $k+1$.
+The new degree-$k$ error is therefore
+$D^k\sum_{\sigma\in S_n}\psi_\sigma(E_k)=0$.
+The new first-degree multiplier is
+$B(D^k+(n!-1)D)$, and the old word remains a literal prefix.
+Iterating for $k=2,\ldots,n$ gives the claim.
+\end{proof}
+
+\begin{lemma}[Clearing signed words on a prescribed ray]\label{clearing}
+For every signed group element $g$ there is a positive integer $A$
+such that both $T_A^{(c)}$ and $gT_A^{(c)}$ are represented by positive
+words.
+\end{lemma}
+\begin{proof}
+Weighted completion supplies, for any positive signatures $u,v$,
+positive complements $u',v'$ with $uu'=T_a^{(c)}$ and
+$vv'=T_b^{(c)}$. These fair signatures commute, so
+\[
+ u(u'T_b^{(c)})=v(v'T_a^{(c)})=T_{a+b}^{(c)}.
+\]
+Hence positive signatures have common right multiples. As in the
+equal-count case, every signed element is a right fraction $xy^{-1}$
+of positive signatures. Complete $yz=T_A^{(c)}$; then
+$gT_A^{(c)}=xz$ is positive.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{main}]
+For a prime $p$, multiplication of all counts by a dilation $t$ either
+makes every count divisible by $p$ (if $p\mid t$), or leaves unchanged
+the set of $p$-unit counts. The subset-divisibility characterization
+therefore gives exactly $R(c)\mid t$. In particular the signed-signature
+theorem gives $T_{R(c)}^{(c)}$ as a signed group element.
+Apply Lemma~\ref{clearing} to this element. The resulting positive
+signatures are $T_A^{(c)}$ and $T_{A+R(c)}^{(c)}$.
+Necessity gives $R(c)\mid A$.
+
+Concatenations of these two fair words remain on the same fair ray.
+Writing $a=A/R(c)$, they realize every nonnegative integer combination
+of $a$ and $a+1$, multiplied by $R(c)$. Every integer at least
+$a(a-1)$ is such a combination, proving the stated threshold.
+\end{proof}
+
+\paragraph{Review status.}
+The full weighted-power proof has an independent line-by-line
+mathematical review, and exact reduced-algebra verification has passed
+on six small count rays; see
+\texttt{../positive\_saturation/verify\_weighted\_completion.py}.
+No machine-checked formal verification is claimed.
+\end{document}

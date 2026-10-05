@@ -1,0 +1,217 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}
+\newcommand{\E}{\mathbb E}
+\title{The square-root interior endpoint profile}
+\author{Complete theorem; independently reviewed}
+\date{30 September 2026}
+\begin{document}\maketitle
+
+\begin{theorem}\label{main}
+Suppose $p_1,\ldots,p_m$ are nondecreasing $[0,1]$-valued columns
+on a finite ordered set with positive probability row weights $w$,
+and
+\[
+ \E_w\prod_{j\in S}p_j=\frac1{|S|+1}\qquad(S\subseteq[m]).
+\]
+Put $u_i=1-p_i$ and $s=\sum_i u_i$. For every fixed
+$0<\delta<L<\infty$, uniformly over rows with $\delta\le s\le L$,
+\[
+ \max_i|m u_i-s|\le C_{\delta,L}m^{-1/2}.
+\]
+\end{theorem}
+
+We use the exact marked identity and notation from
+\path{marked_cancellation_identity.tex}, and the common-coordinate
+bookkeeping from \path{sharp_interior_endpoint_profile.tex}. The
+present argument replaces its infinite Laguerre kernel by a positive
+finite polynomial. We give all changes to the measure and maximum
+arguments explicitly; Gaussian tails are not assumed here.
+
+The new analytic inputs are
+\path{../rational_designs/asymptotic/finite_jackson_endpoint_kernel.tex}
+(including its global low-order off-annulus estimate) and
+\path{../bernstein_walsh_polarization_tail.tex}.
+As a prior estimate we use any independently proved bound
+\begin{equation}\label{prior}
+ \max_i|m u_i-s|\le R_m\le m^{-\alpha},\qquad\alpha>0,
+\end{equation}
+on each fixed bounded $s$-interval. The earlier polynomial-rate
+profile theorem suffices; the stronger logarithmic square-root
+theorem is not needed as an input.
+
+\paragraph{Parameters and local comparisons.}
+Fix a large error exponent $A>10$. Fix the positive integer $r$ in
+the Jackson kernel sufficiently large that
+\begin{equation}\label{rchoice}
+ 2r\alpha>A+10,\qquad r>A+10.
+\end{equation}
+The polynomial exponents absorbed here are fixed independently of
+$r$. Constants, as distinct from powers of $m$, may depend on $r$.
+Next choose the degree ratio sufficiently small for both the global
+Bernstein--Walsh theorem and the Jackson off-annulus geometric sum
+(the latter constants depend on $r$), and finally choose its differential cutoff
+$J=B\log m$. For the Jackson kernel $Q_m(x,a)$ let
+\[
+ b=\sqrt\ell/\nu\asymp m^{-1/2},\qquad
+ E_b(x,a)=b^{-1}(1+|x-a|/b)^{-2r}.
+\]
+Here $\ell=\lfloor(m-1)/4\rfloor$, and the integer $\nu\asymp m$
+has fixed sufficiently small ratio, after $r$ is fixed.
+
+For marked column $i$, put $M=m-1$, $N=M-\ell$, $z_j=\ell u_j$,
+and use
+\[
+ x_i=M^{-1}\sum_{j\ne i}z_j,\qquad h_i=z_i-x_i,\qquad
+ d\mu_i=(\ell+1)\E_B\prod_{j\in B}p_j\,dw,
+\]
+where $B$ ranges uniformly over the $\ell$-subsets of the other
+$M$ indices. Each $\mu_i$ is a probability measure. The reference
+measure has density
+\[
+ d\beta_\ell(x)=\frac{\ell+1}{\ell}(1-x/\ell)^\ell
+                  \boldsymbol1_{[0,\ell]}(x)\,dx.
+\]
+Let $H=\max_jz_j-\min_jz_j$.
+
+The exact polynomial identities, global high-order tail theorem,
+Jackson off-annulus estimate, and compact subset comparisons give,
+for centers in any fixed positive compact interval,
+\begin{align}
+ |\mu_i(Q_m(x_i,a))-\beta_\ell(Q_m(\cdot,a))|
+ &\le \frac C{mb^2}\int_{x_i\in W}H^2E_b(x_i,a)\,d\mu_i+m^{-A},
+ \label{unmarked}\\
+ |\mu_i(h_iQ_m(x_i,a))|
+ &\le\frac C m\int_{x_i\in W}
+ H^2(1+b^{-1}+Hb^{-2})E_b(x_i,a)\,d\mu_i+m^{-A}.
+ \label{marked}
+\end{align}
+Here $W$ is a sufficiently large fixed positive row annulus, and
+constants or the envelope scale can change by fixed factors.
+To see the order of these operations, first apply the exact marked
+and unmarked identities to the polynomial $Q_m$, whose degree is
+at most a small fixed multiple of $m$. Remove differential orders
+above $J$ by the global bounded-polynomial tail theorem. At orders
+up to $J$, discard rows outside $W$ using the Jackson angular
+localization theorem. On $W$ use the finite centered differential
+sum and the success-weighted subset Taylor comparison. The prior
+estimate makes $H$ small there, and finite balance ensures every
+marked value is bounded whenever $x_i$ is bounded.
+The scalar terms outside $W$ are also harmless: the global scalar
+kernel tail is $O(b^{2r-1})$, each row factor is polynomially bounded,
+and \eqref{rchoice} absorbs their fixed powers of $m$.
+
+\paragraph{Mass absorption with polynomial tails.}
+We record why the earlier Gaussian mass argument still applies.
+On $W$, \eqref{prior} gives $H\le CR_m$, so \eqref{unmarked}
+has right side at most
+\[
+ \epsilon_m\mu_i(E_b(x_i,a))+m^{-A},\qquad
+ \epsilon_m=CR_m^2/(mb^2)\longrightarrow0.
+\]
+The Jackson kernel is at least $c/b$ on $|x-a|\le c_r b$, and its
+reference integral is bounded above and below by positive constants.
+Fix an outer positive annulus $I$ and let
+$\phi(a)=\operatorname{dist}(a,\partial I)^2$.
+Maximize $\phi(a)\mu_i([a-c_r b,a+c_r b])/b$ over $a\in I$.
+If this supremum is at least one, the total-mass bound implies that
+an approximate maximizer has boundary distance $d\ge c\sqrt b$.
+On its $d/2$ neighborhood the weights $\phi$ are comparable, and
+summing the envelope over intervals of length $c_r b$ bounds the
+near part by a constant times the supremum divided by $\phi(a)$.
+The far part is at most
+\[
+ Cb^{-1}(d/b)^{-2r}=O(b^{r-1}),
+\]
+which tends to zero. Thus the same weighted-supremum absorption
+proves a uniform local interval bound. On any strictly smaller
+annulus, it yields
+\begin{equation}\label{mass}
+ \mu_i(|x_i-a|\le b)\le Cb,\quad
+ c\le\mu_i(Q_m(x_i,a))\le C,\quad \mu_i(E_b(x_i,a))\le C.
+\end{equation}
+Summation over length-$b$ intervals also gives, for $T\ge1$,
+\begin{equation}\label{polytail}
+ \int_{|x_i-a|\ge Tb}E_b(x_i,a)\,d\mu_i
+       \le C T^{1-2r}+O(m^{-A}),
+\end{equation}
+as long as the local interval argument is applied in a fixed larger
+annulus. Tails beyond that larger annulus are bounded directly by
+the total mass and the global scalar kernel bound. By choosing
+$r$ as in \eqref{rchoice}, those tails have any required fixed
+inverse-power accuracy in this proof.
+
+\paragraph{The weighted maximum and its far tail.}
+Use the common coordinate and deviations
+\[
+ y=\ell s/m,\quad h_i^*=z_i-y,\quad
+ x_i=y-h_i^*/M,\quad h_i=(m/M)h_i^*.
+\]
+Choose a fixed positive annulus $I=[a_-,a_+]$ whose strictly smaller
+interior contains the desired $y$-range. The mass bounds are first
+proved on an even larger annulus. Let
+\[
+ D=\max_{i,\,y\in I}\operatorname{dist}(y,\partial I)|h_i^*(y)|.
+\]
+If $D>C_*b$, select a maximizing row $y_0$ and column $i$, and write
+$\Delta=|h_i^*(y_0)|$, $d_0=\operatorname{dist}(y_0,\partial I)$.
+Then
+\[
+ d_0/b=D/(b\Delta)\ge C_*/R_m\ge C_*m^\alpha,
+ \qquad \Delta\ge c_I C_*b.
+\]
+In the $d_0/2$ row neighborhood, weighted maximality gives
+$|h_j^*|\le C\Delta$ for every $j$, hence $H\le C\Delta$.
+The deleted coordinate differs from $y$ by $O(R_m/m)=o(b)$.
+Any row entering the fixed deleted-coordinate neighborhood has
+bounded full $s$ by finite balance, so this estimate applies before
+restricting to the common-coordinate neighborhood.
+
+First discard rows outside a fixed positive enlargement by the global
+Jackson off-annulus and scalar tail estimates already used in
+\eqref{unmarked}--\eqref{marked}. The scalar Jackson tail there is
+$O(b^{2r-1}(1+x)^{-r})$; we do not bound it by $E_b$ globally.
+Within that fixed enlargement, $Q_m\le CE_b$, and every far
+contribution beyond a fixed multiple of $d_0$ has envelope
+at most
+\[
+ C b^{-1}(d_0/b)^{-2r}\le C m^{1/2-2r\alpha}.
+\]
+The measures have mass one and all scalar prefactors used here are
+bounded by $Cm^4$ (in fact much smaller bounds suffice).
+Consequently \eqref{rchoice} makes all those contributions smaller
+than $m^{-A}$. This bound has an exponent independent of $r$ except
+for the favorable decay term $-2r\alpha$.
+
+\paragraph{The sign test.}
+If the selected deviation is positive, set
+$a=x_i(y_0)+A_0b$; for a negative deviation use the minus sign.
+Choose fixed $B_0$ large, then $A_0=2B_0$.
+On $|x_i-a|\le B_0b$ the row lies strictly on the favorable side
+of the selected one. Monotonicity therefore gives, in the positive
+case,
+\[
+ h_i(x_i)\ge h_i(x_i(y_0))-(x_i-x_i(y_0))\ge\Delta/2,
+\]
+provided $C_*$ is sufficiently large. The negative case is identical
+with signs reversed. Strict sidedness handles flat rows.
+By \eqref{mass}--\eqref{polytail}, this window captures a positive
+amount of $Q_m$-mass, while the near opposite-sign contribution is
+at most $C\Delta B_0^{1-2r}$. Choose $B_0$ large enough to absorb it.
+The farther contribution is negligible by the preceding paragraph.
+Thus
+\[
+ |\mu_i(h_iQ_m(x_i,a))|\ge c\Delta.
+\]
+But \eqref{marked}, the local bound $H\le C\Delta$, and
+\eqref{mass} give
+\[
+ |\mu_i(h_iQ_m(x_i,a))|
+ \le C(\Delta^2/\sqrt m+\Delta^3)+m^{-A}=o(\Delta),
+\]
+because $\Delta\le R_m\to0$ and $\Delta\ge c_I C_*m^{-1/2}$.
+This contradiction proves $D=O(b)$. The cutoff is bounded below
+on the target range, so $h_i^*=O(m^{-1/2})$ there.
+Since $m u_i-s=(m/\ell)h_i^*$, Theorem~\ref{main} follows.
+\end{document}

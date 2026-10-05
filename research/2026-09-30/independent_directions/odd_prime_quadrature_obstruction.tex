@@ -1,0 +1,89 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{theorem}{Theorem}
+\title{An odd-prime obstruction for rational equal-weight quadrature}
+\author{Research note, 30 September 2026}
+\date{}
+\begin{document}
+\maketitle
+
+\begin{theorem}
+Let $p$ be an odd prime. Suppose rational numbers $y_1,\ldots,y_K$
+form an equal-weight quadrature rule of degree at least
+$\max\{p-1,3\}$ for the
+uniform probability measure on $[-1,1]$. Then $K\ge 2p$.
+The nodes need not belong to $[-1,1]$ and repetitions are permitted.
+\end{theorem}
+\begin{proof}
+Suppose $K<2p$. The moment identities are
+\[
+ \sum_{i=1}^K y_i^s=
+ \begin{cases}0,&s\text{ odd},\\K/(s+1),&s\text{ even},\end{cases}
+ \qquad 1\le s\le\max\{p-1,3\}.
+\]
+Write $v_p$ for the $p$-adic valuation.
+
+First suppose all $y_i$ are $p$-adically integral.
+The identity at $s=p-1$ forces $p\mid K$, so $K=p$.
+Reducing that identity modulo $p$, Fermat's theorem shows that the
+number $q$ of unit nodes satisfies $q\equiv1\pmod p$.
+Since $0\le q\le p$, exactly one node is a unit.
+The first moment then cannot vanish modulo $p$, a contradiction.
+
+Otherwise let $a=-\min_i v_p(y_i)>0$, and set $z_i=p^a y_i$.
+All $z_i$ are $p$-adically integral and at least one is a unit.
+For $0\le s\le p-2$ we have
+\[
+ \sum_{i:\,p\nmid z_i} z_i^s\equiv0\pmod p.
+\]
+For $s=1,\ldots,p-2$ this follows from the scaled moment identities;
+their denominators $s+1$ are prime to $p$.
+For $s=0$, first use $s=p-1$: its scaled right hand side
+$p^{a(p-1)}K/p$ is divisible by $p$, hence the number of units is
+divisible by $p$.
+It lies between $1$ and $K<2p$, so it is precisely $p$.
+
+For $b\in\mathbb F_p^*$ let $N_b$ count the unit nodes with residue
+$b$. The displayed congruences give
+\[
+ \sum_{b\in\mathbb F_p^*}N_b b^s=0
+ \quad(0\le s\le p-2).
+\]
+The Vandermonde matrix on the $p-1$ distinct nonzero residues is
+invertible. Thus every $N_b$ is divisible by $p$.
+Since their sum is $p$, all $p$ unit nodes have a common nonzero
+residue $b$.
+
+If $p=3$, for any $p$-adically integral $z\equiv b\pmod p$,
+the binomial theorem gives $z^p\equiv b^p\pmod {p^2}$.
+Nonunit nodes have $z_i^p\equiv0\pmod {p^2}$.
+Consequently
+\[
+ \sum_i z_i^p\equiv p b^p\not\equiv0\pmod {p^2},
+\]
+contradicting the vanishing third moment.
+
+If $p\ge5$, write the unit nodes as $z_i=b+p t_i$, and let
+$T=\sum_{i:\,p\nmid z_i}t_i\pmod p$.
+The scaled second and third moments are both zero modulo $p^2$:
+the second is $Kp^{2a}/3$, and the third is zero.
+Nonunit nodes contribute zero modulo $p^2$ to both moments.
+Expanding the unit contributions gives
+\[
+ 0\equiv p b^2+2p bT\pmod {p^2},\qquad
+ 0\equiv p b^3+3p b^2T\pmod {p^2}.
+\]
+Since $b$ is nonzero modulo $p$, these imply $b+2T=b+3T=0$
+in $\mathbb F_p$, a contradiction.
+\end{proof}
+
+In particular, rational degree-three rules need at least six nodes,
+and rational degree-four rules need at least ten nodes. The first bound
+is sharp: the multiset $(-1,0,0,0,0,1)$ is the six-node Simpson rule.
+These bounds complement the stronger asymptotic bound
+$K\ge2^{\lfloor r/2\rfloor}$ proved in
+\texttt{../rational\_designs/two\_adic\_lower\_bound.tex}.
+Affine rescaling transfers the statement to the uniform measure on
+$[0,1]$.
+\end{document}

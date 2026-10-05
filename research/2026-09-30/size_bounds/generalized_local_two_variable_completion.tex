@@ -1,0 +1,185 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\PP}{\mathcal P}
+\title{Local two-variable completion for a polynomial density}
+\author{Complete proof; three independent mathematical reviews completed}
+\date{30 September 2026}
+\begin{document}\maketitle
+The purpose of this note is to replace one positive polynomial density
+and one uniform density, on a single interval, by two rational densities
+on alternating pure cells. The cell masses have prescribed denominators.
+No bound on the denominators of higher moments or cell endpoints is asserted.
+All constants below can depend on fixed positive bounds $a,b$ for the input
+density, and on no other input.
+
+\begin{theorem}\label{main}
+Let $w\in\mathbb Q[t]$ be a probability density on $[0,1]$, of degree $d$,
+with $0<a\le w\le b$. Put $R=m+d+2$ and
+$\mu=\int_0^1t w(t)\,dt$. There is a constant $C$ such that, for every
+pair of integers
+\[
+ K\ge CR^4,\qquad L\ge C(KR)^{160},\qquad KL\mu\in\mathbb Z,
+\]
+there are rational piecewise polynomial probability densities $f_A,f_B$
+with the following properties.
+\begin{enumerate}
+\item The support of $f_B$ consists of $K$ disjoint rational boxes,
+each of mass $1/K$. The support of $f_A$ is their complement, and its
+mass on every complementary gap is a positive integer divided by $L$.
+\item On every nonempty pure cell, the conditional density rescaled to
+$[0,1]$ is bounded above and below by positive constants depending only
+on $a,b$. Each polynomial piece has degree at most $m$, except that
+the $B$ pieces have degree at most one.
+\item If $A,B$ have these densities, then all their ordered polynomial
+moments of total degree at most $m$ agree with those of independent
+variables $A_0\sim\operatorname{Unif}[0,1]$ and $B_0$ of density $w$.
+In particular adding $m$ independent uniforms gives the same complete
+order probabilities as the original pair and those uniforms.
+\end{enumerate}
+\end{theorem}
+
+\begin{lemma}[Separated quadrature for a bounded polynomial density]\label{quad}
+For $D\ge d+1$ and every integer $K\ge C(D+d+1)^4$, there is a real
+equal-weight degree-$D$ quadrature for $w$ whose nodes satisfy
+\[
+ |b_q-F_w^{-1}((q-1/2)/K)|\le c/(8K),
+\]
+where $c>0$ depends only on $a,b$. Its endpoint and consecutive gaps
+are bounded below by $c/K$.
+\end{lemma}
+\begin{proof}
+Write $Q=F_w^{-1}$. The assumptions and Markov's inequality give
+$|Q'|\le C$ and $|Q''|\le C(d+1)^2$.
+Use the same fixed-right-inverse Newton argument as the separated-rule
+lemma in
+\path{../rational_designs/asymptotic/two_discrete_step_compatibility.tex},
+with the midpoint quantile nodes $t_q=Q((q-1/2)/K)$.
+For completeness, let $\phi_j$ be the uniform orthonormal shifted
+Legendre polynomials and $f_j(t)=\int_0^t\phi_{j-1}(z)\,dz$, $1\le j\le D$.
+The midpoint error for $f_j\circ Q$, using the displayed bounds on $Q$,
+gives a residual vector of norm at most $C(D+d+1)^3/K^2$.
+The derivative Gram matrix is
+\[
+ KAA^T=K^{-1}\sum_q\Phi(t_q)\Phi(t_q)^T,
+ \qquad A_{jq}=\phi_{j-1}(t_q)/K.
+\]
+Its limiting matrix is $\int\Phi\Phi^T w\ge a I$; the rectangle
+estimate gives operator error at most $C(D+d+1)^4/K$.
+Thus its fixed right inverse has $2$-to-$\infty$ norm at most $CD$.
+Within sup-norm radius $\rho$, the derivative variation has norm at most
+$CD^3\rho$ from sup-norm inputs to Euclidean outputs. The Newton map
+therefore contracts on its affine correction space in radius
+$C(D+d+1)^4/K^2$. Increasing the constant in the lower bound on $K$
+makes this radius smaller than $c/(8K)$ and the contraction constant
+smaller than $1/2$. The quantile gaps are themselves at least $1/(bK)$,
+which proves separation and interiority.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{main}]
+Choose an odd integer $h>d+m$, with $h\le d+m+2$, and set
+$H(t)=P_h(2t-1)$. Let $D=2h+2m+2=O(R)$ and choose an exact rule
+$b^0$ from Lemma~\ref{quad}. Increasing $C$ permits every $K\ge CR^4$.
+Set
+\[
+ \eta=c_*(KR)^{-20},\qquad r_q^0=b_q^0-\eta H(b_q^0),
+\]
+where $c_*>0$ is a sufficiently small fixed constant.
+The map $t\mapsto t-\eta H(t)$ has derivative at least $3/4$ and,
+since $h$ is odd, maps the endpoints to $\eta$ and $1-\eta$.
+Hence the $r_q^0$ are interior and separated by at least $c/K$.
+Legendre orthogonality applies to the polynomial $t^j w(t)$:
+its degree is less than $h$ for $0\le j\le m$. Exactness of the rule
+therefore gives
+\begin{align}
+ K^{-1}\sum_q(b_q^0)^j&=\int t^j w(t)\,dt &&(0\le j\le m+1),\label{ord}\\
+ K^{-1}\sum_q r_q^0(b_q^0)^j&=\int t^{j+1}w(t)\,dt &&(0\le j\le m).\label{rank}
+\end{align}
+In particular $\sum r_q^0=K\mu$.
+Because $KL\mu$ is an integer, balanced rounding supplies integers
+$a_q$ with $|a_q/L-r_q^0|\le1/L$ and $\sum a_q=KL\mu$.
+Put $r_q=a_q/L$. They remain strictly increasing and interior.
+
+We now correct $b$ with $r$ fixed. Use the $m+1$ ordinary moment
+constraints in antiderivatives of $\phi_0,\ldots,\phi_m$, and the $m$
+weighted constraints in $r_q f_j(b_q)-H_j(b_q)$, where
+$H_j(t)=\int_0^t z\phi_{j-1}(z)\,dz$.
+Their targets are the corresponding integrals against $w$.
+The baseline derivative columns, multiplied by $K$, evaluate
+\[
+ \phi_0,\ldots,\phi_m,\quad
+ -\eta H\phi_0,\ldots,-\eta H\phi_{m-1}.
+\]
+Their products have degree at most $D$, so their empirical Gram matrix
+is exactly their continuous Gram matrix with weight $w$.
+The Legendre multiplication argument in the cited step-compatibility
+note applies also when $h=O(R)$ and $m<h$: Gaussian quadrature at the
+zeros of $H$ bounds $\|p\|_2$ by $CR\|p+\eta Hq\|_2$, and its
+sublevel estimate gives $\|Hq\|_2\ge cR^{-4}\|q\|_2$.
+Consequently the weighted Gram matrix is at least
+$c\eta^2R^{-10}I$, and the fixed right inverse has norm at most
+$C\eta^{-2}R^{11}$.
+The rounding residual has Euclidean norm at most $C\sqrt m/L$.
+Exactly as in the cited proof, the fixed-inverse map contracts in
+radius
+\[
+ \rho=C\eta^{-2}R^{12}/L.
+\]
+Indeed its contraction bound is at most
+$C\eta^{-2}R^{11}(R^3\rho+R/L)$, which is less than $1/2$ under
+the stated $L$ bound. The same bound makes $\rho\le\eta/2$, $1/L\le\eta/2$, and
+$\rho\le c/(16K)$. We obtain separated nodes $b$ satisfying
+\eqref{ord}--\eqref{rank} with $r$ in place of $r^0$, and
+$\max|r_q-b_q|\le2\eta$.
+The resulting fixed-$r$ Jacobian still has full row rank, because the
+Newton map was a contraction on the chosen correction space.
+
+The positive-completion proof in
+\path{../independent_directions/two_exceptional_positive_completion.tex}
+now applies without change. Its target for $A$ remains Lebesgue
+measure; only the identities for the moments of $B$ have changed.
+Here are the exact compatibility and positivity points.
+For $S_j(a)=K^{-1}\sum_{b_q>a}b_q^j$ and
+\[
+ V=\operatorname{span}\{a^j:j\le m\}
+   +\operatorname{span}\{a^rS_s(a):r+s\le m\},
+\]
+the cell-constant kernel is $S=\operatorname{span}(1,S_0,\ldots,S_m)$.
+Giving the gaps masses $r_{q+1}-r_q$, including $r_0=0,r_{K+1}=1$,
+annihilates the residual on this kernel, since
+\[
+ \sum_q r_q b_q^j/K=\sum_q b_q^{j+1}/K=\int_0^1 S_j(a)\,da.
+\]
+The quantitative quotient estimate in that proof gives a positive
+completion as soon as
+$\max|r_q-b_q|\le c\Delta^{5/2}/(m+1)^3$, where $\Delta$ is the
+minimum gap. Since $\Delta\ge c/K$, our choice of $\eta$ meets this
+condition with arbitrary fixed slack. The resulting point-node
+completion density on the gaps lies between $1/2$ and $3/2$.
+
+Finally apply the rational smoothing and rational Riesz-completion
+arguments in \path{two_polynomial_exceptional_dice.tex}.
+Replace each $b_q$ by a short rational box of mass $1/K$, with a
+rational affine conditional density. The fixed-$r$ Jacobian just
+proved has full rank, so its slope matrix is $\varepsilon/3$ times
+that Jacobian plus $O(\varepsilon^3)$; solving a fixed rational minor
+preserves exactly \eqref{ord}--\eqref{rank} with positive slopes.
+All targets are rational because $w$ is rational polynomial.
+The complementary-gap Riesz problem has the same step kernel, remains
+uniformly close to the positive point-node completion, and has rational
+Gram matrix and right side. It therefore gives a rational polynomial
+density $f_A$ between $1/4$ and $7/4$. Its gap masses are still the
+prescribed positive integers divided by $L$. The conditional density
+bounds follow upon normalizing the cells.
+For $r+s\le m$ its ordered moments are
+\[
+ \mathbb E[A^rB^s\mathbf1_{A<B}]
+ =\frac1{r+1}\int b^{r+s+1}w(b)\,db,
+\]
+exactly those of the target pair. The ordinary moments and the opposite
+chamber follow from independence and the same constraints. This proves
+the theorem.
+\end{proof}
+\end{document}

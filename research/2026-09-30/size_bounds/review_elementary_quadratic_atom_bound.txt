@@ -1,0 +1,21 @@
+Full independent review: elementary_quadratic_atom_bound.tex
+30 September 2026, 23:02 UTC. Reviewer: size_bounds collaborator.
+
+PASS, including the explicit constant200.
+- Completed path and first crossing give componentwise-ordered threshold
+  pairs, so their products are nonnegative on all original weighted rows.
+- Disjointness of pairs and the fresh column gives exact multi-affinity.
+- Gaussian cancellation leaves a strictly positive factor at its largest
+  node, forcing every last column value above that node.
+- The Jacobi-matrix off-diagonal entries are >=1/2; the positive sine
+  vector gives the stated source-free endpoint root bound.
+- The Radau reproducing-kernel argument proves orthogonality, nodes,
+  exactness and positive weights. Its endpoint mass and reciprocal-root
+  sum have exactly the stated normalization on[0,1].
+- With e=floor(m/10), delta*S<=3*pi^2/200<1/4. Thus all last-row factors
+  are positive and their product ratio is >1/2. This gives200/m^2.
+- Small dimensions, duplicate terminal rows, and tensor-to-dice
+  conversion are all correctly handled.
+
+No endpoint localization theorem or asymptotic input is used. The
+previous analytic lower proof remains valid but is unnecessary here.

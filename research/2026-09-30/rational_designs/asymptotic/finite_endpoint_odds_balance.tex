@@ -1,0 +1,233 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\E}{\mathbb E}
+\title{Finite balance of endpoint odds on a growing region}
+\author{Asymptotic research note; independently reviewed}
+\date{30 September 2026}
+\begin{document}\maketitle
+Let $p_1,\ldots,p_m:[K]\to[0,1]$ be nondecreasing, with positive
+probability weights $w_q$, and suppose
+\[
+ \E_w\prod_{j\in S}p_j=\frac1{|S|+1}\qquad(S\subseteq[m]).
+\]
+Write $A=\prod_jp_j$. On $A>0$ set $r_i=(1-p_i)/p_i$ and
+$\lambda=\sum_i r_i$. All constants below are absolute; equal row
+weights are not assumed.
+
+\begin{lemma}[Failure tilts with a variable number of failures]\label{tilt}
+Let $J\subseteq[m]$, $\ell=|J|$, $d=m-\ell>0$, and put
+\[
+ \nu_J(q)=(m+1)\binom m\ell w_q
+       \prod_{j\in J}(1-p_j(q))\prod_{i\notin J}p_i(q).
+\]
+This is a probability measure. On its support all $p_i$, $i\notin J$,
+are positive. For $\varepsilon>0$, let
+$G=\{\max_{i\notin J}r_i<\varepsilon\}$, and write
+$h_k=\binom{\ell+k}{\ell}$. Then, for $0\le k\le d$,
+\[
+ h_k\left(1-\frac{(\ell+k+1)/\varepsilon+k}{d}\right)
+ \le \E_{\nu_J}[e_k(r_{-J})\boldsymbol1_G]\le h_k.
+ \tag{1}
+\]
+For every $i\notin J$,
+\[
+ \E_{\nu_J}r_i\le\frac{\ell+1}{d}.                 \tag{2}
+\]
+\end{lemma}
+\begin{proof}
+Expansion of the mixed moments gives probability
+$1/((m+1)\binom ms)$ for every specified failure pattern of size $s$.
+Consequently the undivided generating polynomial
+\[
+ (m+1)\binom m\ell\E_w\left[
+  \prod_{j\in J}(1-p_j)
+  \prod_{i\notin J}(p_i+z(1-p_i))\right]
+ =\sum_{k=0}^d h_k z^k.                            \tag{3}
+\]
+If one specified factor $i\notin J$ is replaced by $1-p_i$, its
+coefficient of $z^k$ is
+\[
+ b_k=\frac{k+1}{d}\binom{\ell+k+1}{\ell}
+     =\frac{\ell+k+1}{d}h_k \quad(0\le k<d),
+ \tag{4}
+\]
+with $b_d=0$. Its constant coefficient proves (2): cancellation
+of $p_i$ can additionally count nonnegative terms from zero entries,
+which explains the possible inequality.
+
+For completeness apply the bad-prefix argument to the original
+ordered rows, including those having zero entries. The set where
+some $p_i=0$ or $r_i\ge\varepsilon$, $i\notin J$, is a prefix.
+If it is nonempty, choose a column $i$ witnessing badness at its
+last row. On the whole prefix,
+\[
+ p_i+z(1-p_i)\le(\varepsilon^{-1}+z)(1-p_i)
+\]
+coefficientwise. Thus its contribution to coefficient $k$ of (3)
+is at most $\varepsilon^{-1}b_k+b_{k-1}$, where $b_{-1}=0$.
+For $k<d$, (4) and $b_{k-1}=kh_k/d$ give the claimed loss. For
+$k=d$ the same asserted loss is only larger, so remains valid.
+Outside that prefix all the denominators are positive, and (3)
+becomes the $\nu_J$ expectation in (1). Positivity also proves
+its upper bound.
+\end{proof}
+
+\begin{theorem}[Uniform finite balance]\label{balance}
+If $m\ge256$, then every row $q$ with $A(q)>0$ and
+$\lambda(q)\le m/128$ satisfies
+\[
+ \max_{1\le i\le m} r_i(q)
+       \le \frac{64(\lambda(q)+1)}{m}.             \tag{5}
+\]
+In particular the maximum odds tends uniformly to zero on every
+region $\lambda=o(m)$, with the explicit rate in (5).
+\end{theorem}
+\begin{proof}
+Fix such a row, put $L=\lambda(q)$, and fix a column $i$.
+Choose $J$ avoiding $i$ with
+$\ell=\lceil4L\rceil+4$ elements. Then $4\le\ell\le m/16$,
+$d=m-\ell\ge15m/16$, and $(\ell+3)/d\le1/8$.
+Use the preceding lemma with $\varepsilon=1$, and under $\nu_J$
+define the nonnegative random variable
+$Z=\lambda_{-J}\boldsymbol1_G$. Its first moment obeys
+\[
+ \E Z\ge(\ell+1)\left(1-\frac{\ell+3}{d}\right)
+       \ge\frac78(\ell+1).
+\]
+On $G$, $\sum_{i\notin J}r_i^2\le\lambda_{-J}$, whence
+\[
+ \E Z^2\le2\E[e_2(r_{-J})\boldsymbol1_G]+\E Z
+       \le(\ell+1)(\ell+2)+(\ell+1)
+       =(\ell+1)(\ell+3).
+\]
+Since $L\le\ell/4$, Cauchy--Schwarz gives
+\[
+ \nu_J(Z>L)\ge\frac{(\E Z-L)^2}{\E Z^2}
+ \ge\frac{(5\ell/8)^2}{(5\ell/4)(7\ell/4)}
+ =\frac5{28}>\frac18.
+\]
+Every row in this event has $\lambda_{-J}>L\ge\lambda_{-J}(q)$,
+and hence lies strictly before $q$. Monotonicity of $r_i$ and (2)
+therefore yield
+\[
+ \frac18r_i(q)\le\E_{\nu_J}r_i\le\frac{\ell+1}{d}.
+\]
+Finally $\ell+1\le4L+6$ and $d\ge15m/16$, so
+\[
+ r_i(q)\le\frac{128(4L+6)}{15m}
+          \le\frac{64(L+1)}m.
+\]
+The choice of $i$ was arbitrary.
+\end{proof}
+
+
+\begin{theorem}[Balance in the mean-deficit coordinate]\label{deficit}
+Put $s(q)=\sum_{j=1}^m(1-p_j(q))$. If $m\ge256$, every row with
+$s(q)\le m/256$ has all $p_i(q)>0$ and satisfies
+\[
+ \max_i r_i(q)\le\frac{128(s(q)+1)}m.              \tag{6}
+\]
+Thus this conclusion does not require an a priori bound on the odds,
+or even an a priori assumption that the row entries are positive.
+\end{theorem}
+\begin{proof}
+Fix a target row $q$, write $s=s(q)$, and fix $i$. Choose
+$J\subseteq[m]\setminus\{i\}$ of size $\ell=\lceil8s\rceil+4$
+that contains every $j\ne i$ with $p_j(q)\le1/2$. Such a choice is
+possible: there are at most $2s$ of these columns, and
+$4\le\ell\le m/16$. Put $d=m-\ell$ and
+$H=[m]\setminus(J\cup\{i\})$. At the target row all columns in
+$H$ are positive, and
+\[
+ \lambda_H(q)=\sum_{j\in H}r_j(q)\le2s\le\ell/4. \tag{7}
+\]
+Use the same probability measure $\nu_J$ as above, but generate
+additional failures only among $H$, retaining the success factor
+$p_i$. Its undivided generating polynomial has exact coefficients
+\[
+ c_k=\frac{d-k}{d}\binom{\ell+k}{\ell}
+       \quad(0\le k\le d-1).                     \tag{8}
+\]
+This follows either by counting the $\binom{d-1}{k}$ possible
+additional failure patterns, or directly from (3).
+For a specified $j\in H$, its derivative coefficients are
+\[
+ b'_k=\frac{d-1-k}{d-1}b_k\le b_k
+       \quad(0\le k\le d-2),                     \tag{9}
+\]
+where $b_k$ is (4).
+
+Let $G=\{\max_{j\in H}r_j<1\}$, including all zero entries among
+$H$ in the complementary bad prefix. The same coefficientwise
+prefix argument, now using (8)--(9), gives
+\[
+ \E_{\nu_J}[\lambda_H\boldsymbol1_G]
+ \ge(\ell+1)\left(1-\frac{\ell+4}{d}\right)
+ \ge\frac78(\ell+1).
+\]
+The upper bounds for the first and second elementary symmetric
+moments are still $h_1$ and $h_2$. Therefore, for
+$Z=\lambda_H\boldsymbol1_G$,
+\[
+ \E_{\nu_J}Z^2\le(\ell+1)(\ell+3).
+\]
+The previous Cauchy--Schwarz estimate now shows
+$\nu_J(Z>2s)\ge1/8$. By (7) and monotonicity, these rows lie
+strictly before $q$. If $p_i(q)=0$, $p_i$ vanishes on that entire
+prefix, contradicting its positive $\nu_J$-mass. Thus $p_i(q)>0$.
+On this prefix $r_i\ge r_i(q)$, so (2) yields
+\[
+ r_i(q)\le\frac{8(\ell+1)}d
+ \le\frac{128(8s+6)}{15m}
+ \le\frac{128(s+1)}m.
+\]
+This holds for every $i$.
+\end{proof}
+
+
+\begin{corollary}[Original row mass near the endpoint]\label{mass}
+For $m\ge256$ and every $S\ge0$,
+\[
+ \sum_{q:s(q)\le S}w_q\le\frac{512(S+1)}m.       \tag{10}
+\]
+Consequently, for every $c>0$,
+\[
+ \E_w e^{-cs}\le\frac{512(1+c^{-1})}m.            \tag{11}
+\]
+For every integer $a\ge1$,
+\[
+ \E_w[s^a e^{-cs}]
+ \le\frac{512a!}m\left(\frac{2a+1}{c^{a+1}}
+                         +\frac2{c^a}\right).    \tag{12}
+\]
+\end{corollary}
+\begin{proof}
+If $S>m/256$, (10) follows from total mass one. Otherwise Theorem
+\ref{deficit} implies, on $s\le S$, that every product of $k$
+columns is at least $\exp(-128k(S+1)/m)$. Choose
+$k=\lfloor m/(128(S+1))\rfloor$, which is at most $m$.
+The exact mixed moment $1/(k+1)$ gives
+\[
+ \Pr_w(s\le S)\le\frac e{k+1}
+       \le\frac{128e(S+1)}m\le\frac{512(S+1)}m.
+\]
+This also covers $k=0$. If $F(S)=\Pr_w(s\le S)$, Tonelli gives
+$\E e^{-cs}=\int_0^\infty ce^{-ct}F(t)\,dt$, proving (11),
+including a possible atom at zero. For $a\ge1$, integration by
+parts and (10) give
+\[
+ \E[s^ae^{-cs}]
+ \le\frac{512}m\int_0^\infty(t+1)
+       (a t^{a-1}+c t^a)e^{-ct}\,dt,
+\]
+which evaluates to (12).
+\end{proof}
+
+The estimate uses the full family of failure-pattern identities,
+with a number of conditioned failures proportional to $\lambda$.
+It does not follow merely from approximate moments of the single
+endpoint measure. By itself it gives no improved growth rate for $K$.
+\end{document}

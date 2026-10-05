@@ -1,0 +1,48 @@
+An explicit finite permutation-fair collection with 21 dice
+
+The distinguished die has 400 faces. Each of the other twenty dice has
+the same face count, an integer of bit length 241481. The full word is
+specified compactly in finite_n21.json (approximately 254 KB); expanding
+it is neither necessary nor feasible.
+
+Inputs and exact recipe:
+1. rational_designs/local_model_m20.json gives all rational nodes and
+   correction coefficients. finite_n21.json records its SHA-256 digest.
+2. The base_word object starts from 2^25 copies of letter0. At step r,
+   place the listed runs of new letter r around the listed number of
+   copies of the previous word. Its209 monomial moment identities certify
+   every insertion step. The resulting20-letter word is permutation-fair
+   and has F=2^25(20!)^2 copies of each letter.
+3. verify_global_model.construct_cells gives the exact rational cells
+   and the400 distinguished atoms, in their numerical order.
+4. For each cell with masses alpha_j, substitute the base word and
+   repeat each letter j exactly D*alpha_j times. D is the positive common
+   denominator stored as mass_denominator_hex in the certificate.
+5. At each atom insert the distinguished letter20 once. Give consecutive
+   positions in the resulting word the labels1,2,3,... . These are all
+   distinct and define the actual finite dice.
+
+All D*alpha_j are positive integers. For each old letter their sum over
+cells equals D, so each old die has exactly FD faces. The400 correction
+identities, the centered kernel identities, positive densities, and their
+normalization are checked over the rational numbers. Fairness of the
+entire collection follows from the insertion lemma and the full-order
+disjoint-density response lemma. The21! full orders are NOT enumerated.
+
+Reproduce from the repository root:
+
+python3 research/2026-09-30/exceptional/finite_certificate.py verify research/2026-09-30/rational_designs/local_model_m20.json research/2026-09-30/exceptional/finite_n21.json
+
+The verifier does not use floating-point arithmetic or an optimization
+solver. The stored finite grammar can be rebuilt with the same command
+after replacing 'verify' by 'build'. Build/verification metadata are in
+finite_n21_build_summary.json and finite_n21_verify_summary.json.
+
+Mathematical proof:
+  ../size_bounds/polynomial_exceptional_die.tex
+  ../size_bounds/centered_bump_simplification.tex
+  ../size_bounds/factorial_squared_construction.tex
+
+The general theorem supplies one O(n^2)-face die for every n. This one
+finite21-dice example is a reproducible check of that construction, not
+by itself an asymptotic refutation of an exponential conjecture.

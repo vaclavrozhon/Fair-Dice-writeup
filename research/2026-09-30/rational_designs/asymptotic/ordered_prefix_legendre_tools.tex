@@ -1,0 +1,156 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\PP}{\mathcal P}
+\title{Polynomially conditioned primitives in separated Legendre bands}
+\author{Proof independently reviewed by root, size\_bounds, and independent\_directions}
+\date{30 September 2026}
+\begin{document}\maketitle
+All unqualified norms use Lebesgue measure on $[0,1]$. Write
+\[
+ w(t)=t(1-t),\qquad \lambda_d=d(d+1),\qquad
+ H_d(t)=\int_0^tP_d(2u-1)\,du.
+\]
+This note gives analytic tools for ordered-prefix moment constraints.
+It does not assert independence of every family of such constraints,
+or a construction of three simultaneous small dice.
+
+\begin{lemma}[An exact primitive formula]\label{primitive}
+Fix $d\ge2$ and $0\le r\le(d-2)/2$. The polynomial operator
+\[
+ \mathcal L_d C=(wC)''+\lambda_d C
+\]
+is invertible on $\PP_r$. For $Q\in\PP_r$, let
+\[
+ C_1=\mathcal L_d^{-1}Q',\qquad C_0=-\mathcal L_d^{-1}Q,
+ \qquad B_a=w C_a.
+\]
+Then, identically on $[0,1]$,
+\begin{align}
+ \int_0^tQ(u)H_d'(u)\,du
+   &=(Q-B_1')H_d+B_1H_d',\label{prim1}\\
+ \int_0^tQ(u)H_d(u)\,du
+   &=-B_0'H_d+B_0H_d'.\label{prim0}
+\end{align}
+The coefficient polynomials have degrees at most $r+2$ and norms
+at most $C(r+1)^5\|Q\|_2$, with an absolute constant.
+\end{lemma}
+\begin{proof}
+The shifted Legendre differential equation gives
+$H_d''=-\lambda_d H_d/w$ in $(0,1)$.
+For arbitrary $A,B=wC$,
+\[
+ (AH_d+BH_d')'=(A'-\lambda_d C)H_d+(A+B')H_d'.
+\]
+The two choices in the statement give the desired derivatives.
+Both right sides vanish at zero because $H_d(0)=B_a(0)=0$.
+
+For invertibility, use the shifted Jacobi polynomials with parameters
+$(1,1)$, orthogonal for the weight $w$. The polynomial of degree $j$
+satisfies
+\[
+ wJ_j''+2w'J_j'+j(j+3)J_j=0,
+\]
+so it is an eigenvector of $\mathcal L_d$ with eigenvalue
+$\lambda_d-(j+1)(j+2)$. For $j\le r\le(d-2)/2$, these eigenvalues
+are at least $c d^2$. Consequently
+\[
+ \|\mathcal L_d^{-1}F\|_{L^2(w)}\le C d^{-2}\|F\|_{L^2(w)}.
+\]
+For a polynomial $C$ of degree at most $r$,
+$\|C\|_2\le C(r+1)\|C\|_{L^2(w)}$. Indeed, remove intervals
+of length $c(r+1)^{-2}$ at the endpoints and use
+$\|C\|_\infty\le(r+1)\|C\|_2$ to retain at least half its squared
+norm; on the remainder $w\ge c(r+1)^{-2}$.
+The polynomial $L^2$ Markov inequality
+$\|Q'\|_2\le C(r+1)^2\|Q\|_2$ now bounds $C_1$ by
+$C(r+1)^3d^{-2}\|Q\|_2$ and $C_0$ by
+$C(r+1)d^{-2}\|Q\|_2$. Applying the same derivative estimate to
+$wC_a$ proves the asserted, deliberately coarse coefficient bound.
+\end{proof}
+
+\begin{lemma}[Three separated bands]\label{three}
+Suppose $d>2r+1$, $p,q,v\in\PP_r$, and $D\ge d+r+1$. Then
+\[
+ (\|p\|_2^2+\|q\|_2^2+\|v\|_2^2)^{1/2}
+ \le C(D+1)^6\|p+H_dq+H_d'v\|_2.
+\]
+If $H_d,H_d'$ are both multiplied by $0<\eta\le1$, the bound
+costs at most a further factor $\eta^{-1}$.
+\end{lemma}
+\begin{proof}
+Put $G=H_dq+H_d'v$. Since $H_d$ is a linear combination of
+shifted Legendre polynomials of degrees $d-1,d+1$, and $H_d'$ has
+degree $d$ and is orthogonal to $\PP_{d-1}$, we have
+$G\perp\PP_r$. For example, testing $H_dq$ against $p\in\PP_r$
+reduces to orthogonality of $H_d$ against a polynomial of degree
+at most $2r<d-1$. Thus $\|p+G\|_2^2=\|p\|_2^2+\|G\|_2^2$.
+
+At the $d+1$ zeros $t_j$ of $H_d$, including the endpoints,
+$G(t_j)=H_d'(t_j)v(t_j)$. The positive Gauss--Lobatto weights are
+\[
+ \omega_j=\frac1{d(d+1)H_d'(t_j)^2},\qquad \sum_j\omega_j=1,
+\]
+and this rule integrates polynomials through degree $2d-1$.
+In particular $|H_d'(t_j)|\ge[d(d+1)]^{-1/2}$ and
+\[
+ \|v\|_2^2=\sum_j\omega_jv(t_j)^2
+ \le d(d+1)\|G\|_\infty^2
+ \le C(D+1)^4\|G\|_2^2.
+\]
+Here $\deg G\le D$ and the last step is the polynomial evaluation bound.
+Since $\|H_d'\|_\infty\le1$,
+$\|H_dq\|_2\le\|G\|_2+\|v\|_2$.
+The reviewed multiplication estimate
+$\|H_dq\|_2\ge c(D+1)^{-4}\|q\|_2$ from
+\path{lacunary_legendre_conditioning.tex}
+completes the proof. Scaling is immediate.
+\end{proof}
+
+\begin{theorem}[A fixed number of trinary bands]\label{many}
+Fix $k$. Let $r\ge0$, $0<\eta_i\le1$, and positive integers $d_i$
+satisfy
+\[
+ d_i>2\left(r+\sum_{j<i}(d_j+1)\right)+1.
+\]
+Set $D=r+\sum_{i=1}^k(d_i+1)$ and
+$Z_{i,0}=1$, $Z_{i,1}=\eta_iH_{d_i}$, $Z_{i,2}=\eta_iH_{d_i}'$.
+For arbitrary $p_\alpha\in\PP_r$, $\alpha\in\{0,1,2\}^k$,
+\[
+ \left(\sum_\alpha\|p_\alpha\|_2^2\right)^{1/2}
+ \le C_k(D+1)^{6k}\prod_{i=1}^k\eta_i^{-1}
+ \left\|\sum_\alpha p_\alpha\prod_{i=1}^kZ_{i,\alpha_i}\right\|_2.
+\]
+Minimal admissible choices have $D=O_k(r+1)$. Evaluation on any
+node array whose star discrepancy is at most $c(D+1)^{-2}$ preserves
+this lower bound up to an absolute constant.
+\end{theorem}
+\begin{proof}
+Group the sum by its last coordinate. Each of its three coefficients
+has degree at most $r+\sum_{j<k}(d_j+1)$, so Lemma~\ref{three}
+applies. Iterate, summing the resulting squared inequalities. The
+minimal degree recurrence grows by a factor at most three per step.
+For sampling, every resulting polynomial $F$ has degree at most $D$,
+and integration by parts for the empirical distribution function gives
+\[
+ \left|K^{-1}\sum_qF(b_q)^2-\int_0^1F^2\right|
+ \le\operatorname{disc}(b)\int_0^1|(F^2)'|
+ \le C(D+1)^2\operatorname{disc}(b)\|F\|_2^2.
+\]
+Choose the absolute discrepancy constant small enough.
+\end{proof}
+
+\paragraph{Use and limitation.}
+An ordered prefix involving a new highest-frequency density contains
+terms $\int QH_d'$ or $\int QH_d$, where the previous factors form a
+lower-degree polynomial $Q$. Lemma~\ref{primitive} represents such a
+term in two adjacent high-frequency bands with polynomially controlled
+coefficients. Theorem~\ref{many} separates explicit trinary product
+families. It does not automatically separate arbitrary ordered-prefix
+families: after applying $\mathcal L_d^{-1}$, coefficient polynomials
+need not retain a prescribed product form. Independence and positive
+completion for those larger families remain separate questions.
+\end{document}

@@ -1,0 +1,50 @@
+Full independent mathematical review of
+independent_directions/optimized_two_adic_filter.tex
+
+Verdict: no gap found. This proves the stated lower bound
+K >= 2^(2 floor(r/2)) for rational equal-weight interval designs.
+
+1. The reciprocal Gregory generating series has reduction 1+t modulo 2,
+   so every coefficient of G(-2t) is odd and v_2(g_j)=-j exactly.
+2. In the dilation composition, each factor of degree below N contributes
+   an even binomial coefficient. For j=N ell the only contribution of
+   valuation -ell is g_ell z^(N ell). Every term with more factors has
+   at most ell-1 factors of top degree N and hence strictly larger valuation.
+3. After evaluating at z=-2, each individual expanded degree-j contribution
+   has valuation at least j-floor(j/N), which tends to infinity. There are
+   only finitely many contributions at each j, so the entire double series
+   is unconditionally convergent and regrouping by outer power is valid.
+4. For even s and N a positive power of 2, floor((s+1)/N)=floor(s/N).
+   This supplies exactly the divisibility needed to correct the integral
+   by 2^s times a 2-adically integer-valued binomial polynomial.
+5. The case N>s legitimately uses j0=0, a constant correction; its integral
+   is one and it preserves all parity congruences.
+6. Exactness applies to the rational corrected polynomial, including its
+   constant term. The sum of its values is zero, so the positive count of
+   maximal-denominator-depth nodes is divisible by 2^s, yielding K>=2^s.
+7. The all-integral-node alternative follows directly from the degree-s
+   Gregory coefficient; odd r is handled by restricting to the previous
+   even degree. No sign, location, or distinctness restriction on the nodes
+   is used.
+
+The companion check_optimized_filter.py independently builds all integrals
+over Fraction and tests the resulting congruences on rational 2-adic integers.
+This review does not claim historical novelty or formal machine verification.
+
+Additional review: odd-degree corollary, latest version.
+No gap found. The function j-floor(j/N) is strictly above its value at
+a multiple j=r+1 for every later j, giving the unique minimal tail
+valuation. When N does not divide r+1 the original null correction
+extends unchanged. In the resonant case the congruence with U=2^(r-1)
+forces v_2(K)=(r+1)/N-1, so the next possible positive K above 2^(r-1)
+has the claimed additive gap. Integral nodes are covered separately.
+
+Additional review: sign_changes_monotone_tensor.tex, sparse-plateau lemma.
+No gap found. Consecutive nonzero sign-change intervals have disjoint
+edge sets. Thus each function can fail at most b cut adjacencies, and
+each cut fails at most F function adjacencies. A nonempty set of at most
+b cuts has at least b neighbors; a set of more than b cuts has all d
+neighbors. This includes b=0. Hall's theorem supplies the required
+matching. At K=m, both nonzero differences strictly alternate on the
+whole support, so their product has constant nonzero sign, contradicting
+its zero expectation. The graph and rational-rule conclusions follow.

@@ -1,0 +1,32 @@
+2026-09-30: FULL independent review of
+../size_bounds/quadratic_per_die_lower_bound.tex
+PASSES, subject only to the harmless range clarification below.
+
+Recomputed all-order associated-Laguerre Gaussian bound with total index
+d+1 and parameter j+2; the constants are exponential only in derivative
+order and are incorporated into the C^k series. Checked the complete
+series bound C a^2 exp(Ca^2), its use with variance proxy (s+delta)v,
+and its global large-x exponential margin at fixed sufficiently small
+kappa=d/m. No high-order fixed-J truncation remains.
+
+Verified improved success-weighted bias and variance; small-x singular
+Taylor cancellation; the uniform subset Chernoff bound at scale
+x/(x+delta); exact cancellation of weighted normalization on bad
+subsets; separate x<=delta and x>=delta regimes; choosing kappa small
+before letting m grow; full linear bias retained when splitting only
+quadratic remainder. High-x averaging uses a valid uniform-subset
+Cauchy--Schwarz estimate. All large constants can be absolute.
+
+Verified Stieltjes I1 and I2 estimates including atoms at cutoff,
+delta*h=o(1/m), d*delta*h=o(1), the positive scalar R test, and the
+nonnegative U_{floor(d/16)} atom test. This gives endpoint row weights
+O(m^-2), and hence every uniform die has Omega(n^2) faces. Combined
+with the reviewed quadratic exceptional-die construction, g(n)=Theta(n^2).
+
+Presentation fix sent to author: the R derivative estimate is stated
+for z>=1/d but used at good intermediate points z>=x/2>1/(2d).
+It holds verbatim on z>=1/(2d), with changed absolute constants,
+because the linear factor remains O(z) and k/sqrt(dz)<=sqrt(2)k.
+This is not a mathematical gap.
+
+This is a mathematical peer review, not proof-assistant verification.

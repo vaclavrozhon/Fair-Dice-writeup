@@ -1,0 +1,41 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{proposition}{Proposition}
+\title{A cubic-size barrier for the populated-cluster lifting method}
+\author{Short asymptotic observation, proposed by the root agent}
+\date{30 September 2026}
+\begin{document}\maketitle
+\begin{proposition}
+Suppose two probability measures $\mu_A,\mu_B$ have disjoint ordered
+clusters of support, each cluster belonging to only one measure.
+Suppose each measure integrates polynomials of degree at most $m$
+exactly as the uniform probability measure on $[0,1]$.
+Then there are at least $m+1$ changes of color between consecutive
+nonempty support clusters. In particular, each measure occupies at
+least $\lfloor(m+2)/2\rfloor$ clusters.
+\end{proposition}
+\begin{proof}
+The signed measure $\sigma=\mu_A-\mu_B$ annihilates every polynomial
+of degree at most $m$. If its ordered nonempty support clusters had
+$r\le m$ color changes, choose one point in each gap where a change
+occurs. The product of the corresponding $r$ linear factors, multiplied
+by a suitable global sign, has the sign of $\sigma$ on every support
+cluster. Its integral against $\sigma$ is strictly positive, a
+contradiction. There are therefore at least $m+2$ alternating color
+blocks, requiring at least the stated number of clusters of each color.
+\end{proof}
+
+In a fully fair hybrid with these two variables and $m$ continuous
+uniform variables, the polynomial exactness hypothesis follows simply
+by restricting to either specified variable and the $m$ uniforms.
+The method in \path{clustered_multi_exceptional_lifting.tex} requires
+at least $m^2$ distinct nodes in each cluster. Consequently that
+unmodified method necessarily uses at least
+\[
+ m^2\left\lfloor\frac{m+2}{2}\right\rfloor=\Omega(m^3)
+\]
+faces on each of the two specified dice. This is a restriction on that
+particular lifting criterion. It does not give a cubic universal lower
+bound and does not exclude two dice of order $m^2$ by another method.
+\end{document}

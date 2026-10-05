@@ -1,0 +1,119 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\title{Weighted collision bounds for triple minima and six-window swaps}
+\author{Research note; independently reviewed by two other agents}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+Let $\rho_1,\ldots,\rho_M$ be permutations of $[N]$, with arbitrary
+nonnegative weights $\mu_b$ summing to one. Repetitions are allowed.
+Put $\kappa=\sum_b\mu_b^2$ and $m=N-1$. The number $1/\kappa$ is
+the effective support size used below; the actual support may be much
+larger.
+
+\begin{lemma}[Averaging the centered Gram collision term]\label{gram}
+For each pivot $i$, let $x_{b,i}\in\{0,1\}^{m}$ have coordinates
+$\mathbf1\{\rho_b(i)<\rho_b(j)\}$ for $j\ne i$, and put
+\[
+ P=I-m^{-1}{\bf1}{\bf1}^{T},\qquad
+ R_i=\sum_b\mu_b(Px_{b,i})(Px_{b,i})^T.
+\]
+If $N\ge3$, some pivot $i$ satisfies
+\[
+ \|R_i\|_F\ge\frac m{\sqrt{60}}\sqrt\kappa.
+\]
+\end{lemma}
+\begin{proof}
+All the weights are nonnegative, so the Gram expansion gives
+\[
+ \|R_i\|_F^2
+ =\sum_{b,c}\mu_b\mu_c
+          \langle Px_{b,i},Px_{c,i}\rangle^2
+ \ge\sum_b\mu_b^2\|Px_{b,i}\|^4.
+\]
+For fixed $b$, as $i$ ranges over the labels, the number $k$ of ones in
+$x_{b,i}$ ranges over $0,1,\ldots,m$ exactly once. Its centered squared
+norm is $k(m-k)/m$. Therefore
+\[
+ \frac1N\sum_i\|Px_{b,i}\|^4
+ =\frac1{m+1}\sum_{k=0}^{m}\frac{k^2(m-k)^2}{m^2}
+ =\frac{(m-1)(m^2+1)}{30m}\ge\frac{m^2}{60}.
+\]
+Averaging the preceding Gram inequality over pivots proves the lemma.
+\end{proof}
+
+\begin{theorem}\label{main}
+Define
+\[
+ \epsilon=\max_{i,j,k\text{ distinct}}
+  \left|\Pr(\rho(i)<\rho(j),\rho(i)<\rho(k))-\frac13\right|.
+\]
+Then
+\[
+ \epsilon\ge\frac{\sqrt\kappa}{\sqrt{60}}
+                   -\frac2{3\sqrt{N-1}}.
+\]
+For $\delta(a,b,c)=\frac12-\frac32\Pr(\rho(b)<\rho(a),\rho(b)<\rho(c))$,
+let $\eta$ be the maximum absolute change in the sum of four consecutive
+triple scores under a middle-pair swap in a six-label window. For
+$N\ge6$ one has
+\[
+ \eta\ge\frac3{2\sqrt{60}}\sqrt\kappa
+                 -\frac4{\sqrt{N-1}}-\frac{128}{N}.
+\]
+In particular, if $N\ge C/\kappa$ for a sufficiently large absolute
+constant $C$, then some such swap has magnitude at least
+$c\sqrt\kappa$.
+\end{theorem}
+\begin{proof}
+The uncentered Gram matrix $G_i=\sum_b\mu_bx_{b,i}x_{b,i}^T$ has
+diagonal $p_{ij}=\Pr(\rho(i)<\rho(j))$ and off-diagonal triple-minimum
+probabilities. Thus
+\[
+ G_i=\tfrac13{\bf1}{\bf1}^{T}+D_i+E_i,
+ \qquad |(D_i)_{jj}|\le2/3,\quad
+ (E_i)_{jj}=0,\quad |(E_i)_{jk}|\le\epsilon.
+\]
+Multiplication on both sides by $P$ removes the constant matrix, giving
+$\|R_i\|_F\le(2/3)\sqrt m+\epsilon m$. Combine with
+Lemma~\ref{gram} to obtain the first assertion.
+
+For the second assertion, apply the small-swap coboundary lemma from
+the companion note \emph{Deterministic six-window discrepancy for short
+permutation families}. It supplies an antisymmetric array $a_{ij}$
+with $|a_{ij}|\le3/2$ such that
+\[
+ |\delta(j,i,k)-a_{ij}-a_{ik}|\le\tau:=\eta+128/N.
+\]
+Consequently, for every pivot $i$,
+\[
+ G_i=A_i+D_i+E_i,\qquad
+ (A_i)_{jk}=\frac13-\frac23(a_{ij}+a_{ik}),
+\]
+where the formula for $A_i$ also specifies its diagonal,
+\[
+ (D_i)_{jj}=p_{ij}-\frac13+\frac43a_{ij},\qquad
+ |(D_i)_{jj}|\le\frac83,
+\]
+and $E_i$ has zero diagonal and off-diagonal entries at most
+$2\tau/3$ in absolute value. Every summand of the additive matrix
+$A_i$ has a constant vector on one side, so $PA_iP=0$. It follows that
+\[
+ \|R_i\|_F\le\frac83\sqrt m+\frac23\tau m.
+\]
+Use the pivot supplied by Lemma~\ref{gram} and rearrange to obtain the
+second inequality.
+\end{proof}
+
+\paragraph{Restriction and repeated blocks.}
+The result applies after restricting all permutations to any common
+subset of labels, with exactly the same weights and the same
+$\kappa$. If two restrictions coincide, they may be left as repeated
+blocks; merging them only increases $\kappa$ and strengthens the bound.
+This makes greedy packing of disjoint six-label windows possible
+whenever a fixed positive fraction of $N$ remains and
+$N\ge C/\kappa$.
+\end{document}

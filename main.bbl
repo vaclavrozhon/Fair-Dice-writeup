@@ -1,0 +1,491 @@
+\begin{thebibliography}{71}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Harshbarger(n.d.)]{harshbarger-web}
+Eric Harshbarger.
+\newblock {``Go first'' dice}, n.d.
+\newblock URL \url{https://www.ericharshbarger.org/dice/go_first_dice.html}.
+
+\bibitem[Harshbarger(2012)]{harshbarger2012}
+Eric Harshbarger.
+\newblock Who goes first.
+\newblock \emph{Games Magazine}, 36\penalty0 (10), December 2012.
+
+\bibitem[Ford et~al.(2023)Ford, Grime, Harshbarger, and Pollock]{ford2023}
+Robert Ford, James Grime, Eric Harshbarger, and Brian Pollock.
+\newblock Go first dice for five players and beyond.
+\newblock \emph{Recreational Mathematics Magazine}, 10\penalty0 (17):\penalty0
+  75--87, 2023.
+\newblock \doi{10.2478/rmm-2023-0004}.
+
+\bibitem[Purcell(2024)]{purcell}
+Michael Purcell.
+\newblock Building sets of permutation-fair dice.
+\newblock \emph{American Mathematical Monthly}, 131\penalty0 (7):\penalty0
+  595--607, 2024.
+\newblock \doi{10.1080/00029890.2024.2345576}.
+
+\bibitem[Knoll(2012)]{knoll2012}
+Byron Knoll.
+\newblock Five player go first dice.
+\newblock Blog post, 2012.
+\newblock URL
+  \url{http://byronknoll.blogspot.se/2012/10/five-player-go-first-dice.html}.
+
+\bibitem[{The Dice Lab}(n.d.)]{meyer60}
+{The Dice Lab}.
+\newblock 5-player go first dice (construction discovered by {Paul Meyer}),
+  n.d.
+\newblock URL \url{https://www.mathartfun.com/thedicelab.com/GFD5.html}.
+\newblock Accessed July 20, 2026.
+
+\bibitem[Chv{\'a}tal et~al.(1972)Chv{\'a}tal, Klarner, and Knuth]{chvatal1972}
+Va{\v{s}}ek Chv{\'a}tal, David~A. Klarner, and Donald~E. Knuth.
+\newblock Selected combinatorial research problems.
+\newblock Technical report, Computer Science Department, Stanford University,
+  1972.
+
+\bibitem[Newey(1973)]{newey1973}
+Malcolm Newey.
+\newblock Notes on a problem involving permutations as subsequences.
+\newblock Technical report, Computer Science Department, Stanford University,
+  1973.
+
+\bibitem[Adleman(1974)]{adleman1974}
+Leonard Adleman.
+\newblock Short permutation strings.
+\newblock \emph{Discrete Mathematics}, 10\penalty0 (2):\penalty0 197--200,
+  1974.
+
+\bibitem[Koutas and Hu(1975)]{koutas1975}
+P.~J. Koutas and T.~C. Hu.
+\newblock Shortest string containing all permutations.
+\newblock \emph{Discrete Mathematics}, 11\penalty0 (2):\penalty0 125--132,
+  1975.
+
+\bibitem[Galbiati and Preparata(1976)]{galbiati1976}
+Giulia Galbiati and Franco~P. Preparata.
+\newblock On permutation-embedding sequences.
+\newblock \emph{SIAM Journal on Applied Mathematics}, 30\penalty0 (3):\penalty0
+  421--423, 1976.
+
+\bibitem[Kleitman and Kwiatkowski(1976)]{kleitman1976}
+Daniel~J. Kleitman and David~J. Kwiatkowski.
+\newblock A lower bound on the length of a sequence containing all permutations
+  as subsequences.
+\newblock \emph{Journal of Combinatorial Theory, Series A}, 21\penalty0
+  (2):\penalty0 129--136, 1976.
+
+\bibitem[Z{\u{a}}linescu(2011)]{zalinescu2011}
+Eugen Z{\u{a}}linescu.
+\newblock Shorter strings containing all {$k$}-element permutations.
+\newblock \emph{Information Processing Letters}, 111\penalty0 (12):\penalty0
+  605--608, 2011.
+
+\bibitem[Radomirovi{\'c}(2012)]{radomirovic2012}
+Sa{\v{s}}a Radomirovi{\'c}.
+\newblock A construction of short sequences containing all permutations of a
+  set as subsequences.
+\newblock \emph{Electronic Journal of Combinatorics}, 19\penalty0 (4):\penalty0
+  P31, 2012.
+
+\bibitem[Engen and Vatter(2021)]{engen2020}
+Michael Engen and Vincent Vatter.
+\newblock Containing all permutations.
+\newblock \emph{American Mathematical Monthly}, 128\penalty0 (1):\penalty0
+  4--24, 2021.
+\newblock \doi{10.1080/00029890.2021.1835384}.
+
+\bibitem[Beniamini et~al.(2025)Beniamini, Lavee, and Linial]{beniamini2025}
+Gal Beniamini, Nir Lavee, and Nati Linial.
+\newblock How balanced can permutations be?
+\newblock \emph{Combinatorica}, 45:\penalty0 9, 2025.
+\newblock \doi{10.1007/s00493-024-00127-x}.
+
+\bibitem[{\v{C}}ern{\'y}(2007)]{cerny2007}
+Anton {\v{C}}ern{\'y}.
+\newblock On fairness of {D0L} systems.
+\newblock \emph{Discrete Applied Mathematics}, 155\penalty0 (13):\penalty0
+  1769--1773, 2007.
+\newblock \doi{10.1016/j.dam.2007.04.004}.
+
+\bibitem[{\v{C}}ern{\'y}(2009)]{cerny2009}
+Anton {\v{C}}ern{\'y}.
+\newblock On fair words.
+\newblock \emph{Journal of Automata, Languages and Combinatorics}, 14\penalty0
+  (2):\penalty0 163--174, 2009.
+\newblock \doi{10.25596/JALC-2009-163}.
+
+\bibitem[Prodinger(1979)]{prodinger1979}
+Helmut Prodinger.
+\newblock On a generalization of the {Dyck}-language over a two letter
+  alphabet.
+\newblock \emph{Discrete Mathematics}, 28\penalty0 (3):\penalty0 269--276,
+  1979.
+\newblock \doi{10.1016/0012-365X(79)90134-1}.
+
+\bibitem[{\v{C}}ern{\'y}(2008)]{cerny2008}
+Anton {\v{C}}ern{\'y}.
+\newblock On subword symmetry of words.
+\newblock \emph{International Journal of Foundations of Computer Science},
+  19\penalty0 (1):\penalty0 243--250, 2008.
+\newblock \doi{10.1142/S0129054108005656}.
+
+\bibitem[Salomaa(2007)]{salomaa2007}
+Arto Salomaa.
+\newblock Subword balance in binary words, languages and sequences.
+\newblock \emph{Fundamenta Informaticae}, 75\penalty0 (1--4):\penalty0
+  469--482, 2007.
+\newblock \doi{10.3233/FUN-2007-751-427}.
+
+\bibitem[Richomme(2026)]{richomme2026}
+Gwena{\"e}l Richomme.
+\newblock On some 2-binomial coefficients of binary words: geometrical
+  interpretation, partitions of integers, and fair words.
+\newblock \emph{Theoretical Computer Science}, 1066:\penalty0 115732, 2026.
+\newblock \doi{10.1016/j.tcs.2025.115732}.
+
+\bibitem[Kronenthal and Traldi(2009)]{kronenthal-traldi2009}
+Brian~G. Kronenthal and Lorenzo Traldi.
+\newblock Tied dice.
+\newblock \emph{Journal of Combinatorial Mathematics and Combinatorial
+  Computing}, 68:\penalty0 85--96, 2009.
+\newblock URL
+  \url{https://combinatorialpress.com/jcmcc-articles/volume-068/tied-dice/}.
+
+\bibitem[Cooley et~al.(2014)Cooley, Ella, Follett, Gilson, and
+  Traldi]{cooley-et-al2014}
+C.~Cooley, W.~Ella, M.~Follett, E.~Gilson, and L.~Traldi.
+\newblock Tied dice {II}: some asymptotic results.
+\newblock \emph{Journal of Combinatorial Mathematics and Combinatorial
+  Computing}, 90:\penalty0 241--248, 2014.
+\newblock URL
+  \url{https://combinatorialpress.com/jcmcc-articles/volume-090/tied-dice-ii-some-asymptotic-results/}.
+
+\bibitem[Schaefer and Schweig(2017)]{schaefer-schweig2017}
+Alex Schaefer and Jay Schweig.
+\newblock Balanced nontransitive dice.
+\newblock \emph{College Mathematics Journal}, 48\penalty0 (1):\penalty0 10--16,
+  2017.
+\newblock \doi{10.4169/college.math.j.48.1.10}.
+
+\bibitem[Hur and Kim(2021)]{hur-kim2021}
+Injo Hur and Yeansu Kim.
+\newblock Possible probability and irreducibility of balanced nontransitive
+  dice.
+\newblock \emph{Journal of Mathematics}, 2021:\penalty0 6648248, 2021.
+\newblock \doi{10.1155/2021/6648248}.
+
+\bibitem[Kim et~al.(2024)Kim, Kim, Lee, Lim, and So]{kim-et-al2024}
+Dohyeon Kim, Ringi Kim, Wonjun Lee, Yuhyeon Lim, and Yoojin So.
+\newblock Balanced nontransitive dice: existence and probability.
+\newblock \emph{Electronic Journal of Combinatorics}, 31\penalty0 (1):\penalty0
+  P1.21, 2024.
+\newblock \doi{10.37236/11918}.
+
+\bibitem[Wilson(1969)]{wilson-algorithm}
+M.~Wayne Wilson.
+\newblock A general algorithm for nonnegative quadrature formulas.
+\newblock \emph{Mathematics of Computation}, 23:\penalty0 253--258, 1969.
+\newblock \doi{10.1090/S0025-5718-1969-0242374-1}.
+
+\bibitem[Wilson(1970{\natexlab{a}})]{wilson-least-squares}
+M.~Wayne Wilson.
+\newblock Discrete least squares and quadrature formulas.
+\newblock \emph{Mathematics of Computation}, 24\penalty0 (110):\penalty0
+  271--282, 1970{\natexlab{a}}.
+\newblock \doi{10.1090/S0025-5718-1970-0275677-3}.
+
+\bibitem[Wilson(1970{\natexlab{b}})]{wilson-quadrature}
+M.~Wayne Wilson.
+\newblock Necessary and sufficient conditions for equidistant quadrature
+  formula.
+\newblock \emph{SIAM Journal on Numerical Analysis}, 7\penalty0 (1):\penalty0
+  134--141, 1970{\natexlab{b}}.
+\newblock \doi{10.1137/0707009}.
+
+\bibitem[Wilson(1970{\natexlab{c}})]{wilson-hahn}
+M.~Wayne Wilson.
+\newblock On the {Hahn} polynomials.
+\newblock \emph{SIAM Journal on Mathematical Analysis}, 1\penalty0
+  (1):\penalty0 131--139, 1970{\natexlab{c}}.
+\newblock \doi{10.1137/0501013}.
+
+\bibitem[Huybrechs(2009)]{huybrechs2009}
+Daan Huybrechs.
+\newblock Stable high-order quadrature rules with equidistant points.
+\newblock \emph{Journal of Computational and Applied Mathematics}, 231\penalty0
+  (2):\penalty0 933--947, 2009.
+\newblock \doi{10.1016/j.cam.2009.05.018}.
+
+\bibitem[Glaubitz(2020)]{glaubitz2020}
+Jan Glaubitz.
+\newblock Stable high order quadrature rules for scattered data and general
+  weight functions.
+\newblock \emph{SIAM Journal on Numerical Analysis}, 58:\penalty0 2144--2164,
+  2020.
+\newblock \doi{10.1137/19M1257901}.
+
+\bibitem[Cappellazzo et~al.(2023)Cappellazzo, Erb, Marchetti, and
+  Poggiali]{cappellazzo-et-al2023}
+Francesca Cappellazzo, Wolfgang Erb, Alfredo~E. Marchetti, and Davide Poggiali.
+\newblock On {Kosloff Tal-Ezer} least-squares quadrature formulas.
+\newblock \emph{BIT Numerical Mathematics}, 63:\penalty0 15, 2023.
+\newblock \doi{10.1007/s10543-023-00948-0}.
+
+\bibitem[Fej{\'e}r(1933)]{fejer1933}
+L.~Fej{\'e}r.
+\newblock Mechanische quadraturen mit positiven cotesschen zahlen.
+\newblock \emph{Mathematische Zeitschrift}, 37:\penalty0 287--309, 1933.
+
+\bibitem[Shohat(1937)]{shohat1937}
+J.~Shohat.
+\newblock On mechanical quadratures, in particular, with positive coefficients.
+\newblock \emph{Transactions of the American Mathematical Society},
+  42:\penalty0 461--496, 1937.
+
+\bibitem[Zaremba(1975)]{zaremba1975}
+S.~K. Zaremba.
+\newblock Some properties of polynomials orthogonal over the set {$\langle
+  1,2,\ldots,N\rangle$}.
+\newblock \emph{Annali di Matematica Pura ed Applicata, Series IV},
+  105:\penalty0 333--345, 1975.
+\newblock \doi{10.1007/BF02414937}.
+
+\bibitem[Dette(1995)]{dette1995}
+Holger Dette.
+\newblock New bounds for {Hahn} and {Krawtchouk} polynomials.
+\newblock \emph{SIAM Journal on Mathematical Analysis}, 26\penalty0
+  (6):\penalty0 1647--1659, 1995.
+\newblock \doi{10.1137/S0036141093255661}.
+
+\bibitem[Seymour and Zaslavsky(1984)]{seymour-zaslavsky1984}
+P.~D. Seymour and T.~Zaslavsky.
+\newblock Averaging sets: a generalization of mean values and spherical
+  designs.
+\newblock \emph{Advances in Mathematics}, 52\penalty0 (3):\penalty0 213--240,
+  1984.
+\newblock \doi{10.1016/0001-8708(84)90022-7}.
+
+\bibitem[Kane(2015)]{kane2015}
+Daniel~M. Kane.
+\newblock Small designs for path-connected spaces and path-connected
+  homogeneous spaces.
+\newblock \emph{Transactions of the American Mathematical Society},
+  367:\penalty0 6387--6414, 2015.
+\newblock \doi{10.1090/tran/6250}.
+
+\bibitem[Bernstein(1937)]{bernstein1937}
+S.~N. Bernstein.
+\newblock Sur les formules de quadrature de {Cotes} et {Tchebycheff}; and on
+  quadrature formulas with positive coefficients.
+\newblock \emph{C. R. Acad. Sci. URSS}, 14:323--327; and \emph{Izv. Akad. Nauk
+  SSSR Ser. Mat.}, 1(4):479--503, 1937.
+
+\bibitem[Kuijlaars(1993)]{kuijlaars1993}
+A.~B.~J. Kuijlaars.
+\newblock The minimal number of nodes in {Chebyshev} type quadrature formulas.
+\newblock \emph{Indagationes Mathematicae}, 4\penalty0 (3):\penalty0 339--362,
+  1993.
+\newblock \doi{10.1016/0019-3577(93)90007-L}.
+
+\bibitem[Kuijlaars(1995)]{kuijlaars1995}
+A.~B.~J. Kuijlaars.
+\newblock {Chebyshev}-type quadrature for {Jacobi} weight functions.
+\newblock \emph{Journal of Computational and Applied Mathematics}, 57:\penalty0
+  171--180, 1995.
+\newblock \doi{10.1016/0377-0427(93)E0243-F}.
+
+\bibitem[Gilboa and Peled(2017)]{gilboa2017}
+Shoni Gilboa and Ron Peled.
+\newblock {Chebyshev}-type quadratures for doubling weights.
+\newblock \emph{Constructive Approximation}, 45\penalty0 (2):\penalty0
+  193--216, 2017.
+\newblock \doi{10.1007/s00365-016-9360-4}.
+
+\bibitem[Peled(2010)]{peled2010}
+Ron Peled.
+\newblock Simple universal bounds for {Chebyshev}-type quadratures.
+\newblock \emph{Journal of Approximation Theory}, 162\penalty0 (12):\penalty0
+  2317--2348, 2010.
+\newblock \doi{10.1016/j.jat.2010.08.002}.
+
+\bibitem[Cui et~al.(2019)Cui, Xia, and Xiang]{cui2019}
+Zhen Cui, Jiacheng Xia, and Ziqing Xiang.
+\newblock Rational designs.
+\newblock \emph{Advances in Mathematics}, 352:\penalty0 541--571, 2019.
+\newblock \doi{10.1016/j.aim.2019.06.012}.
+
+\bibitem[Arkhipov(1985)]{arkhipov1985}
+G.~I. Arkhipov.
+\newblock On the {Hilbert--Kamke} problem.
+\newblock \emph{Mathematics of the USSR-Izvestiya}, 24\penalty0 (1):\penalty0
+  1--47, 1985.
+\newblock \doi{10.1070/IM1985v024n01ABEH001210}.
+
+\bibitem[Stanley(1972)]{stanley1972}
+Richard~P. Stanley.
+\newblock \emph{Ordered Structures and Partitions}.
+\newblock Number 119 in Memoirs of the American Mathematical Society. American
+  Mathematical Society, 1972.
+\newblock \doi{10.1090/memo/0119}.
+
+\bibitem[Bayer and Diaconis(1992)]{bayer-diaconis1992}
+Dave Bayer and Persi Diaconis.
+\newblock Trailing the dovetail shuffle to its lair.
+\newblock \emph{Annals of Applied Probability}, 2\penalty0 (2):\penalty0
+  294--313, 1992.
+\newblock \doi{10.1214/aoap/1177005705}.
+
+\bibitem[Diaconis et~al.(2013)Diaconis, Fulman, and
+  Holmes]{diaconis-fulman-holmes2013}
+Persi Diaconis, Jason Fulman, and Susan Holmes.
+\newblock Analysis of casino shelf shuffling machines.
+\newblock \emph{Annals of Applied Probability}, 23\penalty0 (4):\penalty0
+  1692--1720, 2013.
+\newblock \doi{10.1214/12-AAP884}.
+
+\bibitem[Bonami(1970)]{bonami1970}
+Aline Bonami.
+\newblock {\'E}tude des coefficients de {Fourier} des fonctions de {$L^p(G)$}.
+\newblock \emph{Annales de l'Institut Fourier}, 20\penalty0 (2):\penalty0
+  335--402, 1970.
+\newblock \doi{10.5802/aif.357}.
+
+\bibitem[O'Donnell(2014)]{odonnell2014}
+Ryan O'Donnell.
+\newblock \emph{Analysis of {Boolean} Functions}.
+\newblock Cambridge University Press, 2014.
+\newblock \doi{10.1017/CBO9781139814782}.
+
+\bibitem[Lorentz(1986)]{lorentz1986}
+G.~G. Lorentz.
+\newblock \emph{Bernstein Polynomials}.
+\newblock Chelsea Publishing Company, 1986.
+
+\bibitem[Karlin and McGregor(1961)]{karlin-mcgregor1961}
+S.~Karlin and J.~McGregor.
+\newblock The {Hahn} polynomials, formulas and an application.
+\newblock \emph{Scripta Mathematica}, 26:\penalty0 33--46, 1961.
+
+\bibitem[Koekoek et~al.(2010)Koekoek, Lesky, and Swarttouw]{koekoek2010}
+Roelof Koekoek, Peter~A. Lesky, and Ren{\'e}~F. Swarttouw.
+\newblock \emph{Hypergeometric Orthogonal Polynomials and Their
+  {$q$}-Analogues}.
+\newblock Springer Monographs in Mathematics. Springer, 2010.
+\newblock \doi{10.1007/978-3-642-05014-5}.
+
+\bibitem[{NIST Digital Library of Mathematical Functions}(n.d.)]{dlmf}
+{NIST Digital Library of Mathematical Functions}.
+\newblock Chapter 18: Orthogonal polynomials, sections 18.19--18.20, n.d.
+\newblock URL \url{https://dlmf.nist.gov/18.19}.
+\newblock Accessed July 2026.
+
+\bibitem[Finch(2003)]{finch2003}
+Steven~R. Finch.
+\newblock \emph{Mathematical Constants}.
+\newblock Cambridge University Press, 2003.
+
+\bibitem[Prouhet(1851)]{prouhet1851}
+Eug{\`e}ne Prouhet.
+\newblock M{\'e}moire sur quelques relations entre les puissances des nombres.
+\newblock \emph{Comptes rendus de l'Acad{\'e}mie des sciences de Paris},
+  33:\penalty0 225--228, 1851.
+
+\bibitem[Choudhry(2020)]{choudhry2020}
+Ajai Choudhry.
+\newblock An improvement of {Prouhet}'s 1851 result on multigrade chains.
+\newblock \emph{International Journal of Number Theory}, 16\penalty0
+  (7):\penalty0 1425--1432, 2020.
+\newblock \doi{10.1142/S179304212050075X}.
+
+\bibitem[Lehmer(1947)]{lehmer1947}
+D.~H. Lehmer.
+\newblock The {Tarry--Escott} problem.
+\newblock \emph{Scripta Mathematica}, 13:\penalty0 37--41, 1947.
+
+\bibitem[Wright(1949)]{wright1949}
+E.~M. Wright.
+\newblock Equal sums of like powers.
+\newblock \emph{Proceedings of the Edinburgh Mathematical Society, Series 2},
+  8:\penalty0 138--142, 1949.
+
+\bibitem[Wright(1959)]{wright1959}
+E.~M. Wright.
+\newblock {Prouhet}'s 1851 solution of the {Tarry--Escott} problem of 1910.
+\newblock \emph{American Mathematical Monthly}, 66\penalty0 (3):\penalty0
+  199--201, 1959.
+\newblock \doi{10.1080/00029890.1959.11989269}.
+
+\bibitem[Roberts(1964{\natexlab{a}})]{roberts1964a}
+J.~B. Roberts.
+\newblock Splitting consecutive integers into classes with equal power sums.
+\newblock \emph{American Mathematical Monthly}, 71:\penalty0 25--37,
+  1964{\natexlab{a}}.
+\newblock \doi{10.1080/00029890.1964.11992196}.
+
+\bibitem[Roberts(1964{\natexlab{b}})]{roberts1964b}
+J.~B. Roberts.
+\newblock Relations between the digits of numbers and equal sums of like
+  powers.
+\newblock \emph{Canadian Journal of Mathematics}, 16:\penalty0 626--636,
+  1964{\natexlab{b}}.
+\newblock \doi{10.4153/CJM-1964-063-7}.
+
+\bibitem[Bolker et~al.(2016)Bolker, Offner, Richman, and
+  Zara]{bolker-et-al2016}
+Ethan Bolker, Carl Offner, Robert Richman, and Catalin Zara.
+\newblock The {Prouhet--Tarry--Escott} problem and generalized {Thue--Morse}
+  sequences.
+\newblock \emph{Journal of Combinatorics}, 7\penalty0 (1):\penalty0 117--133,
+  2016.
+\newblock \doi{10.4310/JOC.2016.v7.n1.a5}.
+
+\bibitem[Boyd(1997)]{boyd1997}
+David~W. Boyd.
+\newblock On a problem of {Byrnes} concerning polynomials with restricted
+  coefficients.
+\newblock \emph{Mathematics of Computation}, 66\penalty0 (220):\penalty0
+  1697--1703, 1997.
+\newblock \doi{10.1090/S0025-5718-97-00892-2}.
+
+\bibitem[Boyd(2002)]{boyd2002}
+David~W. Boyd.
+\newblock On a problem of {Byrnes} concerning polynomials with restricted
+  coefficients. {II}.
+\newblock \emph{Mathematics of Computation}, 71\penalty0 (239):\penalty0
+  1205--1217, 2002.
+\newblock \doi{10.1090/S0025-5718-01-01360-6}.
+
+\bibitem[Berend and Golan(2006)]{berend-golan2006}
+Daniel Berend and Shahar Golan.
+\newblock {Littlewood} polynomials with high order zeros.
+\newblock \emph{Mathematics of Computation}, 75\penalty0 (255):\penalty0
+  1541--1552, 2006.
+\newblock \doi{10.1090/S0025-5718-06-01848-5}.
+
+\bibitem[Buhler et~al.(2021)Buhler, Golan, Pratt, and Wagon]{buhler-et-al2021}
+Joe Buhler, Shahar Golan, Rob Pratt, and Stan Wagon.
+\newblock {Littlewood} polynomials, spectral-null codes, and equipowerful
+  partitions.
+\newblock \emph{Mathematics of Computation}, 90\penalty0 (329):\penalty0
+  1435--1453, 2021.
+\newblock \doi{10.1090/mcom/3612}.
+
+\bibitem[Pollack and Trevi{\~n}o(2026)]{pollack-trevino2026}
+Paul Pollack and Enrique Trevi{\~n}o.
+\newblock Partitioning powers into sets of equal sum.
+\newblock \emph{Rocky Mountain Journal of Mathematics}, 56\penalty0
+  (2):\penalty0 503--514, 2026.
+\newblock \doi{10.1216/rmj.2026.56.503}.
+
+\bibitem[{Polylog}(n.d.)]{polylog-video}
+{Polylog}.
+\newblock We designed special dice using math, but there's a catch, n.d.
+\newblock URL \url{https://www.youtube.com/watch?v=-64UT8yikng}.
+
+\end{thebibliography}

@@ -1,0 +1,10 @@
+Independent mathematical review, 30 September 2026, size_bounds agent
+Reviewed: ../rational_designs/asymptotic/sharp_approximate_per_die_lower_bound.tex
+Outcome: PASS. This is mathematical peer review, not formal verification.
+
+Checked the passage from full relative order errors to each positive partial-pattern sum; the tilted failure distribution with masses in [1-epsilon,1+epsilon]; uniform coarse balance and factorial moments; marked and unmarked polynomial error norms, including the extra marked factorial; the truncated geometric Laguerre Laplace calculation without assuming exact normalization; the initial square-root-degree CDF and relative offset; the elementary CDF cutoff min(H,m^(3/4)); and all terms of the general-degree final R and U comparisons.
+
+For H>=sqrt(m), d=c min(H,m), delta=m^(-1/3), h=max(H^(-1),m^(-3/4)), the product delta*h*d is O(m^(-1/12)). Source errors epsilon*C^d are exponentially small after choosing c. The full bad-subset and outer-tail estimates are uniform in this degree range. Multiplying the U comparison error by d gives o(1), while the R comparison stays below the fixed positive scalar integral. The final endpoint atom argument therefore gives K >= c n min(n,log(1/epsilon)). The bounded-H, intermediate-H, and epsilon=0 cases are consistent.
+
+Also reviewed: ../rational_designs/asymptotic/every_large_exceptional_size.tex
+Outcome: PASS. The Gilboa--Peled bar-N quantifier is exactly an every-integer-K assertion. Applying it at degree 2m+2 supplies at least m interior pivots. The regularization retains K, removes endpoints/collisions, and the original lifting proof only needs K>=m^2. No upper bound on K is used. Equal old face counts follow from the same rational interval-mass finiteization.

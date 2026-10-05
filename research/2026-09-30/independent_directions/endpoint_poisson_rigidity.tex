@@ -1,0 +1,206 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prb}{\mathbb P}
+\title{Endpoint rigidity and a superlinear lower bound for every die}
+\author{Research note; endpoint theorem independently reviewed}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+For each $m$, let $p_1,\ldots,p_m$ be nondecreasing functions on a
+finite ordered probability space $(\{1,\ldots,K\},w)$, with positive
+row weights, and suppose
+\begin{equation}\label{mixed}
+ \E_w\prod_{j\in S}p_j=\frac1{|S|+1}
+ \qquad(S\subseteq[m]).
+\end{equation}
+All $p_j$ take values in $[0,1]$. The number of rows and their weights
+may depend on $m$. Put $A(q)=\prod_jp_j(q)$, and define the probability
+measure
+\[
+ \eta(q)=(m+1)w_q A(q).
+\]
+Rows with $A(q)=0$ have zero $\eta$-mass. On all other rows define
+\[
+ r_j(q)=\frac{1-p_j(q)}{p_j(q)},\qquad
+ \lambda(q)=\sum_{j=1}^m r_j(q).
+\]
+
+\begin{theorem}\label{endpoint}
+As $m\to\infty$, the distribution of $\lambda$ under $\eta$ converges
+weakly to the exponential distribution of mean one. This conclusion
+holds for every sequence of monotone representations satisfying
+\eqref{mixed}, with no bound on $K$ and no equal-weight assumption.
+Moreover,
+\[
+ \lambda(K)\longrightarrow0,\qquad
+ \prod_jp_j(K)\longrightarrow1,\qquad
+ m w_K\longrightarrow0.
+\]
+\end{theorem}
+\begin{proof}
+For $0\le z<1$, set
+\[
+ B_q(z)=\prod_j\bigl(p_j(q)+z(1-p_j(q))\bigr).
+\]
+The mixed identities, or equivalently the uniform law of the number
+of failures in the comparison tensor, give the polynomial identity
+\begin{equation}\label{pgf}
+ (m+1)\E_w B_q(z)=\sum_{k=0}^m z^k.
+\end{equation}
+For every fixed column $j$, the same identities give
+\begin{equation}\label{deriv}
+ (m+1)\E_w\left[(1-p_j)\prod_{i\ne j}
+       (p_i+z(1-p_i))\right]
+ =\frac1m\sum_{k=0}^{m-1}(k+1)z^k
+ \le\frac1{m(1-z)^2}.
+\end{equation}
+Indeed, a particular failure set of size $k+1$ has probability
+$1/((m+1)\binom m{k+1})$, and there are $\binom{m-1}k$ such sets
+containing $j$.
+
+Temporarily assign odds $+\infty$ to a zero entry. For $\varepsilon>0$
+let $D_\varepsilon=\{q:\max_jr_j(q)\ge\varepsilon\}$.
+This is an initial segment of the ordered rows. If it is nonempty,
+choose its last row $q_*$ and a column $j_*$ with
+$r_{j_*}(q_*)\ge\varepsilon$. Monotonicity implies throughout
+$D_\varepsilon$ that
+$p_{j_*}\le(1-p_{j_*})/\varepsilon$. Consequently,
+\begin{equation}\label{bad}
+ (m+1)\E_w[B_q(z)\boldsymbol1_{D_\varepsilon}]
+ \le\frac{\varepsilon^{-1}+z}{m(1-z)^2}.
+\end{equation}
+This argument includes rows containing zeros and does not cancel
+any zero factor. At $z=0$ it also gives
+$\eta(D_\varepsilon)\le1/(m\varepsilon)$.
+
+Take $\varepsilon_m=m^{-1/2}$ and let $G_m$ be the complementary
+set of good rows. On $G_m$ all entries are positive and
+$0\le r_j<\varepsilon_m$. Define
+\[
+ F_m(z)=(m+1)\E_w[B_q(z)\boldsymbol1_{G_m}].
+\]
+Equations \eqref{pgf} and \eqref{bad} show that
+$F_m(z)\to(1-z)^{-1}$ for each fixed $0\le z<1$, and the same holds
+if $z$ is replaced by a sequence tending to such a fixed value.
+For fixed $0<z<1$ put $z_m'=(1+\varepsilon_m)z$. For all sufficiently
+large $m$, $z_m'<1$ and
+\[
+ \log(1+z_m'r)\ge z_m'r-\frac{(z_m'r)^2}{2}\ge zr
+ \qquad(0\le r\le\varepsilon_m).
+\]
+Also $\log(1+zr)\le zr$. Hence
+\begin{equation}\label{squeeze}
+ F_m(z)\le
+ \E_\eta[e^{z\lambda}\boldsymbol1_{G_m}]
+ \le F_m(z_m')\longrightarrow\frac1{1-z}.
+\end{equation}
+The restricted measures have total mass tending to one, by the
+$z=0$ case of \eqref{bad}. Their moment generating functions therefore
+converge on every compact subinterval of $(0,1)$ to $(1-z)^{-1}$.
+For completeness, the uniform bound in \eqref{squeeze} at any
+$z_0>0$ gives tightness. A bound at $z_1>z_0$ makes $e^{z_0\lambda}$
+uniformly integrable, so every subsequential weak limit has moment
+generating function $(1-z)^{-1}$ on $(0,1)$. Uniqueness of moment
+generating functions identifies that limit as $\mathrm{Exp}(1)$.
+The omitted $\eta$-mass tends to zero, proving the first assertion.
+
+The last row has $A(K)>0$. Odds decrease with the row, so $\lambda(K)$
+is the least value on the support of $\eta$. Weak convergence to a
+law having positive mass in every interval $(0,a)$ implies
+$\lambda(K)\to0$. The elementary inequality
+\[
+ e^{-\lambda(q)}\le A(q)\le1
+\]
+then gives $A(K)\to1$. Finally, weak convergence to a continuous law
+implies that the maximal atom mass tends to zero; in particular
+$\eta(K)=(m+1)w_KA(K)\to0$. Thus $m w_K\to0$.
+\end{proof}
+
+\begin{proposition}[Uniform control of normalized moments]\label{moments}
+Let $G_\varepsilon=\{q:\max_j r_j(q)<\varepsilon\}$ and put
+\[
+ M_k=\E_\eta\left[\frac{\lambda^k}{k!}
+                         \boldsymbol1_{G_\varepsilon}\right].
+\]
+For $0\le k\le m$ and $k\varepsilon\le1$,
+\[
+ 1-\frac{(k+1)/\varepsilon+k}{m}
+ \le M_k\le1+k\varepsilon.
+\]
+In particular, with $\varepsilon=m^{-1/2}$,
+\[
+ |M_k-1|\le\frac{2k+1}{\sqrt m}
+ \qquad(0\le k\le\lfloor\sqrt m\rfloor).
+\]
+\end{proposition}
+\begin{proof}
+Write $e_k(r)$ for the elementary symmetric polynomial of degree $k$
+in the odds, with $e_0=1$, and put
+$a_k=\E_\eta[e_k(r)\boldsymbol1_{G_\varepsilon}]$.
+The proof of \eqref{bad} is coefficientwise: on the bad initial
+segment,
+\[
+ B_q(z)\preceq(\varepsilon^{-1}+z)(1-p_{j_*})
+                 \prod_{i\ne j_*}(p_i+z(1-p_i)),
+\]
+where $\preceq$ denotes comparison of every coefficient.
+Equations \eqref{pgf}--\eqref{deriv} therefore give
+\[
+ 1-\frac{(k+1)/\varepsilon+k}{m}\le a_k\le1.
+\]
+At $k=m$ the term from coefficient $m$ on the right derivative
+polynomial is absent, so the displayed lower bound is still valid.
+
+The expansion of $\lambda^k$ sums all ordered $k$-tuples of indices,
+whereas $k!e_k$ keeps only tuples with distinct indices. A union bound
+over pairs of coinciding positions gives, for $k\ge2$,
+\[
+ 0\le\lambda^k-k!e_k
+ \le\binom k2\Bigl(\sum_i r_i^2\Bigr)\lambda^{k-2}
+ \le\binom k2\varepsilon\lambda^{k-1}
+ \quad\hbox{on }G_\varepsilon.
+\]
+Consequently
+\[
+ 0\le M_k-a_k\le\frac{(k-1)\varepsilon}{2}M_{k-1}.
+\]
+Since $M_0\le1$ and $M_1=a_1\le1$, induction gives
+$M_k\le1+(k-1)\varepsilon\le1+k\varepsilon$ whenever
+$k\varepsilon\le1$. The lower bound follows from $M_k\ge a_k$.
+Substitution of $\varepsilon=m^{-1/2}$ proves the final estimate.
+\end{proof}
+
+\begin{corollary}\label{superlinear}
+Every sequence of equal-weight monotone representations
+\eqref{mixed} satisfies
+\[
+ \frac Km\longrightarrow\infty.
+\]
+Consequently, if $g(n)$ is the minimum number of faces on one die in
+any permutation-fair collection of $n$ finite equiprobable dice, then
+\[
+ \frac{g(n)}n\longrightarrow\infty.
+\]
+Together with the separately proved construction $g(n)=O(n^2)$, this
+places the exceptional-die optimum strictly above linear growth and
+at most at quadratic growth.
+\end{corollary}
+\begin{proof}
+For equal row weights $w_K=1/K$, Theorem~\ref{endpoint} gives
+$m/K\to0$. Comparison columns of any distinguished equiprobable die
+are monotone and satisfy \eqref{mixed}. The argument applies to
+arbitrary sequences, so it gives the asserted universal asymptotic
+bound, not merely a bound for one selected family.
+\end{proof}
+
+No rate of divergence is asserted here. The proof uses monotonicity
+only in the initial-segment estimate \eqref{bad}; positivity of
+individual product-mixture components alone does not give that estimate.
+The same conclusions hold at the opposite endpoint by replacing each
+$p_j(q)$ by $1-p_j(K+1-q)$.
+\end{document}

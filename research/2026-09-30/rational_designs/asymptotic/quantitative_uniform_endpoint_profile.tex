@@ -1,0 +1,278 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\E}{\mathbb E}
+\title{A polynomial rate for the uniform endpoint profile}
+\author{Complete asymptotic proof; independently reviewed}
+\date{30 September 2026}
+\begin{document}\maketitle
+Assume $p_1,\ldots,p_m:[K]\to[0,1]$ are nondecreasing, with positive
+probability row weights $w$, and
+\[
+ \E_w\prod_{j\in S}p_j=\frac1{|S|+1}\qquad(S\subseteq[m]).
+\]
+Put $u_i=1-p_i$ and $s=\sum_i u_i$.
+
+\begin{theorem}\label{profile}
+For every fixed $0<A<1$, there is a constant $C_A$ such that, for
+all sufficiently large $m$, uniformly over columns and rows with
+$s\le A\log m$,
+\[
+ \max_i|m(1-p_i)-s|
+       \le C_A m^{-(1-A)/8}\log m.                 \tag{1}
+\]
+In particular this is a quantitative bound on the range of the
+comparison columns, rather than only a bound on their maximum.
+No new dice-face exponent is asserted in this note.
+\end{theorem}
+
+We use the already reviewed marked comparison from
+\path{quantitative_relative_endpoint_balance.tex}. For a fixed
+column $i$, put $M=m-1$, $\ell=\lfloor M/4\rfloor$,
+$\alpha=\ell/M$, $s_-=\sum_{j\ne i}u_j$, and $x=\alpha s_-$.
+For a uniform $\ell$-subset $B$ of the remaining columns let
+$\overline A=\E_B\prod_{j\in B}p_j$. The two probability measures
+\[
+ \mu_0=(\ell+1)w\overline A,\qquad
+ \mu_1=(\ell+1)(\ell+2)w u_i\overline A
+\]
+have density relation $d\mu_1=(\ell+2)u_i\,d\mu_0$.
+Their scalar targets have densities
+\[
+ b_0(z)=\frac{\ell+1}{\ell}(1-z/\ell)^\ell\boldsymbol1_{[0,\ell]},
+ \qquad b_1(z)=\frac{\ell+2}{\ell}z b_0(z).
+ \tag{2}
+\]
+Denote their integrals by $\beta_0,\beta_1$, and fix $\theta=1/16$.
+All constants in the auxiliary bounds below are uniform in $i$.
+
+\begin{lemma}[The degree range in the marked comparison]\label{degree}
+For some absolute $c_0>0$, the marked bilinear comparison holds for
+all degrees $D\le c_0M$:
+\[
+ |\mu_a(Q_1Q_2)-\beta_a(Q_1Q_2)|
+ \le C B_1B_2(D/M+e^{-cM}),\qquad a=0,1,          \tag{3}
+\]
+where $Q_b=\sum_{j=0}^D c_{bj}L_j(\theta z)$ and
+$B_b=\sum_j|c_{bj}|$. Also
+\[
+ \mu_a(e^{\theta x/2})+\beta_a(e^{\theta z/2})\le C.
+ \tag{4}
+\]
+\end{lemma}
+\begin{proof}
+In the proof of the cited comparison, the polarization series is
+bounded by a constant times
+\[
+ B_1B_2\sum_{k=2}^{2D}(C\sqrt{D/M})^k(k+1)^C.
+\]
+The exponent on $k+1$ is fixed, also for the marked measure. Taking
+$c_0$ sufficiently small makes the geometric ratio at most $1/4$,
+so this remains $O(B_1B_2D/M)$. Choose also $2c_0M\le M-\ell$.
+The weighted-subset comparison and its exponential-tail argument
+have no smaller degree restriction; $D\le c_0M$ is polynomially
+bounded and its tail remains exponentially small. This proves (3).
+Bound (4) follows from $\overline A\le e^{-\alpha s_-}$, the row-mass
+Laplace bound, and $u_i\le C(s_-+1)/M$ for the marked normalization.
+It is also immediate for the scalar densities (2).
+\end{proof}
+
+\section*{An elementary Laguerre smoothing kernel}
+Let $0<r<1$, $\tau=1-r$. Given $X=x\ge0$, choose
+\[
+ N\sim\operatorname{Poisson}(r\theta x/\tau),
+ \qquad Y\mid N\sim(\tau/\theta)\operatorname{Gamma}(N+1,1).
+ \tag{5}
+\]
+Write $T_rf(x)=\E[f(Y)\mid X=x]$. The following standard Laguerre
+kernel facts are included with proofs. The associated classical
+bilinear formula is the Hille--Hardy formula; see the primary
+reference \cite[18.18.27]{DLMF}.
+
+\begin{lemma}\label{kernel}
+The kernel $T_r$ is stochastically increasing in $x$, reversible for
+$\rho_\theta(dx)=\theta e^{-\theta x}dx$, and satisfies
+\[
+ T_r L_j(\theta x)=r^jL_j(\theta x).
+\]
+If $f$ is an indicator function and
+$a_j=\int f(x)L_j(\theta x)\,d\rho_\theta(x)$, then
+$\sum_j a_j^2\le1$ and
+\[
+ T_rf(x)=\sum_{j=0}^{\infty}r^j a_jL_j(\theta x).
+ \tag{6}
+\]
+After truncation at degree $D$, the remainder is at most
+\[
+ C\tau^{-1/2}r^{D+1}e^{\theta x/2}.               \tag{7}
+\]
+\end{lemma}
+\begin{proof}
+Increasing $x$ can be coupled by adding an independent Poisson
+variable to $N$, then adding the corresponding independent unit-rate
+exponentials to the gamma sum. This proves stochastic monotonicity.
+Summing the gamma densities gives the transition density
+\[
+ \frac\theta\tau e^{-(\theta y+r\theta x)/\tau}
+ \sum_{n=0}^{\infty}\frac{(r\theta^2xy/\tau^2)^n}{(n!)^2}.
+\]
+Multiplication by $\theta e^{-\theta x}$ makes this symmetric in
+$x,y$, proving reversibility and stationarity. The conditional moment
+generating function is
+\[
+ \E(e^{tY}\mid x)
+ =(1-\tau t/\theta)^{-1}
+       \exp\left(\frac{rxt}{1-\tau t/\theta}\right).
+ \tag{8}
+\]
+Applying this to the ordinary Laguerre generating function
+$(1-z)^{-1}\exp[-\theta xz/(1-z)]$ gives the same generating function
+with $z$ replaced by $rz$, proving the eigenfunction identity.
+The Laguerre polynomials form an orthonormal basis of
+$L^2(\rho_\theta)$. Thus reversibility and the eigenfunction identity
+prove (6) in $L^2$, with Bessel's inequality giving the coefficient
+bound. The series converges absolutely and uniformly on compact
+intervals, since $|L_j(\theta x)|\le e^{\theta x/2}$; the transition
+integral is continuous for an interval indicator, and hence agrees
+pointwise with that series. Alternatively the displayed transition
+kernel and its Laguerre expansion give the same identity directly.
+Cauchy--Schwarz bounds the tail by
+$e^{\theta x/2}(\sum_{j>D}r^{2j})^{1/2}$, proving (7).
+Only interval indicators are needed below.
+\end{proof}
+
+\begin{lemma}[Uniform crossing concentration]\label{concentration}
+There are absolute constants $C,c>0$ such that, if $L\ge1$,
+$0<h\le1$, $h\ge C\tau(L+1)$, and $0\le x\le L+1$, then
+\[
+ \Pr(|Y-x|>h\mid x)\le2\exp[-c h^2/(\tau(L+1))].
+ \tag{9}
+\]
+\end{lemma}
+\begin{proof}
+Formula (8) gives $\E(Y\mid x)=rx+\tau/\theta$. For
+$|t|\tau/\theta\le1/2$, subtracting this mean in its logarithm gives
+\[
+ \log\E[e^{t(Y-\E Y)}\mid x]
+ \le C\tau(x+\tau)t^2.
+\]
+Indeed $-\log(1-v)-v\le C v^2$ and
+$t/(1-v)-t=tv/(1-v)$, with $v=\tau t/\theta$.
+The deterministic mean displacement has magnitude at most
+$C\tau(L+1)$. A Chernoff bound with
+$|t|=c h/(\tau(L+1))$, after increasing the constant in the
+hypothesis on $h$, proves (9).
+\end{proof}
+
+\section*{Distribution functions with a polynomial error}
+\begin{lemma}\label{cdf}
+For $a=0,1$ and $1\le L\le\log M$, uniformly in $0\le z\le L$,
+\[
+ |\mu_a(x\le z)-\beta_a([0,z])|
+ \le \varepsilon_L:=C M^{-1/4}\sqrt{(L+1)\log M}.
+ \tag{10}
+\]
+\end{lemma}
+\begin{proof}
+Take $\tau=M^{-1/2}$ and truncate (6) at
+$D=\lfloor c_0M\rfloor$. Applying (3) to the individual products
+$1\cdot L_j$, summing, and using Cauchy--Schwarz gives, for any
+interval indicator $f$,
+\begin{align*}
+ |\mu_a(T_rf)-\beta_a(T_rf)|
+ &\le\frac C M\sum_{j\le D}j r^j|a_j|
+       +C\tau^{-1/2}e^{-c\tau M}\\
+ &\le\frac C{M\tau^{3/2}}
+       +C\tau^{-1/2}e^{-c\tau M}
+ \le C M^{-1/4}.
+\end{align*}
+The tails use (4) and (7); the constant polynomial has zero
+comparison error. The series $\sum j^2r^{2j}$ is $O(\tau^{-3})$.
+
+Choose $h=C_1\sqrt{\tau(L+2)\log M}$ with $C_1$ sufficiently large.
+For large $M$, it is at most $1/4$ and satisfies the hypothesis of
+Lemma~\ref{concentration}. The crossing error is at most $M^{-10}$.
+For each threshold $z\in[0,L]$, stochastic monotonicity and (9)
+therefore imply
+\[
+ (1-M^{-10})\boldsymbol1_{x\le z}
+ \le T_r\boldsymbol1_{[0,z+h]}(x)
+ \le\boldsymbol1_{x\le z+2h}+M^{-10}.
+\]
+For $x$ outside the concentration interval, stochastic monotonicity
+reduces the bound to $x=z$ or $x=z+2h$; thus these inequalities hold
+on the whole half-line. The reverse comparison follows by shifting
+the threshold down by $h$, with a trivial lower bound when $z<2h$.
+Integrate these inequalities against $\mu_a$ and $\beta_a$, use the
+smoothed-test comparison above, and note that both scalar densities
+in (2) are bounded by an absolute constant. This proves (10).
+It also handles atoms of $\mu_a$ and either choice of strict endpoints.
+\end{proof}
+
+\section*{Recovering the monotone density}
+\begin{lemma}\label{ratio}
+Suppose $1\le L\le\log M$ and
+\[
+ h_*=\sqrt{(L+1)\varepsilon_{L+2}e^L}\longrightarrow0
+\]
+along the range under consideration. Uniformly over rows with $x\le L$,
+\[
+ |\ell u_i-x|\le C h_* .                         \tag{11}
+\]
+Here (10) can be used with $L+2$; replacing the upper limit
+$\log M$ there by $\log M+2$ only changes constants.
+\end{lemma}
+\begin{proof}
+For $0\le z\le L+2$, the explicit scalar density satisfies
+$b_0(z)\ge c e^{-z}$ for large $M$, because
+$L=O(\log M)$ and
+$\ell\log(1-z/\ell)=-z+O((\log M)^2/M)$.
+Choose an interval of length $h_*$ lying strictly above the target
+row's value $x$, at distance between $h_*$ and $2h_*$.
+Every row in it lies before the target row, so monotonicity and the
+exact density relation give
+\[
+ (\ell+2)u_i(q)\le\frac{\mu_1(I)}{\mu_0(I)}.
+\]
+The scalar denominator is at least $c h_*e^{-L}$, and the two
+interval masses have errors at most $2\varepsilon_{L+2}$ by (10).
+For large $M$ the denominator error is less than half the scalar
+mass, since
+$\varepsilon_{L+2}e^L/h_*=h_* /(L+1)\to0$.
+The scalar density ratio $b_1/b_0=((\ell+2)/\ell)z$ varies by
+$O(h_*)$ across the chosen interval. Perturbing numerator and
+denominator therefore bounds its ratio error by
+\[
+ C(L+1)\varepsilon_{L+2}e^L/h_*=C h_*.
+\]
+This proves the upper bound in (11). For $x\ge2h_*$ use the
+corresponding interval strictly below $x$ for the lower bound.
+When $x<2h_*$, nonnegativity supplies that bound directly.
+Flat row blocks cause no problem because the comparison intervals
+are strictly separated from the target value.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{profile}]
+For a row with $s\le A\log m$ one has
+$x=\alpha s_-\le(A/4)\log m$. Set
+$L=\max(1,(A/4)\log m)$. Then
+\[
+ h_*\le C_A M^{-1/8}e^{L/2}(L+1)^{3/4}
+                                      (\log M)^{1/4}
+       \le C_A m^{-(1-A)/8}\log m\longrightarrow0.
+\]
+Lemma~\ref{ratio} applies uniformly in the deleted index $i$.
+Finally the conversion to the full mean is exact:
+\[
+ \frac M\ell(\ell u_i-x)=M u_i-s_-=m u_i-s.
+\]
+Since $M/\ell$ is bounded, this gives (1).
+\end{proof}
+
+\begin{thebibliography}{1}
+\bibitem{DLMF} NIST Digital Library of Mathematical Functions,
+\emph{Hille--Hardy formula}, equation 18.18.27.
+\url{https://dlmf.nist.gov/18.18.E27}.
+\end{thebibliography}
+\end{document}

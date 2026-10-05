@@ -1,0 +1,143 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\title{All-order localized derivative bounds for the Laguerre Poisson kernel}
+\author{Auxiliary analytic argument; independent mathematical reviews completed}
+\date{30 September 2026}
+\begin{document}\maketitle
+The full argument passed separate mathematical reviews by the size-bounds
+and rational-design collaborators. This is not formal verification.
+This note establishes an analytic input for a possible improvement of
+endpoint-profile bounds. It does not establish a new endpoint-profile
+rate: polynomial truncation, integration over the row measure, and the
+final monotonicity argument remain separate tasks.
+
+For $0<\tau<1$ define the positive Laguerre Poisson kernel
+\[
+ K_\tau(x,a)=\frac1\tau
+  \exp\!\left[-\frac{(1-\tau)(x+a)}\tau\right]
+  I_0\!\left(\frac{2\sqrt{(1-\tau)xa}}\tau\right).
+\]
+The Hille--Hardy identity, at parameter $\alpha=0$, says
+\[
+ K_\tau(x,a)=\sum_{j=0}^{\infty}(1-\tau)^j L_j(x)L_j(a).
+\]
+See \href{https://dlmf.nist.gov/18.18.E27}{DLMF 18.18.27}.
+Although written using a square root, $K_\tau(\cdot,a)$ is entire,
+as is immediate from the power series of $I_0$.
+
+\begin{lemma}\label{derivatives}
+Fix $0<\delta<L<\infty$. There are constants $C,c,\tau_0>0$,
+depending only on this interval, such that for $x,a\in[\delta,L]$,
+$0<\tau<\tau_0$, and every integer $k\ge1$,
+\[
+ \frac{|\partial_x^k K_\tau(x,a)|}{k!}
+ \le C K_{4\tau}(x,a)
+ \left[\left(\frac C{\sqrt{k\tau}}\right)^k+C^k\right].       \tag{1}
+\]
+Moreover, whenever $|z|\le c$,
+\[
+ |K_\tau(x+z,a)|\le C K_{4\tau}(x,a)
+                              \exp(C|z|^2/\tau).             \tag{2}
+\]
+\end{lemma}
+\begin{proof}
+Consider first the radial Gaussian kernel
+\[
+ B_\tau(y,a)=\tau^{-1}e^{-(y+a)/\tau}
+                             I_0(2\sqrt{ya}/\tau).
+\]
+For real positive arguments in any fixed compact interval,
+the elementary integral formula
+\[
+ I_0(t)=\frac1{2\pi}\int_{-\pi}^{\pi}e^{t\cos\phi}\,d\phi
+\]
+and $1-\cos\phi\asymp\phi^2$ on $[-\pi,\pi]$ show that
+\[
+ I_0(t)\asymp e^t/\sqrt t\quad(t\ge1),\qquad
+ B_\tau(y,a)\asymp\tau^{-1/2}
+                   e^{-(\sqrt y-\sqrt a)^2/\tau}.          \tag{3}
+\]
+The constants in the second comparison are uniform on that compact
+interval for sufficiently small $\tau$.
+
+Let $y>0$, $|z|\le c$, and write $\sqrt{y+z}=u+iv$, choosing the
+branch with $u>0$. On the relevant fixed compact intervals, choosing
+$c$ small gives
+\[
+ |u-\sqrt y|+|v|\le C|z|.
+\]
+Taking absolute values inside the integral formula for $B_\tau$ gives
+the exact useful domination
+\[
+ |B_\tau(y+z,a)|\le e^{v^2/\tau}B_\tau(u^2,a).
+\]
+Since
+$(u-\sqrt a)^2\ge\tfrac12(\sqrt y-\sqrt a)^2-C|z|^2$,
+formula (3) therefore gives
+\[
+ |B_\tau(y+z,a)|\le C\tau^{-1/2}
+ \exp\!\left[-\frac{(\sqrt y-\sqrt a)^2}{2\tau}
+                       +\frac{C|z|^2}\tau\right].         \tag{4}
+\]
+
+Now $K_\tau(x,a)=e^a B_\tau((1-\tau)x,a)$.
+Write $y_1=(1-\tau)x$ and $y_4=(1-4\tau)x$.
+They stay in a fixed compact positive interval, and
+$|\sqrt{y_1}-\sqrt{y_4}|\le C\tau$. Thus
+\[
+ (\sqrt{y_1}-\sqrt a)^2
+ \ge\tfrac12(\sqrt{y_4}-\sqrt a)^2-C\tau^2.
+\]
+Use this in (4), then the lower bound (3) for $B_{4\tau}(y_4,a)$.
+The additional factor $e^{C\tau}$ is bounded. This proves (2).
+
+Cauchy's formula on a circle of radius $R\le c$ consequently yields
+\[
+ \frac{|\partial_x^kK_\tau(x,a)|}{k!}
+ \le C K_{4\tau}(x,a)R^{-k}e^{CR^2/\tau}.
+\]
+Choose $R=\min(c,\sqrt{k\tau/(2C)})$.
+If the second argument is smaller, the result is bounded by
+$C K_{4\tau}(C/\sqrt{k\tau})^k$.
+Otherwise $k\tau\ge2Cc^2$, so $e^{Cc^2/\tau}\le e^{k/2}$,
+and the result is at most $C K_{4\tau}C^k$.
+This proves (1).
+\end{proof}
+
+\begin{corollary}[Centered polarization error on a fixed interval]
+Let $z_1,\ldots,z_N\in[\delta,L]$ have mean $v$ and range at most $H$.
+Set $a_k=e_k(z_1-v,\ldots,z_N-v)/\binom Nk$.
+For any integer $d\le N$, if
+\[
+ H\le c,\qquad H/\sqrt{N\tau}\le c,
+\]
+then, uniformly in $a\in[\delta,L]$,
+\[
+ \left|\sum_{k=2}^d
+   \frac{\partial_v^kK_\tau(v,a)}{k!}a_k\right|
+ \le C K_{4\tau}(v,a)H^2
+                      \left(\frac1{N\tau}+\frac1N\right). \tag{5}
+\]
+Constants depend only on $\delta,L$.
+\end{corollary}
+\begin{proof}
+The elementary centered coefficient bound gives
+$|a_k|\le(CH\sqrt{k/N})^k$; a proof is in
+\path{independent_directions/marked_cancellation_identity.tex}.
+For the first term in (1), sum the geometric series in
+$CH/\sqrt{N\tau}$ beginning at $k=2$.
+For the second term, use $k\le N$ to write
+\[
+ (CH)^k(k/N)^{k/2}\le (CH)^k k/N,
+\]
+and sum. This gives (5).
+\end{proof}
+
+In (5) the expression is a finite differential sum, not a claim that
+the infinite Poisson kernel is a polynomial. Applying it to exact
+finite moment identities requires a justified polynomial truncation.
+Likewise, the constants here are not uniform as $\delta\downarrow0$.
+\end{document}

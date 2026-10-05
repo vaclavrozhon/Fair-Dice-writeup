@@ -1,0 +1,136 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\title{Exact strength of the subset-divisibility obstruction}
+\author{Research notes, 30 September 2026}
+\date{}
+\begin{document}
+\maketitle
+\noindent\textbf{Status.} The finite statements below have complete elementary proofs.
+They concern necessary arithmetic conditions for permutation-fair dice, not
+the existence of dice with prescribed face counts. No claimed resolution
+of either principal size question follows.
+
+Write $\vartheta(x)=\sum_{p\le x}\log p$, with sums over primes, and put
+\[
+ P_n=\prod_{p\le n}p^{n-p+1}
+     =\exp\left(\sum_{j=1}^n\vartheta(j)\right).
+\]
+Call a positive integer vector $c=(c_1,\ldots,c_n)$ arithmetically admissible
+if
+\[
+ |S|!\mid\prod_{i\in S}c_i\quad\hbox{for every }S\subseteq[n].
+\]
+Every permutation-fair face-count vector is arithmetically admissible.
+
+\begin{theorem}[Complete characterization]
+The following conditions on $c$ are equivalent:
+\begin{enumerate}
+\item $c$ is arithmetically admissible;
+\item for every prime $p\le n$, at most $p-1$ coordinates of $c$ are not
+divisible by $p$.
+\end{enumerate}
+Thus restrictions to prime-sized subsets already imply all the
+subset-factorial divisibility conditions. Higher prime powers supply no
+additional obstruction of this form.
+\end{theorem}
+\begin{proof}
+Necessity follows by taking a set of $p$ coordinates not divisible by $p$.
+For sufficiency, fix $S$ of size $k$ and a prime $p\le k$. At least
+$k-p+1$ coordinates in $S$ are divisible by $p$. Legendre's formula gives
+\[
+ v_p(k!)=\frac{k-s_p(k)}{p-1}\le\frac{k-1}{p-1}\le k-p+1,
+\]
+where $s_p(k)\ge1$ is the base-$p$ digit sum; the last inequality is
+equivalent to $(p-2)(k-p)\ge0$. Hence
+$v_p(\prod_{i\in S}c_i)\ge v_p(k!)$. This holds for every relevant prime.
+\end{proof}
+
+\begin{theorem}[Sharp product obstruction, nearly sharp length obstruction]
+Among arithmetically admissible vectors, the exact minimum of
+$\prod_{i=1}^n c_i$ is $P_n$. If
+\[
+ B_n=\min\left\{\sum_i c_i:c\text{ arithmetically admissible}\right\},
+\]
+then
+\[
+ nP_n^{1/n}\le B_n\le n^2P_n^{1/n}.
+\]
+Moreover, an admissible squarefree vector attaining product $P_n$ can be
+constructed greedily with $\max_i c_i/\min_i c_i\le n$.
+\end{theorem}
+\begin{proof}
+The characterization forces each prime $p\le n$ into at least $n-p+1$
+coordinates, so every product is divisible by $P_n$.
+Start all coordinates at $1$. For each prime $p\le n$, multiply the
+$n-p+1$ currently smallest coordinates by $p$. Each prime occurs in
+exactly the required number of coordinates and nowhere with exponent
+greater than $1$, so the final product is $P_n$ and the vector is
+admissible.
+
+If the old coordinates have maximum/minimum ratio at most $R$,
+the new ratio is at most $\max(R,p)$. Indeed, for two coordinates that
+are both multiplied or both left alone, their ratio is unchanged. The
+ratio of a multiplied coordinate to an unmultiplied coordinate is at
+most $p$, since all multiplied coordinates were among the smallest.
+The reverse ratio is at most $R/p\le R$.
+Induction proves the asserted ratio bound. Therefore every coordinate is
+at most $nP_n^{1/n}$, giving the upper bound for $B_n$; the lower bound
+is AM--GM.
+\end{proof}
+
+\begin{corollary}[Asymptotic barrier]
+The prime number theorem gives
+\[
+ \log P_n=\left(\tfrac12+o(1)\right)n^2,
+ \qquad
+ B_n=\exp\left(\left(\tfrac12+o(1)\right)n\right).
+\]
+Consequently every permutation-fair collection has
+\[
+ \prod_i c_i\ge P_n,
+ \quad\max_i c_i\ge P_n^{1/n},
+ \quad\sum_i c_i\ge nP_n^{1/n}.
+\]
+No argument using only subset-factorial divisibility can improve the
+coefficient $1/2$ in the exponential growth of the maximum or total
+number of faces.
+\end{corollary}
+\begin{proof}
+Use $\log P_n=\sum_{j=1}^n\vartheta(j)$ and
+$\vartheta(j)=j+o(j)$. The explicit balanced admissible vectors prove
+the barrier statement.
+\end{proof}
+
+For equal coordinates, arithmetic admissibility is equivalent to
+$\prod_{p\le n}p\mid c_1$. Hence the exact equal-coordinate arithmetic
+optimum is $n\exp(\vartheta(n))=\exp((1+o(1))n)$.
+The arithmetic relaxation alone therefore exhibits a ratio
+$\exp((1/2+o(1))n)$ between its equal and arbitrary optima. This is
+compatible with a polynomial relation between actual dice optima,
+but cannot establish one.
+
+\begin{corollary}[Restriction quantiles]
+If the face counts of a permutation-fair collection are arranged as
+$c_{(1)}\le\cdots\le c_{(n)}$, then, for every $1\le r\le n$,
+\[
+ \prod_{i=1}^r c_{(i)}\ge P_r,
+ \qquad c_{(r)}\ge P_r^{1/r}.
+\]
+In particular, as $r\to\infty$, $c_{(r)}\ge\exp((1/2+o(1))r)$.
+\end{corollary}
+
+\begin{remark}[Relation to existing literature]
+Purcell's Proposition 1 records the equal-sided primorial obstruction:
+\url{https://doi.org/10.1080/00029890.2024.2345576}.
+The manuscript already proves that at least $n-p+1$ face counts must be
+divisible by $p$. The new content here is the converse for the entire
+arithmetic relaxation, its exact product optimum, and the matching
+balanced-vector construction. Novelty beyond these checked sources has
+not been established by an exhaustive literature search.
+\end{remark}
+
+\end{document}

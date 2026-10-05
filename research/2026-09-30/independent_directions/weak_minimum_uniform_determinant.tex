@@ -1,0 +1,142 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\title{The equality case in the weak triple-minimum support bound}
+\author{Research note: a general Gram-matrix obstruction}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+This is the earlier uniform-weight argument, retained as an independent
+arithmetic proof. The stronger theorem for arbitrary positive weights
+is now proved in \path{weak_minimum_equality_obstruction.tex}.
+Consider $q=3h$ equally weighted permutations on $n=q+1$ labels such
+that each label is earliest in every triple containing it in exactly
+$h$ rows. Write $r_{ij}$ for the number of rows with $i<j$.
+Necessarily $h\le r_{ij}\le2h$.
+Call a label bad if $r_{ij}=h$ for some opponent $j$, and good otherwise.
+A bad label is globally first in exactly $h$ rows: the event $i<j$
+already has the same size as every event $i<j,i<k$. Thus there are at
+most three bad labels, and at least $q-2$ good labels.
+
+\begin{lemma}\label{gram}
+For a good pivot $i$, put $e_j=r_{ij}-h\in\{1,\ldots,h\}$ over its
+$q$ opponents. Then
+\begin{equation}\label{identity}
+ q=\sum_j e_j+h-
+       \frac{h(q-1)^2}{1+h\sum_j e_j^{-1}},
+\end{equation}
+and the positive integer
+\begin{equation}\label{square}
+ \left(\prod_j e_j\right)\left(1+h\sum_j e_j^{-1}\right)
+\end{equation}
+is a square.
+\end{lemma}
+\begin{proof}
+Let $C$ be the $q\times q$ zero--one matrix whose row is a permutation
+and whose opponent column $j$ indicates $i<j$. Triple-minimum
+uniformity gives
+\[
+ C^{\mathsf T}C=D+h\mathbf1\mathbf1^{\mathsf T}=G,
+ \qquad D=\operatorname{diag}(e_j),
+ \qquad C^{\mathsf T}\mathbf1=e+h\mathbf1.
+\]
+Since $D$ is positive definite, $C$ is invertible. Consequently
+\[
+ q=(e+h\mathbf1)^{\mathsf T}G^{-1}(e+h\mathbf1).
+\]
+Sherman--Morrison gives \eqref{identity}; the matrix determinant lemma
+gives \eqref{square} as $\det G=(\det C)^2$.
+\end{proof}
+
+\begin{lemma}\label{lasttwo}
+Every good label avoids the last two positions in every row.
+Consequently there are exactly three bad labels.
+\end{lemma}
+\begin{proof}
+For the matrix $C$ of Lemma~\ref{gram}, solve $Cw=\mathbf1$.
+Sherman--Morrison applied to
+$Gw=C^{\mathsf T}\mathbf1=e+h\mathbf1$ gives
+\[
+ w_j=1-\frac{\alpha}{e_j},\qquad
+ \alpha=\frac{h(q-1)}{1+h\sum_j e_j^{-1}}>0.
+\]
+Thus every $w_j<1$. A row of $C$ with zero or one entries equal to
+one cannot have scalar product one with $w$. The pivot therefore
+has at least two opponents after it in every row.
+
+The last two positions must both be bad labels. If there were at
+most two bad labels, they would occupy these positions in every
+row and could never be first. This contradicts the fact that each
+bad label is first in $h>0$ rows. There are at most three bad labels,
+so there are exactly three.
+\end{proof}
+
+\begin{lemma}\label{threebad}
+If there are exactly three bad labels, then every good pivot has
+exactly three entries $e_j=h$.
+\end{lemma}
+\begin{proof}
+The bad labels account for all first positions. For any good label $a$,
+sum its minimum counts over the three pairs of bad labels. The total
+is $3h=q$. In any row at least one bad label precedes $a$, so that row
+contributes at most one to the sum. Every row must therefore
+contribute one: $a$ follows the first bad label and precedes the other
+two. Each bad label is first $h$ times, hence $r_{ab}=2h$ for every
+good $a$ and bad $b$. Conversely, $e_j=h$ means $r_{ji}=h$, so $j$
+must be bad.
+\end{proof}
+
+\begin{theorem}
+For every integer $h\ge2$, no weak triple-minimum family of $3h$
+equally weighted permutations exists on $3h+1$ labels.
+\end{theorem}
+\begin{proof}
+By Lemmas~\ref{lasttwo} and~\ref{threebad}, there are exactly three
+bad labels. Each row consists of its first bad label, all good
+labels, and the remaining two bad labels. Partition the rows into
+three groups of size $h$ according to their first bad label.
+
+Fix two distinct good labels $a,c$, and write $r=r_{ac}$. For each
+bad label $b$, let $x_b$ count rows with $a<c$ in the group beginning
+with $b$. In all other rows both $a,c$ precede $b$. The minimum
+condition on the triple $\{a,c,b\}$ gives $r-x_b=h$. Summing over
+the three groups gives $r=\sum_bx_b=3(r-h)$, and hence
+\[
+ r=3h/2,\qquad e_{ac}=h/2.
+\]
+There are $3h-2\ge4$ good labels, so such a pair exists and $h$
+must be even.
+
+Fix a good pivot. Its three bad opponents have $e_j=h$, while its
+other $3h-3$ opponents have $e_j=h/2$. Formula~\eqref{square} now
+gives
+\[
+ (\det C)^2=\det G
+ =h^3(h/2)^{3h-3}\bigl(1+3+2(3h-3)\bigr)
+ =\frac{h^{3h}(3h-1)}{2^{3h-4}}.
+\]
+Because $h$ is even, both $h^{3h}$ and $2^{3h-4}$ are squares.
+Thus $3h-1$ must be a rational square, and therefore an integer
+square. This is impossible modulo three.
+\end{proof}
+
+\paragraph{Support consequence.}
+Every equally weighted weak triple-minimum family on $n\ge5$ labels
+has at least $n$ rows. Indeed, the general rank argument in
+\path{../partial_fairness/weak_triple_minimum_support.tex} gives
+$q\ge n-1$ even for unequal positive weights. In the equal-weight
+case $3\mid q$, and equality $q=n-1$ would fall under the theorem.
+The exception $h=1$ is real: on four labels the three permutations
+$1203,3201,0213$ are weak triple-minimum uniform.
+
+The new equality obstruction uses equal row weights, integrality of
+the order counts, and the square determinant of an integer matrix.
+It makes no stronger claim about unequal positive row weights.
+The earlier note \path{six_weak_minimum_permutations.tex} gives an
+independent position-based proof of the $h=2$ exclusion. The exact
+small-profile enumeration in \path{check_weak_minimum_profiles.py}
+and its JSON output is retained as a computational companion; the
+general proof above does not depend on it.
+\end{document}

@@ -1,0 +1,215 @@
+Independent review by rational_designs, 2026-09-30.
+Target: ../../independent_directions/endpoint_poisson_rigidity.tex
+Status: PASS, including the subsequently added normalized-moment proposition.
+
+Checked exact full-failure pattern probability 1/((m+1)*binom(m,k)),
+pgf identity, and fixed-column derivative coefficient (k+1)/m.
+The bad event max odds >= epsilon is an initial segment. Choosing its
+last row provides ONE column which dominates epsilon throughout that
+segment, so the union over columns incurs no factor m. The argument
+uses B_q before division and correctly includes all zero-entry rows.
+
+On the good set, z'=(1+epsilon)z gives log(1+z'r)>=zr for fixed z<1
+and sufficiently small epsilon. Both sides of the mgf squeeze have the
+claimed common limit. A larger positive mgf parameter ensures uniform
+integrability for each smaller parameter. Thus uniqueness identifies
+every tight subsequential limit with Exp(1).
+
+The last row has positive product, minimizes lambda, and therefore
+lambda(last)->0. Its product tends to one. Weak convergence to a
+continuous law makes every atom mass vanish, including merged lambda
+values, so (m+1)*w_last*product->0 and m*w_last->0. This yields K/m->infinity
+for equal original row weights, without strict monotonicity or rationality.
+
+Moment proposition: the bad-set coefficient estimate is valid degree
+by degree. On the good set, union bounding repeated positions in an
+ordered k-tuple gives lambda^k-k!e_k <= binom(k,2)*epsilon*lambda^(k-1).
+After normalization its coefficient is (k-1)*epsilon/2. Induction gives
+M_k<=1+(k-1)*epsilon for k>=1 under k*epsilon<=1; the stated slightly
+weaker bound follows. The lower coefficient estimate is still valid
+at k=m where one positive RHS contribution is absent. The final
+(2k+1)/sqrt(m) bound follows for k<=sqrt(m).
+
+No quantitative growth stronger than superlinear is asserted in this
+review; the separate Laguerre-filter note needs its own review.
+
+Separate full review: ../../size_bounds/logarithmic_per_die_lower_bound.tex
+Status: PASS.
+Recomputed Laguerre taper norm (d+1)(2d+1)/(6d), weighted norm
+(d+1)/(2d), and separator integral (d+1)(d+2)/(6d^2)>1/6.
+Checked ||L_i L_j||_*<=3^(i+j), ||R_d||_*<=d 9^d, and endpoint
+Christoffel kernel bounds S_x>=d/32 and norm <=1024*9^d/d^2.
+All degrees remain <=2d-1. Taking d=floor(log m/(8 log3)) gives
+9^d<=m^(1/4), hence moment perturbations vanish sufficiently fast.
+A good row below 2/d forces the last row to be good and no larger;
+its eta mass is bounded by the corresponding merged lambda atom.
+Conversion by A(last)>=exp(-2/d) gives w_last=O(1/(m log m)).
+Reflection gives the first-row bound. Therefore every equiprobable
+die has at least c n log n faces, uniformly over all fair families.
+
+2026-09-30 19:30 UTC: power_per_die_lower_bound.tex (root), upgraded 5/4.
+Full independent review PASS. Checked finite-balance input and global extension,
+row-mass/Laplace integrals, centered elementary Cauchy estimate and radius,
+Laguerre derivative factorials and linear-square derivative, exact forced-success
+polarization, complete k-sum with moment factorials, weighted subset bias/variance
+comparison on s<=m/256, exponential fallback outside, tapered Laguerre positivity
+under decreasing beta/exponential density ratio, data-dependent Christoffel atom
+test, and final endpoint weight conversion. The weighted-subset replacement gives
+comparison error C B0^2(d^2/m+exp(-cm)); d=kappa*m^(1/4) gives w_endpoint=O(m^-5/4).
+This is a general asymptotic tensor/dice theorem, not a small-instance result.
+
+2026-09-30: Root's full upgraded 3/2 proof reviewed PASS.
+Checked off-diagonal Fock coefficient normalization, variance-only entire Cauchy,
+all centered-variance/singular-derivative cancellation (including v=0), factorial
+ceil(k/2)! geometric sum, refined weighted bias/variance and singular remainder,
+large-s exponential fallback, bilinear taper test, and Christoffel conversion.
+Also independently read size_bounds/gaussian_laguerre_variance_lemmas.tex: PASS.
+
+2026-09-30 20:08 UTC: size_bounds/quadratic_per_die_lower_bound.tex, full PASS.
+All-order associated-Laguerre derivative factorials and domain z>=1/(2d),
+full polarization series, relative-variance cancellation, small/middle/large
+regions, uniform-subset bad tails and weighted normalization, singular
+weighted Taylor bias/remainder, CDF integrals, and atom conversion checked.
+The small derivative-domain mismatch was fixed before this final review.
+Outcome: every die Omega(n^2), endpoint weights O(m^-2), g(n)=Theta(n^2).
+
+size_bounds/elementary_endpoint_cdf_bootstrap.tex, full PASS.
+Rechecked all-order U derivatives, entire series and exponential margin,
+base CDF floor m^-1/2, degree range m^1/4..m^3/4, small-region error,
+good weighted Taylor moments, bad-subset exponent, outer tail, and the
+error C[1/m+h*d/m+log(d)/(d*m)]. This is O(1/d) and yields CDF floor
+m^-3/4 independently of the quadratic theorem. No circularity or
+external fixed-order Laguerre estimate remains.
+
+Root sharp_endpoint_relative_balance.tex, full PASS.
+The extra marked factor C(x+delta) gives integrated comparison
+C[(1+delta*log(d))/(d*M)+delta^2/M]; lower and upper scalar taper norms,
+interval extraction, degree floors, monotone ratio, and iterations
+1/3 -> 5/6 -> 1 all checked. Endpoint CDF lemma is subsequent to the
+quadratic theorem, so the argument is not circular.
+
+2026-09-30: Full review of independent_directions/two_exceptional_positive_completion.tex: PASS.
+Checked jump-polynomial space, quotient Poincare/Markov conditioning, Riesz
+zero-cell means, polynomial sup bound, positivity, both triangle moments,
+interior equal-weight quadrature, and polynomial cluster counts.
+
+Full review of size_bounds/clustered_multi_exceptional_lifting.tex: PASS.
+Mixed boundary derivatives coincide with distinct old-label assignments;
+one-label gaps correctly have zero mixed second derivative. Common B
+functionals factor across clusters, rational moment differences are exact,
+fixed distinct nodes give small corrections, and FD finiteization preserves
+all conditional orders. This handles the previously problematic interactions.
+
+Full review of size_bounds/two_polynomial_exceptional_dice.tex: PASS.
+Smoothing slope matrix equals epsilon/3 times full-rank moment Jacobian;
+rational minor solve yields slopes O(epsilon), hence positive box densities.
+Restricted conditional-test basis and centered r>=1 basis are independent;
+Riesz coefficients vary continuously as boxes shrink and are rational for
+rational box data. Signs match the old positive completion. Triangle moments,
+GP every-count atomization, interior regularization, rational cluster moments,
+and final clustered lifting yield two actual finite dice of O(n^6), O(n^162).
+
+2026-09-30 20:52 UTC: Full review of root endpoint_profile_fluctuation_barrier.tex: PASS.
+Gaussian CDF moment identity, endpoint node scale, Bernstein-Christoffel weight
+lower bound, jump selection, and intervalwise finite Lobatto realization checked.
+The result is for weighted monotone tensors, not actual equal-weight dice.
+
+Full review of independent_directions/multirank_step_compatibility.tex: PASS.
+Checked full continuous baseline degree, exact 2D empirical Gram, descending
+disjoint-row rational corrections, fixed-size Cauchy-Binet minor, polynomial
+common denominator, and final node contraction. Threshold products only; no
+ordered-prefix completion is asserted.
+
+2026-09-30 21:22 UTC: Full reviews PASS:
+root finite_profile_realization.tex, including both actual-dice profile corollaries;
+size_bounds/generalized_local_two_variable_completion.tex;
+size_bounds/higher_prefix_positive_completion.tex;
+independent_directions/quantitative_smoothed_quotient.tex (original q0/q1);
+independent_directions/two_pure_densities_with_rational_means.tex;
+independent_directions/three_polynomial_exceptional_dice.tex.
+The THREE conclusion is a fully finite exact family with three polynomial-size
+specified dice. Integrality and a single initial common denominator are checked.
+General-q smoothed quotient appended by this agent at independent request;
+its new theorem awaits independent review, old reviewed paragraphs preserved.
+
+2026-09-30 21:42 UTC: Full reviews PASS:
+size_bounds/uniform_grid_moment_refinement.tex;
+size_bounds/synchronized_local_moment_completion.tex;
+independent_directions/fixed_number_polynomial_dice.tex.
+Shared-control minor uses one fixed feature matrix; target arithmetic requires
+L divisible by the PRODUCT D0(q+1)! (fixed in source). Initial forced quadrature
+controls may move at the higher-moment Newton step; only their features stay
+fixed. Uniform-grid reset keeps f+e-z, avoiding projection approximation losses.
+General-q smoothed quotient now also has independent review PASS and explicit
+rational beta/endpoints assumptions for the rational completion clause.
+
+Full reviews PASS for size_bounds/order_doubling_prefix_completion.tex and
+factorial_order_eventual_conductor.tex. The linear_logarithmic_ore_bound.tex
+input was independently re-read and also passes. Sunflower moment schedules,
+t-wise balanced-signature averaging, transported defect degrees, first-block
+identity, one-time filler divisibility, fraction orientation, and Frobenius
+threshold all checked. KLP primary arXiv:1302.4295v3 Theorem1.6 p8 directly read.
+
+2026-09-30 22:19 UTC: Full reviews PASS:
+root localized_laguerre_kernel_derivatives.tex;
+independent_directions/marked_cancellation_identity.tex (including all-tilt
+concentration, localization-preserving Taylor, and direct marked kernel sum);
+size_bounds/localized_profile_maximum_principle.tex;
+independent_directions/sharp_interior_endpoint_profile.tex;
+root bernstein_walsh_polarization_tail.tex;
+independent_directions/optimal_interior_endpoint_profile.tex.
+The final log-free assembly uses polynomial Jackson tails throughout;
+2r*alpha>A+10 and r>A+10 control boundary and global row factors. Degree
+ratio is chosen small after r for both global BW and far-angle sums.
+All flat-row and deleted-coordinate bookkeeping was checked.
+
+Full uniform-complexity reviews PASS:
+size_bounds/uniform_prefix_conditioning.tex;
+size_bounds/uniform_fixed_number_complexity.tex (after initial uniform
+moment-denominator correction). My fixed-q box smoothing has only
+exp(poly(q))*epsilon^{-poly(q)} losses, leading Legendre response inverse
+exp(O(q logq)), and feature/control denominator L^{O(q)}. The shared
+minor and common normalized-cell moments prevent LCM over cells. Higher
+polynomial coefficient denominators are not charged to the small counts.
+
+2026-09-30 22:31 UTC — natural_scale_endpoint_profile.tex: full review PASS.
+Checked global sharp CDF in deleted coordinates, two-stage mass absorption,
+normalized common-coordinate maximum, fixed low/high boundary controls,
+favorable-side monotonicity window without late changes to T, relative
+marked tails, and final error absorption using Delta<=C a. The theorem
+gives |m u_i-s|<=C_L(sqrt(s/m)+1/m) uniformly for 0<=s<=L.
+Input variable_jackson_endpoint_kernel.tex passed root, independent and
+size reviews; root-requested local-CDF aside removed, retaining explicitly
+the established global CDF bound throughout Stieltjes integration.
+
+2026-09-30 22:40 UTC — intermediate_endpoint_sharpness.tex: full PASS,
+including appended all-scales theorem. Checked j=ceil sqrt(m lambda),
+node/weight bounds uniform at j=1, moment-Markov tail, arbitrarily close
+one-sided threshold and realization error. Tiny-scale Legendre amplitude
+keeps positive density and uniform moments; P_r stays>=1/2. Both lower
+regimes yield R_m(lambda)=min(m lambda,sqrt(lambda/m)+1/m), with s
+comparable to lambda only. No face-count control is inferred.
+
+2026-09-30 22:42 UTC — natural_scale_row_atoms.tex received full PASS
+from root, independent_directions, and size_bounds, including Gaussian
+and Lobatto weighted-tensor sharpness. PDF current and warning-free.
+
+2026-09-30 22:51 UTC — final rank diagnostics: full PASS for
+independent prefix_signature_rank_obstruction.tex; size
+fair_signature_hankel_rank.tex; and the appended truncated-surjectivity
+corollary in all_gap_singularity_inheritance.tex. Distinct scopes checked:
+raw prefix functions, ordinary Hankel coefficient rank, and endpoint Lie
+differential rank are not conflated. Our squarefree_prefix_gram_barrier
+received full PASS from root, independent, and size.
+
+2026-09-30 23:02 UTC — elementary_quadratic_atom_bound.tex FULL PASS.
+Entire new independent proof checked, not merely outline: completed-chain
+first crossings make paired threshold products nonnegative; disjoint
+column use keeps the test multi-affine. Gaussian test with fresh i gives
+a_i>=largest node, hence1-a_i<=pi²/(m+1)². Sine-Rayleigh proof of Gauss
+node bound and Radau endpoint kernel derivation checked. Radau e=floor(m/10)
+gives delta*S<=3pi²/200<1/4, paired product at last row>half its value at1,
+and therefore w_last<=200/m² (also aggregate identical terminal rows).
+This proves the exact quadratic per-die lower independently of all earlier
+endpoint localization machinery. Every quadrature/degree/constant and
+the final fair-dice specialization checked.

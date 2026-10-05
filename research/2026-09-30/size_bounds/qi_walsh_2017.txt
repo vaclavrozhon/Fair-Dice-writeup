@@ -1,0 +1,662 @@
+                                             Optimal digital dynamical decoupling for general decoherence via Walsh modulation
+
+                                                                           Haoyu Qi,1 Jonathan P. Dowling,1 and Lorenza Viola2
+                                                               1
+                                                                Hearne Institute for Theoretical Physics and Department of Physics & Astronomy,
+                                                                        Louisiana State University, Baton Rouge, Louisiana 70803, USA
+                                             2
+                                               Department of Physics & Astronomy, Dartmouth College, 6127 Wilder Laboratory, Hanover, New Hampshire 03755, USA
+                                                                                              (Dated: July 27, 2021)
+                                                           We provide a general framework for constructing digital dynamical decoupling sequences based
+                                                         on Walsh modulation — applicable to arbitrary qubit decoherence scenarios. By establishing equiv-
+                                                         alence between decoupling design based on Walsh functions and on concatenated projections, we
+                                                         identify a family of optimal Walsh sequences, which can be exponentially more efficient, in terms of
+                                                         the required total pulse number, for fixed cancellation order, than known digital sequences based
+                                                         on concatenated design. Optimal sequences for a given cancellation order are highly non-unique —
+arXiv:1702.05533v1 [quant-ph] 17 Feb 2017
+
+
+
+
+                                                         their performance depending sensitively on the control path. We provide an analytic upper bound
+                                                         to the achievable decoupling error, and show how sequences within the optimal Walsh family can
+                                                         substantially outperform concatenated decoupling, while respecting realistic timing constraints. We
+                                                         validate these conclusions by numerically computing the average fidelity in a toy model capturing
+                                                         the essential feature of hyperfine-induced decoherence in a quantum dot.
+
+                                                         PACS numbers: 03.65.Yz,03.67.Pp,89.70.+c
+
+
+                                               Dynamical decoupling (DD) techniques, based on                cal sequence optimization and analytic performance anal-
+                                            open-loop quantum control, provide an effective strat-           ysis under finite timing resources. For dephasing noise on
+                                            egy to reduce decoherence from temporally correlated             a qubit, concatenated DD sequences based on single-axis
+                                            noise processes in realistic quantum information process-        control are provably optimal, among the Walsh suite, in
+                                            ing platforms [1, 2]. In its simplest form, DD coherently        the sense of guaranteeing a desired order of error sup-
+                                            averages out the unwanted system-environment interac-            pression with minimum total pulse number [18].
+                                            tion through the application of tailored sequences of (ide-         In this work, we identify optimal single-qubit WDD
+                                            ally, instantaneous) pulses, whose net action on the sys-        sequences capable of canceling out the simultaneous de-
+                                            tem translates, in the frequency domain, into a high-pass        phasing and relaxation effects that arise from arbitrary
+                                            noise filter [3–6]. To date, the most efficient DD schemes       environmental couplings. The key step is to generalize
+                                            known for generic error models — notably, Uhrig DD [7]           existing sequence constructions of WDD based on multi-
+                                            and quadratic DD [8] for pure dephasing and general de-          axis control, and establish formal equivalence of the re-
+                                            coherence on a single qubit — involve pulse sequences            sulting general WDD formalism with the concatenated-
+                                            with irrational pulse timing [9]. However, consideration         projection DD (CPDD) approach proposed in Ref. [23].
+                                            of practical constraints highlights crucial advantages of        By leveraging this equivalence, we explicitly characterize
+                                            digital DD, whereby all pulse separations are integer mul-       the error-suppression capabilities of any general WDD
+                                            tiples of an experimentally restricted minimum time in-          sequence, along with its complexity in terms of the re-
+                                            terval. Irrationally-timed DD sequences have been found          quired control time slots. We show that, unlike in the de-
+                                            to be more sensitive to both the form of the spectral            phasing scenario, concatenated DD is no longer optimal,
+                                            cutoff and to inevitable pulse errors [10–12], while being       and identify a large family of optimal WDD (OWDD)
+                                            less amenable to the additional compensation steps (e.g.,        schemes, whose complexity is exponentially smaller for
+                                            via phase-shifts or composite pulses) that are needed to         the same order of suppression. While the performance of
+                                            mitigate these errors for arbitrary input states [13–16].        different OWDD sequences depends additionally on the
+                                            Even in situations where pulse imperfections are unim-           specific control path, our analysis indicates that OWDD
+                                            portant, digital DD sequences are highly compatible with         can substantially improve over existing digital schemes
+                                            hardware constraints stemming from digital sequencing            in relevant parameter regimes.
+                                            circuitry and clocking, which makes them attractive in
+                                            terms of minimizing sequencing complexity, as ultimately            Control-theoretic setting.—We consider a single-qubit
+                                            demanded for large-scale implementations.                        system S coupled to an uncontrollable quantum environ-
+                                                                                                             ment (bath) B via an arbitrary interaction, that is, we let
+                                              Control modulation based on Walsh functions [17],              the joint evolution in the absence of control to be gener-
+                                            has been proposed as a unifying approach for generat-            ated by a Hamiltonian of the form H ≡ HS ⊗11B +HSB +
+                                            ing digital-efficient protocols, for both dynamically cor-       11S ⊗HB , with HSB = σx ⊗Bx +σy ⊗By +σz ⊗Bz . Here,
+                                            rected quantum storage and gates [18–21]. Walsh DD               HS and HB ≡ B0 are, respectively, the internal Hamil-
+                                            (WDD) has been shown to naturally incorporate exist-             tonian for S and B alone, and σu , u ∈ {x, y, z}, denote
+                                            ing digital sequences as special instances (including con-       qubit Pauli matrices. The bath operators B0 , Bu are as-
+                                            catenated DD for both single- and multi-axis decoherence         sumed to be bounded but otherwise arbitrary (possibly
+                                            [22]), and to provide a restricted search space for numeri-      unknown). In what follows, we shall use β ≡ ||B0 || and
+                                                                                                                                       2
+
+J ≡ maxu∈{x,y,z} {||Bu ||} to quantify the strength of the          whereP{bj } is the binary representation of n, namely
+                                                                             m        j−1
+internal-bath dynamics vs. the system-bath interaction,             n =      j=1 bj 2     , and Rj (x) ≡ sgn[sin(2j πx)] is the
+with || · || being the operator norm.                               Rademacher function, which switches between ±1 with
+   DD is implemented via a control action on S alone,               frequency 2j−1 . A WDDn sequence is then defined
+generated by a control Hamiltonian of the form Hc (t) ⊗             as the pulse sequence with switching
+                                                                                                       P         function x(t) =
+11B . In this work, we consider digital DD sequences con-           −Wn (t/T ), t ∈ [0, T ]. If r ≡       m mb   is the Hamming
+sisting of ideal instantaneous π-pulses along any of the            weight of n (hence the number of Rademacher functions
+three coordinate axes. Thus, for a sequence specified by            used to construct Wn (x)), the corresponding WDDn pro-
+pulse timings and control operations {tj , σj }, involving          tocol achieves CO = r [18] .
+a total of N pulses over a running time T , the control                For a single qubit exposed to multi-axis decoherence,
+                              PN
+Hamiltonian Hc (t) = π2 j=1 σj δ(t − tj ), where we let             Ref. [18] also defines two-axis WDD protocols by al-
+t0 ≡ 0, tN ≡ T , and σj ∈ {σu }, ∀j. Crucially, the dig-            lowing for the control propagator Uc (t) to involve two
+ital constraint mandates that all inter-pulse separations           switching functions, say, for π-pulses along the x and
+obey tj − tj−1 ≡ nj τ0 , with nj ∈ N, with the minimum              y directions, with the form x(t) = Rj1 Rj3 . . . Rj2r−1 ,
+pulse interval τ0 > 0 determined by hardware limita-                y(t) = Rj2 Rj4 . . . Rj2r . In this way, for n = 4r − 1,
+tions. Another convenient representation we shall use for           the resulting WDDn protocol reproduces concatenated
+the above sequence is PN fnN τ0 . . . P2 fn2 τ0 P1 fn1 τ0 , where   DD (CDD) of level r, again achieving CO = r for this
+the Pj ∈ {X, Y, Z} represent different π pulses and fnj τ0          general error model [22].
+denotes free evolution between Pj−1 and Pj .                           A different approach to digital DD design is provided
+   Since the DD objective is to achieve an identity gate            by CPDD [23], whereby pulse sequences are built by con-
+on S, all the evolution induced by H contributes to                 catenating projection sequences. There are four such se-
+unwanted error dynamics [24], whereby H ≡ He . Let                  quences, p0 ≡ Ifτ0 Ifτ0 , px ≡ Xfτ0 Xfτ0 , and similarly
+                     Rt
+Uc (t) ≡ T exp[−i 0 Hc (t0 )dt0 ] be the control propagator,        for py and pz . Applying pu , with u ∈ {x, y, z}, suppresses
+with ~ = 1 and T denoting time-ordering. The effect of              the interaction along perpendicular directions, to the first
+He may be isolated by expressing the propagator U (T ),             order, that is, with corresponding EPG = O(τ02 ||H||2 )
+for evolution under H(t) ≡ He + Hc (t) over time T , as             [26]. Given two pulse sequences A and B, their concate-
+                              Rt                                    nation may be defined as A[B] ≡ PNAA (B) . . . P2A (B)P1A .
+U (T ) = Uc (T ) T exp[−i 0 H̃e (t0 )dt0 ] ≡ e−iΩe (T ) , where
+                                                                    The new pulse sequence constructed in this way inher-
+Uc (T ) = 11S for DD. H̃e (t) = Uc† (t)He Uc (t) describes          its the suppression capabilities from each of the original
+evolution in the toggling frame associated to Hc (t), and           pulse sequences. Concatenating a pulse sequence with p0
+Ωe (T ) defines the error action operator [24]. The norm            corresponds to simply repeating the sequence twice. A
+of Ωe (T ), up to pure-bath terms that do not enter the             CPDDs sequence is then specified by an ordered string
+reduced dynamics, quantifies the achievable error per               s ≡ sm sm−1 . . . s1 , with sj ∈ {0, x, y, z}, with each sym-
+gate (EPG). Specifically, Ωe (T ) and the associate effec-          bol labeling a projection sequence. To construct the
+tive Hamiltonian may be obtained via a perturbative                 corresponding pulse sequence, projection sequences are
+                                         eff         eff
+Magnus expansion, Ωe (T ) ≡ [HSB             (T ) + HB   (T )]T =   concatenated according to the specified string, namely,
+     P∞          (m)                 (m)
+exp[ m=1 Ωe (T )], where Ωe (T ) is a time-ordered                  CPDDs ≡ ps1 [. . . [psm−1 [psm ]]]. For example, in this no-
+integral involving mth -order nested commutators, and               tation CDDr = CPDD(xy)r .
+||H||T < π suffices for (absolute) convergence [25]. The               General WDD.—Our first result is a generalization of
+DD performance in the time domain is then character-                multi-axis WDD beyond the existing one. Unlike the
+ized by the order of error suppression (cancellation order,         construction in [18], we start by expressing the control
+CO), determined by the leading correction mixing S and              propagator in terms of three distinct switching functions:
+B in Ωe (T ) [1, 5]. That is, EPG ≡ ||modB (Ωe (T ))|| =
+       eff                                                                  Uc (t) = σx[x(t)+1]/2 σy[y(t)+1]/2 σz[z(t)+1]/2 .        (1)
+||T HSB    (T )|| = O(T α+1 ) for a protocol with CO = α.
+   Walsh vs. concatenated-projection DD formalism.—                 We define general WDD (GWDD) sequences as follows:
+The Walsh functions are a well-known family of binary-                 Definition. A GWDD~n sequence is specified by an
+valued piecewise-constant functions orthonormal over                integer vector consisting of three Paley   P orders, ~n ≡
+[0, 1], which may be naturally employed to describe dig-            (nx , ny , nz ), subject to the constraint u=x,y,z buj ≤ 1,
+ital DD sequences [17, 18]. For dephasing noise, single-            1 ≤ j ≤ mu . Here, buj is the jth digit in the binary repre-
+                                                                                                    Pmu u j−1
+axis control via π-pulses around (say) the x-axis suffices          sentation of nu , where nu = j=1      bj 2 . The switching
+in the ideal case, resulting in a control propagator of             function for control along direction u in Eq. (1) is
+                        [x(t)+1]/2
+the form Uc (t) ≡ σx               , where the control switch-                                      m
+ing function x(t) toggles between the values ±1 at in-               u(t) = −WDDnu (t/T ) =
+                                                                                                    Y                u
+                                                                                                          Rju (t/T )bj , t ∈ [0, T ], (2)
+stants corresponding to the applied pulse timings. Let
+                                                                                                    j=1
+the Walsh function of Paley order n be defined as
+                      m                                             with m ≡ max{mx , my , mz } and buj ≡ 0 for mu < j ≤ m.
+                      Y
+                                 bj                                   Since any π-pulse can be obtained as the product
+           Wn (x) ≡         Rj (x) ,   x ∈ [0, 1],
+                      j=1                                           of two π-pulses along orthogonal directions, the con-
+                                                                                                                                  3
+
+                WDDn                  CPDDs                                            OWDD                     CDD
+            WDD0          CPDD0 = p0                                        CO (nx , ny , nz ) NT N (nx , ny , nz ) NT N
+            WDD1          CPDDx = px                                         1    (2,1,0)       4 4    (2,1,0)       4 4
+         WDD2 = WDD10   CPDDx0 = p0 [px ]                                    2    (4,2,1)       8 6   (10,5,0)      16 14
+         WDD3 = WDD11   CPDDxx = px [px ]                                    3   (18,5,4) 32 32 (42,21,0) 64 60
+         WDD4 = WDD100 CPDDx00 = p0 [p0 [px ]]                               4  (36,18,9) 64 42 (170,85,0) 256 238
+
+TABLE I: Equivalence between single-axis WDD and CPDD.              TABLE II: Number of control time slots and applied pulses
+                                                                    for OWDD vs. CDD. Taking either NT or N does not change
+                                                                    the optimality of OWDD, as their differences are negligible
+                                                                    compared to the exponential saving.
+ straint on the coefficients buj is necessary to avoid re-
+ dundant sequences, by allowing at most one non-zero
+ digit among all three digits at each binary location.              rules, we see that each such projection implies a non-zero
+ Clearly, the above definition recovers the one in Refs.            bit in the binary representation of the corresponding Pa-
+ [18, 20], where a single integer suffices to specify a two-        ley order. Therefore, the CO of GWDD
+ axis WDDn , due to the assumed particular structure. For                                                         P is still given
+                                                                    by the above equation, but with {ru = j buj } now be-
+ instance, rth -order CDD corresponds to a GWDD~n , with
+                                                                    ing Hamming weights. It follows that GWDD/CPDD
+~n = (2(4r − 1)/(4 − 1), (4r − 1)/(4 − 1), 0), with the single
+                                                                    sequences with the same CO are highly non-unique: per-
+ above-mentioned Paley order n = 4r − 1 being the sum
+                                                                    muting the order of projections will produce a different
+ of three Paley orders in our definition.
+                                                                    GWDD sequence, but leave the CO unchanged. Accord-
+    Crucially, the above GWDD definition is instrumental            ingly, we may think of GWDD sequences specified by
+ to both establish equivalence with the CPDD formalism,             (rP(x) , rP(y) , rP(z) ), where P ∈ S3 is any permutation, as
+ and uncover optimal GWDD sequences not accounted                   forming an equivalence class with respect to CO.
+ for otherwise. To demonstrate the equivalence, note that              Optimal Walsh DD.—In the presence of a realistic con-
+ each non-zero digit buj , in the binary representation of nu       straint, τ0 > 0, achieving higher CO comes at the price of
+ in a GWDD sequence, may be associated to a projection              either increasing the total number of pulses N for fixed
+ pu in the equivalent CPDD sequence. When buj = 0 for               storage time T — until the maximum CO compatible
+ all u ∈ {x, y, z}, we have an identity projection p0 in            with the constraints is accommodated; or of increasing
+ CPDD. Explicitly, the following conversion rules hold:             both N and T — until perturbative error suppression
+  (i) CPDD-to-GWDD. Given P       a CPDDs with s =                  breaks down and, again, a maximum CO is reached be-
+                                    m    u j−1
+sm sm−1 . . . s1 , calculate nu =   j=1 bj 2   for u ∈              yond which no further improvement occur [21]. This
+{x, y, z}, where bj = 1 if sj = u, otherwise bµj = 0.
+                     u                                              motivates defining optimal WDD (OWDD) sequences by
+The corresponding GWDD sequence is GWDDnx ,ny ,nz .                 demanding that they guarantee a desired CO with min-
+                                                                    imum pulse number or, equivalently, minimum number
+   (ii) GWDD-to-CPDD. Given a GWDDnx ,ny ,nz , first
+                                                                    of time slots, NT , each slot having duration τ0 . Within
+convert each Paley order to its binary representation,
+                                                                    single-axis WDD, CDD sequences are provably optimal
+nu = (bµmu bµmu −1 . . . bu1 )2 . Second, leftpad the binary rep-
+                                                                    [18]. However, this is no longer true for multi-axis
+resentations with zeros so that they all have the same
+                                                                    GWDD. The optimal GWDD can be inferred from the
+length m. For the jth digit and u ∈ {x, y, z}, set sj = u
+                                                                    CPDD framework. For CO = α, let α = ±1 denote
+if buj = 1; else, if all buj = 0, set sj = 0. The corresponding
+                                                                    the parity of α. Then, all GWDD~n satisfying the follow-
+CPDD sequence is CPDDs with s = sm sm−1 . . . s1 .
+                                                                    ing two conditions are optimal and define an equivalence
+   The resulting correspondence is illustrated in Table I           class referred to as OWDDα :
+for single-axis sequences. For multi-axis control, we use                  X
+the so-called GA8r sequences as an example. The lat-                             buj = 1, 1 ≤ j ≤ m,                           (3)
+ter is obtained from concatenation of a basic six-pulse,                u=x,y,z
+2nd -order GA8 sequence, IfXfY fXfIfXfY fXf, found                                                   1
+by a genetic search algorithm in Ref. [27]. In the CPDD                 (rP(x) , rP(y) , rP(z) ) =     (α − α, α + α, α + α) .   (4)
+                                                                                                     2
+framework, GA8r = CPDD(zyx)r . By using the above
+rules, we have nx = (100 . . . 100)2 , ny = (010 . . . 010)2 ,      Eq. (3) ensures that the pulse sequence does not expend
+nz = (001 . . . 001)2 . Accordingly, the corresponding              any pulse on repetition, whilst Eq. (4) gives the Ham-
+GWDD sequence is GWDD~n , where ~n is given by ~n =                 ming weights (number of projections) needed to suppress
+(4(1−23r )/(1−23 ), 2(1−23r )/(1−23 ), (1−23r )/(1−23 )).           decoherence up to the required CO. From the equivalence
+   The equivalence with the CPDD formalism makes it                 between CPDD and GWDD, and the analysis in Ref. [23],
+possible to easily obtain the CO of an arbitrary GWDD               it follows that OWDDα uses a number of time slots
+sequence. As shown in Ref. [23], the CO of CPDD is                  given by log2 (NT ) = 12 (3α + α) . A comparison between
+given by α = min{ry +rz , rx +rz , rx +ry }, where ru is the        OWDDα and CDDα is included in Table II. If the CO is
+number of projections along the u-axis. From the above              sufficiently large, OWDDα is exponentially more efficient
+                                                                                                                                                                        4
+
+                                           ●
+                                           ■
+                                           ▲                                                                  of two GWDD sequences with the same number of pro-
+                                 -6
+                                                 ■
+                                                 ▲                                      ● CDD                 jections along each direction will still differ depending on
+ Decoupling error, log10 (1-F)
+                                 -8
+                                                                                        ■ OWDDl               the order in which the projections are taken — resulting
+                                 -10                                                    ▲ OWDDh               in different fidelities for the same CO. To illustrate this
+                                                       ●      ■
+                                                                                                              sensitivity to the control path, we compare two different
+                                 -12                                ■                     ■                   choices in the same OWDDα equivalence class with CDD.
+                                 -14                          ▲                 ■                             Let OWDDhα ≡ {CPDDxy , CPDDxyz , CPDDxyzxy ,
+                                                                    ●
+                                 -16
+                                                                    ▲           ●                             CPDD(xyz)2 , ...}, and OWDDlα ≡ {CPDDxy ,CPDDxyz ,
+                                                                                                 ●
+                                                                                                              CPDDxxyyz , CPDDx2 y2 z2 , ...}, for α = 1, 2, 3, 4. Both
+                                 -18                                                                          obey Eqs. (3) and (4) for the same (rx , ry , rz ). As de-
+                                                                                ▲         ▲
+                                                                                                                                            l (h)
+                                 -20
+                                           4     8     16    32    64    128   256       512    1024
+                                                                                                              tailed in Ref. [29], OWDDα sequences result in com-
+                                                     Number of control slots, N T                             paratively high (low) EPG due to their larger (smaller)
+                                                                                                                                                                      h
+                                                                                                              prefactor: e.g., at CO = 3, one finds EPGOWDD3 ≤
+FIG. 1: (Color online) Fidelity loss vs. NT for two choices                                                                                      l
+of OWDDα protocols with same CO and CDD. The shaded                                                           5 · 25 (τ0 β)3 JT vs. EPGOWDD3 ≤ 16 · 25 (τ0 β)3 JT , with
+area marks the performance spread expected for all OWDDα                                                      T = 25 τ0 , and the difference further increasing for higher
+protocols in the same equivalence class. A toy model consist-                                                 CO. Geometrically, if one visualizes the implemented se-
+ing of three bath spins is used, with an initial joint state of                                               quence of projections in terms of a lattice path start-
+the form |ΨiSB ≡ |ψi ⊗ |z1 z2 z3 i, where |ψi is a random qubit                                               ing at the origin in N3 , OWDDh maximizes the number
+state and each bath spin is randomly chosen over zi ∈ {0, 1}.                                                 of switches in direction as compared to OWDDl . That
+Results are averaged over 500 realizations. We choose param-                                                  avoiding control path repetitions is generally useful in
+eters β = 10kHz, J = 1MHz, and τ0 = 0.1µs, suitable for
+                                                                                                              slowing down coherent error build-up, has been empha-
+qualitatively describing GaAs quantum dots [30].
+                                                                                                              sized in the context of randomized DD design [31], and we
+                                                                                                              conjecture that a similar intuition may be key for further
+than CDD, since NTOWDDα /NTCDDα ≈ 2 2 α /22α = 2−α/2 .
+                                                                                    3                         optimizing OWDD against path variations.
+   Performance analysis.—The EPG provides an ap-                                                                 We conclude by comparing in Fig. 1 the performance
+propriate performance measure for control since it                                                            of OWDD and CDD directly in terms of average fidelity
+upper-bounds the trace-norm distance between the in-                                                          loss, by resorting to an exact numerical simulation of a
+tended and the actual final states of the system, say,                                                        low-dimensional spin-bath model, which mimics the basic
+∆(ρ0S (T ), ρS (T )), where ρ0S (T ) = ρ0S (0) ≡ |ψihψ| for DD                                                features of hyperfine-induced decoherence of an electron
+[24, 28]. That is, ∆(ρ0S (T ), ρS (T )) ≤ ||T HSB eff
+                                                      (T )|| inde-                                            spin qubit in a quantum dot [30, 32]. The bath operators
+                                                                                                              are Bµ = i6=j α,β cµαβ (σiα ⊗ σjβ ), where i, j index the
+                                                                                                                           P P
+pendently of |ψi, which in turn allows us to bound      √ exper-
+imentally accessible fidelities
+                           p√      as 1 −   ∆  ≤ F   ≤    1 − ∆2                                              bath qubits, µ, α, β ∈ {0, x, y, z}, and cµαβ are uniformly
+                                          √
+(here, F (ρ, |ψihψ|) ≡ tr        ρ |ψihψ| ρ ). An analytical                                                  random coupling constants in [0, 1] . We assume a fixed
+upper bound to the EPG may be derived by leveraging                                                           minimum pulse interval τ0 = 0.1µs. At large NT , the
+the geometrical picture afforded by CPDD. The basic                                                           performance tends to plateau (or even deteriorate) due to
+idea is to observe that, if the error action operator for                                                     the fact that convergence breaks down for long T (see also
+a sequence CPDD  P s0 with running time Ts0 has the form                                                      Ref. [33]). Remarkably, if OWDDhα is used, comparable
+Ωe (Ts0 ) ≡ Ts0 [ u σu ⊗ Bus0 + B0s0 ], concatenation with a                                                  performance to CDDα is found for smaller NT , whereas
+projection sequence, say, px [CPDDs0 ] ≡ CPDDs0 x , has                                                       for same NT , the fidelity of OWDD can be higher than
+a simple effect in terms of renormalizing bath operators                                                      the one of CDD by up to two orders of magnitude.
+in the orthogonal directions. Specifically, one finds [29]                                                       In a realistic scenario, pulse imperfections are an addi-
+that the resulting error action, Ωe (2Ts0 ), has the same                                                     tional important factor in limiting achievable operational
+structure as Ωe (Ts0 ), only with new bath operators:                                                         fidelities. While we leave the study of realistic control
+                                                                                                              errors to a future separate investigation, it is worth not-
+                                       ||B0s0 x || = ||B0s0 ||, ||Bxs0 x || = ||Bxs0 ||,               (5a)   ing that the robust RGA8 family identified in [27] is built
+                                       ||Bys0 x || ≤ Ts0 (β||Bys0 || + ||Bzs0 || ||Bxs0 ||),           (5b)   by suitably incorporating phase alternation into the even
+                                       ||Bzs0 x || ≤ Ts0 (β||Bzs0 || + ||Bys0 || ||Bxs0 ||),           (5c)   orders of OWDDh , pointing to an interesting venue for
+                                                                                                              generalization. A characterization of OWDD in terms
+as long as β  J or  J, and max{β, J}τ0  1. Similar                                                         of control symmetry properties (including “displacement
+inequalities hold when we concatenate CPDDs with py or                                                        anti-symmetry” as in [34]) and a more rigorous under-
+pz . Therefore, given an arbitrary GWDD sequence, the                                                         standing of path sensitivity are also well worth pursuing,
+desired upper bound may be obtained by first translating                                                      along with extensions to multi-qubit DD settings.
+it into the equivalent CPDDs , and then by repeatedly us-                                                        It is a pleasure to thank Gregory Quiroz, Gerardo
+ing Eqs. (5) according to the “projection
+                                        P path” specified                                                     Paz-Silva, Kaveh Khodjasteh, Leigh Norris, and Man-
+by s = sm . . . s1 , leading to EPG ≤ Ts u=x,y,z ||Bus ||.                                                    ish Gupta for helpful discussions. LV gratefully acknowl-
+   Since, in each use of Eqs. (5), the duration of the se-                                                    edges support from the US Army Research Office under
+quence before concatenation enters explicitly, the EPG                                                        contract No. W911NF-14-1-0682. HQ and JPD are sup-
+                                                                                                                              5
+
+ported by the Air Force Office of Scientific Research, the      and the Northrop Grumman Corporation.
+Army Research Office, the National Science Foundation
+
+
+
+
+ [1] L. Viola and S. Lloyd, Phys. Rev. A 58, 2733 (1998); L.         Phys. Rev. A 84, 062323 (2011).
+     Viola, E. Knill, and S. Lloyd, Phys. Rev. Lett. 82, 2417   [19] D. Hayes, S. M. Clark, S. Debnath, D. Hucul, I. V. Inlek,
+     (1999).                                                         K. W. Lee, Q. Quraishi, and C. Monroe, Phys. Rev.
+ [2] D. A. Lidar and T. A. Brun (eds.), Quantum Error Cor-           Lett. 109, 020503 (2012).
+     rection (Cambridge University Press, 2013).                [20] H. Ball and M. J. Biercuk, EPJ Quantum Tech. 2, 1
+ [3] A. G. Kofman and G. Kurizki, Phys. Rev. Lett. 93,               (2015).
+     130406 (2004).                                             [21] K. Khodjasteh, J. Sastrawan, D. Hayes, T. J. Green,
+ [4] T. J. Green, J. Sastrawan, H. Uys, and M. J. Biercuk,           M. J. Biercuk, and L. Viola, Nat. Commun. 4, 2045
+     New J. Phys. 15, 095004 (2013).                                 (2013).
+ [5] G. A. Paz-Silva and L. Viola, Phys. Rev. Lett. 113,        [22] K. Khodjasteh and D. A. Lidar, Phys. Rev. Lett. 95,
+     250501 (2014).                                                  180501 (2005); Phys. Rev. A 75, 062310 (2007).
+ [6] A. Soare, H. Ball, M. C. Jarratt, J. J. McLoughlin,        [23] H. Qi and J. P. Dowling, Phys. Rev. A 92, 032303 (2015).
+     X. Zhen, T. J. Green, and M. J. Biercuk, Nat. Phys.        [24] K. Khodjasteh and L. Viola, Phys. Rev. Lett. 102,
+     10, 825 (2014).                                                 080501 (2009); K. Khodjasteh, D. A. Lidar and L. Vi-
+ [7] G. S. Uhrig, Phys. Rev. Lett. 98, 100504 (2007).                ola, ibid. 104, 090501 (2010).
+ [8] J. R. West, B. H. Fong, and D. A. Lidar, Phys. Rev.        [25] S. Blanes, F. Casas, J. A. Oteo, and J. Ros, Phys. Rep.
+     Lett. 104, 130501 (2010).                                       470, 151 (2009).
+ [9] In limiting parameter regimes, irrational timings may be   [26] Note that, with respect to Ref. [23], p0 is introduced here
+     avoided by incorporating special symmetries into the se-        for added generality.
+     quence design, see Ref. [34] for multi-qubit dephasing.    [27] G. Quiroz and D. A. Lidar, Phys. Rev. A 88, 052306
+[10] C. Ryan, J. Hodges, and D. Cory, Phys. Rev. Lett. 105,          (2013).
+     200402 (2010).                                             [28] D. A. Lidar, P. Zanardi, and K. Khodjasteh, Phys. Rev.
+[11] Z. Xiao, L. He, and W. Wang, Phys. Rev. A 83, 032322            A 78, 012308 (2008).
+     (2011).                                                    [29] See Supplemental Material at xxxx for a derivation of the
+[12] A. Ajoy, G. A. Álvarez, and D. Suter, Phys. Rev. A 83,         EPG upper bound and for a more quantitative analysis
+     032303 (2011).                                                  of path sensitivity.
+[13] A. M. Souza, G. A. Álvarez, and D. Suter, Philos. T. R.   [30] W. Coish, V. N. Golovach, J. C. Egues, and D. Loss,
+     Soc. A 370, 4748 (2012).                                        Phys. Status Solidi B 243, 3658 (2006).
+[14] Z.-H. Wang, G. De Lange, D. Ristè, R. Hanson, and         [31] L. F. Santos and L. Viola, New J. Phys. 10, 083009
+     V. Dobrovitski, Phys. Rev. B 85, 155204 (2012).                 (2008).
+[15] D. Farfurnik, A. Jarmola, L. M. Pham, Z.-H. Wang, V. V.    [32] R. de Sousa and S. D. Sarma, Phys. Rev. B 68, 115322
+     Dobrovitski, R. L. Walsworth, D. Budker, and N. Bar-            (2003).
+     Gill, Phys. Rev. B 92, 060301 (2015).                      [33] The fact that OWDD2 underperforms CDD2 in this simu-
+[16] G. T. Genov, D. Schraft, N. V. Vitanov, and T. Half-            lation may be accounted for by the effect of the prefactor,
+     mann, e-print arXiv:1609.09416.                                 see Supplementary Material [29].
+[17] K. G. Beauchamp, Walsh Functions and their Applica-        [34] G. A. Paz-Silva, S.-W. Lee, T. J. Green, and L. Viola,
+     tions, Vol. 3 (Academic Press, 1975).                           New J. Phys. 18, 073020 (2016).
+[18] D. Hayes, K. Khodjasteh, L. Viola, and M. J. Biercuk,
+
+
+
+
+                                             Supplementary Material
+
+
+
+                  I.   UPPER BOUND ON EPG FOR GENERAL WALSH DD SEQUENCES
+
+
+   In this section, we provide a detailed derivation of Eq. (5), and the upper bound to the EPG quoted in the main text
+for arbitrary GWDD sequences. Thanks to the equivalence between GWDD and CPDD, we only need to calculate the
+upper bound for the corresponding CPDD sequence. The geometrical picture of projections makes CPDD the natural
+framework to use. Specifically, we first show how the norm of the relevant interaction Hamiltonian is renormalized
+by a single projection sequence. Since every CPDD sequence arises from concatenation of a series of projections, we
+can then apply the result of a single projection recursively, to establish the desired upper bound.
+                                                                                                                                6
+
+                                   A.       Bath renormalization by a single projection
+
+  Consider first the effect of a single projection sequence, say px . The resulting toggling-frame error Hamiltonian is
+                                                    (
+                                                      H, 0 ≤ t ≤ τ0 ,
+                                          H̃e (t) =                                                                 (6)
+                                                      XHX, τ0 ≤ t ≤ 2τ0 .
+
+Since H̃e (t) is a piece-wise constant function, the first three orders of the Magnus series expansion may be easily
+computed as
+
+                                                Ω(1)
+                                                 e   = τ0 (H + XHX),
+                                                          i
+                                                Ωe = − τ02 [H, XHX],
+                                                 (2)
+                                                          2
+                                                        1 3
+                                                Ω(3)
+                                                 e   =    τ [XHX[H, XHX]].
+                                                       3! 0
+                                        P
+By using the explicit form of H =        µ=0,x,y,z σµ ⊗ Bµ given in the main text, together with Eq.          (6) above, the first
+two contributions become
+
+                        Ω(1)
+                         e   = 2τ0 (11 ⊗ B0 + Bx ⊗ X),                                                                        (7)
+                        Ω(2)
+                         e     =   Y ⊗ τ02 (i[B0 , By ] + {Bz , Bx }) + Z ⊗ τ02 (i[B0 , Bz ] + {By , Bx }),                   (8)
+
+with a corresponding norm
+
+                               ||Ω(1)
+                                  e || = O(τ0 (β + J)),           ||Ω(2)       2
+                                                                     e || = O(τ0 J(β + J)).
+
+Although the Magnus expansion converges as long as ||H||T < π, care is needed in discarding higher-order terms.
+The norm of the third-order term is found to be
+
+                                            ||Ω(3)       3                 3 3
+                                               e || = O(τ0 βJ(β + J)) + O(τ0 J ).                                             (9)
+
+Accordingly, it is not possible in general to ignore this contribution as it is not clear which term in Eq. (9) dominates.
+Following the analysis in K. Khodjasteh and D. A. Lidar, Phys. Rev. A 75, 062310 (2007), we proceed by addressing
+separately two limiting regimes:
+                                 (1)               (2)                       (i)
+  • When J  β, we have ||Ωe || = O(τ0 β), ||Ω2 || = O(τ0 βJ) and ||Ωe || = O(τ0i β i−1 J). Therefore, we have
+
+                                                ||Ω(1)       (2)       (i≥3)
+                                                   e || < ||Ωe ||  ||Ωe     ||,                                             (10)
+
+as long as the condition βτ0  1 is obeyed.
+                               (i)
+  • When J  β, we have ||Ωe || = O(τ0i J i ). Thus, the same relation given in Eq. (10) holds, as long as Jτ0  1.
+  In summary, when J  β or J  β, provided that τ0 ||H||  1, it suffices to retain the first two orders of the
+Magnus expansion, giving an approximate expression for the error action operator as
+                                                                                X
+                         Ωe (2τ0 ) ≈ Ω(1) (2τ0 ) + Ω(2) (2τ0 ) ≡ 2τ0 H̄ x = 2τ0   σµ ⊗ Bµx ,
+                                                                                   µ=0,x,y,z
+
+where in the last equality we have defined the average Hamilton associated with px and the relevant renormalized
+bath operators. From Eqs. (7) and (8), we can read them off as
+
+                                               B0x = B0 ,
+                                               Bxx = Bx ,
+                                                     τ0
+                                               Byx =    (i[B0 , By ] + {Bz , Bx }),
+                                                     2
+                                                     τ0
+                                               Bzx =    (i[B0 , Bz ] + {By , Bx }).
+                                                     2
+Similar equations hold for projections along the y or z directions. When the strength of the system-bath interaction
+and the pure bath dynamics are of the same order of magnitude, J ∼ β, the calculation depends on the specific value
+of J and β, and no general analytic error bound may be established. From now on, we thus assume that the system
+is in either of the two regimes mentioned above.
+                                                                                                                                7
+
+                              B.   Bath renormalization in an arbitrary CPDD sequence
+
+  Consider a CPDD sequence specified by an ordered string s0 , with total running time Ts0 . Let the relevant effective
+Hamiltonian be denoted by H̄ s0 . We now construct a new CPDD sequence by concatenating it with a projection
+sequence, say, px , obtaining a CPDDs0 x , whose renormalized effective Hamiltonian H̄ s0 x we wish to determine.
+  The evolution propagator of the system under the control of CPDDs0 x is
+                                                                                  −iH̄ s0 Ts0                 s0 T
+                                        s0                    s0
+                                                                                                  X −ie−iH̄          s0
+                              X(e−iH̄        Ts0
+                                                   )X(e−iH̄        T s0
+                                                                          ) = e−iXe                e                      .
+
+Therefore, the toggling-frame error Hamiltonian H̄ s0 x (t) is still a piece-wise constant function,
+                                                         (
+                                                             H̄ s0 , 0 ≤ t ≤ Ts0 ,
+                                        H̄ s0 x (t) =
+                                                             X H̄ s0 X , Ts0 ≤ t ≤ 2Ts0 ,
+
+which makes it possible to use the same analysis used in the previous section. Accordingly, in the two regimes where
+J  β or J  β, the renormalized bath operators are given by
+
+                                             B0s0 x = B0s0 ,
+                                             Bxs0 x = Bxs0 ,
+                                                      Ts0
+                                             Bys0 x =        i[B0 , Bys0 ] + {Bzs0 , Bxs0 } ,
+                                                                                           
+                                                       2
+                                                      Ts0
+                                             Bzs0 x =        i[B0 , Bzs0 ] + {Bys0 , Bxs0 } ,
+                                                                                           
+                                                                                                                              (11)
+                                                       2
+where Bµs0 , µ ∈ {0, x, y, z} are the effective bath operators of CPDDs0 . As we can see, px leaves Bxs0 unchanged, but
+renormalizes Bys0 and Bzs0 to the next order. Similar renormalization relations hold for py and pz .
+  Eqs. (5) in the main text follows from applying standard operator-norm inequalities to the renormalized bath
+operators in Eq. (11), in particular, ||[A, B]|| ≤ 2||A|| ||B||, k|A + B|| ≤ ||A|| + ||B||, and ||AB|| ≤ ||A|| ||B||. Along
+with the definition of the EPG, this yields the desired result for CPDDs ,
+                                                                              X
+                                                        EPG ≤ Ts                      ||Bus ||.
+                                                                            u=x,y,z
+
+
+
+
+                                             II.    CONTROL PATH SENSITIVITY
+
+   As remarked in the main text, any permutation of the order of concatenation in building CPDD sequences will
+leave the CO invariant. We expect that pulse sequence with a different control path will give different performance,
+since the EPG (or fidelity) do not solely depends on the CO. In the context of GWDD, control path sensitivity may
+be understood by comparing the upper bounds of the EPG generated by different control paths. As shown by Eq.
+(5) in the main text, the EPG of CPDD sequences generated by permutations of a sequence s, have the same scaling
+behavior on τ0 , but produce different prefactors. In this section, we first present a concrete example to demonstrate
+how the information about the control path is “encoded” into the prefactors of the relevant EPG. We then provide a
+more convenient way to calculate the prefactor for any GWDD/CPDD sequences, whereby we also derive the relevant
+prefactors for the OWDDl (h) sequences analyzed in the main text.
+
+
+                         A.    Switches in the control path are good for error suppression
+
+  The simplest non-trivial example we may consider is to compare CDD2 = CPDDxyxy with the CPDD sequence
+generated by a permutation of xyxy, denoted by CDD2 = CPDDxxyy . To simplify the calculation and to focus on
+prefactor, we assume the regime β  J. Applying the renormalization given in Eq. (5) repeatedly, we have for CDD2
+
+                                                        ||Bxxyxy || ≤ 23 · 21 τ02 β 2 J,
+                                                        ||Byxyxy || ≤ 22 · 20 τ02 β 2 J,
+                                                                                                                             8
+
+where at each step we only keep the leading-order terms. The bound for ||Bz || is always higher order than the other
+two directions since both px and py suppress Bz . In the above equations we also see explicitly how the prefactors are
+accumulated. Similarly, for CDD2 , we apply Eq.(5) repeatedly but with a different order, obtaining
+
+                                                  ||Bxxxyy || ≤ 23 · 22 τ02 β 2 J,
+                                                  ||Byxxyy || ≤ 21 · 20 τ02 β 2 J.
+
+As we can see, the upper bounds of CDD2 and CDD2 have the same scaling over τ0 , consistent with the fact that
+both of them achieve CO = 2. However, CDD2 has a smaller prefactor than CDD2 :
+
+                                                  EPGxyxy ≤ 20 τ02 β 2 JT
+                                                  EPGxxyy ≤ 34 τ02 β 2 JT.
+
+This can be qualitatively explained as follows. When px is applied, the upper bound for ||By || will start to accumulate
+a prefactor. If we continue applying px , like in CDD, the prefactor for ||By || will grow exponentially since the length
+of the sequence is exponentially increasing. However, if the direction of the projection sequence is changed at a certain
+point, say to py , then the prefactor for ||By || will stop increasing. Therefore, CPDD sequences, with a large number
+of switches in the direction of the corresponding projections, tend to have lower error and better performance. For
+sufficiently large CO we may write
+                                                                       2
+                                             EPGCDDα ≤ 2α (τ0 β)α JT,
+                                                                   1       2
+                                             EPGCDDα ≤ 2 2 (3α −α) (τ0 β)α JT.
+
+The above conclusions remain unchanged if we work in the opposite regime, β  J, since the prefactor only depends
+on the order of concatenations.
+
+
+                              B.   Calculating prefactors for GWDD/CPDD sequences
+
+  The method we described above to calculate the prefactors for GWDD sequences relies upon the geometric picture
+of CPDD. However, the calculation is tedious, especially for long pulse sequences. Here, we present an alternative
+method to directly calculate the prefactor for any GWDD/CPDD sequence.
+  Consider a pulse sequence CPDDs . Then:
+
+   1. Define s0 to be the sequence of letters in the reverse order of s, namely, s0 ≡ s1 . . . sm . Construct a 3 × |s| matrix,
+      denoted by L, according to the following rule:
+                                                        (
+                                                          1, if sj = µ
+                                                 Lµj ≡                     .                                              (12)
+                                                          0, otherwise
+
+     where we use µ ∈ {x, y, z} to label the 1st , the 2nd and the 3rd row of L.
+
+   2. The prefactor in the upper bound on ||Bµs || is then given by
+
+                                                          |s|
+                                                          Y
+                                                                   L̄µj 2j−1 ,                                            (13)
+                                                          j=1
+                                                        L̄µj 6=0
+
+
+     where the matrix L̄ is the logical negation of L.
+
+   3. If we assume β  J and ignore higher-order contributions, we have the following upper bound
+                                                          
+                                                    |s|
+                                                   Y                     P|s|
+                                       ||Bµs || ≤      L̄µj 2j−1         k=1 L̄µk J .
+                                                                  
+                                                                  (τ0 β)                                                (14)
+                                                     j=1
+                                                   L̄µj 6=0
+                                                                                                                    9
+
+ We illustrate the above procedure by considering a simple example, namely, the second level of OWDD sequences,
+CPDDxyz . From the definition of CPDD sequence, s0 = xyz, hence the matrix L is given by
+
+                                                       s0 x y z
+                                                       x 1 0 0
+                                                          "     #
+                                                                 .
+                                                       y 0 1 0
+                                                       z 0 0 1
+
+Here, the row indexes represent different directions while the column indexes are specified by s0 . Applying Eq. (13)
+and Eq. (14), and assuming β  J, we get
+
+                                               ||Bxxyz || ≤ 22 · 21 (τ0 β)2 J,
+                                               ||Byxyz || ≤ 22 · 20 (τ0 β)2 J,
+                                               ||Bzxyz || ≤ 21 · 20 (τ0 β)2 J.
+
+
+                             C.   Path sensitivity for optimal Walsh DD sequences
+
+  Any GWDD sequence that achieves CO = α, with a number of time slots obeying log2 (NT ) = 21 (3α + α), as
+explained in the main text [see also Table II], is an OWDDα sequence. Although different choices of OWDD use the
+same number of control time slots for given CO, their performance is different due to the control path sensitivity
+discussed above. Based on the intuitive argument we described, we expect that OWDD sequences with a larger
+number of switches will comparatively achieve a lower EPG, hence higher fidelity. With this intuition in mind, we
+consider OWDD sequences with the maximum number of switches,
+
+                          OWDDhα ≡ {CPDDxy , CPDDxyz , CPDDxyzxy , CPDD(xyz)2 , . . .},
+
+as well as sequences where this number is minimized and the lattice-path trajectory has long straight segments:
+
+                OWDDlα ≡ CPDDxrx yry zrz = {CPDDxy , CPDDxyz , CPDDxxyyz , CPDDxxyyzz , . . .},
+
+as also defined in the main text.
+  The first two orders of OWDD sequences are the same for any choice of OWDD. Thus, in order to illustrate the
+control path sensitivity, below we explicitly calculate the upper bound of EPG for the next two levels of OWDDh and
+OWDDl , corresponding to CO = 3, 4, respectively.
+  To calculate the upper bound for OWDDh3 = CPDDxyzxy , we first write down the L matrix according to Eq.(12),
+                                                               
+                                                      1 0 0 1 0
+                                                 L = 0 1 0 0 1 .                                                (15)
+                                                               
+                                                      0 0 1 0 0
+
+Calculate its negation L̄ and then the upper bound according to Eq.(14):
+
+                                         ||Bxxyzxy || ≤ 24 · 22 · 21 (τ0 β)3 J,
+                                         ||Byxyzxy || ≤ 23 · 22 · 20 (τ0 β)3 J,
+                                         ||Bzxyzxy || ≤ 24 · 23 · 21 · 20 (τ0 β)4 J.
+                                                                                       h
+By discarding the higher-order contribution from ||Bz ||, we have EPGOWDD3 ≤ 5 · 25 (τ0 β)3 JT , where T = 25 τ0 .
+Following the same procedure for OWDDh4 , we have
+
+                                        ||Bxxyzxyz || ≤ 25 · 24 · 22 · 21 (τ0 β)4 J,
+                                        ||Byxyzxyz || ≤ 25 · 23 · 22 · 20 (τ0 β)4 J,
+                                        ||Bzxyzxyz || ≤ 24 · 23 · 21 · 20 (τ0 β)4 J,
+                                                                        h
+the EPG is dominated by the x direction and we have EPGOWDD4 ≤ 212 (τ0 β)4 JT , with T = 26 τ0 .
+                                                                                                                  10
+
+ Now we calculate the upper bounds for OWDDlα . To calculate the upper bound of OWDDl3 , we write down the L
+matrix first, namely,
+                                                           
+                                                 1 1 0 0 0
+                                          L = 0 0 1 1 0 .                                             (16)
+                                                           
+                                                 0 0 0 0 1
+
+Then the upper bounds of bath operators are given by Eq. (14),
+
+                                        ||Bxxxyyz || ≤ 24 · 23 · 22 (τ0 β)3 J,
+                                        ||Byxxyyz || ≤ 24 · 21 · 20 (τ0 β)3 J,
+                                        ||Bzxxyyz || ≤ 23 · 22 · 21 · 20 (τ0 β)4 J.
+                       l
+Therefore, EPGOWDD3 ≤ 24 · 25 (τ0 β)3 JT , with T = 25 τ0 . Similarly, the upper bounds for OWDDl4 are given by
+
+                                        ||Bxxxyyzz || ≤ 25 · 24 · 23 · 22 (τ0 β)4 J,
+                                        ||Byxxyyzz || ≤ 25 · 24 · 21 · 20 (τ0 β)4 J,
+                                        ||Bzxxyyzz || ≤ 23 · 22 · 21 · 20 (τ0 β)4 J,
+                   l
+whereby EPGOWDD4 ≤ 214 (τ0 β)4 JT , with T = 26 τ0 .
+  As one can see from the above calculations, at CO = 3 the EPG upper bound of OWDDh is about 3.2 times smaller
+than the one for OWDDl , and becomes four times smaller at CO = 4. Therefore, an increasingly larger benefit is
+expected also in terms of fidelity from using OWDDh with larger CO.
+

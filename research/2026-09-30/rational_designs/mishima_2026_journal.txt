@@ -1,0 +1,6214 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Geometric designs and Hilbert-Kamke equations of degree five for classical orthogonal polynomials | Research in Number Theory | Springer Nature Link
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Skip to main content
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log in
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Menu
+
+
+
+
+
+
+
+
+
+                            Find a journal
+                        
+
+
+
+                            Publish with us
+                        
+
+
+
+                            Track your research
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Search
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Saved research
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cart
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Home
+
+
+
+
+
+
+
+
+
+
+
+
+Research in Number Theory
+
+
+
+
+
+
+
+
+
+
+
+
+Article
+
+
+
+
+
+
+
+
+Geometric designs and Hilbert-Kamke equations of degree five for classical orthogonal polynomials
+
+
+
+
+Research
+
+
+
+
+Open access
+
+
+
+
+
+                            Published: 
+31 March 2026
+
+
+
+
+
+
+
+
+
+
+Volume 12
+, article number 
+39
+ (
+2026
+)
+                        
+
+
+
+
+Cite this article
+
+
+
+
+
+
+
+
+
+
+
+                            You have full access to this 
+open access
+ article
+
+
+
+
+
+
+
+
+
+
+Download PDF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Save article
+
+
+
+
+
+
+
+
+View saved research
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Research in Number Theory
+
+
+
+
+
+                                Aims and scope
+                                
+
+
+
+
+
+                                Submit manuscript
+                                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                Geometric designs and Hilbert-Kamke equations of degree five for classical orthogonal polynomials
+                            
+
+
+
+
+
+
+
+
+
+
+Download PDF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Teruyuki Mishima
+1
+, 
+Xiao-Nan Lu
+ 
+            
+ORCID: 
+orcid.org/0000-0001-7881-8505
+2
+, 
+Masanori Sawa
+3
+ & 
+…
+Yukihiro Uchida
+4
+ 
+Show authors
+
+
+
+
+
+
+
+
+
+
+
+
+877 
+Accesses
+
+
+
+
+
+
+
+
+
+
+2 
+
+                                Altmetric
+                                
+
+
+
+
+
+
+Explore all metrics 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Abstract
+In this paper we elucidate the advantage of examining the connections between Hilbert-Kamke equations and geometric designs, or Chebyshev-type quadrature, for classical orthogonal polynomials. We first establish that if a 5-design with 6 rational points for a symmetric classical measure is parametrized by rational functions, then the corresponding measure should be the Chebyshev measure 
+\((1-t^2)^{-1/2}dt/\pi \)
+ on 
+\((-1,1)\)
+. Our proof is based on the collaboration of a certain polynomial identity and some advanced techniques on the computation of the genus of a certain irreducible curve. Next, we prove a necessary and sufficient condition for the existence of rational 5-designs for the Chebyshev measure. Moreover, as one of our main theorems, we construct an infinite family of ideal solutions for the Prouhet-Tarry-Escott (PTE) problem by utilizing rational 5-designs for the Chebyshev measure, and then establish that, up to affine equivalence over 
+\(\mathbb {Q}\)
+, such ideal solutions are included in the famous parametric solutions found by Borwein (2002).
+
+
+
+
+
+
+
+
+Similar content being viewed by others
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Chebyshev Polynomials, Rhodonea Curves and Pseudo-Chebyshev Functions. A Survey
+                                        
+
+
+
+
+
+
+Article
+
+
+Open access
+
+
+01 January 2020
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Quintic Equations I: Symmetric Polynomials
+                                        
+
+
+
+
+
+
+Chapter
+
+
+© 2022
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Interlacing Properties of Coefficient Polynomials in Differential Operator Representations of Real-Root Preserving Linear Transformations
+                                        
+
+
+
+
+
+
+Article
+
+
+18 July 2022
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Explore related subjects
+
+
+Discover the latest articles, books and news in related subjects, suggested using machine learning.
+
+
+
+
+
+
+Combinatorial Geometry
+
+
+
+
+
+
+Measure and Integration
+
+
+
+
+
+
+Differential Geometry
+
+
+
+
+
+
+Geometry
+
+
+
+
+
+
+Engineering Mathematics
+
+
+
+
+
+
+Algebraic Geometry
+
+
+
+
+
+
+Algebraic Geometry and Invariant Theory
+
+
+
+
+
+
+
+
+
+
+1 
+Introduction
+Let 
+w
+(
+t
+) be a probability density function on an interval 
+\(I \subseteq {\mathbb R}\)
+, with finite moments
+$$\begin{aligned} a_k = \int _I t^k w(t) dt, \quad k= 0,1,\dotsc \end{aligned}$$
+
+                    (1)
+                
+An integration formula of type
+$$\begin{aligned} \frac{1}{n} \sum _{i=1}^n f(x_i) = \int _I f(t) w(t) dt, \end{aligned}$$
+
+                    (2)
+                
+where 
+\(x_1,\ldots ,x_n \in I\)
+, is a 
+Chebyshev-type quadrature of degree m
+ if the equation (
+2
+) holds for every 
+\(f \in \mathcal {P}_m\)
+. We denote by 
+\(\mathcal {P}_m\)
+ the vector space of all univariate polynomials of degree at most 
+m
+.
+As implied by various formulas named after Gauss, the construction of quadrature formula has long been studied in mathematical analysis, in connection with the investigation of the zeros of orthogonal polynomials. For a good introduction to the interrelation between quadrature and orthogonal polynomials, we refer the reader to Dunkl and Xu [
+13
+, § 1] and Szegő [
+35
+, § 15]. On the other hand, the configuration of points 
+\(x_1,\ldots ,x_n\)
+, especially for Gegenbauer measure 
+\((1-t^2)^{\lambda -1/2}dt/\int _{-1}^1 (1-t^2)^{\lambda -1/2}dt\)
+ where 
+\(\lambda > -1/2\)
+, has captured the attention of researchers in algebraic combinatorics and related areas. The point configuration is called an 
+m-design
+ if all 
+\(x_i\)
+ are distinct, and a 
+weighted m-design
+ otherwise. A good survey paper on algebro-combinatorial aspects of quadrature is Bannai and Bannai [
+3
+].
+Most of the designs appearing in the present paper are 
+rational
+, namely the point configuration is included in 
+\({\mathbb Q}\)
+. The notion of rational design originally goes back to Hausdorff [
+16
+], who established the existence of a weighted rational design for Hermite measure 
+\(e^{-t^2}dt/\sqrt{\pi }\)
+ on 
+\((-\infty ,\infty )\)
+ and thereby simplified Hilbert’s solution of the Waring problem [
+17
+]. Interest was revived by Nesterenko [
+26
+, p.4700], where a refinement of Hausdorff’s method is discussed; see also Subsection 
+2.2
+ of this paper. It is noteworthy that the construction of rational designs can be applied in the realization of solutions of the Waring problem.
+The construction of rational designs is also significant in algebraic combinatorics, in particular in the theory of spherical designs. A challenging problem, asked by Bannai, Bannai, Ito and Tanaka [
+4
+, p.208, Problem 2], is to present an explicit construction of rational designs for Gegenbauer measure 
+\((1-t^2)^{\lambda -1/2}dt/\int _{-1}^1 (1-t^2)^{\lambda -1/2}dt\)
+. Such constructions, if realized, can be applied in the explicit construction of spherical designs [
+2
+, 
+30
+, 
+36
+]. What is meant by 
+explicit construction
+ is that it generates a design for which the components of each point are written down explicitly. It is still an open problem to present an explicit construction of rational designs for Gegenbauer measure in general; see for example [
+38
+, pp.347–348]. An important aim of this paper is to make substantial progress on this topic.
+On the other hand, a rational weighted 
+m
+-design of type (
+2
+) is equivalent to a solution of a system of Diophantine equations of type
+
+                    (3)
+                
+In particular an 
+m
+-design is equivalent to a 
+disjoint solution
+ of (
+3
+), meaning that all 
+\(x_i\)
+ are mutually distinct. We call (
+3
+) 
+Hilbert-Kamke equations
+, following Cui, Xia and Xiang [
+10
+]. A systematic treatment of the equations (
+3
+) was established by Sawa and Uchida [
+33
+] for probability measures that correspond to the classical orthogonal polynomials. It is well known (see [
+33
+, Subsection 2.1]) that such measures are completely classified by Hermite, Laguerre and Jacobi measures. The work of Sawa and Uchida [
+33
+] was extended to Bessel measure over 
+\({\mathbb C}\)
+ by Matsumura [
+22
+].
+We are here mainly concerned with 
+symmetric classical measures
+, that is Hermite or Gegenbauer measure, for which the odd moments 
+\(a_{2k+1}\)
+ are identically zero. An 
+m
+-design is 
+antipodal
+ if the configuration of points 
+\(x_1,\ldots ,x_n\)
+ is symmetric with respect to the origin 0. An antipodal 
+m
+-design with 2
+N
+ points for symmetric classical measures is equivalent to the equations
+$$\begin{aligned} x_1^{2k} + x_2^{2k} + \cdots + x_N^{2k} = N a_{2k}, \quad k=1,2,\ldots ,r, \end{aligned}$$
+
+                    (4)
+                
+where 
+r
+ is the integer part of 
+m
+/2. A main purpose of this paper is to make clear the speciality of rational designs or Hilbert-Kamke equations for symmetric classical measures, especially for the Chebyshev measure 
+\(\pi ^{-1} (1-t^2)^{-1/2}dt\)
+ on 
+\((-1,1)\)
+.
+This paper is also motivated by a recent work by Misawa et al. [
+24
+], where conditions for various geometric designs to be antipodal are discussed. Their work includes an interesting observation that if 
+\(m \equiv 1 \pmod {2}\)
+ and 
+\(n \le m+1\)
+, then interval 
+m
+-designs with 
+n
+ points for symmetric classical measures have only antipodal solutions; for more details, see Subsection 
+2.4
+ of this paper. Inspired by their work, we restrict our attention to antipodal designs of odd degrees for symmetric classical measures.
+The smallest nontrivial case to be considered is the antipodal 3-design. In this case, we prove a necessary and sufficient condition for the existence of antipodal 3-designs for the Hermite measure.
+
+
+Theorem 1.1
+
+
+There exists an antipodal 3-design with 
+n
+ rational points for the Hermite measure 
+\(e^{-t^2}dt/\sqrt{\pi }\)
+ on 
+\((-\infty ,\infty )\)
+ if and only if 
+\(n \notin \{1,2,3,7\}\)
+.
+
+
+An analogue of Theorem 
+1.1
+ is also discussed for the Gegenbauer measures.
+The next case to be handled is when 
+\(m=5\)
+. The degree five or four case is of special interest in the connection among Hilbert-Kamke equations, geometric designs and the Waring problem; see Remark 
+2.13
+ and Proposition 
+2.14
+ of this paper. The following is a main theorem of this paper.
+
+
+Theorem 1.2
+
+
+If a 5-design with 6 rational points for symmetric classical measures is parametrized by rational functions, then 
+\(3a_2^2=2a_4\)
+. Moreover, the only symmetric classical measure with 
+\(3a_2^2=2a_4\)
+ is the Chebyshev measure 
+\((1-t^2)^{-1/2}dt/\pi \)
+ on 
+\((-1,1)\)
+.
+
+
+Our proof is based on the calculation of the genus of a certain irreducible curve. More precisely, the equations (
+4
+) define a curve that is not necessarily irreducible. An irreducible curve is parametrized by rational functions if and only if the curve has genus 0; for example, see [
+31
+, (2.16)]. Therefore, the proof of Theorem 
+1.2
+ reduces to the calculation of the genus of each irreducible component of the curve defined by (
+4
+). Such calculations of genera were also done in the work of Sawa and Uchida [
+33
+] to examine Hilbert-Kamke equations (
+3
+). However, we require a different algebro-geometric method in this paper since the curve defined by (
+4
+) is a space curve that is not necessarily irreducible. It is another aim of this paper to introduce this method to geometric design theory.
+Kawada and Wooley [
+19
+] clarified the validity of a certain polynomial identity in the study of the Waring problem for biquadrates (see (
+19
+)). Theorem 
+1.2
+ not only provides theoretical evidence for the difficulty of the existence of rational designs for Gegenbauer measures in general, but also shows a distinctive feature of the Chebyshev measure from the viewpoints of algebraic geometry and combinatorics.
+The following two results for the Chebyshev measure are one of the main theorems in this paper. Their proofs are based on the collaboration of techniques in geometric design theory, elementary number theory, and the same polynomial identity as that used in the proof of Theorem 
+1.2
+.
+
+
+Theorem 1.3
+
+
+The 5-designs with 6 rational points for Chebyshev measure 
+\((1-t^2)^{-1/2}dt/\pi \)
+ on 
+\((-1,1)\)
+ are parametrized by rational functions
+$$\begin{aligned} \begin{aligned} x_1 = \frac{2t^2-22t-13}{14(t^2+t+1)}, \; x_2 = \frac{-13t^2-4t+11}{14(t^2+t+1)}, \; x_3 = \frac{11t^2+26t+2}{14(t^2+t+1)}, \\ x_{i+3} = -x_i \quad \text {for i=1,2,3}, \end{aligned} \end{aligned}$$
+
+                    (5)
+                
+where 
+\(t \in {\mathbb Q}\)
+.
+
+
+Theorem 1.4
+
+
+There exists an antipodal 5-design with 2
+N
+ rational points for Chebyshev measure 
+\((1-t^2)^{-1/2}dt/\pi \)
+ on 
+\((-1,1)\)
+ if and only if
+$$ \begin{aligned} N=3k \ \text { with } \ k \ge 1, \\ N=3k+1 \ \text { with } \ k \ge 6, \\ N=3k+2 \ \text { with } \ k \ge 3. \end{aligned} $$
+
+
+Now, in this paper, we also consider a different type of Diophantine problem called the 
+Prouhet-Tarry-Escott (PTE) problem
+. Borwein [
+5
+, Chapter 21] presents a brief survey on this subject, including some parametric solutions of the PTE problem together with various individual examples. We also refer the reader to Dickson’s book [
+12
+, § 24].
+
+
+Problem 1.5
+
+
+(Prouhet-Tarry-Escott problem)
+ For positive integers 
+M
+ and 
+N
+, find a pair of disjoint multisets of integers, say 
+\(X = \{ x_1, \ldots , x_N \}\)
+ and 
+\(Y = \{ y_1, \ldots , y_N \}\)
+, such that
+$$\begin{aligned} \begin{aligned} x_1 + \cdots + x_N&= y_1 + \cdots + y_N, \\ x_1^2 + \cdots + x_N^2&= y_1^2 + \cdots + y_N^2, \\&\vdots \hspace{25mm} \\ x_1^M + \cdots + x_N^M&= y_1^M + \cdots + y_N^M. \end{aligned} \end{aligned}$$
+
+                    (6)
+                
+Such a solution is said to have 
+degree M
+ and 
+size N
+, and is denoted by 
+\([X] =_M^N [Y]\)
+.
+
+
+It is well known (cf. [
+5
+, Chapter 21]) that if 
+\([X] =_M^N [Y]\)
+, then 
+\(N \ge M+1\)
+; a solution with equality is 
+ideal
+. The existence of ideal solutions is a central core topic in the study of the PTE problem. The following degree-five solution due to Borwein is one of the few known ideal parametric solutions:
+$$\begin{aligned} \begin{aligned} x_1 = 2 n + 2 m, \quad x_2 = -nm - n - m + 3, \quad x_3 = n m - n - m - 3, \\ y_1 = 2 n - 2 m, \quad y_2 = -n + nm + m + 3, \quad y_3 = m - n m - n - 3, \\ x_{3+i} = -x_i, \; y_{3+i} = -y_i, \quad i = 1,2,3, \end{aligned} \end{aligned}$$
+
+                    (7)
+                
+where 
+\(m,n \in \mathbb {Z}\)
+.
+The following result (Theorem 
+1.6
+) creates a novel connection between rational interval designs and the PTE problem, where ideal solutions of the PTE problem are obtained from the 5-designs (
+5
+). A two-dimensional extension of Theorem 
+1.6
+ or the Borwein solution has been recently discussed by Matsumura et al. [
+23
+].
+
+
+Theorem 1.6
+
+
+Let
+$$\begin{aligned} X = \{ \pm a_{s,t}b_{u,v}, \pm a_{s,t}c_{u,v}, \pm a_{s,t}d_{u,v} \}, \; Y = \{ \pm a_{u,v}b_{s,t}, \pm a_{u,v}c_{s,t}, \pm a_{u,v}d_{s,t} \}, \end{aligned}$$
+
+                    (8)
+                
+where
+$$\begin{aligned} \begin{aligned} a_{\alpha ,\beta } = \alpha ^2 + \alpha \beta + \beta ^2, b_{\alpha ,\beta } = 2\alpha ^2 - 22\alpha \beta - 13\beta ^2, c_{\alpha ,\beta } = -13\alpha ^2-4\alpha \beta +11 \beta ^2, \\ d_{\alpha ,\beta } = 11\alpha ^2 + 26\alpha \beta + 2 \beta ^2. \end{aligned} \end{aligned}$$
+
+                    (9)
+                
+Then (
+X
+, 
+Y
+) is an ideal solution of the equations (
+6
+) for 
+\((M,N) = (5,6)\)
+. Moreover, up to affine equivalence over 
+\({\mathbb Q}\)
+, the solution (
+X
+, 
+Y
+) is included in the Borwein solution (
+7
+).
+
+
+This paper is organized as follows. Section 
+2
+ gives preliminaries where we review basic facts and background on Hilbert-Kamke equations and geometric designs. Sections 
+3
+ through 
+7
+ are the main body of this paper, where Theorems 
+1.1
+ through 
+1.6
+ are proved, respectively. Section 
+8
+ is the conclusion, where further remarks will be made.
+2 
+Preliminaries
+In this section we review some basic terminologies and facts that often appear throughout this paper. The description below is fairly conscious of the relationship between Hilbert-Kamke equations, quadrature formulas and Waring problem. Subsections 
+2.2
+ and 
+2.4
+ include some observations that are related to the body of this paper. In Subsection 
+2.3
+, we review some terminology on algebraic and arithmetic geometry used in Subsection 
+2.4
+ and Section 
+4
+.
+2.1 
+Quadrature and Hilbert-Kamke equations
+Let 
+\(I \subseteq {\mathbb R}\)
+ be an interval, with a probability density function 
+w
+(
+t
+) such that all moments 
+\(a_k = \int _I t^k w(t)dt\)
+ are finite.
+
+
+Definition 2.1
+
+
+An integration formula of type
+$$\begin{aligned} \frac{1}{n} \sum _{i=1}^n f(x_i) = \int _I f(t) w(t) dt \end{aligned}$$
+
+                    (10)
+                
+where 
+\(x_1,\ldots ,x_n \in I\)
+, is a 
+Chebyshev-type quadrature of degree m
+ if (
+10
+) holds for every polynomial 
+\(f \in \mathcal {P}_m\)
+. Here 
+\(\mathcal {P}_m\)
+ denotes the space of all univariate polynomials of degree at most 
+m
+. The configuration of points 
+\(x_i\)
+ is an 
+(equi-weighted) m-design
+ if all 
+\(x_i\)
+ are distinct, and a 
+weighted m-design
+ otherwise. As a convention, we write 
+\((x_1,\ldots ,x_n)\)
+ or 
+\(\{x_1,\ldots ,x_n\}\)
+ for point configurations.
+
+
+Most designs and quadrature, often discussed in the present paper, have the following two properties.
+
+
+Definition 2.2
+
+
+(i) A (weighted) 
+m
+-design for 
+\(\int _I w(t) dt\)
+ is 
+antipodal
+ if the point configuration 
+\(\{x_i\}\)
+ coincides with 
+\(\{-x_i\}\)
+. 
+
+
+
+
+(ii)
+
+
+A (weighted) 
+m
+-design for 
+\(\int _I w(t) dt\)
+ is 
+rational
+ if all 
+\(x_i\)
+ are rational numbers.
+
+
+
+
+
+
+Let us look at some examples.
+
+
+Example 2.3
+
+
+(Newton-Cotes formula)
+ The Newton-Cotes quadrature is given as
+$$\begin{aligned} \frac{1}{6} f(-1) + \frac{2}{3} f(0) + \frac{1}{6} f(1) = \frac{1}{2} \int _{-1}^1 f(t) dt \quad \text {for every } f \in \mathcal {P}_3. \end{aligned}$$
+
+                    (11)
+                
+The point configuration 
+\(\{0,\pm 1\}\)
+ is antipodal and rational, but not equi-weighted.
+
+
+Example 2.4
+
+
+(Chebyshev-Gauss quadrature)
+ Let 
+\(x_1,\ldots ,x_n\)
+ be the zeros of the Chebyshev polynomial 
+\(T_n(t)\)
+ of the first kind. The Chebyshev-Gauss quadrature is given as
+$$\begin{aligned} \frac{1}{n} \sum _{i=1}^n f\Big ( \cos \Big ( \frac{2i-1}{2n} \pi \Big ) \Big ) = \int _{-1}^1 \frac{f(t) dt}{\pi \sqrt{1-t^2}} \quad \text {for every } f \in \mathcal {P}_{2n-1}. \end{aligned}$$
+
+                    (12)
+                
+This point configuration is antipodal and equi-weighted, but irrational for 
+\(n \ge 2\)
+. Among all quadrature of degree 
+m
+ with 
+n
+ points, the formula (
+12
+) is minimal with respect to the classical lower bound 
+\(n \ge \lfloor m/2 \rfloor + 1\)
+; for example, see [
+13
+].
+
+
+Example 2.5
+
+
+$$\begin{aligned} \frac{1}{6} \sum _{\pm } \Big \{ f\Big (\pm \frac{1}{7}\Big ) + f\Big (\pm \frac{11}{14}\Big ) + f\Big (\pm \frac{13}{14} \Big ) \Big \} = \int _{-1}^1 \frac{f(t) dt}{\pi \sqrt{1-t^2}} \quad \text {for every } f \in \mathcal {P}_5. \end{aligned}$$
+
+                    (13)
+                
+This point configuration, which appears many times in the present paper, is antipodal, equi-weighted, and rational. The quadrature (
+13
+) is also minimal with respect to the inequality 
+\(N \ge M+1\)
+ for the PTE problem; for the detail, see Section 
+7
+.
+
+
+The following provides a method for composing small designs to produce a larger one of the same degree.
+
+
+Proposition 2.6
+
+
+If 
+\(X_1\)
+ and 
+\(X_2\)
+ are disjoint 
+t
+-designs for 
+\(\int _I w(t)dt\)
+, then so is 
+\(X_1 \cup X_2\)
+.
+
+
+Proof of Proposition 2.6
+
+
+For 
+\(i=1,2\)
+, let 
+\(N_i\)
+ be the size of 
+\(X_i\)
+. Then it follows, from the defining property (
+10
+) of quadrature, that for every polynomial 
+f
+ of degree at most 
+t
+,
+$$ \begin{aligned} \frac{1}{N_1+N_2} \sum _{x \in X_1\cup X_2} f(x) = \frac{N_1}{N_1+N_2} \frac{1}{N_1} \sum _{x \in X_1} f(x) + \frac{N_2}{N_1+N_2} \frac{1}{N_2} \sum _{x \in X_2} f(x) \\ = \frac{N_1}{N_1+N_2} \int _I f(t) w(t)dt + \frac{N_2}{N_1+N_2} \int _I f(t) w(t)dt = \int _I f(t) w(t)dt. \end{aligned} $$
+\(\square \)
+
+
+A rational weighted design is equivalent to a certain system of Diophantine equations that originally stems from the Waring problem.
+
+
+Proposition 2.7
+
+
+([
+33
+]) Let 
+w
+(
+t
+)
+dt
+ be a probability measure such that all moments 
+\(a_k = \int _I t^k w(t)dt\)
+ are finite and rational. Let 
+\(x_1,\ldots ,x_n \in {\mathbb Q}\cap I\)
+. Then the following are equivalent: 
+
+
+
+
+(i)
+
+
+The point configuration 
+\((x_1,\ldots ,x_n)\)
+ is a rational (weighted) 
+m
+-design for 
+\(\int _I w(t)dt\)
+;
+
+
+
+
+
+
+(ii)
+
+
+\((x_1,\ldots ,x_n)\)
+ forms a rational solution of the Diophantine equations 
+$$\begin{aligned} x_1^k + x_2^k + \cdots + x_n^k = n a_k, \quad k=0,1,\ldots ,m. \end{aligned}$$
+
+                    (14)
+                
+
+
+
+
+
+
+The equations (
+14
+) were originally designed by Hausdorff [
+16
+] as a simplification of Hilbert’s solution of the Waring problem [
+17
+]. Sawa and Uchida [
+33
+, Theorem 5.5] generalized weighted designs for Hermite measure to those for all probability measures that correspond to the classical orthogonal polynomials, namely Hermite, Laguerre and Jacobi polynomials. As a follow-up to their work, Matsumura [
+22
+] discussed weighted designs for Bessel measure 
+\(-e^{-2/z}dz/(4\pi \sqrt{-1})\)
+ over 
+\(\mathbb {C}\)
+.
+The following question was posed by Bannai, Bannai, Ito and Tanaka [
+4
+, p.208, Problem 2], (see also [
+38
+]).
+
+
+Problem 2.8
+
+
+Given positive integers 
+\(m,n \ge 2\)
+, develop an explicit construction of points 
+\(x_1,\ldots ,x_n \in {\mathbb Q}\cap (-1,1)\)
+ such that
+$$\begin{aligned} \frac{1}{n} \sum _{i=1}^n f(x_i) = \int _{-1}^1 f(t) (1-t^2)^{(d-3)/2} dt \quad \text {for every } f \in \mathcal {P}_m, \end{aligned}$$
+
+                    (15)
+                
+where 
+d
+ is a positive integer with 
+\(d \ge 2\)
+.
+
+
+In algebraic combinatorics, especially in design theory on the unit sphere 
+\(\mathbb {S}^d\)
+, it is customary to use the term 
+interval design
+ instead of design. Interval designs for Gegenbauer measure 
+\((1-t^2)^{(d-3)/2}dt / \int _{-1}^1 (1-t^2)^{(d-3)/2}dt\)
+ are highly motivated by the construction of spherical designs; for example, see Bajnok [
+2
+], Rabau and Bajnok [
+30
+], Wagner [
+36
+]. As commented by Xiang [
+38
+], it is still an open question to present an explicit construction of rational designs for Gegenbauer measure in general.
+In this paper we restrict our attention to density functions 
+w
+(
+t
+) that correspond to 
+symmetric classical orthogonal polynomials
+, namely 
+\(w(t) = e^{-t^2}/\sqrt{\pi }\)
+ on 
+\((-\infty ,\infty )\)
+ or 
+\(w(t) = (1-t^2)^{\lambda -1/2} / \int _{-1}^1 (1-t^2)^{\lambda -1/2}dt\)
+ on 
+\((-1,1)\)
+ where 
+\(\lambda > -1/2\)
+, and then extensively discuss Problem 
+2.8
+, especially for 
+\(m \le 5\)
+. A motivation for the degree five and four cases comes from the study of Waring’s problem; for example, see Remark 
+2.13
+ and Proposition 
+2.14
+.
+
+
+Remark 2.9
+
+
+As seen in Proposition 
+2.7
+, an 
+m
+-design with 
+n
+ points is equivalent to Hilbert-Kamke equations (
+14
+). In the framework of the Hilbert-Kamke problem and Waring’s problem, it is often allowed that 
+\(x_i = x_j\)
+ for distinct 
+i
+ and 
+j
+, whereas this is not often the case in geometric design theory. On the other hand, it is often the case to only deal with positive rationals 
+\(x_i\)
+ for the Hilbert-Kamke equation, whereas negative rationals are also allowed in design theory; for example see Nathanson [
+25
+, § 4.3].
+
+
+2.2 
+Hilbert-Kamke equations and Hausdorff’s construction
+For positive integers 
+n
+ and 
+r
+, let 
+s
+(
+n
+, 
+r
+) be the minimum number 
+s
+ such that 
+\(n = n_1^r+\cdots +n_s^r\)
+ for some 
+s
+-tuple 
+\((n_1,\ldots ,n_s) \in {\mathbb N}^s\)
+, and let
+$$ g(r) = \max _{n \in {\mathbb N}} s(n,r). $$
+The classical Waring problem asks whether 
+g
+(
+r
+) is finite and, if 
+\(g(r) < \infty \)
+, what 
+g
+(
+r
+) is. The Lagrange four-square theorem states that 
+\(g(2) = 4\)
+.
+
+
+Remark 2.10
+
+
+The Gauss three-square theorem is a refinement of the four-square theorem, stating that a positive integer 
+n
+ is a sum of three squares of integers if and only if 
+n
+ is not of the form 
+\(4^e(8k+7)\)
+, where 
+e
+ and 
+k
+ are non-negative integers.
+
+
+After Lagrange, in 1859, Liouville made the first progress for 
+\(r \ge 3\)
+, who proved that every positive integer can be represented as a sum of at most 53 fourth powers of integers (biquadrates). A key for the proof is the polynomial identity
+$$\begin{aligned} 6(X_1^2 + X_2^2 + X_3^2 + X_4^2)^2 = \sum _{1\le i<j \le 4} \{(X_i+X_j)^4 + (X_i-X_j)^4\}. \end{aligned}$$
+
+                    (16)
+                
+
+
+Definition 2.11
+
+
+(cf. [
+27
+, 
+32
+]) A polynomial identity of type
+$$\begin{aligned} (X_1^2 + \cdots + X_n^2)^r = \sum _{i = 1}^M c_i (a_{i1} X_1 + \cdots + a_{in} X_n)^{2r}, \end{aligned}$$
+
+                    (17)
+                
+where 
+\(c_i \in {\mathbb R}_{>0}\)
+ and 
+\(a_{ij} \in {\mathbb R}\)
+, is called a 
+Hilbert identity
+. In particular, when 
+\(c_i \in {\mathbb Q}_{>0}\)
+ and 
+\(a_{ij} \in {\mathbb Q}\)
+, this is called a 
+rational (Hilbert) identity
+.
+
+
+After Liouville, mathematicians in the late 19th century found similar identities to show the finiteness of 
+g
+(
+r
+) for small 
+r
+. It was Hilbert who finally and completely established that 
+\(g(r) < \infty \)
+ for all 
+r
+. A key step of Hilbert’s proof is Theorem 
+2.12
+ below, which was originally stated in 5 indeterminates 
+\(X_1,\ldots ,X_5\)
+.
+
+
+Theorem 2.12
+
+
+(Hilbert’s lemma) For any 
+\(n,r \in {\mathbb N}\)
+, there exist 
+\(a_{ij} \in {\mathbb Q}\)
+ and 
+\(c_i \in {\mathbb Q}_{>0}\)
+ such that
+$$\begin{aligned} (X_1^2 + \cdots + X_n^2)^r = \sum _{i = 1}^{\left( {\begin{array}{c}2r+n-1\\ 2r\end{array}}\right) } c_i (a_{i1} X_1 + \cdots + a_{in} X_n)^{2r}. \end{aligned}$$
+
+                    (18)
+                
+
+
+Hilbert’s proof is known to be fairly long and complicated. For a good expository work concerning Theorem 
+2.12
+, we refer the reader to Pollack [
+29
+].
+After the pioneering work by Hilbert, the attention of those who had studied Waring’s problem turned to the determination of 
+g
+(
+r
+). 
+\(g(3)=9\)
+ was established by Wieferich and Kempner from 1909 to 1912. Their proof involves the formal derivative of Liouville’s identity (
+16
+). For an early history on Waring’s problem, we refer the reader to Dickson’s book [
+12
+, pp.717–725].
+Since the 1920s, a powerful technique called the 
+circle method
+ was developed by Hardy and Littlewood, which has drastically changed the situation of Waring’s problem. Surprisingly, over 20 years after the development of the circle method, 
+g
+(
+r
+) was completely determined for all 
+\(r \ge 7\)
+ by Dickson, Niven and so on. Afterwards, 
+\(g(6) = 73\)
+ was established by Pillai in 1940, and 
+\(g(5) = 37\)
+ by Chen in 1964.
+It was Balasubramanian, Deshouillers and Dress who established 
+\(g(4) = 19\)
+ in a series of papers published from 1988 to 1993. Their proof mainly consists of two parts. The first part makes use of the circle method, in order to show that every positive integer 
+\(n > 10^{367}\)
+ is a sum of at most 19 biquadrates. The second part is to check on a large-scale computer system whether each 
+\(n \le 10^{367}\)
+ can be actually represented as a sum of at most 19 biquadrates.
+Now, 
+\(10^{367}\)
+ is an astronomical number. It was Kawada and Wooley [
+19
+] who combined the circle method with the polynomial identity
+$$\begin{aligned} 2(X^2 + XY + Y^2)^2 = X^4 + Y^4 + (X+Y)^4 \end{aligned}$$
+
+                    (19)
+                
+and thereby improved 
+\(10^{367}\)
+ to 
+\(10^{146}\)
+.
+
+
+Remark 2.13
+
+
+As implied by Kawada and Wooley [
+19
+], the collaboration of the circle method and polynomial identity approach is key in the study of Waring’s problem for the degree four case, which exactly applies to Hilbert-Kamke problem, as will be seen in both Sections 
+5
+ and 
+8
+. While we mainly consider geometric designs and Hilbert-Kamke equations of degree five in this paper, we point out that, for a positive integer 
+d
+, a set 
+X
+ is a spherical 4-design on 
+\(\mathbb {S}^d\)
+ if and only if 
+\(X \cup (-X)\)
+ is a spherical 5-design on 
+\(\mathbb {S}^d\)
+.
+
+
+Then what is the polynomial identity (
+19
+)?
+
+
+Proposition 2.14
+
+
+The polynomial identity (
+19
+) is transformed to the following Hilbert identity by a regular transformation:
+$$\begin{aligned} (X_1^2 + X_2^2)^2 = \frac{2}{3} \sum _{k=0}^2 \Big ( \cos \Big (\frac{4k + 3}{6}\pi \Big ) X_1 + \sin \Big (\frac{4k + 3}{6}\pi \Big ) X_2 \Big )^4. \end{aligned}$$
+
+                    (20)
+                
+
+
+Proof of Proposition 2.14
+
+
+The result follows by taking the regular transformation
+$$ X = \frac{-\sqrt{3}X_1+X_2}{\sqrt{6}}, \quad Y = \frac{\sqrt{3}X_1+X_2}{\sqrt{6}}. $$
+\(\square \)
+
+
+We now go back to Hilbert’s lemma (Theorem 
+2.12
+). After Hilbert, a number of publications have been devoted to the simplification of the original proof of Theorem 
+2.12
+. A significant contribution was made by Hausdorff [
+16
+], who first established
+$$ \begin{aligned} {\int \cdots \int }_{{\mathbb R}^n} (u_1 X_1 + \cdots + u_n X_n)^{2r} \ e^{-(u_1^2+\cdots +u_n^2)} du_1 \cdots du_n \\ = c_{n,r} (X_1^2 + \cdots + X_n^2)^r \ \text { for some constant } c_{n,r} \end{aligned} $$
+and then constructed an iterated sum in order to obtain a rational Hilbert identity. In doing so, Hausdorff showed the following key lemma by making use of the zeros of the Hermite polynomial of degree 
+\(2r+1\)
+.
+
+
+Theorem 2.15
+
+
+(Hausdorff’s lemma) There exist 
+\(x_1, \ldots , x_{2r+1} \in {\mathbb Q}\)
+ and 
+\(\lambda _1, \ldots , \lambda _{2r+1} \in {\mathbb Q}_{>0}\)
+ such that
+$$\begin{aligned} \sum _{i=1}^{2r+1} \lambda _i x_i^j = \frac{1}{\sqrt{\pi }} \int _{-\infty }^\infty t^j \ e^{-t^2}dt, \qquad j=0,1,\ldots ,2r. \end{aligned}$$
+
+                    (21)
+                
+
+
+As noted after Proposition 
+2.7
+, generalizations of Theorem 
+2.15
+ are given by Sawa and Uchida [
+33
+, Theorem 5.5] and Matsumura [
+22
+].
+A brief explanation of Hausdorff’s method is available in Nesterenko [
+26
+, p.4700], where a further refinement of Hausdorff’s arguments is discussed.
+The equations (
+21
+) are just weighted Hilbert-Kamke equations (
+14
+) for Hermite measure 
+\(e^{-t^2}dt/\sqrt{\pi }\)
+. It should be noted that, if one could explicitly construct a rational solution of the equations, then Hausdorff’s method generates an explicit construction of rational identities, which can also be applied in the realization of solutions of Waring problem.
+2.3 
+Rational points and the genus of a curve
+We first review some terminology on algebraic and arithmetic geometry used in Subsection 
+2.4
+ (see [
+18
+] for details).
+Let 
+C
+ be a projective, irreducible, and smooth curve. Then the dimension of the vector space of holomorphic differential forms on 
+C
+ is called the 
+(geometric) genus
+ of 
+C
+ and denoted by 
+g
+(
+C
+). When an irreducible curve is not necessarily smooth or projective, the genus of the curve is defined to be the genus of a smooth projective curve which is birational to the curve.
+Let 
+C
+ be a curve defined over 
+\({\mathbb Q}\)
+ with 
+\(g(C)\ge 2\)
+. We can explicitly determine 
+\(C({\mathbb Q})\)
+ with Chabauty’s method if 
+C
+ satisfies a certain condition explained below. The 
+Jacobian variety
+ 
+J
+ of 
+C
+ is an Abelian variety of dimension 
+g
+(
+C
+) which is isomorphic to the divisor class group of degree 0 of 
+C
+ as groups. By the Mordell-Weil theorem, the group 
+\(J({\mathbb Q})\)
+ of rational points of 
+J
+ is finitely generated. The rank of 
+\(J({\mathbb Q})\)
+ as a 
+\({\mathbb Z}\)
+-module is called the 
+Mordell-Weil rank
+ of 
+J
+. When the Mordell-Weil rank of 
+J
+ is less than the genus of 
+C
+, the rational points on 
+C
+ can be determined by Chabauty’s method. Chabauty’s method for genus 2 curves is implemented as the function 
+Chabauty
+ in the computer algebra system Magma [
+6
+]. We will use this function 
+Chabauty
+ in the proof of Theorem 
+2.21
+ in Subsection 
+2.4
+.
+Next, we review some algebro-geometric terminology used in Section 
+4
+, most of which can be found in [
+9
+, 
+15
+, 
+34
+]. Until the end of this subsection we do not assume that varieties are irreducible; we assume that varieties are defined over 
+\(\overline{{\mathbb Q}}\)
+ unless otherwise stated.
+For homogeneous polynomials 
+\(F_1,\dotsc ,F_r\in \overline{{\mathbb Q}}[X_0,\dotsc ,X_n]\)
+, we define
+$$ Z(F_1, \dotsc , F_r) = \{\varvec{x} \in \mathbb {P}^n \mid F_1(\varvec{x}) = \cdots = F_r(\varvec{x}) = 0\}. $$
+A subset 
+\(X\subset \mathbb {P}^n\)
+ is called a 
+projective variety
+ if there exist homogeneous polynomials 
+\(F_1,\dotsc ,F_r\in \overline{{\mathbb Q}}[X_0,\dotsc ,X_n]\)
+ such that 
+\(X=Z(F_1,\dotsc ,F_r)\)
+. For a projective variety 
+\(X\subset \mathbb {P}^n\)
+, the 
+ideal
+ (or 
+annihilating ideal
+) of 
+X
+ is defined by
+$$ I(X) = \{F \in \overline{{\mathbb Q}}[X_0,\dotsc ,X_n] \mid F(\varvec{x}) = 0 \text { for all } \varvec{x} \in X\}. $$
+Let 
+\(F_1,\dotsc ,F_r\in \overline{{\mathbb Q}}[X_0,\dotsc ,X_n]\)
+ be homogeneous polynomials. We define the 
+Jacobian matrix
+ 
+\(J(\varvec{x})\)
+ by
+$$ J(\varvec{x}) = \left( \dfrac{\partial F_i}{X_j}(\varvec{x}) \right) _{\begin{array}{c} 1\le i\le r \\ 0\le j\le n \end{array}}. $$
+Following [
+7
+], we call the set 
+\(\{F_1,\dotsc ,F_r\}\)
+ a 
+nonsingular system
+ if 
+\({{\,\textrm{rank}\,}}J(\varvec{x})=r\)
+ for every nonzero 
+\(\varvec{x}\in \overline{{\mathbb Q}}^n\)
+ satisfying 
+\(F_i(\varvec{x})=0\)
+, 
+\(i=1,\dotsc ,r\)
+.
+A projective variety 
+\(X\subset \mathbb {P}^n\)
+ of dimension 
+\(n-r\)
+ is called a 
+complete intersection
+ if 
+I
+(
+X
+) can be generated by 
+r
+ homogeneous polynomials.
+
+
+Lemma 2.16
+
+
+Let 
+\(\{F_1,\dotsc ,F_r\}\)
+ be a nonsingular system of homogeneous polynomials and let 
+\(X=Z(F_1,\dotsc ,F_r)\subset \mathbb {P}^n\)
+. Then 
+I
+(
+X
+) is generated by 
+\(F_1,\dotsc ,F_r\)
+, and 
+X
+ is a smooth complete intersection of dimension 
+\(n-r\)
+. Moreover, if 
+\(n-r\ge 1\)
+, then 
+X
+ is irreducible.
+
+
+Proof of Lemma 2.16
+
+
+See [
+7
+, Lemma 3.2]. Note that it is proved that 
+X
+ is geometrically integral in [
+7
+, Lemma 3.2], which implies that 
+X
+ is irreducible over 
+\(\overline{{\mathbb Q}}\)
+. 
+\(\square \)
+
+
+Let 
+C
+ be an irreducible curve. The arithmetic genus of 
+C
+ is denoted by 
+\(p_a(C)\)
+. If 
+C
+ is smooth, then 
+\(p_a(C)\)
+ coincides with the geometric genus of 
+C
+. Let 
+\(\tilde{C}\)
+ be the normalization of 
+C
+. Then 
+\(\tilde{C}\)
+ is a smooth curve. We call 
+\(p_a(\tilde{C})\)
+ the genus of 
+C
+.
+
+
+Lemma 2.17
+
+
+Let 
+\(F_1,F_2\in \overline{{\mathbb Q}}[X_0,X_1,X_2,X_3]\)
+ be homogeneous polynomials with 
+\(\deg F_1=d\)
+ and 
+\(\deg F_2=e\)
+. Let 
+\(C=Z(F_1,F_2)\subset \mathbb {P}^3\)
+. If 
+C
+ is a complete intersection, then we have 
+\(p_a(C)=de(d+e-4)/2+1\)
+.
+
+
+Proof of Lemma 2.17
+
+
+See [
+15
+, Exercise I.7.2 (d)]. 
+\(\square \)
+
+
+Remark 2.18
+
+
+We can calculate the arithmetic genus of a complete intersection of any dimension. For example, see [
+1
+].
+
+
+Lemma 2.19
+
+
+Let 
+C
+ be an irreducible curve and let 
+\(\tilde{C}\)
+ be the normalization of 
+C
+. For 
+\(P\in C\)
+, we write 
+\(\mathcal {O}_P\)
+ and 
+\(\tilde{\mathcal {O}}_P\)
+ for the local ring at 
+P
+ and the integral closure of 
+\(\mathcal {O}_P\)
+, respectively. Let 
+\(\delta _P=\operatorname {length} (\tilde{\mathcal {O}}_P/\mathcal {O}_P)\)
+. Then we have
+$$ p_a(C) = p_a(\tilde{C}) + \sum _{P\in C} \delta _P. $$
+
+
+Proof of Lemma 2.19
+
+
+See [
+15
+, Exercise IV.1.8 (a)] or [
+21
+, Proposition 7.5.4]. 
+\(\square \)
+
+
+2.4 
+A geometric characterization of Hilbert-Kamke equations
+The study of antipodal rational designs for symmetric measures is naturally motivated by the following fact.
+
+
+Theorem 2.20
+
+
+([
+24
+]) Let 
+\(m=2\ell -1\)
+ be an odd integer and 
+n
+ be a positive integer with 
+\(n \le m+1\)
+. Then the Hilbert-Kamke equations (
+14
+) for symmetric classical measures have only antipodal solutions.
+
+
+This result was first observed by the present authors only for 
+\((m,n) = (5,6)\)
+. Afterwards, the general version was established by Misawa et al. [
+24
+]. The proof of Theorem 
+2.20
+ makes use of Newton’s identity on elementary symmetric polynomials and power sums.
+Now, we have a look at applications of Theorem 
+2.20
+ for 
+\((m,n) = (5,3),(5,4),(5,5)\)
+. First we consider a 5-design with 
+n
+ rational points for Gegenbauer measure 
+\((1-t^2)^{\lambda -1/2}dt/\int _{-1}^1 (1-t^2)^{\lambda -1/2} dt\)
+, namely
+$$\begin{aligned} \frac{1}{n} \sum _{i=1}^n x_i^k = \frac{1}{\int _{-1}^1 (1-t^2)^{\lambda -1/2} dt} \int _{-1}^1 t^k (1-t^2)^{\lambda -1/2} dt, \quad k = 1,2,3,4,5. \end{aligned}$$
+
+                    (22)
+                
+The moments 
+\(a_k\)
+ are computed as follows. For a nonnegative integer 
+k
+, we have
+$$ \int _{-1}^1 t^{2k} (1-t^2)^{\lambda -1/2} dt = 2 \int _0^1 t^{2k} (1-t^2)^{\lambda -1/2} dt. $$
+Putting 
+\(x=t^2\)
+, we have
+$$\begin{aligned} \begin{aligned} 2 \int _0^1 t^{2k} (1-t^2)^{\lambda -1/2} dt = \int _0^1 x^{k-1/2} (1-x)^{\lambda -1/2} dx \\ = B\left( k+\frac{1}{2},\lambda +\frac{1}{2}\right) = \frac{\Gamma (k+1/2)\Gamma (\lambda +1/2)}{\Gamma (k+\lambda +1)}, \end{aligned} \end{aligned}$$
+
+                    (23)
+                
+where 
+B
+(
+t
+) and 
+\(\Gamma (t)\)
+ are the beta and gamma functions, respectively. Then
+$$\begin{aligned} a_2&= \frac{\Gamma (3/2)\Gamma (\lambda +1/2)}{\Gamma (\lambda +2)} \cdot \frac{\Gamma (\lambda +1)}{\Gamma (1/2)\Gamma (\lambda +1/2)} = \frac{1}{2(\lambda +1)}, \end{aligned}$$
+
+                    (24)
+                
+$$\begin{aligned} a_4&= \frac{\Gamma (5/2)\Gamma (\lambda +1/2)}{\Gamma (\lambda +3)} \cdot \frac{\Gamma (\lambda +1)}{\Gamma (1/2)\Gamma (\lambda +1/2)} = \frac{3}{4(\lambda +1)(\lambda +2)}. \end{aligned}$$
+
+                    (25)
+                
+We also have 
+\(a_{2\ell -1} = 0\)
+ for 
+\(\ell =1,2,\ldots \)
+.
+By Theorem 
+2.20
+, 
+\(x_1,\dotsc ,x_n\)
+ are antipodal and hence we may assume that 
+\(x_i=-x_{n+1-i}\)
+ for 
+\(i=1,\dotsc ,n\)
+. For 
+\(n=3\)
+, the solutions of (
+22
+) are 
+\(\lambda =0\)
+ and 
+\(x_1=\pm \sqrt{3}/2\)
+. Hence there do not exist 5-designs with 3 rational points. For 
+\(n=4,5\)
+, after eliminating 
+\(\lambda \)
+, the equations (
+22
+) can be reduced to finding rational points of the curves
+$$\begin{aligned} 2 (x_1^4 + x_2^4) (x_1^2 + x_2^2 + 1) = 3 (x_1^2 + x_2^2)^2, \end{aligned}$$
+
+                    (26)
+                
+$$\begin{aligned} (x_1^4 + x_2^4) (4 x_1^2 + 4 x_2^2 + 5) = 6 (x_1^2 + x_2^2)^2, \end{aligned}$$
+
+                    (27)
+                
+respectively.
+
+
+Theorem 2.21
+
+
+(i) The rational points of (
+26
+) are completely classified by
+$$ (x_1,x_2) = (-1,-1), (-1,1), (0,0), (1,-1), (1,1). $$
+In particular there do not exist rational 5-designs with 4 points for Gegenbauer measure 
+\((1-t^2)^{\lambda -1/2}dt/\int _{-1}^1 (1-t^2)^{\lambda -1/2} dt\)
+ on 
+\((-1,1)\)
+. 
+
+
+
+
+(ii)
+
+
+The rational points of (
+27
+) are completely classified by 
+$$ (x_1,x_2) = \left( -\frac{1}{2},0\right) , \left( 0,-\frac{1}{2}\right) , (0,0), \left( 0,\frac{1}{2}\right) , \left( \frac{1}{2},0\right) . $$
+ In particular there do not exist rational 5-designs with 5 points for Gegenbauer measure 
+\((1-t^2)^{\lambda -1/2}dt/\int _{-1}^1 (1-t^2)^{\lambda -1/2} dt\)
+ on 
+\((-1,1)\)
+.
+
+
+
+
+
+
+To prove Theorem 
+2.21
+, we will use the function 
+Chabauty
+ in Magma [
+6
+], which implements Chabauty’s method (see Subsection 
+2.3
+).
+
+
+Proof of Theorem 2.21
+
+
+We first consider the equation (
+26
+). Assume that 
+\(x_1\ne 0\)
+ and set 
+\(t=x_2^2/x_1^2\)
+. Eliminating 
+\(x_2\)
+ from (
+26
+), we have
+$$ 2 (x_1^4 + t^2 x_1^4) (x_1^2 + t x_1^2 + 1) = 3 (x_1^2 + t x_1^2)^2. $$
+Dividing both sides by 
+\(x_1^4\)
+, we have
+$$ 2 (1 + t^2) ((1 + t) x_1^2 + 1) = 3 (1 + t)^2, $$
+that is,
+$$ 2 (1 + t^2) (1 + t) x_1^2 = t^2 + 6 t + 1. $$
+Putting 
+\(x=2t\)
+ and 
+\(y = 8 (1 + t^2) (1 + t) x_1\)
+, we obtain a genus 2 curve
+$$ C_1 :y^2 = x^5 + 14 x^4 + 32 x^3 + 64 x^2 + 112 x + 32. $$
+We can verify that the Mordell-Weil rank of the Jacobian variety of 
+\(C_1\)
+ is equal to 1 with Magma. Then, by using Magma’s function 
+Chabauty
+, we have
+$$ C_1({\mathbb Q}) = \{ \infty , (-2,0), (2,-32), (2,32) \}, $$
+where 
+\(\infty \)
+ is the point at infinity. Since 
+\(t=x_2^2/x_1^2\ge 0\)
+, we have 
+\(x\ge 0\)
+. Hence it is sufficient to consider the points 
+\((2,-32)\)
+ and (2, 32) on 
+\(C_1\)
+. When 
+\((x,y)=(2,-32)\)
+, we obtain 
+\(t=1\)
+ and 
+\(x_1=-1\)
+. Thus we have 
+\(x_2^2=1\)
+. Similarly, we obtain 
+\(x_1=1\)
+ and 
+\(x_2^2=1\)
+ when 
+\((x,y)=(2,32)\)
+. Therefore we have 
+\((x_1,x_2)=(-1,-1),(-1,1),(1,-1),(1,1)\)
+. When 
+\(x_1=0\)
+, substituting it into (
+26
+), we have
+$$ 2 x_2^4 (x_2^2 + 1) = 3 x_2^4. $$
+Then we have 
+\(x_2=0,\pm 1/\sqrt{2}\)
+. Since 
+\(x_2\)
+ is rational, we have 
+\((x_1,x_2)=(0,0)\)
+.
+
+
+Next we consider the equation (
+27
+). We assume that 
+\(x_1\ne 0\)
+ and set 
+\(t=x_2^2/x_1^2\)
+. Eliminating 
+\(x_2\)
+ from (
+27
+), we have
+$$ (x_1^4 + t^2 x_1^4) (4 x_1^2 + 4 t x_1^2 + 5) = 6 (x_1^2 + t x_1^2)^2. $$
+Dividing both sides by 
+\(x_1^4\)
+, we have
+$$ (1 + t^2) (4 (1 + t) x_1^2 + 5) = 6 (1 + t)^2, $$
+that is,
+$$ 4 (1 + t^2) (1 + t) x_1^2 = t^2 + 12 t + 1. $$
+Putting 
+\(x=t\)
+ and 
+\(y = 2 (1 + t^2) (1 + t) x_1\)
+, we obtain a genus 2 curve
+$$ C_2 :y^2 = x^5 + 13 x^4 + 14 x^3 + 14 x^2 + 13 x + 1. $$
+We can verify that the Mordell-Weil rank of the Jacobian variety of 
+\(C_2\)
+ is equal to 1 with Magma. Then, by using Magma’s function 
+Chabauty
+, we have
+$$ C_2({\mathbb Q}) = \{ \infty , (-1,0), (0,-1), (0,1) \}. $$
+Since 
+\(t=x_2^2/x_1^2\ge 0\)
+, we have 
+\(x\ge 0\)
+. Hence we have 
+\(t=x=0\)
+ and 
+\(x_2=0\)
+. By (
+27
+), we have 
+\(x_1^4(4x_1^2+5)=6x_1^4\)
+. Since 
+\(x_1\ne 0\)
+, we have 
+\(4x_1^2+5=6\)
+. Therefore we obtain 
+\(x_1=\pm 1/2\)
+. When 
+\(x_1=0\)
+, by a similar argument, we have 
+\(x_2=0, \pm 1/2\)
+. 
+\(\square \)
+
+
+Next we consider the Hermite measure case for 
+\(n \in \{3,4,5\}\)
+. Then the moments 
+\(a_k\)
+ are given as
+$$\begin{aligned} a_{2k} = \frac{(2k)!}{2^{2k} k!},\quad a_{2k+1} = 0, \quad k=0,1,\ldots \end{aligned}$$
+
+                    (28)
+                
+By Theorem 
+2.20
+, if
+$$ \frac{1}{n} \sum _{i=1}^n x_i^k = \frac{1}{\sqrt{\pi }} \int _{-\infty }^\infty t^k e^{-t^2}dt, \quad k = 1,2,3,4,5, $$
+then 
+\(x_i\)
+ are antipodal, say 
+\(x_i = -x_{n+1-i}\)
+. As in the Chebyshev-Gauss quadrature (
+12
+), a 5-design for 
+\(n=3\)
+ is uniquely determined by the zeros of Hermite polynomial
+$$ H_3(t) = t^3-3t = t(t-\sqrt{3})(t+\sqrt{3}), $$
+which is not rational. By (
+28
+), a 5-design for 
+\(n = 4\)
+ or 
+\(n = 5\)
+ is reduced to the equations
+$$ x_1^2 + x_2^2 = 1, \quad x_1^4 + x_2^4 = \frac{3}{2} $$
+or
+$$ x_1^2 + x_2^2 = \frac{5}{4}, \quad x_1^4 + x_2^4 = \frac{15}{8}. $$
+In any case, the solutions are irrational. In summary, we obtain the following result.
+
+
+Theorem 2.22
+
+
+For 
+\(n = 3,4,5\)
+, there do not exist rational 5-designs with 
+n
+ points for 
+\(e^{-t^2}dt/\sqrt{\pi }\)
+ on 
+\((-\infty ,\infty )\)
+.
+
+
+Remark 2.23
+
+
+For 
+\(n=4,5\)
+, there do not exist 5-designs with 
+n
+ (not necessarily rational) points for 
+\(e^{-t^2}dt/\sqrt{\pi }\)
+ on 
+\((-\infty ,\infty )\)
+; more details can be found in Gautschi [
+14
+].
+
+
+3 
+Proof of Theorem 
+1.1
+
+
+Let us consider the Hermite measure 
+\(e^{-t^2}dt/\sqrt{\pi }\)
+ on 
+\((-\infty ,\infty )\)
+. By (
+28
+), an antipodal 3-design of type
+$$\begin{aligned} \frac{1}{n} \sum _{i=1}^{n} f(x_i)&= \frac{1}{\sqrt{\pi }} \int _{-\infty }^{\infty } f(t) e^{-t^2}dt \end{aligned}$$
+
+                    (29)
+                
+is equivalent to a disjoint solution of the Diophantine equations
+$$\begin{aligned} x_1 + x_2 + \cdots + x_n&= 0, \end{aligned}$$
+
+                    (30)
+                
+$$\begin{aligned} x_1^2 + x_2^2 + \cdots + x_n^2&= \frac{n}{2}. \end{aligned}$$
+
+                    (31)
+                
+It is obvious that the equations (
+30
+) and (
+31
+) have no rational solutions for 
+\(n=1,2\)
+. Thus, the smallest case to be solved is 
+\(n=3\)
+.
+
+
+Lemma 3.1
+
+
+There do not exist 3-designs with 3 rational points for 
+\(e^{-t^2}dt/\sqrt{\pi }\)
+ on 
+\((-\infty ,\infty )\)
+.
+
+
+Proof of Lemma 3.1
+
+
+Suppose contrary. Then by Theorem 
+2.20
+,
+$$ x_1^k + x_2^k + x_3^k = 3a_k, \quad k=1,2,3 $$
+have only antipodal solutions. Without loss of generality, we may let 
+\(x_1=0\)
+ and 
+\(x_2 = -x_3\)
+. This is however impossible, since 
+\(3/2 = 3a_2 = 2x_2^2\)
+ by (
+28
+). 
+\(\square \)
+
+
+Lemma 3.2
+
+
+For any positive integer 
+\(n \ge 4\)
+ except possibly for 
+\(n = 7\)
+, there exists an antipodal 3-design with 
+n
+ rational points for 
+\(e^{-t^2}dt/\sqrt{\pi }\)
+ on 
+\((-\infty ,\infty )\)
+.
+
+
+Proof of Lemma 3.2
+
+
+For 
+\(n=4\)
+, the equations (
+30
+) and (
+31
+) have an antipodal solution, say 
+\(x_3 = -x_1\)
+ and 
+\(x_4 = -x_2\)
+, which can be reduced to finding rational points on the unit circle 
+\(\mathbb {S}^1 = \{(x,y) \in \mathbb {R}^2 \mid x^2+y^2=1 \}\)
+. All rational points of 
+\(\mathbb {S}^1\)
+ are completely classified by
+$$\begin{aligned} x_1 = \frac{1-t^2}{1+t^2}, \quad x_2 = \frac{2t}{1+t^2}, \quad t \in {\mathbb Q}. \end{aligned}$$
+
+                    (32)
+                
+Similarly for 
+\(n=5\)
+, the equations (
+30
+) and (
+31
+) have an antipodal solution, say 
+\(x_4=-x_1, x_5=-x_2, x_3=0\)
+, which can be reduced to finding rational points on the circle 
+\(x_1^2+x_2^2=\frac{5}{4}\)
+. All rational points on this circle are completely classified by
+$$\begin{aligned} x_1 = \frac{t^2-t-1}{1+t^2}, \quad x_2 = \frac{-t^2-4t+1}{2+2t^2}, \quad t \in {\mathbb Q}. \end{aligned}$$
+
+                    (33)
+                
+As already seen in Example 
+2.5
+,
+$$ (x_1,x_2,x_3,x_4,x_5,x_6) = \Big (\frac{1}{7}, \frac{11}{14}, \frac{-13}{14}, -\frac{1}{7}, -\frac{11}{14}, -\frac{13}{14} \Big ) $$
+presents an antipodal 3-design (5-design) with 6 rational points. Note that infinitely many disjoint rational points 
+\((x_1,x_2)\)
+ on circles can be chosen from (
+32
+) and (
+33
+). Therefore, by Proposition 
+2.6
+, we obtain an antipodal rational 3-design for 
+\(n \ge 4\)
+ except possibly for 
+\(n=7\)
+. 
+\(\square \)
+
+
+The following shows the nonexistence of antipodal 3-designs for 
+\(n = 7\)
+.
+
+
+Lemma 3.3
+
+
+A positive rational number 
+b
+ is a sum of three squares of rational numbers if and only if 
+b
+ is not of the form 
+\(r^2(8k+7)\)
+, where 
+r
+ is a positive rational number and 
+k
+ is a nonnegative integer.
+
+
+Proof of Lemma 3.3
+
+
+Suppose that 
+b
+ is not of the form 
+\(r^2(8k+7)\)
+. We can write 
+\(b = c/d^2\)
+, where 
+c
+ and 
+d
+ are positive integers. Then there exist unique non-negative integers 
+e
+, 
+k
+ and 
+l
+, for which 
+\(c = 4^e(8k+l)\)
+ and 
+\(l \in \{1,2,3,5,6,7\}\)
+. Since 
+b
+ is not of the form 
+\(r^2(8k+7)\)
+, we have 
+\(l \ne 7\)
+. By Remark 
+2.10
+, there exist integers 
+\(l_1,l_2,l_3\)
+ such that 
+\(l_1^2+l_2^2+l_3^2=c\)
+. Hence we have 
+\((l_1/d)^2 + (l_2/d)^2 + (l_3/d)^2 = b\)
+.
+
+
+Conversely, suppose that 
+\(b = r^2(8k+7)\)
+ and there exist rational numbers 
+\(m_1,m_2,m_3\)
+ for which 
+\(m_1^2 + m_2^2 + m_3^2 = b\)
+. We can write 
+\(m_i = n_i/d\)
+ and 
+\(r = c/d\)
+, where 
+\(n_1,n_2,n_3,c,d\)
+ are integers. Then we have 
+\(n_1^2 + n_2^2 + n_3^2 = c^2(8k+7)\)
+. Let 
+\(c = 2^e c'\)
+, where 
+e
+ is a non-negative integer and 
+\(c'\)
+ is an odd integer. Since 
+\((c')^2 \equiv 1 \pmod {8}\)
+, we have 
+\(c^2 (8k+7) = 4^e(8k'+7)\)
+, where 
+\(k'\)
+ is a non-negative integer. This is a contradiction to the comment in Remark 
+2.10
+. 
+\(\square \)
+
+
+We are now in a position to complete the proof of Theorem 
+1.1
+.
+
+
+Proof of Theorem 1.1
+
+
+In the Hermite measure case, combining Lemmas 
+3.1
+, 
+3.2
+ and 
+3.3
+, we obtain the desired result. 
+\(\square \)
+
+
+We close this section by discussing an analogue of Theorem 
+1.1
+ for the Gegenbauer measure 
+\((1-t^2)^{\lambda -1/2}dt/\int _{-1}^1 (1-t^2)^{\lambda -1/2} dt\)
+ with 
+\(\lambda > -1/2\)
+. For example when 
+\(\lambda =0\)
+, the corresponding measure is the Chebyshev measure 
+\((1-t^2)^{-1/2}dt/\pi \)
+. By (
+24
+), the second moment for the Chebyshev measure equals 
+\(a_2 = 1/2\)
+, which coincides with that for Hermite measure. Hence, as a corollary of Theorem 
+1.1
+, we obtain the following result.
+
+
+Corollary 3.4
+
+
+There exists an antipodal 3-design with 
+n
+ rational points for the Chebyshev measure 
+\((1-t^2)^{-1/2}dt/\pi \)
+ on 
+\((-1,1)\)
+ if and only if 
+\(n \notin \{1,2,3,7\}\)
+.
+
+
+Remark 3.5
+
+
+An analogue of Theorem 
+1.1
+ can be obtained for many values of 
+\(\lambda > -1/2\)
+, although there is not always a systematic way of treating the degree three case.
+
+
+4 
+Proof of Theorem 
+1.2
+
+
+By Theorem 
+2.20
+, a 5-design with 6 points for symmetric classical measure is always antipodal, which can be reduced to the equations
+$$\begin{aligned} \begin{aligned} x_1^2 + x_2^2 + x_3^2&= 3 a_2, \\ x_1^4 + x_2^4 + x_3^4&= 3 a_4. \end{aligned} \end{aligned}$$
+
+                    (34)
+                
+By substituting 
+\(x_i=X_i/X_0\)
+ in (
+34
+), we have the system of homogeneous equations
+$$\begin{aligned} X_1^2 + X_2^2 + X_3^2 - 3 a_2 X_0^2&= 0, \\ X_1^4 + X_2^4 + X_3^4 - 3 a_4 X_0^4&= 0. \end{aligned}$$
+We consider curves defined by such equations.
+In the following, we use the algebro-geometric terminology introduced in Subsection 
+2.3
+. We write 
+\(\varvec{X}=(X_0,X_1,X_2,X_3)\)
+ and define
+$$\begin{aligned} \begin{aligned} F_1(\varvec{X}) = X_1^2 + X_2^2 + X_3^2 - \alpha X_0^2, \\ F_2(\varvec{X}) = X_1^4 + X_2^4 + X_3^4 - \beta X_0^4, \end{aligned} \end{aligned}$$
+
+                    (35)
+                
+where 
+\(\alpha ,\beta \in \overline{{\mathbb Q}}^\times \)
+. Let 
+\(C=Z(F_1,F_2)\subset \mathbb {P}^3\)
+.
+
+
+Lemma 4.1
+
+
+The set 
+\(\{F_1,F_2\}\)
+ is a nonsingular system if and only if 
+\(\alpha ^2\notin \{\beta ,2\beta ,3\beta \}\)
+.
+
+
+Proof of Lemma 4.1
+
+
+The Jacobian matrix of the system 
+\(F_1(\varvec{X}) = F_2(\varvec{X}) = 0\)
+ is calculated as follows:
+$$ J(X_0,X_1,X_2,X_3) = \begin{pmatrix} -2 \alpha X_0 &  2 X_1 &  2 X_2 &  2 X_3 \\ -4 \beta X_0^3 &  4 X_1^3 &  4 X_2^3 &  4 X_3^3 \end{pmatrix}. $$
+Assume that 
+\(\{F_1,F_2\}\)
+ is not a nonsingular system. Then 
+\({{\,\textrm{rank}\,}}J(\varvec{x})\ne 2\)
+ for some nonzero 
+\(\varvec{x}=(x_0:x_1:x_2:x_3)\in \overline{{\mathbb Q}}^4\)
+ satisfying
+$$\begin{aligned} x_1^2 + x_2^2 + x_3^2 - \alpha x_0^2&= 0, \end{aligned}$$
+
+                    (36)
+                
+$$\begin{aligned} x_1^4 + x_2^4 + x_3^4 - \beta x_0^4&= 0. \end{aligned}$$
+
+                    (37)
+                
+We prove that 
+\(\alpha ^2\in \{\beta ,2\beta ,3\beta \}\)
+. Since all 
+\(2\times 2\)
+ minors of 
+\(J(\varvec{x})\)
+ vanish, we have
+$$\begin{aligned} \alpha x_0 x_i^3&= \beta x_0^3 x_i, \quad i = 1, 2, 3, \end{aligned}$$
+
+                    (38)
+                
+$$\begin{aligned} x_i x_j^3&= x_i^3 x_j, \quad 1 \le i < j \le 3. \end{aligned}$$
+
+                    (39)
+                
+
+
+
+
+(I)
+
+
+We first assume that 
+\(x_0\ne 0\)
+. For any 
+\(1\le i<j\le 3\)
+, the relation (
+39
+) implies at least one of the relations 
+\(x_i=0\)
+, 
+\(x_j=0\)
+, and 
+\(x_i^2=x_j^2\)
+. 
+
+
+
+
+(a)
+
+
+When 
+\(x_1^2=x_2^2=x_3^2\)
+, since 
+\(\varvec{x}\)
+ is nonzero, 
+\(x_1, x_2, x_3\)
+ are all nonzero. By (
+36
+) and (
+37
+), we have 
+$$ 3 x_1^2 - \alpha x_0^2 = 0, \quad 3 x_1^4 - \beta x_0^4 = 0. $$
+ Eliminating 
+\(x_0\)
+ and 
+\(x_1\)
+, we obtain 
+\(\alpha ^2=3\beta \)
+.
+
+
+
+
+
+
+(b)
+
+
+When 
+\(x_i^2\ne x_j^2\)
+ for some 
+i
+ and 
+j
+, we may assume that 
+\(x_2^2\ne x_3^2\)
+ without loss of generality. Then we have 
+\(x_2 x_3=0\)
+ by (
+39
+). We may assume that 
+\(x_3=0\)
+. 
+
+
+
+
+(i)
+
+
+When 
+\(x_1^2=x_2^2\)
+, by (
+36
+) and (
+37
+), we have 
+$$ 2 x_1^2 - \alpha x_0^2 = 0, \quad 2 x_1^4 - \beta x_0^4 = 0. $$
+ Eliminating 
+\(x_0\)
+ and 
+\(x_1\)
+, we obtain 
+\(\alpha ^2=2\beta \)
+.
+
+
+
+
+
+
+(ii)
+
+
+When 
+\(x_1^2\ne x_2^2\)
+, we have 
+\(x_1 x_2=0\)
+ by (
+39
+). We may assume that 
+\(x_2=0\)
+. Then, by (
+36
+) and (
+37
+), we have 
+$$ x_1^2 - \alpha x_0^2 = 0, \quad x_1^4 - \beta x_0^4 = 0. $$
+ Eliminating 
+\(x_0\)
+ and 
+\(x_1\)
+, we obtain 
+\(\alpha ^2=\beta \)
+.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(II)
+
+
+Next, we assume that 
+\(x_0=0\)
+. 
+
+
+
+
+(a)
+
+
+When 
+\(x_1^2=x_2^2=x_3^2\)
+, we have 
+\(3x_1^2=0\)
+ by (
+36
+). Hence we have 
+\(x_0=x_1=x_2=x_3=0\)
+, which contradicts the assumption that 
+\(\varvec{x}\)
+ is nonzero.
+
+
+
+
+
+
+(b)
+
+
+When 
+\(x_i^2\ne x_j^2\)
+ for some 
+i
+ and 
+j
+, we may assume that 
+\(x_2^2\ne x_3^2\)
+. Then we have 
+\(x_2 x_3=0\)
+ by (
+39
+). We may assume that 
+\(x_3=0\)
+. 
+
+
+
+
+(I)
+
+
+When 
+\(x_1^2=x_2^2\)
+, we have 
+\(2x_1^2=0\)
+ by (
+36
+). Hence we have 
+\(x_0=x_1=x_2=x_3=0\)
+, which is a contradiction.
+
+
+
+
+
+
+(II)
+
+
+When 
+\(x_1^2\ne x_2^2\)
+, we have 
+\(x_1 x_2=0\)
+ by (
+39
+). We may assume that 
+\(x_2=0\)
+. Then we have 
+\(x_1^2=0\)
+ by (
+36
+). Hence we have 
+\(x_0=x_1=x_2=x_3=0\)
+, which is a contradiction.
+
+
+
+
+
+
+
+
+
+
+
+
+Conversely, we assume that 
+\(\alpha ^2\in \{\beta ,2\beta ,3\beta \}\)
+. Then, the following points 
+\(\varvec{x}\)
+ satisfy (
+36
+), (
+37
+), and 
+\({{\,\textrm{rank}\,}}J(\varvec{x})\ne 2\)
+, where the ± signs are chosen independently. 
+
+
+
+
+(I)
+
+
+When 
+\(\alpha ^2=\beta \)
+, 
+\(\varvec{x}=(1 : \pm \sqrt{\alpha } : 0 : 0), (1 : 0 : \pm \sqrt{\alpha } : 0), (1 : 0 : 0 : \pm \sqrt{\alpha })\)
+.
+
+
+
+
+
+
+(II)
+
+
+When 
+\(\alpha ^2=2\beta \)
+, 
+\(\varvec{x}=(\sqrt{2} : \pm \sqrt{\alpha } : \pm \sqrt{\alpha } : 0), (\sqrt{2} : \pm \sqrt{\alpha } : 0 : \pm \sqrt{\alpha }), (\sqrt{2} : 0 : \pm \sqrt{\alpha } : \pm \sqrt{\alpha })\)
+.
+
+
+
+
+
+
+(III)
+
+
+When 
+\(\alpha ^2=3\beta \)
+, 
+\(\varvec{x}=(\sqrt{3}: \pm \sqrt{\alpha }: \pm \sqrt{\alpha }: \pm \sqrt{\alpha })\)
+.
+
+
+
+
+This completes the proof. 
+\(\square \)
+
+
+Lemma 4.2
+
+
+Let 
+C
+ be a curve defined by the equations 
+\(F_1(\varvec{X}) = 0\)
+ and 
+\(F_2(\varvec{X}) = 0\)
+. 
+
+
+
+
+(i)
+
+
+If 
+\(\alpha ^2\ne \beta , 2\beta , 3\beta \)
+, then 
+C
+ is an irreducible smooth curve of genus 9.
+
+
+
+
+
+
+(ii)
+
+
+If 
+\(\alpha ^2=\beta \)
+, then 
+C
+ is an irreducible singular curve with 6 singular points of genus 3.
+
+
+
+
+
+
+(iii)
+
+
+If 
+\(\alpha ^2=2\beta \)
+, then 
+C
+ has 4 irreducible components and each component is a smooth curve of genus 0.
+
+
+
+
+
+
+(iv)
+
+
+If 
+\(\alpha ^2=3\beta \)
+, then 
+C
+ has 2 irreducible components and each component is a smooth curve of genus 1.
+
+
+
+
+
+
+Proof of Lemma 4.2
+
+
+(i) By Lemma 
+4.1
+, 
+\(\{F_1,F_2\}\)
+ is a nonsingular system. Hence, 
+C
+ is a smooth complete intersection of a quadric and a quartic by Lemma 
+2.16
+. Therefore, 
+C
+ has genus 9 by Lemma 
+2.17
+.
+
+
+(ii) We may assume that 
+\(\alpha =1\)
+ by replacing 
+\(\sqrt{\alpha } X_0\)
+ with 
+\(X_0\)
+. We can verify that the curve 
+C
+ is irreducible over 
+\(\overline{{\mathbb Q}}\)
+ with Magma’s function 
+IsAbsolutelyIrreducible
+. The curve 
+C
+ has 6 singular points by the proof of Lemma 
+4.1
+. By symmetry, 
+\(\delta _P\)
+ for all singular points 
+P
+ have the same value 
+\(\delta \)
+. Hence, by Lemma 
+2.19
+, we have 
+\(p_a(C)=p_a(\tilde{C})+6\delta \)
+, where 
+\(\tilde{C}\)
+ is the normalization of 
+C
+. By Lemma 
+2.17
+, we have 
+\(p_a(C)=9\)
+. Since 
+\(\tilde{C}\)
+ is smooth, we have 
+\(p_a(\tilde{C})\ge 0\)
+. Therefore we have 
+\(p_a(\tilde{C})=9-6\delta \ge 0\)
+. Since 
+\(\delta \)
+ is a positive integer, we have 
+\(p_a(\tilde{C})=9-6\cdot 1=3\)
+.
+
+
+(iii) The proof is similar to the one for Lemma 
+5.1
+. Let 
+\(\varvec{x}=(x_0:x_1:x_2:x_3)\in C\)
+. Then we have 
+\(F_1(\varvec{x})=F_2(\varvec{x})=0\)
+, that is,
+$$\begin{aligned} x_1^2 + x_2^2 + x_3^2&= \alpha x_0^2, \end{aligned}$$
+
+                    (40)
+                
+$$\begin{aligned} x_1^4 + x_2^4 + x_3^4&= \beta x_0^4. \end{aligned}$$
+
+                    (41)
+                
+By squaring both sides of (
+40
+), we have
+$$\begin{aligned} x_1^4 + x_2^4 + x_3^4 + 2 x_1^2 x_2^2 + 2 x_1^2 x_3^2 + 2 x_2^2 x_3^2 = \alpha ^2 x_0^4. \end{aligned}$$
+
+                    (42)
+                
+Since 
+\(\alpha ^2=2\beta \)
+, by (
+41
+) and (
+42
+), we obtain
+$$\begin{aligned} 0&= 2 (x_1^4 + x_2^4 + x_3^4) - (x_1^4 + x_2^4 + x_3^4 + 2 x_1^2 x_2^2 + 2 x_1^2 x_3^2 + 2 x_2^2 x_3^2) \\&= x_1^4 + x_2^4 + x_3^4 - 2 x_1^2 x_2^2 - 2 x_1^2 x_3^2 - 2 x_2^2 x_3^2 \\&= (x_1 + x_2 + x_3) (x_1 + x_2 - x_3) (x_1 - x_2 + x_3) (x_1 - x_2 - x_3). \end{aligned}$$
+Let 
+\(G_{ij}(\varvec{X})=X_1+(-1)^i X_2+(-1)^j X_3\)
+ for 
+\(i,j=0,1\)
+. Then we have 
+\(G_{ij}(\varvec{x})=0\)
+ for some 
+i
+ and 
+j
+.
+
+
+Conversely, if 
+\(F_1(\varvec{x})=G_{ij}(\varvec{x})=0\)
+ for some 
+i
+ and 
+j
+, we have 
+\(F_1(\varvec{x})=F_2(\varvec{x})=0\)
+. Therefore we have 
+\(C=Z(F_1,G_{00})\cup Z(F_1,G_{01}) \cup Z(F_1,G_{10}) \cup Z(F_1,G_{11})\)
+.
+
+
+By eliminating 
+\(X_3\)
+ from 
+\(F_1(\varvec{X})=G_{ij}(\varvec{X})=0\)
+, we have
+$$ 2 X_1^2 \pm 2 X_1 X_2 + 2 X_2^2 - \alpha X_0^2 = 0. $$
+This equation defines a smooth conic in 
+\(\mathbb {P}^2\)
+, which is a curve of genus 0. Since 
+\(G_{ij}\)
+ is linear, 
+\(Z(F_1,G_{ij})\)
+ is a smooth curve of genus 0.
+
+
+(iv) Although the statement can be proved by using a computer algebra system such as Magma, we prove it by a direct calculation below.
+
+
+Let 
+\(\varvec{x}=(x_0:x_1:x_2:x_3)\in C\)
+. Then we have (
+40
+)–(
+42
+). Since 
+\(\alpha ^2=3\beta \)
+, by (
+41
+) and (
+42
+), we obtain
+$$\begin{aligned} 0&= 3 (x_1^4 + x_2^4 + x_3^4) - (x_1^4 + x_2^4 + x_3^4 + 2 x_1^2 x_2^2 + 2 x_1^2 x_3^2 + 2 x_2^2 x_3^2) \\&= 2 (x_1^4 + x_2^4 + x_3^4 - x_1^2 x_2^2 - x_1^2 x_3^2 - x_2^2 x_3^2) \\&= 2 (x_1^2 + \omega x_2^2 + \omega ^2 x_3^2) (x_1^2 + \omega ^2 x_2^2 + \omega x_3^2), \end{aligned}$$
+where 
+\(\omega \)
+ is a primitive third root of unity. Hence, setting 
+\(G_1(\varvec{X})=X_1^2+\omega X_2^2+\omega ^2 X_3^2\)
+ and 
+\(G_2(\varvec{X})=X_1^2+\omega ^2 X_2^2+\omega X_3^2\)
+, we have either 
+\(G_1(\varvec{x})=0\)
+ or 
+\(G_2(\varvec{x})=0\)
+.
+
+
+Conversely, for 
+\(i=1,2\)
+, if 
+\(F_1(\varvec{x})=G_i(\varvec{x})=0\)
+, then we have 
+\(F_1(\varvec{x})=F_2(\varvec{x})=0\)
+. Therefore we have 
+\(C=Z(F_1,G_1)\cup Z(F_1,G_2)\)
+.
+
+
+We prove that 
+\(\{F_1,G_1\}\)
+ is a nonsingular system. The Jacobian matrix of the system 
+\(\{F_1,G_1\}\)
+ is
+$$ J(X_0,X_1,X_2,X_3) = \begin{pmatrix} -2 \alpha X_0 &  2 X_1 &  2 X_2 &  2 X_3 \\ 0 &  2 X_1 &  2 \omega X_2 &  2 \omega ^2 X_3 \end{pmatrix}. $$
+Assume that 
+\({{\,\textrm{rank}\,}}J(\varvec{x})\ne 2\)
+ for some nonzero 
+\(\varvec{x}=(x_0:x_1:x_2:x_3)\in \overline{{\mathbb Q}}^4\)
+ satisfying 
+\(F_1(\varvec{x})=G_1(\varvec{x})=0\)
+. Then we have 
+\(x_i x_j=0\)
+ for all 
+\(0\le i<j\le 3\)
+. From this and 
+\(F_1(\varvec{x})=0\)
+, we have 
+\(x_0=x_1=x_2=x_3=0\)
+, which is a contradiction. Hence 
+\(\{F_1,G_1\}\)
+ is a nonsingular system. Similarly, 
+\(\{F_1,G_2\}\)
+ is also a nonsingular system.
+
+
+Therefore 
+\(Z(F_1,G_1)\)
+ and 
+\(Z(F_1,G_2)\)
+ are irreducible curves of genus 1 by Lemmas 
+2.16
+ and 
+2.17
+. 
+\(\square \)
+
+
+We are now in a position to complete the proof of Theorem 
+1.2
+.
+
+
+Proof of Theorem 1.2
+
+
+By assumption, each irreducible component is parametrized by rational functions. Hence each component is a curve of genus 0 (see [
+31
+, (2.16)]). By Lemma 
+4.2
+, we have 
+\((3a_2)^2=2(3a_4)\)
+, that is, 
+\(3a_2^2=2a_4\)
+.
+
+
+As commented at the end of Subsection 
+2.1
+, the symmetric probability measures that correspond to the classical orthogonal polynomials are Hermite measure 
+\(e^{-t^2}dt/\sqrt{\pi }\)
+ on 
+\((-\infty ,\infty )\)
+ or Gegenbauer measure 
+\((1-t^2)^{\lambda -1/2}dt/\int _{-1}^1 (1-t^2)^{\lambda -1/2} dt\)
+ on 
+\((-1,1)\)
+.
+
+
+When 
+\(w(t) = e^{-t^2}/\sqrt{\pi }\)
+ on 
+\((-\infty ,\infty )\)
+, by (
+28
+), the second and fourth moments are given by 
+\(a_2 = \frac{1}{2}\)
+ and 
+\(a_4 = \frac{3}{4}\)
+, which do not satisfy the condition that 
+\(3a_2^2=2a_4\)
+. When 
+\(w(t) = (1-t^2)^{\lambda -1/2}/\int _{-1}^1 (1-t^2)^{\lambda -1/2} dt\)
+ on 
+\((-1,1)\)
+, by (
+24
+) and (
+25
+), we have
+$$ a_2 = \frac{1}{2(\lambda + 1)}, \quad a_4 = \frac{3}{4(\lambda +1)(\lambda +2)}. $$
+Then
+$$ 3 a_2^2 - 2 a_4 = \frac{3((\lambda +2)-2(\lambda +1))}{4(\lambda +1)^2(\lambda +2)} = -\frac{3\lambda }{4(\lambda +1)^2(\lambda +2)}. $$
+Therefore the condition 
+\(3a_2^2=2a_4\)
+ is equivalent to 
+\(\lambda =0\)
+, corresponding to the Chebyshev measure 
+\((1-t^2)^{-1/2}dt/\pi \)
+. 
+\(\square \)
+
+
+5 
+Proof of Theorem 
+1.3
+
+
+For the Chebyshev measure 
+\((1-t^2)^{-1/2}dt/\pi \)
+, the equations (
+34
+) can be reduced to
+$$\begin{aligned} \begin{aligned} x_1^2 + x_2^2 + x_3^2&= \frac{3}{2}, \\ x_1^4 + x_2^4 + x_3^4&= \frac{9}{8}. \end{aligned} \end{aligned}$$
+
+                    (43)
+                
+The key part of the proof of Theorem 
+1.3
+ is Lemma 
+5.1
+ below. The essence of this lemma is the polynomial identity (
+19
+).
+
+
+Lemma 5.1
+
+
+Let 
+\(x_1,x_2,x_3 \in \mathbb {R}\)
+ with 
+\(0< x_1< x_2 < x_3\)
+. Let
+$$\begin{aligned} x_1^2 + x_2^2 + x_3^2&=\frac{3}{2}, \end{aligned}$$
+
+                    (44)
+                
+$$\begin{aligned} x_1^4 + x_2^4 + x_3^4&=\frac{9}{8}, \end{aligned}$$
+
+                    (45)
+                
+$$\begin{aligned} x_1 + x_2 - x_3&=0, \end{aligned}$$
+
+                    (46)
+                
+$$\begin{aligned} x_1^2 + x_1x_2 + x_2^2&=\frac{3}{4}. \end{aligned}$$
+
+                    (47)
+                
+Then any two of the four statements being true imply the others.
+
+
+Proof of Lemma 5.1
+
+
+Suppose (
+44
+) and (
+45
+). Then it follows that
+$$ 2(x_1^4 + x_2^4 + x_3^4) = \frac{9}{4} = \Big ( \frac{3}{2} \Big )^2 = (x_1^2 + x_2^2 + x_3^2)^2, $$
+which implies that
+$$\begin{aligned} \begin{aligned} 0 = x_3^4 - 2(x_1^2 + x_2^2)x_3^3 + (x_1 + x_2)^2(x_1-x_2)^2 \\ = (x_3 - x_1 - x_2)(x_3 + x_1 + x_2)(x_3 + x_1 - x_2)(x_3 - x_1 + x_2). \end{aligned} \end{aligned}$$
+
+                    (48)
+                
+We obtain (
+46
+) since 
+\(0< x_1< x_2 < x_3\)
+. Then substituting (
+46
+) into (
+44
+) gives
+$$\begin{aligned} \frac{3}{2} = x_1^2 + x_2^2 + x_3^2 = x_1^2 + x_2^2 + (x_1+x_2)^2 = 2(x_1^2 + x_1x_2 + x_2^2), \end{aligned}$$
+
+                    (49)
+                
+which implies (
+47
+).
+
+
+Suppose (
+44
+) and (
+46
+). Then we get (
+47
+) by the same argument as in (
+49
+). By the polynomial identity (
+19
+), we have
+$$\begin{aligned} x_1^4+x_2^4+(x_1+x_2)^4 = 2(x_1^2 + x_1x_2 + x_2^2)^2 = \frac{9}{8} \end{aligned}$$
+
+                    (50)
+                
+and thereby (
+45
+) from (
+46
+).
+
+
+Suppose (
+45
+) and (
+46
+). As in (
+50
+), substituting (
+46
+) into (
+45
+) provides
+$$ \frac{9}{8} = x_1^4 + x_2^4 + (x_1+x_2)^4 = 2(x_1^2 + x_1x_2 + x_2^2)^2. $$
+Since 
+\(x_1^2+x_1x_2+x_2^2\)
+ is positive semi-definite, we obtain (
+47
+). Then we obtain (
+44
+) by the argument as (
+49
+).
+
+
+Suppose (
+44
+) and (
+47
+). Then
+$$ x_1^2+x_2^2+x_3^2 = \frac{3}{2} = 2(x_1^2 + x_1x_2 + x_2^2). $$
+Since
+$$ 0 = 2(x_1^2 + x_1x_2 + x_2^2) - (x_1^2+x_2^2+x_3^2) = (x_1+x_2-x_3)(x_1+x_2+x_3) $$
+and 
+\(0< x_1< x_2 < x_3\)
+, we obtain (
+46
+). Then (
+44
+) and (
+46
+) imply (
+45
+), as already shown above.
+
+
+Suppose (
+45
+) and (
+47
+). Then
+$$ x_1^4+x_2^4+x_3^4 = \frac{9}{8} = 2(x_1^2 + x_1x_2 + x_2^2)^2. $$
+Since
+$$\begin{aligned} 0= &   2(x_1^2 + x_1x_2 + x_2^2)^2 - (x_1^4+x_2^4+x_3^4) \\= &   \sum _{i=0}^4 \left( {\begin{array}{c}4\\ i\end{array}}\right) x_1^i x_2^{4-i} - x_3^4 \\= &   (x_1+x_2)^4-x_3^4 \\= &   \bigl ((x_1+x_2)^2 + x_3^2\bigr ) \bigl (x_1+x_2 + x_3\bigr ) \bigl (x_1+x_2 - x_3\bigr ), \end{aligned}$$
+we obtain (
+46
+) since 
+\(0< x_1< x_2 < x_3\)
+. Then (
+45
+) and (
+46
+) imply (
+44
+), as is already shown.
+
+
+Finally, if (
+46
+) and (
+47
+) hold, then we obtain (
+44
+) by the same argument as in (
+49
+). (
+44
+) and (
+46
+) then imply (
+45
+), as seen above. 
+\(\square \)
+
+
+Proof of Theorem 1.3
+
+
+By Lemma 
+5.1
+ it suffices to show that the rational solutions of (
+46
+) and (
+47
+) are classified by (
+5
+). As seen in Example 
+2.5
+, 
+\((x_1,x_2,x_3) = (1/7, 11/14, -13/14)\)
+ is a rational solution of (
+46
+) and (
+47
+). Then every rational point on the ellipse 
+\(C: x_1^2 + x_1x_2 + x_2^2 = \frac{3}{4}\)
+ is the intersection point of 
+C
+ and the line 
+\(x_2 = t ( x_1 - \frac{1}{7} ) + \frac{11}{14}\)
+ where 
+\(t \in {\mathbb Q}\)
+. Combining this with (
+47
+), we have
+$$\begin{aligned} x_1 = \frac{2t^2-22t-13}{14(t^2+t+1)}, \quad x_2 = \frac{-13t^2-4t+11}{14(t^2+t+1)}. \end{aligned}$$
+
+                    (51)
+                
+Then it follows from (
+46
+) and (
+51
+) that
+$$\begin{aligned} x_3 = x_1+x_2 = - \frac{11t^2+26t+2}{14(t^2+t+1)}. \end{aligned}$$
+
+                    (52)
+                
+\(\square \)
+
+
+6 
+Proof of Theorem 
+1.4
+
+
+As seen in the previous sections, an antipodal 5-design with 2
+N
+ rational points for the Chebyshev measure 
+\((1-t^2)^{-1/2}dt/\pi \)
+ on 
+\((-1,1)\)
+, is equivalent to a system of Diophantine equations of type
+$$\begin{aligned} x_1^2 + x_2^2 + \cdots + x_N^2&= \frac{N}{2}, \end{aligned}$$
+
+                    (53)
+                
+$$\begin{aligned} x_1^4 + x_2^4 + \cdots + x_N^4&= \frac{3N}{8}. \end{aligned}$$
+
+                    (54)
+                
+The proof of Theorem 
+1.4
+ is separated into proofs of the two following propositions:
+
+
+Proposition 6.1
+
+
+There exists an antipodal 5-design with 2
+N
+ rational points for Chebyshev measure 
+\((1-t^2)^{-1/2}dt/\pi \)
+ on 
+\((-1,1)\)
+ if
+$$\begin{aligned} \begin{aligned} N=3k \ \text { with } \ k \ge 1, \\ N=3k+1 \ \text { with } \ k \ge 6, \\ N=3k+2 \ \text { with } \ k \ge 3. \end{aligned} \end{aligned}$$
+
+                    (55)
+                
+
+
+Proposition 6.2
+
+
+There does not exist an antipodal 5-design with 2
+N
+ rational nodes for 
+\((1-t^2)^{-1/2}dt/\pi \)
+ if 
+\(N \in \{1,2,4,5,7,8,10,13,16\}\)
+.
+
+
+6.1 
+Proof of Proposition 
+6.1
+
+
+Our proof makes use of the following lemma.
+
+
+Lemma 6.3
+
+
+Define three subsets 
+A
+, 
+B
+, 
+C
+ of 
+\(\mathbb {Q}\)
+ by
+$$\begin{aligned} \begin{aligned} A = \Big \{ \pm \frac{2t^2-22t-13}{14(t^2+t+1)} \mid t \in \mathbb {Z} \Big \}, \\ B = \Big \{ \pm \frac{-13t^2-4t+11}{14(t^2+t+1)} \mid t \in \mathbb {Z} \Big \}, \\ C = \Big \{ \pm \frac{11t^2+26t+2}{14(t^2+t+1)} \mid t \in \mathbb {Z} \Big \}. \end{aligned} \end{aligned}$$
+
+                    (56)
+                
+Then
+$$ |A\cap B| , |B\cap C| , |C\cap A| < \infty $$
+
+
+Proof of Lemma 6.3
+
+
+We only prove 
+\(|A\cap B| < \infty \)
+ since the proofs of the other cases are similar. Since
+$$ \lim _{|t|\rightarrow \infty } \frac{2t^2-22t-13}{14(t^2+t+1)} = \frac{1}{7} \ne \mp \frac{13}{14} = \pm \lim _{|u|\rightarrow \infty } \frac{-13u^2-4u+11}{14(u^2+u+1)}, $$
+there exists an integer 
+N
+ such that if 
+\(|t|, |u| \ge N\)
+ then
+$$ \frac{2t^2-22t-13}{14(t^2+t+1)} \ne \pm \frac{-13u^2-4u+11}{14(u^2+u+1)}. $$
+Hence we have
+$$ A \cap B \subset \Big \{ \pm \frac{2t^2-22t-13}{14(t^2+t+1)} \mid t \in \mathbb {Z}, |t|< N \Big \} \cup \Big \{ \pm \frac{-13t^2-4t+11}{14(t^2+t+1)} \mid t \in \mathbb {Z}, |t| < N \Big \}. $$
+The right-hand side is a finite set, which implies 
+\(|A\cap B| < \infty \)
+. 
+\(\square \)
+
+
+Proof of Proposition 6.1
+
+
+By Lemma 
+6.3
+ there exists some positive integer 
+\(t_0\)
+ such that for all integers 
+\(t_1, t_2, t_3 \ge t_0\)
+,
+$$\begin{aligned} \alpha _{t_1} := \frac{2t_1^2-22t_1-13}{14(t_1^2+t_1+1)}, \quad \beta _{t_2} := \frac{-13t_2^2-4t_2+11}{14(t_2^2+t_2+1)}, \quad \gamma _{t_3} := \frac{11t_3^2+26t_3+2}{14(t_3^2+t_3+1)} \end{aligned}$$
+
+                    (57)
+                
+and their antipodal pairs 
+\(-\alpha _{t_1}, -\beta _{t_2}, -\gamma _{t_3}\)
+ are mutually distinct. Proposition 
+2.6
+ then implies that for any positive integer 
+k
+$$\begin{aligned} \begin{aligned} \frac{1}{\pi } \int _{-1}^1 \frac{f(t)}{\sqrt{1-t^2}}dt \\ = \frac{1}{6k} \sum _{t=t_0}^{t_0+k-1} (f(\alpha _t) + f(\beta _t) + f(\gamma _t) + f(-\alpha _t) + f(-\beta _t) + f(-\gamma _t)) \end{aligned} \end{aligned}$$
+
+                    (58)
+                
+is an antipodal 5-design with 6
+k
+ distinct rational nodes.
+
+
+Next, we note that the antipodal pairs of the point configuration
+$$\begin{aligned} (x_1, \ldots , x_{11}) = \frac{1}{90} (2,8,16,34,72,73,76,77,80,84,86) \end{aligned}$$
+
+                    (59)
+                
+is an antipodal 5-design with 22 rational points. By Lemma 
+6.3
+, there exists 
+\(t_0 \in \mathbb {Z}\)
+ such that for all integers 
+\(t_1, t_2, t_3 \ge t_0\)
+$$ \pm \frac{2t_1^2-22t_1-13}{14(t_1^2+t_1+1)}, \; \pm \frac{-13t_2^2-4t_2+11}{14(t_2^2+t_2+1)}, \; \pm \frac{11t_3^2+26t_3+2}{14(t_3^2+t_3+1)} $$
+and 
+\(\pm x_i\)
+ (
+\(i=1,\ldots ,11\)
+) are mutually distinct. Then by Proposition 
+2.6
+, we get an antipodal 5-design with 
+\(6k+4\)
+ distinct rational nodes for 
+\(k \ge 3\)
+.
+
+
+Finally, by taking the antipodal pair of the point configuration
+$$\begin{aligned} \begin{aligned} (x_1, \ldots , x_{19}) \\ = \frac{1}{126} (2, 4, 20, 32, 40, 44, 56, 83, 88, 100, 104, 106, 109, 110, 116, 118, 120, 122, 124), \end{aligned} \end{aligned}$$
+
+                    (60)
+                
+we obtain an antipodal 5-design with 38 rational points. Again by combining Lemma 
+6.3
+ and Proposition 
+2.6
+, we obtain an antipodal 5-design with 
+\(6k+2\)
+ distinct rational nodes for 
+\(k \ge 6\)
+. 
+\(\square \)
+
+
+Remark 6.4
+
+
+The derivation of the set (
+60
+) depends on a computer search based on a divide-and-conquer algorithm.
+
+
+6.2 
+Proof of Proposition 
+6.2
+
+
+Our proof of Proposition 
+6.2
+ makes use of elementary congruence conditions. Despite the simplicity of our methods, the arguments below will work for a variety of probability measures including Hermite measure 
+\(e^{-t^2}dt/\sqrt{\pi }\)
+ on 
+\((-\infty ,\infty )\)
+; see Section 
+8
+ for the detail.
+Below we consider a system of two Diophantine equations of type
+$$\begin{aligned} x_1^2 + x_2^2 + \cdots + x_N^2&= \frac{A}{2^\alpha C}, \end{aligned}$$
+
+                    (61)
+                
+$$\begin{aligned} x_1^4 + x_2^4 + \cdots + x_N^4&= \frac{B}{2^\beta D}, \end{aligned}$$
+
+                    (62)
+                
+where 
+\(\alpha \le 2\)
+ (not necessarily positive), 
+\(1 \le \beta \le 4\)
+ are integers, 
+A
+, 
+B
+, 
+C
+, 
+D
+ are odd integers, and 
+\(\gcd (A, C) = \gcd (B, D) =1\)
+.
+
+
+Example 6.5
+
+
+For example, (
+61
+) and (
+62
+) with 
+\((A,B,C,D) = (3,9,1,1)\)
+ and 
+\((\alpha ,\beta )=(1,3)\)
+ are just two equations given in (
+43
+).
+
+
+The following is a collection of well-known facts in elementary number theory.
+
+
+Lemma 6.6
+
+
+Let 
+n
+ be a positive integer. Then the following hold: 
+
+
+
+
+(i)
+
+
+\(n^2 \equiv 0 \pmod {4}\)
+ if 
+n
+ is even, and 
+\(n^2 \equiv 1 \pmod {4}\)
+ if 
+n
+ is odd;
+
+
+
+
+
+
+(ii)
+
+
+\(n^4 \equiv 0 \pmod {16}\)
+ if 
+n
+ is even, and 
+\(n^4 \equiv 1 \pmod {16}\)
+ if 
+n
+ is odd;
+
+
+
+
+
+
+(iii)
+
+
+\(n^2 \equiv n^4 \pmod {4}\)
+ regardless of the parity of 
+n
+.
+
+
+
+
+
+
+The following two lemmas are key in the proof of Proposition 
+6.2
+.
+
+
+Lemma 6.7
+
+
+There does not exist a rational solution of (
+62
+) for any integer 
+\(1 \le N \le 15\)
+, if 
+\(1 \le \beta \le 4\)
+ and 
+\(N < R\)
+, where 
+R
+ is the smallest positive integer such that 
+\(DR \equiv 2^{4-\beta } B \pmod {16}\)
+.
+
+
+Proof of Lemma 6.7
+
+
+Suppose that 
+\(\{x_1, \ldots , x_N\}\)
+ is a rational solution of (
+62
+). We write 
+\(x_i = m_i/k\)
+, where 
+\(m_1, \ldots , m_N, k\)
+ are positive integers and 
+\(\gcd (m_1, \ldots , m_N, k) = 1\)
+. Then (
+62
+) is equivalent to the equation
+$$\begin{aligned} 2^\beta D \sum _{i=1}^{N} m_i^4 = B k^4. \end{aligned}$$
+
+                    (63)
+                
+Since 
+\(\beta \ge 1\)
+, we have 
+\(B k^4 \equiv 0 \pmod {2}\)
+ and hence 
+k
+ is even, say 
+\(k = 2h\)
+. Replacing 
+\(x_i\)
+ by 
+\(m_i/(2h)\)
+ in (
+62
+), we have
+$$\begin{aligned} D \sum _{i=1}^{N} m_i^4&= 2^{4-\beta } B h^4. \end{aligned}$$
+
+                    (64)
+                
+We denote by 
+T
+ the number of odd integers among 
+\(m_1, \ldots , m_N\)
+, that is
+$$\begin{aligned} T = \left| { \{ 1 \le i \le N \mid m_i \equiv 1 \pmod {2} \} }\right| . \end{aligned}$$
+
+                    (65)
+                
+It may not be entirely obvious, but it can be shown that 
+\(T \ne 0\)
+. Hence we have 
+\(1 \le T \le N\)
+.
+
+
+By reducing (
+64
+) modulo 16 and then using Lemma 
+6.6
+ (ii), we have
+$$\begin{aligned} DT \equiv 2^{4-\beta } B h^4 \pmod {16}. \end{aligned}$$
+
+                    (66)
+                
+If 
+h
+ is even, the congruence (
+66
+) implies 
+\(T \equiv 0 \pmod {16}\)
+, which contradicts 
+\(1 \le T \le N \le 15\)
+. Hence, 
+h
+ must be odd. Since 
+\(h^4 \equiv 1 \pmod {16}\)
+, we have 
+\(DT \equiv 2^{4-\beta }B \pmod {16}\)
+. Therefore we have 
+\(T \ge R\)
+, where 
+R
+ is the smallest positive integer such that 
+\(DR \equiv 2^{4-\beta }B \pmod {16}\)
+. 
+\(\square \)
+
+
+Lemma 6.8
+
+
+There does not exist a rational solution of (
+61
+) and (
+62
+) for any integer 
+\(1 \le N \le 15\)
+ if one of the following conditions holds: 
+
+
+
+
+(i)
+
+
+\(\alpha \le 0\)
+ and 
+\(\beta \in \{3, 4\}\)
+;
+
+
+
+
+
+
+(ii)
+
+
+\((\alpha , \beta ) \in \{1\} \times \{ 1, 2, 4 \} \cup \{2\} \times \{ 1, 2, 3 \}\)
+;
+
+
+
+
+
+
+(iii)
+
+
+\((\alpha , \beta )=(2,4)\)
+ and 
+\(AD \not \equiv BC \pmod {4}\)
+.
+
+
+
+
+
+
+Proof of Lemma 6.8
+
+
+Suppose 
+\(\{x_1, \ldots , x_N\}\)
+ is a rational solution of (
+61
+) and (
+62
+). We write 
+\(x_i = m_i/k\)
+, where 
+\(m_1, \ldots , m_N, k\)
+ are positive integers and 
+\(\gcd (m_1, \ldots , m_N, k) = 1\)
+. Proceeding as in the proof of Lemma 
+6.7
+, we can show that 
+k
+ is even, say 
+\(k = 2h\)
+. Replacing 
+\(x_i\)
+ by 
+\(m_i/(2h)\)
+ in (
+61
+) and (
+62
+), we have
+$$\begin{aligned} C \sum _{i=1}^{N} m_i^2&= 2^{2-\alpha } A h^2, \end{aligned}$$
+
+                    (67)
+                
+$$\begin{aligned} D \sum _{i=1}^{N} m_i^4&= 2^{4-\beta } B h^4. \end{aligned}$$
+
+                    (68)
+                
+As with (
+65
+), let 
+T
+ be the number of odd integers among 
+\(m_1, \ldots , m_N\)
+. As discussed in the proof of Lemma 
+6.7
+, we have 
+\(1 \le T \le N\)
+.
+
+
+Reducing (
+67
+) and (
+68
+) modulo 4 and 16, respectively, it follows from Lemma 
+6.6
+ (i) and (ii) that
+$$\begin{aligned} CT&\equiv 2^{2-\alpha } A h^2 \pmod {4}, \end{aligned}$$
+
+                    (69)
+                
+$$\begin{aligned} D T&\equiv 2^{4-\beta } B h^4 \pmod {16}. \end{aligned}$$
+
+                    (70)
+                
+Suppose that 
+h
+ is even. Then it follows from (
+70
+) that 
+\(T \equiv 0 \pmod {16}\)
+. However, since 
+\(T \ne 0\)
+, we have 
+\(N \ge T \ge 16\)
+.
+
+
+Suppose that 
+h
+ is odd. It follows from Lemma 
+6.6
+ (iii) that 
+\(h^2 \equiv h^4 \equiv 1 \pmod {4}\)
+. Multiplying 
+\((69)\)
+ and 
+\((70)\)
+ by 
+D
+ and 
+C
+ respectively, we have 
+\(CDT \equiv 2^{2-\alpha } AD \equiv 2^{4-\beta } BC \pmod {4}\)
+, namely
+$$\begin{aligned} 0&\equiv 2^{4-\beta } BC \pmod {4},  &   \text {if } \alpha \le 0, \\ 2 AD&\equiv 2^{4-\beta } BC \pmod {4},  &   \text {if } \alpha = 1, \\ AD&\equiv 2^{4-\beta } BC \pmod {4},  &   \text {if } \alpha = 2. \end{aligned}$$
+Since both 
+AD
+ and 
+BC
+ are odd, the above congruences lead to a contradiction if one of the following cases occurs: 
+
+
+
+
+(i)
+
+
+\(\alpha \le 0\)
+ and 
+\(\beta \in \{3, 4\}\)
+,
+
+
+
+
+
+
+(ii)
+
+
+\(\alpha = 1\)
+ and 
+\(\beta \in \{1, 2, 4\}\)
+,
+
+
+
+
+
+
+(iii)
+
+
+\(\alpha = 2\)
+ and 
+\(\beta \in \{1, 2, 3\}\)
+,
+
+
+
+
+
+
+(iv)
+
+
+\((\alpha , \beta ) = (2, 4)\)
+ and 
+\(AD \not \equiv BC \pmod {4}\)
+.
+
+
+
+
+Table 1 Values of 
+\(\alpha ,\beta ,R\)
+ used in the proof of Proposition 
+6.2
+Full size table
+
+
+In summary, for any 
+\(N \le 15\)
+, under the conditions given in the statement, the equations (
+67
+) and (
+68
+) have no integer solutions. 
+\(\square \)
+
+
+We are ready to complete the proof of Proposition 
+6.2
+.
+
+
+Proof of Proposition 6.2
+
+
+Let 
+\(N \in \{1, 2, 4, 5, 7, 10, 13\}\)
+. Then by applying Lemma 
+6.7
+ with 
+\(\alpha ,\beta ,R\)
+ listed in Table 
+1
+ below, we find that there does not exist a rational solution of the equations (
+53
+) and (
+54
+).
+
+
+Thus it remains to consider the case 
+\(N = 8,16\)
+. Suppose that there exists a rational solution of (
+53
+) and (
+54
+). We write 
+\(x_i=m_i/k\)
+, where 
+\(m_1,\dotsc ,m_N\)
+ and 
+k
+ are integers and 
+\(\gcd (m_1,\dotsc ,m_N,k)=1\)
+. Let 
+\(N=8N'\)
+. Then we have
+$$\begin{aligned} m_1^2 + \cdots + m_N^2&= 4 k^2 N', \end{aligned}$$
+
+                    (71)
+                
+$$\begin{aligned} m_1^4 + \cdots + m_N^4&= 3 k^4 N'. \end{aligned}$$
+
+                    (72)
+                
+Since 
+\(m_i^2\equiv m_i^4\pmod {4}\)
+, we have 
+\(4 k^2 N'\equiv 3 k^4 N' \pmod {4}\)
+ and therefore 
+\(k^4 N'\equiv 0\pmod {4}\)
+. Since 
+\(N'\in \{1,2\}\)
+, 
+k
+ is even. Then we have
+$$\begin{aligned} m_1^4 + \cdots + m_N^4 \equiv 0 \pmod {16}. \end{aligned}$$
+
+                    (73)
+                
+As with (
+65
+), let 
+T
+ be the number of odd integers among 
+\(m_1, \dotsc , m_N\)
+. Since 
+\(m_1^4 + \cdots + m_N^4 \equiv T \pmod {16}\)
+, by (
+73
+), we have 
+\(T\equiv 0\pmod {16}\)
+. Since 
+\(\gcd (m_1, \dotsc , m_N, k)=1\)
+ and 
+k
+ is even, we have 
+\(1 \le T \le N\)
+. When 
+\(N=8\)
+, this is a contradiction.
+
+
+When 
+\(N=16\)
+, we have 
+\(T=16\)
+. Note that 
+\(r^2 \equiv 1, 9, 17, 25 \pmod {32}\)
+ for an odd integer 
+r
+. When 
+\(r^2 \equiv 1, 9, 17, 25 \pmod {32}\)
+, we have 
+\(r^4 \equiv 1, 17, 1, 17 \pmod {32}\)
+, respectively. For 
+\(j \in \{1, 9, 17, 25\}\)
+, let
+$$ T_j = |\{ 1 \le i \le N \mid m_i^2 \equiv j \pmod {32} \} |. $$
+Since 
+k
+ is even and 
+\(N'=2\)
+, by (
+71
+) and (
+72
+), we have
+$$\begin{aligned} T_1 + 9 T_9 + 17 T_{17} + 25 T_{25}&\equiv 0 \pmod {32}, \\ T_1 + 17 T_9 + T_{17} + 17 T_{25}&\equiv 0 \pmod {32}. \end{aligned}$$
+Since 
+\(T_1 + T_9 + T_{17} + T_{25} = N = 16\)
+, we have
+$$\begin{aligned} 8 T_9 + 16 T_{17} + 24 T_{25} + 16&\equiv 0 \pmod {32}, \end{aligned}$$
+
+                    (74)
+                
+$$\begin{aligned} 16 T_9 + 16 T_{25} + 16&\equiv 0 \pmod {32}. \end{aligned}$$
+
+                    (75)
+                
+Dividing (
+74
+) and (
+75
+) by 8 and 16, respectively, we have
+$$\begin{aligned} T_9 + 2 T_{17} + 3 T_{25} + 2&\equiv 0 \pmod {4}, \end{aligned}$$
+
+                    (76)
+                
+$$\begin{aligned} T_9 + T_{25} + 1&\equiv 0 \pmod {2}. \end{aligned}$$
+
+                    (77)
+                
+By (
+77
+), there exists an integer 
+S
+ such that 
+\(T_9+T_{25}+1=2S\)
+. Therefore, by (
+76
+), we obtain
+$$ 2 T_{17} + 2 T_{25} + 2 S + 1 \equiv 0 \pmod {4}. $$
+This is a contradiction. 
+\(\square \)
+
+
+7 
+Proof of Theorem 
+1.6
+
+
+We start with a simple but significant observation that creates a novel connection between the PTE problem and rational interval designs.
+
+
+Proposition 7.1
+
+
+Assume there exist two distinct rational 
+m
+-designs for 
+\(\int _I w(t)dt\)
+. Then there exists a pair of disjoint multisets of integers, say 
+X
+ and 
+Y
+, such that (
+X
+, 
+Y
+) is a solution of the PTE problem of degree 
+m
+.
+
+
+Proof of Proposition 7.1
+
+
+Let 
+\(\tilde{X}\)
+ and 
+\(\tilde{Y}\)
+ be 
+m
+-designs. Then it follows that
+$$ \frac{1}{n} \sum _{\tilde{x} \in \tilde{X}} \tilde{x}^k = \int _I t^k w(t)dt = \frac{1}{n} \sum _{\tilde{y} \in \tilde{Y}} \tilde{y}_i^k, \quad k=1,\ldots ,m. $$
+Set 
+\(X = \tilde{X} \setminus (\tilde{X} \cap \tilde{Y})\)
+ and 
+\(Y = \tilde{Y} \setminus (\tilde{X} \cap \tilde{Y})\)
+. Then 
+X
+ and 
+Y
+ satisfy the power-sum condition (
+6
+). 
+\(\square \)
+
+
+Before going to the proof of Theorem 
+1.6
+, we make clear the definition of affine equivalence.
+
+
+Definition 7.2
+
+
+(Affine equivalence)
+ Two solutions 
+\((\{x_1,\dotsc ,x_N\},\{y_1,\dotsc ,y_N\})\)
+ and 
+\((\{x'_1,\dotsc ,x'_N\},\{y'_1,\dotsc ,y'_N\})\)
+ are 
+affinely equivalent over
+ 
+\({\mathbb Q}\)
+ if there exist 
+\(A,B\in {\mathbb Q}\)
+ such that 
+\(\{Ax_i+B\}=\{x'_i\}\)
+ and 
+\(\{Ay_i+B\}=\{y'_i\}\)
+ as multisets.
+
+
+Proof of Theorem 1.6
+
+
+The former part of the theorem follows from Theorem 
+1.3
+ and Proposition 
+7.1
+.
+
+
+To prove the latter part, we first define (
+X
+, 
+Y
+) by
+$$\begin{aligned} \begin{aligned} x_1 = 2 n + 2 m, \quad x_2 = -n m - n - m + 3, \quad x_3 = n m - n - m - 3, \\ y_1 = 2 n - 2 m, \quad y_2 = - n + n m + m + 3, \quad y_3 = m - n m - n - 3, \\ x_{3+i} = -x_i, \; y_{3+i} = -y_i \quad \text { for } i = 1,2,3 \end{aligned} \end{aligned}$$
+
+                    (78)
+                
+where 
+\(m,n \in \mathbb {Q}\)
+. In comparison with (
+78
+), the signs of 
+\(x_2\)
+ and 
+\(y_2\)
+ are changed so that the solution is 
+linear
+ in the sense that
+$$ x_1+x_2+x_3=y_1+y_2+y_3=0. $$
+Let 
+\((X',Y')\)
+ be the dehomogenization of the solution in (
+8
+), defined by
+$$\begin{aligned} \begin{aligned} x'_1 = \frac{2s^2-22s-13}{14(s^2+s+1)}, \; x'_2 = \frac{-13s^2-4s+11}{14(s^2+s+1)}, \; x'_3 = \frac{11s^2+26s+2}{14(s^2+s+1)}, \\ y'_1 = \frac{2t^2-22t-13}{14(t^2+t+1)}, \; y'_2 = \frac{-13t^2-4t+11}{14(t^2+t+1)}, \; y'_3 = \frac{11t^2+26t+2}{14(t^2+t+1)}, \\ x'_{3+i}=-x'_i, \; y'_{3+i}=-y'_i \quad \text { for } i=1,2,3. \end{aligned} \end{aligned}$$
+
+                    (79)
+                
+Assume (
+X
+, 
+Y
+) and 
+\((X',Y')\)
+ are affinely equivalent over 
+\({\mathbb Q}\)
+. Then there exist 
+\(A,B\in {\mathbb Q}\)
+ such that 
+\(\{Ax_i+B\}=\{x'_i\}\)
+ and 
+\(\{Ay_i+B\}=\{y'_i\}\)
+ as multisets. Hence we have
+$$ \sum _{i=1}^6 (Ax_i+B) = \sum _{i=1}^6 x'_i. $$
+Since (
+X
+, 
+Y
+) and 
+\((X',Y')\)
+ are antipodal, we have 
+\(B=0\)
+.
+
+
+Now we consider the equations 
+\(Ax_1=x'_1\)
+, 
+\(Ax_2=x'_2\)
+ and 
+\(Ay_1=y'_1\)
+. Note that 
+\(Ax_1=x'_1\)
+ and 
+\(Ax_2=x'_2\)
+ imply 
+\(Ax_3=x'_3\)
+ since both the solutions are linear. By (
+78
+), we have
+$$\begin{aligned} 2 A (m + n) = x'_1, \end{aligned}$$
+
+                    (80)
+                
+$$\begin{aligned} A (-n m - n - m + 3) = x'_2, \end{aligned}$$
+
+                    (81)
+                
+$$\begin{aligned} 2 A (n - m) = y'_1. \end{aligned}$$
+
+                    (82)
+                
+By (
+80
+) and (
+82
+), we have
+$$\begin{aligned} m = \frac{x'_1 - y'_1}{4A}, \quad n = \frac{x'_1 + y'_1}{4A}. \end{aligned}$$
+
+                    (83)
+                
+Substituting (
+83
+) into (
+81
+) gives
+$$\begin{aligned} 48 A^2 - 8 (x'_1 + 2 x'_2) A - (x'_1)^2 + (y'_1)^2 = 0. \end{aligned}$$
+
+                    (84)
+                
+Then the discriminant of the left-hand side of (
+84
+) is equal to
+$$ 64 (4((x'_1)^2 + x'_1 x'_2 + (x'_2)^2) - 3 (y'_1)^2) = \left( \frac{12(2t+3)(4t-1)}{7(t^2+t+1)}\right) ^2. $$
+We note that
+$$ 4((x'_1)^2 + x'_1 x'_2 + (x'_2)^2)=3 $$
+as in the proof of Theorem 
+1.3
+ (see Lemma 
+5.1
+). By solving (
+84
+) and using (
+83
+), we have
+$$\begin{aligned} \begin{aligned}&(A,m,n) \\&= \left( -\frac{(2 s t + t + s + 2)(8 s t + 5 t + 5 s - 3)}{56 (s^2 + s + 1)(t^2 + t + 1)}, \frac{3(t - s)}{2 s t + t + s + 2}, -\frac{2 s t - 11 s - 11 t - 13}{8 s t + 5 t + 5 s - 3}\right) , \\&\quad \left( \frac{(s - t)(2 s t - 11 s - 11 t - 13)}{56 (s^2 + s + 1)(t^2 + t + 1)}, \frac{3(8 s t + 5 t + 5 s - 3)}{2 s t - 11 s - 11 t - 13}, \frac{2 s t + s + t + 2}{s - t} \right) . \end{aligned} \end{aligned}$$
+
+                    (85)
+                
+Substituting (
+85
+) into (
+78
+), we have
+$$ A y_2 = \frac{-13 t^2 - 4 t + 11}{14(t^2 + t + 1)}, \quad \frac{11 t^2 + 26 t + 2}{14(t^2 + t + 1)}, $$
+respectively. The former means 
+\(Ay_2=y'_2\)
+, which implies 
+\(Ay_3=y'_3\)
+. Similarly, the latter implies 
+\(Ay_2=y'_3\)
+ and 
+\(Ay_3=y'_2\)
+. Therefore the solutions in (
+8
+) are included in Borwein’s solutions up to equivalence over 
+\({\mathbb Q}\)
+. 
+\(\square \)
+
+
+The following observation is due to Hideki Matsumura.
+
+
+Remark 7.3
+
+
+Another parametric solution for 
+\((M,N)=(5,6)\)
+ was found by Chernick [
+8
+, pp.629-630] as follows:
+$$\begin{aligned} \begin{aligned} \alpha _1 = -5m^2+4mn-3n^2, \quad \alpha _2 = -3m^2+6mn+5n^2, \quad \alpha _3 = -m^2-10mn-n^2, \\ \beta _1 = -5m^2+6mn+3n^2, \quad \beta _2 = -3m^2-4mn-5n^2, \quad \beta _3 = -m^2+10mn-n^2, \\ \alpha _{3+i} = -\alpha _i, \beta _{3+i} = -\beta _i \quad \text {for } i = 1,2,3. \end{aligned} \end{aligned}$$
+
+                    (86)
+                
+Our solution (
+8
+) and Chernick’s one are not affinely equivalent over 
+\({\mathbb Q}\)
+. Suppose contrary. Then there exists 
+\(A \in {\mathbb Q}\)
+ such that
+$$ 14A^2(5m^2+2mn+n^2)(5m^2-2mn+n^2) = 3. $$
+Clearly, we have 
+\(n \ne 0\)
+. Let 
+\(x = m/n\)
+ and 
+C
+ be the smooth curve of genus 1 defined by
+$$ C: y^2 = 42(5x^2+2x+1)(x^2-2x+5). $$
+We can verify that 
+\(C({\mathbb Q}_3) = \emptyset \)
+, where 
+\({\mathbb Q}_3\)
+ is the field of 3-adic numbers. Therefore we conclude that 
+\(C({\mathbb Q}) = \emptyset \)
+.
+
+
+8 
+Concluding remarks and future works
+The Hilbert-Kamke equations (
+3
+) can be dealt with the circle method, or the Hardy-Littlewood method. We refer the reader to [
+37
+] for recent developments on Hilbert-Kamke problem involving the circle method.
+In the case of antipodal solutions of the Hilbert-Kamke equations of degree 5, we need to solve the system of equations
+$$\begin{aligned} \begin{aligned} x_1^2 + x_2^2 + \cdots + x_N^2&= N a_2, \\ x_1^4 + x_2^4 + \cdots + x_N^4&= N a_4. \end{aligned} \end{aligned}$$
+
+                    (87)
+                
+We can show that (
+87
+) has a nonsingular real solution if and only if 
+\(N a_2^2> a_4 > a_2^2\)
+. Note that the inequality 
+\(a_4 > a_2^2\)
+ holds if 
+\(a_2\)
+ and 
+\(a_4\)
+ are the moments of a symmetric probability measure.
+More generally, we consider the system of homogeneous equations
+$$\begin{aligned} \begin{aligned} c_1 x_1^k + c_2 x_2^k + \cdots + c_s x_s^k&= 0, \\ d_1 x_1^n + d_2 x_2^n + \cdots + d_s x_s^n&= 0, \end{aligned} \end{aligned}$$
+
+                    (88)
+                
+where 
+\(k>n\ge 1\)
+ and 
+\(c_1,c_2,\ldots ,c_s,d_1,d_2,\ldots ,d_s\)
+ are integers with 
+\(c_i d_i\ne 0\)
+ for 
+\(1\le i\le s\)
+. Let 
+\(\Gamma ^*(k,n)\)
+ be the least integer 
+r
+ such that, whenever 
+\(s\ge r\)
+, the system (
+88
+) has a nontrivial 
+p
+-adic solution for every prime 
+p
+. By the results of Davenport-Lewis [
+11
+, Theorem 1] and Leep-Schmidt [
+20
+, (2.11)], we have 
+\(\Gamma ^*(k,n)\le (k^2+1)(n^2+1)\)
+ and hence 
+\(\Gamma ^*(4,2)\le 85\)
+. Let 
+\(G^*(k,n)\)
+ be the least integer 
+r
+ such that, whenever 
+\(s\ge r\)
+, the system (
+88
+) has a nontrivial integral solution if it has a nonsingular real solution and a nonsingular 
+p
+-adic solution for every prime 
+p
+. Parsell [
+28
+, Theorem 1.1] obtained the values of 
+\(G^*(k,n)\)
+ for small 
+k
+ and 
+n
+. In particular, we have 
+\(G^*(4,2)\le 20\)
+. Combining these results, we infer that the system (
+87
+) has a rational solution if 
+\(N\ge \max \{84,a_4/a_2^2\}\)
+ and if (
+87
+) defines a nonsingular variety. Since 
+\(a_2=1/2\)
+ and 
+\(a_4=3/8\)
+ for Chebyshev measure 
+\((1-t^2)^{-1/2}dt/\pi \)
+, the above condition on 
+N
+ becomes 
+\(N\ge 84\)
+. Theorem 
+1.4
+ is sharper than the above bound obtained by the circle method. It is our hope that the design-theoretic approaches used in the present paper could be applied to the study of Hilbert-Kamke equations for other classical measures.
+* * *
+A natural question asks whether there exists a rational 5-design with 
+\(2N+1\)
+ points for Chebyshev measure 
+\((1-t^2)^{-1/2}dt/\pi \)
+, namely
+$$\begin{aligned} \frac{1}{2N+1}\left( f(0) + \sum _{i=1}^{N} \big ( f(x_i) + f(-x_i) \big ) \right)&= \frac{1}{\pi } \int _{-1}^{1} \frac{f(t)}{\sqrt{1-t^2}} dt \quad \text { for every } f \in \mathcal {P}_5({\mathbb R}). \end{aligned}$$
+
+                    (89)
+                
+Such design is equivalent to a disjoint solution of the Diophantine equations
+$$\begin{aligned} \begin{aligned} x_1^2 + x_2^2 + \cdots + x_N^2 = \frac{2N+1}{4}, \\ x_1^4 + x_2^4 + \cdots + x_N^4 = \frac{3(2N+1)}{16}. \end{aligned} \end{aligned}$$
+
+                    (90)
+                
+By applying Lemma 
+6.8
+ with 
+\((\alpha , \beta ) = (2, 4)\)
+ to (
+61
+) and (
+62
+), we establish that for every 
+\(1 \le N \le 15\)
+ there does not exist a rational solution of (
+90
+). Moreover the nonexistence of antipodal rational 5-designs with 33 points can be proved in a similar manner to the proof of the nonexistence of 5-designs with 32 points. In summary, we obtain the following result.
+
+
+Theorem 8.1
+
+
+If 
+\(1 \le N \le 16\)
+, then there do not exist antipodal 5-designs with 
+\(2N+1\)
+ rational points for 
+\((1-t^2)^{-1/2}dt/\pi \)
+.
+
+
+Meanwhile, a 5-design with 35 rational points actually exists. Such an example is obtained by taking the antipodal pair of the point configuration
+$$\begin{aligned} \begin{aligned} (x_1, \ldots , x_{17}) \\ = \frac{1}{1092}(9,65,91,195,531,669,689,729,837,871,923,933,1001,1027,1053,1066,1079) \end{aligned} \end{aligned}$$
+
+                    (91)
+                
+plus the origin 0. We thus obtain the following result by the same way as in the proof of Theorem 
+1.4
+.
+
+
+Theorem 8.2
+
+
+Let 
+N
+ be a positive integer such that 
+\(N \equiv 5 \pmod {6}\)
+ and 
+\(N \notin \{5,11\}\)
+. Then there exists an antipodal 5-design with 
+\(2N+1\)
+ rational points.
+
+
+Problem 8.3
+
+
+Find an antipodal 5-design with 37 rational points, as the smallest open case.
+
+
+* * *
+Another question is a problem to find a rational 
+t
+-designs for Chebyshev measure 
+\((1-t^2)^{-1/2}dt/\pi \)
+ and for larger 
+t
+. Here we only consider the case 
+\(t=7\)
+. An antipodal rational 7-design with 2
+N
+ points
+$$ \frac{1}{2N} \sum _{i=1}^{N} \big ( f(x_i) + f(-x_i) \big ) = \frac{1}{\pi } \int _{-1}^{1} \frac{f(t)}{\sqrt{1-t^2}} dt \quad \text { for every } f \in \mathcal {P}_7({\mathbb R}) $$
+is equivalent to a disjoint solution of the Diophantine equations
+$$ \begin{aligned} x_1^2 + \cdots + x_N^2 = \frac{N}{2}, \\ x_1^4 + \cdots + x_N^4 = \frac{3N}{8}, \\ x_1^6 + \cdots + x_N^6 = \frac{5N}{16}. \end{aligned} $$
+Note that if there do not exist antipodal 5-designs with 
+n
+ rational points, then there do not exist antipodal 7-designs with 
+n
+ rational points. Then we can prove the following theorem by an argument similar to the proof of Proposition 
+6.2
+.
+
+
+Theorem 8.4
+
+
+If 
+\(1 \le N \le 16\)
+, then there do not exist antipodal 7-designs with 2
+N
+ rational points for 
+\((1-t^2)^{-1/2}dt/\pi \)
+.
+
+
+Problem 8.5
+
+
+Determine whether there exists an antipodal 7-design with 2
+N
+ rational points for 
+\(n\ge 17\)
+ and obtain an analogue of Theorem 
+1.4
+.
+
+
+* * *
+A challenging problem is to establish an analogue of Theorem 
+1.4
+ for symmetric classical measures other than 
+\((1-t^2)^{-1/2}dt/\pi \)
+. A significant case to be handled will be the Hermite measure 
+\(e^{-t^2}dt/\sqrt{\pi }\)
+. A rational design for 
+\(e^{-t^2}dt/\sqrt{\pi }\)
+ of type
+$$ \frac{1}{2N} \sum _{i=1}^N (f(x_i) + f(-x_i)) = \frac{1}{\sqrt{\pi }} \int _{-\infty }^\infty f(t) e^{-t^2}dt \quad \text { for every } f \in \mathcal {P}_5({\mathbb R}), $$
+is equivalent to a system of Diophantine equations of type
+$$ \begin{aligned} x_1^2 + \cdots + x_N^2 = \frac{N}{2}, \\ x_1^4 + \cdots + x_N^4 = \frac{3N}{4}. \end{aligned} $$
+Then Lemmas 
+6.7
+ and 
+6.8
+ can be applied in the proof of the following result.
+
+
+Theorem 8.6
+
+
+For any positive integer 
+\(1 \le N \le 15\)
+, except for 
+\(N=14\)
+, there do not exist antipodal 5-designs with 2
+N
+ rational points for 
+\(e^{-t^2}dt/\sqrt{\pi }\)
+ on 
+\((-\infty ,\infty )\)
+.
+
+
+The exceptional case 
+\(N=14\)
+ is suggestive. In fact, by taking the antipodal pairs of the point configuration
+$$\begin{aligned} (x_1,\ldots ,x_{14}) = \frac{1}{30} (1,2,3,4,5,8,9,13,14,15,25,39,40,42), \end{aligned}$$
+
+                    (92)
+                
+we obtain an antipodal 5-design with 28 rational points. However, the following problem is beyond the grasp of our methods used in the present paper, to which we intend to return elsewhere.
+
+
+Problem 8.7
+
+
+Find an infinite family of rational 5-designs with 2
+N
+ points for Hermite measure 
+\(e^{-t^2}dt/\sqrt{\pi }\)
+ and then establish an analogue of Theorem 
+1.4
+.
+
+
+It is also a challenging problem to obtain an analogue of Theorem 
+1.4
+ for Gegenbauer measure other than Chebyshev measure 
+\((1-t^2)^{-1/2}dt/\pi \)
+, and we leave it for a future work.
+
+
+
+
+Data Availability
+
+
+No datasets were generated or analyzed during the current study.
+
+
+References
+Arslan, F., Sertöz, S.: Genus calculations of complete intersections. Comm. Algebra 
+26
+(8), 2463–2471 (1998). 
+https://doi.org/10.1080/00927879808826291
+Article
+ 
+    
+MathSciNet
+ 
+    
+
+                    Google Scholar
+ 
+                
+Bajnok, B.: Construction of spherical 
+\(t\)
+-designs. Geom. Dedicata. 
+43
+(2), 167–179 (1992). 
+https://doi.org/10.1007/BF00147866
+Article
+ 
+    
+MathSciNet
+ 
+    
+
+                    Google Scholar
+ 
+                
+Bannai, E., Bannai, E.: A survey on spherical designs and algebraic combinatorics on spheres. European. J. Combin. 
+30
+(6), 1392–1425 (2009). 
+https://doi.org/10.1016/j.ejc.2008.11.007
+Article
+ 
+    
+MathSciNet
+ 
+    
+
+                    Google Scholar
+ 
+                
+Bannai, Ei., Bannai, Etsu., Ito, T., Tanaka, R.: Algebraic Combinatorics. Series in Discrete Mathematics and Applications 5, De Gruyter, Berlin (2021). 
+https://doi.org/10.1515/9783110630251
+Borwein, P.: Computational Excursions in Analysis and Number Theory. Springer-Verlag, New York (2002). 
+https://doi.org/10.1007/978-0-387-21652-2
+Bosma, W., Cannon, J., Playoust, C.: The Magma algebra system. I. The user language. J. Symbolic Comput. 
+24
+(3-4), 235–265. (1997) 
+https://doi.org/10.1006/jsco.1996.0125
+Browning, T., Heath-Brown, R.: Forms in many variables and differing degrees. J. Eur. Math. Soc. (JEMS) 
+19
+(2), 357–394 (2017). 
+https://doi.org/10.4171/JEMS/668
+Article
+ 
+    
+MathSciNet
+ 
+    
+
+                    Google Scholar
+ 
+                
+Chernick, J.: Ideal Solutions of the Tarry-Escott Problem. Amer. Math. Monthly 
+44
+(10), 626–633 (1937). 
+https://doi.org/10.2307/2301481
+Article
+ 
+    
+MathSciNet
+ 
+    
+
+                    Google Scholar
+ 
+                
+Cox, D.A., Little, J., O’Shea, D.: Ideals, Varieties, and Algorithms, fourth edition. Undergraduate Texts in Mathematics, Springer, Cham (2015). 
+https://doi.org/10.1007/978-3-319-16721-3
+Cui, Z., Xia, J., Xiang, Z.: Rational designs. Adv. Math. 
+352
+, 541–571 (2019). 
+https://doi.org/10.1016/j.aim.2019.06.012
+Article
+ 
+    
+MathSciNet
+ 
+    
+
+                    Google Scholar
+ 
+                
+Davenport, H., Lewis, D.J.: Homogeneous additive equations. Proc. Roy. Soc. London Ser. A 
+274
+, 443–460 (1963). 
+https://doi.org/10.1098/rspa.1963.0143
+Article
+ 
+    
+MathSciNet
+ 
+    
+
+                    Google Scholar
+ 
+                
+Dickson, L.E.: History of the Theory of Numbers. II, Carnegie Institution of Washington (1920)
+
+                    Google Scholar
+ 
+                
+Dunkl, C.F., Xu, Y.: Orthogonal Polynomials of Several Variables, 2nd ed. Encyclopedia of Mathematics and its Applications, vol. 155, Cambridge University Press, Cambridge (2014). 
+https://doi.org/10.1017/CBO9781107786134
+Gautschi, W.: Nonexistence of Chebyshev-type quadratures on infinite intervals. Math. Comp. 
+29
+, 93–99 (1975). 
+https://doi.org/10.2307/2005465
+Article
+ 
+    
+MathSciNet
+ 
+    
+
+                    Google Scholar
+ 
+                
+Hartshorne, R.: Algebraic Geometry. Graduate Texts in Mathematics, vol. 52, Springer-Verlag, New York (1977). 
+https://doi.org/10.1007/978-1-4757-3849-0
+Hausdorff, F.: Zur Hilbertschen Lösung des Waringschen Problems. Math. Ann. 
+67
+(3), 301–305 (1909). 
+https://doi.org/10.1007/BF01450406
+Article
+ 
+    
+MathSciNet
+ 
+    
+
+                    Google Scholar
+ 
+                
+Hilbert, D.: Beweis für die Darstellbarkeit der ganzen Zahlen durch eine feste Anzahl 
+\(n\)
+-ter Potenzen (Waringsches Problem). Math. Ann. 
+67
+(3), 281–300 (1909). 
+https://doi.org/10.1007/BF01450405
+Article
+ 
+    
+MathSciNet
+ 
+    
+
+                    Google Scholar
+ 
+                
+Hindry, M., Silverman, J.H.: Diophantine geometry: An Introduction. Graduate Texts in Mathematics, vol. 201, Springer, New York (2000). 
+https://doi.org/10.1007/978-1-4612-1210-2
+Kawada, K., Wooley, T.D.: Sums of fourth powers and related topics. J. Reine Angew. Math. 
+512
+, 173–223 (1999). 
+https://doi.org/10.1515/crll.1999.052
+Article
+ 
+    
+MathSciNet
+ 
+    
+
+                    Google Scholar
+ 
+                
+Leep, D.B., Schmidt, W.M.: Systems of homogeneous equations. Invent. Math. 
+71
+(3), 539–549 (1983). 
+https://doi.org/10.1007/BF02095992
+Article
+ 
+    
+MathSciNet
+ 
+    
+
+                    Google Scholar
+ 
+                
+Liu, Q.: Algebraic Geometry and Arithmetic Curves. Oxford Graduate Texts in Mathematics, vol. 6, Oxford University Press, New York (2002)
+Matsumura, H.: Quadrature formulas for Bessel polynomials. Indag. Math. (N.S.) 
+34
+(3), 622–636 (2023). 
+https://doi.org/10.1016/j.indag.2023.01.001
+Matsumura, H., Sawa, M.: Ellipsoidal designs and the Prouhet-Tarry-Escott problem. Ramanujan J. 
+68
+(4), Paper No. 96, 33 pp. (2025). 
+https://doi.org/10.1007/s11139-025-01247-8
+Misawa, R., Munemasa, A., Sawa, M.: Antipodality of spherical designs with odd harmonic index. Discrete Math. 
+349
+(6), Paper No. 114978 (2026). 
+https://doi.org/10.1016/j.disc.2026.114978
+Nathanson, M.B.: Additive Number Theory: The Classical Bases. Graduate Texts in Mathematics, vol. 164, Springer, New York (1996). 
+https://doi.org/10.1007/978-1-4757-3845-2
+Nesterenko, Y.V.: On Waring’s problem (elementary methods) (Russian). Zap. Nauchn. Sem. S.-Peterburg. Otdel. Mat. Inst. Steklov. (POMI) 
+322
+, Trudy po Teorii Chisel, 149–175, 254 (2005); translation in J. Math. Sci. (N.Y.) 
+137
+(2), 4699–4715 (2006). 
+https://doi.org/10.1007/s10958-006-0266-8
+Nozaki, H., Sawa, M.: Remarks on Hilbert identities, isometric embeddings, and invariant cubature. St. Petersburg Math. J. 
+25
+(4), 615–646 (2014). 
+https://doi.org/10.1090/S1061-0022-2014-01310-6
+Article
+ 
+    
+MathSciNet
+ 
+    
+
+                    Google Scholar
+ 
+                
+Parsell, S.T.: Pairs of additive equations of small degree. Acta Arith 
+104
+(4), 345–402 (2002). 
+https://doi.org/10.4064/aa104-4-2
+Article
+ 
+    
+MathSciNet
+ 
+    
+
+                    Google Scholar
+ 
+                
+Pollack, P.: Not Always Buried Deep: A Second Course in Elementary Number Theory. American Mathematical Society, Providence (2009). 
+https://doi.org/10.1090/mbk/068
+Rabau, P., Bajnok, B.: Bounds for the number of nodes in Chebyshev-type quadrature formulas. J. Approx. Theory 
+67
+(2), 199–214 (1991). 
+https://doi.org/10.1016/0021-9045(91)90018-6
+Article
+ 
+    
+MathSciNet
+ 
+    
+
+                    Google Scholar
+ 
+                
+Reid, M.: Undergraduate Algebraic Geometry. London Mathematical Society Student Texts, vol. 12, Cambridge University Press, Cambridge (1988). 
+https://doi.org/10.1017/CBO9781139163699
+Reznick, B.: Sums of even powers of real linear forms. Mem. Amer. Math. Soc. 
+96
+(463), (1992). 
+https://doi.org/10.1090/memo/0463
+Sawa, M., Uchida, Y.: Algebro-geometric aspects of the Christoffel-Darboux kernels for classical orthogonal polynomials. Trans. Amer. Math. Soc. 
+373
+(2), 1243–1264 (2020). 
+https://doi.org/10.1090/tran/7998
+Article
+ 
+    
+MathSciNet
+ 
+    
+
+                    Google Scholar
+ 
+                
+Shafarevich, I.R.: Basic Algebraic Geometry 1: Varieties in projective space, third edition. Springer, Heidelberg (2013). 
+https://doi.org/10.1007/978-3-642-37956-7
+Szegő, G.: Orthogonal Polynomials, 4th ed. American Mathematical Society Colloquium Publications, Vol. 23, American Mathematical Society, Providence (1975)
+Wagner, G.: On averaging sets. Monatch. Math. 
+111
+(1), 69–78 (1991). 
+https://doi.org/10.1007/BF01299278
+Article
+ 
+    
+MathSciNet
+ 
+    
+
+                    Google Scholar
+ 
+                
+Wooley, T.D.: Subconvexity and the Hilbert-Kamke problem. Math. Z. 
+311
+(1), Paper No. 17, 14 pp (2025). 
+https://doi.org/10.1007/s00209-025-03812-9
+Xiang, Z.: Explicit spherical designs. Algebraic Combin. 
+5
+(2), 347–369 (2022). 
+https://doi.org/10.5802/alco.213
+Article
+ 
+    
+
+                    Google Scholar
+ 
+                
+Download references
+Acknowledgements
+This work started about 10 years ago when the third author first got contact with Koichi Kawada to inquire about the significance of Hilbert identity in the modern study of Waring problem. The authors gradually came to realize the validity of the polynomial identity approach for the degree four and five cases, and finally ended up writing the present paper. We would like to express our sincere appreciation to him. It is also our great pleasure to thank Eiichi Bannai who kindly told us [
+4
+, p.208, Problem 2] and then motivated us to study the explicit construction of rational interval designs. The authors would also like to thank Hideki Matsumura for kindly informing us an interesting observation on Chernick’s solution of the PTE problem (Remark 
+7.3
+). The third author would like to thank Rossman Wayne for giving many valuable suggestions to improve the presentation of this paper. The authors would like to thank the referee for helpful comments and suggestions. This research is supported in part by Grant-in-Aid for Early-Career Scientists 22K13949 and Grant-in-Aid for Scientific Research (C) 20K03517 of the Japan Society for the Promotion of Science (JSPS), and by the Early Support Program for Grant-in-Aid for Scientific Research of Kobe University.
+Funding
+Open Access funding provided by Tokyo Metropolitan University.
+Author information
+Authors and Affiliations
+Accenture Japan Ltd, 2-2-2 Nakanoshima, Kita-ku, Osaka, 530-0005, Japan
+Teruyuki Mishima
+Department of Electrical, Electronics and Computer Engineering, Faculty of Engineering, Gifu University, 1-1 Yanagido, Gifu-shi, Gifu, 501-1193, Japan
+Xiao-Nan Lu
+Graduate School of System Informatics, Kobe University, 1-1 Rokkodai, Nada, Kobe, Hyogo, 657-8501, Japan
+Masanori Sawa
+Department of Mathematical Sciences, Graduate School of Science, Tokyo Metropolitan University, 1-1 Minami-Osawa, Hachioji, Tokyo, 192-0397, Japan
+Yukihiro Uchida
+Authors
+Teruyuki Mishima
+View author publications
+Search author on:
+PubMed
+ 
+Google Scholar
+Xiao-Nan Lu
+View author publications
+Search author on:
+PubMed
+ 
+Google Scholar
+Masanori Sawa
+View author publications
+Search author on:
+PubMed
+ 
+Google Scholar
+Yukihiro Uchida
+View author publications
+Search author on:
+PubMed
+ 
+Google Scholar
+Corresponding author
+Correspondence to
+                
+Yukihiro Uchida
+.
+Additional information
+Publisher's Note
+Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+Rights and permissions
+
+
+Open Access
+  This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or other third party material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit 
+http://creativecommons.org/licenses/by/4.0/
+.
+
+
+Reprints and permissions
+About this article
+Cite this article
+Mishima, T., Lu, XN., Sawa, M. 
+et al.
+ Geometric designs and Hilbert-Kamke equations of degree five for classical orthogonal polynomials.
+                    
+Res. number theory
+ 
+12
+, 39 (2026). https://doi.org/10.1007/s40993-026-00723-4
+Download citation
+Received
+: 
+15 November 2025
+Accepted
+: 
+25 February 2026
+Published
+: 
+31 March 2026
+Version of record
+: 
+31 March 2026
+DOI
+: 
+https://doi.org/10.1007/s40993-026-00723-4
+Share this article
+Anyone you share the following link with will be able to read this content:
+Get shareable link
+Sorry, a shareable link is not currently available for this article.
+Copy shareable link to clipboard
+
+                            Provided by the Springer Nature SharedIt content-sharing initiative
+                        
+Keywords
+Antipodality
+Classical orthogonal polynomial
+(Geometric) design
+Explicit construction
+Hilbert identity
+Hilbert-Kamke equations
+Prouhet-Tarry-Escott problem
+Quadrature formula
+Rationality
+Waring problem
+Mathematics Subject Classification
+Primary 05E99
+33C45
+65D32
+Secondary 12E10
+11E76
+
+
+
+
+Profiles
+
+
+
+
+
+
+Xiao-Nan Lu
+
+
+
+
+
+
+
+
+
+
+View author profile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Use AI
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Table of contents
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Advertisement
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Use AI
+
+
+
+
+
+
+
+
+
+
+Ask about this article
+
+
+
+
+AI powered
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Choose a prompt or ask a question to learn more about this article.
+
+
+
+
+If you use this service, you consent to data you input being processed by third party AI tools. Read the 
+privacy policy
+ and 
+terms and conditions
+.
+
+
+
+
+
+
+
+
+Talk me through the article step by step.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Summarise the key findings.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+What are the reported limitations?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ask your own question
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Submit
+
+
+
+
+
+
+
+            Answers are generated by AI and may include mistakes. Check important information.
+        
+
+
+
+
+
+
+
+        Give us your feedback (Opens survey in a new tab)
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Search
+
+
+
+
+
+
+
+
+Search by keyword or author
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Search
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Navigation
+
+
+
+
+
+
+
+                        Find a journal
+                    
+
+
+
+
+
+
+
+                        Publish with us
+                    
+
+
+
+
+
+
+
+                        Track your research
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Footer Navigation
+
+
+
+
+
+
+
+
+
+
+Discover content
+
+
+
+
+Journals A-Z
+
+
+Books A-Z
+
+
+Subjects A-Z
+
+
+
+
+
+
+
+
+Publish with us
+
+
+
+
+Journal finder
+
+
+Publish your research
+
+
+Language editing
+
+
+Open access publishing
+
+
+
+
+
+
+
+
+Products and services
+
+
+
+
+Our products
+
+
+Librarians
+
+
+Societies
+
+
+Partners and advertisers
+
+
+
+
+
+
+
+
+Our brands
+
+
+
+
+Springer
+
+
+Nature Portfolio
+
+
+BMC
+
+
+Palgrave Macmillan
+
+
+Apress
+
+
+Discover
+
+
+
+
+
+
+
+
+
+
+
+
+Corporate Navigation
+
+
+
+
+
+
+Your privacy choices/Manage cookies
+
+
+
+
+
+
+Your US state privacy rights
+
+
+
+
+
+
+Accessibility statement
+
+
+
+
+
+
+Terms and conditions
+
+
+
+
+
+
+Privacy policy
+
+
+
+
+
+
+Help and support
+
+
+
+
+
+
+Legal notice
+
+
+
+
+
+
+Cancel contracts here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+78.128.191.199
+
+
+
+
+National Library of Technology (3003237474)  - Univerzita Karlova Knihovna Fakulty (3004503551)  - Charles University (2000579084)  - Suweco Czech Library Consortium (3000179529)  - Charles University - MFF (3000210218)  - LF UK V Plzni (3000183860)  - National Library of Technology - TA (3005756281) 
+
+
+
+
+
+
+
+
+
+
+© 2026 Springer Nature
+
+
+
+
+
+
+
+
+
+
+
+
+

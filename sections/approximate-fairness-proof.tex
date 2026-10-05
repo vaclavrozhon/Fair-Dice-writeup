@@ -1,0 +1,328 @@
+\section{The moment estimate for random palindrome blocks}
+\label{app:approximate-proof}
+
+We prove Lemma~\ref{lem:palindrome-moment}.  Throughout this appendix,
+$n\geq3$, $2\leq p\leq n^2$, and
+$m\geq8n^{11/10}p^{1/5}$.  All norms and expectations over blocks refer
+to the independent uniform permutations in
+\eqref{eq:random-palindrome-word}, unless another random variable is
+indicated explicitly.
+
+\subsection{Two auxiliary estimates}
+
+\begin{lemma}[Bounded multilinear chaos]\label{lem:palindrome-chaos}
+Let $(Z_v)$ be independent centered random variables with $|Z_v|\leq b_v$.
+If
+\[
+  T=\sum_{|A|=\ell}c_A\prod_{v\in A}Z_v,
+\]
+then, for $p\geq2$,
+\[
+  \|T\|_p\leq(2\sqrt{p-1})^\ell
+     \left(\sum_{|A|=\ell}c_A^2\prod_{v\in A}b_v^2\right)^{1/2}.
+\]
+\end{lemma}
+
+\begin{proof}
+Introduce independent copies $Z_v'$ and replace every $Z_v$ in $T$ by
+$Z_v-Z_v'$.  Conditional expectation over the copies recovers $T$, so
+Jensen's inequality bounds the original norm by the new one.  Swapping
+each pair $(Z_v,Z_v')$ independently preserves their joint law and changes
+the corresponding difference by a Rademacher sign.  Conditional on the
+pairs, the degree-$\ell$ Rademacher hypercontractive inequality
+\cite{bonami1970,odonnell2014} bounds the $L^p$ norm over these signs by
+$(p-1)^{\ell/2}$ times the coefficient $\ell_2$ norm.  Since
+$|Z_v-Z_v'|\leq2b_v$, this gives the displayed bound uniformly in the
+pairs, and hence also after averaging over them.
+\end{proof}
+
+For a probability vector $u=(u_0,\ldots,u_\ell)$, let
+\[
+  C_d(u)=\sum_{a_0+\cdots+a_\ell=d}
+       \left(\frac{d!}{a_0!\cdots a_\ell!}
+                    \prod_{j=0}^{\ell}u_j^{a_j}\right)^2
+\]
+be the collision probability of the multinomial distribution with $d$
+trials and cell probabilities $u$.  We use the convention $0^0=1$.
+
+\begin{lemma}[A lattice collision bound]\label{lem:palindrome-lattice}
+For integers $\ell\geq1$, $d\geq0$, and $M\geq d+1$,
+\[
+  \sum_{g_0+\cdots+g_\ell=M}C_d(g/M)
+  \leq\left(\frac{108M}{\sqrt{d+1}}\right)^\ell,
+\]
+where the sum is over nonnegative integer vectors $g$.
+\end{lemma}
+
+\begin{proof}
+Elementary Stirling bounds give
+\[
+  \max_k\Pr(\operatorname{Poisson}(\lambda)=k)
+     \leq\frac2{\sqrt{1+\lambda}},\qquad
+  \Pr(\operatorname{Poisson}(d)=d)
+     \geq\frac1{3\sqrt{d+1}}.
+\]
+The cases $\lambda\leq1$ and $d=0$ are immediate.  For $\lambda>1$,
+the maximum is attained at $k=\lfloor\lambda\rfloor$, with
+$k\geq\lambda/2$, and $k!\geq\sqrt{2\pi k}(k/e)^k$ gives the first
+inequality.  For integer $d\geq1$,
+$d!\leq e\sqrt d(d/e)^d$ gives the second.
+
+Condition independent Poisson variables of means $du_j$ on their sum
+being $d$.  Since a collision probability is at most the maximum
+probability mass, the preceding bounds give
+\[
+  C_d(u)\leq3\,2^{\ell+1}\sqrt{d+1}
+                   \prod_{j=0}^{\ell}(1+du_j)^{-1/2}.
+\]
+For every $g$ in the sum, some coordinate satisfies
+$g_j\geq M/(\ell+1)$.  For that coordinate,
+\[
+  \sqrt{d+1}(1+dg_j/M)^{-1/2}\leq\sqrt{\ell+1}.
+\]
+Sum over the $\ell+1$ possible choices of this coordinate, then drop
+the sum constraint on the remaining $\ell$ coordinates.  Each of them
+lies between $0$ and $M$.  Since $w(x)=(1+dx/M)^{-1/2}$ is decreasing,
+\[
+  \sum_{g=0}^M w(g)
+  \leq1+\int_0^M w(x)\,dx
+  \leq1+\frac{2M}{\sqrt{d+1}}
+  \leq\frac{3M}{\sqrt{d+1}}.
+\]
+The integral bound also holds for $d=0$; the last inequality uses
+$M\geq d+1$.  Therefore the sum in the lemma is at most
+\[
+  6(\ell+1)^{3/2}
+       \left(\frac{6M}{\sqrt{d+1}}\right)^\ell
+  \leq\left(\frac{108M}{\sqrt{d+1}}\right)^\ell.
+\]
+For the final inequality, use $\ell+1\leq2^\ell$ and
+$6\leq6^\ell$.
+\end{proof}
+
+\subsection{The expansion and a coloring argument}
+
+Fix $\sigma\in S_n$ and write $R_\sigma=n!P_W(\sigma)$.  We use the
+quantities $\delta_i(A)$ in \eqref{eq:palindrome-expansion}.  A prescribed
+order of $k$ distinct letters occurs at most twice as a subsequence of
+a palindrome $\rho_i\rho_i^{\mathrm{rev}}$.  Indeed, in the ordering
+defined by $\rho_i$, the prescribed order must increase and then
+decrease, and the only possible ambiguity is which occurrence of its
+largest letter is chosen.  Hence, for $k\geq3$,
+\begin{equation}\label{eq:palindrome-delta-bound}
+  |\delta_i(A)|\leq b_k:=k!2^{1-k}.
+\end{equation}
+Here $q_i(A)\leq2^{1-k}$ and $b_k\geq1$.
+
+Represent $\rho_i$ by the relative order of independent continuous
+priorities $Y_{i,1},\ldots,Y_{i,n}$, indexed by positions in $\sigma$.
+Write $\delta_{i,a,k}$ for the segment starting at position $a$ and
+having length $k$.  For fixed $k$ and a fixed residue class of $a$
+modulo $k$, these variables are independent: their segments use disjoint
+sets of priorities.  Different blocks are independent as well.
+
+Expanding \eqref{eq:palindrome-expansion}, the part involving exactly
+$\ell$ nonconstant factors has the form
+\[
+  T_\ell=\sum_{I,\boldsymbol{k},\boldsymbol{a}}
+        c(I,\boldsymbol{k},\boldsymbol{a})
+                 \prod_{j=1}^{\ell}\delta_{i_j,a_j,k_j},
+  \qquad I=\{i_1<\cdots<i_\ell\},\quad k_j\geq3.
+\]
+The coefficients are nonnegative probabilities of the corresponding
+occupancies and segment starts.  The selected segments are disjoint and
+appear in their natural order.  The sum of these homogeneous parts is
+$R_\sigma-1$.
+
+For any fixed restriction $\mathcal D$ on these indices, we claim that
+\begin{equation}\label{eq:palindrome-colored}
+  \|T_\ell^{\mathcal D}\|_p
+  \leq(2\sqrt{p-1})^\ell
+  \left[
+    \sum_{(I,\boldsymbol{k},\boldsymbol{a})\in\mathcal D}
+       c(I,\boldsymbol{k},\boldsymbol{a})^2
+           \prod_{j=1}^{\ell}\frac{k_jb_{k_j}^2}{q_{k_j}}
+  \right]^{1/2},
+  \qquad q_k=2^{-(k-2)}\quad(k\geq3).
+\end{equation}
+Independently for each block, choose a size $K_i$ with probabilities
+$q_k$, and a uniform residue $B_i$ modulo $K_i$.  Keep only terms with
+$k_j=K_{i_j}$ and $a_j\equiv B_{i_j}\pmod{k_j}$, multiplying their
+coefficients by $\prod_j k_j/q_{k_j}$.  Averaging over these auxiliary
+choices recovers the original sum.  Given the choices, all remaining
+variables are independent and centered, so
+Lemma~\ref{lem:palindrome-chaos} applies.  Minkowski's inequality followed
+by Jensen's inequality for the square root proves
+\eqref{eq:palindrome-colored}: a term is retained with probability
+$\prod_jq_{k_j}/k_j$.  A choice $K_i>n$ simply retains no terms from
+block $i$.
+
+We next compute the coefficients.  For fixed $I$ and
+$\boldsymbol{k}$, put $s=\sum_jk_j$, $d=n-s$, and
+\[
+  g_0=i_1-1,\qquad
+  g_j=i_{j+1}-i_j-1\ (1\leq j<\ell),\qquad
+  g_\ell=m-i_\ell,\qquad M=m-\ell.
+\]
+The unspecified blocks lie in these $\ell+1$ gaps and
+$\sum_jg_j=M$.  The segment starts are equivalently specified by the
+numbers $a_0,\ldots,a_\ell$ of remaining letters assigned to those gaps,
+where $\sum_ja_j=d$.  Direct summation of the multinomial law gives
+\begin{equation}\label{eq:palindrome-coefficient}
+  c(I,\boldsymbol{k},\boldsymbol{a})
+  =\frac{\fall ns}{m^s\prod_jk_j!}
+      \left(\frac Mm\right)^d
+      \frac{d!}{a_0!\cdots a_\ell!}
+                     \prod_{j=0}^{\ell}\left(\frac{g_j}{M}\right)^{a_j}.
+\end{equation}
+Here and below $\boldsymbol a$ denotes gap counts rather than the
+equivalent segment starts.  The map $I\mapsto\boldsymbol g$ is a
+bijection between $\ell$-subsets of $[m]$ and weak compositions of
+$m-\ell$ into $\ell+1$ parts.  Since $m\geq n$ and
+$\ell\leq n/3$, we always have $M>0$.
+
+\subsection{Terms with short total support}
+
+Split the expansion into terms with $s\leq n/2$ and $s>n/2$, denoting
+their sums by $T^{\mathrm{short}}$ and $T^{\mathrm{long}}$.  In the
+first case, $d\geq n/2$ and
+$M=m-\ell\geq d+2\ell\geq d+1$.
+Using \eqref{eq:palindrome-coefficient},
+\eqref{eq:palindrome-delta-bound}, and $\fall ns\leq n^s$, the square
+sum in \eqref{eq:palindrome-colored} for this part is at most
+\[
+  \sum_{\boldsymbol{k}:\,s\leq n/2}
+       \prod_{j=1}^{\ell}
+          \left[\left(\frac nm\right)^{2k_j}
+                       2^{2-2k_j}\frac{k_j}{q_{k_j}}\right]
+       \sum_{g_0+\cdots+g_\ell=M}C_d(g/M).
+\]
+We have also used $(M/m)^{2d}\leq1$.
+Lemma~\ref{lem:palindrome-lattice} bounds the collision sum by
+$(160m/\sqrt n)^\ell$, because $108\sqrt2<160$.
+Extend the length sum to all $k_j\geq3$ to separate it into a product.
+For $z=n^2/(2m^2)\leq1/2$,
+\[
+  \sum_{k\geq3}\left(\frac nm\right)^{2k}
+                   2^{2-2k}\frac{k}{q_k}
+  =\sum_{k\geq3}kz^k
+  =\frac{z^3(3-2z)}{(1-z)^2}
+  \leq8z^3=\frac{n^6}{m^6}.
+\]
+Consequently, if
+\[
+  a=2\sqrt{160}\,\frac{n^{11/4}\sqrt p}{m^{5/2}},
+\]
+then
+\begin{equation}\label{eq:palindrome-short}
+  \|T^{\mathrm{short}}\|_p
+  \leq\sum_{\ell\geq1}a^\ell=\frac a{1-a}
+  \qquad(a<1).
+\end{equation}
+
+\subsection{Terms with long total support}
+
+For $s>n/2$, bound each collision probability by one and sum over $I$,
+using $\binom m\ell\leq m^\ell/\ell!$.
+For any $\theta\geq1$, the factor $\theta^{s-n/2}$ is at least one.
+Inserting this factor into the nonnegative square sum in
+\eqref{eq:palindrome-colored} gives
+\[
+  \|T_\ell^{\mathrm{long}}\|_p
+  \leq\theta^{-n/4}\frac{A_\theta^\ell}{\sqrt{\ell!}},
+  \qquad
+  A_\theta=2\sqrt{pm}
+       \left(\sum_{k\geq3}k
+                  \left(\frac{\theta n^2}{2m^2}\right)^k\right)^{1/2}.
+\]
+Set $t=m/n\geq1$ and $\theta=t^{1/3}$.  The power-series argument
+is $1/(2t^{5/3})\leq1/2$, and hence
+\[
+  A_\theta^2\leq4pm\,t^{-5}=\frac{4pn}{t^4}.
+\]
+Cauchy--Schwarz gives
+\[
+  \sum_{\ell\geq0}\frac{A^\ell}{\sqrt{\ell!}}
+  \leq
+  \left(\sum_{\ell\geq0}2^{-\ell}\right)^{1/2}
+  \left(\sum_{\ell\geq0}\frac{2^\ell A^{2\ell}}{\ell!}\right)^{1/2}
+  =\sqrt2e^{A^2}.
+\]
+Therefore
+\begin{equation}\label{eq:palindrome-long}
+  \|T^{\mathrm{long}}\|_p
+  \leq\sqrt2\exp\left(-\frac n{12}\log t+\frac{4pn}{t^4}\right).
+\end{equation}
+
+\subsection{Completion of the moment bound}
+
+Put
+\[
+  H=\frac{n^{11/4}\sqrt p}{m^{5/2}}.
+\]
+The assumption on $m$ gives $H\leq8^{-5/2}$, $a\leq1/6$, and
+$t\geq8n^{1/10}p^{1/5}\geq8$.  Thus
+\eqref{eq:palindrome-short} yields
+\[
+  \|T^{\mathrm{short}}\|_p
+  \leq\frac65a=\frac{12}5\sqrt{160}\,H.
+\]
+Moreover, since $p\leq n^2$,
+\[
+  \frac{4p}{t^4}
+  \leq\frac1{1024}\left(\frac p{n^2}\right)^{1/5}
+  \leq\frac1{1024}\leq\frac{\log t}{24}.
+\]
+For $n\geq60$, \eqref{eq:palindrome-long} consequently gives
+\[
+  \|T^{\mathrm{long}}\|_p
+  \leq\sqrt2\,t^{-n/24}
+  \leq\sqrt2\,t^{-5/2}
+  \leq H,
+\]
+where the last inequality uses $H=n^{1/4}\sqrt p\,t^{-5/2}$.
+Combining the two parts gives
+$\|R_\sigma-1\|_p\leq32H$ for $n\geq60$.
+
+For completeness, the remaining $3\leq n<60$ are covered uniformly
+by a simpler estimate that keeps each entire block as one variable.
+Let $F_I$ be the part of the product expansion using exactly the
+nonconstant factors indexed by $I$.  This is a function of those blocks,
+centered separately in each block.  The selected-cell multinomial
+marginal and \eqref{eq:palindrome-delta-bound} give
+\[
+  \|F_I\|_\infty\leq\beta^{|I|},\qquad
+  \beta=\sum_{k\geq3}2^{1-k}(n/m)^k
+       =\frac{n^3}{4m^3(1-n/(2m))}
+       \leq\frac{n^3}{2m^3}.
+\]
+Indeed, the joint probability of selected occupancies $k_i$ with sum
+$s$ is bounded by
+\[
+  \frac{n^s}{m^s\prod_i k_i!}.
+\]
+The factorials cancel against \eqref{eq:palindrome-delta-bound}, and
+extending the sum to arbitrary $k_i\geq3$ gives the product above.
+
+To bound the sum over $|I|=\ell$, introduce an independent copy of each
+block.  Replace $F_I$ by its alternating difference in its $\ell$
+arguments, denoted by $\Delta_I F_I$.  Separate centering implies
+that averaging over the copies recovers $F_I$, while
+$|\Delta_I F_I|\leq2^\ell\beta^\ell$.  Independently swapping each
+block with its copy multiplies $\Delta_I F_I$ by the product of the
+corresponding Rademacher signs.  Conditional hypercontractivity,
+followed by the uniform bound on these coefficients, gives
+\[
+  \left\|\sum_{|I|=\ell}F_I\right\|_p
+  \leq(2\sqrt{p-1})^\ell\binom m\ell^{1/2}\beta^\ell
+  \leq\frac{b^\ell}{\sqrt{\ell!}},
+  \qquad b=2\beta\sqrt{mp}.
+\]
+Since $b\leq n^{1/4}H\leq60^{1/4}8^{-5/2}<1/4$, we obtain
+\[
+  \|R_\sigma-1\|_p
+  \leq\sum_{\ell\geq1}\frac{b^\ell}{\sqrt{\ell!}}
+  \leq\frac b{1-b}
+  \leq\frac43\,60^{1/4}H<4H.
+\]
+This proves Lemma~\ref{lem:palindrome-moment} for all $n\geq3$.

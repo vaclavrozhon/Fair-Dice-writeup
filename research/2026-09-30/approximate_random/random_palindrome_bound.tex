@@ -1,0 +1,130 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prob}{\mathbb P}
+\title{Uniform approximation by independently relabelled palindrome blocks}
+\author{Research note; independently reviewed by two other agents}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+Let $\rho_1,\ldots,\rho_m$ be independent uniform permutations of $[n]$.
+Concatenate the words $\rho_i\rho_i^{\mathrm{rev}}$.
+Each die has $2m$ equally likely faces. For an output order $\sigma\in S_n$,
+let $R_\sigma=n!P(\sigma)$ be its likelihood ratio relative to uniform.
+
+\begin{theorem}\label{thm:main}
+For $n\geq3$, $0<\varepsilon\leq1$, put
+\[
+ p=\max\left(2,\frac{\log(2n!)}{\log3}\right),\qquad
+ m\geq\max\left(n,
+       \left(\frac{4n^3\sqrt{p}}{\varepsilon}\right)^{2/5}\right).
+\]
+With probability at least $1/2$ over the independent block permutations,
+\[
+ |R_\sigma-1|\leq\varepsilon\qquad(\sigma\in S_n).
+\]
+Consequently $O(n^{7/5}(\log n)^{1/5}\varepsilon^{-2/5})$ faces per die
+suffice for pointwise relative $\varepsilon$-fairness.
+\end{theorem}
+
+\begin{lemma}[A bounded canonical-kernel estimate]\label{lem:chaos}
+Let $X_1,\ldots,X_m$ be independent. Suppose
+\[
+ F=\sum_{\varnothing\ne I\subseteq[m]}F_I(X_I)
+\]
+is a finite sum, with each $F_I$ centered separately in each of its arguments,
+and $\|F_I\|_\infty\leq\beta^{|I|}$. For real $p\geq2$, put
+$a=2\beta\sqrt{m(p-1)}$. If $a<1$, then
+\[
+ \|F\|_p\leq\sum_{\ell\geq1}\frac{a^\ell}{\sqrt{\ell!}}
+             \leq\frac a{1-a}.
+\]
+\end{lemma}
+\begin{proof}
+Write $F^{(\ell)}=\sum_{|I|=\ell}F_I$ and introduce independent copies $X_i'$.
+Let $\Delta_I F_I$ be the iterated difference in all coordinates of $I$,
+using $X_i-X_i'$ in the usual difference-operator notation.
+Separate centering gives
+$\E_{X'}\sum_{|I|=\ell}\Delta_I F_I=F^{(\ell)}(X)$.
+Jensen's inequality bounds its $L^p$ norm by that of the differenced sum.
+Swapping each pair $(X_i,X_i')$ independently leaves its distribution
+unchanged and multiplies $\Delta_I F_I$ by the product of the corresponding
+Rademacher signs. Conditional on the pairs, the Rademacher
+Bonami--Beckner inequality \cite{bonami,odonnell} for a homogeneous degree-$\ell$ polynomial gives
+\[
+ \left\|\sum_{|I|=\ell}\Delta_I F_I\right\|_p
+ \leq (p-1)^{\ell/2}
+       \left(\sum_{|I|=\ell}(2^\ell\beta^\ell)^2\right)^{1/2}
+ \leq \frac{(2\beta\sqrt{m(p-1)})^\ell}{\sqrt{\ell!}}.
+\]
+The estimate is uniform in the conditioning. Sum over $\ell$ using
+Minkowski's inequality.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Fix $\sigma$. Let $L=(L_1,\ldots,L_m)$ have the multinomial distribution
+with $n$ trials and equal cell probabilities $1/m$. Reading $\sigma$ from
+left to right, split it into consecutive segments $A_i$ of lengths $L_i$.
+Let $q_i(A_i)$ be the conditional probability of the prescribed internal
+order within the $i$th palindrome block, and put
+\[
+ r_i(A_i)=L_i!q_i(A_i),\qquad \delta_i(A_i)=r_i(A_i)-1.
+\]
+For empty segments set $r_i=1$. Directly conditioning on block choices gives
+\[
+ R_\sigma=\E_L\prod_{i=1}^m r_i(A_i).
+\]
+Uniform random relabelling gives $\E_{\rho_i}\delta_i(A)=0$ for every fixed
+segment $A$. Furthermore $\delta_i(A)=0$ for $|A|\leq2$, since each
+palindrome block is pairwise fair.
+
+A prescribed order of $k$ distinct labels has at most two subsequence
+occurrences in one palindrome, so $q_i(A)\leq2^{1-k}$.
+For $k\geq3$ this implies
+\[
+ |\delta_i(A)|\leq k!2^{1-k}.
+\]
+Expanding the product gives
+\[
+ R_\sigma-1=\sum_{\varnothing\ne I\subseteq[m]}F_I,
+ \qquad F_I=\E_L\prod_{i\in I}\delta_i(A_i).
+\]
+These kernels are centered separately in every block permutation indexed
+by $I$. If $|I|=\ell$, their uniform bound is
+\begin{align*}
+ |F_I|
+ &\leq\sum_{\substack{k_i\geq3\ (i\in I)\\d=\sum_{i\in I}k_i\leq n}}
+ \frac{n^{\underline d}}{m^d}
+       (1-\ell/m)^{n-d}\prod_{i\in I}2^{1-k_i}\\
+ &\leq\left(\sum_{k\geq3}2^{1-k}(n/m)^k\right)^\ell
+ =\beta^\ell,
+ \qquad \beta=\frac{n^3}{4m^3(1-n/(2m))}.
+\end{align*}
+The first line is just the selected-cell multinomial marginal; its
+$k_i!$ denominators cancel the factorials in the bound for $\delta_i$.
+All omitted terms in the next line are nonnegative.
+
+Since $m\geq n$, we have $\beta\leq n^3/(2m^3)$ and therefore
+\[
+ a=2\beta\sqrt{m(p-1)}\leq\frac{n^3\sqrt p}{m^{5/2}}
+ \leq\frac\varepsilon4.
+\]
+Lemma~\ref{lem:chaos} implies $\|R_\sigma-1\|_p\leq\varepsilon/3$.
+Markov's inequality gives
+$\Prob(|R_\sigma-1|>\varepsilon)\leq3^{-p}$.
+A union bound over $n!$ orders proves the theorem.
+\end{proof}
+
+\paragraph{What this does and does not establish.}
+This argument controls the complete nonlinear Hoeffding expansion. It does
+not use a first-order approximation. It does not establish the sharper
+$n^{13/10}$ heuristic suggested by internal dependence among overlapping
+triples. No claim of optimality or literature novelty is made here.
+\begin{thebibliography}{9}
+\bibitem{bonami} Aline Bonami, \emph{\'Etude des coefficients de Fourier des fonctions de $L^p(G)$}, Annales de l'Institut Fourier \textbf{20} (1970), no.~2, 335--402, \href{https://aif.centre-mersenne.org/item/AIF_1970__20_2_335_0/}{doi:10.5802/aif.357}.
+\bibitem{odonnell} Ryan O'Donnell, \emph{Analysis of Boolean Functions}, Cambridge University Press, 2014, Theorem~9.21; \href{https://www.cs.cmu.edu/~odonnell/papers/Analysis-of-Boolean-Functions-by-Ryan-ODonnell.pdf}{author's complete book manuscript}.
+\end{thebibliography}
+\end{document}

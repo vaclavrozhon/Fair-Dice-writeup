@@ -1,0 +1,109 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{proposition}{Proposition}
+\title{An exact obstruction to extracting the triple term linearly}
+\author{Exact certificate; independently verified by a second agent}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+For a concatenation of $m$ independently specified palindrome blocks
+$\rho_i\operatorname{rev}(\rho_i)$ on $n$ labels, write $R(\sigma)$ for
+the ratio of the probability of target order $\sigma$ to $1/n!$.
+Let $S(\sigma)$ be the triple contribution defined in the companion
+palindrome notes. Both $R-1$ and $S$ are vectors indexed by $S_n$.
+
+\begin{proposition}
+Already for $n=5$ and $m=3$, there is no linear map $T$ on target-order
+vectors such that $S=T(R-1)$ for every choice of the block permutations.
+This remains false if all lower-dimensional ordering marginals are
+included in the input, since they are linear averages of the full vector.
+\end{proposition}
+
+The conclusion concerns an exact universal linear extraction. It does
+not exclude an approximate extraction, a nonlinear inequality, or a
+lower bound for the complete deterministic ordering error. In this
+example products of two block defects have degree at least six and
+therefore do not occur: the obstruction is cancellation between
+single-block contributions of lengths three, four, and five.
+
+\begin{proof}[Proof by an exact integer certificate]
+For a distinct-letter pattern $p$ of length $k\in\{3,4,5\}$ put
+\[
+ D_\rho(p)=N_\rho(p)-\frac{2^k}{k!},
+\]
+where $N_\rho(p)$ is its subsequence count in the ten-letter palindrome
+$\rho\operatorname{rev}(\rho)$. Let slots be $i=0,1,2$ and write
+$j=2-i$. Define integer columns, indexed by full patterns $p\in S_5$,
+\[
+ A_{i,\rho}(p)=15\sum_{\substack{a,b\ge0\\a+b\le2}}
+ \frac{(2i)^a(2j)^b}{a!b!}\,
+ D_\rho(p_{a+1}\cdots p_{5-b}),
+\]
+\[
+ B_{i,\rho}(p)=15\sum_{\substack{a,b\ge0\\a+b=2}}
+ \frac{(2i)^a(2j)^b}{a!b!}\,
+ D_\rho(p_{a+1}\cdots p_{5-b}).
+\]
+The reduced-signature product expansion gives exactly
+\[
+ R-1=\frac{120}{15\cdot6^5}\sum_{i=0}^2 A_{i,\rho_i},\qquad
+ S=\frac{120}{15\cdot6^5}\sum_{i=0}^2 B_{i,\rho_i}.
+\]
+Indeed, a palindrome block agrees with $\exp(2\sum X_i)$ through
+degree two; products of two defects vanish in degree five. The formula
+for $B$ retains precisely its degree-three part.
+
+Here is a signed integer array $v_{i,\rho}$, with unlisted entries zero:
+\[
+\begin{array}{c|c|r@{\qquad}c|c|r}
+ i&\rho&v&i&\rho&v\\\hline
+ 0&01234&-5&0&01324&5\\
+ 0&10234&-4&0&10324&4\\
+ 0&23401&8&0&32401&-8\\
+ 0&40213&-8&0&40312&8\\
+ 0&41203&-8&0&41302&8\\
+ 1&01234&2&1&01324&-2\\
+ 2&01234&-1&2&01324&1
+\end{array}
+\]
+Exact subsequence counting verifies
+\[
+ \sum_\rho v_{i,\rho}=0\quad(i=0,1,2),\qquad
+ \sum_{i,\rho}v_{i,\rho}A_{i,\rho}=0,
+\]
+whereas
+\[
+ \left(\sum_{i,\rho}v_{i,\rho}B_{i,\rho}\right)(01234)=-120.
+\]
+All 120 coordinates of the first vector identity and of the nonzero
+second vector are recorded in
+\path{linear_extraction_counterexample.json}. Two independent exact
+programs verified them: one uses subsequence dynamic programming, the
+other enumerates position subsets of each palindrome directly.
+
+To deduce the stated impossibility for actual block choices, independently
+sample each slot from the rational probability distribution
+\[
+ q_{i,\rho}=\frac1{120}+\frac{v_{i,\rho}}{960}.
+\]
+These probabilities are nonnegative because $|v|\le8$, and each slot
+sums to one. Under the unperturbed uniform distributions, both displayed
+defect vectors have mean zero, by uniform relabeling. The exact identities
+therefore give
+\[
+ \mathbb E(R-1)=0,\qquad
+ \mathbb E S(01234)=-\frac1{6^5}\ne0.
+\]
+A universal linear map $T$ would imply
+$\mathbb ES=T(\mathbb E(R-1))=0$, a contradiction.
+\end{proof}
+
+\paragraph{Reproduction.}
+The discovery script is \path{find_extraction_counterexample.py}; the
+matrix definition is \path{check_linear_extraction.py}. The independent
+standard-library verifier is
+\path{../independent_directions/review_linear_extraction_counterexample.py}.
+The exact identities, not the numerical ranks used during discovery,
+are the certificate.
+\end{document}

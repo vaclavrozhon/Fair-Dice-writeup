@@ -1,0 +1,65 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\title{A short-word obstruction for palindromic permutation blocks}
+\author{Exact finite certificate; restricted construction family}
+\date{30 September 2026}
+\begin{document}\maketitle
+For a permutation $\rho$ of five letters write $P_\rho=\rho\rho^{\rm rev}$.
+We consider only words $P_{\rho_0}\cdots P_{\rho_{q-1}}$, having $2q$ faces
+on each die. The following statement does not exclude arbitrary fair
+five-die words with the same face counts.
+\begin{theorem}
+If a concatenation of five-letter palindromic permutation blocks is
+four-wise permutation-fair, then it contains at least twelve blocks.
+In particular this construction cannot give four-wise fairness with
+$18$ faces on each die.
+\end{theorem}
+\begin{proof}
+Let $D_3(\rho,p)=3\#_p(P_\rho)-4$ for ordered triples, and let
+$D_4(\rho,p)=3\#_p(P_\rho)-2$ for ordered quadruples. Each palindrome
+block is pairwise fair. Products of two errors have degree at least six,
+so three times the degree-four error of the concatenation is the sum of
+vectors
+\[
+ C_{i,\rho}(p)=D_4(\rho,p)+2iD_3(\rho,p_{2:4})
+                   +2(q-1-i)D_3(\rho,p_{1:3}).
+\]
+Global relabeling lets us set $\rho_0=01234$.
+
+The accompanying file \path{fourwise_palindrome_9_separator.json}
+gives a vector $\lambda\in\{-1,0,1\}^{120}$ indexed by the lexicographically
+ordered quadruples. Direct integer enumeration of the $120$ permutations
+verifies that
+\[
+ \langle\lambda,D_3(\rho,p_{2:4})\rangle=0,
+ \qquad
+ \langle\lambda,D_4(\rho,p)\rangle
+ =\langle\lambda,D_3(\rho,p_{1:3})\rangle=:b_\rho,
+\]
+where $b_{01234}=84$ and $\min_\rho b_\rho=-18$.
+Consequently, for any choices of the later blocks,
+\[
+ \left\langle\lambda,\sum_{i=0}^{q-1}C_{i,\rho_i}\right\rangle
+ \ge84(2q-1)-18\sum_{j=0}^{q-2}(2j+1)
+ =84(2q-1)-18(q-1)^2.
+\]
+This is strictly positive for $1\le q\le10$, contradicting four-wise
+fairness. Triple fairness also requires $3\mid q$: the number of times
+each member of any fixed triple is first in the permutation blocks must
+be $q/3$. Thus $q\ge12$.
+
+The standalone verifier \path{verify_fourwise_palindrome_obstruction.py}
+uses only Python integers and no optimization package. The original
+search used an LP, but validity of the displayed certificate does not
+depend on numerical optimization.
+\end{proof}
+\paragraph{Further finite searches.}
+The scripts \path{search_other_30_seeds.py} and
+\path{insert_fifth_into_30.py} test insertion of a fifth die in arbitrary
+gaps of already fair four-die, thirty-face words. Negative instances
+have explicit integral Farkas certificates. These are finite searches
+inside specified families, not a proof excluding general thirty-face
+five-die systems.
+\end{document}

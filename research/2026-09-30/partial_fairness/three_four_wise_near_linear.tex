@@ -1,0 +1,116 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\title{Nearly linear face counts for exact three- and four-wise fairness}
+\author{A consequence of permutation designs and palindrome composition}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+Let $M_k(n)$ be the least common number of faces of $n$ uniform dice,
+with all labels distinct, for which every subset of at most $k$ dice
+has uniform relative order. Here $k$ is fixed while $n$ grows.
+\begin{theorem}\label{main}
+For $n\ge5$,
+\[
+ \frac{n+3}{2}\le M_3(n)\le M_4(n)\le Cn(\log n)^2
+\]
+for an absolute constant $C$. More precisely,
+\[
+ M_3(n)\le (6\sqrt e+o(1))n(\log_2n)^2,\qquad
+ M_4(n)\le (12\sqrt e+o(1))n(\log_2n)^2.
+\]
+Thus $M_3(n)=n^{1+o(1)}$ and $M_4(n)=n^{1+o(1)}$.
+\end{theorem}
+The upper bounds use published permutation-design constructions; they
+are not claims of new bounds for those designs. The lower bound is the
+independent Gram/path-energy argument in
+\path{../approximate/three_wise_face_lower_bound.tex}.
+
+\begin{lemma}[A triple-minimum design gives three-wise fair dice]\label{pal}
+Let $\rho_1,\ldots,\rho_q$ be permutations written as ordered lists of
+$[n]$. Suppose that, for every three distinct labels, each is the earliest
+of the three in exactly $q/3$ of these lists. Then
+\[
+ W=P_1\cdots P_q,\qquad P_i=\rho_i\operatorname{rev}(\rho_i),
+\]
+is three-wise fair and has $2q$ copies of each letter. The order of its
+$q$ blocks is arbitrary.
+\end{lemma}
+\begin{proof}
+Each palindrome block has two copies of each label and exactly two
+occurrences of either ordering of any pair. For a target triple $abc$,
+its count in $P_i$ is zero if $b$ is earliest in $\rho_i$, and two
+otherwise. Thus the sum of its within-block counts is $4q/3$,
+independent of $abc$.
+The contributions using two distinct blocks depend only on their
+one- and two-letter counts, and those using three distinct blocks depend
+only on their one-letter counts. They too are independent of the target
+order. Hence all six orders of any triple have the same count.
+The one- and two-letter statements follow in the same way.
+\end{proof}
+
+\begin{lemma}[Reversal raises odd strength by one]\label{reverse}
+If a word $W$ is fair on every subset of at most $2s-1$ labels, then
+$W\operatorname{rev}(W)$ is fair on every subset of at most $2s$ labels.
+Equal composition is not needed. Every multiplicity doubles.
+\end{lemma}
+\begin{proof}
+Work in the associative algebra in which words with repeated letters
+vanish, truncated above degree $2s$. Put $H=\sum_i c_iX_i$, where $c_i$
+are the letter counts. Its positive-word signature is the product of
+$1+X_i=\exp X_i$ in word order. The hypothesis says
+\[
+ \log S(W)=H+E_{2s}
+\]
+in this truncated algebra. The logarithm is a Lie element, since it is
+obtained by the Baker--Campbell--Hausdorff formula.
+Reversal acts on a homogeneous Lie element of degree $j$ by
+$(-1)^{j-1}$, as follows by induction on brackets. Thus
+\[
+ \log S(\operatorname{rev}(W))=H-E_{2s}.
+\]
+All commutators involving $E_{2s}$ have degree greater than $2s$.
+Consequently $\log S(W\operatorname{rev}(W))=2H$, precisely the
+signature condition for fairness through degree $2s$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{main}]
+A perfect sequence covering array of strength three is a multiset of
+$q$ permutations in which every ordering of any triple occurs $q/6$
+times. In particular it satisfies Lemma~\ref{pal}. Published
+constructions give
+\[
+ q\le(3\sqrt e+o(1))n(\log_2n)^2;
+\]
+see Iurlano \cite[Remark 5, equation (11)]{iurlano}, using the finite-
+geometry construction of Tarui, Itoh, and Takei with the improved base
+case. Lemma~\ref{pal} gives $2q$ faces for three-wise fairness, and
+Lemma~\ref{reverse} gives $4q$ for four-wise fairness.
+The three-wise Gram/path-energy lower bound cited above gives
+$M_3(n)\ge(n+3)/2$ for $n\ge5$.
+\end{proof}
+
+\paragraph{Questions exposed by the reduction.}
+Can the logarithmic factor be removed for three-wise fair dice?
+Does $M_3(n)=\Theta(n)$ hold, perhaps even without a linear-size
+permutation design? The same question for $M_4(n)$ is equivalent up to
+a factor of two by Lemma~\ref{reverse}. More generally that lemma gives
+$M_{2s-1}(n)\le M_{2s}(n)\le2M_{2s-1}(n)$.
+The next distinct regime is five-wise fairness. It is natural to ask
+whether $M_5(n)$ is nearly quadratic, but no such lower or upper bound
+is asserted here. These fixed-strength questions do not settle the
+full-strength case $k=n$ in the manuscript.
+
+\begin{thebibliography}{9}
+\bibitem{iurlano} E.~Iurlano, \emph{Growth of the perfect sequence
+covering array number}, Designs, Codes and Cryptography 91 (2023),
+1487--1494,
+\href{https://doi.org/10.1007/s10623-022-01168-3}{doi:10.1007/s10623-022-01168-3}.
+\bibitem{yuster} R.~Yuster, \emph{Perfect sequence covering arrays},
+Designs, Codes and Cryptography 88 (2020), 585--593;
+\href{https://math.haifa.ac.il/raphy/papers/perfect-sca.pdf}{author's text}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,84 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{lemma}{Lemma}
+\title{Centered bumps simplify the polynomial-die proof}
+\author{Companion note, 30 September 2026}
+\date{}
+\begin{document}
+\maketitle
+This is an alternative to the evaluation-at-zero bumps in
+\texttt{polynomial\_exceptional\_die.tex}. It leaves the theorem and the
+finite realization unchanged, while reducing the order-response calculation
+to the two old dice adjacent to the distinguished die.
+
+For fixed distinct interior real nodes $u_q$, choose disjoint rational
+neighborhoods $I_q$ and, inside each, $m$ rational subintervals left of
+$u_q$ and $m$ right of it. Let $V_q$ be a neighborhood of $u_q$ separating
+those two groups of subintervals. For each $t\in V_q$, solve the two
+interval-moment systems with target vectors
+\[
+ (1,t,t^2,\ldots,t^{m-1})^T
+ \quad\hbox{and}\quad
+ -(1,t,t^2,\ldots,t^{m-1})^T.
+\]
+Their matrices are fixed invertible rational matrices. The resulting
+piecewise-constant function $h_{q,t}$ is continuous in $t$ in its
+coefficient vector and is rational when $t$ is rational. Uniformly for
+$t$ near $u_q$, it is bounded. For every $g\in\mathcal P_{m-1}$,
+\[
+ \int_0^t h_{q,t}(x)g(x)\,dx=g(t),\qquad
+ \int_t^1 h_{q,t}(x)g(x)\,dx=-g(t).
+\]
+Its full moments through degree $m-1$ vanish.
+
+Use the same rational nodes $t_q$, disjoint index sets $Q_j$, and
+Vandermonde coefficients $\delta_{j,q}$ as in the main proof, and set
+\[
+ f_j(x)=1+\sum_{q\in Q_j}\delta_{j,q}h_{q,t_q}(x).
+\]
+As $t\to u$, the coefficients $\delta$ tend to zero while all bumps
+remain uniformly bounded. Thus positivity follows exactly as before.
+The full-moment cancellation of all multiple-bump terms is unchanged.
+
+Fix an order placing the distinguished die after $k$ old dice. A single
+bump from a die before the distinguished die has kernel
+\[
+ \frac{x^a(t-x)^b(1-t)^{m-k}}{a!b!(m-k)!},\qquad a+b=k-1.
+\]
+Evaluation at $x=t$ makes it zero unless $b=0$. Hence only the old die
+immediately preceding the distinguished die contributes, with polynomial
+\[
+ \frac{t^{k-1}(1-t)^{m-k}}{(k-1)!(m-k)!}.
+\]
+Likewise, on the right side only the old die immediately following the
+distinguished die contributes, with negative polynomial
+\[
+ -\frac{t^k(1-t)^{m-k-1}}{k!(m-k-1)!}.
+\]
+Since the aggregated correction functional $B_j$ is the same $B$ for
+every old die, the total correction is again
+\[
+ B\left[\left(\frac{t^k(1-t)^{m-k}}{k!(m-k)!}\right)'\right].
+\]
+At $k=0$ or $k=m$, only the applicable neighboring die is present.
+This proves the order-response identity without summing over all old
+positions.
+
+\paragraph{Explicit kernel.}
+The root agent and the independent-directions agent additionally obtained
+the following convenient rational version. Put $H_m=\sum_{j=1}^m1/j$ and
+\[
+ c_\ell=H_m+\sum_{j=1}^{\ell}\frac{(-1)^j}{j}\binom mj,
+ \qquad0\le\ell\le m-1.
+\]
+The function that is constant $c_\ell$ on
+$[-\ell-1,-\ell]$ integrates every polynomial of degree at most $m-1$
+to its value at $0$. This follows by taking an antiderivative and applying
+the backward Lagrange differentiation formula on nodes $0,-1,\ldots,-m$.
+After translation and scaling to $[t-h,t]$, its constants become
+$(m/h)c_\ell$. Negative reflection about $t$ supplies the right side.
+The bound $|c_\ell|\le H_m+2^m$ gives an explicit positivity certificate
+when the perturbation coefficients are sufficiently small.
+
+\end{document}

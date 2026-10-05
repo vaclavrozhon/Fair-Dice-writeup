@@ -1,0 +1,72 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{proposition}{Proposition}
+\title{Many polynomial-size dice would settle the exponential-total question}
+\author{Asymptotic reductions from hereditary fairness}
+\date{30 September 2026}
+\begin{document}\maketitle
+Let $A_r$ be the minimum total number of faces of a permutation-fair
+family of $r$ finite equiprobable dice, with arbitrary individual sizes.
+All logarithms below are natural.
+
+\begin{proposition}[Arithmetic upper bound on the exceptional set]
+If a permutation-fair family contains $r$ dice with at most $M$ faces
+each, then, as $r\to\infty$,
+\[
+ \log M\ge(1/2+o(1))r.
+\]
+Consequently an $N$-die family contains at most
+$(2C+o(1))\log N$ dice with at most $N^C$ faces, for fixed $C>0$.
+\end{proposition}
+\begin{proof}
+Restrict to the $r$ specified dice, with counts $K_1,\ldots,K_r$.
+For every prime $p\le r$, at most $p-1$ of these counts can fail to
+be divisible by $p$: otherwise a $p$-element restriction would have
+a face-count product not divisible by $p!$. Thus
+\[
+ r\log M\ge\sum_{i=1}^r\log K_i
+ \ge\sum_{p\le r}(r-p+1)\log p.
+\]
+Writing $\vartheta(x)=\sum_{p\le x}\log p$, the last sum is
+$\vartheta(r)+\int_2^r\vartheta(t)\,dt=(1/2+o(1))r^2$
+by the prime number theorem. This proves the claims; a bounded $r$
+is harmless in the second asymptotic assertion.
+\end{proof}
+
+\begin{proposition}[Reduction to the first open problem]\label{reduction}
+Suppose there are absolute constants $c,C>0$ such that, for every
+sufficiently large integer $N$, some permutation-fair $N$-die family
+contains at least $c\log N$ dice with at most $N^C$ faces each.
+Then
+\[
+ A_r\le\exp(O(r))\qquad(r\to\infty).
+\]
+More precisely $\log A_r\le(C/c+o(1))r$.
+\end{proposition}
+\begin{proof}
+For each large $r$, take $N=\lceil\exp((r+1)/c)\rceil$ and retain
+any $r$ of the promised small dice. Hereditary fairness gives a fair
+$r$-die family of total size at most $rN^C$. Its logarithm is
+at most $(C/c)r+O(\log r)$.
+\end{proof}
+
+\paragraph{Interpretation and limits.}
+The first proposition is a sharpening of the manuscript's arithmetic
+maximum-die argument, not a new construction. The second is a one-way
+reduction. A proof of logarithmically many uniformly polynomial-size
+exceptional dice would already close the original exponential versus
+$\exp(O(r\log r))$ upper-bound gap. Conversely, an exponential-total
+construction for $r$ dice does not automatically embed into a much larger
+fair family while keeping those dice small; no equivalence is claimed.
+
+The proved fixed-$k$ construction, including its uniform quantitative
+bound
+\[
+ S\le(N+2^k+2)^{\exp(Ck^2)}
+\]
+for $k$ specified equal-count dice, does not meet the uniform hypotheses
+of Proposition~\ref{reduction}. Its growing-$k$ consequences give
+subexponential sizes, not a bound $N^C$ with an absolute exponent.
+See \path{size_bounds/uniform_fixed_number_complexity.tex}.
+\end{document}

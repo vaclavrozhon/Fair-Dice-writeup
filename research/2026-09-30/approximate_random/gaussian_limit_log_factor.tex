@@ -1,0 +1,204 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Var}{\operatorname{Var}}
+\title{The logarithmic factor in the large-block Gaussian limit}
+\author{Research note; independently reviewed by two other agents}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+Let $R^{(n,m)}_\sigma=n!P(\sigma)$ be the likelihood ratio of a target
+order for $m$ independent uniformly relabelled palindrome blocks.
+This note treats an iterated limit: first $m\to\infty$ for each fixed $n$,
+then $n\to\infty$. It makes no claim that the Gaussian approximation is
+uniform at the threshold $m\asymp n^{13/10}(\log n)^{1/5}$.
+
+\begin{theorem}\label{thm:main}
+For every fixed $n\geq3$, the finite vector
+\[
+ \bigl(m^{5/2}(R^{(n,m)}_\sigma-1):\sigma\in S_n\bigr)
+\]
+converges in distribution as $m\to\infty$ to a centered Gaussian vector
+$(G_\sigma:\sigma\in S_n)$. The expectations of the maximum absolute
+coordinates also converge. Moreover, for absolute constants $c,C>0$,
+\[
+ c n^{13/4}\sqrt{\log n}\leq
+ \lim_{m\to\infty}m^{5/2}\E\max_{\sigma\in S_n}|R^{(n,m)}_\sigma-1|
+ \leq C n^{13/4}\sqrt{\log n}
+\]
+for sufficiently large $n$.
+\end{theorem}
+
+\section{The Gaussian limit}
+Put $d=n-3$, $B_n=\binom n3$, and
+\[
+ w_a(p)=\binom da p^a(1-p)^{d-a},\qquad
+ \delta(l,x,r)=\frac12-\frac32\mathbf1\{x<\min(l,r)\}.
+\]
+Let $Y=(Y_1,\ldots,Y_n)$ consist of independent uniform $[0,1]$ variables,
+and define
+\[
+ f_\sigma(p,Y)=\sum_{a=0}^{d}w_a(p)
+       \delta(Y_{\sigma(a)},Y_{\sigma(a+1)},Y_{\sigma(a+2)}),
+\]
+where target positions are numbered from zero. Each $f_\sigma$ is centered
+as a function of $Y$. The triple projection is exactly
+\[
+ S_\sigma=B_nm^{-3}(1-1/m)^d
+             \sum_{i=1}^m f_\sigma((i-1)/(m-1),Y_i),
+\]
+with independent $Y_i$. Its scaled summands satisfy the Lindeberg condition
+for fixed $n$, since they are uniformly $O_n(m^{-1/2})$.
+Their covariance sums converge by ordinary Riemann integration. Therefore
+the multivariate Lindeberg central limit theorem gives the centered
+Gaussian limit with covariance
+\begin{equation}\label{eq:cov}
+ \E G_\sigma G_\tau
+ =B_n^2\int_0^1\E[f_\sigma(p,Y)f_\tau(p,Y)]\,dp.
+\end{equation}
+
+For clarity, the other terms vanish after scaling. At Hoeffding level
+$\ell$, the blockwise centered kernel on any specified set of $\ell$ blocks
+is $O_n(m^{-3\ell})$. Symmetrization, or directly orthogonality of distinct
+canonical kernels for $L^2$, bounds the full level by
+$O_n(m^{-5\ell/2})$ in $L^2$. Levels $\ell\geq2$ are therefore negligible.
+In level one the segments of length at least four give
+$O_n(m^{-7/2})$ in $L^2$. Thus
+\[
+ m^{5/2}(R^{(n,m)}_\sigma-1-S_\sigma)\longrightarrow0
+ \quad\hbox{in }L^2.
+\]
+There are finitely many targets for fixed $n$, and their scaled coordinates
+have bounded second moments. Their maximum is consequently uniformly
+integrable, proving convergence of the expected maximum absolute value.
+
+Equivalently, let $W$ be an isonormal Gaussian process over the Hilbert
+space $L^2([0,1]\times[0,1]^n,dp\,dY)$. Then
+\[
+ G_\sigma=B_n W(f_\sigma).
+\]
+Only a finite-dimensional subspace is needed here, so this is simply a
+convenient representation of a finite Gaussian vector with covariance
+\eqref{eq:cov}.
+
+\section{The upper bound}
+The centered valley sequence in a fixed target has covariances
+$1/2,-1/4,1/20$ at distances zero, one, and two, and zero beyond two.
+By Cauchy--Schwarz applied to shifted weight sequences,
+\[
+ \Var\left(\sum_aw_a(p)\delta_a\right)
+ \leq\frac{11}{10}\sum_aw_a(p)^2.
+\]
+The exact beta-integral identity
+\[
+ \int_0^1\sum_aw_a(p)^2\,dp
+ =\frac{4^d}{(2d+1)\binom{2d}d}\asymp n^{-1/2}
+\]
+therefore gives $\Var G_\sigma\leq Cn^{11/2}$.
+The elementary Gaussian exponential-moment bound for a maximum over $n!$
+coordinates now implies
+\[
+ \E\max_\sigma|G_\sigma|
+ \leq Cn^{11/4}\sqrt{\log(2n!)}
+ \leq Cn^{13/4}\sqrt{\log n}.
+\]
+No independence among these coordinates is required.
+
+\section{A canonical three-variable component}
+Let $L,X,R$ be independent uniform variables, and let $u(L,X,R)$ be the
+component of $\delta(L,X,R)$ centered in each of its three variables:
+\[
+ u=\delta-\E(\delta\mid L,X)-\E(\delta\mid X,R)
+            -\E(\delta\mid L,R)
+       +\E(\delta\mid L)+\E(\delta\mid X)+\E(\delta\mid R).
+\]
+It has zero conditional expectation given any two variables.
+Its variance is
+\begin{equation}\label{eq:kappa}
+ \E u^2=\frac1{20}.
+\end{equation}
+Here is an explicit check. With
+$g(t)=\tfrac34(1-t)^2-\tfrac14$, the one-variable projections are
+$g(L),-2g(X),g(R)$ and $\E g^2=1/20$.
+The variances of the two-variable conditional expectations are
+\[
+ \Var\E(\delta\mid L,R)=\frac18,
+ \qquad
+ \Var\E(\delta\mid L,X)=\Var\E(\delta\mid X,R)=\frac5{16}.
+\]
+Orthogonality of the Hoeffding components gives
+$\E u^2=\tfrac12+6/20-\tfrac18-2(5/16)=1/20$.
+
+\section{An independent Gaussian assignment matrix inside the process}
+Choose $N\asymp n$ movable positions in the middle third of a base target,
+spaced by at least three positions. Keep all other labels fixed as anchors,
+and allow the $N$ movable labels to permute arbitrarily among the movable
+positions. Let $\mathcal F$ be this family of $N!$ target orders.
+Each movable position $v$ has two fixed adjacent anchor labels
+$\lambda_v,\rho_v$. These anchor pairs are disjoint between positions,
+and no anchor is a movable label.
+
+For a movable label $b$, define the Gaussian entry
+\[
+ Z_{v,b}=B_nW\bigl(w_{v-1}(p)
+                     u(Y_{\lambda_v},Y_b,Y_{\rho_v})\bigr).
+\]
+These $N^2$ entries are mutually independent. Indeed, distinct entries use
+different triples of underlying variables, with at most two variables in
+common. Integrating in a variable present in only one triple makes their
+inner product zero by the canonical property of $u$. Joint Gaussianity
+turns this orthogonality into independence.
+For each row $v$, all entries have the same variance, and
+\[
+ \Var Z_{v,b}=
+ \frac{B_n^2}{20}\int_0^1w_{v-1}(p)^2\,dp\asymp n^{9/2}.
+\]
+The constants are uniform over the chosen central positions: the integral
+is $\binom d{v-1}^2/((2d+1)\binom{2d}{2v-2})\asymp n^{-3/2}$.
+
+If a target $\sigma\in\mathcal F$ assigns label $\pi(v)$ to position $v$,
+its orthogonal projection onto the span of these Gaussian entries is
+precisely $\sum_vZ_{v,\pi(v)}$. To check this, a target triple can have a
+nonzero inner product with the defining canonical kernel only if it
+contains all three labels $\lambda_v,b,\rho_v$. The two fixed anchors
+are separated by position $v$, so the only such consecutive triple has
+center label $b$ assigned to $v$. Its coefficient is exactly $w_{v-1}$.
+Consequently,
+\[
+ G_\sigma=\sum_vZ_{v,\pi(v)}+H_\sigma,
+\]
+where the entire centered Gaussian residual vector $(H_\sigma)$ is
+independent of the matrix $Z$.
+
+Conditional Jensen for the maximum gives
+\[
+ \E\max_{\sigma\in\mathcal F}G_\sigma
+ \geq\E\max_{\pi\in S_N}\sum_vZ_{v,\pi(v)}.
+\]
+A greedy assignment proves a lower bound for the right side: process rows
+one by one, and select in each row the largest entry among the remaining
+columns. The remaining set depends only on previous rows, so it is
+independent of the current row. For the first $N/2$ rows, at least $N/2$
+independent centered Gaussians of common standard deviation
+$\asymp n^{9/4}$ remain. Their expected maximum is at least
+$c n^{9/4}\sqrt{\log N}$. Later row increments have nonnegative expectation.
+Thus
+\[
+ \E\max_{\sigma\in S_n}|G_\sigma|
+ \geq cNn^{9/4}\sqrt{\log N}
+ \geq c n^{13/4}\sqrt{\log n}.
+\]
+Together with the Gaussian upper bound and the convergence of expectations,
+this proves Theorem~\ref{thm:main}.
+
+\paragraph{Interpretation.}
+The logarithmic factor in the uniform upper estimate reflects real
+behavior of this random construction in its Gaussian limit. Extending this
+lower bound uniformly down to $m\asymp n^{13/10}(\log n)^{1/5}$ would require
+additional quantitative comparison or direct assignment estimates.
+The separate adjacent-swap argument already proves a uniform lower bound
+without the logarithm in the regime $m\geq Cn^{13/10}$.
+\end{document}

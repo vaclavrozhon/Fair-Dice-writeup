@@ -1,0 +1,230 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Fp}{\mathbb F_p}
+\title{Exponential-size rational equal-weight interval quadrature}
+\author{An alternative local proof; global inputs are classical}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+\noindent\textbf{Attribution update.} The stronger upper bound
+$Cr^3 2^r$ is already a consequence of Arkhipov's classical
+Hilbert--Kamke results; see \texttt{arkhipov\_rational\_corollary.tex}.
+The argument below is retained as an independent proof of local
+solubility. It is not a claim that exponential rational upper bounds
+are historically new.
+
+\begin{theorem}\label{main}
+There is an absolute constant $C$ such that, for every $r\ge2$ and every
+integer $K\ge C r^6 4^r$, there are rational numbers
+$x_1,\ldots,x_K\in(0,1)$ satisfying
+\[
+ \frac1K\sum_{i=1}^K x_i^j=\frac1{j+1}\qquad(0\le j\le r).
+\]
+In particular the minimum rational equal-weight quadrature size has
+$\log K=\Theta(r)$, in conjunction with the independently proved
+$p$-adic exponential lower bound.
+\end{theorem}
+
+The analytic ingredient is Cui--Xia--Xiang, Theorem 5.2(i),(iv),(v)
+\cite{cxx}, used below with its stated threshold $K\ge3r^2 2^r-r$.
+We give the quantitative local-solubility argument in full. No bound on
+the common denominator of the $x_i$ is claimed.
+
+\section{A quantitative inverse-function lemma}
+Write $v_p$ for the valuation normalized by $v_p(p)=1$; valuations of
+vectors and matrices mean the minimum valuation of their entries.
+
+\begin{lemma}\label{hensel}
+Let $F:\Z_p^r\to\Z_p^r$ be a polynomial map with integral coefficients,
+$u\in\Z_p^r$, and $A=DF(u)$ invertible over $\Q_p$. Suppose
+$v_p(A^{-1})\ge-b$, where $b\ge0$ is an integer. If
+$v_p(F(u))\ge2b+1$, then $F$ has a zero $u+h$ with
+$h\in p^{b+1}\Z_p^r$. Its Jacobian is invertible over $\Q_p$.
+\end{lemma}
+\begin{proof}
+Write $F(u+h)=F(u)+Ah+R(h)$, where $R$ has integral coefficients
+and no terms of degrees zero or one. On the ball
+$B=p^{b+1}\Z_p^r$, the map
+\[
+ \Phi(h)=-A^{-1}F(u)-A^{-1}R(h)
+\]
+maps $B$ to itself. Moreover, for $h,h'\in B$, every monomial of degree
+at least two gives
+\[
+ v_p(R(h)-R(h'))\ge b+1+v_p(h-h'),
+\]
+so $\Phi$ is a strict contraction, increasing the valuation of a
+difference by at least one. Completeness gives its fixed point.
+Finally $DF(u+h)=A+E$ with $v_p(E)\ge b+1$, whence
+$A^{-1}DF(u+h)=I+A^{-1}E$ is congruent to $I$ modulo $p$.
+\end{proof}
+
+\section{Small primes: a smooth homogeneous zero}
+\begin{lemma}\label{localzero}
+For $r\ge2$ and a prime $p$, put
+\[
+ b_p=v_p((r-1)!)+\lfloor\log_p r\rfloor,
+ \qquad a_p=2b_p+2,\qquad M_p=p^{a_p}.
+\]
+For every $K\ge M_p$, the homogeneous system
+\begin{equation}\label{zero}
+ \sum_{i=1}^K z_i^j=0\qquad(1\le j\le r)
+\end{equation}
+has a nonsingular solution in $\Z_p^K$.
+\end{lemma}
+\begin{proof}
+Start with the $M_p$ integers $0,1,\ldots,M_p-1$, and append zeros if
+$K>M_p$. For every $j\ge1$ and $a\ge1$,
+\begin{equation}\label{powersum}
+ v_p\left(\sum_{x=0}^{p^a-1}x^j\right)\ge a-1.
+\end{equation}
+Indeed the assertion at $a=1$ is immediate; writing the residues modulo
+$p^{a+1}$ as $x+t p^a$ shows that the sum equals $p$ times the previous
+sum modulo $p^a$, proving the inductive step.
+
+Only the first $r$ coordinates, initially $0,1,\ldots,r-1$, are varied.
+They exist since $a_p\ge2\lfloor\log_p r\rfloor+2$ implies $M_p\ge r$. Their Jacobian has entries
+$A_{j,i}=j i^{j-1}$, $1\le j\le r$, $0\le i\le r-1$.
+To bound its inverse, use the Lagrange polynomials
+\[
+ L_i(X)=\prod_{\substack{0\le h\le r-1\\h\ne i}}
+              \frac{X-h}{i-h}.
+\]
+Every coefficient has denominator dividing $i!(r-1-i)!$, which divides
+$(r-1)!$. Thus the inverse of the Vandermonde matrix
+$(i^{j-1})_{j,i}$ has valuation at least $-v_p((r-1)!)$.
+The additional diagonal matrix with entries $1,\ldots,r$ costs at most
+$\lfloor\log_p r\rfloor$, so $v_p(A^{-1})\ge-b_p$.
+The initial residual has valuation at least $a_p-1=2b_p+1$ by
+\eqref{powersum}. Lemma~\ref{hensel} completes the proof.
+\end{proof}
+
+\begin{corollary}\label{universal}
+If $K\ge M_p$, then, for every $c=(c_1,\ldots,c_r)\in\Q_p^r$, the
+system $\sum_i x_i^j=c_j$ $(1\le j\le r)$ has a nonsingular solution
+in $\Q_p^K$.
+\end{corollary}
+\begin{proof}
+At the nonsingular zero of Lemma~\ref{localzero}, fix all but a set of
+$r$ coordinates with invertible Jacobian. The $p$-adic inverse function
+theorem (or the contraction argument of Lemma~\ref{hensel}) shows that
+all sufficiently small right-hand sides are attained. Choose a large
+integer $e$ so that $(p^{ej}c_j)_{j=1}^r$ is such a right-hand side.
+A corresponding solution $z$ gives $x_i=p^{-e}z_i$, and scaling does not
+change the rank of the Jacobian.
+\end{proof}
+
+If $p\le4r^2$, then
+\begin{equation}\label{uniformM}
+ M_p=p^{2b_p+2}
+ \le p^2r^2p^{2(r-1)/(p-1)}
+ \le16r^6 4^{r-1}=4r^6 4^r.
+\end{equation}
+Here $v_p((r-1)!)\le(r-1)/(p-1)$ and
+$p^{1/(p-1)}\le2$ were used.
+
+\section{Large primes: integral solutions for every target}
+\begin{lemma}\label{largeprime}
+If $p>4r^2$ and $K\ge4r^2$, then, for every
+$c\in\Z_p^r$, the system $\sum_i x_i^j=c_j$ $(1\le j\le r)$ has a
+nonsingular solution in $\Z_p^K$.
+\end{lemma}
+\begin{proof}
+First work modulo $p$, and fix the first $r$ coordinates to be
+$0,1,\ldots,r-1$. Write $L=K-r$ and subtract their moments from $c$,
+leaving an arbitrary target $d\in\Fp^r$ for the $L$ free coordinates.
+For each nonzero $\alpha=(\alpha_1,\ldots,\alpha_r)\in\Fp^r$, the Weil
+bound for polynomial additive-character sums \cite{weil} gives
+\[
+ \left|\sum_{x\in\Fp}
+   \exp\left(\frac{2\pi i}{p}\sum_{j=1}^r\alpha_j x^j\right)\right|
+ \le(r-1)\sqrt p.
+\]
+The degree-one case has sum zero, and $p>r$ rules out the inseparable
+exceptions. Character orthogonality therefore bounds the number $N(d)$
+of solutions for the free coordinates by
+\[
+ \left|N(d)-p^{L-r}\right|
+ \le (r-1)^L p^{L/2}.
+\]
+The ratio of the error to $p^{L-r}$ is at most
+\[
+ (r-1)^L p^{r-L/2}
+ < (2r)^{2r}2^{-L}<1.
+\]
+For the final inequality, $L\ge4r^2-r>2r^2$ and
+$\log_2(2r)\le r$ for $r\ge2$ suffice. Thus a solution modulo $p$ exists.
+Its fixed first $r$ coordinates already give an invertible Vandermonde
+Jacobian minor modulo $p$. Ordinary multivariate Hensel lifting gives the
+claimed integral $p$-adic solution.
+\end{proof}
+
+\section{The global step}
+\begin{proof}[Proof of Theorem~\ref{main}]
+Choose $K\ge C r^6 4^r$, where $C$ is an absolute constant large enough
+that $K\ge4r^6 4^r$, $K\ge3r^2 2^r-r$, and the real equal-weight
+quadrature theorem applies at degree $2r+2$ with $K$ nodes.
+The real theorem for uniform measure on an interval ensures this for
+all $K\ge C_0(2r+2)^2$; see Gilboa--Peled \cite{gp}.
+A real rule of degree $2r+2$ has at least $r+2$ distinct support points:
+otherwise a nonzero squared polynomial of degree at most $2r+2$ vanishing
+on the support would contradict exactness. Consequently it has at least
+$r$ distinct interior support points. The Jacobian for the first $r$
+moments at these points is invertible. The implicit function theorem
+therefore permits any endpoint nodes to move into $(0,1)$, with corrections
+to these $r$ interior pivots, while retaining the first $r$ moments.
+We obtain a fixed nonsingular real solution $u\in(0,1)^K$ to
+\[
+ \sum_i u_i^j=c_j,\qquad c_j=K/(j+1),\quad1\le j\le r.
+\]
+
+For each of the finitely many primes $p\le4r^2$, equations
+\eqref{uniformM} and Corollary~\ref{universal} give a $\Q_p$ solution.
+Choose an integer $P_0$ such that all coordinates of these finitely many
+solutions belong to $P_0^{-1}\Z_p$, and increase $P_0$ so that
+$c_jP_0^j\in\Z$ for every $j$. For every prime $p>4r^2$, the target
+$c$ is $p$-integral because $p>r+1$, and Lemma~\ref{largeprime} gives a
+solution in $\Z_p^K$.
+
+For every positive multiple $P$ of $P_0$, all the local solutions thus
+belong to $(P^{-1}\Z_p)^K$. For sufficiently large such $P$, the fixed
+real solution $u$ belongs to $[P^{-1},1-P^{-1}]^K$ and its separation
+quantity $\Delta_u$ from \cite[Theorem 5.2(v)]{cxx} is strictly positive.
+Theorem 5.2(iv),(v) gives a positive lower bound, independent of $P$,
+for the singular series and singular integral. The asymptotic formula
+in Theorem 5.2(i), whose error has a strictly smaller power of $P$,
+therefore gives a solution in $((0,1)\cap P^{-1}\Z)^K$ for all sufficiently
+large multiples $P$ of $P_0$.
+\end{proof}
+
+\paragraph{Scope.}
+The theorem determines the exponential order of rational equal-weight
+interval quadrature size. It does not give exponentially small dice
+in the article's whole-copy insertion construction, because the common
+denominators of the rational nodes are uncontrolled. In fact the
+general denominator tradeoff in \texttt{polynomial\_denominator\_designs.tex}
+implies that exponential-size rational rules must have exponentially large
+common denominator. The local and global arguments above have received
+independent line-by-line reviews from two collaborating agents; historical
+novelty still requires a separate literature investigation.
+
+\begin{thebibliography}{9}
+\bibitem{cxx} Zhen Cui, Jiacheng Xia, and Ziqing Xiang,
+\emph{Rational designs}, Advances in Mathematics 352 (2019), 541--571,
+\href{https://doi.org/10.1016/j.aim.2019.06.012}{doi:10.1016/j.aim.2019.06.012}.
+\bibitem{gp} Shoni Gilboa and Ron Peled,
+\emph{Chebyshev-type quadratures for doubling weights},
+Constructive Approximation 45 (2017), 193--216,
+\href{https://arxiv.org/abs/1507.01505}{arXiv:1507.01505}.
+\bibitem{weil} Andr\'e Weil,
+\emph{On some exponential sums}, Proceedings of the National Academy of
+Sciences 34 (1948), 204--207,
+\href{https://doi.org/10.1073/pnas.34.5.204}{doi:10.1073/pnas.34.5.204}.
+\end{thebibliography}
+\end{document}

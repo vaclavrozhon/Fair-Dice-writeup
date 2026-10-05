@@ -1,0 +1,119 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\title{A quadratic barrier for corrections in one column per row}
+\author{Asymptotic research note; independently reviewed}
+\date{30 September 2026}
+\begin{document}\maketitle
+The polynomial exceptional-die construction starts with distinct scalar
+nodes and corrects at most one comparison column at each node. The
+following argument shows that this particular strategy cannot reach a
+subquadratic number of rows. It is not a general lower bound for dice.
+
+\begin{theorem}
+Let $m\ge3$ and let $t_1,\ldots,t_K\in[0,1]$ be pairwise distinct.
+Suppose a $K\times m$ array has the form
+\[
+ p_j(q)=t_q+\delta_j(q),
+\]
+where at every row at most one $\delta_j(q)$ is nonzero, and suppose
+\[
+ \frac1K\sum_q\prod_{j\in S}p_j(q)=\frac1{|S|+1}
+ \qquad(S\subseteq[m]).
+\]
+Then $K\ge c m^2$ for an absolute positive constant $c$.
+More specifically, either the scalar nodes themselves give an
+equal-weight interval quadrature of degree $m-1$, or at least
+$m^2/2$ rows have a nonzero correction.
+\end{theorem}
+\begin{proof}
+Put
+\[
+ b_{j,r}=\frac1K\sum_q\delta_j(q)t_q^r.
+\]
+At a row, all terms involving two corrections vanish. For a set $S$
+of size $s$ the mixed-moment equation is therefore
+\[
+ \frac1K\sum_q t_q^s+\sum_{j\in S}b_{j,s-1}=\frac1{s+1}.
+\]
+For $1\le s\le m-1$, comparing two sets differing in one index shows
+that $b_{j,s-1}$ is independent of $j$. Denote their common value by
+$b_{s-1}$.
+
+If all $b_0,\ldots,b_{m-2}$ vanish, the scalar nodes integrate every
+monomial through degree $m-1$. The classical lower bound for equal-weight
+uniform-interval quadrature gives $K\ge c m^2$.
+
+Otherwise let $Q_j=\{q:\delta_j(q)\ne0\}$ and $k_j=|Q_j|$.
+These sets are pairwise disjoint. For any two indices $i\ne j$ the
+signed measure
+\[
+ \sum_{q\in Q_i}\delta_i(q)\delta_{t_q}
+ -\sum_{q\in Q_j}\delta_j(q)\delta_{t_q}
+\]
+annihilates all polynomials of degree at most $m-2$.
+Its support consists of $k_i+k_j$ distinct points and all its
+coefficients are nonzero. If $k_i+k_j\le m-1$, the Vandermonde matrix
+would force every coefficient to vanish, which would also force all
+the common $b_r$ to vanish. Consequently $k_i+k_j\ge m$ for every
+pair. Summing over pairs gives
+\[
+ (m-1)\sum_j k_j\ge m\binom m2,
+ \qquad K\ge\sum_jk_j\ge\frac{m^2}{2}.
+\]
+\end{proof}
+
+The common correction functional is forced only through degree $m-2$;
+the full $m$-column equation supplies one additional aggregate condition.
+The proof deliberately does not assume equality of the degree-$m-1$
+correction moments. Pairwise distinctness of the baseline nodes is an
+explicit hypothesis. The result applies to the separated-node construction
+in \path{size_bounds/polynomial_exceptional_die.tex}, but not to an
+arbitrary monotone comparison tensor.
+
+For the classical scalar quadrature bound, see the uniform-weight case
+in Gilboa--Peled, \emph{Chebyshev-type quadratures for doubling weights},
+\url{https://arxiv.org/abs/1507.01505}.
+\begin{corollary}[Bounded overlap]
+Let $t_1,\ldots,t_K\in[0,1]$ be distinct, and suppose
+$p_j(q)=t_q+\delta_j(q)$, $1\le j\le m$, has uniform-interval mixed moments
+\[
+ K^{-1}\sum_q\prod_{j\in S}p_j(q)=\frac1{|S|+1}.
+\]
+Suppose each row has nonzero corrections in at most $d\ge1$ columns.
+There is an absolute $c>0$ such that
+\[
+ K\ge c\min\left\{m^2,\frac{m^{4/3}}{d^{4/3}}\right\}.
+\]
+In particular any fixed bound on the number of corrected columns per
+row requires $K=\Omega(m^{4/3})$. For $d=1$ the stronger bound
+$K=\Omega(m^2)$ holds.
+\end{corollary}
+\begin{proof}
+Join two columns by an edge if some row corrects both of them. This
+conflict graph has at most $K\binom d2$ edges. It has an independent
+set of size at least
+\[
+ R\ge\frac{m^2}{m+K d(d-1)}.
+\tag{1}
+\]
+For completeness, order the vertices uniformly at random and retain
+those appearing before every neighbor. The retained set is independent,
+its expected size is $\sum_j(1+\deg j)^{-1}$, and Cauchy--Schwarz gives
+(1).
+
+On the retained columns each row corrects at most one column, and all
+mixed-moment identities persist. The one-column theorem therefore gives
+$K\ge c_0R^2$ for an absolute $c_0>0$. This estimate can be made valid
+also for $R=1,2$ by reducing $c_0$, since $K\ge1$.
+If $Kd(d-1)\le m$, (1) gives $K\ge c_0m^2/4$.
+Otherwise (1) and the same estimate give
+\[
+ K^3[d(d-1)]^2\ge c_0m^4/4.
+\]
+The claimed bound follows. When $d=1$ use the one-column theorem directly.
+\end{proof}
+
+
+\end{document}

@@ -1,0 +1,230 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\title{Excluding the first four odd-degree parity-bound candidates}
+\author{Mathematical proof independently reviewed; not formally verified}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+Write $v=v_2$. We use the parity-count and resonance conclusions proved
+in \path{../independent_directions/optimized_two_adic_filter.tex}.
+For odd degree $r$, if a rational equal-weight rule has
+$2^{r-1}\le K<2^r$, and $N=2^a$ is the least power of two making all
+nodes $y_i=Nx_i$ integral in $\mathbb Z_2$, then exactly $2^{r-1}$
+normalized nodes are odd, $N\mid r+1$, and
+\[
+ v(K)=(r+1)/N-1.\tag{1}
+\]
+The case where all original nodes are integral forces $2^r\mid K$.
+
+\begin{theorem}
+For $r=2^a-1$ with $a\ge3$, no rational equal-weight uniform-interval
+rule of degree $r$ has $K=2^{r-1}+1$ nodes. Consequently
+\[
+ R_r\ge2^{r-1}+2.
+\]
+In particular $R_7\ge66$.
+The nodes need not be in $[0,1]$ for this lower bound.
+\end{theorem}
+\begin{proof}
+Suppose such a rule exists. Its $K$ is odd, so (1) forces
+$N=r+1=2^a$. Exactly $2^{r-1}$ normalized nodes are odd, and there is
+one even node $z$. Put
+\[
+ k=(r-1)/2=2^{a-1}-1,\qquad
+ f(y)=y(y^2-1)^k,\qquad g(y)=(y^2-1)^k.
+\]
+Both polynomials have degree at most $r$. For odd $y\in\mathbb Z_2$,
+$y^2-1\in8\mathbb Z_2$, so $f(y),g(y)\in2^{3k}\mathbb Z_2$.
+
+The integral of $f(Nx)$ is
+\[
+ A=\sum_{j=0}^k {k\choose j}(-1)^{k-j}
+           \frac{N^{2j+1}}{2j+2}.
+\]
+The $j=0$ term has valuation $a-1$. For $j\ge1$, the valuation is
+at least $(2j+1)a-1-v(j+1)>a-1$. Thus $v(KA)=a-1$.
+Exactness gives $f(z)\equiv KA\pmod{2^{3k}}$, and $3k>a-1$.
+Since $z$ is even, $v(f(z))=v(z)$, proving
+\[
+ v(z)=a-1.\tag{2}
+\]
+
+As $k$ is odd, expansion of $g(z)-(-1)^k$ has leading nonzero term
+$k(-1)^{k-1}z^2$. All later terms have greater valuation, and (2) yields
+\[
+ v\bigl(g(z)-(-1)^k\bigr)=2a-2.\tag{3}
+\]
+On the other hand, writing $B=K\int_0^1g(Nx)\,dx$, we have
+\[
+ B-(-1)^k=(-1)^k(K-1)
+  +K\sum_{j=1}^k {k\choose j}(-1)^{k-j}
+            \frac{N^{2j}}{2j+1}.
+\]
+Here $v(K-1)=r-1=2^a-2\ge2a$, and every summand in the sum has
+valuation at least $2a$. Therefore $v(B-(-1)^k)\ge2a$.
+Exactness for $g$ gives $g(z)\equiv B\pmod{2^{3k}}$; since
+$3k\ge2a$, this contradicts (3).
+\end{proof}
+
+\begin{theorem}[Four consecutive exclusions]
+For $r=2^a-1$, $a\ge3$, one has
+\[
+ R_r\ge2^{r-1}+5.
+\]
+In particular $R_7\ge69$.
+\end{theorem}
+\begin{proof}
+The preceding theorem excludes the first candidate. Suppose now that
+$K=U+s$, where $U=2^{r-1}$ and $s\in\{2,3,4\}$.
+The resonance condition (1) immediately excludes $s=4$: it would give
+$v(K)=2$ and $(r+1)/N=3$, impossible because $r+1$ and $N$ are powers
+of two.
+
+Retain $k=(r-1)/2$, $f(y)=y(y^2-1)^k$, and $g(y)=(y^2-1)^k$.
+For $s=2$, (1) gives $N=2^{a-1}$ and two even normalized nodes; for
+$s=3$, it gives $N=2^a$ and three even normalized nodes.
+In both cases the same uniquely minimal linear term in the integral
+of $f(Nx)$ gives
+\[
+ v\left(K\int_0^1f(Nx)\,dx\right)=a-1.\tag{4}
+\]
+All odd-node contributions are in $2^{3k}\mathbb Z_2$.
+
+We use an elementary valuation observation. For even $z$ put
+\[
+ h(z)=g(z)+1=z^2Q(z^2),\qquad Q(0)=k\ \text{odd},
+\]
+where $Q$ has integer coefficients. For all $z$ of a fixed finite
+valuation $b\ge1$, the odd quantity $h(z)/2^{2b}$ has the same residue
+$Q(2^{2b})$ modulo eight: write $z=2^bu$ and use $u^2\equiv1\pmod8$.
+For a sum of two or three such $h(z)$, let $b$ be the smallest valuation
+of the nonzero $z$'s. If one or three terms attain $b$, the sum has
+valuation $2b$. If exactly two terms attain $b$, their normalized sum
+is two or six modulo eight. A possible third term contributes zero or
+four modulo eight, so the sum has valuation $2b+1$.
+
+For $s=2$, expansion of the integral gives
+\[
+ K\int_0^1g(Nx)\,dx+2
+ =-U+K\sum_{j=1}^k {k\choose j}(-1)^{k-j}
+                 \frac{N^{2j}}{2j+1}.
+\]
+Its $j=1$ term has valuation $1+2(a-1)=2a-1$; all other terms,
+including $U$, have greater valuation. Exactness and $3k>2a-1$ show
+that the sum of the two $h(z)$ has valuation $2a-1$.
+The observation forces both even nodes to have valuation $a-1$.
+Their $f$ values, divided by $2^{a-1}$, are both odd, so their sum
+has valuation at least $a$, contradicting (4).
+
+For $s=3$ and $a\ge4$, the analogous integral plus three has exact
+valuation $2a$: its $j=1$ term is uniquely minimal, since
+$v(U)=2^a-2>2a$. The observation forces every even node to have
+valuation at least $a$. Their $f$ values then sum to an element of
+$2^a\mathbb Z_2$, again contradicting (4).
+For the remaining case $a=3,s=3$, the first two terms combine as
+$-64+67\cdot64=64\cdot66$, with exact valuation seven; all later
+terms have valuation at least twelve. Hence the sum of the three
+$h(z)$ has valuation seven. The observation forces exactly two nodes
+of valuation three and the remaining node of valuation at least four.
+Their $f$ values sum with valuation at least four, contradicting the
+required valuation two in (4).
+\end{proof}
+
+\paragraph{Review and origin of the strengthening.}
+The initial one-node exclusion and the degree-seven congruences below
+were checked independently by two parallel reviewers. One reviewer
+then supplied the two-node exclusion and the general $s=2,3,4$
+extension; the three-node degree-seven case was independently derived.
+The resulting four-exclusion proof was checked separately case by case.
+This is mathematical peer review, not formal proof verification.
+
+\paragraph{The degree-seven calculation directly.}
+If $K=65$, the normalization is $N=8$, with $64$ odd nodes and one
+even node $z$. The polynomial $y(y^2-1)^3$ takes values in
+$512\mathbb Z_2$ on odd nodes, whereas
+\[
+ 65\int_0^1 8x((8x)^2-1)^3\,dx
+ =65(2^{18}-2^{14}+384-4)
+\]
+has valuation two. Thus $v(z)=2$. But $(y^2-1)^2$ takes values in
+$64\mathbb Z_2$ on odd nodes and
+\[
+ 65\int_0^1((8x)^2-1)^2\,dx
+ =65\left(\frac{4096}{5}-\frac{128}{3}+1\right)
+ \equiv1\pmod{64}.
+\]
+For $v(z)=2$, $(z^2-1)^2\equiv33\pmod{64}$, a contradiction.
+
+\section*{A further obstruction for symmetric degree-seven rules}
+The general lower bound is $R_7\ge69$. The next candidate cannot be
+attained by a rule symmetric about $1/2$.
+\begin{theorem}
+No symmetric rational equal-weight degree-seven rule has $69$ nodes.
+\end{theorem}
+\begin{proof}
+The resonance condition gives least normalization $N=8$, with $64$
+odd nodes. Center the normalized coordinates as $u=8x-4$. Symmetry
+makes the five even coordinates a multiset $0,v,-v,w,-w$, where
+$v,w\in2\mathbb Z_2$; initially either may be zero. Put
+$g(u)=(u^2-1)^3$ and $h(u)=g(u)+1$. The odd coordinates contribute
+$64$ modulo $512$ to the sum of $h$. On the other hand,
+\[
+69\int_{-1}^1h(4t)\,\frac{dt}{2}-64
+=69\left(\frac{4096}{7}-\frac{768}{5}+16\right)-64
+=\frac{16\cdot67411}{35},
+\]
+which has valuation $4$. Thus $v_2(h(v)+h(w))=3$. The fixed-valuation
+residue argument used above shows that two nonzero even inputs give
+valuation $2b$ if their valuations differ, and $2b+1$ if both have
+valuation $b$. Consequently $v_2(v)=v_2(w)=1$.
+
+It follows that $v^2,w^2\equiv4\pmod{32}$, hence
+$g(v),g(w)\equiv27\pmod{32}$. The even-node contribution to $g$ is
+therefore
+\[
+ g(0)+2g(v)+2g(w)\equiv-1+4\cdot27=43\pmod{64}.
+\]
+The odd-node contribution vanishes modulo $512$, whereas exactness
+requires
+\[
+69\int_{-1}^1g(4t)\,\frac{dt}{2}
+=69\left(\frac{4096}{7}-\frac{768}{5}+15\right)
+\equiv11\pmod{64},
+\]
+a contradiction. This argument does not exclude nonsymmetric
+$69$-node rules.
+\end{proof}
+
+
+\section*{An explicit seventy-node rule}
+There is a symmetric rational degree-seven rule with $70$ nodes.
+Take $x=(18\pm s)/36$, with the following multiplicities for each sign:
+\[
+\begin{array}{c|rrrrrrrrrrr}
+s&1&3&4&5&7&10&11&12&13&15&17\\\hline
+c_s&3&3&1&3&9&1&2&1&4&4&4.
+\end{array}
+\]
+Indeed $\sum c_s=35$, and
+\[
+ \sum c_ss^2=3780=\frac{35\cdot18^2}{3},\qquad
+ \sum c_ss^4=734832=\frac{35\cdot18^4}{5},\qquad
+ \sum c_ss^6=170061120=\frac{35\cdot18^6}{7}.
+\]
+Symmetry supplies the odd centered moments. The rule therefore has all
+required moments through degree seven. Repeated nodes are allowed in
+an equal-weight rule. The standalone verifier
+\path{verify_degree7_seventy.py} checks all eight ordinary moments with
+exact rational arithmetic.
+
+Consequently
+\[
+ \boxed{69\le R_7\le70},
+\]
+and the minimum number of nodes among symmetric rational degree-seven
+rules is exactly $70$. Whether a nonsymmetric $69$-node rule exists
+remains open in these notes.
+
+\end{document}

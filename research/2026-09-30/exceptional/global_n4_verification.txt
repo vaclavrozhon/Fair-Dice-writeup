@@ -1,0 +1,4 @@
+Exact global density certificate: n=4, distinguished faces=9
+Verified 9 correction identities, 3 kernel moments, disjoint supports, normalized positive densities
+Density deviations < 1/2; 64 rational constant-density intervals
+Independent exact integration: all 24 orders equal 1/24

@@ -1,0 +1,846 @@
+{
+  "filters_checked": 120,
+  "exact_filter_evaluations": 4680,
+  "rows": [
+    {
+      "degree": 2,
+      "depth": 1,
+      "pivot": 2,
+      "correction": "-1",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 4,
+      "depth": 1,
+      "pivot": 4,
+      "correction": "8",
+      "correction_valuation": 3
+    },
+    {
+      "degree": 6,
+      "depth": 1,
+      "pivot": 6,
+      "correction": "113/37",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 8,
+      "depth": 1,
+      "pivot": 8,
+      "correction": "1504/833",
+      "correction_valuation": 5
+    },
+    {
+      "degree": 10,
+      "depth": 1,
+      "pivot": 10,
+      "correction": "58097/42505",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 12,
+      "depth": 1,
+      "pivot": 12,
+      "correction": "111986656/92953787",
+      "correction_valuation": 5
+    },
+    {
+      "degree": 14,
+      "depth": 1,
+      "pivot": 14,
+      "correction": "524212417/460024241",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 16,
+      "depth": 1,
+      "pivot": 16,
+      "correction": "219619464448/198060940481",
+      "correction_valuation": 8
+    },
+    {
+      "degree": 18,
+      "depth": 1,
+      "pivot": 18,
+      "correction": "29669292576131/27185959324387",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 20,
+      "depth": 1,
+      "pivot": 20,
+      "correction": "42281354581572736/39164204820426197",
+      "correction_valuation": 7
+    },
+    {
+      "degree": 22,
+      "depth": 1,
+      "pivot": 22,
+      "correction": "5116219527011201321/4777826879158303081",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 24,
+      "depth": 1,
+      "pivot": 24,
+      "correction": "12395770964501654083072/11651365794266018362979",
+      "correction_valuation": 9
+    },
+    {
+      "degree": 26,
+      "depth": 1,
+      "pivot": 26,
+      "correction": "66668458229137752273961/63001004016459737209769",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 28,
+      "depth": 1,
+      "pivot": 28,
+      "correction": "52432051457956446321367552/49771149438245539258438229",
+      "correction_valuation": 9
+    },
+    {
+      "degree": 30,
+      "depth": 1,
+      "pivot": 30,
+      "correction": "12900949747250836497221576089/12293347815654282760644734105",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 32,
+      "depth": 1,
+      "pivot": 32,
+      "correction": "319512933548254843900975922880512/305476328699892837521089752824749",
+      "correction_valuation": 13
+    },
+    {
+      "degree": 34,
+      "depth": 1,
+      "pivot": 34,
+      "correction": "1766224052105787107490171996827399/1693526469041280654636622234778887",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 36,
+      "depth": 1,
+      "pivot": 36,
+      "correction": "3138168504735990900872596248606805940224/3016677614155089361863317250444332944403",
+      "correction_valuation": 11
+    },
+    {
+      "degree": 38,
+      "depth": 1,
+      "pivot": 38,
+      "correction": "500202064003802793024381198169362507251/481924953230637014045541052050492592627",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 40,
+      "depth": 1,
+      "pivot": 40,
+      "correction": "31584675752556350264246584386651070336360448/30492043539820415686069978687252898727112621",
+      "correction_valuation": 13
+    },
+    {
+      "degree": 2,
+      "depth": 2,
+      "pivot": 0,
+      "correction": "1/3",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 4,
+      "depth": 2,
+      "pivot": 4,
+      "correction": "-4/7",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 6,
+      "depth": 2,
+      "pivot": 4,
+      "correction": "-23/147",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 8,
+      "depth": 2,
+      "pivot": 8,
+      "correction": "256/107",
+      "correction_valuation": 8
+    },
+    {
+      "degree": 10,
+      "depth": 2,
+      "pivot": 8,
+      "correction": "4255/3531",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 12,
+      "depth": 2,
+      "pivot": 12,
+      "correction": "7533692/5942359",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 14,
+      "depth": 2,
+      "pivot": 12,
+      "correction": "547927/575067",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 16,
+      "depth": 2,
+      "pivot": 16,
+      "correction": "7007227648/6272467361",
+      "correction_valuation": 8
+    },
+    {
+      "degree": 18,
+      "depth": 2,
+      "pivot": 16,
+      "correction": "2350359376751/2502714477039",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 20,
+      "depth": 2,
+      "pivot": 20,
+      "correction": "667500519192548/617185791506971",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 22,
+      "depth": 2,
+      "pivot": 20,
+      "correction": "40297200285556571/42585819613980999",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 24,
+      "depth": 2,
+      "pivot": 24,
+      "correction": "5130949411294945792/4819100759525577359",
+      "correction_valuation": 9
+    },
+    {
+      "degree": 26,
+      "depth": 2,
+      "pivot": 24,
+      "correction": "261873895943960524883/274688743292957909463",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 28,
+      "depth": 2,
+      "pivot": 28,
+      "correction": "205780291484093868564404/195251858511098926987813",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 30,
+      "depth": 2,
+      "pivot": 28,
+      "correction": "1340871164514877984643517245/1398198558797979416159728893",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 32,
+      "depth": 2,
+      "pivot": 32,
+      "correction": "626248949163019722187747776512/598572341028972183552259179949",
+      "correction_valuation": 11
+    },
+    {
+      "degree": 34,
+      "depth": 2,
+      "pivot": 32,
+      "correction": "247165518298063080036098774161/256531003298130935808111077121",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 36,
+      "depth": 2,
+      "pivot": 36,
+      "correction": "3072986091210061016411626170181865132/2953472449495854981854803642342962949",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 38,
+      "depth": 2,
+      "pivot": 36,
+      "correction": "8569147106589033631209359015292940243/8860417348487564945564410927028888847",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 40,
+      "depth": 2,
+      "pivot": 40,
+      "correction": "2207966322850543372750151831568152231936/2131307028755496923746290828253306416997",
+      "correction_valuation": 15
+    },
+    {
+      "degree": 2,
+      "depth": 3,
+      "pivot": 0,
+      "correction": "10/3",
+      "correction_valuation": 1
+    },
+    {
+      "degree": 4,
+      "depth": 3,
+      "pivot": 0,
+      "correction": "148/45",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 6,
+      "depth": 3,
+      "pivot": 0,
+      "correction": "377/945",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 8,
+      "depth": 3,
+      "pivot": 8,
+      "correction": "-128/989",
+      "correction_valuation": 7
+    },
+    {
+      "degree": 10,
+      "depth": 3,
+      "pivot": 8,
+      "correction": "-1352/32637",
+      "correction_valuation": 3
+    },
+    {
+      "degree": 12,
+      "depth": 3,
+      "pivot": 8,
+      "correction": "-1033028/44549505",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 14,
+      "depth": 3,
+      "pivot": 8,
+      "correction": "-13619/830115",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 16,
+      "depth": 3,
+      "pivot": 16,
+      "correction": "885394432/784845899",
+      "correction_valuation": 10
+    },
+    {
+      "degree": 18,
+      "depth": 3,
+      "pivot": 16,
+      "correction": "294891860594/313153513701",
+      "correction_valuation": 1
+    },
+    {
+      "degree": 20,
+      "depth": 3,
+      "pivot": 16,
+      "correction": "41778106774636/51670329760665",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 22,
+      "depth": 3,
+      "pivot": 16,
+      "correction": "360023774519353/509321821926555",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 24,
+      "depth": 3,
+      "pivot": 24,
+      "correction": "6095032178395633856/5723836149231408337",
+      "correction_valuation": 6
+    },
+    {
+      "degree": 26,
+      "depth": 3,
+      "pivot": 24,
+      "correction": "16370430119783354752/17171508447694225011",
+      "correction_valuation": 7
+    },
+    {
+      "degree": 28,
+      "depth": 3,
+      "pivot": 24,
+      "correction": "338500174928254517276/393137167091946730515",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 30,
+      "depth": 3,
+      "pivot": 24,
+      "correction": "41906237220570895291523837/53489849817363180207140385",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 32,
+      "depth": 3,
+      "pivot": 32,
+      "correction": "19571658711095365369184049152/18706471343184639645005661709",
+      "correction_valuation": 11
+    },
+    {
+      "degree": 34,
+      "depth": 3,
+      "pivot": 32,
+      "correction": "54070334824562945178931330126/56119414029553918935016985127",
+      "correction_valuation": 1
+    },
+    {
+      "degree": 36,
+      "depth": 3,
+      "pivot": 32,
+      "correction": "48017377348665034814009277373329436/53851909105689792840447623842943565",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 38,
+      "depth": 3,
+      "pivot": 32,
+      "correction": "133897227914388996656891001810484949/161555727317069378521342871528830695",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 40,
+      "depth": 3,
+      "pivot": 40,
+      "correction": "1690517418752645485570697055607982144512/1631818296067111483243713006792369546539",
+      "correction_valuation": 10
+    },
+    {
+      "degree": 2,
+      "depth": 4,
+      "pivot": 0,
+      "correction": "52/3",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 4,
+      "depth": 4,
+      "pivot": 0,
+      "correction": "6088/45",
+      "correction_valuation": 3
+    },
+    {
+      "degree": 6,
+      "depth": 4,
+      "pivot": 0,
+      "correction": "330602/945",
+      "correction_valuation": 1
+    },
+    {
+      "degree": 8,
+      "depth": 4,
+      "pivot": 0,
+      "correction": "4843136/14175",
+      "correction_valuation": 7
+    },
+    {
+      "degree": 10,
+      "depth": 4,
+      "pivot": 0,
+      "correction": "11692636/93555",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 12,
+      "depth": 4,
+      "pivot": 0,
+      "correction": "9416506556/638512875",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 14,
+      "depth": 4,
+      "pivot": 0,
+      "correction": "131947601/383107725",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 16,
+      "depth": 4,
+      "pivot": 16,
+      "correction": "-442697216/15043611773",
+      "correction_valuation": 9
+    },
+    {
+      "degree": 18,
+      "depth": 4,
+      "pivot": 16,
+      "correction": "-75115098976/6002401097427",
+      "correction_valuation": 5
+    },
+    {
+      "degree": 20,
+      "depth": 4,
+      "pivot": 16,
+      "correction": "-1495425835424/141485168725065",
+      "correction_valuation": 5
+    },
+    {
+      "degree": 22,
+      "depth": 4,
+      "pivot": 16,
+      "correction": "-630365719094744/68337336494206395",
+      "correction_valuation": 3
+    },
+    {
+      "degree": 24,
+      "depth": 4,
+      "pivot": 16,
+      "correction": "-761984326355326784/93280464314591729175",
+      "correction_valuation": 6
+    },
+    {
+      "degree": 26,
+      "depth": 4,
+      "pivot": 16,
+      "correction": "-2046383625197463688/279841392943775187525",
+      "correction_valuation": 3
+    },
+    {
+      "degree": 28,
+      "depth": 4,
+      "pivot": 16,
+      "correction": "-803947097490131243036/121731005930542206573375",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 30,
+      "depth": 4,
+      "pivot": 16,
+      "correction": "-1047659616886775689611571/174343146693722548254387675",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 32,
+      "depth": 4,
+      "pivot": 32,
+      "correction": "2446460222191004026854760448/2338309548962984821240380271",
+      "correction_valuation": 13
+    },
+    {
+      "degree": 34,
+      "depth": 4,
+      "pivot": 32,
+      "correction": "6758794867433327095466327620/7014928646888954463721140813",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 36,
+      "depth": 4,
+      "pivot": 32,
+      "correction": "6002173340737545151409414806222984/6731490454911406258614488118450735",
+      "correction_valuation": 3
+    },
+    {
+      "degree": 38,
+      "depth": 4,
+      "pivot": 32,
+      "correction": "2391022161850419981266193006596474/2884924480676316967977637765050315",
+      "correction_valuation": 1
+    },
+    {
+      "degree": 40,
+      "depth": 4,
+      "pivot": 32,
+      "correction": "15093906354264697322484422058202084352/19516514111775284288368719480565380975",
+      "correction_valuation": 10
+    },
+    {
+      "degree": 2,
+      "depth": 5,
+      "pivot": 0,
+      "correction": "232/3",
+      "correction_valuation": 3
+    },
+    {
+      "degree": 4,
+      "depth": 5,
+      "pivot": 0,
+      "correction": "141328/45",
+      "correction_valuation": 4
+    },
+    {
+      "degree": 6,
+      "depth": 5,
+      "pivot": 0,
+      "correction": "49490804/945",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 8,
+      "depth": 5,
+      "pivot": 0,
+      "correction": "6164316416/14175",
+      "correction_valuation": 8
+    },
+    {
+      "degree": 10,
+      "depth": 5,
+      "pivot": 0,
+      "correction": "930983371544/467775",
+      "correction_valuation": 3
+    },
+    {
+      "degree": 12,
+      "depth": 5,
+      "pivot": 0,
+      "correction": "3397400236284056/638512875",
+      "correction_valuation": 3
+    },
+    {
+      "degree": 14,
+      "depth": 5,
+      "pivot": 0,
+      "correction": "16441867809100546/1915538625",
+      "correction_valuation": 1
+    },
+    {
+      "degree": 16,
+      "depth": 5,
+      "pivot": 0,
+      "correction": "4139739211211750912/488462349375",
+      "correction_valuation": 9
+    },
+    {
+      "degree": 18,
+      "depth": 5,
+      "pivot": 0,
+      "correction": "199430660966503075832/38979295480125",
+      "correction_valuation": 3
+    },
+    {
+      "degree": 20,
+      "depth": 5,
+      "pivot": 0,
+      "correction": "59729827738288653611696/32157918771103125",
+      "correction_valuation": 4
+    },
+    {
+      "degree": 22,
+      "depth": 5,
+      "pivot": 0,
+      "correction": "1611067116394451306452/4116690900196875",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 24,
+      "depth": 5,
+      "pivot": 0,
+      "correction": "136116465803415859835949248/3028793579456347828125",
+      "correction_valuation": 6
+    },
+    {
+      "degree": 26,
+      "depth": 5,
+      "pivot": 0,
+      "correction": "22893614068548015249607912/9086380738369043484375",
+      "correction_valuation": 3
+    },
+    {
+      "degree": 28,
+      "depth": 5,
+      "pivot": 0,
+      "correction": "220766595952242153672325892/3952575621190533915703125",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 30,
+      "depth": 5,
+      "pivot": 0,
+      "correction": "8233636046435372390029459241/28304394023345413370350078125",
+      "correction_valuation": 0
+    },
+    {
+      "degree": 32,
+      "depth": 5,
+      "pivot": 32,
+      "correction": "-1223230111095502013427380224/97963130379158720346859073977",
+      "correction_valuation": 12
+    },
+    {
+      "degree": 34,
+      "depth": 5,
+      "pivot": 32,
+      "correction": "-242142143401129019029116032/41984198733925165862939603133",
+      "correction_valuation": 7
+    },
+    {
+      "degree": 36,
+      "depth": 5,
+      "pivot": 32,
+      "correction": "-1500605221683990672358177735459712/282014790288566436753732699278877945",
+      "correction_valuation": 7
+    },
+    {
+      "degree": 38,
+      "depth": 5,
+      "pivot": 32,
+      "correction": "-836858730161315256808957097275808/169208874173139862052239619567326767",
+      "correction_valuation": 5
+    },
+    {
+      "degree": 40,
+      "depth": 5,
+      "pivot": 32,
+      "correction": "-539068115874868345243825000433041408/116805921814417465998306227180914854975",
+      "correction_valuation": 14
+    },
+    {
+      "degree": 2,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "976/3",
+      "correction_valuation": 4
+    },
+    {
+      "degree": 4,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "2679328/45",
+      "correction_valuation": 5
+    },
+    {
+      "degree": 6,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "4582002536/945",
+      "correction_valuation": 3
+    },
+    {
+      "degree": 8,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "3044809642496/14175",
+      "correction_valuation": 9
+    },
+    {
+      "degree": 10,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "542056916536816/93555",
+      "correction_valuation": 4
+    },
+    {
+      "degree": 12,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "65277224017681973936/638512875",
+      "correction_valuation": 4
+    },
+    {
+      "degree": 14,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "339183614259101968828/273648375",
+      "correction_valuation": 2
+    },
+    {
+      "degree": 16,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "5225471576981726067387392/488462349375",
+      "correction_valuation": 10
+    },
+    {
+      "degree": 18,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "13150738297939333092174701104/194896477400625",
+      "correction_valuation": 4
+    },
+    {
+      "degree": 20,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "536954563810747300447477585184/1692522040584375",
+      "correction_valuation": 5
+    },
+    {
+      "degree": 22,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "51115126139570621708835885169208/45283599902165625",
+      "correction_valuation": 3
+    },
+    {
+      "degree": 24,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "846422985463771199935439770002813568/275344870859667984375",
+      "correction_valuation": 7
+    },
+    {
+      "degree": 26,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "4516686985261686510209377785010632016/698952364489926421875",
+      "correction_valuation": 4
+    },
+    {
+      "degree": 28,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "5956075133223649589213038249862460024536/564653660170076273671875",
+      "correction_valuation": 3
+    },
+    {
+      "degree": 30,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "75971123930168905035049290200722244965304962/5660878804669082674070015625",
+      "correction_valuation": 1
+    },
+    {
+      "degree": 32,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "96227119980876969596936264028766764560221155328/7217620475953080409439269921875",
+      "correction_valuation": 12
+    },
+    {
+      "degree": 34,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "17222934313279500285545638042942534797043603376/1665604725219941632947523828125",
+      "correction_valuation": 4
+    },
+    {
+      "degree": 36,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "129828891072249751018956887042180820900787809318046304/20777977561866588586487628662044921875",
+      "correction_valuation": 5
+    },
+    {
+      "degree": 38,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "182624816796060531719400695767212045528026661877090696/62333932685599765759462885986134765625",
+      "correction_valuation": 3
+    },
+    {
+      "degree": 40,
+      "depth": 6,
+      "pivot": 0,
+      "correction": "446684436256017910006948622621298117523049305206588411904/421689054618082415362766423696201689453125",
+      "correction_valuation": 12
+    }
+  ]
+}

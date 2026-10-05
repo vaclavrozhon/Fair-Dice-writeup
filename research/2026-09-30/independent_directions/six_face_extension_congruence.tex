@@ -1,0 +1,95 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{proposition}{Proposition}
+\title{A mod-four obstruction to extending the four six-face seeds}
+\author{Research note: exact certificate and independent enumeration audit}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+For a word prefix let $c_a$ count occurrences of letter $a$, and let
+$p_{ab}$ count scattered ordered pairs $ab$. The eight canonical
+three-wise fair words on four letters with six occurrences of each
+letter, found by exhaustive enumeration, are
+\[
+\begin{array}{c|c}
+ w & t\\\hline
+012332102103301231022013&2\\
+012332102103301231200213&2\\
+012332102130031231022013&2\\
+012332102130031231200213&2\\
+012332103102201321033012&3\\
+012332103102201321300312&3\\
+012332103120021321033012&3\\
+012332103120021321300312&3
+\end{array}
+\]
+Here canonical means that labels are assigned in order of first occurrence.
+
+\begin{proposition}
+Inserting an additional $M$-face die into any of these eight words can
+preserve three-wise fairness only if $4\mid M$.
+\end{proposition}
+\begin{proof}
+For the parameter $t$ in the table define the prefix statistic
+\[
+ L=c_1-p_{01}-p_{21}-p_{31}-2p_{t1}.
+\]
+For every prefix of each corresponding word, $L$ is divisible by four.
+Indeed, it changes only when a letter $1$ is appended. Its values just
+after the six occurrences of that letter are, in all eight cases,
+\[
+ 0,\ -8,\ -20,\ -36,\ -56,\ -84.
+\]
+Let $z_g$ be the number of new letters inserted in gap $g$, including
+the two exterior gaps. Three-wise fairness implies pairwise fairness,
+so the pair consisting of old letter $1$ and the new letter gives
+\[
+ \sum_g z_g c_1(g)=3M.
+\]
+For each $a\ne1$, the order old $a$, old $1$, new letter must have
+probability $1/6$. Since the old dice each have six faces, this says
+\[
+ \sum_g z_g p_{a1}(g)=6M.
+\]
+Consequently
+\[
+ 0\equiv\sum_g z_g L(g)=3M-6M-6M-6M-12M=-27M\pmod4,
+\]
+which forces $4\mid M$. The argument even allows signed integer gap
+multiplicities; no nonnegativity assumption is needed for this obstruction.
+\end{proof}
+
+In particular no three-wise fair system of five six-face dice exists,
+provided the stated enumeration of the four-die seeds is complete.
+The independent C++ audit \path{review_small_enumeration.cpp} verifies
+this completeness by a different implementation:
+\begin{itemize}
+\item It visits all $18!/(6!)^3=17\,153\,136$ balanced ternary words,
+keeps the $2\,858\,856$ canonical ones, and counts ordered triples
+by literal enumeration of index triples. Exactly eleven words survive.
+\item For each of those eleven words it enumerates every nondecreasing
+six-tuple of insertion gaps directly, without meet-in-the-middle.
+Among $11\binom{24}{6}=1\,480\,556$ assignments it finds $32$
+successful insertions and exactly the eight canonical words above.
+\item As a redundant check it tests all $8\binom{30}{6}=4\,750\,200$
+six-gap insertions into those eight words and finds none.
+\end{itemize}
+The insertion tests impose the pair counts and both orders of old pairs
+before the new letter. These constraints imply all remaining orders:
+for distinct old letters $a,b$ and the new letter $Z$,
+\[
+ \#(aZb)=6\#(aZ)-\#(abZ)-\#(baZ),\qquad
+ \#(Zab)=6\#(ab)-\#(abZ)-\#(aZb).
+\]
+The analogous two identities with $a,b$ exchanged give all six triples.
+Every canonical word on one more letter is covered by deleting its
+last first-occurrence label; the remaining word is itself canonical.
+Thus neither the pruning in the original enumeration nor a solver's
+infeasibility report is needed for the independent audit.
+
+Together with the existing explicit twelve-face construction, and
+the elementary requirement $6\mid M$ for three-wise fair equal-sided
+dice, this proves $M_3(5)=12$.
+\end{document}

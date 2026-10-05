@@ -1,0 +1,98 @@
+[
+  {
+    "p": 2,
+    "point": [
+      1,
+      14,
+      1
+    ],
+    "modulus_power": 7,
+    "free_coordinate": 1,
+    "derivative_valuation": 3,
+    "value_valuation": 7
+  },
+  {
+    "p": 3,
+    "point": [
+      1,
+      0,
+      2
+    ],
+    "modulus_power": 1,
+    "free_coordinate": 2,
+    "derivative_valuation": 0,
+    "value_valuation": 1
+  },
+  {
+    "p": 5,
+    "point": [
+      1,
+      0,
+      0
+    ],
+    "modulus_power": 1,
+    "free_coordinate": 2,
+    "derivative_valuation": 0,
+    "value_valuation": 2
+  },
+  {
+    "p": 7,
+    "point": [
+      1,
+      1,
+      4
+    ],
+    "modulus_power": 1,
+    "free_coordinate": 1,
+    "derivative_valuation": 0,
+    "value_valuation": 1
+  },
+  {
+    "p": 11,
+    "point": [
+      1,
+      0,
+      0
+    ],
+    "modulus_power": 1,
+    "free_coordinate": 1,
+    "derivative_valuation": 0,
+    "value_valuation": 1
+  },
+  {
+    "p": 13,
+    "point": [
+      1,
+      0,
+      12
+    ],
+    "modulus_power": 1,
+    "free_coordinate": 1,
+    "derivative_valuation": 0,
+    "value_valuation": 1
+  },
+  {
+    "p": 19,
+    "point": [
+      1,
+      0,
+      9
+    ],
+    "modulus_power": 1,
+    "free_coordinate": 1,
+    "derivative_valuation": 0,
+    "value_valuation": 1
+  },
+  {
+    "p": 31,
+    "point": [
+      1,
+      0,
+      19
+    ],
+    "modulus_power": 1,
+    "free_coordinate": 1,
+    "derivative_valuation": 0,
+    "value_valuation": 1
+  }
+]

@@ -1,0 +1,28 @@
+Independent review of size_bounds/logarithmic_per_die_lower_bound.tex
+30 September 2026
+
+Result: PASS, full mathematical proof reviewed, not machine formalized.
+
+Checked:
+1. Exact all-failure-count polynomial identity and fixed-column derivative
+   identity, including coefficients (k+1)/m.
+2. The bad set is a prefix. The last bad row selects a single column whose
+   odds are large throughout that prefix. Coefficientwise domination avoids
+   division on rows containing zero entries.
+3. Ordered-tuple collision bound and normalized-moment recurrence. With
+   epsilon=m^(-1/2), errors are at most (2k+1)/sqrt(m) through k<=sqrt(m).
+4. Laguerre normalization and x-recurrence. For tapered coefficients
+   1-j/d, the exact square norm is (d+1)(2d+1)/(6d), and x-square norm is
+   (d+1)/(2d). The endpoint test has integral (d+1)(d+2)/(6d^2)>1/6.
+5. Factorial coefficient norm product bound ||L_i L_j||_*<=3^(i+j),
+   taper and x-multiplication bounds, and all moment-error estimates.
+6. At x<=2/d and j<=floor(d/8), |L_j(x)-1|<1/2. The resulting reproducing
+   kernel gives the stated atom bound 32/d+1024 delta 9^d/d^2.
+7. d=floor(log(m)/(8 log 3)) gives 9^d<=m^(1/4), so errors tend to zero.
+8. Existence of a good row with lambda<2/d implies the last row is good;
+   aggregation of repeated lambda values only strengthens the atom bound.
+   A(K)>=exp(-lambda(K)) then bounds w_K. Reversal/complement handles w_1.
+
+Conclusion: every equiprobable distinguished die has K>=c m log m faces.
+The proof is independent of rationality and of global arithmetic lower
+bounds. The weighted endpoint bound is w_1,w_K=O(1/(m log m)).

@@ -1,0 +1,111 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\title{Rational interval quadrature as a corollary of Hilbert--Kamke theory}
+\author{Literature consequence, not a claim of a new upper-bound theorem}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+\begin{theorem}\label{main}
+There is an absolute constant $C$ such that for every $r\ge2$ and every
+integer $K\ge Cr^3 2^r$, rational nodes $x_1,\ldots,x_K\in(0,1)$ exist
+with
+\[
+ \frac1K\sum_{i=1}^K x_i^j=\frac1{j+1}\qquad(0\le j\le r).
+\]
+This follows from classical Hilbert--Kamke local-solubility results and
+the rational-node circle-method formulation of Cui--Xia--Xiang.
+\end{theorem}
+
+\paragraph{The classical local input.}
+Let $V=(h^j)_{1\le j,h\le r}$ and $N\in\mathbb Z^r$.
+Arkhipov's Theorem 3 in \cite{ark85}, printed p.~34, supplies a
+positive uniform lower bound for the singular series if $Vt=N$ is
+solvable in $t\in\mathbb Z^r$ and
+\[
+ s>\min\bigl(r^2 2^{2r-1},\ 3r^3 2^r-r\bigr).
+\]
+In particular the congruences
+\[
+ \sum_{i=1}^s y_i^j\equiv N_j\pmod{p^a}\qquad(1\le j\le r)
+\]
+are solvable for every prime $p$ and every $a\ge1$. The singular series
+is the product of the nonnegative local densities; absence of a
+solution modulo one prime power would make that local density zero.
+Compactness of $\mathbb Z_p^s$ therefore gives a simultaneous solution
+in $\mathbb Z_p^s$ for each $p$.
+
+\begin{proof}[Proof of Theorem~\ref{main}]
+Set $c_j=K/(j+1)$ and $B=|\det V|$. Choose
+\[
+ P_0=B(r+1)!.
+\]
+For every positive multiple $P$ of $P_0$, each number
+$N_j=c_jP^j$ is an integer divisible by $B$. Thus
+$V^{-1}N=(\operatorname{adj}V)N/\det V$ is an integer vector.
+Arkhipov's local input, applied to this $N$ with $s=K$, gives a solution
+$y\in\mathbb Z_p^K$ for every $p$. Dividing by $P$ gives a solution of
+$\sum_i x_i^j=c_j$ in $(P^{-1}\mathbb Z_p)^K$ for every $p$.
+
+The real interval Chebyshev-quadrature theorem of Gilboa--Peled gives a
+real equal-weight rule of degree $2r+2$ for every sufficiently large
+$K\ge C_0r^2$. Such a rule has at least $r+2$ distinct support points,
+by integrating the square of the polynomial vanishing on its support.
+There are therefore at least $r$ distinct interior nodes. The first $r$
+moment Jacobian on these nodes is invertible. By the implicit function
+theorem, move any endpoint nodes inward and correct these $r$ pivots.
+This gives a fixed real solution $u\in(0,1)^K$ of the first $r$ moment
+conditions, with $r$ distinct interior coordinates.
+
+For all sufficiently large multiples $P$ of $P_0$, this real solution
+lies in $[P^{-1},1-P^{-1}]^K$ and has positive separation quantity
+$\Delta_u$ in \cite[Theorem 5.2(v)]{cxx}. That theorem's parts (iv) and
+(v) give positive uniform lower bounds for its singular series and
+singular integral. Part (i) then gives a positive number of rational
+solutions in $((0,1)\cap P^{-1}\mathbb Z)^K$ for sufficiently large $P$.
+Its required variable threshold, polynomial in $r$ times $2^r$, is
+covered by our choice $K\ge Cr^3 2^r$.
+\end{proof}
+
+\paragraph{Attribution and sharper classical information.}
+The exponential upper bound is thus a direct consequence of earlier
+published theorems. The separate file
+\texttt{exponential\_rational\_designs.tex} supplies an independent
+quantitative local argument with the weaker threshold $Cr^6 4^r$.
+The interval-integral valuation argument giving an exponential lower
+bound is a separate statement; the unit-indicator polynomials used in
+that argument already occur in Hua, Arkhipov, and Mit'kin.
+
+Mit'kin \cite{mitkin} sharpens the classical Hilbert--Kamke variable
+threshold to
+\[
+ H(r)=\sum_{0\le a\le\lfloor\log_2r\rfloor}
+        2^a\bigl(2^{\lfloor r/2^a\rfloor}-1\bigr)
+     =2^r+O(2^{r/2})\qquad(r\ge12).
+\]
+The localized interval argument is now supplied in
+\texttt{mitkin\_sharp\_rational\_upper.tex}: for every sufficiently
+large $r$, every $K\ge H(r)$ admits a rational interval rule. In
+particular $R_r\le2^r+O(2^{r/2})$. The simpler argument above remains
+a direct application of Cui--Xia--Xiang with a larger threshold.
+
+\begin{thebibliography}{9}
+\bibitem{ark85} G.~I.~Arkhipov,
+\emph{On the Hilbert--Kamke problem},
+Mathematics of the USSR-Izvestiya 24 (1985), no.~1, 1--47,
+\href{https://doi.org/10.1070/IM1985v024n01ABEH001210}{doi:10.1070/IM1985v024n01ABEH001210}.
+\bibitem{cxx} Zhen Cui, Jiacheng Xia, and Ziqing Xiang,
+\emph{Rational designs}, Advances in Mathematics 352 (2019), 541--571,
+\href{https://doi.org/10.1016/j.aim.2019.06.012}{doi:10.1016/j.aim.2019.06.012}.
+\bibitem{gp} Shoni Gilboa and Ron Peled,
+\emph{Chebyshev-type quadratures for doubling weights},
+Constructive Approximation 45 (2017), 193--216,
+\href{https://arxiv.org/abs/1507.01505}{arXiv:1507.01505}.
+\bibitem{mitkin} D.~A.~Mit'kin,
+\emph{An estimate for the number of terms in the Hilbert--Kamke problem},
+Mathematics of the USSR-Sbornik 57 (1987), no.~2, 561--590,
+\href{https://doi.org/10.1070/SM1987v057n02ABEH003087}{doi:10.1070/SM1987v057n02ABEH003087}.
+\end{thebibliography}
+\end{document}

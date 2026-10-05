@@ -1,0 +1,214 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{lemma}{Lemma}\newtheorem{theorem}{Theorem}
+\newcommand{\E}{\mathbb E}
+\title{Jackson kernels down to the inverse-dimension endpoint scale}
+\author{Uniform analytic extension; independently reviewed by all three collaborators}
+\date{30 September 2026}
+\begin{document}\maketitle
+Use the Jackson notation from
+\path{finite_jackson_endpoint_kernel.tex}, with fixed integer $r>3$,
+$\ell\asymp m$, $\nu\asymp m$, and degree $d=r(\nu-1)$ a sufficiently
+small fixed multiple of $m$. Constants below may depend on these
+fixed ratios and on $r$, but not on the center $a$.
+Define
+\[
+ b_a=\frac{\ell}{\nu}(\sin\theta_a+\nu^{-1})
+       \asymp\sqrt{a/m}+m^{-1},\qquad
+ Q_a(x)=\frac{J_{\nu,r}(\theta(x)-\theta_a)
+                  +J_{\nu,r}(\theta(x)+\theta_a)}
+                 {\ell(\sin\theta_a+\nu^{-1})}.
+\]
+Here $0\le a\le L$ with fixed $L$, and $0\le x\le\ell$.
+
+\begin{lemma}[Uniform real localization]\label{real}
+The polynomial $Q_a$ is nonnegative, of degree at most $d$, and has
+supremum at most $C/b_a\le Cm$. Its beta-reference integral is
+bounded above and below by positive constants uniformly in $a$.
+On every fixed bounded $x$-interval,
+\[
+ Q_a(x)\le\frac C{b_a}
+       (1+\sqrt m\,|\sqrt x-\sqrt a|)^{-2r}.             \tag{1}
+\]
+It is at least $c/b_a$ on $|x-a|\le cb_a$, intersected with $[0,\ell]$.
+If $ma\ge A_0$ for a sufficiently large fixed $A_0$, then on
+$x\in[a/8,8a]$ the right side of (1) is comparable to
+\[
+ E_a(x)=b_a^{-1}(1+|x-a|/b_a)^{-2r}.
+\]
+Outside $[a/4,4a]$, with fixed changes of these numerical ratios if
+needed, the global real-angle envelope is at most
+\[
+ \frac C{b_a}(1+m\max(x,a))^{-r}.                       \tag{2}
+\]
+\end{lemma}
+\begin{proof}
+Polynomiality and positivity are unchanged. The identity
+$\ell\sin\theta_a=2\sqrt{a(\ell-a)}$ gives the scale.
+For bounded $x,a$, the angle difference is comparable to
+$|\sqrt x-\sqrt a|/\sqrt\ell$, and the reflected angle is farther
+from zero than that difference. The trigonometric bounds in the
+companion note prove (1) and the local lower bound, including $a=0$.
+For large $x$ up to $\ell$, both periodic angular distances are
+bounded below by $c\sqrt{x/\ell}$ when $x\ge4a$ after increasing
+that fixed factor. This proves (2) globally.
+To bound the integral, use $dx=(\ell/2)\sin\theta\,d\theta$ and
+$\sin\theta\le\sin\theta_a+|\theta-\theta_a|$.
+The normalized Jackson kernel has bounded angular integral and
+first absolute moment $O(\nu^{-1})$; its reflected term satisfies
+the same estimate. Division by
+$\ell(\sin\theta_a+\nu^{-1})$ therefore gives a uniform upper bound
+for its Lebesgue integral. The beta density is at most two. The
+near-diagonal lower bound and the positive beta density on $[0,L+1]$
+give the reference lower bound.
+\end{proof}
+
+\begin{lemma}[Uniform local differential comparison]\label{local}
+Suppose $A_0/m\le a\le a_0$, where $A_0$ is sufficiently large
+and the fixed $a_0>0$ is sufficiently small. On $x\in[a/8,8a]$,
+\[
+ \frac{|Q_a^{(k)}(x)|}{k!}
+ \le C E_a(x)\left[\left(\frac C{kb_a}\right)^k
+                               +\left(\frac Ca\right)^k\right].
+                                                                    \tag{3}
+\]
+For a tensor row of unmarked mean $x\asymp a$, suppose its full
+range satisfies $H\le C a$. After discarding the exponentially rare
+subsets with $|v-x|>c a$, the marked and unmarked low-order comparisons
+through $J=B\log m$ have errors
+\[
+ C E_a(x)\frac{H^2}{mb_a^2},\qquad
+ C E_a(x)\frac{H^2}{m}(1+b_a^{-1}+Hb_a^{-2}),             \tag{4}
+\]
+respectively. The discarded subset contribution is smaller than any
+fixed inverse power of $m$ after integration, and the constants are
+uniform in $a$ in the stated range.
+\end{lemma}
+\begin{proof}
+On $|\zeta|\le ca$, the angle change is at most
+$C|\zeta|/\sqrt{\ell a}$, so the companion complex Jackson estimate
+gives $|Q_a(x+\zeta)|\le C E_a(x)e^{C|\zeta|/b_a}$.
+Use the Cauchy radius $\min(ca,kb_a/C)$ to prove (3).
+The coefficient estimate $|a_k|\le(CH\sqrt{k/N})^k$ then gives the
+same sums as before. The uncapped series has ratio
+$CH/(b_a\sqrt m)\le C\sqrt a$, made small by $a_0$.
+The capped series costs $O(H^2/(ma^2))$, at most a constant times
+$H^2/(mb_a^2)$ because $ma\ge A_0$.
+For the marked derivative of order $k-1$ its capped cost is
+$O(H^2/(ma))$, bounded by $O(H^2/(mb_a))$.
+These estimates hold through $J$; alternatively choose the fixed
+degree ratio small enough to sum the capped series through degree $d$.
+
+On these rows all $p_j$ are at least $1/2$. The success-weighted
+subset law has bias $O(H^2/m)$ and an all-tilt subgaussian variance
+proxy $CH^2/m$. Thus $|v-x|>ca$ has probability $e^{-cm}$, and
+$\E e^{C|v-x|/b_a}$ and the corresponding weighted second moment
+are bounded as in the companion note, since
+$H/(b_a\sqrt m)\le C\sqrt a$.
+Taylor's theorem proves the scalar subset comparisons in (4).
+On the rare subsets, global Markov--Cauchy bounds for the polynomial,
+whose supremum is $O(m)$, cost only $\exp(O((\log m)^2))$ through
+order $J$. This is absorbed by $e^{-cm}$, uniformly even when
+$a=A_0/m$.
+\end{proof}
+
+For the next lemma write $x=(\ell/M)s$ for the unmarked row mean,
+so $x\asymp s$. Use the reviewed sharp balance and endpoint CDF
+bounds in the forms
+\begin{equation}\label{inputs}
+ \max_jz_j\le C(x+m^{-1}),\qquad
+ m\,w\{x\le t\}\le C(t+m^{-1})\quad(t\ge0).
+\end{equation}
+These are established in the sharp endpoint-balance note, also for
+the deleted-column tensor. The marked column bound follows by
+absorbing its own contribution to the full deficit, as before.
+
+\begin{theorem}[Relative off-annulus differential tails]\label{relative}
+Let $A_0/m\le a\le a_0$ and $J=B\log m$.
+There are fixed constants $0<c_0<1<C_0$ such that the normalized
+unmarked differential sum, with absolute values on its summands,
+over rows $x\notin[c_0a,C_0a]$ is at most
+\[
+ C(ma)^{1/2-r}+m^{-A}.                                  \tag{5}
+\]
+For the direct marked differential functional its corresponding
+absolute tail is at most
+\[
+ C a(ma)^{1/2-r}+m^{-A}.                                \tag{6}
+\]
+Here $A$ is any fixed exponent; choose the global high-order cutoff
+constants accordingly. The degree ratio is chosen sufficiently small
+after $r$. The statements include the scalar zeroth-order terms.
+\end{theorem}
+\begin{proof}
+On small rows $x\le c_0a$, one has deterministically
+$v\le(M/N)x\le2x$, so $v$ stays a fixed relative distance below $a$.
+On large rows $x\ge C_0a$, split into $v\ge x/2$ and $v<x/2$.
+The latter event has uniform-subset probability $e^{-cm}$:
+\eqref{inputs} gives a population range $O(x)$ because $mx\ge C_0A_0$,
+and the uniform-subset Maclaurin--Hoeffding bound applies.
+Its contribution through $J$ is negligible by the same crude global
+polynomial derivative bound as in the companion note and $A_B\le1$.
+
+On all remaining subsets, $v$ is relatively separated from $a$.
+The far-angle Cauchy argument in the companion note is uniform here:
+with radius $R=k\sqrt{v(\ell-v)}/d$, the inverse-angle displacement
+is at most $Ck/d$. The complex trigonometric estimate is
+\emph{valid for arbitrary displacement}; it loses $e^{C_r k}$ and
+retains the envelope at the original real angle. In particular no
+assumption $k\ll\sqrt{ma}$ or displacement $\ll\theta_a$ is used.
+Thus (2) survives in the derivative bound:
+\[
+ \frac{|Q_a^{(k)}(v)|}{k!}
+ \le \frac C{b_a}(1+m\max(v,a))^{-r}
+       \left(\frac{C_r d}{k\sqrt{v(\ell-v)}}\right)^k.    \tag{7}
+\]
+For $v\le\ell/2$, sharp balance gives
+$\sigma^2\le CN(x+m^{-1})v$.
+Combining it with (7) bounds the order-$k$ centered term by its
+real envelope times
+\[
+ \left(C_r\frac dm\sqrt{\frac{x+m^{-1}}k}\right)^k.
+\]
+Summing over $k$ is at most $C\exp(C_r(d/m)^2(x+m^{-1}))$.
+The derivative-order-$(k-1)$ series is bounded by the same expression
+times $C(x+m^{-1})$, as is the marked factor $|z_i-v|$.
+Here one can use $v\le2x$ and maximize the elementary series
+$(t/\sqrt k)^k$; its sum is at most $C(1+t)^C e^{Ct^2}$,
+and the extra polynomial is absorbed by changing $C_r$.
+All envelopes may now be evaluated using $\max(x,a)$.
+
+Average $A_B$ and reserve its exponential decay
+$\E_BA_B\le e^{-c x}$. Choosing $d/m$ small absorbs the preceding
+exponential. Write $d\nu=m\,dw$; the CDF hypothesis is
+$\nu([0,t])\le C(t+m^{-1})$. Stieltjes integration by parts gives,
+for $r>3$,
+\begin{align*}
+ \frac1{b_a}\int e^{-cx}(1+m\max(x,a))^{-r}\,d\nu(x)
+      &\le C\frac a{b_a}(ma)^{-r}
+        \le C(ma)^{1/2-r},\\
+ \frac1{b_a}\int e^{-cx}(x+m^{-1})
+                    (1+m\max(x,a))^{-r}\,d\nu(x)
+      &\le C\frac{a^2}{b_a}(ma)^{-r}
+        \le C a(ma)^{1/2-r}.
+\end{align*}
+For example, split at $a$, use $ma\ge A_0$ on the first piece,
+and integrate $x^{-r}$ or $x^{1-r}$ against a CDF bounded by
+$C(x+m^{-1})$ on the second. The global CDF bound in
+\eqref{inputs} is used throughout this integration.
+
+Finally subsets with $v>\ell/2$ are handled by
+$\sigma^2\le Nv(\ell-v)$ and the global Bernstein--Walsh bound.
+Their rows have $s>N/2$, so the success weight gives $e^{-cm}$,
+which absorbs $\exp(Cd^2/N)$ for sufficiently small degree ratio.
+The cases $v=0$ contribute only their already bounded scalar term.
+This proves (5)--(6).
+\end{proof}
+
+\paragraph{Scope.}
+This note supplies uniform variable-center kernel, local comparison,
+and relative tail estimates. The variable-width local-mass and
+weighted-maximum assembly is supplied separately in
+\path{../../independent_directions/natural_scale_endpoint_profile.tex}.
+\end{document}

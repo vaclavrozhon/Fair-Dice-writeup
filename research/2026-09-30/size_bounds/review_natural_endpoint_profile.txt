@@ -1,0 +1,89 @@
+Independent full review: natural endpoint scale
+30 September 2026, 22:29 UTC
+Reviewer: size_bounds collaborator
+
+Files reviewed in full:
+  ../rational_designs/asymptotic/variable_jackson_endpoint_kernel.tex
+  ../independent_directions/natural_scale_endpoint_profile.tex
+Result: PASS. No mathematical gap found.
+
+Variable kernel:
+- Normalization ell(sin(theta_a)+1/nu) gives b_a comparable to
+  sqrt(a/m)+1/m, uniformly including the endpoint. The beta integral
+  has fixed positive lower/upper bounds and the reflected angular term
+  obeys the stated positive real envelope.
+- On the relative annulus, Cauchy radius min(c*a,k*b_a/C) yields both
+  derivative terms. The capped centered series is no larger than the
+  uncapped comparison scale because m*a is bounded below.
+- Sharp row balance makes the population range O(a). Success-weighted
+  subset means have subGaussian variance O(H^2/m), hence leaving the
+  relative annulus costs exp(-c*m), uniformly down to a=A_0/m.
+- The far-angle Cauchy estimate retains the real angular envelope with
+  an exponential-in-k loss; no k<<sqrt(m*a) restriction is needed.
+  When its radius crosses an endpoint, the square-root inverse-angle
+  estimate is still <=C*k/d; it is not necessary to linearize there.
+- Sharp variance cancels the powers of v in the derivative denominator.
+  Choosing d/m small leaves the success-weight exponential reserve.
+- Integrating against nu([0,t])<=C(t+1/m) gives exactly the unmarked
+  (m*a)^(1/2-r) tail and the marked extra factor a. At v=0 only the
+  already controlled scalar term remains. The high-v tail is covered
+  by the prior global Bernstein-Walsh estimate.
+
+Assembly:
+- Deleted-coordinate sharp balance and CDF hold with absolute constants.
+- The local-mass supremum is finite for each m. Its covers use V+C_T;
+  the bottom boundary comes from sharp CDF and the top from the already
+  proved fixed-annulus mass theorem. Small fixed a_1 absorbs V.
+- After obtaining a finite upper bound, increasing T and decreasing a_0
+  yields the positive kernel-mass lower bound. No uniformity of the
+  fixed-annulus constants as its endpoint tends to zero is assumed.
+- The normalized maximum |h_i^*|/(sqrt(y/m)+1/m) handles both boundary
+  regimes: sharp balance for bounded m*y and the interior theorem for
+  fixed positive y. Large maxima are confined to 2T/m<=y<=a_2.
+- Maximality controls all columns on the relative neighborhood. The
+  deleted-coordinate displacement is o(b(y)), uniformly on bounded y.
+- The favorable window is strictly to one side, avoiding flat-row
+  ambiguity. Large normalized deviation keeps it inside the positive
+  relative annulus, without changing the earlier fixed T.
+- Positive window mass defeats local tails; the far marked tail divided
+  by Delta is O((m*a)^(1-r)/D). The comparison error divided by Delta
+  is O(sqrt(a/m)+a), so choosing a_2 small and then m large closes the
+  contradiction. All choices have a consistent order.
+
+Conclusion supported: for every fixed L, uniformly for 0<=s<=L,
+  max_i |m(1-p_i)-s| <= C_L (sqrt(s/m)+1/m).
+This is a mathematical review, not formal verification.
+
+Additional full review: intermediate_endpoint_sharpness.tex
+PASS. The degree-m Gauss rule uses Q=ceil((m+1)/2); choosing
+j=ceil(sqrt(m*lambda)) uniformly for 1/m<=lambda<=L gives
+1-a comparable to lambda/m and weight v>=c sqrt(lambda)m^(-3/2).
+The zero-angle estimate was independently checked at
+https://dlmf.nist.gov/18.16.E2 . The Bernstein inequality was checked
+at https://dlmf.nist.gov/18.14.E3 with alpha=beta=0, equivalently
+18.14.E7 with Gegenbauer parameter1/2. Combined with the exact
+Christoffel-kernel identity, these give a uniform weight bound; no
+fixed-index asymptotic is extrapolated to growing j.
+The one-sided CDF jump provides discrepancy >=3v/8 at a continuity
+point t. Exactness of x^m gives the Gaussian tail <=t^(-m)/(m+1),
+so total deficit is comparable to lambda. The finite realization
+perturbation preserves both comparability and the lower deviation.
+The theorem correctly permits a separate family for each m,lambda,
+and prescribes s only up to fixed factors. No face-count bound is given.
+
+Final extensions independently reviewed: PASS
+1. All-scales theorem appended to intermediate_endpoint_sharpness.tex:
+   R_m(s)=min(m*s,sqrt(s/m)+1/m). The odd Legendre perturbation has
+   endpoint masses epsilon, density1-2epsilon P_r'(2t-1), uniform
+   moments throughm, and interior CDF t-epsilon P_r(2t-1). Its two
+   choices of epsilon cover lambda<=epsilon0 and epsilon0<lambda<1/m.
+   Positivity, s comparability, discrepancy and final realization
+   tolerances all check, including arbitrarily tiny positive lambda.
+2. rational_designs/asymptotic/natural_scale_row_atoms.tex:
+   mu_i(q)>=c_L*m*w_q follows from success products>=exp(-2L).
+   Deleted x_i is comparable to s above T'/m; local mass then gives
+   sqrt(s)/m^(3/2). Sharp CDF supplies1/m^2 below that threshold.
+   Scalar Gaussian weighted tensors attain the intermediate scale.
+   The Lobatto endpoint cardinal polynomial integrates to1/[K(K-1)]
+   on[0,1], attaining the floor at s=0. Weighted sharpness is correctly
+   not asserted as matching face counts for actual uniform dice.

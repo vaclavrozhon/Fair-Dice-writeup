@@ -1,0 +1,56 @@
+
+Starting CP-SAT solver v9.15.6755
+Parameters: max_time_in_seconds: 30 log_search_progress: true num_search_workers: 1
+
+Initial satisfaction model '': (model_fingerprint: 0x63454b0afedce4a4)
+#Variables: 7 (6 primary variables)
+  - 4 in [0,3]
+  - 1 in [0,14]
+  - 1 in [0,22]
+  - 1 in [0,27]
+#kLinear3: 1
+#kLinearN: 4 (#terms: 25)
+
+Starting presolve at 0.00s
+INFEASIBLE: 'linear: infeasible'
+Unsat after presolving constraint #4 (warning, dump might be inconsistent): linear { vars: 1 vars: 2 vars: 3 vars: 6 vars: 7 coeffs: 1 coeffs: 64 coeffs: 729 coeffs: 46656 coeffs: 46875 domain: 146963 domain: 146963 }
+  1.76e-03s  0.00e+00d  [PresolveToFixPoint] 
+
+Presolve summary:
+  - 1 affine relations were detected.
+  - rule 'affine: new relation' was applied 1 time.
+  - rule 'linear: fixed or dup variables' was applied 4 times.
+  - rule 'linear: reduced variable domains' was applied 4 times.
+  - rule 'linear: remapped using affine relations' was applied 5 times.
+  - rule 'linear: singleton column' was applied 1 time.
+  - rule 'presolve: iteration' was applied 1 time.
+  - rule 'variables: canonicalize affine domain' was applied 1 time.
+Problem closed by presolve.
+CpSolverResponse summary:
+status: INFEASIBLE
+objective: NA
+best_bound: NA
+integers: 0
+booleans: 0
+conflicts: 0
+branches: 0
+propagations: 0
+integer_propagations: 0
+restarts: 0
+lp_iterations: 0
+walltime: 0.00518424
+usertime: 0.00518436
+deterministic_time: 0
+gap_integral: 0
+
+{
+  "K": 70,
+  "D": 6,
+  "status": "INFEASIBLE",
+  "seconds": 0.005184242,
+  "targets": [
+    420,
+    9072,
+    233280
+  ]
+}

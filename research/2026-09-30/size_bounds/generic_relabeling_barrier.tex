@@ -1,0 +1,155 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Lie}{\operatorname{Lie}}
+\newcommand{\R}{\mathbb R}
+\title{A factorial-scale barrier even for error-dependent relabeling averages}
+\author{Mathematical proof reviewed independently; not formally verified}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+Let $V=\Lie_n$ be the real multilinear degree-$n$ free Lie
+representation on $n$ distinct generators. It has dimension $(n-1)!$.
+For $E\in V$ let $q(E)$ be the least support size of a probability
+measure $\mu$ on $S_n$ such that
+$\sum_g\mu(g)gE=0$. Such measures always exist, by uniform averaging.
+Unlike a universal annihilator, the measure here may depend on $E$.
+
+\begin{theorem}\label{main}
+For $n\ge7$ put
+\[
+ Q_n=\left\lfloor\sqrt{\frac{n!}{2n^5}}\right\rfloor.
+\]
+If $Q_n\ge1$, the set $\{E\in V:q(E)\le Q_n\}$ is closed and has
+Lebesgue measure zero. Its complement contains an element with integral
+coordinates in the standard fixed-last-letter bracket basis.
+
+In particular, for every sufficiently large $n$, there is a positive
+word $w$ with equal letter counts, fair on every subset of at most
+$n-1$ letters, such that cancelling its top-degree defect by positive
+averaging of relabeled copies requires more than $Q_n$ distinct
+relabelings. Thus the worst-case support requirement is
+\[
+ \exp\bigl((1/2+o(1))n\log n\bigr).
+\]
+\end{theorem}
+
+\begin{lemma}[Rank of a positive relabeling average]\label{rank}
+For $n\ge7$, if $\mu$ is supported on at most $q$ permutations, then
+\[
+ \operatorname{rank}(T_\mu|_V)\ge\frac{n!/q-2}{n^5},
+ \qquad T_\mu=\sum_g\mu(g)g.
+\]
+\end{lemma}
+\begin{proof}
+On the regular representation of $S_n$, every group element is
+orthogonal, so $\|T_\mu\|_{\mathrm{op}}\le1$. Its squared Frobenius
+norm is $n!\sum_g\mu(g)^2\ge n!/q$. Since each singular value is at
+most one, its regular-representation rank is at least $n!/q$.
+
+For an irreducible complex representation $S^\lambda$, let $d_\lambda$
+be its dimension and $m_\lambda$ its multiplicity in $\Lie_n$.
+Klyachko's theorem gives $m_\lambda\ge1$ for every shape except trivial
+and sign when $n\ge7$. Moreover,
+\[
+ m_\lambda\ge d_\lambda/n^5
+ \quad\text{for every such shape}.\tag{1}
+\]
+Indeed, this is immediate when $d_\lambda\le n^5$; when
+$d_\lambda>n^5$, Swanson \cite[Theorem 1.9]{swanson}, together
+with the Lie multiplicity interpretation, gives
+$m_\lambda/d_\lambda>1/n-1/n^2\ge1/n^5$.
+
+If $r_\lambda$ is the rank of $\sum_g\mu(g)\rho_\lambda(g)$,
+complexification and semisimplicity give
+\[
+ \operatorname{rank}_{\mathrm{reg}}T_\mu
+   =\sum_\lambda d_\lambda r_\lambda,
+ \qquad
+ \operatorname{rank}_{V}T_\mu
+   =\sum_\lambda m_\lambda r_\lambda.
+\]
+The two omitted one-dimensional representations contribute at most two
+to the first sum. Inequality (1) proves the result.
+\end{proof}
+
+\begin{lemma}[A parameterized-kernel observation]\label{kernels}
+Let $A(t)$ be a linear operator on $\R^d$ whose entries depend linearly
+on $t$ in a compact simplex of dimension at most $q-1$. Suppose
+$\operatorname{rank}A(t)\ge q$ throughout the simplex. Then
+\[
+ \mathcal B=\{x:\text{some }t\text{ satisfies }A(t)x=0\}
+\]
+is closed and has Lebesgue measure zero.
+\end{lemma}
+\begin{proof}
+Closedness follows by taking a convergent subsequence of parameters
+in the compact simplex whenever $x_j\to x$ and $A(t_j)x_j=0$.
+For the measure statement, cover the parameter simplex by the finitely
+many sets where a specified $q\times q$ minor is nonzero. On each such
+set, $q$ of the coordinates of a kernel vector are rational, hence smooth,
+functions of the parameters and the remaining $d-q$ coordinates.
+Ignoring any remaining equations only enlarges the resulting set.
+The total number of free real parameters is at most
+$(q-1)+(d-q)=d-1$. Restricting to countably many bounded pieces away
+from a zero denominator makes each parameterization Lipschitz, and a
+Lipschitz image of a subset of $\R^{d-1}$ has $d$-dimensional measure
+zero. The finite union of charts has the same property.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{main}]
+Put $q=Q_n\ge1$. Then $n!\ge2n^5q^2\ge n^5q^2+2q$, so
+Lemma~\ref{rank} gives $\operatorname{rank}(T_\mu|_V)\ge q$ for every
+measure supported on at most $q$ permutations.
+For each fixed support of size $q$, its probability measures form a
+compact $(q-1)$-simplex. Lemma~\ref{kernels} shows that the errors it
+can cancel form a closed null set. There are finitely many supports;
+smaller supports are included by allowing zero weights. Their union is
+therefore closed and null. Its nonempty open complement contains a
+rational point in the rational bracket basis. Multiplication by a
+common denominator preserves membership in this complement, giving
+an integral error $E$ with $q(E)>Q_n$.
+
+We now realize this error by an actual positive word. In the reduced
+nilpotent group, every degree-$n$ bracket is central and its group
+commutator is exactly its exponential. Thus an integral linear
+combination $E$ of the fixed-last-letter brackets gives a signed word
+with signature $\exp(E)=1+E$.
+The positive fraction-clearing argument in
+\path{../positive_saturation/eventual_primorial_saturation.tex}
+then supplies an equal-count fair signature $T_L=\exp(LH)$, where
+$H=X_1+\cdots+X_n$, such that $\exp(E)T_L$ is represented by a
+positive word $w$. Explicitly, write the signed element as $uv^{-1}$
+with positive $u,v$; complete $v$ to a fair positive word $vc=T_L$,
+and use $uc$. A further fair factor can make $L>0$ if necessary.
+Centrality gives
+\[
+ \log S(w)=LH+E.
+\]
+Hence all restrictions to fewer than $n$ letters are fair and every
+letter occurs exactly $L$ times.
+
+For relabeled copies of $w$, the degree-$n$ defects are $gE$.
+Their positive weighted average vanishes exactly when its normalized
+weights define a measure annihilating $E$, which needs more than $Q_n$
+relabelings. If integer copies and common integer blowups are used,
+a blowup by $a$ multiplies the defect by $a^n>0$; these still produce
+positive weights and cannot circumvent the support bound.
+\end{proof}
+
+\paragraph{Scope.}
+This is a worst-case obstruction for cancelling the final defect of an
+arbitrary almost-fair seed by relabeling. It does not show that every
+seed needs many relabelings, does not rule out exploiting particular
+seed structure, and gives no lower bound on the optimal size of a fair
+family constructed by other means. The representation estimates are
+classical; historical novelty of this application has not been audited.
+
+\begin{thebibliography}{9}
+\bibitem{swanson} Joshua P.~Swanson, \emph{On the existence of tableaux
+with given modular major index}, Algebraic Combinatorics 1 (2018), 3--21,
+\href{https://doi.org/10.5802/alco.4}{doi:10.5802/alco.4}.
+\end{thebibliography}
+\end{document}

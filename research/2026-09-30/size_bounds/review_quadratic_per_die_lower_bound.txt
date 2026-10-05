@@ -1,0 +1,42 @@
+30 September 2026: quadratic per-die lower bound
+
+The complete five-page proof in quadratic_per_die_lower_bound.tex was
+independently read by /root, /root/rational_designs, and
+/root/independent_directions. All three reviews PASS, with no gap found.
+
+Each reviewer checked the all-orders off-diagonal Gaussian identity
+(fixed total matrix index d+1), uniform factorial normalization, entire
+polarization series summation, improved subset bias/variance, weighted
+bad-event normalization, order of choosing the absolute small kappa,
+both concentration regimes, large-x exponential margin, cutoff Stieltjes
+integrals including atoms, and the final U_(d/16) test.
+
+All three independently noted the same harmless domain mismatch in the
+derivative lemma: its original statement had z>=1/d while intermediate
+points can be as small as 1/(2d). This is corrected in statement and
+proof; the bound changes only by an absolute sqrt(2) factor. No other
+correction was needed.
+
+Conclusion: every equiprobable die in a tie-free permutation-fair family
+has Omega(n^2) faces. Together with polynomial_exceptional_die.tex this
+establishes g(n)=Theta(n^2), where all other dice may be arbitrarily large.
+It does not settle minimum total size or polynomial equalization.
+
+This is mathematical peer review, not machine formal verification or an
+assertion of literature novelty. main.tex was not modified.
+
+The fully reviewed original dependency version is preserved as
+quadratic_per_die_lower_bound_with_plewa.tex. A subsequent simplification
+replaces its one-step classical localized-Laguerre CDF input by the same
+all-orders Gaussian argument with the older coarse balance. That
+dependency simplification is subject to a separate review entry below.
+
+DEPENDENCY SIMPLIFICATION REVIEW: PASS.
+The full elementary_endpoint_cdf_bootstrap.tex was independently reviewed
+by /root, /root/independent_directions, and /root/rational_designs, with
+no gap found. Its all-order
+U estimate for m^(1/4)<=d<=m^(3/4), old balance delta=1, old CDF offset
+m^(-1/2), and weighted bad-event/tail estimates give the required exponent
+3/4 without any external Laguerre asymptotic estimate. The dependency is
+noncircular: it uses only the original stable comparison and Gaussian
+identities. The final quadratic proof now cites this elementary note.

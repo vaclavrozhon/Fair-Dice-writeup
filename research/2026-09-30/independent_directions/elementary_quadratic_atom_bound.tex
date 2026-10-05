@@ -1,0 +1,188 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\title{An elementary quadratic bound for the last atom}
+\author{Complete elementary proof; three independent mathematical reviews}
+\date{30 September 2026}
+\begin{document}\maketitle
+Let $w_q>0$, $1\le q\le K$, sum to one, and let
+$p_i(q)\in[0,1]$, $1\le i\le m$, be nondecreasing in $q$. Suppose
+\begin{equation}\label{mom}
+ \sum_qw_q\prod_{i\in S}p_i(q)=\frac1{|S|+1}
+ \qquad(S\subseteq\{1,\ldots,m\}).
+\end{equation}
+The empty-set equation is the normalization. No equal weights or
+rationality are assumed. Write $a_i=p_i(K)$.
+
+\begin{theorem}\label{main}
+For every $m\ge1$,
+\[
+ a_i\ge1-\frac{\pi^2}{(m+1)^2}\quad(1\le i\le m),
+ \qquad w_K\le\frac{200}{m^2}.
+\]
+The second bound also holds for the total weight of all rows identical
+to the last vector. Consequently an equal-weight representation has
+$K\ge m^2/200$.
+\end{theorem}
+
+The proof uses only squarefree moment exactness, monotonicity, and
+ordinary Gaussian and Radau quadrature. In particular it gives a short
+independent proof of the exact quadratic per-die lower bound, without
+the endpoint localization estimates developed earlier in this project.
+
+\begin{lemma}[Paired thresholds]\label{pair}
+Complete the coordinatewise ordered row vectors to a continuous
+nondecreasing path by adjoining the vectors $0$ and $1$ and linearly
+interpolating successive vectors. For distinct indices $j,k$ and
+$t\in(0,1)$, stop at the first time either coordinate reaches $t$.
+The resulting threshold values $\alpha,\beta$ satisfy
+\[
+ \{\alpha,\beta\}=\{t,b\},\quad 0\le b\le t,
+ \qquad (p_j(q)-\alpha)(p_k(q)-\beta)\ge0
+ \quad\hbox{for every original row }q.
+\]
+Products of these factors on disjoint pairs remain nonnegative.
+\end{lemma}
+\begin{proof}
+Both coordinates start at zero and end at one. At their first crossing
+of $t$, one equals $t$ and the other is at most $t$. Every original row
+before the stopping point is coordinatewise below the threshold vector,
+and every row after it is coordinatewise above it. Thus the two
+differences have the same weak sign. The added path points have no
+probability weight and change none of the moment equations.
+\end{proof}
+
+For every multi-affine polynomial $F$, equation~\eqref{mom} implies
+the exact diagonal identity
+\begin{equation}\label{diagonal}
+ \mathbb E_w F(p_1,\ldots,p_m)=\int_0^1F(t,\ldots,t)\,dt.
+\end{equation}
+This is simply linearity applied to its squarefree monomials.
+
+\begin{lemma}[Quadrature facts]\label{quad}
+The $D$-node Gaussian rule for Lebesgue measure on $[0,1]$ has positive
+weights, is exact through degree $2D-1$, and its largest node $\xi_D$
+satisfies
+\begin{equation}\label{gaussnode}
+ 1-\xi_D\le\frac{\pi^2}{4(D+1)^2}.
+\end{equation}
+The $(e+1)$-node right Radau rule has nodes
+$t_1<\cdots<t_e<1$ and $1$, positive weights, and exactness through
+degree $2e$. Its endpoint weight and interior-node sum are
+\begin{equation}\label{radau}
+ \omega_1=\frac1{(e+1)^2},\qquad
+ \sum_{\ell=1}^e\frac1{1-t_\ell}=\frac{e(e+2)}2.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Let $P_r$ be the usual Legendre polynomial with $P_r(1)=1$.
+Orthogonality yields the Gaussian rule at the shifted roots of $P_D$:
+division by the node polynomial gives exactness, and applying the rule
+to squared cardinal polynomials gives positive weights.
+The three-term Legendre recurrence shows that its unshifted roots are
+the eigenvalues of the symmetric $D\times D$ Jacobi matrix with zero
+diagonal and off-diagonal entries
+$k/\sqrt{(2k-1)(2k+1)}\ge1/2$. The positive sine eigenvector of the
+matrix with all off-diagonals $1/2$ gives, by the Rayleigh principle,
+largest eigenvalue at least $\cos(\pi/(D+1))$. Shifting to $[0,1]$
+and using $1-\cos x\le x^2/2$ proves~\eqref{gaussnode}.
+
+For Radau put
+\[
+ J_e(t)=\sum_{r=0}^e(2r+1)P_r(2t-1).
+\]
+This is the reproducing kernel at $1$ for degree-$e$ polynomials:
+$\int_0^1J_e(t)f(t)dt=f(1)$. Hence $J_e$ is orthogonal to degree
+at most $e-1$ for the positive weight $1-t$, and has $e$ distinct
+interior roots. Interpolation at these roots and $1$ integrates every
+polynomial of degree at most $2e$: the division remainder has degree
+at most $e$, and the quotient term is $(t-1)J_e(t)q(t)$ with
+$\deg q\le e-1$. Interior weights are positive by evaluating the
+rule on
+$(1-t)(J_e(t)/(t-t_\ell))^2$. At the endpoint, exactness on $J_e^2$
+and the reproducing identity give
+\[
+ \omega_1 J_e(1)^2=\int_0^1J_e(t)^2dt=J_e(1)=(e+1)^2.
+\]
+Finally the elementary endpoint derivative formula for shifted Legendre
+polynomials is $(P_r(2t-1))'|_{t=1}=r(r+1)$. Therefore
+\[
+ \frac{J_e'(1)}{J_e(1)}
+ =\frac{\sum_{r=0}^e(2r+1)r(r+1)}{(e+1)^2}
+ =\frac{e(e+2)}2.
+\]
+The left side is the logarithmic derivative over the roots, proving
+the second identity in~\eqref{radau}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{main}]
+Fix $i$ and put $d=\lfloor(m-1)/2\rfloor$, $D=d+1$.
+Choose $d$ disjoint pairs among the other $m-1$ columns. For pair
+$\ell$, apply Lemma~\ref{pair} at the $\ell$th node of the
+$D$-node Gaussian rule, omitting its largest node $\xi_D$.
+Let $T(p)$ be the product of the $d$ paired factors and put
+\[
+ P(t)=T(t,\ldots,t)=\prod_{\ell=1}^d(t-\xi_\ell)(t-b_\ell),
+ \qquad b_\ell\le\xi_\ell<\xi_D.
+\]
+Both $T(p(q))$ and $a_i-p_i(q)$ are nonnegative. They use disjoint
+columns, so their product is multi-affine, of degree $2d+1$. By
+\eqref{diagonal} and Gaussian exactness,
+\[
+ 0\le\mathbb E_w[(a_i-p_i)T(p)]
+ =\int_0^1(a_i-t)P(t)dt
+ =\omega_D(a_i-\xi_D)P(\xi_D).
+\]
+Here $\omega_D>0$ and $P(\xi_D)>0$, including the empty-product
+case $d=0$. Thus $a_i\ge\xi_D$ for every $i$. Since
+$D+1\ge(m+1)/2$, equation~\eqref{gaussnode} gives
+$1-a_i\le\delta:=\pi^2/(m+1)^2$.
+
+For $m\ge10$, put $e=\lfloor m/10\rfloor$ and choose $e$ disjoint
+pairs of columns. Apply the threshold lemma to these pairs at the
+$e$ interior nodes of the right Radau rule. Again write $T$ for the
+nonnegative multi-affine product and
+\[
+ P(t)=\prod_{\ell=1}^e(t-t_\ell)(t-b_\ell),\qquad b_\ell\le t_\ell.
+\]
+The degree is $2e\le m$. Radau exactness and~\eqref{diagonal} give
+\begin{equation}\label{radauidentity}
+ \mathbb E_w T(p)=\frac{P(1)}{(e+1)^2}.
+\end{equation}
+Set $S=e(e+2)/2$. As $e\le m/10$ and $e+2\le3m/10$,
+\[
+ \delta S\le\frac{3\pi^2}{200}<\frac14.
+\]
+In particular all threshold roots are strictly below every $a_i$.
+At the last row each paired factor, divided by its value at the
+all-one vector, is at least
+$(1-\delta/(1-t_\ell))^2$. The elementary inequality
+$\prod_j(1-z_j)\ge1-\sum_jz_j$ for $0\le z_j\le1$ therefore gives
+\[
+ \frac{T(a)}{P(1)}
+ \ge\prod_{\ell=1}^e
+       \left(1-\frac{\delta}{1-t_\ell}\right)^2
+ \ge1-2\delta S>\frac12.
+\]
+Consequently~\eqref{radauidentity} implies
+$w_K\le2/(e+1)^2\le200/m^2$. Identical terminal rows contribute
+the same value $T(a)$, giving the aggregate version. For $m<10$ the
+asserted bound follows from $w_K\le1$.
+\end{proof}
+
+\begin{corollary}[Fair dice]
+Every die in a permutation-fair family of $n\ge2$ finite uniform dice
+has at least $(n-1)^2/200$ faces.
+\end{corollary}
+\begin{proof}
+Condition on the sorted faces of that die. The comparison probabilities
+of the other $m=n-1$ dice are monotone and satisfy~\eqref{mom}.
+Each conditioning row has weight the reciprocal of its face count.
+Apply Theorem~\ref{main}.
+\end{proof}
+Only the mixed moment conditions~\eqref{mom} were used. Thus full
+permutation fairness can be weakened to uniform winning probability
+for this distinguished die on every subset containing it.
+\end{document}

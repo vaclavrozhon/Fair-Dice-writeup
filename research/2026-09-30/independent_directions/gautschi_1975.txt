@@ -1,0 +1,781 @@
+MATHEMATICS OF COMPUTATION, VOLUME 29, NUMBER 129
+JANUARY 1975, PAGES 93-99
+
+Nonexistence
+
+of Chebyshev-Type
+on Infinite
+Intervals*
+
+Quadratures
+
+By Walter Gautschi
+Dedicated
+Abstract.
+
+Quadrature
+
+involving
+
+weight
+
+such quadrature
+algebraic
+
+to D. H. Lehmer on his 10th birthday
+
+rules on semi-infinite
+
+functions
+
+of the Laguerre
+
+rules cannot
+
+degree of accuracy
+
+and infinite
+
+intervals
+
+and Hermite
+
+type.
+
+have equal coefficients
+
+rb
+
+that
+
+and real nodes unless the
+
+is severely limited.
+
+1. Introduction. Given a nonnegative weight function
+(a, b), with finite moments
+
+mk = \
+
+are considered
+
+It is shown
+
+xk w(x)dx,
+
+k = 0, 1, 2, • • •,
+
+w(x) on the interval
+
+mQ> 0,
+
+a
+
+a quadrature rule of the form
+rb
+
+(1.1)
+
+m0
+
+n
+
+f f(x)w(xydx= —
+
+J a
+
+Z f(xkn)) + Rn(f)
+
+tl
+
+k-1
+
+is called a Chebyshev quadrature formula if the nodes xk"^ are mutually distinct
+and located in (a, b), and if (1.1) has polynomial degree of accuracy «, i.e.,
+Rn(f) = 0 whenever / is a polynomial of degree < «. In the following we are
+going to relax these requirements in two respects:
+
+Firstly, we shall drop the re-
+
+quirement that the nodes be distinct, or even contained in (a, b), assuming merely
+that all be real. Secondly, we shall allow for polynomial degree of accuracy < «.
+
+Since we are interested in questions of nonexistence, both modifications only
+strengthen our results. We shall refer to quadrature rules (1.1), under these relaxed
+
+conditions, as Chebyshev-type quadrature formulas.
+We focus our attention on two special cases of (1.1): the Chebyshev-Laguerre
+
+formula
+
+(1-2)
+
+fx\-*f(x)dx
+J o
+
+= ^^
+
+«
+
+Received February 27, 1974.
+AMS (MOS) subject classifications
+This work was supported
+
+Z f(x[n))+ R„(f),
+
+a=i
+
+(1970).
+
+K
+
+"
+
+a > - 1,
+
+Primary 65D30.
+
+in part by the National
+
+Science
+
+Foundation
+
+under
+
+grant
+
+GP-36557.
+Copyright © 1*^75,Aniciican Maiiiemulk'al Society
+
+93
+
+94
+
+WALTER GAUTSCHI
+
+and the Chebyshev-Hermite formula
+
+(1.3)
+
+f
+
+—»
+
+e~x2f(xyJx= ^
+
+n
+
+± f(x^) + R(f).
+
+k= i
+
+In 1955, H. E. Salzer [5] first observed (by computation) that a Chebyshev formula
+(1.2), in the strict sense, for a = 0, exists for « = 1 and « = 2, but does not
+
+exist for 3 <« < 10. He found similarly that (1.3) exists for « = 1,2
+
+and 3,
+
+but not for 4 < « < 10. Shortly thereafter, V. I. Krylov [4] proved that in fact
+
+(1.2) (with a = 0) and (1.3) do not exist for any n > 3 and n > 4, respectively.
+This was proved again later on, independently, by H. S. Wilf [6] and L. Gatteschi
+[3]. We shall prove below analogous results for Chebyshev-type quadratures. In
+particular, we show that formulas (1.2) and (1.3) with polynomial degrees of accuracy pn > rny, T > 0, lh < y < 1, as n —*■
+<*>,cannot exist.
+Both Krylov's and Gatteschi's proofs are based on an inequality of Bernstein,
+
+which was used by Bernstein to settle the existence of. Chebyshev quadratures in
+
+the classical case w(x) =1
+
+on [-1,1].
+
+We shall continue using Bernstein's method,
+
+but simplify its application and also establish its validity in the case of nodes not
+necessarily distinct.
+2. Bernstein's Inequalities.
+
+The lemmas in this section are slight extensions
+
+or modifications of results due to S. Bernstein [2], which in turn, according to
+
+Bernstein [loc. cit., p. 180], are "but more or less immediate applications or modifications of a proposition due to Chebyshev". Our extension is to arbitrary
+weight functions (which is immediate), and our modification is prompted by our
+reluctance to assume mutually distinct nodes.
+Let Qm' and Ajm) be the abscissas and weights of the «z-point Gaussian
+quadrature rule
+b
+
+m
+
+(2.1) f f(x)w(x)dx = Z Km)ftirm)ï + RmW>
+J a
+
+r=l
+
+#°
+
+< ^m-1 < ' " ' < tf"*-
+
+Thus, Rm(f) = 0 for all polynomials of degree < 2m - 1. The abscissas |^m^ are
+the zeros of the mth degree orthogonal polynomial associated with the weight function w(x), while the weights X£m^ are the corresponding Christoffel numbers.
+
+l£MMA2.1. If the Chebyshev-type quadrature formula (1.1) has polynomial
+degree of accuracy 2m — 1, m < «, then either
+(2.2)
+
+*("> = £(m> (nr-times),
+
+\^
+
+= (mjn)nr
+
+,
+
+r = 1, 2, • • ■, m,
+
+where nr > 1 are integers summing up to n, or
+
+(2.3)
+
+x(») > t(»0
+
+for at least one value of k, 1 < k < «. 77zesame statement holds true with (2.3)
+
+replaced by
+
+NONEXISTENCE OF CHEBYSHEV-TYPE QUADRATURES
+
+(2.3')
+
+95
+
+4n)<4m)-
+
+The proof utilizes the polynomial
+
+p(x) = p2m(x)/(x - %^xm^),where pm is the
+
+with degree orthogonal polynomial associated with the weight function w(x). We
+
+have, on the one hand fj¡p(x)w(x)dx = 0, and on the other, by assumption,
+
+(2-4)
+
+Íp(x{n)) = Q.
+
+There are the following alternatives:
+
+(i) All xkn)<ï\m\
+Since p(x) < 0 for x < a[m\ and p(x) = 0 only
+for x = j-(m\ r = 1, 2, ■■■, m, it follows from (2.4) that all xkn) must be placed
+at Gaussian nodes $"\
+that is,
+x(n) = ¡;(m) („^times),
+
+r = 1, 2, • • •, m,
+
+where nr > 0 are integers with «, + «2 + ■• • + nm = n. The quadrature rule
+
+(1.1) then becomes
+rb
+
+m
+
+m
+
+f f(x)w(x)dx= —
+Z «/(S*"0)
++ *„(/)•
+J a
+n
+r=l
+r
+r
+"
+Since it has polynomial degree of accuracy 2m — 1, and since the Gaussian quadrature rule (2.1) is unique, we conclude (2.2), and in particular, nr > 1 for all r,
+by virtue of X<m) > 0. This proves the first alternative (2.2).
+(ii) At least one xk"^ > ^xm\ This gives the second alternative (2.3).
+The statement concerning (2.2) and (2.3') follows similarly by using p(x) =
+
+P2m(x)l(x- ^).
+Lemma 2.2. // the Chebyshev-type quadrature formula (1.1) has polynomial
+degree of accuracy 2m — 2, then
+(2.5)7
+
+o(^m))mJn<X]m)
+vm
+'
+0'
+1
+
+where o(£[m)) and t(^>)
+
+and
+
+T(^m))mjn
+v^m ' 0
+
+<A(m\
+m '
+
+are the number of nodes xkn) with xkn) > £(,m)
+
+and xk") < £*™\ respectively.
+The proof of Bernstein, utilizing p(x) = p2m(x)(x - ^m))"2
+
+\p'm(^m))]
+
+~2,
+
+r = 1 or r = m, applies essentially unchanged.
+Lemma 2.3. // the Chebyshev-type quadrature formula (1.1) has polynomial
+degree of accuracy 2m — 1, m < «, then
+
+(2.6)
+
+m0/«<min{A(,m\ \J>0}.
+/Voo/. By Lemma 2.1 we have either (2.2), or else both (2.3) and (2.3').
+
+In the first case, (2.6) results from putting r = 1 and r = m in (2.2) and noting
+that nr > 1. In the second case, (2.6) is a consequence of (2.5).
+
+3. Nonexistence of Chebyshev-Laguerre Type Formulas.
+Theorem 3.1. A Chebyshev-type quadrature formula (1.2) having polynomial
+
+96
+
+WALTER GAUTSCHI
+
+degree of accuracy n - s, s > 0, does not exist if
+
+(3.1)
+
+« > s + Vi{a + 5 + V(a + 1)(<*+ 5 + 4s)} a«d « - s (eve«) > 4,
+
+or //
+
+(3.2) n>s-l+&{a
+
++ 5 + V(« + l)(a + 1 + 4s)} a«c? « - s (odd) > 3.
+
+Remark. For « - s = 2 it is easily shown that Chebyshev-type formulas
+(1.2) do indeed exist. The same, of course, is true if n - s = 1.
+
+Proof of Theorem 3.1. Let 7r0(x), irx(x), • • • denote the normalized Laguerre
+polynomials L(Qa)(x), L[a\x), ■•■ , and %[m) the zeros of vm, ordered decreasingly.
+The associated Christoffel numbers are
+
+(3-3)
+
+A(-) = l/mZK(^>)]2.
+r
+
+I
+
+k=o
+
+K r
+
+V. I. Krylov [4] showed that
+(3.4)
+
+?(1m)>2m+a-l
+
+(m > 2, a > - 1).
+
+Since
+tt0 = [r(a + 1)]"1/2,
+
+n1(x)=[r(a
+
++ 2)]-1/2(a
+
++ 1 - x),
+
+it follows from (3.3) that
+
+xo-)<-
+
+-±4 + ["i(t[m))]2
+
+r(a+l)
+i + [ç(,m)- (« + O] 2/(<*+ i) '
+
+and thus from (3.4) that
+
+A<r><-^^-,
+
+1 + 4(m - l)2/(a + 1)
+
+W>2.
+
+We first consider the case where « - s is even. Let « - s = 2m, m > 2.
+By Bernstein's inequality (2.6) we have nonexistence of (1.2) if r(a + 1)/« >
+\[m\ hence, a fortiori, if
+
+(3.5)
+
+->,
+«
+1 + 4(m - l)2/(a + 1)
+
+m>2.
+
+Since « = 2m + s, the last inequality is equivalent to
+
+4w2 - (2a + 10)m + a + 5 - s (a + 1) > 0,
+and is satisfied if
+m > Va{a + 5 + V(<*+ l)(a + 5 + 4s)},
+Since m = (n - s)/2, this proves (3.1).
+
+m > 2.
+
+NONEXISTENCE OF CHEBYSHEV-TYPE QUADRATURES
+
+It remains to consider the case « - s odd, n - s = 2m — 1, m~>2.
+
+97
+Non-
+
+existence of (1.2) now results if (3.5) holds with « = 2«î + s - 1, i.e., if
+
+4m2 - (2a + 10)w + 2a + 6 - s(a + 1) > 0,
+
+m > 2,
+
+or, in particular, if
+
+m > Va{a + 5 + V(a + l)(a + 1 + 4s)},
+
+m > 2.
+
+Since m = (n - s + l)/2, this gives (3.2), and the proof of Theorem 3.1 is com-
+
+pleted.
+Corollary.
+
+There is no sequence {Cn} of Chebyshev-type formulas (1.2),
+
+corresponding to a sequence S of integers n = n¡, «;- —►°°, such that Cn has
+polynomial degree of accuracy pn > r«T, r > 0, Vi < y < 1, for each n G S.
+Proof. Letting p„ = « - sn, we have sn < « - r«7, and (3.1), (3.2)
+are both satisfied for s = sn and « sufficiently large.
+
+We remark that (3.1) and (3.2) in the case a = 0 are sharp for s = 0 and
+s = 1, giving the correct bounds « > 3 and « > 4, respectively, but are not quite
+
+sharp for s> 2. If s = 2, the inequalities (3.1), (3.2) yield « = 5 or n> 1. In
+reality, « > 5, as can be seen from Bernstein's inequality by verifying «_1 > X^
+
+for « = 6. For s = 3 we obtain n > 8, while in reality « > 6. The latter follows from Bernstein's inequality when « = 6, and from computations performed
+
+in [1] when « = 7.
+4. Nonexistence of Chebyshev-Hermite Type Formulas. We call (1.3) a
+symmetric Chebyshev-type quadrature formula if the nodes xk"' are located symmetrically with respect to the origin. Symmetric formulas are trivially exact for
+odd functions.
+
+We can assume therefore that the polynomial degree of accuracy
+
+of a symmetric formula is odd.
+
+Theorem 4.1. A symmetric Chebyshev-type quadrature formula (1.3) having
+polynomial degree of accuracy 2[«/2] — 2s + 1, s > 0, does not exist if
+
+s=0
+
+t4-1)
+
+and
+
+« > 4, s = 1 and
+
+n > 8,
+
+Í2(s+ 1 +Vs"),
+s > 1 and n> I
+_
+f2s + 3 + V4s + 2,
+
+n even,
+
+« odd.
+
+Proof. The normalized Hermite polynomials n0(x), ttx(x), • • • can be expressed in terms of Laguerre polynomials by means of
+
+*"w
+
+|r((«
+/!'((.« +
++ i)/2)(
+1J/ZJ )
+
+"/2
+"'"
+
+{x h
+
+« even,
+
+(4.2)
+
+n(x)=
+lr(("
+rfO/»
+»w
+|r(«/2 + +1)/2)(1/2
+i)j
+xV-d/2(* tf) J> „n odd
+ocm-
+
+98
+
+WALTER GAUTSCHI
+
+The largest zero |(jm) of ttm, by (3.4) and (4.2), thus satisfies
+
+(43)
+
+R<m>]2>m-3/2
+
+for m > 4,
+
+[?(,m)]2 = m - 3/2
+
+for m = 2 and 3.
+
+Since
+7T0= 7T-1/4,
+
+7T1W = 21/27r-1/4X,
+
+7T,(x) = 2" ' '2lT »l\2x2
+
+- 1),
+
+we obtain for the corresponding Christoffel number, using again (3.3),
+
+1
+
+X(m) < -
+
+2sfn
+
+«l + l\(ï[m))}2 + K(?(,m))]2
+
+2 + 4[^]2
+
++ (2[^)]2
+
+- l)2
+
+and thus, from (4.3),
+X<m)<-^-|
+2[m - 1 +(w-2)2]
+
+m>4)
+
+X{m)=-—-,
+2[m-
+
+m = 2 and 3.
+1 +(w-2)2]
+
+We first consider the case when « is even, « = 2v. Since we are assuming polynomial degree of accuracy 2 [«/2] - 2s + 1 = 2i^ - 2s + 1, we have m = v - s + 1
+in Bernstein's inequality (2.6). Nonexistence of (1.3) thus follows in either of the
+following two cases:
+
+— >2"
+2[v-s
+
++ (v-s-
+
+l)2]
+
+—> ——2" 2[v-s + (y-s-
+
+l)2]
+
+and
+
+v > s + 3,
+
+and
+
+v = s + 1 or s + 2.
+
+The first case is equivalent to
+
+i;2 - 2(s + l)v + s2 + s + 1 > 0
+
+and
+
+v > s + 3,
+
+and is realized if
+
+(4.4)
+
+« > 2(s + 1 + VÖ,
+
+«(even)> 2s + 6.
+
+The second case occurs if
+
+(4.5)
+
+n > 2(s + 1 + VF),
+
+« = 2s + 2 or 2s + 4.
+
+Now « = 2s + 2 in (4.5) implies 0 > 2\fs , which is impossible, while « = 2s + 4
+implies s = 0, hence « = 4. Putting in turn s = 0 and s = 1 in (4.4) gives «(even)
+
+> 6 and «(even) > 8, respectively, while for s > 2 we get «(even) >2(s + 1 +\Js).
+
+NONEXISTENCE OF CHEBYSHEV-TYPE QUADRATURES
+
+99
+
+Since in all these cases a symmetric formula (1.3) does not exist, Theorem 4.1 is
+proved for all even n \> 4.
+Consider now the case of odd n, n = 2v + 1. The degree of accuracy still being
+2v - 2s + 1, we can again use m = v - s + 1 in Bernstein's inequality and infer
+
+nonexistence of (1.3) in either of the following two cases:
+
+2^+1
+
+>-
+
+and
+2[v-s
+
+1
+
+-——; >2v+l
+2[v-s
+
++ (v-s-
+
+v ~>s + 3,
+
+I)2]
+
+1
+
+and
+
+v = s + 1 or s + 2.
+
++ (v-s-l)2]
+
+As before one sees that these cases hold if
+
+n > 2s + 3 + V4s + 2,
+
+«(odd) > 2s + 7
+
+and
+
+« > 2s + 3 + V4s + 2,
+
+« = 2s + 3 or 2s + 5,
+
+respectively. The latter is possible only if s = 0, giving n = 5. Putting s = 0 in the
+former gives n(odd) > 1, while for s > 1 we get «(odd) > 2s + 3 + V4s + 2.
+This proves Theorem 4.1 for all odd « \> 5.
+Corollary.
+There is no sequence {Cn} of symmetric Chebyshev-type formulas (1.3), corresponding to a sequence S of integers n = «;-, «;-—►°°, such that
+Cn has polynomial degree of accuracy pn > rny, r > 0, Vi < y < 1, for each « E S.
+We remark that Theorem 4.1 is sharp for s = 0, as follows from Krylov's
+result, and also for s = 1, 2 and 3, as can be seen from calculations performed in [1].
+Department
+Purdue
+
+of Computer
+
+Sciences
+
+University
+
+Lafayette,
+
+Indiana 47907
+
+1. L. A. ANDERSON & W. GAUTSCHI, "Optimal weighted Chebyshev-type quadrature
+formulas" (To be published.)
+2. S. BERNSTEIN, "Sur un système d'équations
+v. 17, 1938, pp. 179-186.
+3. L. GATTESCHI,
+
+"Sulla non esistenza
+
+di certe formule
+
+Torino Rend. Sem. Mat., v. 24, 1964/65, pp. 157-172.
+4.
+
+V. I. KRYLOV,
+
+"Mechanical
+
+f^e~Xf(x)dx and f^cx,e-x2f(x)dx,"
+MR 22 #861.
+5. H. E. SALZER,
+
+"Equally
+
+quadratures
+
+J. Math. Pures Appl.,
+
+di quadratura,"
+
+Univ. e Politec.
+
+MR 32 #4846.
+
+with equal coefficients
+
+for the integrals
+
+Dokl. Akad. Nauk BSSR, v. 2, 1958, pp. 187-192.
+
+weighted
+
+quadrature
+
+intervals," J. Math. Phys., v. 34, 1955, pp. 54-63.
+6. H. S. WILF, "The possibility
+
+indéterminées,"
+
+over semi-infinite
+
+and infinite
+
+MR 16, 1055.
+
+of Tschebycheff
+
+Nat. Acad. Sei. U. S. A., v. 47, 1961, pp. 209-213.
+
+formulas
+
+(Russian)
+
+quadrature
+
+on infinite
+
+MR 23 #A2683.
+
+intervals,"
+
+Proc.
+
+

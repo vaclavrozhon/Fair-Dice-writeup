@@ -1,0 +1,100 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\title{Rational interval designs with polynomial common denominator}
+\author{Joint consequence of the p-adic and integer-rounding research notes}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+\begin{theorem}
+Fix $A>0$. If rational nodes $x_1,\ldots,x_K$ have a positive common
+denominator $D\le r^A$ and give an equal-weight degree-$r$ quadrature
+for the uniform interval measure, then
+\[
+ \log K\ge r\log r-r\log\log r-O_A(r).
+\]
+Conversely, there is such a quadrature on the grid
+$i/(r+1)^2$ with
+\[
+ \log K\le r\log r+O(r).
+\]
+Thus, for common denominators bounded by any fixed polynomial of sufficient
+degree, the optimal number of nodes is $\exp((1+o(1))r\log r)$.
+Node repetitions are allowed and are counted in $K$.
+\end{theorem}
+\begin{proof}
+For every prime $p\nmid D$, all nodes belong to $\mathbb Z_p$.
+The integral-node case of the general-prime theorem in
+\texttt{../rational\_designs/p\_adic\_lower\_bound.tex} gives
+\[
+ p^{\lfloor r/(p-1)\rfloor}\mid K.
+\]
+Also $\lfloor r/(p-1)\rfloor\ge v_p(r!)$, by Legendre's formula.
+Therefore
+\[
+ \log K\ge\log(r!)-r\sum_{p\mid D}\frac{\log p}{p-1}.
+\]
+Split the last sum at $y=\log r$. The standard elementary Mertens estimate
+$\sum_{p\le y}(\log p)/(p-1)=\log y+O(1)$ controls its first part.
+For the second part use
+\[
+ \sum_{\substack{p\mid D\\p>y}}\frac{\log p}{p-1}
+ \le\frac{\log D}{y-1}=O_A(1).
+\]
+Stirling's formula proves the lower bound. The real interval restriction
+was not used for this direction.
+
+For the upper bound, take $N=(r+1)^2$ and positive starting weights
+$w_i>1/(8N)$ from the Wilson--Hahn projection. Set
+\[
+ L=r!\operatorname{lcm}(1,\ldots,r+1),\quad
+ T=8N\left(2^{r+1}\binom{N+1}{r+1}+1\right),\quad
+ K=L\left\lceil\frac{T}{L}\right\rceil.
+\]
+All binomial target moments multiplied by $K$ are integers, and the
+integer quadrature rounding lemma in
+\texttt{factorial\_squared\_construction.tex} gives nonnegative integer
+weights of total $K$. Repeat grid node $i/N$ according to its integer
+weight. The resulting equal-weight rule has the asserted properties.
+Finally $K<T+L$, the standard estimate
+$\log\operatorname{lcm}(1,\ldots,r+1)=O(r)$ gives
+$\log L=r\log r+O(r)$, and the elementary binomial bound gives
+$\log T\le r\log r+O(r)$.
+\end{proof}
+
+\begin{proposition}[General denominator tradeoff]
+Every rational equal-weight degree-$r$ interval rule with $K$ nodes and
+positive integer common denominator $D$ satisfies
+\[
+ \log K\ge r\log\left(\frac{r}{\max(2,\log D)}\right)-O(r),
+\]
+where the implicit constant is absolute. Consequently, for each fixed
+$A>0$, a rule with $K\le\exp(Ar)$ must satisfy
+$D\ge\exp(c_A r)$ for some constant $c_A>0$.
+\end{proposition}
+\begin{proof}
+Use the same estimate
+$\log K\ge\log(r!)-r\sum_{p\mid D}(\log p)/(p-1)$,
+now splitting the prime sum at $y=\max(2,\log D)$.
+Mertens' estimate bounds the small-prime part by $\log y+O(1)$,
+while the rest is at most $\log D/(y-1)\le2$.
+Stirling's formula proves the first assertion. If $\log K\le Ar$, it
+implies $\log(r/y)\le A+O(1)$, and hence $y\ge c_A r$.
+After decreasing $c_A$ if necessary to cover bounded $r$, this forces
+$\log D\ge c_A r$ whenever such a rule exists. For $r=1$ one may have
+$D=1$ by using endpoints, so this last assertion is understood for
+$r\ge2$ (or asymptotically as $r\to\infty$).
+\end{proof}
+
+\noindent\textbf{Interpretation.} The unrestricted rational-design lower
+bound is exponential, while polynomial common denominators force a
+factorial-scale number of node copies. The $\exp(O(r))$ rational designs established in
+\texttt{exponential\_rational\_designs.tex} necessarily have exponentially
+large common denominator. This
+statement concerns quadrature nodes, not face-count lower bounds for an
+arbitrary fair-dice collection.
+
+\end{document}

@@ -1,0 +1,36 @@
+2026-09-30, independent full mathematical review.
+Target: ../size_bounds/near_quadratic_per_die_bootstrap.tex
+Result: PASSES, no gap found.
+
+Primary source checked directly: Plewa, arXiv:1810.03859, PDF page 3,
+Section 2, normalized standard Laguerre function estimate immediately
+before equation (1). Its normalization, fixed-parameter range, and
+transition at y~1/r agree with the draft's estimate (L).
+
+Detailed checks:
+- T_d=L_{d-1}^{[2]}/d and derivative identity, including theta factors
+  absorbed into fixed-order constants; U and R decay exponents.
+- Gaussian high-order tail valid for every d=o(m), fixed even J.
+- Small-x pointwise errors bounded by C d^(tau+1)/m, including x=0.
+- Uniform-without-replacement lower-tail concentration from Maclaurin
+  and the exponential chord; x/(s+1) comparable to min(x,1).
+- On good subsets v in [x/2,2x], all derivative/variance cancellations
+  yield the stated common localized envelope.
+- On bad subsets, A_B<=1 is used before integration; the conversion
+  from the success-weighted law is exact. No unproved weighted
+  concentration inequality is invoked.
+- The full mean bias is retained; only the quadratic remainder is
+  split into good and bad subsets. This avoids a conditional-bias gap.
+- Middle-region bad events are superpolynomially small since m/d
+  grows as a fixed power; large-x errors reserve exponential margin.
+- Stieltjes integration handles atoms at zero correctly.
+- Bootstrap r-range, floor/constants, and fixed even J satisfy all
+  estimates uniformly; J may depend on the fixed target exponent.
+- The final positive R test forces the last row below O(1/d), and
+  the upgraded CDF estimate then bounds its original row weight.
+
+Consequence: for every fixed epsilon>0, endpoint row weights are
+O_epsilon(m^(-2+epsilon)); equiprobable exceptional dice have at least
+c_epsilon n^(2-epsilon) faces. Together with the independently proved
+O(n^2) upper construction, the logarithmic growth exponent is exactly 2.
+This is a mathematical peer review, not formal proof-assistant verification.

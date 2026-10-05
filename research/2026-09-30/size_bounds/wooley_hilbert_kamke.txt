@@ -1,0 +1,703 @@
+ SUBCONVEXITY AND THE HILBERT-KAMKE PROBLEM
+
+                                TREVOR D. WOOLEY
+
+
+       Abstract. When s ⩾ k ⩾ 3 and n1 , . . . , nk are large natural numbers,
+       denote by As,k (n) the number of solutions in non-negative integers x to the
+       system
+                             xj1 + . . . + xjs = nj (1 ⩽ j ⩽ k).
+       Under appropriate local solubility conditions on n, we obtain an asymptotic
+       formula for As,k (n) when s ⩾ k(k+1). This establishes a local-global princi-
+       ple in the Hilbert-Kamke problem at the convexity barrier. Our arguments
+       involve minor arc estimates going beyond square-root cancellation.
+
+
+
+                                  1. Introduction
+  In this memoir we consider the asymptotic formula for the number of repre-
+sentations in the Hilbert-Kamke problem, our goal being to derive conclusions
+at or below the classical convexity barrier. When n1 , . . . , nk are positive inte-
+gers, we denote by As,k (n) the number of solutions in non-negative integers x
+to the system of Diophantine equations
+                         xj1 + . . . + xjs = nj   (1 ⩽ j ⩽ k).                         (1.1)
+Motivated by his recent work on Waring’s problem (see [5]), Hilbert posed the
+problem of determining suitable conditions on n that would guarantee, for an
+appropriate function H(k), the non-vanishing of As,k (n) for s ⩾ H(k). This
+problem was taken up, first by Kamke [6], and subsequently by Mardzhanishvili
+[7] using Vinogradov’s methods. The precise nature of the local conditions on
+n that must be imposed are quite complicated to describe, and we defer further
+discussion on this issue until later in this section.
+   In order to outline the current state of play, we recall the mean value
+                          Z       X                            2t
+                                                             k
+               Jt,k (X) =               e(α1 x + . . . + αk x ) dα,        (1.2)
+                              [0,1)k 1⩽x⩽X
+
+in which e(z) denotes e2πiz . A consequence of the main conjecture in Vino-
+gradov’s mean value theorem asserts that when k ∈ N and t ⩾ k(k + 1)/2, then
+for each ε > 0 one has
+                                                  1
+                              Jt,k (X)  X 2t− 2 k(k+1)+ε ,                            (1.3)
+with the implicit constant depending at most on k, t and ε. Experts in the
+Hardy-Littlewood method will perceive that, provided the upper bound (1.3)
+  2010 Mathematics Subject Classification. 11P55, 11L07, 11D72.
+  Key words and phrases. Hilbert-Kamke problem, Vinogradov’s mean value theorem.
+  The author’s work is supported by NSF grants DMS-2001549 and DMS-1854398.
+                                             1
+2                                      TREVOR D. WOOLEY
+
+is known to hold for t ⩾ t0 (k), then one is able to derive an asymptotic formula
+for As,k (n) whenever s > 2t0 (k). This formula takes the shape
+             As,k (n) = Js,k (n)Ss,k (n)X s−k(k+1)/2 + o(X s−k(k+1)/2 ),                    (1.4)
+                            1/2               1/k
+where X = max{n1 , n2 , . . . , nk } and Js,k (n) and Ss,k (n) are respectively
+the singular integral and singular series associated with this problem. For
+now we defer explicit definition of these quantities, as well as discussion of
+conditions ensuring that 1  Js,k (n)  1 and 1  Ss,k (n)  1.
+   Prior to 2010, in the classical version of the subject resolved by Arkhipov
+[1], the upper bound (1.3) was known to hold for t ⩾ (2 + o(1))k 2 log k. This
+delivers (1.4) for s ⩾ (4 + o(1))k 2 log k. The trivial lower bound Jt,k (X)  X t
+shows that (1.3) cannot hold when t < k(k+1)/2, and hence t0 (k) ⩾ k(k+1)/2.
+Consequently, the application of conventional methods can at best establish
+the asymptotic formula (1.4) when s ⩾ k 2 + k + 1. Decisive progress toward
+this convexity-limited bound was made by the author [9, Theorem 9.2] via the
+efficient congruencing method, establishing (1.4) for s ⩾ 2k 2 + 2k + 1. Finally,
+advances in the theory of Vinogradov’s mean value theorem (see [4, 11, 13])
+show that the conjectured estimate (1.3) holds for t ⩾ k(k + 1)/2, and hence
+the asymptotic formula (1.4) holds for s ⩾ k 2 + k + 1.
+   Our goal in the present paper is to go beyond this convexity-limited conclu-
+sion by confirming (1.4) for s ⩾ k 2 + k. In preparation for the statement of
+our new conclusion, we first introduce the generating functions
+                                 Z X
+                      I(β; X) =        e(β1 γ + . . . + βk γ k ) dγ          (1.5)
+                                              0
+and
+                                              q
+                                              X
+                           S(q, a) =                eq (a1 r + . . . + ak rk ),             (1.6)
+                                              r=1
+                               2πiu/q                                        1/j
+in which eq (u) denotes e               . Then, with X = max nj , we define
+                                                                    1⩽j⩽k
+                         Z                                 n1             nk 
+              Js,k (n) =             I(β; 1)s e −β1            − . . . − βk k dβ            (1.7)
+                                Rk                          X              X
+and
+                    ∞
+                    X          X
+       Ss,k (n) =                             q −s S(q, a)s eq (−a1 n1 − . . . − ak nk ).   (1.8)
+                    q=1       1⩽a⩽q
+                          (q,a1 ,...,ak )=1
+
+Theorem 1.1. Suppose that k ⩾ 3 and s ⩾ k 2 + k. Then, whenever n1 , . . . , nk
+are natural numbers sufficiently large in terms of s and k, one has
+             As,k (n) = Js,k (n)Ss,k (n)X s−k(k+1)/2 + o(X s−k(k+1)/2 ),
+in which 0 ⩽ Js,k (n)  1 and 0 ⩽ Ss,k (n)  1. If, moreover, the sys-
+tem (1.1) possesses a non-singular real solution with positive coordinates, then
+Js,k (n)  1. Likewise, if the system (1.1) possesses primitive non-singular
+p-adic solutions for each prime number p, then Ss,k (n)  1.
+                             HILBERT-KAMKE PROBLEM                                3
+
+   We remark that the singular integral Js,k (n) is known to converge absolutely
+for s > 12 k(k + 1) + 1, and that the singular series Ss,k (n) is known to converge
+absolutely for s > 12 k(k + 1) + 2 (see [1, Theorem 1] or [3, Theorem 3.7]).
+   The extensive theory of quadratic forms ensures that the situation with
+k = 2 is simple to handle for s ⩾ 5, and indeed much can be said even when
+s = 4. We remark also that two obvious local conditions are in play if one is to
+have solutions to the system (1.1). First, by applying Hölder’s inequality on
+the left hand side of (1.1), one sees that for solutions to exist one must have
+                     j/l                  j/l
+                    nl     ⩽ nj ⩽ s1−j/l nl     (1 ⩽ j ⩽ l ⩽ k).
+Second, from Fermat’s theorem, for each prime p one must have nl ≡ nj (mod p)
+whenever l ≡ j (mod p − 1) and 1 ⩽ j ⩽ l ⩽ k. The latter observation plainly
+impacts the p-adic solubility conditions associated with the system (1.1), a
+matter rather complicated to analyse in full. Indeed p-adic solubility is not
+assured in general without at least 2k − 1 variables being available. See the
+excellent accounts of Arkhipov [1, 2] and [3, Chapter 8] for a comprehensive
+account of such issues. However, if one is permitted to assume the existence
+of non-singular primitive solutions at each local completion of Q, then one
+obtains an immediate corollary to Theorem 1.1 via the methods of [1].
+Corollary 1.2. Suppose the system (1.1) has non-singular primitive solutions
+                                                                  s−k(k+1)/2
+at each local completion of Q, and s ⩾ k(k + 1). Then As,k (n)  n1          .
+   We establish Theorem 1.1 by applying the Hardy-Littlewood method, utilis-
+ing an estimate for the contribution of the minor arcs going beyond square-root
+cancellation. This estimate is derived in §2 by adapting the author’s work on
+the asymptotic formula in Waring’s problem [10], the failure of translation-
+dilation invariance in the system (1.1) permitting an additional variable to be
+extracted and then utilised. Familiar in the context of equations, this device is
+more challenging in the absence of an immediate Diophantine interpretation,
+as when deriving estimates restricted to the minor arcs in a Hardy-Littlewood
+dissection. We launch our application of the circle method in earnest in §3
+with the discussion of a Hardy-Littlewood dissection. Then, in §4, we con-
+vert the raw subconvex minor arc estimate extracted in §3 from the work of
+§2 into one more directly applicable to the proof of Theorem 1.1. Following
+some pruning in §5, the proof of Theorem 1.1 is concluded in §6 with a brief
+analysis of the major arc contribution. Finally, in §7, we make some remarks
+concerning other cognate problems to which our methods are applicable.
+   Our basic parameter is X, a sufficiently large positive number. Whenever ε
+appears in a statement, either implicitly or explicitly, we assert that the state-
+ment holds for each ε > 0. In this paper, implicit constants in Vinogradov’s
+notation  and  may depend on ε, k and s. We make use of vector notation
+in the form x = (x1 , . . . , xr ), the dimension r depending on the course of the
+argument. We also write (a1 , . . . , as ) for the greatest common divisor of the
+integers a1 , . . . , as , any ambiguity between ordered s-tuples and corresponding
+greatest common divisors being easily resolved by context. Finally, we write
+kθk for min{|θ − m| : m ∈ Z}.
+4                                TREVOR D. WOOLEY
+
+                    2. Mean value estimates via shifts
+ We begin by preparing the infrastructure required to describe our novel
+mean value estimate. When k ⩾ 2, define f (α) = fk (α; X) by putting
+                           X
+               fk (α; X) =     e(α1 x + α2 x2 + . . . + αk xk ).     (2.1)
+                                0⩽x⩽X
+
+Then, when h ∈ Zk and B ⊆ R is measurable, we introduce the mean value
+                            Z Z
+             Is (B; X; h) =        fk (α; X)s e(−α · h) dα,        (2.2)
+                                  B   [0,1)k−1
+
+in which α · h = α1 h1 + . . . + αk hk and dα denotes dα1 dα2 · · · dαk . Pro-
+                                     1/2      1/k
+vided that we take X ⩾ max{n1 , n2 , . . . , nk }, it follows by orthogonality
+that As,k (n) = Is ([0, 1); X; n). We make use of technology associated with
+Vinogradov’s mean value theorem. With this in mind, when t, k ∈ N, the
+parameter X is a positive real number, and B ⊆ R is measurable, we define
+                                   Z Z
+                      ∗
+                    Jt,k (B; X) =           |fk (α; X)|t dα.              (2.3)
+                                        B       [0,1)k−1
+
+Finally, we adopt the convention of writing sB for the set {sα : α ∈ B}.
+Theorem 2.1. Suppose that h ∈ Zk and B ⊆ R is measurable. Then one has
+      Is (B; X; h)  X −1 (log X)s Js+1,k
+                                    ∗                     ∗
+                                          (B; 2X)s/(s+1) Js+1,k (sB; X)1/(s+1) .
+Proof. Our strategy is based on that underlying the proof of [10, Theorem
+2.1], in which the potential for translation-invariance is exploited in order to
+generate an additional variable. Write
+                        ψ(u; θ) = θ1 u + θ2 u2 + . . . + θk uk .
+Then for every integral shift y with 0 ⩽ y ⩽ X, one has
+                                    X
+                    fk (α; X) =          e (ψ(x − y; α)) .                         (2.4)
+                                      y⩽x⩽X+y
+
+Next write                       X
+                  fy (α; γ) =            e (ψ(x − y; α) + γ(x − y))                (2.5)
+                                0⩽x⩽2X
+and                                             X
+                                K(γ) =                e(−γz).
+                                            0⩽z⩽X
+Then we deduce from (2.4) via orthogonality that when 0 ⩽ y ⩽ X, one has
+                                 Z 1
+                    fk (α; X) =      fy (α; γ)K(γ) dγ.               (2.6)
+                                            0
+
+  We move next to substitute (2.6) into (2.2) so as to exploit the shift of
+variables by y. Define
+                             s
+                             Y                     s
+                                                   Y
+                 Fy (α; γ) =   fy (α; γi ), K(γ)
+                                            e    =   K(γi ),          (2.7)
+                                i=1                             i=1
+                                      HILBERT-KAMKE PROBLEM                             5
+
+and                                      Z Z
+                        I(γ; y; h) =                      Fy (α; γ)e(−α · h) dα.    (2.8)
+                                          B    [0,1)k−1
+Then, when 0 ⩽ y ⩽ X, it follows that
+                                Z
+                 Is (B; X; h) =       I(γ; y; h)K(γ)
+                                                e    dγ.                            (2.9)
+                                                 [0,1)s
+
+For the sake of concision, write dαk−1 for dα1 dα2 · · · dαk−1 . Then by orthog-
+onality, one finds from (2.5) and (2.7) that
+        Z                                    X
+                Fy (α; γ)e(−α · h) dαk−1 =        ∆(αk , γ; h, y),        (2.10)
+             [0,1)k−1                                              0⩽x⩽2X
+
+where ∆(αk , γ; h, y) is equal to
+                    X s                                    
+                                      k
+                                                    
+                  e        αk (xi − y) + γi (xi − y) − αk hk ,
+                              i=1
+
+when
+                               s
+                               X
+                                     (xi − y)j = hj         (1 ⩽ j ⩽ k − 1),       (2.11)
+                               i=1
+and otherwise ∆(αk , γ; h, y) is equal to 0.
+   By applying the binomial theorem, one sees that whenever the system (2.11)
+is satisfied for the s-tuple x, then
+                   s             j−1  
+                  X    j     j
+                                 X    j
+                      xi = sy +          hj−l y l (1 ⩽ j ⩽ k − 1),
+                  i=1            l=0
+                                      l
+and
+                        s                     k−1              s
+                        X                     X    k            X
+                              xki = sy k +           hk−l y l +     (xi − y)k .
+                        i=1                   l=1
+                                                   l            i=1
+Adopt the convention that h0 = s and write
+                             X k      j              s    
+                                      X   j       l
+                                                       X
+            gy (α; h; γ) = e −     αj       hj−l y − y     γi .
+                               j=1    l=0
+                                          l            i=1
+
+Then it follows from (2.7) and (2.10) that
+ Z                                  Z
+         Fy (α; γ)e(−α · h) dαk−1 =        F0 (α; γ)gy (α; h; γ) dαk−1 . (2.12)
+  [0,1)k−1                                           [0,1)k−1
+
+  Observe next that as a consequence of (2.9), when X ∈ N, one has
+                                  X Z
+           (X + 1)Is (B; X; h) =             I(γ; y; h)K(γ)
+                                                       e    dγ.
+                                                 0⩽y⩽X        [0,1)s
+
+Thus, from (2.8) and (2.12) we obtain the relation
+                                      Z
+                                   −1
+                  Is (B; X; h)  X         |H(γ)K(γ)|
+                                                  e   dγ,                          (2.13)
+                                                          [0,1)s
+6                                         TREVOR D. WOOLEY
+
+where                              Z Z
+                       H(γ) =                            F0 (α; γ)G(α; h; γ) dα,         (2.14)
+                                      B       [0,1)k−1
+and                                                       X
+                             G(α; h; γ) =                        gy (α; h; γ).           (2.15)
+                                                         0⩽y⩽X
+
+  We begin the investigation of the relation (2.13) by bounding H(γ). Thus,
+by applying Hölder’s inequality on the right hand side of (2.14), we deduce
+that
+                                     s/(s+1) 1/(s+1)
+                           H(γ)  I1        I2       ,                 (2.16)
+where                      Z Z
+                            I1 =                          |F0 (α; γ)|1+1/s dα            (2.17)
+                                      B        [0,1)k−1
+and                                Z Z
+                           I2 =                           |G(α; h; γ)|s+1 dα.            (2.18)
+                                      B       [0,1)k−1
+
+    On recalling (2.7), an application of Hölder’s inequality to (2.17) yields
+                         Y s Z Z                          1/s
+                                                       s+1
+                    I1 ⩽                  |f0 (α; γi )| dα      .
+                             i=1          B     [0,1)k−1
+
+Moreover, it follows from (2.1) and (2.5) via a change of variable that
+        Z Z                             Z Z
+                                  s+1
+                     |f0 (α; γi )| dα =            |fk (α; 2X)|s+1 dα.
+            B   [0,1)k−1                                     B   [0,1)k−1
+                                        ∗
+Thus, in view of (2.3), we have I1 ⩽ Js+1,k (B; 2X). Also, for suitable polyno-
+                                    j
+mials νj (y; h) with leading term sy (1 ⩽ j ⩽ k), we find from (2.15) that
+                     X                                              s
+                                                                      X    
+    G(α; h; γ) =          e − α1 ν1 (y; h) + . . . + αk νk (y; h) + y   γi    .
+                       0⩽y⩽X                                                       i=1
+
+Then it follows from (2.18) via a change of variable that
+                 Z Z
+            I2 =            |fk (sα; X)|s+1 dα = s−1 Js+1,k
+                                                      ∗
+                                                            (sB; X).
+                       B   [0,1)k−1
+
+By substituting these estimates for I1 and I2 into (2.16), we obtain the bound
+                       ∗
+                                    s/(s+1) ∗             1/(s+1)
+           H(γ)  Js+1,k   (B; 2X)           Js+1,k (sB; X)         .    (2.19)
+    We are almost at the end of the proof. All that remains is to recall that
+               Z 1              Z 1
+                   |K(γ)| dγ       min{X, kγk−1 } dγ  log X,
+                   0                             0
+
+whence by (2.7), we see that
+                        Z
+                                              |K(γ)|
+                                               e     dγ  (log X)s .
+                                   [0,1)s
+                           HILBERT-KAMKE PROBLEM                                  7
+
+On substituting the latter bound with (2.19) into (2.13), we conclude that
+                                      Z
+                      −1
+    Is (B; X; h)  X        sup |H(γ)|         |K(γ)|
+                                                e     dγ
+                           γ∈[0,1)s           [0,1)s
+
+                   X −1 Js+1,k
+                          ∗                     ∗
+                                (B; 2X)s/(s+1) Js+1,k (sB; X)1/(s+1) (log X)s .
+This completes the proof of the theorem.                                          
+   We now extract from Theorem 2.1 an estimate of minor arc type. When
+1 ⩽ Q ⩽ X, we define a one-dimensional Hardy-Littlewood dissection as
+follows. We define the set of major arcs M(Q) to be the union of the arcs
+                  M(q, a) = {α ∈ [0, 1) : |qα − a| ⩽ QX −k },
+with 0 ⩽ a ⩽ q ⩽ Q and (a, q) = 1, and then write m(Q) = [0, 1) \ M(Q) for
+the corresponding set of minor arcs.
+  Before announcing the next lemma, we introduce a Weyl exponent relevant
+to our discussion. When k is an integer with k ⩾ 2, we define the exponent
+σ = σ(k) by taking
+                            (
+                              2k−1 ,    when 2 ⩽ k ⩽ 5,
+                   σ(k)−1 =
+                              k(k − 1), when k ⩾ 6.
+Lemma 2.2. Suppose that k ⩾ 2 and 1 ⩽ Q ⩽ X. Then uniformly in
+(α1 , . . . , αk−1 ) ∈ Rk−1 , one has
+                          sup |fk (α; X)|  X 1+ε Q−σ .
+                        αk ∈m(Q)
+
+Proof. Let αk ∈ m(Q). Then by Dirichlet’s approximation theorem, there
+exist a ∈ Z and q ∈ N with 0 ⩽ a ⩽ q ⩽ Q−1 X k and (a, q) = 1 for which
+|qαk − a| ⩽ QX −k . Since αk 6∈ M(Q), we may assume that q > Q. When
+2 ⩽ k ⩽ 5, it now follows from Weyl’s inequality (see [8, Lemma 2.4]) that
+                                                       1−k
+          fk (α; X)  X 1+ε (q −1 + X −1 + qX −k )2           X 1+ε Q−σ(k) .
+On the other hand, when k ⩾ 6, we may apply Vinogradov’s methods in their
+most modern incarnations to see that
+        fk (α; X)  X 1+ε (q −1 + X −1 + qX −k )1/(k(k−1))  X 1+ε Q−σ(k) .
+The reader may extract this last conclusion from [8, Theorem 5.2] by following
+the proof of [9, Theorem 1.5], substituting the now confirmed bound (1.3) for
+the version of Vinogradov’s mean value theorem utilised in the latter.      
+Lemma 2.3. Suppose that h ∈ Zk and 1 ⩽ Q ⩽ X. Then for s ⩾ k(k + 1),
+                                             1
+                    Is (m(Q); X; h)  X s− 2 k(k+1)+ε Q−σ(k) .
+Proof. Recall the definition (1.2) and write w = k(k + 1)/2. Then, provided
+that s ⩾ k(k + 1), it follows from (2.3) via a trivial estimate for fk (α; X) that
+                                                             
+          ∗                      s−k(k+1)
+         Js+1,k (m(Q); 2X)  X              sup |fk (α; 2X)| Jw,k (X).
+                                           αk ∈m(Q)
+8                               TREVOR D. WOOLEY
+
+Since the now confirmed bound (1.3) shows that Jw,k (X)  X w+ε , we deduce
+from Lemma 2.2 that
+                                                             1
+                  ∗
+                 Js+1,k (m(Q); 2X)  X 1+ε Q−σ(k) · X s− 2 k(k+1)+ε .           (2.20)
+             ∗
+We bound Js+1,k  (sm(Q); X) in a similar manner, noting that an elementary
+exercise confirms that sm(Q) ⊆ m(Q/s) (mod 1). Thus we find that
+                          sup       |fk (α; X)|  X 1+ε Q−σ(k) ,
+                        αk ∈sm(Q)
+
+and just as in the previous discussion, we infer that
+                                                             1
+                  ∗
+                 Js+1,k (sm(Q); X)  X 1+ε Q−σ(k) · X s− 2 k(k+1)+ε .           (2.21)
+    By substituting the estimates (2.20) and (2.21) into Theorem 2.1, we obtain
+                                                         1
+              Is (m(Q); X; h)  X −1 (log X)s X s+1− 2 k(k+1)+ε Q−σ(k) .
+The conclusion of the lemma follows on noting our convention concerning ε. 
+
+                   3. The Hardy-Littlewood dissection
+   In this section we explain our application of the Hardy-Littlewood method in
+pursuit of the asymptotic formula delivered by Theorem 1.1. We now fix k and
+                   1/2       1/k
+X = 2 max{n1 , n2 , . . . , nk }, and henceforth abbreviate the exponential sum
+fk (α; X) introduced in (2.1) simply to f (α). When A ⊆ [0, 1)k is measurable,
+we define the mean value Ts (A) = Ts (A; X; n) by
+                                      Z
+                       Ts (A; X; n) =   f (α)s e(−α · n) dα.               (3.1)
+                                          A
+  Our application of the Hardy-Littlewood method requires some discussion
+concerning the associated infrastructure. When 1 ⩽ Z ⩽ X, we denote by
+K(Z) the union of the arcs
+          K(q, a; Z) = {α ∈ [0, 1)k : |αj − aj /q| ⩽ ZX −j (1 ⩽ j ⩽ k)},
+with 1 ⩽ q ⩽ Z, 0 ⩽ aj ⩽ q (1 ⩽ j ⩽ k) and (q, a1 , . . . , ak ) = 1, and we
+put k(Z) = [0, 1)k \ K(Z). We have already defined a one-dimensional Hardy-
+Littlewood dissection of [0, 1) into sets of arcs M = M(Q) and m = m(Q). We
+                     2
+now fix L = X 1/(8k ) and Q = Lk , and we define a k-dimensional set of arcs
+by taking N = K(Q2 ) and n = k(Q2 ). This intermediate Hardy-Littlewood
+dissection can be refined to obtain a dissection into a narrower set of major
+arcs P = K(L) and a corresponding set of minor arcs p = k(L). In this latter
+dissection, for the sake of concision, it is useful to write P(q, a) = K(q, a; L).
+  We partition the set of points (α1 , . . . , αk ) lying in [0, 1)k into four disjoint
+subsets, namely
+                         W1 = [0, 1)k−1 × m,
+                         W2 = [0, 1)k−1 × M ∩ n
+                                           
+
+                         W3 = [0, 1)k−1 × M ∩ (N \ P),
+                                           
+
+                         W4 = P.
+                           HILBERT-KAMKE PROBLEM                                       9
+
+We note in this context that P ⊆ [0, 1)k−1 × M, since whenever
+                    |αk − ak /q| ⩽ LX −k        and 1 ⩽ q ⩽ L,
+one has
+              |qαk − ak | ⩽ L2 X −k < QX −k and 1 ⩽ q < Q.
+                           
+Thus W4 = [0, 1)k−1 × M ∩ P, and it follows that [0, 1)k = W1 ∪ . . . ∪ W4 .
+We therefore deduce via orthogonality that
+                                                        4
+                                                        X
+                                            k
+                                                
+                      As,k (n) = Ts [0, 1)          =         Ts (Wi ).            (3.2)
+                                                        i=1
+
+   The work of §2 already permits us to announce a satisfactory upper bound
+for the contribution of the set of arcs W1 within (3.2).
+Lemma 3.1. Whenever n ∈ Zk and s ⩾ k(k + 1), one has
+                                           1                    3
+                         Ts (W1 )  X s− 2 k(k+1)−1/(8k ) .
+Proof. By substituting Q = X 1/(8k) into Lemma 2.3, noting that σ(k) > 1/k 2
+for k ⩾ 3, the conclusion of the lemma is immediate.                     
+
+                     4. Another minor arc estimate
+  Our next task is to bound the contribution of the set of arcs W2 within (3.2).
+We begin by providing a familiar estimate of Weyl type for the exponential
+sum f (α) of strength sufficient for our purposes.
+Lemma 4.1. One has
+                                  2                                          3
+          sup |f (α)|  X 1−1/(6k )   and           sup |f (α)|  X 1−1/(12k ) .
+           α∈n                                      α∈p
+
+Proof. In order to confirm the first bound, we put τ = 1/(6k 2 ) and δ = 1/(4k).
+Since τ −1 > 4k(k −1) and δ > kτ , we find from [9, Theorem 1.6] that whenever
+|f (α)| ⩾ X 1−τ , there exist integers q, a1 , . . . , ak such that 1 ⩽ q ⩽ X δ and
+|qαj − aj | ⩽ X δ−j (1 ⩽ j ⩽ k). In particular, we see that q ⩽ Q2 and
+|αj − aj /q| ⩽ Q2 X −j (1 ⩽ j ⩽ k), and hence α ∈ N (mod 1). We therefore
+infer that whenever X is sufficiently large in terms of k, and α ∈ n, then one
+must have |f (α)| ⩽ X 1−τ , and the first conclusion of the lemma follows.
+   For the second bound we put τ = 1/(12k 3 ) and δ = 1/(8k 2 ). We again
+have τ −1 > 4k(k − 1) and δ > kτ , and so the same argument applies mutatis
+mutandis. We now find that whenever |f (α)| ⩾ X 1−τ , then α ∈ P (mod 1).
+Thus, when X is sufficiently large in terms of k, and α ∈ p, then one must
+have |f (α)| ⩽ X 1−τ , and the second conclusion of the lemma follows.            
+  In order to obtain a satisfactory bound for the contribution of W2 , it suffices
+to combine the Weyl estimate provided by Lemma 4.1 with the observation
+that W2 has small measure.
+Lemma 4.2. Whenever n ∈ Zk and s ⩾ k(k + 1), one has
+                                           1
+                         Ts (W2 )  X s− 2 k(k+1)−1/(16k) .
+10                                TREVOR D. WOOLEY
+
+Proof. We begin with an auxiliary estimate. Recall the definition (1.2) and
+write v = k(k − 1)/2. Then, by orthogonality, the mean value
+                              Z
+                     I(αk ) =       |fk (α; X)|2v dαk−1
+                                    [0,1)k−1
+
+counts the integral solutions of the system of equations
+                      v
+                      X
+                            (xji − yij ) = 0 (1 ⩽ j ⩽ k − 1),
+                      i=1
+
+with 1 ⩽ x, y ⩽ X, each solution    being counted with the unimodular weight
+        k    k           k    k
+e αk (x1 − y1 + . . . + xv − yv ) . By making use of the bound (1.3) (see [4, 11,
+13]), we therefore find that I(αk )  Jv,k−1 (X)  X v+ε , uniformly in αk .
+                                                   
+  Observe next that since W2 = [0, 1)k−1 × M ∩ n, it follows from (3.1) via
+the triangle inequality that
+                                        s−k(k−1) Z
+                 Ts (W2 )  sup |f (α)|               I(αk ) dαk .
+                                 α∈n                     M
+
+Since mes(M)  Q2 X −k , we conclude from Lemma 4.1 that
+                                                 2k
+                          s−k(k+1)     1−1/(6k2 )
+             Ts (W2 )  X            X                X v+ε mes(M)
+                                             1
+                       Q2 X −1/(3k) X s− 2 k(k+1)+ε .
+                                      
+
+Since Q2 = X 1/(4k) , the conclusion of the lemma is immediate.                
+
+                     5. Pruning: the analysis of W3
+  We take an economical approach to the analysis of the term Ts (W3 ). We
+begin by announcing a mean value estimate of major arc type.
+Lemma 5.1. Suppose that u > 12 k(k + 1) + 2. Then one has
+                    Z
+                       |f (α)|u dα u X u−k(k+1)/2 .
+                            N
+
+Proof. This is essentially [12, Lemma 7.1]. Our definition of the major arcs
+N sets the parameter Q equal to X 1/(8k) , whereas in the source cited the
+analogous definition is tantamount to setting Q = X 1/(2k) . The conclusion
+presented here is therefore immediate from the latter source, since our major
+arcs are contained in those employed therein.                              
+Lemma 5.2. When n ∈ Z3 and s ⩾ k(k + 1), one has
+                                               1             3
+                         Ts (W3 )  X s− 2 k(k+1)−1/(12k ) .
+
+Proof. Since W3 ⊆ N \ P, we have
+                                sup |f (α)| ⩽ sup |f (α)|.
+                             α∈W3                  α∈p
+                              HILBERT-KAMKE PROBLEM                                      11
+
+Thus, taking u = 12 k(k + 1) + 3, it follows from the triangle inequality that
+                                               Z
+                             s−u−1
+               Ts (W3 ) ⩽ X          sup |f (α)|    |f (α)|u dα.
+                                               α∈p                N
+
+Hence, by employing Lemmata 4.1 and 5.1 we see that
+                                                  1                       3
+                       Ts (W3 )  X s−1− 2 k(k+1) · X 1−1/(12k ) ,
+and the conclusion of the lemma follows.                                                 
+
+                       6. The major arc contribution
+   By substituting the conclusions of Lemmata 3.1, 4.2 and 5.2 into (3.2), we
+find that whenever s ⩾ k(k + 1), one has
+                                                                  1
+                        As,k (n) = Ts (W4 ) + o(X s− 2 k(k+1) ).                      (6.1)
+The proof of Theorem 1.1 will be completed by an analysis of Ts (W4 ) = Ts (P).
+  Recall (1.5) and (1.6). Then, when α ∈ P(q, a) ⊆ P, write
+                      V (α; q, a) = q −1 S(q, a)I(α − a/q; X).
+Define the function V (α) to be V (α; q, a) when α ∈ P(q, a) ⊆ P, and to be
+0 otherwise. Then, when α ∈ P(q, a) ⊆ P, we see from [8, Theorem 7.2] that
+        f (α) − V (α; q, a)  q + X|qα1 − a1 | + . . . + X k |qαk − ak |  L2 ,
+whence, uniformly for α ∈ P, we have the bound
+                                                                      2
+                            f (α)s − V (α)s  X s−1+1/(4k ) .
+Thus, since mes(P)  L2k+1 X −k(k+1)/2 , we deduce that
+   Z                        Z
+                                                           1
+            s
+       f (α) e(−α · n) dα =   V (α)s e(−α · n) dα + o(X s− 2 k(k+1) ).                (6.2)
+      P                               P
+
+  Next, write
+                  Ω = [−LX −1 , LX −1 ] × · · · × [−LX −k , LX −k ].
+Then one finds that
+                       Z
+                            V (α)s e(−α · n) dα = S(X)J(X),                           (6.3)
+                        P
+
+where                                 Z
+                           J(X) =             I(β; X)s e(−β · n) dβ
+                                          Ω
+and                           X               X
+                  S(X) =                                 q −s S(q, a)s eq (−a · n).
+                             1⩽q⩽L       1⩽a⩽q
+                                     (q,a1 ,...,ak )=1
+
+  When s > 12 k(k + 1) + 1, the singular integral Js,k (n) defined in (1.7) con-
+verges absolutely (see [3, Theorem 1.3]), and in particular Js,k (n)  1. Also,
+by [8, Theorem 7.3], one has
+                   I(β; X)  X(1 + |β1 |X + . . . + |βk |X k )−1/k .
+12                                     TREVOR D. WOOLEY
+
+Write hj = nj X −j (1 ⩽ j ⩽ k). Then after two changes of variable, we obtain
+                                 Z
+                    s− 21 k(k+1)                                  1
+         J(X) = X                  I(β; 1)s e(−β · h) dβ + o(X s− 2 k(k+1) )
+                                          Rk
+                                                    1
+                    = (Js,k (n) + o(1)) X s− 2 k(k+1) .                               (6.4)
+   Similarly, by reference to [3, Theorem 2.4], one sees that the singular series
+Ss,k (n) defined in (1.8) converges absolutely for s > 21 k(k + 1) + 2, and in
+particular Ss,k (n)  1. Also, it follows from [8, Theorem 7.1] that when
+(q, a1 , . . . , ak ) = 1, one has S(q, a)  q 1−1/k+ε . Thus,
+                                    S(X) = Ss,k (n) + o(1).                           (6.5)
+     By substituting (6.4) and (6.5) into (6.3), and thence into (6.2), we obtain
+       Z
+                                                     1                 1
+          f (α)s e(−α · n) dα = Ss,k (n)Js,k (n)X s− 2 k(k+1) + o(X s− 2 k(k+1) ).
+         P
+
+Thus, on recalling (3.1), we find that
+                                                              1                 1
+             Ts (W4 ) = Ts (P) = Ss,k (n)Js,k (n)X s− 2 k(k+1) + o(X s− 2 k(k+1) ),
+and by substituting this relation into (6.1), we conclude that
+                                                         1                  1
+                  As,k (n) = Ss,k (n)Js,k (n)X s− 2 k(k+1) + o(X s− 2 k(k+1) ).
+This confirms the conclusion of Theorem 1.1.
+
+                                   7. Other applications
+  The method underlying the proof of Theorem 2.1 may be applied in many
+similar situations. Thus, the system of equations (1.1) may be replaced by
+                           l
+                           X              l+m
+                                          X
+                                  xji −           xji = nj   (1 ⩽ j ⩽ k),             (7.1)
+                            i=1           i=l+1
+
+provided that l 6= m and s = l + m ⩾ k(k + 1). The Hilbert-Kamke problem
+corresponds to the situation here where m = 0. What is critical is that the
+underlying system (7.1) is not translation-dilation invariant, even in the special
+situation in which n = 0. Let Bl,m,k (n; X) denote the number of solutions of
+the system (7.1) with 1 ⩽ xi ⩽ X (1 ⩽ i ⩽ s). Then provided that s ⩾ k(k+1),
+methods almost identical to those of this paper establish an asymptotic formula
+                                                              1
+                                  Bl,m,k (n; X) ∼ CX s− 2 k(k+1) ,
+in which C is an appropriate product of local densities. Here, the major
+innovation lies with the subconvex minor arc estimate provided by an analogue
+of Theorem 2.1. The major arc analysis is handled in earlier work [1].
+   When l = m = k(k + 1)/2, the system (7.1) lacks translation-dilation in-
+variance when (n1 , . . . , nk−1 ) 6= 0, though a shadow of this invariance property
+remains. The latter complicates any attempt to derive an analogue of Theorem
+2.1. We have more to say concerning such systems in the memoir [14].
+                              HILBERT-KAMKE PROBLEM                                     13
+
+  Finally, when the coefficients ci ∈ Z \ {0} (1 ⩽ i ⩽ k(k + 1)) satisfy the
+condition c1 + . . . + cs 6= 0, the methods underlying the proof of Theorem 2.1
+remain in play when one examines the system
+                        c1 xj1 + . . . + cs xjs = nj   (1 ⩽ j ⩽ k).
+Indeed, this scenario was discussed in work of the author dating from 2015
+that was the subject of talks presented in Göteborg, Oxford and Strobl-am-
+Wolfgangsee (see [15]).
+
+                                      References
+ [1] G. I. Arkhipov, The Hilbert-Kamke problem, Izv. Akad. Nauk SSSR Ser. Mat. 48 (1984),
+     no. 1, 3–52.
+ [2] G. I. Arkhipov, Investigations on the Hilbert-Kamke problem, Chebyshevskiı̆ Sb. 7
+     (2006), no. 1 (17), 65–143.
+ [3] G. I. Arkhipov, V. N. Chubarikov and A. A. Karatsuba, Trigonometric sums in number
+     theory and analysis, De Gruyter Expositions in Mathematics, 39, Walter de Gruyter,
+     Berlin, 2004.
+ [4] J. Bourgain, C. Demeter and L. Guth, Proof of the main conjecture in Vinogradov’s
+     mean value theorem for degrees higher than three, Ann. of Math. (2) 184 (2016), no. 2,
+     633–682.
+ [5] D. Hilbert, Beweis für die Darstellbarkeit der ganzen Zahlen durch eine feste Anzahl
+     nter Potenzen (Waringsches Problem), Math. Ann. 67 (1909), no. 3, 281–300.
+ [6] E. Kamke, Verallgemeinerungen des Waring-Hilbertschen Satzes, Math. Ann. 83
+     (1921), no. 1-2, 85–112.
+ [7] K. K. Mardzhanishvili, On the simultaneous representation of n numbers by sums of
+     perfect first, second, ..., n-th powers, Izv. Akad. Nauk SSSR Ser. Mat. 1 (1937), 609–
+     631.
+ [8] R. C. Vaughan, The Hardy-Littlewood method, 2nd edition, Cambridge University Press,
+     Cambridge, 1997.
+ [9] T. D. Wooley, Vinogradov’s mean value theorem via efficient congruencing, Ann. of
+     Math. (2) 175 (2012), no. 3, 1575–1627.
+[10] T. D. Wooley, The asymptotic formula in Waring’s problem, Internat. Math. Res. No-
+     tices 2012 (2012), no. 7, 1485–1504.
+[11] T. D. Wooley, The cubic case of the main conjecture in Vinogradov’s mean value theo-
+     rem, Adv. Math. 294 (2016), 532–561.
+[12] T. D. Wooley, Discrete Fourier restriction via efficient congruencing, Internat. Math.
+     Res. Notices 2017 (2017), no. 5, 1342–1389.
+[13] T. D. Wooley, Nested efficient congruencing and relatives of Vinogradov’s mean value
+     theorem, Proc. London Math. Soc. (3) 118 (2019), no. 4, 942–1016.
+[14] T. D. Wooley, Subconvexity in inhomogeneous Vinogradov systems, submitted, 27pp;
+     arxiv:2202.14003.
+[15] T. D. Wooley, Rational lines on diagonal hypersurfaces and subconvexity via the circle
+     method, preprint.
+
+ Department of Mathematics, Purdue University, 150 N. University Street,
+West Lafayette, IN 47907-2067, USA
+ E-mail address: twooley@purdue.edu
+

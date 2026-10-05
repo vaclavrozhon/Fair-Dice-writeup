@@ -1,0 +1,73 @@
+Independent mathematical review, 30 September 2026, size_bounds agent
+
+Files reviewed:
+  ../power_per_die_lower_bound_seven_sixths.tex
+  ../power_per_die_lower_bound.tex (updated exponent 5/4)
+  ../rational_designs/asymptotic/finite_endpoint_odds_balance.tex
+  ../rational_designs/asymptotic/weighted_success_subset_moments.tex
+
+Verdict: PASS. No mathematical gap found. This is independent human-style
+mathematical review, not machine formal verification or a novelty claim.
+
+The original 7/6 proof was read in full before the upgrade. In particular I
+checked the centered elementary-symmetric Cauchy estimate at k <= N/2,
+the Laguerre derivative factorials, exact translation/polarization identity,
+the two integrated Taylor series, uniform-subset variance and exponential
+tail, the taper norm/first-moment calculation, monotone density-ratio
+comparison, data-dependent endpoint kernel, and conversion to endpoint
+row weight. The original small edits (explicit degree condition and stray
+typographical plus) are fixed in the updated file.
+
+For the 5/4 upgrade I additionally read the entire weighted-success-subset
+lemma. The pairwise inclusion difference gives the displayed nonnegative
+bias with the correct factor ell/(mN). The ratio bound is valid because
+the denominator contains p_i e_(ell-1)(p excluding i,j). The identity
+sum_(i<j)(p_i-p_j)^2 = m sum_i(p_i-mean p)^2 supplies the stated bound.
+The pairwise covariance formula has numerator E_0 E_2-E_1^2 <= 0 by
+Newton's inequality. Its use in the variance is valid because the sampled
+coordinates ell(1-p_i) are nonnegative. The variance-plus-squared-bias
+bound therefore has exactly the two displayed scales.
+
+On s <= m/256 the stronger finite-odds theorem gives p_i >= 1/2, including
+the boundary m=256. Multiplying weighted Taylor error by the average
+success weight and applying the weighted moment estimates gives
+O(B_0^2 d^2/m). On the complementary rows the former Cauchy estimate has
+an exponential margin, so all polynomial factors are absorbed. Extending
+the polarization estimate to every row via max u_i <= 256(s+1)/m is valid
+and removes the earlier unnecessary truncation there.
+
+The final taper has coefficient sum <= d, so its comparison error is
+O(d^4/m+d^2 exp(-cm)). Taking d=floor(kappa m^(1/4)), with an absolute
+sufficiently small kappa followed by sufficiently large m, preserves the
+strict positive test integral. The reproducing kernel has bounded
+coefficient sum and endpoint value one; its error d^2/m is smaller than
+1/d. Thus the terminal tilted atom is O(1/d), while the original atom is
+smaller by a factor comparable to m. Reflection/complementation preserves
+all mixed moments. The stated universal Omega(n^(5/4)) face bound follows.
+
+Scope: this uses the paper's tie-free independent finite-dice model.
+Nothing in the proof establishes a sharp exponent, an explicit useful
+constant, or an improved bound on total/equal face counts.
+
+SECOND UPGRADE, exponent 3/2: full updated six-page proof reviewed and PASS.
+The Gaussian matrix coefficient is checked in both orientations against
+the explicit associated-Laguerre expansion; the normalization and sign
+in the displayed absolute-value identity are correct. The variance-only
+centered coefficient estimate requires no radius restriction. Its factor
+v_B^(k/2) exactly cancels the derivative's v_B^(-k/2); when v_B=0 all
+nonnegative coordinates are zero and the error vanishes identically.
+The integrated series uses ceil(k/2)! and is genuinely geometric, with
+first term O(d/m), for d <= sqrt(m).
+
+I also checked the sharper weighted-subset corollary and singular Taylor
+lemma in the companion note. The improved quadratic sum is <=s max u,
+and the Taylor weight (1-t) cancels the possible terminal singularity:
+(1-t)/((1-t)x+t v) <= 1/x. Thus the weighted averaging error is also
+O(B_1 B_2 d/m). All exceptional zero and large-s cases are handled.
+
+Finally y T_d=(sum_(j<d)L_j)/d-L_d is the correct recurrence identity.
+It gives the stated second factor S_d with coefficient sum <=2/theta,
+while T_d has coefficient sum <=d. Hence the signed endpoint test costs
+O(d^2/m), allowing d=kappa sqrt(m), and the normalized endpoint kernel
+costs O(d/m)<=O(1/d). The terminal row-weight bound is O(m^(-3/2)).
+This final upgrade supersedes the reviewed 7/6 and 5/4 versions above.

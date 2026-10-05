@@ -1,0 +1,696 @@
+MAJOR ASYMPTOTIC UPDATE, approximately18:02UTC:
+PROVED universal per-die lower g(n)>=c*n*log n. Full independent proof
+reviews byroot, rational_designs, independent_directions all PASS.
+Main self-contained proof: size_bounds/logarithmic_per_die_lower_bound.tex
+(+compiledPDF). Weighted version bounds bothendpointrowweights by
+C/(m logm), m=n-1. It uses only monotonecomparisonmoments, notrationality.
+The replacementQ3gap is now n logn <=g(n)<=C n².
+Key lemmas: endpointtiltedodds; badrowsformprefix; normalizedmoments
+within(2k+1)/sqrtm throughsqrtm; Laguerretaperforceslambda<=2/d;
+kernelboundsatomO1/d; d=logm/(8log3).
+No generalQ1/Q2 breakthrough yet. Keepworkinguntil23:05:56UTC.
+
+LATEST ASYMPTOTIC UPDATE, approximately 17:49 UTC (4h43 elapsed):
+The requested ten-hour research period still ends at23:05:56UTC.
+Continue asymptotic research; do NOT mark the goal complete early.
+New clean overview: ASYMPTOTIC_STATUS.txt. Main Q1 and Q2 remain OPEN.
+No more small-n optimization or small quadrature searches per user.
+
+NEW proved and reviewed:
+- rational_designs/asymptotic/repeated_columns_dimension.tex:
+  r>=2 identical columns in an equalweight K-row,m-column monotone
+  tensor imply K>=c*m*r, including plateaus. Both root and independent
+  agent reviewed. Rational repetition also inherits exp lower in r.
+- rational_designs/asymptotic/quantitative_diagonalization.tex:
+  sorted positive variance defects d_(r)<=1/r. Average of half the
+  columns gives scalar monomial errors 0<=E t^s-1/(s+1)<=C*s²/m²
+  simultaneously through s~m/2. Root full proof review PASS. This
+  is approximate diagonalization, NOT universal quadratic g(n) lower.
+
+New primary literature: Teh2020 uniformly Parikh-friendly words is
+exactly equal-composition fullfairness. AJC76(1),208-219. Its factorial
+symmetrization matches baseline. Simpson2020 short witnesses only
+balance one specified permutation and do not solve our question.
+
+Failed possible factorial lower argument: positivefairword endpoint
+Jacobian need not be regular. size_bounds has an exact rank78<89
+certificate and exact ad_H-invariance for a knownfairword, proving
+all powers remain singular. This is a diagnostic rejection of a
+GENERAL asymptotic lemma, not renewed interest in smalloptima.
+
+Active independent_directions: general monotone-to-scalar transfer
+conjecture, common-threshold squared polynomial tests, endpoint
+Christoffel localization. Transfer remains UNPROVED. For disjoint
+columnpairs crossing a threshold in the same rowgap, products of the
+paired centered factors are nonnegative and have exact scalar square
+integrals. Threshold distribution is the unresolved issue.
+
+Root suggestion for endpoint work: tilt rows by products of k columns;
+remaining moments are Beta(k+1,1). For k~m/2, effective mass is in a
+1/m endpointtail. Need a quantitative reason for Omega(m) effective
+rows there to get K>=cm². Ordinary Gramrank does NOT give this.
+
+Root possible odd rationalquadrature asymptotic candidate (UNPROVED):
+r=2k+1, K=2^(2k)+2^k, nodes in(1/2)Z2 satisfy necessary2adic criteria.
+A nonsingularQ2 solution of sum y_i^j=K*2^j/(j+1) plus standardoddprime
+andreal inputs might yield R_(2k+1)=2^(2k)+O(2^k). Existing Mitkin
+uniform local lemma does NOT establish that specialQ2 solution.
+
+USER STEERING, received approximately17:27UTC:
+"nezajímají mě malé hodnoty n, to nejsou zajímavé otázky"
+Stop investigating small n and small numerical cases. Preserve completed
+artifacts, but do not spend more work on their searches or extensions.
+Remaining requested time MUST focus on ASYMPTOTIC main questions:
+(1) minimum total/equal length exp(O(n)) vs exp(Theta(n log n));
+(2) polynomial equalization E_n<=A_n^O(1);
+(3) per-die g(n) betweenOmega(n) andO(n²), or fixed-k polynomial dice.
+All three agents were instructed accordingly and stopped small searches.
+size_bounds: Q2 positive Ore clearing / equalization and multiple-small.
+rational_designs: asymptotic sign-change/per-die lower.
+independent_directions: asymptotic per-die or total-size directions.
+Root: exponential constructions via balanced-subset block decompositions,
+and moment/tensor rigidity beyond the K<m threshold. No new theorem yet.
+Requestedend remains23:05:56UTC. User steering does not cancel ten hours.
+
+LATEST UPDATE, approximately17:20UTC (4h14of10h; work continues):
+- M4(5)=M4(6)=12 EXACT: found5and6twelve-face4-wise-fair palindromes,
+  independentlycheckedallquadruples. Mainnewfile
+  independent_directions/triple_last_palindrome_lift.tex.
+- Weighted weaktripleminimum permutations needq>=n forn>=5, withNO
+  pairbalanceassumption. Generalproof replacesallsmallprofiletests.
+  independent_directions/weak_minimum_equality_obstruction.tex.
+- R7 is69or70; explicit70node rationalrule, symmetricoptimumexact70.
+- IMPORTANT ACTIVESEARCH size_bounds: n6M12fourwiseseedcouldyield
+  SIXFULLYFAIRM120dice if5relabelledcopiescanceldegree5error, followed
+  byreversal. ItisnowdoingorbitILP/hashsearch. Noresultyet.
+- Rootn5half9triplewinnerCP searchsession12938 active(time180seconds).
+  Positivecandidatewouldgive5diceM18fourwise, usefulM12+M18forM30.
+- n7half6searchwasINFEASIBLE, restrictedtopalindromefamilyonly.
+- Generalg5localvariety hasQ2,Q3,Q5points; allthreecertificatesreviewed
+  bysize_bounds. Rationalg5=5 candidate remainsunfound.
+- Requestedendstill23:05:56UTC. DoNOTmarkgoalcompletebeforethen.
+
+LATEST UPDATE, approximately16:24UTC (3h18of10h; work continues):
+- Exact M3(n)=12 for5<=n<=9: independent complete six-face enumeration,
+  short mod4 extension obstruction, and verified9dice12face construction.
+- General monotone permanent polynomial obstruction removes K=m weak
+  plateau exception; e.g g(9)>=9 and exact Sturm gives g(101)>=133.
+  Necessary conditions only, not constructions or quadratic asymptotics.
+- Rational degree7quadrature needs>=69 nodes. A symmetric69node rule
+  has an additional obstruction under review; general69 remains open.
+- Historical correction: Paul Meyer already found5dice60faces31July2023.
+  Exact primary-source word and all120orders verified. M30 remains open.
+- General local5row comparison tensor is solvable overQ3 (rational_designs
+  has Hensel certificate under review), so simpleQ3nonexistence cannot
+  settle whetherg(5)=5or6.
+- Root process20193 extends exact permanent polynomial table to m200.
+  Still do not complete the goal before23:05:56UTC and final synthesis.
+
+LATEST UPDATE, approximately15:54UTC (2h48of10h; work continues):
+- Universal positive relabeling averages need n!/2 support; generic
+  tailored top-error averages need exp((1/2+o(1))n log n). These are
+  METHOD barriers, not general lower bounds for fair dice.
+- Fixed-strength extension: M3(n),M4(n)=n^(1+o(1)); specifically
+  linear lower and O(n log²n) upper via published permutation designs.
+  General M_(2s-1)<=M_(2s)<=2M_(2s-1) follows by reversal.
+- Weak triple-minimum permutation designs need at least n-1 support.
+- Complete small enumeration gives11canonical three-die M6 fair words,
+  8four-die M6 three-wise fair words, and no five-die M6 three-wise word.
+  Independent re-enumeration pending; explicit five-die M12 upper checked.
+
+LATEST UPDATE, approximately15:31UTC (2h25of10h; work continues):
+- Rational quadrature: R_r>=2^(2floor(r/2)) and R_r<=2^r+O(2^(r/2)).
+  Upper bound is derived from classical Mitkin local theory and modern
+  circle-method estimates. For even r this gives R_r/2^r ->1.
+- R_5=20 exactly, with an explicit rational symmetric20-node rule.
+- Eventual equal-size conductor improved to exp(O(n^2 log n)) via
+  the classical Malcev positive nilpotency identity.
+- Deterministic palindrome LINEAR projection has range at least
+  c n^(13/4)/m^(5/2) for n<=m<=c n^(3/2). Full nonlinear lower open.
+- All these proof notes have full independent mathematical reviews.
+
+LATEST ADDITION, approximately14:51UTC:
+The eventual arithmetic-sufficiency theorem extends to EVERY fixed
+positive rational count ray. With positive integer profile c, letR(c)
+be the product of primes p<=n for which at leastp entriesc_i are not
+divisiblebyp. For all sufficiently large t, the vector t*c is realizable
+iffR(c)|t. Full proof in size_bounds/eventual_arbitrary_profiles.tex;
+root and rational_designs independently reviewed it. A weighted
+prefix-completion trick fixes the earlier integrality obstruction.
+
+Four18-sided fair dice were already published by Ford et al2023p87;
+our example is an independent rediscovery. Attribution added.
+
+LATEST UPDATE, approximately14:47UTC (about1h41of10h):
+- Complete reviewed theorem: every sufficiently large multiple of the
+  primorial P_n is a feasible common face count for n fair dice.
+  Explicit conductor <=exp(O(n^3(logn)^2)); this is not a smaller minimum.
+  Proof in positive_saturation/ and quantitative companion in size_bounds/.
+- Strict comparison columns yield conditional per-die lower bound
+  ceil(3(n-2)/2); plateau cases remain unresolved.
+- Exact integer Farkas certificate rules out five30-face constructions
+  made of15 relabelled palindrome blocks. General30-face problem remains.
+
+LATEST UPDATE, approximately14:33UTC (research is ongoing):
+- g(5) is now bounded by5<=g(5)<=6. The six-face construction has a
+  full human proof and independent exact checks of all120orders.
+- Random-palindrome relative-error scale is now matched, including log:
+  n^(13/4)*sqrt(logn)/m^(5/2), in the stated large-m finite regime.
+  This is family-specific, not a universal lower bound for dice.
+- Subset factorial divisibility completely characterizes SIGNED fair
+  signatures. Thus reduced nilpotent group integrality alone cannot
+  improve the positive-word arithmetic obstruction.
+- Found and independently verified four fair18-sided dice, disproving
+  the speculative condition v_p(M)>=floor(n/p). Certificate in equal_size/.
+
+Research session requested by the user: ten hours on the article's open problems.
+Start: 2026-09-30 13:05:56 UTC. Requested end: 2026-09-30 23:05:56 UTC.
+This is a working checkpoint, NOT the final ten-hour report.
+
+MAJOR UPDATE, approximately 14:00 UTC (less than one hour elapsed):
+
+FOLLOW-UP UPDATE at14:03UTC:
+
+LATEST CHECKPOINT, approximately14:20UTC (about75minutes elapsed):
+The goal remains ACTIVE until23:05:56UTC. Do not mark complete yet.
+
+Historical attribution update: the rational-design exp(O(r)) upper bound
+is a corollary of old Hilbert--Kamke theory. size_bounds has now checked
+Arkhipov1985 Theorem3, giving a safe C r^3 2^r upper when combined with
+CXX5.2; its short argument is in arkhipov_rational_corollary.tex (currently
+being updated from the earlier1981 Cr^4 threshold). Mit'kin1987 may sharpen
+the variable count to2^r+O(2^(r/2)); exact interval localization still needs
+checking. Classical unit filters are attributed to Hua/Arkhipov/Mit'kin
+in the p-adic lower-bound notes; the interval-integral step is separate.
+
+Further completed results:
+* approximate_random/random_palindrome_lower_bound.tex: for the RANDOM
+  palindrome family, actual full-order supremum is at least
+  c n^(13/4)/m^(5/2) w.h.p. when m>=C n^(13/10). Below that scale a fixed
+  small error fails w.h.p., by restricting to a smaller label set.
+  Root and size_bounds read the full proof and found no gap. This is
+  a FAMILY lower bound, not a universal lower for approximate dice.
+  Root checked the6-window swap event, independence, binomial lattice
+  bounds, fourth moment/L1, full nonlinear remainder and restriction.
+* exceptional/finite_n21.json is now an explicit FINITE WORD GRAMMAR
+  counterexample certificate,254357bytes. One die has400faces; twenty
+  equal others have a241481-bit facecount. The base fair20-word is given
+  by all19integer insertion plans (209momentchecks); densitymodel has
+  400correction identities and16391distinct positive rational masses.
+  finite_certificate.py build AND separate verify completed successfully.
+  See exceptional/FINITE_CERTIFICATE.txt for exact recipe and command.
+  Full21! enumeration was not attempted; the proved lemmas give fairness.
+* A general CDF independence theorem (root, checked by both size_bounds
+  and independent_directions): in a continuous three-wise fair family,
+  distinct CDFs are linearly independent; at most one CDF may repeat.
+  Any relation sum a_i F_i=0 gives, for j!=k,
+  a_j d_kj-a_k d_jk/2=0 and its swapped counterpart, where
+  d_ki=integral F_i^2 dF_k-1/3. Thus both products vanish. Two nonzero
+  coefficients imply d_kj+d_jk=0; pair-CDF energy then forces Fj=Fk.
+  Applied to concatenations of fair blocks, the block-count matrix rank
+  equals the number of distinct normalized letter profiles, and at most
+  one profile may repeat. A block with all distinct normalized counts
+  therefore forces full rank n, hence at least n independent block types.
+  size_bounds/two_dimensional_equalization_barrier.tex now includes this
+  general theorem and its older rank2/two-type/transposition special cases.
+* independent_directions/odd_prime_quadrature_obstruction.tex: for odd
+  prime p and degree r>=max(p-1,3), rational equalweight rules require
+  K>=2p. In particular degree3 needs>=6 and degree4 needs>=10.
+  Root read and strengthened the proof; agents checked it independently.
+
+Current agents:
+* independent_directions: positive LP for g(5)<=6 using3uniform olddice,
+  one rational piecewise-constant density, and six degree3 rational nodes
+  (1+-2/7)/2,(1+-3/7)/2,(1+-6/7)/2. No positive certificate yet. Another
+  m4,c5 rational cubic/tangent search seeks g(5)=5, also unfinished.
+* rational_designs: wrote gaussian_limit_log_factor.tex, currently
+  awaiting root review. Claims ITERATED-limit expectedsup Theta(
+  n^(13/4)sqrt(logn)) after scaling m^(5/2), via independent Gaussian
+  assignment component (genuine3-way valley variance1/20). No uniform
+  CLT at m~n^1.3 is claimed. This is the next root proof to review.
+* size_bounds: literature attribution for rationalupper and generalized
+  block rank barrier; mainQ1/Q2 still unresolved.
+
+Root finite-certificate process handles13459 and46168 are completed.
+Earlier denominator-only process97430 is completed. No outstanding root
+exec process at this checkpoint. All work stays in research/, not main.tex.
+* The refined approximation theorem is now PROVED and reviewed by root
+  and size_bounds: approximate_random/refined_random_palindrome_bound.tex
+  gives O(n^(13/10)(logn)^(1/5)epsilon^(-2/5)) faces. All nonlinear
+  Hoeffding levels are controlled. The earlier7/5 proof is retained as
+  a simpler companion, not the current best bound.
+* A new exponential UPPER bound closes the rational-design size order:
+  size_bounds/exponential_rational_designs.tex proves rational interior
+  degree-r rules for EVERY K>=C r^6 4^r. Combined with the p-adic lower
+  bound, minimumK=exp(Theta(r)). Root and rational_designs reviewed the
+  complete proof and the Cui--Xia--Xiang Theorem5.2 primary source.
+  Small primes: homogeneous smooth power-sum zero by contraction-Hensel
+  from all residues0..p^a-1, a=2v_p((r-1)!)+2floor(log_p r)+2.
+  Scale it to attain arbitrary p-adic targets. Large primes: fix r
+  distinct pivots and solve remaining coordinates by Weil character sums.
+  CommonP0 covers finitely many denominators; circle-method asymptotics
+  with a fixed regular real rule provide rational interval points.
+  The common denominator is uncontrolled; this does NOT improve total
+  dice size. The primary source is also locally available as
+  rational_designs/cui-xia-xiang.pdf and .txt, pp17-18.
+* g(5)>=5 is now a complete independently reviewed proof in
+  independent_directions/no_four_face_die_for_five.tex. Exact Hadamard
+  determinant verification has also been rerun by root.
+* approximate/three_wise_face_lower_bound.tex (root) proves already
+  three-wise fair dice satisfy sum c_i>=binom(n,2); equal-sided ones
+  have M>=(n+3)/2 for n>=5. independent_directions reviewed it fully.
+  The key pair identity is d_ij+d_ji=1/2 integral(x-y)^2 d(x+y)>0
+  along the pair's empirical-CDF axis path, plus a Gram-rank bound.
+  Thus constant-face exact3-wise blocks cannot replace palindrome blocks.
+
+Latest unfinished investigations:
+* rational_designs: matching n^(13/10) POWER lower for the RANDOM
+  palindrome family via independent adjacent swaps on6-label windows;
+  triple projection variance is explicit but full lower-bound remainder
+  control is still unfinished. Do not claim a universal approximation
+  lower beyond trivial Omega(n).
+* independent_directions: g(6), general near-linear versus quadratic
+  exceptional-die lower. Numerical m=c=5 solutions tend to repeated
+  columns; no classification theorem yet.
+* size_bounds: denominator tradeoffs, quantitative local/global rational
+  design bounds, and original total-size/equalization questions.
+
+The conjecture that EVERY die has exponentially many faces is disproved
+by a complete construction with one O(n^2)-face die. The main proof is
+size_bounds/polynomial_exceptional_die.tex. Root, rational_designs, and
+independent_directions have independently reviewed the full proof and
+found no gap. It constructs positive rational piecewise-constant densities
+for the other dice, proves ALL order probabilities exactly, and finiteizes
+the densities using fair blocks. The other n-1 dice have a common, possibly
+very large face count. This is now GLOBAL, not merely a local tensor.
+The centered-bump companion is size_bounds/centered_bump_simplification.tex.
+The external O(n^2) real quadrature input was checked directly in
+Gilboa--Peled, arXiv:1507.01505v2, Theorem1.1 (uniform weight).
+
+Two independently implemented exact rational order-DP tests pass n=4,K=9
+and n=5,K=16, enumerating all24 and120 rankings respectively:
+  exceptional/verify_global_model.py (centered evaluation kernel),
+  rational_designs/verify_global_eval0.py (evaluation-at-zero kernel).
+For n=21,K=400 the centered verifier checks all400 correction moments,
+all kernel identities, positivity and normalization; full21! enumeration
+was NOT attempted. See exceptional/global_n21_summary.json.
+
+Additional completed results since the initial checkpoint below:
+* size_bounds/factorial_squared_construction.tex: exact equal-sided dice
+  with C(n!)^2 faces, C=2^25 explicit. Root and rational_designs reviewed
+  full proof. This matches the leading2 coefficient of the WHOLE-COPY
+  insertion lower bound. It does not close the general exponential gap.
+* independent_directions/three_face_*: a finite four-dice construction
+  with one3-face die,103 runs, and three other counts
+  163693699141790847787594200000,3055345920,5508.
+  Exact probability and integer-run checks independently pass all24orders.
+  Thus the new per-die n-1 lower bound is sharp for n=3,4.
+* approximate_random/random_palindrome_bound.tex: rigorous probabilistic
+  existence with O(n^(7/5)(log n)^(1/5) epsilon^(-2/5)) faces for pointwise
+  relative error epsilon. The FULL Hoeffding expansion, not just its first
+  projection, is bounded. Root and size_bounds independently reviewed.
+  Agent rational_designs is attempting a further13/10 exponent refinement.
+* size_bounds/polynomial_denominator_designs.tex: rational degree-r rules
+  whose common node denominator is <=r^A need
+  logK>=rlogr-rloglogr-O_A(r); a polynomial-grid construction has
+  logK<=rlogr+O(r). Root has now read and checked the complete proof.
+* independent_directions/disjoint_correction_barrier.tex: the disjoint
+  Vandermonde correction METHOD requires K>=m(m+1)/2 for m=n-1.
+  This is NOT a universal lower bound on a distinguished die.
+
+Active directions now:
+1. Genuine exceptional-die optimum g(n): proved n-1<=g(n)<=O(n^2).
+   New candidate g(5)>=5 uses a four-point Hadamard basis, monotonicity,
+   zero centered triple moments and the rational obstruction A^2+B^2=1/3.
+   Root has checked the outline; independent_directions is writing it.
+2. Main total-size and equalization questions remain open. size_bounds
+   investigates alternatives to whole-copy insertion and rational-design
+   exponential upper bounds via local solubility/rational points.
+3. rational_designs is improving random-palindrome concentration using
+   coefficient L2 norms and independent priorities on disjoint segments.
+
+The chronological notes below preserve the earlier checkpoint; statements
+there that a local model had not yet been globally lifted are SUPERSEDED
+by the construction above.
+
+The original main.tex contained uncommitted user changes. We have not edited it.
+Additional independent edits to main.tex and a new formalization/ directory
+appeared during the session; preserve them. The initial diff/hash are only
+records of the starting state, not instructions to restore that state.
+
+Research files, with complete proposed proofs and explicit limitations:
+
+1. rational_designs/two_adic_lower_bound.tex:
+   Rational equal-weight degree-r interval quadrature needs at least
+   2^floor(r/2) nodes. This has received independent mathematical reviews
+   from root and the other two agents plus exact coefficient checks.
+   It rules out the subexponential rational-design route proposed in main.tex.
+   It does NOT prove the exponential per-die conjecture.
+
+2. rational_designs/p_adic_lower_bound.tex:
+   General-prime extension K >= p^floor(r/p) for every prime p, in particular
+   K >= 3^floor(r/3). A complete proposed proof and an independent agent
+   review exist. Root should still read the full general-prime proof.
+
+3. independent_directions/monotone_tensor.tex:
+   If c < m=n-1, the full monotone local comparison tensor forces a scalar
+   c-node rational quadrature of degree m. Together with (1) and a few
+   exact small cases, this gives c >= n-1 for each die (n>=3).
+   The structural proof was independently checked by root.
+
+4. size_bounds/arithmetic_barrier.tex:
+   Subset factorial divisibility is exactly equivalent to p dividing at
+   least n-p+1 face counts for each prime p<=n. Its sharp product optimum
+   is P_n=product_{p<=n}p^(n-p+1). Greedy balanced admissible vectors prove
+   the arithmetic relaxation's optimum total size exp((1/2+o(1))n).
+   These vectors are NOT claimed to be realizable by fair dice.
+
+5. size_bounds/insertion_barrier.tex:
+   Whole-copy insertion necessarily uses N_r>=r^2/16 copies at step r,
+   regardless of the nonnegative weights. Thus this framework needs
+   exp(2n log n-O(n)) faces on its oldest die. Root checked the Jacobi
+   integral argument. This is a METHOD barrier, not a general dice bound.
+
+6. size_bounds/equalization_notes.tex:
+   Existing article results already imply E_n <= A_n^{O(log log A_n)},
+   stronger than the displayed conclusion's A_n^{O(log A_n)}.
+   Also records an lcm blowup refinement and proportional concatenation.
+
+7. approximate/shelf_bound.tex:
+   Self-contained finite pointwise bound for (12...n n...21)^m,
+   with 2m=O(n^(3/2)/sqrt(epsilon)) faces per die, improving the article's
+   O(n^2/epsilon) approximate construction. This is an application of known
+   shelf-shuffle theory (Diaconis--Fulman--Holmes 2013), not a claim that
+   the shuffle scale is new. Rational-designs agent independently checked
+   the proof. verify_shelf.py checked 35472 exact permutation counts.
+
+Active promising directions at this checkpoint:
+
+A. rational_designs agent has a construction of rational monotone LOCAL
+   comparison tensors with only O(n^2) equally weighted latent states.
+   It rationally perturbs a strict real interval design and corrects each
+   coordinate on a disjoint set of states by a Vandermonde solve.
+   If finalized, it proves that all local comparison conditions together
+   still cannot establish an exponential per-die lower bound. The actual
+   global order conditions remain essential. Check real-design regularization.
+
+B. size_bounds agent is proving an improved exact construction
+   F_n = C (n!)^2 for an absolute constant C, by rounding positive Hahn
+   weights and correcting integer binomial moments through the unimodular
+   Pascal matrix. This would match the leading exponent of the insertion
+   barrier. Check positivity constants and a rigorous absolute C.
+
+C. independent_directions found a rational monotone local tensor for n=4,
+   c=3, showing the structural threshold c<m cannot just be extended.
+   Its first global four-cell LP was infeasible, but nearby REAL tensors
+   have strictly feasible LPs. Searching for rational realizable tensors
+   and then actual weighted dice, which can be cleared to uniform dice
+   while retaining exactly three faces on the exceptional die.
+
+D. Root: approximate/random_blocks.py checks ALL orders for n<=8, with
+   independent randomly relabelled palindrome blocks. Data show error
+   decays approximately m^(-5/2) at fixed n, better than the fixed shelf
+   family's m^(-2). This is only EXPERIMENTAL.
+   approximate/search_large.cpp searches bad output orders heuristically
+   for n up to128. Its reported errors are only LOWER bounds on the true
+   maximum. Compile and run commands are in the source. Initial run:
+   search_large 20000 128, PTY session10078; output search_large.jsonl.
+   Do not mistake the heuristic for a uniform guarantee.
+
+Root's theoretical next step for D:
+For fixed target permutation sigma and random block i, the first Hoeffding
+projection of R=n!P is exactly a sum over contiguous sigma segments.
+The triple contribution is
+  Z_i = h * sum_{a=0}^{n-3} BinPMF(n-3,(i-1)/(m-1);a) delta_{i,a},
+  h=binom(n,3)m^-3(1-1/m)^(n-3),
+  delta_{i,a}=1/2 - (3/2)*1{sigma[a+1] has the smallest block rank
+                           among sigma[a],sigma[a+1],sigma[a+2]}.
+For fixed i, delta_{i,a} depends on three iid continuous random priorities,
+so terms at index distance>=3 are independent. Coloring a mod3 gives a
+subgaussian bound with variance proxy O(h^2 sum BinPMF^2).
+Summing over i gives O(n^(11/2)/m^5) in the bulk (plus endpoint terms).
+A union bound over all sigma suggests a first-projection threshold roughly
+m=n^(13/10)(log n)^(1/5) epsilon^(-2/5).
+The NONLINEAR Hoeffding remainder is not controlled. Do NOT claim this
+threshold for the actual distribution without a new proof.
+
+Next sessions should continue the same ten-hour objective; do not restart
+the clock and do not mark the goal complete until the requested duration
+and final synthesis are actually complete.
+
+18:52UTC: All three agents redirected exclusively to general asymptotic
+arguments. Universal all-gap endpoint regularity fails, with defect
+inherited for arbitrarily many letters. Uniform endpoint profile
+independently reviewed and recorded. Root now exploring multiple
+polynomial exceptional dice; no construction obtained yet.
+
+MAJOR POWER LOWER-BOUND DEVELOPMENT, 19:24UTC:
+Root wrote power_per_die_lower_bound.tex. The 7/6 exponent version
+received full skeptical reviews PASS from size_bounds and rational_designs;
+independent_directions independently established mixture and scaled-test
+lemmas. A preserved fallback is power_per_die_lower_bound_seven_sixths.tex.
+The main file is now upgraded to candidate 5/4 exponent using rational
+agent's weighted-success-subset bias/variance lemma (root and independent
+agent full reviews PASS). Final upgraded-file reviews are pending.
+Mechanism: finite mean-deficit balance, forced-success subset mixture,
+centered elementary-symmetric coefficient bound, double factorial Laguerre
+derivatives, scaled theta<1 tests leaving an exponential margin.
+Normalized structured polynomial error CB^2*d^2/m; taper has B~d,
+so d=c*m^(1/4), endpoint atom O(1/d), original faceweight O(1/(md)).
+Do NOT confuse with old generic moment-only barrier: this proof uses
+full tensor structure before applying positive scalar tests.
+
+19:34UTC: Current combined proof upgraded to reviewed3/2 exponent,
+not merely5/4. Current file power_per_die_lower_bound.tex (+PDF).
+Final theorem g(n)>=c n^(3/2), upperCn² unchanged. Ongoing agents:
+independent qualitative g/n3/2->infinity candidate; size localized
+Gram/CDF bootstrap; rational quantitative profile/relativebalance.
+Requested10h period still runs until23:05:56UTC. No main.tex edits.
+
+19:43UTC: MAJOR ASYMPTOTIC RESULT. Fully reviewed localized Laguerre
+bootstrap proves every die has >=c_epsilon*n^(2-epsilon) faces for
+every fixed epsilon>0. Root and both other agents reviewed size agent's
+full proof; primary Laguerre estimate independently verified twice.
+Together with one O(n^2)-face die construction, g(n)=n^(2+o(1)).
+Questions about minimum total size and polynomial equalization remain
+open. Research continues until requested 23:05:56UTC deadline.
+
+19:52UTC: EXACT QUADRATIC RESULT. All three full independent reviews
+of size_bounds/quadratic_per_die_lower_bound.tex PASS after clarifying
+derivativeenvelope domainz>=1/(2d). Every die has Omega(n^2) faces;
+one die canhaveO(n^2), hence g(n)=Theta(n^2). Q1/Q2 stillopen.
+All-order Gaussian bound at fixedmatrixindex removes the final
+epsilon loss. Research continues to23:05:56UTC.
+
+20:15UTC: Further fullyreviewedresults: everyK>=Cn² ispossibleforone
+specifieddie; approximatepointwiserelativeerror epsilonforceseverydie
+K>=c*n*min(n,log1/epsilon); sharpstructuralrelativeboundmaxmu_i<=C(s+1/m),
+withinverse-moffsetnecessary. Q1,Q2andtwo-simultaneous-polynomialdice
+stillopen; agentsnowexploreconditionedhybridquadraturefortwoexceptionals.
+
+20:35UTC: TWO ACTUAL POLYNOMIAL-SIZE DICE THEOREM FULLY REVIEWED.
+size_bounds/two_polynomial_exceptional_dice.tex and
+size_bounds/clustered_multi_exceptional_lifting.tex passed root, rational,
+and independent full mathematical reviews. Two specified finite dice
+have O(n^6) and O(n^162) faces in an entirely finite fair family.
+Rational B-box affine smoothing + stable rational A-gap Riesz completion
+supply pure cluster rational moments; fixed distinct-node quadratures
+permit small rational moment-bump corrections with positive old densities.
+The multi-boundary response exactly equals a product of corrected
+cluster functionals, including collision cases with one old variable
+between cuts. No unproved triangular-lifting premise is used.
+This supersedes the earlier hybrid-only and two-die-open status.
+
+21:09 UTC: GENUINE FINITE-DICE ENDPOINT SHARPNESS.
+Root's finite_profile_realization.tex passed rational's full independent
+review. Every uniform-moment scalar probability measure can be approximated
+at any continuity threshold by a comparison row of a completely finite,
+exactly fair uniform-dice family. Proof: positive moment-corrected smoothing,
+high-degree equal-weight quadrature and regularization, arbitrarily small
+one-exceptional lift corrections, fine rational-cell finite realization.
+No face-count bound is claimed. Both endpoint_profile_sharpness.tex and
+endpoint_profile_fluctuation_barrier.tex now include reviewed actual-dice
+corollaries: respectively s~m^-2 with fluctuation~m^-1, and bounded positive
+s with fluctuation>=c*m^-1/2. Earlier weighted-only scope is superseded
+for these robust inequalities, not for exact identical-column assertions.
+
+Additional root full reviews PASS: lacunary_legendre_conditioning.tex,
+multirank_step_compatibility.tex, ordered_prefix_legendre_tools.tex,
+polynomial_mean_box_smoothing.tex, generalized_local_two_variable_completion.tex,
+linear_logarithmic_ore_bound.tex, regular_fair_realizations_and_rank_barrier.tex.
+Independent reviewed root many_small_dice_reduction.tex PASS. Fixed-k rank
+and ordered-prefix tools are auxiliary: three small dice remain unproved.
+The remaining positive-completion and denominator bounds are being studied.
+Czech overview VYSLEDKY.tex/PDF is drafted, not finalized. Requested research
+continues until 23:05:56 UTC; Q1 and Q2 remain open.
+
+21:19 UTC: THREE ACTUAL POLYNOMIAL-SIZE DICE FULLY REVIEWED.
+independent_directions/three_polynomial_exceptional_dice.tex (+PDF) passed
+root, size, and rational full reviews. There are absolute C,c with three
+specified dice at most C*n^c faces, others common finite but unrestricted.
+Input two_pure_densities_with_rational_means.tex puts all endpoints, masses,
+and first cell moments on ONE polynomial common grid. In an old pure cell
+[a,b], mass gamma and first moment z, prescribe K=N*gamma,L=T*(b-a).
+Then KL*mean=NT*(z-a*gamma) is integral using common-grid multiples N,T.
+Local generalized completion and chamberwise assembly give three pure
+rational densities. Prescribed-count separated real quadrature and the
+reviewed clustered lifting make every die finite without changing the
+three polynomial counts. No claim for four or arbitrary fixed k yet.
+
+Root additionally reviewed higher_prefix_positive_completion.tex,
+quantitative_smoothed_quotient.tex, multiple_prefix_moment_conditioning.tex,
+and uniform_grid_moment_refinement.tex PASS. These support an ongoing
+fixed-k extension, but its synchronized local arithmetic is not yet closed.
+
+21:26 UTC: ANY FIXED NUMBER OF SMALL DICE — COMPLETE REVIEWED CHAIN.
+For every fixed k, there are C_k,c_k such that k specified dice can have
+the SAME count <=C_k*n^c_k in a fully finite exactly fair n-die family.
+Other n-k dice may have one common unrestricted finite count.
+independent_directions/fixed_number_polynomial_dice.tex and
+size_bounds/synchronized_local_moment_completion.tex passed all three
+independent full reviews. Root checked the fixed-q smoothing and smoothed
+quotient extensions too. Two small arithmetic wording fixes were applied:
+L clears the PRODUCT D0*(q+1)!, and shared control ranks are rounded DOWN.
+
+Core mechanism: a fixed low-moment reserve shrinks by 2q+1 -> q at each
+local insertion. Uniform-grid reset and K=N*cell_mass cancel normalization
+in low target moments; identical rational control-feature minors synchronize
+all output denominators. No lcm over unrelated cell denominators occurs.
+Positive quotient estimates keep box widths inverse-polynomial. Final
+common-denominator quadrature plus cluster lifting gives actual finite dice.
+No uniform dependence for growing k, no improvement to Q1 or Q2, and no
+quadratic two-die upper bound are claimed. All work remains asymptotic.
+
+21:44 UTC: FACTORIAL-ORDER POSITIVE COMPLETION AND EVENTUAL CONDUCTOR.
+Root fully reviewed size_bounds/order_doubling_prefix_completion.tex
+and factorial_order_eventual_conductor.tex PASS; rational and independent
+reviews also passed. KLP primary Theorem 1.6 was checked separately.
+The degree-p defect is canceled through min(2p-1,n) by t-wise relabelings
+in disjoint equal-power-sum position sets, with exact fair filler blocks.
+The elementary sunflower/pigeonhole construction costs exp(O(p log n));
+doubling p gives an overall exp(O(n log n)) multiplier and preserves
+the input as a literal prefix. Short signed target + linear-log Ore then
+produce attainable A,A+P with A=exp(O(n log n)), P=primorial(n), so every
+positive admissible common count above exp(O(n log n)) is attainable.
+This improves the previous conductor, but does not resolve Q1 or Q2.
+A tiny zero-size edge wording was requested in the conductor statement.
+Root also reviewed two_rule_error_orthogonality.tex: necessary weighted
+orthogonality for the two-error spaces; not asserted sufficient.
+
+22:01 UTC: ENDPOINT PROFILE LOCALIZATION INPUTS REVIEWED.
+Root localized_laguerre_kernel_derivatives.tex proves all-order compact
+Cauchy bounds with a wider positive Hille-Hardy kernel; all three agents
+reviewed PASS. Independent marked_cancellation_identity.tex now includes
+exact cancellation, range-sensitive coefficients, all-tilt subGaussian
+weighted-subset concentration, and localized marked/subset errors; root,
+size, and rational full reviews PASS. Rational's
+global_laguerre_spectral_truncation.tex supplies globally negligible
+marked/unmarked residuals with d=kappa*m, J=B*log(m), tau=C*log(m)/m,
+plus full off-annulus low-differential-order tails; root and size PASS.
+Size's localized_profile_maximum_principle.tex is a fully reviewed
+CONDITIONAL mass-absorption/weighted-maximum theorem. Linear cutoff and
+a fixed sqrt(tau) shift handle flat rows and negative kernel tails.
+The actual tensor profile assembly is still being written; no improved
+profile rate is asserted yet. Q1, Q2, and sharp two-quadratic remain open.
+
+22:10 UTC: ALMOST SQUARE-ROOT INTERIOR ENDPOINT PROFILE LOCKED.
+independent_directions/sharp_interior_endpoint_profile.tex passed root,
+rational, and size full reviews. For every fixed 0<delta<L, arbitrary
+positive-weight monotone tensors satisfy
+  max_i |m(1-p_i)-s| <= C_delta,L sqrt(log(m)/m), delta<=s<=L.
+The actual marked/unmarked comparisons, compact row coverage, mass
+absorption, common coordinate y=(ell/m)s, strict one-sided window and
+weighted maximum argument are all checked. Constants are not uniform
+as delta→0. The existing genuine finite-dice m^-1/2 example is sharp
+up to sqrt(log m). Minimal guide: ENDPOINT_PROFILE_PROOF_GUIDE.txt in
+independent_directions/.
+
+Further inputs under development for removing the log: root
+bernstein_walsh_polarization_tail.tex passed rational and independent;
+rational finite_jackson_endpoint_kernel.tex passed root and independent.
+A finite positive polynomial kernel has width m^-1/2, but its global
+low-order off-annulus estimates and final assembly are not yet locked.
+Root and rational reviewed size/uniform_prefix_conditioning.tex PASS;
+full uniform growing-k arithmetic complexity remains under audit.
+
+22:17 UTC: SHARP INTERIOR PROFILE AND UNIFORM GROWING-k CONSTRUCTION.
+All three full reviews PASS for independent_directions/optimal_interior_endpoint_profile.tex.
+For each fixed 0<delta<L the bound is now C_delta,L*m^-1/2, with no log.
+Positive finite Jackson kernels replace the infinite Poisson kernel.
+Root bernstein_walsh_polarization_tail.tex gives global high-order tails;
+rational finite_jackson_endpoint_kernel.tex supplies compact derivatives
+and global low-order angular tails. Polynomial-tail mass absorption and
+a weighted maximum close the proof. Genuine finite-dice lower examples
+show the rate is sharp. Uniformity as s→0 is still not proved.
+
+All three full reviews PASS for size_bounds/uniform_prefix_conditioning.tex
+and uniform_fixed_number_complexity.tex after correcting the initial
+uniform low-moment denominator. Controlled local complexity obeys
+P_next<=P^{(q+2)^C}; reserve q_j~2^{k-j} gives
+  S <= (n+2^k+2)^{exp(C*k^2)}
+for k specified equal-count dice, with all n dice genuinely finite/fair.
+Thus k=floor(c*sqrt(log n)) can have S<=exp(sqrt n), and
+k=o(sqrt(log n)) gives S<=exp(n^{o(1)}). Large other dice remain uncontrolled.
+No fixed-polynomial bound for growing k and no Q1/Q2 resolution is claimed.
+Initial P1 includes lcm(1,..,2^k), bounded by factorial and absorbed into
+the final exp(Ck²) exponent. High coefficient denominators are not charged
+to the small counts; controlled endpoints/low moments are synchronized.
+
+22:46 UTC: NATURAL-SCALE ENDPOINT CHAIN AND COMPLETE SCALE SHARPNESS LOCKED.
+Root, rational, and size full reviews passed natural_scale_endpoint_profile.tex.
+Root, independent, and size reviewed variable_jackson_endpoint_kernel.tex;
+the global sharp CDF is explicitly retained, with no unsupported local-CDF
+replacement. The variable mass upper/lower parameter order is noncircular;
+the normalized maximum and strict one-sided window handle flat rows.
+For fixed L, the final bound is C_L min(ms,sqrt(s/m)+1/m), uniformly s<=L.
+intermediate_endpoint_sharpness.tex passed all three full reviews: Gaussian
+nodes j=ceil sqrt(m*lambda) give every lambda>=1/m; an adjustable Legendre
+endpoint mass covers every smaller positive lambda. Finite realization
+preserves robust inequalities. Actual s is only comparable to lambda;
+no exact prescribed s or efficient total face count is claimed.
+The row-atom corollary natural_scale_row_atoms.tex also passed all three
+reviews: w<=C_L(sqrt(s)/m^(3/2)+m^-2). Gaussian/Lobatto examples show
+sharpness in the arbitrary-weight tensor class, not matching uniform dice.
+
+The main report was re-audited for fixed/growing-k quantifiers and endpoint
+scope; approximate upper/lower and rational scalar bounds re-audited PASS.
+Q2's quasipolynomial bound is explicitly labeled elementary synthesis of
+already known absolute bounds. Current status was rewritten concisely;
+its previous chronological version is ASYMPTOTIC_STATUS_HISTORY.txt.
+Main manuscript remains untouched. Root reread the finite realization
+and quadratic lower-bound assembly; no additional gap found.
+Review bundle audit at22:37:133 files, no stale PDFs, only original main.tex
+external/unresolved, and one explicitly historical source-only note.
+Final bundle will be rebuilt after all document updates.
+
+23:02 UTC: ELEMENTARY QUADRATIC LOWER PROOF LOCKED, ALL THREE FULL REVIEWS PASS.
+independent_directions/elementary_quadratic_atom_bound.tex is a short
+self-contained replacement for the long exact lower-bound chain.
+A continuous completion of the monotone row chain defines first-crossing
+thresholds for disjoint pairs: one root is prescribed, its partner lies
+below it, and the paired product is nonnegative on every actual row.
+A fresh endpoint-coordinate factor and Gaussian quadrature leave only
+the largest Gaussian node, proving every last coordinate at least
+1-pi^2/(m+1)^2. Radau quadrature then gives aggregate terminal mass
+<=200/m^2 using endpoint weight1/(e+1)^2 and reciprocal-gap sum e(e+2)/2.
+Both quadrature inputs have elementary source-free Legendre derivations.
+The face-count lower bound is explicit: K>=(n-1)^2/200.
+All source lines, constants, squarefree degree constraints, completion
+without new row weights, and quadrature positivity were checked by root,
+rational_designs, and size_bounds. The independent author is promoting
+and rebuilding. This improves proof length, not the already locked
+Theta(n^2) theorem. Main report and guide now use the elementary proof.
+Old analytic notes remain correct and useful to the separate profile work.
+
+23:05:57 UTC: TEN-HOUR RESEARCH PERIOD COMPLETED.
+The clock confirms the full requested interval13:05:56–23:05:56 UTC.
+All principal claims have completed internal reviews. The final result
+for one specified die is Theta(n^2), with a three-page self-contained
+elementary lower proof and explicit (n-1)^2/200 bound. General fixed-k
+and growing-k constructions, sharp endpoint profile, conductor and
+approximation results are included with their stated scope. Q1 and Q2
+remain open. No theorem candidate or correction is pending.
+The six-page Czech report, proof guides, and review bundle are complete.
+All69 selected TeX sources have current PDFs and no undefined references.
+The main manuscript was not edited. The final archive is rebuilt now to
+include this completed status and FINAL_REVIEW, then its CRC is checked.

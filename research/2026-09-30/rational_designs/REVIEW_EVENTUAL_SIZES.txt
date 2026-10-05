@@ -1,0 +1,26 @@
+Independent reviews of size_bounds eventual-size companion notes
+30 September 2026, rational_designs agent
+
+quantitative_eventual_sizes.tex: full original and compressed versions
+checked. The coefficient l1 majorant, fixed-last Lie coordinates,
+partition square-sum bound, base-R digit commutator compression,
+balanced Ore fraction tree and conductor inequalities all pass.
+The revised exp(O(n^3(log n)^2)) threshold is supported.
+
+eventual_arbitrary_profiles.tex: full weighted-power construction checked.
+The weighted relabeling action is conjugate to ordinary permutations,
+integer blowups preserve positivity, w^(D^k) preserves the literal prefix
+and supplies the matching degree-k error, and all linear parts commute.
+The Ore argument and arithmetic R(c) criterion pass.
+Six actual-word prefix completions were checked by an independent exact
+subsequence-count DP; all passed, including n=4 and 837,000 letters.
+
+Latest quantitative revision, 30 September afternoon:
+The classical Malcev positive identity replaces the earlier Ore bound.
+For A_{j+1}=A_j B_j and B_{j+1}=B_j A_j, the quotient
+g_{j+1}=[A_j,B_j]=[g_j,B_j] gains one filtration degree. Thus A_n=B_n
+in the class-n reduced-signature group. Each side has 2^n blocks,
+retains its initial a or b prefix, and gives a common right multiple.
+Balanced fraction conversion now costs at most 2^(n ceil(log2 L)).
+The stated threshold exp(O(n^2 log n)) passes the full check; it
+supersedes the older quantitative estimate above.

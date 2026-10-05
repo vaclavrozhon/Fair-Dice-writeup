@@ -1,0 +1,9 @@
+{
+  "source": "../partial_fairness/triple_winner_half_n6_M6_seed0.json",
+  "pairs": 259560,
+  "projection_keys": 259560,
+  "projection_matches": 0,
+  "solution": null,
+  "seconds": 1.1936976950091776,
+  "exhaustive": true
+}

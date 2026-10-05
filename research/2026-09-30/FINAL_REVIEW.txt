@@ -1,0 +1,106 @@
+REVIEW OF THE ASYMPTOTIC PROOF BUNDLE
+30 September 2026, 23:05 UTC. Mathematical and artifact checks completed.
+
+The research concerns general asymptotic statements. The report does not
+use a search over small values of n as an answer to the user's questions.
+main.tex has not been edited. Earlier working notes and failed approaches
+remain in the workspace; they are not automatically proof dependencies.
+
+MATHEMATICAL CHECKS
+
+1. Quadratic minimum for one specified die.
+   FINAL SIMPLIFICATION: elementary_quadratic_atom_bound.tex has passed
+   full root, rational-design, and size-bounds reviews. Its paired
+   monotone-threshold products use distinct columns only. A Gaussian
+   quadrature test forces every last coordinate within pi^2/(m+1)^2 of
+   one. A Radau test then bounds the aggregate terminal atom by200/m^2.
+   Both quadrature inputs are derived directly from Legendre recurrence
+   and reproducing kernels. This gives >=(n-1)^2/200 faces per die and
+   completely replaces the long exact lower-bound dependency chain.
+   The main guide now starts with this short self-contained proof.
+   The upper construction, all-sufficiently-large-K extension, and lower
+   endpoint-atom arguments have separate internal mathematical reviews.
+   The HISTORICAL analytic chain is not circular: the earlier finite
+   odds bound, weighted subset identities, and elementary Laguerre/CDF
+   bootstrap precede the final linear-degree comparison. The later sharp
+   endpoint profile is not used to prove the quadratic lower bound.
+   Three collaborators reviewed the principal proofs. Root also reread
+   the final lower assembly and scalar-profile finite realization.
+
+2. Fixed and growing numbers of small dice.
+   Three full reviews of the uniform prefix-conditioning and complexity
+   lemmas. The initial lcm(1,...,2^k) is included in the complexity bound.
+   All normalized low-moment denominators, forced nodes, and shared
+   control minors are tracked. Uncontrolled high polynomial coefficients
+   are used only for the other dice. The final theorem is genuinely
+   uniform for n>k>=1, with exponent exp(Ck^2).
+
+3. Natural endpoint profile and its sharpness.
+   Three full reviews of the finite-Jackson kernel, variable-center
+   extension, mass absorption, and normalized-maximum assembly. Global
+   sharp CDF bounds are kept explicitly; a weaker local-CDF aside was
+   removed. The order of choices of the kernel, cutoff, and interval
+   constants is noncircular. Strict one-sided windows handle flat rows.
+   The all-scale Gaussian/Legendre examples and their transfer to finite
+   uniform dice also have three full reviews. They prescribe the deficit
+   only up to fixed factors and give no efficient face-count bound.
+   The row-weight corollary has three reviews; its matching examples are
+   explicitly restricted to the arbitrary-weight tensor class.
+
+4. Prefix completion and eventual common counts.
+   Order-doubling prefix completion and the factorial-order conductor
+   have three full reviews. The positive-prefix property is literal.
+   Every sufficiently large primorial multiple is feasible, but no bound
+   resolving the minimum-size questions is inferred from the conductor.
+
+5. Auxiliary bounds and the final report.
+   Approximate fairness upper/lower bounds and rational scalar quadrature
+   bounds were re-audited for all asymptotic parameters. The epsilon=0
+   convention and repeated scalar quadrature nodes are explicit.
+   The complete Czech report was read independently for quantifiers and
+   scope: original questions 1 and 2 remain open, small exceptional dice
+   do not control the total size, and the quasipolynomial equalization
+   estimate is labeled an elementary synthesis of already known bounds.
+
+6. Limitations of rank arguments.
+   The all-n prefix-collapse proof and squarefree Gram-completion proof
+   have three internal reviews. The Hankel-rank calculation has separate
+   root and rational-design reviews. These are method limitations, not a
+   new total-size bound. A factorial lower bound for the tangent rank of
+   every finite fair word remains unproved and is not disproved here.
+   The inherited-singularity argument uses one fixed published word to
+   falsify an asymptotic universal lemma. Both exact certificates were
+   replayed successfully on 30 September at about22:52 UTC. The first
+   script now checks the fixed input's fairness by exact subsequence
+   counts as well as the rational matrix factorization. The second checks
+   invariance under ad_H. Their code, data, and import dependencies are
+   included when this note is part of the bundle.
+
+ARTIFACT CHECKS
+
+The PDF report compiles successfully in two passes and currently has six
+pages, with no unresolved citations/references or overfull-box warnings.
+The first and last pages were also inspected visually. The source files
+are authoritative. The bundle builder follows local TeX references from
+the report and proof guides, adds the corresponding PDFs and required
+certificate files, and checks ZIP CRC integrity. All selected proof
+sources have matching PDFs. Historical guides are labeled accordingly.
+The original main.tex and published external inputs are cited
+rather than copied into the bundle.
+
+LIMITS OF REVIEW
+
+These are internal mathematical reviews by collaborating agents. They
+are not formal machine verification or external peer review. No exhaustive
+literature-novelty claim is made. Original questions 1 and 2 remain open.
+
+FINAL ARTIFACT CHECK
+The six-page report and the new three-page elementary lower proof were
+visually checked after their final rebuilds. All69 selected TeX sources
+have PDFs. One historical endpoint note needed a second LaTeX pass;
+its references have now been repaired. ZIP integrity was checked, and
+the archive is rebuilt after the final status update. No new theorem
+claim remains under review.
+
+The requested ten-hour interval ended at23:05:56 UTC and was verified
+by the clock tool at23:05:57 UTC. Final status is complete.

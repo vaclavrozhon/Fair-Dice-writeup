@@ -1,0 +1,75 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{proposition}{Proposition}
+\title{An exact certificate excluding fifteen palindrome blocks on five labels}
+\author{Research computation, 30 September 2026}
+\date{}
+\begin{document}
+\maketitle
+
+\begin{proposition}
+No concatenation of fifteen blocks of the form
+$\rho\,\operatorname{rev}(\rho)$, where each $\rho$ is a permutation
+of five labels, is permutation-fair.
+\end{proposition}
+
+This is a restricted construction obstruction. It does not rule out
+arbitrary five30-sided permutation-fair dice. Its literature priority
+has not been established: earlier work already mentions exclusions of
+structured subclasses.
+
+\begin{proof}[Proof by an exact integer certificate]
+Work in the associative algebra in which words with a repeated letter
+vanish. Write $S=X_0+\cdots+X_4$ and let $P_\rho$ be the subsequence
+signature of the palindrome block. Every block is two-wise fair, so
+\[
+ P_\rho=\exp(2S)+D_\rho,\qquad \deg D_\rho\ge3.
+\]
+Products of two defects have degree at least six. Thus, for blocks at
+positions $i=0,\ldots,14$, the degree-five defect of their product is
+exactly the sum of
+\[
+ \exp(2iS)D_\rho\exp(2(14-i)S).
+\]
+
+For a distinct-letter pattern $q$, let $N_\rho(q)$ be its subsequence
+count in the block and put
+\[
+ d_3(q)=3N_\rho(q)-4,\quad
+ d_4(q)=3N_\rho(q)-2,\quad
+ d_5(q)=15N_\rho(q)-4.
+\]
+For each length-five pattern $p=p_1\cdots p_5$ and $j=14-i$, the
+integer column recording fifteen times this transported defect is
+\begin{align*}
+ c_{i,\rho}(p)={}&d_5(p)+10i\,d_4(p_2\cdots p_5)
+   +10j\,d_4(p_1\cdots p_4)\\
+ &+10i^2d_3(p_3p_4p_5)+20ij\,d_3(p_2p_3p_4)
+   +10j^2d_3(p_1p_2p_3).
+\end{align*}
+Fairness therefore requires $\sum_i c_{i,\rho_i}=0$.
+Global relabeling allows us to fix $\rho_0=(0,1,2,3,4)$.
+
+The accompanying file \path{five_30_farkas.json} supplies an integer
+vector $\lambda$ indexed by the120 patterns, with all entries between
+$-20$ and $20$. Direct integer evaluation gives
+\[
+ \lambda\cdot c_{0,\mathrm{id}}
+   +\sum_{i=1}^{14}\min_{\rho\in S_5}
+                      \lambda\cdot c_{i,\rho}=40080>0.
+\]
+Every proposed sequence consequently has a strictly positive scalar
+product of its total defect with $\lambda$, and cannot have zero total
+defect. The independent program
+\path{verify_five_30_obstruction.py} regenerates all1680 remaining
+columns and verifies the displayed integer inequality. It needs only
+the Python standard library, no numerical solver.
+\end{proof}
+
+\paragraph{Additional verification.}
+An independent integer subsequence dynamic program checked the
+transported-defect formula on20 random150-letter words and all120 full
+patterns in each. The linear-programming search was used only to find
+the certificate; correctness rests on the subsequent integer checks.
+\end{document}

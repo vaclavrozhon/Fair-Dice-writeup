@@ -1,0 +1,138 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\PP}{\mathcal P}
+\title{Refining pure densities onto one uniform rational grid}
+\author{Complete proof; three independent mathematical reviews completed}
+\date{30 September 2026}
+\begin{document}\maketitle
+Fix $q\ge0$. Here polynomial bounds are in a parameter $m$, and their
+exponents may depend on $q$ and on the fixed input bounds. Rational
+coefficients of the input densities need not have small denominators.
+
+\begin{theorem}\label{main}
+Suppose a partition of $[0,1]$ into rational intervals has polynomially
+many cells, all endpoints on one polynomial rational grid, and all
+cell lengths at least an inverse polynomial. On each cell $I$ there
+is one positive rational polynomial density $f_I$ of polynomial degree,
+with its maximum and reciprocal minimum bounded by polynomials.
+Suppose all unnormalized cell moments through degree $q$ have one
+polynomial common denominator.
+For any polynomial degree bound $M\ge q$, there is a refinement of
+this partition onto one uniform rational grid, and positive rational
+polynomial densities on the refined cells, with these properties:
+\begin{enumerate}
+\item Every original cell moment through degree $M$ is unchanged.
+\item Every refined cell moment through degree $q$ has one polynomial
+common denominator, shared by all cells and all densities.
+\item The new density is uniformly within an arbitrarily prescribed
+inverse polynomial of the old density. In particular it is positive
+and retains fixed conditional density-ratio bounds whenever the input
+has such bounds.
+\end{enumerate}
+The uniform grid denominator, number of cells, and piece degrees are
+polynomial. Labels of pure cells may be retained, so this refinement
+preserves ordered degree-$M$ moments of any collection of densities
+whose original cells are pure.
+\end{theorem}
+
+\begin{lemma}[A fixed-order polynomial quotient]\label{quotient}
+Let $I\subset[0,1]$ be partitioned into intervals of common length
+$h$. Let $P$ project onto $\PP_q$ separately on those intervals.
+For $Q\in\PP_M$,
+\[
+ \operatorname{dist}_{L^2(I)}(Q,\PP_q)
+ \le C_q(M+1)^{2q+2}h^{-q-1}\|(I-P)Q\|_{L^2(I)}.
+\]
+\end{lemma}
+\begin{proof}
+Subtract the degree-$q$ Taylor polynomial at the left endpoint and
+integrate $Q^{(q+1)}$ repeatedly. Since $|I|\le1$, its $L^2$ norm
+is bounded by $C_q\|Q^{(q+1)}\|_2$.
+The $(q+1)$st derivative of $PQ$ is zero on every small interval.
+The fixed-order polynomial inverse Markov estimate on each small
+interval gives the stated bound after summing squares.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{main}]
+Choose one polynomial integer $Q$, divisible by the original endpoint
+grid denominator and large enough that every original cell contains
+at least $q+1$ intervals of length $h=1/Q$.
+Choose a much finer polynomial integer $T$; its exponent will be fixed
+last. On every small grid cell, round each of its raw moments through
+$q$ to a multiple of $1/T$. Initially these differ from the original
+moments by at most $1/T$.
+
+We restore the first $q+1$ totals on each original cell $I$ without
+introducing unrelated denominators. Use its first $q+1$ adjacent small
+cells as controls. On these controls add constant-density corrections
+$c_0,\ldots,c_q$ to the rounded moment vectors. Their moment matrix is
+\[
+ A_{rj}=\int_{a+jh}^{a+(j+1)h}x^r\,dx,
+       \qquad 0\le r,j\le q,
+\]
+where $a$ is the left endpoint of $I$.
+It is invertible: after $x=a+hy$, its determinant is
+\[
+ \det A=h^{(q+1)(q+2)/2}
+       \det\left(\int_j^{j+1}y^r\,dy\right)_{r,j=0}^q.
+\]
+The latter determinant is a fixed nonzero rational number, because its
+rows are monic polynomials of degrees $r$ evaluated at the distinct
+integers $j$ (the leading coefficient of $\int_j^{j+1}y^rdy$ as a
+polynomial in $j$ is one).
+Thus $A^{-1}$ has norm bounded by a fixed power of $Q$, uniformly in
+$a\in[0,1]$. More strongly, its entries have one denominator dividing
+a fixed constant times a fixed power of $Q$: the determinant has the
+displayed translation-independent form, and all entries of $A$ have
+that property because $a$ is on the same grid.
+The discrepancies of the coarse totals have one common denominator
+dividing $T$ times the original low-moment denominator. Consequently
+all corrected low moments, for every cell, have one polynomial common
+denominator. Their errors from the original fine-cell moments are at
+most $\operatorname{poly}(Q)/T$.
+
+Fix an original cell $I$ and write $f$ for its original density.
+Realize the small low-moment errors on each grid cell by a polynomial
+$e$ of degree at most $q$. The rescaled Legendre moment basis gives
+\[
+ \|e\|_\infty\le C_q h^{-q-1}\operatorname{poly}(Q)/T.
+\]
+The correction has zero total moments through $q$ on $I$, by the
+preceding restoration. We must restore its unwanted higher moments.
+On $W=(I-P)\PP_M\subset L^2(I)$ define
+\[
+ \Lambda((I-P)F)=\int_I eF.
+\]
+This is well defined because $\ker((I-P)|_{\PP_M})=\PP_q$ and
+$e$ annihilates $\PP_q$. Lemma~\ref{quotient} bounds its norm by
+$C_q(M+1)^{2q+2}h^{-q-1}\|e\|_2$.
+Let $z\in W$ be the Riesz representative. It has zero low moments
+on every fine cell and
+\[
+ \|z\|_\infty
+ \le (M+1)h^{-1/2}\|z\|_2
+ \le \operatorname{poly}_q(M,Q)/T.
+\]
+The new density $f+e-z$ therefore has precisely the prescribed fine-cell
+low moments and the original moments through $M$ on $I$.
+Everything is rational: fine moments of $f$ are rational, the moment
+systems are rational, and a rational basis of $W$ has rational Gram
+matrix. Choosing the exponent and constant in $T$ sufficiently large
+makes $\|e-z\|_\infty$ smaller than any prescribed inverse polynomial,
+uniformly across all original cells. Positivity follows from the
+assumed polynomial lower bound. The new polynomial degrees are at most
+$\max(M,\deg f)$.
+
+Every new-cell moment denominator is the already controlled target
+denominator; the coefficients of $z$ may have much larger denominators,
+which is harmless. If the original cells are pure for different labels,
+a product of original cells fixes the relative order of all labels
+that occupy distinct cells. At most one selected variable can occupy
+each pure cell. Conditional order kernels of degree at most $M$ are
+therefore preserved by the unchanged marginal cell moments. This proves
+the final assertion.
+\end{proof}
+\end{document}

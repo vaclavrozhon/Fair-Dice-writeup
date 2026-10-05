@@ -1,0 +1,53 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,hyperref}
+\begin{document}
+\title{Finite denominator searches for an optimal degree-four rule}
+\author{Research note, 30 September 2026}
+\date{}\maketitle
+
+The bound in \path{optimized_two_adic_filter.tex} gives $R_4\ge16$,
+where repeated rational nodes are allowed. Its equality-case corollary
+shows that a putative $16$-node rule has only odd denominators.
+If $D$ is a common denominator, the second and fourth moments force
+$3\mid D$ and $5\mid D$. Thus $D$ is an odd multiple of $15$.
+
+We exhaustively searched the grids $x_i\in\{0,1/D,\ldots,1\}$ for
+$D=15,45,75,105$, finding no rule. This is a finite-grid result only;
+it does not improve the universal bound $R_4\ge16$.
+
+Set $z_i=D(2x_i-1)$. These are odd integers in $[-D,D]$, and the
+required integer equations are
+\[
+ \sum z_i=\sum z_i^3=0,\qquad
+ \sum z_i^2=\frac{16D^2}{3},\qquad
+ \sum z_i^4=\frac{16D^4}{5}.
+\]
+The program enumerates sorted multisets of sixteen positive magnitudes,
+split into their smaller and larger halves of eight. It matches their
+second and fourth power sums exactly. For each resulting multiset,
+a second meet-in-the-middle search enumerates all signs, matching first
+and third power sums. Repetitions and endpoints are included.
+The pruning inequalities use only the order of the two halves and
+lower or upper bounds for their remaining magnitudes.
+
+\[
+\begin{array}{r|r|r|r}
+ D&\text{stored smaller halves}&\text{visited larger halves}
+  &\text{exact even-moment candidates}\\\hline
+45&391619&3021351&2235\\
+75&13189332&113553961&30120\\
+105&149835139&1358156584&394429
+\end{array}
+\]
+Every candidate failed the exhaustive sign assignment check.
+The $D=15$ grid is contained in each of these grids.
+The separate, less optimized program
+\path{search_degree4_magnitudes.cpp} independently reproduced all
+$2235$ candidates at $D=45$ and the same negative result.
+
+The main implementation is \path{search_degree4_ordered_halves.cpp};
+the machine-readable report is \path{degree4_grid_search.json}.
+No floating-point calculation enters either exact search.
+
+\end{document}

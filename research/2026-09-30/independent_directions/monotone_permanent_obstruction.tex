@@ -1,0 +1,142 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newcommand{\fall}[2]{(#1)_{#2}}
+\title{A permanent-polynomial obstruction for monotone comparison tensors}
+\author{Research note: application of the monotone column permanent theorem}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+Let $y_1,\ldots,y_m$ be weakly increasing real columns on $K$ rows,
+with all entries in $[a,b]$. Suppose $K\ge m$ and that for every set
+$S\subseteq[m]$,
+\begin{equation}\label{mom}
+ \frac1K\sum_{q=1}^K\prod_{j\in S}y_j(q)=\mu_{|S|}.
+\end{equation}
+Write $\fall{u}{s}=u(u-1)\cdots(u-s+1)$, and define $c_0,c_1,\ldots$
+formally by
+\begin{equation}\label{gen}
+ \sum_{s\ge0}c_st^s
+ =\exp\left(-K\sum_{j\ge1}\frac{\mu_j}{j}t^j\right).
+\end{equation}
+Only $\mu_1,\ldots,\mu_m$ are needed below.
+
+\begin{theorem}\label{main}
+The degree-$m$ polynomial
+\[
+ Q_{K,m}(z)=\sum_{s=0}^m
+       \frac{\fall{m}{s}}{\fall{K}{s}}c_s z^{m-s}
+\]
+has all its roots in $[a,b]$.
+\end{theorem}
+\begin{proof}
+Consider the normalized rectangular permanent
+\[
+ R(z)=\frac1{\fall K m}
+ \sum_{\iota:[m]\hookrightarrow[K]}
+       \prod_{j=1}^m(z-y_j(\iota(j))).
+\]
+It is real-rooted by the monotone column permanent theorem of
+Br\"and\'en, Haglund, Visontai and Wagner \cite[Proposition 4.2]{BHVW}.
+Indeed, the columns of $(-y_j(q))$ decrease weakly. Equivalently, pad
+this matrix with $K-m$ zero columns and apply the square theorem:
+the resulting univariate permanent is a positive constant times
+$z^{K-m}R(z)$. For $z>b$ every summand defining $R$ is positive, and
+for $z<a$ every summand has the same nonzero sign. Hence every root of
+$R$ lies in $[a,b]$.
+
+Fix $S\subseteq[m]$, $|S|=s$. By inclusion--exclusion on equal row
+indices (the partition-lattice M\"obius formula),
+\[
+ \sum_{\iota:S\hookrightarrow[K]}
+       \prod_{j\in S}y_j(\iota(j))
+ =\sum_{\pi\in\Pi(S)}\prod_{B\in\pi}
+        (-1)^{|B|-1}(|B|-1)!K\mu_{|B|}.
+\]
+The exponential formula and \eqref{gen} show that this quantity is
+$(-1)^s s!c_s$, independently of the chosen subset $S$. Each assignment
+on $S$ extends to $\fall{K-s}{m-s}$ assignments on all columns.
+Expanding $R$ therefore gives its coefficient of $z^{m-s}$ as
+\[
+ \frac{(-1)^s\binom ms\fall{K-s}{m-s}}{\fall K m}
+       (-1)^s s!c_s
+ =\frac{\fall m s}{\fall K s}c_s.
+\]
+Thus $R=Q_{K,m}$.
+\end{proof}
+
+\begin{corollary}\label{square}
+If $K=m$, the mixed-moment identities \eqref{mom} imply the existence
+of $K$ real numbers $t_1,\ldots,t_K\in[a,b]$ with
+\[
+ \frac1K\sum_{q=1}^K t_q^s=\mu_s\qquad(1\le s\le K).
+\]
+In particular, a weakly monotone $m$-column, $m$-row uniform-interval
+comparison tensor implies an ordinary real equal-weight degree-$m$
+quadrature formula with $m$ nodes.
+\end{corollary}
+\begin{proof}
+Here $Q_{K,K}(z)=\sum_{s=0}^K c_s z^{K-s}$. Its roots belong to
+$[a,b]$ by Theorem~\ref{main}. Newton's identities and \eqref{gen}
+give the claimed power sums of these roots.
+\end{proof}
+This statement permits flat columns and repeated row values, and does
+not assume that many columns coincide. Rational input does not imply
+rational roots, so it is a real quadrature reduction only.
+
+For centered uniform-interval moments, $[a,b]=[-1,1]$,
+$\mu_{2j}=1/(2j+1)$ and $\mu_{2j-1}=0$. Thus
+\[
+ \sum_{s\ge0}c_st^s
+ =\exp\left(-K\sum_{j\ge1}\frac{t^{2j}}{2j(2j+1)}\right),
+ \qquad
+ s c_s=-K\sum_{\substack{2\le j\le s\\j\ \mathrm{even}}}
+              \frac{c_{s-j}}{j+1}.
+\]
+This gives an exact rational algorithm for the obstruction. For any
+formal degree-$K$ moment polynomial
+$P_K(z)=\sum_{s=0}^K c_s z^{K-s}$, one also has
+\[
+ Q_{K,m}(z)=\frac{m!}{K!}P_K^{(K-m)}(z).
+\]
+In particular differentiation can restore real-rootedness that the
+full degree-$K$ polynomial lacks.
+
+For example, when $K=m=8$ the polynomial is
+\[
+ z^8-\frac43z^6+\frac{22}{45}z^4-\frac{148}{2835}z^2
+       -\frac{43}{42525}.
+\]
+Its constant coefficient is negative. But an even monic degree-eight
+polynomial with eight real roots has four pairs of opposite roots,
+and therefore a nonnegative constant coefficient. This excludes a
+weakly monotone eight-column, eight-row comparison tensor without
+any numerical root calculation. Together with the earlier rational
+bound $K\ge n-1$, it gives $g(9)\ge9$.
+
+Exact rational Sturm computations give the following first admissible
+$K\ge m$ for this necessary condition alone:
+\[
+\begin{array}{c|rrrrrrrrrrrr}
+ m&8&9&10&11&12&14&16&18&20&24&28&30\\\hline
+ K&9&9&11&12&14&16&19&22&24&29&35&37.
+\end{array}
+\]
+The complete table through $m=30$ is produced by
+\path{check_monotone_permanent.py}. Passing this polynomial test does
+not prove that a comparison tensor exists. These data do not support
+a quadratic lower bound from this obstruction alone.
+
+\begin{thebibliography}{1}
+\bibitem{BHVW}
+P. Br\"and\'en, J. Haglund, M. Visontai and D. G. Wagner,
+\emph{Proof of the monotone column permanent conjecture},
+Notions of Positivity and the Geometry of Polynomials,
+Trends in Mathematics, Birkh\"auser (2011), 63--78.
+\href{https://arxiv.org/abs/1010.2565}{arXiv:1010.2565},
+\href{https://doi.org/10.1007/978-3-0348-0142-3_5}{doi:10.1007/978-3-0348-0142-3\_5}.
+\end{thebibliography}
+\end{document}

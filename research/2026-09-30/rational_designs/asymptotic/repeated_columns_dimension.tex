@@ -1,0 +1,145 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newcommand{\E}{\mathbb E}
+\title{Repeated comparison columns force a larger support}
+\author{Asymptotic research note; independently reviewed}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+Let $p_1,\ldots,p_m:[K]\to[0,1]$ be nondecreasing, and give the
+ordered rows arbitrary positive weights. Suppose
+\[
+ \E\prod_{j\in S}p_j=\frac1{|S|+1}
+ \qquad(S\subseteq[m]).
+\]
+This is the necessary comparison-tensor condition for a distinguished
+die with $K$ faces in a permutation-fair family of $m+1$ dice.
+
+\begin{theorem}\label{main}
+Suppose at least $r\ge2$ columns equal a common function $a$.
+There is an integer $R\in[r,m]$ such that $a$ has the uniform-interval
+moments through degree $R$, and either
+\begin{enumerate}
+\item $R=m$, so $a$ itself is a scalar quadrature of degree $m$; or
+\item $R<m$, and
+\[
+ K\ge
+ \left\lfloor\frac R2\right\rfloor(m-R)
+ +\left\lceil\frac R2\right\rceil+1.
+\]
+\end{enumerate}
+If $a$ is strictly increasing, one can take $R$ to be exactly the
+number of columns equal to $a$. The theorem also permits arbitrary
+plateaus in every column.
+\end{theorem}
+\begin{proof}
+For every column outside the original equal group put $e_j=p_j-a$.
+The first two mixed moments, using two copies of $a$, give
+\[
+ \E e_j=\E ae_j=0,\qquad \E e_i e_j=0\quad(i\ne j).
+\]
+Call $e_j$ flat if $\E(e_j\mid a)=0$. On every level block $B$ of
+$a$, all columns remain nondecreasing, and a flat error has mean zero.
+For a flat $e_i$ and any other error $e_j$,
+\[
+ \E(e_i e_j\mid B)=\operatorname{Cov}(e_i,e_j\mid B)\ge0.
+\]
+Their unconditional inner product is zero. Positivity of the row
+weights therefore makes this conditional covariance zero on each block.
+The equality case of the monotone covariance inequality says that
+at least one function is constant on the block: its covariance is
+\[
+ \frac12\sum_{s,t\in B}w_sw_t
+ (e_i(s)-e_i(t))(e_j(s)-e_j(t)),
+\]
+and its first--last term is positive if both functions vary.
+
+Consequently, wherever a flat error varies, every other error is
+constant. Moreover at most one flat error varies on a block; a flat
+error that is constant on a block is zero there. Replacing all flat
+columns by $a$ preserves every mixed moment: on each block a product
+either remains unchanged or has one varying mean-zero error times
+constant other factors.
+
+Let $R$ be the size of the enlarged equal group, and let
+$k=m-R$ errors remain. If $k=0$, the tensor is scalar after replacement,
+and all moments through degree $m$ follow. Otherwise every remaining
+error has nonzero conditional mean given $a$.
+Choosing distinct columns from the enlarged group gives
+\[
+ \E a^s=\frac1{s+1}\quad(0\le s\le R),\qquad
+ \E a^s e_j=0\quad(0\le s\le R-1),
+\]
+and, for distinct remaining errors,
+\[
+ \E a^s e_i e_j=0\quad(0\le s\le R-2).
+\]
+The signed measure obtained by grouping $e_j$ over the distinct values
+of $a$ is nonzero and annihilates polynomials of degree at most $R-1$.
+It must therefore be supported at at least $R+1$ distinct values,
+by the Vandermonde determinant. In particular $a$ has at least $R+1$
+values, and every remaining $e_j$ is nonzero on at least $R+1$ of
+its level sets.
+
+Put $d=\lfloor(R-2)/2\rfloor$. The $k$ subspaces
+\[
+ U_j=\operatorname{span}\{e_j,ae_j,\ldots,a^d e_j\}
+\]
+are mutually orthogonal, each of dimension $d+1=\lfloor R/2\rfloor$.
+Their dimensions follow by evaluating any vanishing polynomial
+combination on the more than $d$ distinct levels supporting $e_j$.
+They are also orthogonal to
+\[
+ P=\operatorname{span}\{1,a,\ldots,a^{R-1-d}\},
+ \qquad \dim P=R-d=\lceil R/2\rceil+1.
+\]
+Indeed all inner products involved have total power at most $R-2$
+for two error spaces and at most $R-1$ for $P$ and an error space.
+These orthogonal spaces lie in the $K$-dimensional row space, giving
+the claimed bound.
+
+If $a$ is strictly increasing, conditioning on $a$ fixes the row,
+so a flat error is identically zero. Only columns already equal to
+$a$ are added, as asserted.
+\end{proof}
+
+\begin{corollary}[Equal-weight asymptotic consequences]
+For equal row weights there is an absolute constant $c>0$ such that
+every tensor as above with $r\ge2$ identical columns satisfies
+\[
+ K\ge c\,m r.
+\]
+If the entries are rational, the same $R$ from Theorem~\ref{main}
+also satisfies
+\[
+ K\ge 2^{2\lfloor R/2\rfloor}.
+\]
+In particular, a rational comparison tensor with $K\le m^C$ for a fixed
+constant $C$ can
+contain only $O(\log m)$ identical columns. When a repeated class
+has size of order $\log m$, the new dimension estimate adds an
+$\Omega(m\log m)$ restriction in the regime $R\le m/2$.
+\end{corollary}
+\begin{proof}
+Equal-weight interval quadrature of degree $R$ requires $K\ge c_0R^2$
+for an absolute $c_0>0$, by the classical Chebyshev quadrature lower
+bound. If $R\ge m/2$, this implies $K\ge(c_0/2)mR$.
+If $R<m/2$, the dimension bound gives
+$K\ge\lfloor R/2\rfloor(m-R)\ge mR/6$.
+Since $R\ge r$, the first conclusion follows.
+The arithmetic conclusion uses the independently proved optimized
+2-adic bound in
+\path{../../independent_directions/optimized_two_adic_filter.tex}.
+\end{proof}
+
+The classical real quadrature input is recorded, for example, in
+Kuijlaars, \emph{The minimal number of nodes in Chebyshev type
+quadrature formulas} (1993),
+\href{https://doi.org/10.1016/0019-3577(93)90007-L}{doi:10.1016/0019-3577(93)90007-L}.
+This note does not prove a universal quadratic per-die lower bound:
+models with many distinct comparison columns remain outside its
+effective range. Its conclusion applies to actual dice whenever
+their comparison columns satisfy the stated repetition hypothesis.
+\end{document}

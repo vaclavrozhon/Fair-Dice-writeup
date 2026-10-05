@@ -1,0 +1,120 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newcommand{\E}{\mathbb E}
+\title{Row weights on the natural endpoint scale}
+\author{Research corollary; independently reviewed}
+\date{30 September 2026}
+\begin{document}\maketitle
+Let $p_i(q)\in[0,1]$, $1\le i\le m$, be nondecreasing in the finite
+ordered row index $q$. Give the rows positive weights $w_q$ summing
+to one, and suppose that
+\[
+ \sum_qw_q\prod_{i\in S}p_i(q)=\frac1{|S|+1}
+                      \qquad(S\subseteq[m]).
+\]
+Write $u_i(q)=1-p_i(q)$ and $s_q=\sum_i u_i(q)$.
+
+\begin{theorem}
+For every fixed $L<\infty$ there is a constant $C_L$ such that every
+row with $0\le s_q\le L$ satisfies
+\[
+ w_q\le C_L\left(\frac{\sqrt{s_q}}{m^{3/2}}+\frac1{m^2}\right).
+\]
+The statement allows arbitrary positive row weights; it does not
+assume that the rows are equally weighted.
+\end{theorem}
+\begin{proof}
+It suffices to treat sufficiently large $m$, depending on $L$;
+the remaining dimensions follow from $w_q\le1$ after increasing
+$C_L$. We use the reviewed sharp relative balance and distribution
+bound from \path{../../sharp_endpoint_relative_balance.tex}:
+\[
+ \max_i u_i\le\frac{C(s+m^{-1})}{m},\qquad
+ m\sum_{s_q\le t}w_q\le C(t+m^{-1})\quad(t\ge0).
+\]
+The second inequality is the same bound after its fixed rescaling
+of the deficit coordinate.
+
+Fix one index $i$ and put $M=m-1$, $\ell=\lfloor M/4\rfloor$,
+\[
+ x_i=\frac\ell M(s-u_i),\qquad
+ \overline A_i=\E_{B}\prod_{j\in B}p_j,\qquad
+ \mu_i(q)=(\ell+1)\overline A_i(q)w_q,
+\]
+where $B$ is a uniform $\ell$-subset of $[m]\setminus\{i\}$.
+This is a probability measure by the mixed-moment identities.
+For $s\le L$, sharp balance makes every $u_j\le1/2$ for sufficiently
+large $m$. Therefore every such success product obeys
+\[
+ \prod_{j\in B}(1-u_j)
+ \ge\exp\left(-2\sum_{j\in B}u_j\right)\ge e^{-2L},
+ \qquad \mu_i(q)\ge c_L m w_q.                 \tag{1}
+\]
+
+The variable-width mass lemma in
+\path{../../independent_directions/natural_scale_endpoint_profile.tex},
+together with its reviewed fixed-positive-interval companion, gives
+\[
+ \mu_i\{|x_i-a|\le\sqrt{a/m}\}\le C_L\sqrt{a/m}
+       \qquad(T/m\le a\le L),                  \tag{2}
+\]
+for some fixed sufficiently large $T$. All constants may be enlarged
+to cover the overlap of the variable and fixed ranges.
+
+For $s_q\ge T'/m$, with a sufficiently large fixed $T'$, sharp
+balance implies $u_i(q)/s_q=O(1/m)$, uniformly in this range.
+Consequently $x_i(q)\asymp s_q$ and $x_i(q)\ge T/m$.
+Apply (2) at the center $a=x_i(q)$. Its interval contains row $q$,
+so (1) yields
+\[
+ w_q\le\frac{C_L}{m}\sqrt{x_i(q)/m}
+       \le C_L\frac{\sqrt{s_q}}{m^{3/2}}.
+\]
+If $s_q\le T'/m$, the sharp distribution bound directly gives
+\[
+ m w_q\le m\sum_{s_r\le s_q}w_r
+       \le C(s_q+m^{-1})\le C_{T'}/m.
+\]
+These two cases prove the theorem, including a row at $s_q=0$.
+\end{proof}
+
+\paragraph{Sharpness for arbitrary weighted tensors.}
+The scale is attained, up to fixed constants, within the weighted
+comparison-tensor class. Indeed, take a positive scalar quadrature
+exact through degree $m$, use its weights as row weights, and set
+all $m$ columns equal to its node value. Then every required mixed
+moment is a scalar moment. The Gaussian node lemma in
+\path{../../independent_directions/intermediate_endpoint_sharpness.tex}
+gives, for every $m^{-1}\le\lambda\le L$, a row with
+\[
+ s\asymp\lambda,\qquad
+ w_q\ge c_L\sqrt\lambda\,m^{-3/2}.
+\]
+Here comparability constants are independent of $m$ and $\lambda$;
+no exact prescribed numerical deficit is asserted.
+
+The additive floor is also attained at $s=0$. Choose
+$K=\lceil(m+3)/2\rceil$ and the positive $K$-node uniform
+Gauss--Lobatto rule, which is exact through degree $2K-3\ge m$.
+An elementary exactness and positivity proof is given in
+\path{../../endpoint_profile_sharpness.tex}. Its endpoint cardinal
+polynomial at $1$ is
+\[
+ \ell_1(t)=\frac{tP'_{K-1}(2t-1)}{P'_{K-1}(1)}.
+\]
+Indeed the interior Lobatto nodes are the zeros of the numerator's
+Legendre derivative. Integration by parts and Legendre orthogonality
+give $\int_0^1tP'_{K-1}(2t-1)\,dt=1/2$, whereas
+$P'_{K-1}(1)=K(K-1)/2$. Thus the endpoint weight is
+$1/[K(K-1)]\asymp m^{-2}$. The all-equal-column tensor at this
+endpoint has $s=0$, as desired.
+
+\paragraph{Scope.}
+For a comparison tensor of actual fair dice, $w_q$ is the probability
+of the distinguished face. The theorem bounds each endpoint face
+probability on its own deficit scale. It does not assert that every
+specified deficit can be realized with a matching number of faces,
+or provide an additional total-size construction.
+\end{document}

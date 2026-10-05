@@ -1,0 +1,94 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\title{A triple-last half-word gives four-wise fair dice}
+\author{Research note: exact palindrome criterion and small constructions}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+Say that a word is triple-last fair if on every triple of letters,
+each die is largest with probability $1/3$.
+
+\begin{theorem}\label{lift}
+Let $V$ have $h$ occurrences of each of its letters. The palindrome
+$W=V^{\rm rev}V$ is three-wise fair if and only if $V$ is triple-last
+fair. Whenever these conditions hold, $W$ is also four-wise fair.
+No pairwise fairness assumption on $V$ is needed.
+\end{theorem}
+\begin{proof}
+Fix three letters $i,j,k$. For an occurrence of $i$ in $V$, let
+$a,b$ be the numbers of earlier $j$'s and $k$'s. The corresponding
+two occurrences in $W$ have prefix counts $(h-a,h-b)$ and
+$(h+a,h+b)$. Hence their contributions to the count of selections
+in which $i$ is largest sum to
+\[
+ (h-a)(h-b)+(h+a)(h+b)=2h^2+2ab.
+\]
+Summing over all $h$ occurrences of $i$ gives
+\[
+ L_i(W)=2h^3+2L_i(V).
+\]
+Therefore $L_i(W)=(2h)^3/3$ is equivalent to $L_i(V)=h^3/3$.
+A palindrome gives the same count to an order and its reversal.
+For a triple, the three equal last-place probabilities, together
+with these reversal equalities, force all six order probabilities
+to equal $1/6$. This proves the equivalence.
+
+For completeness, the standard even-degree lifting argument applies
+to any three-wise fair palindrome. In the completed free associative
+algebra, give a word its signature $S=\prod\exp(X_{\rm letter})$.
+Coefficients of words with distinct letters are exactly scattered
+subword counts. The Baker--Campbell--Hausdorff logarithm $\log S$
+is a Lie series. Reversal acts on a homogeneous Lie term of degree
+$d$ by $(-1)^{d-1}$. Since the signature of a palindrome is fixed
+by reversal, its even-degree logarithmic terms vanish. Three-wise
+fairness makes its multilinear logarithmic terms of degrees two
+and three vanish as well. Thus the coefficient of any four distinct
+letters in $S$ comes solely from the fourth power of its degree-one
+term, divided by $4!$. This is exactly four-wise fairness. Terms
+with repeated letters cannot contribute to such a coefficient.
+The same lifting principle is recorded in
+\path{../partial_fairness/three_four_wise_near_linear.tex}.
+\end{proof}
+
+For the opposite orientation $VV^{\rm rev}$, replace ``triple-last''
+by ``triple-first'' in Theorem~\ref{lift}.
+
+\begin{corollary}
+The minimum common face counts satisfy
+\[
+ M_4(5)=M_4(6)=12.
+\]
+\end{corollary}
+\begin{proof}
+The exact certificates
+\path{../partial_fairness/triple_winner_half_n5_M6_seed0.json} and
+\path{../partial_fairness/triple_winner_half_n6_M6_seed0.json}
+give six-face triple-last fair half-words. In particular, the
+five-letter half-word is
+\[
+ 001002344321324114234231132400.
+\]
+The six-letter half-word is
+\[
+ 010234432155042311324550055324114230.
+\]
+For every triple and every choice of its last label, each half-word
+has exactly $6^3/3=72$ relevant selections. Their reverse-then-forward
+palindromes therefore give twelve-face four-wise fair dice.
+The lower bound follows from $M_4(n)\ge M_3(n)=12$ for $n=5,6$,
+proved in \path{cloning_three_wise_dice.tex} using the six-face
+extension obstruction.
+\end{proof}
+
+The independent verifier \path{verify_four_wise_palindromes.py}
+enumerates index subsets literally, without reusing the constructor's
+dynamic program. It checks every ordered pair, triple and quadruple:
+their counts are respectively $72,288,864$. There are $120$ quadruple
+orders in the five-letter case and $360$ in the six-letter case.
+The verifier also checks the half-word last-place counts and the
+exact orientation $W=V^{\rm rev}V$.
+\end{document}

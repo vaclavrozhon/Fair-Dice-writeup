@@ -1,0 +1,7 @@
+30 September 2026, 21:44 UTC
+
+The order-doubling positive prefix completion has completed independent mathematical reviews by root, rational_designs, and independent_directions. The eventual conductor has completed root and rational_designs full reviews; its separate inputs were previously reviewed. Primary Kuperberg-Lovett-Peled Theorem 1.6 was independently checked by all three reviewers.
+
+Checked sunflower constants, equal power-sum petals, t-wise averaging, nonlinear degree cutoff, polynomial transport, literal prefix placement, one-time filler divisibility, compressed signed target, growth/Ore fraction clearing, and Frobenius threshold. Root requested the harmless positive-multiple wording at a possible zero threshold; fixed. These are mathematical reviews, not formal verification or a claim of literature novelty.
+
+The regular-realization note now includes the immediate exp(Theta(n log n)) regular-word length corollary. Its lower dimension bound and regular-prefix construction were previously independently reviewed.

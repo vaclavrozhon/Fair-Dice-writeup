@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "support": 14,
+  "slot_sums": [
+    0,
+    0,
+    0
+  ],
+  "all_full_outputs_zero": true,
+  "nonzero_triple_outputs": 24,
+  "first_triple_output": "-120",
+  "method": "position-subset enumeration and Fraction arithmetic"
+}

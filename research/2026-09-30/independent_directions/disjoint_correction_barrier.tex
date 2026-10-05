@@ -1,0 +1,88 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}[proposition]{Corollary}
+\title{A quadratic limitation of disjoint linear moment corrections}
+\author{Research note, 30 September 2026}
+\date{}
+\begin{document}
+\maketitle
+
+\noindent\textbf{Status.} Complete elementary proof. This is a limitation
+of the new construction method, not a lower bound for arbitrary fair dice.
+It explains why reducing the number of nodes in each private correction
+set cannot turn that method into a linear-size exceptional die.
+
+\begin{proposition}\label{prop:barrier}
+Let $m\geq2$, and let $B$ be a nonzero linear functional on the polynomials
+of degree at most $m-1$. Suppose that, for each $j\in[m]$, it has a signed
+atomic representation
+\[
+ B(a)=\sum_{q\in Q_j}\delta_{j,q}a(t_q)
+ \qquad(\deg a\leq m-1),
+\]
+where all $t_q$ are distinct, the sets $Q_1,\ldots,Q_m$ are pairwise
+disjoint, and all displayed weights are nonzero. Then
+\[
+ |Q_i|+|Q_j|\geq m+1\quad(i\ne j),\qquad
+ \sum_{j=1}^m|Q_j|\geq\frac{m(m+1)}2.
+\]
+More precisely, minimizing the integer sum under these pair inequalities
+requires at least
+\[
+ \begin{cases}
+  m(m+1)/2,&m\text{ odd},\\
+  m(m+2)/2-1,&m\text{ even}.
+ \end{cases}
+\]
+\end{proposition}
+\begin{proof}
+Subtract the representations for $i$ and $j$. This gives a nonzero signed
+measure with support $Q_i\cup Q_j$ whose moments of orders
+$0,\ldots,m-1$ vanish. A signed measure supported on $s\leq m$ distinct
+points and with these vanishing moments must be zero: apply the first $s$
+moment equations, whose coefficient matrix is an invertible Vandermonde
+matrix. Since the supports are disjoint and all weights are nonzero,
+the difference measure is nonzero. Thus $|Q_i|+|Q_j|\geq m+1$.
+Summing over unordered pairs gives
+\[
+ (m-1)\sum_j|Q_j|\geq\binom m2(m+1).
+\]
+For the sharper integer statement, write $a_1\leq\cdots\leq a_m$ for
+the support sizes. Only $a_1+a_2\geq m+1$ matters for minimization.
+If $m=2r+1$, taking all $a_j=r+1$ attains the displayed bound.
+If $m=2r$, either $a_1\geq r+1$, giving total at least $m(r+1)$,
+or $a_1\leq r$ and $a_j\geq2r+1-a_1$ for $j\geq2$.
+The latter sum is minimized at $a_1=r$, and equals
+$r+(m-1)(r+1)=m(m+2)/2-1$.
+\end{proof}
+
+\paragraph{Application to the fair-dice construction.}
+The construction in
+\texttt{size\_bounds/polynomial\_exceptional\_die.tex} uses $m=n-1$ old
+dice and private node sets $Q_j$ for their density corrections. After
+absorbing the factor $1/K$ into the signed weights, its common correction
+functional is exactly of the form above. Any unused nodes only increase
+the total distinguished-die size. Thus a nonzero correction forces
+$K=\Omega(m^2)$ within this method.
+
+If $B=0$, the uncorrected rational distinguished nodes already form a
+scalar rational equal-weight interval quadrature of degree $m$.
+The companion two-adic theorem then forces
+$K\geq2^{\lfloor m/2\rfloor}$. In particular, asymptotically polynomial
+versions of this disjoint-support construction necessarily use a nonzero
+correction, and the quadratic limitation applies.
+
+\paragraph{The remaining exceptional-die problem.}
+Let $g(n)$ be the minimum number of faces of a prescribed die in an
+$n$-die permutation-fair collection, with the other dice unrestricted.
+The results obtained in this research session give
+\[
+ n-1\leq g(n)\leq Cn^2,
+ \qquad g(2)=1,\quad g(3)=2,\quad g(4)=3.
+\]
+The proposition does not decide whether $g(n)$ has linear or quadratic
+order. A construction with $o(n^2)$ distinguished faces would need a
+mechanism beyond disjoint private supports representing one common
+nonzero correction functional in this way.
+\end{document}

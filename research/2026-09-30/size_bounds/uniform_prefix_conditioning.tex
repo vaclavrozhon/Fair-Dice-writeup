@@ -1,0 +1,134 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{lemma}{Lemma}\newtheorem{theorem}{Theorem}
+\newcommand{\PP}{\mathcal P}
+\title{Uniform dependence on the number of controlled prefix moments}
+\author{Complete proof; three independent mathematical reviews completed}
+\date{30 September 2026}
+\begin{document}\maketitle
+This note makes the fixed-parameter constants in
+\path{../rational_designs/asymptotic/multiple_prefix_moment_conditioning.tex}
+explicit enough for a growing-number-of-dice audit. It does not alone
+supply a uniform complexity bound for the entire construction.
+All norms are Lebesgue $L^2[0,1]$ norms.
+
+\begin{lemma}[A uniform multiplier bound]\label{multiplier}
+Let $Q$ be a real polynomial of degree $h$, with all roots in $[0,1]$
+and leading coefficient of absolute value at least one. Then for
+$p\in\PP_r$,
+\[
+ \|Qp\|_2\ge 2^{-1/2}[4h(r+1)^2]^{-h}\|p\|_2
+\]
+when $h\ge1$.
+\end{lemma}
+\begin{proof}
+Remove intervals of radius $\varepsilon=[4h(r+1)^2]^{-1}$ around
+the roots, counted with multiplicity. Their total length is at most
+$2h\varepsilon$. The polynomial evaluation inequality
+$\|p\|_\infty\le(r+1)\|p\|_2$ shows that at most half of its squared
+norm is lost. On the remainder, factorization gives
+$|Q|\ge\varepsilon^h$. Integrating there proves the claim.
+No root-separation bound is needed.
+\end{proof}
+
+\begin{theorem}\label{conditioning}
+There is an absolute constant $C$ with the following property.
+Use $q\ge1$ Legendre bands and cumulative moments $M_0,\ldots,M_q$
+from the cited multiple-prefix note, with multiplier degree $r$, total
+band degree $D$, and $0<\eta\le1/(2q)$. Then
+\[
+ \left(\|p_*\|_2^2+\sum_{l=0}^q\|p_l\|_2^2\right)^{1/2}
+ \le e^{C(q+1)^2\log(q+2)}
+       (D+1)^{C(q+1)^2}\eta^{-2q}
+       \left\|p_*+\sum_{l=0}^q p_lM_l\right\|_2.
+\]
+Minimal band choices satisfy
+$D+1\le C3^q(r+q+2)$.
+In particular, if $r,q,\eta^{-1}\le P$ and $P\ge2$, the inverse
+norm is at most $P^{C(q+1)^3}$. More generally it is at most
+$P^{C(q+1)^3}\eta^{-2q}$ when only $r,q\le P$.
+\end{theorem}
+\begin{proof}
+We track the existing proof, retaining its notation
+$w=t(1-t)$, $H_i=\int_0^tP_{d_i}(2u-1)du$,
+$\lambda_i=d_i(d_i+1)$, and
+$\mathcal L_i C=(wC)''+\lambda_iC$.
+The iterated three-band estimate costs at most
+\[
+ T=C_0^q(D+1)^{6q}\eta^{-q}.
+\]
+Indeed each iteration is the same absolute-constant three-band lemma;
+summing squares does not introduce another dimension-dependent factor.
+For $F=p_*+\sum_l p_lM_l$, it bounds every coefficient in
+$F=P+\eta\sum_i(H_iA_i+H_i'B_i)$ by $T\|F\|_2$.
+The exact primitive formulas give
+\[
+ -B_i=w\sum_{l=1}^q l p_l\mathcal L_i^{-1}t^{l-1}.
+\]
+
+Choose the standard shifted Jacobi polynomials
+$J_j(t)=P_j^{(1,1)}(2t-1)$, $0\le j<q$, and put
+$\mu_j=(j+1)(j+2)$. Then
+$\mathcal L_iJ_j=(\lambda_i-\mu_j)J_j$.
+Writing $t^{l-1}=\sum_j a_{jl}J_j$ and
+$c_j=\sum_{l=j+1}^q l a_{jl}p_l$ gives
+\[
+ -B_i=\sum_{j=0}^{q-1}\frac{wJ_jc_j}{\lambda_i-\mu_j}.
+\]
+All nonzero eigenvalue differences are integers, and
+$|\lambda_i-\mu_j|\le3(D+1)^2$.
+The Cauchy determinant formula therefore bounds the inverse matrix
+by
+\[
+ \|C^{-1}\|\le q!\,3^{q^2}(D+1)^{2q^2},
+\]
+up to an additional factor polynomial in $q$ which is harmless below:
+the determinant numerator is a nonzero integer, while each entry has
+absolute value at most one and each cofactor at most $(q-1)!$.
+Consequently all $\|wJ_jc_j\|_2$ are bounded by that quantity times
+$qT\|F\|_2$.
+
+Every $J_j$ has its $j$ roots in $(0,1)$ and leading coefficient
+$\binom{2j+2}{j}\ge1$. Thus $wJ_j$ satisfies
+Lemma~\ref{multiplier} with degree $j+2\le q+1$.
+Recovering $c_j$ costs at most
+\[
+ \sqrt2[4(q+2)(r+1)^2]^{q+2}.
+\]
+The triangular transformation between $(p_1,\ldots,p_q)$ and the
+$c_j$ has inverse norm at most $\exp(Cq^2\log(q+2))$.
+For completeness, orthogonality with weight $w$ and
+\[
+ \int_0^1 wJ_j^2=\frac{j+1}{(2j+3)(j+2)}
+\]
+give $|a_{jl}|\le C\sqrt{q+1}$. The diagonal coefficient
+$a_{l-1,l}$ is the reciprocal of the leading coefficient of $J_{l-1}$,
+so it is at least $4^{-l}$. The determinant/cofactor formula, for
+entries $l a_{jl}$, gives the asserted inverse bound directly.
+
+We have now bounded all $p_l$, $l\ge1$, by
+\[
+ e^{C(q+1)^2\log(q+2)}(D+1)^{2q^2+8q+4}\eta^{-q}\|F\|_2,
+\]
+after increasing $C$ to absorb factors depending only on $q$.
+Since $0\le M_l\le1$, subtract those terms. The remainder is
+$p_*+p_0M_0$; its trinary representation has polynomial coefficient
+$p_*+tp_0$ and coefficients $-p_0$ at each $H_i$.
+One further application of the same band estimate costs another $T$.
+This proves the stated bound with an absolute $C$.
+
+For minimal bands, writing
+$E_i=r+q+1+\sum_{j\le i}(d_j+1)$ gives
+$E_i\le3E_{i-1}+C$, hence the displayed bound on $D$.
+Finally $\log(D+1)\le Cq+C\log P$ when $r,q\le P$.
+All constant factors above can therefore be absorbed into
+$P^{C(q+1)^3}$, with an extra $\eta^{-2q}$ if it is not bounded by $P$.
+\end{proof}
+
+The same estimates hold for a density $a\le w_0\le b$, with the
+explicit additional norm-comparison factors $a^{-1/2},b^{1/2}$.
+They also hold on an exact rule for the relevant squared polynomials.
+Thus this conditioning step contains no hidden exponential dependence
+on the polynomial multiplier degree.
+\end{document}

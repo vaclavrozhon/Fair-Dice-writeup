@@ -1,0 +1,48 @@
+Independent full review, 30 September 2026.
+Reviewer: independent_directions agent.
+
+Files read in full:
+- ../power_per_die_lower_bound.tex (5/4 exponent version)
+- ../rational_designs/asymptotic/finite_endpoint_odds_balance.tex
+- ../rational_designs/asymptotic/weighted_success_subset_moments.tex
+
+Verdict: PASS; no proof gap found. This is a mathematical peer review,
+not formal verification.
+
+Checked independently:
+1. Variable-failure generating coefficients, bad-prefix bound including
+   zero rows, first/second moments and the finite mean-deficit theorem.
+2. Global max deficit and row-mass/Laplace consequences, including atoms.
+3. Exact weighted-subset bias identity, its positive sign, and negative
+   pairwise inclusion covariance via elementary-symmetric Newton inequality.
+4. Centered elementary coefficient bound and permitted degree range.
+5. Laguerre derivative bounds with BOTH factorials retained; exact
+   polarization expansion about the complementary mean.
+6. Exact forced-success beta moment identity and averaging normalization.
+7. Integrated polarization series: factorial growth of weighted moments
+   cancels only one derivative factorial and leaves a summable series;
+   bound is O(B0^2 d^2/m).
+8. Weighted Taylor mixture error, low-s p_min>=1/2, and exponentially
+   suppressed high-s rows using uniform hypergeometric variance.
+9. Scaled taper positivity by the decreasing beta/exponential density ratio,
+   including the explicit lower norm near zero and constant 1/(96 theta).
+10. Christoffel polynomial at the final row, uniformly bounded coefficient
+    norm despite data dependence, and conversion from mixture atom to w_K.
+11. Complement/reversal symmetry for w_1 and application to each finite die.
+
+The resulting universal bound g(n)>=c n^(5/4) follows. No quadratic bound
+or scalar-transfer theorem is claimed.
+
+2026-09-30 19:36 UTC: FULL CURRENT THREE-HALVES VERSION PASSES.
+Independently reread the whole current power_per_die_lower_bound.tex.
+Checked Gaussian displacement isometry and exact associated-Laguerre
+matrix coefficient; chain-rule normalization; centered entire-Cauchy
+coefficient bound with no radius restriction; variance-sensitive
+polarization cancellation, including v=0; factorial summation uniformly
+through degree 2d; weighted-subset bias, negative covariance, and singular
+Taylor integral when v=0; global high-deficit error; scaled beta taper
+positivity and recurrence factorization; Christoffel coefficient norm
+and data-dependent use of the comparison; endpoint atom conversion.
+All constants can be made absolute, and the stated d<=sqrt(m) range is
+sufficient. No mathematical gap found. This is a human-style mathematical
+review, not a formal proof-assistant verification.

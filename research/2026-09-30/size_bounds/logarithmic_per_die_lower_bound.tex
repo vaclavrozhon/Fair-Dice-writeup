@@ -1,0 +1,259 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\E}{\mathbb E}
+\title{A logarithmic improvement in the lower bound for every die}
+\author{Research note: endpoint odds, finite moments, and Laguerre tests}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+\noindent\textbf{Status.} Complete proof, with three independent line-by-line mathematical
+reviews completed. The endpoint-odds representation and the bad-prefix
+estimate were developed in the parallel note
+\texttt{../independent\_directions/endpoint\_poisson\_rigidity.tex}.
+The finite-moment recurrence and the tapered Laguerre test below were
+independently derived by collaborating agents. No formal verification is
+claimed.
+
+\begin{theorem}\label{main}
+There are absolute constants $c>0$ and $m_0$ with the following property.
+Let $p_1,\ldots,p_m$ be nondecreasing functions from
+$\{1,\ldots,K\}$ to $[0,1]$, and let $w_q>0$ be probability weights.
+Suppose
+\begin{equation}\label{mixed}
+ \E_w\prod_{j\in S}p_j=\frac1{|S|+1}
+ \qquad(S\subseteq[m]).
+\end{equation}
+If $m\ge m_0$, then the last and first row weights satisfy
+\[
+ w_K\le\frac1{c m\log m},\qquad
+ w_1\le\frac1{c m\log m}.
+\]
+In particular, an equal-weight representation has
+\[
+ K\ge c m\log m.
+\]
+\end{theorem}
+
+\begin{corollary}\label{dice}
+Every die in every permutation-fair collection of $n$ finite equiprobable
+dice has at least $c n\log n$ faces, for an absolute $c>0$ and all
+sufficiently large $n$. Thus the exceptional-die optimum satisfies
+\[
+ c n\log n\le g(n)\le Cn^2,
+\]
+where the upper bound is the independently established disjoint-bump
+construction. Neither bound settles the minimum total size.
+\end{corollary}
+\begin{proof}
+For a distinguished die, list its $K$ faces in increasing order and put
+$p_j(q)=\Pr(X_j<X_0\mid X_0\text{ is face }q)$ for each other die $j$.
+These functions are nondecreasing. Conditional independence and fairness
+of every restriction give \eqref{mixed}, with $m=n-1$ and $w_q=1/K$.
+\end{proof}
+
+\section*{Endpoint odds and quantitative moments}
+Put $A(q)=\prod_jp_j(q)$ and
+\[
+ \eta(q)=(m+1)w_q A(q).
+\]
+This is a probability measure by \eqref{mixed}. On rows with $A(q)>0$
+write $r_j=(1-p_j)/p_j$ and $\lambda=\sum_jr_j$. Give a zero entry
+infinite odds when defining bad rows; its $\eta$-mass is zero.
+
+\begin{lemma}\label{moments}
+Set $\varepsilon=m^{-1/2}$, and let $G$ consist of rows on which every
+$r_j<\varepsilon$. For each integer $0\le k\le\sqrt m$, with $k<m$,
+\[
+ M_k:=\sum_{q\in G}\eta(q)\frac{\lambda(q)^k}{k!}
+ \quad\text{satisfies}\quad
+ |M_k-1|\le\frac{2k+1}{\sqrt m}.
+\]
+The measure restricted to $G$ need not have total mass exactly one.
+\end{lemma}
+\begin{proof}
+Define $B_q(z)=\prod_j(p_j(q)+z(1-p_j(q)))$. Expanding
+\eqref{mixed} gives the coefficient identities
+\begin{align}
+ (m+1)\E_w B_q(z)&=\sum_{k=0}^m z^k,\label{pgf}\\
+ (m+1)\E_w\left[(1-p_j)\prod_{i\ne j}
+                  (p_i+z(1-p_i))\right]
+ &=\frac1m\sum_{k=0}^{m-1}(k+1)z^k.\label{derivative}
+\end{align}
+For example, the probability of a particular failure set of size $s$
+is $\int_0^1 t^{m-s}(1-t)^s\,dt
+=1/((m+1)\binom ms)$; summing over failure sets proves these identities.
+
+The bad rows $D=G^c$ form an initial segment. If $D$ is nonempty,
+choose a column $j_*$ with odds at least $\varepsilon$ at its last row.
+Monotonicity gives $p_{j_*}\le(1-p_{j_*})/\varepsilon$ throughout $D$.
+Consequently, as an inequality between nonnegative polynomial
+coefficients,
+\[
+ (m+1)\E_w[B_q(z)\boldsymbol1_D]
+ \preceq \frac{\varepsilon^{-1}+z}{m}
+                 \sum_{k=0}^{m-1}(k+1)z^k.
+\]
+The same assertion is immediate when $D$ is empty. It includes rows
+with zero entries without dividing by them.
+Writing $e_k$ for the elementary symmetric polynomial in the odds,
+\eqref{pgf} now implies, for $0\le k<m$,
+\begin{equation}\label{ek}
+ 1-\frac{(k+1)/\varepsilon+k}{m}
+ \le a_k:=\sum_{q\in G}\eta(q)e_k(r(q))\le1.
+\end{equation}
+
+On a good row, expand $\lambda^k$ as a sum over ordered $k$-tuples
+of indices. The terms with distinct indices sum to $k!e_k$.
+A union bound over a repeated pair of positions gives, for $k\ge2$,
+\[
+ 0\le\lambda^k-k!e_k
+ \le\binom{k}{2}\left(\sum_jr_j^2\right)\lambda^{k-2}
+ \le\binom{k}{2}\varepsilon\lambda^{k-1}.
+\]
+Thus $0\le M_k-a_k\le((k-1)\varepsilon/2)M_{k-1}$; for $k=1$
+there is equality $M_1=a_1$. Starting with $M_0\le1$, induction gives
+$M_k\le1+k\varepsilon$ whenever $k\varepsilon\le1$: the preceding
+moment is at most two, so $M_k\le1+(k-1)\varepsilon$.
+The lower bound in \eqref{ek} and $M_k\ge a_k$ give
+\[
+ M_k\ge1-(k+1)m^{-1/2}-k/m\ge1-(2k+1)m^{-1/2}.
+\]
+This proves the lemma, including $k=0$.
+\end{proof}
+
+\section*{Two robust Laguerre tests}
+Let $\rho(dx)=e^{-x}\,dx$ on $[0,\infty)$. Its normalized moments are
+$\int x^k/k!\,d\rho=1$. Write
+\[
+ L_j(x)=\sum_{u=0}^j(-1)^u\binom ju\frac{x^u}{u!}.
+\]
+These Laguerre polynomials are orthonormal for $\rho$, and
+\begin{equation}\label{recurrence}
+ xL_j=(2j+1)L_j-(j+1)L_{j+1}-jL_{j-1},
+\end{equation}
+with the last term absent for $j=0$. Both facts follow from the displayed
+formula: orthogonality also follows by $j$ integrations by parts in
+$L_j(x)=e^x(j!)^{-1}(d/dx)^j(e^{-x}x^j)$, and the norm is one by
+comparison with its leading coefficient.
+
+For a polynomial $P(x)=\sum_s b_sx^s$, put
+$\|P\|_*:=\sum_s|b_s|s!$. If a positive measure $\nu$ has
+normalized-moment errors at most $\delta$ through degree $N$, then
+\begin{equation}\label{error}
+ \left|\int P\,d\nu-\int P\,d\rho\right|
+ \le\delta\|P\|_*\qquad(\deg P\le N).
+\end{equation}
+Furthermore,
+\begin{equation}\label{norms}
+ \|L_iL_j\|_*\le3^{i+j},\qquad
+ \|xP\|_*\le(\deg P+1)\|P\|_*.
+\end{equation}
+For the first bound, expand the two polynomials and use
+$(u+v)!/(u!v!)\le2^{u+v}$.
+
+\begin{lemma}\label{laguerre}
+Suppose $d\ge2$ and $\nu$ is a finite positive measure on $[0,\infty)$
+whose normalized moments through degree $2d-1$ differ from those of
+$\rho$ by at most $\delta$. If
+\[
+ \delta d9^d<\frac16,
+\]
+then $\nu$ has positive mass in $[0,2/d)$. Moreover, every atom of
+$\nu$ at a point $x\in[0,2/d]$ has mass at most
+\[
+ \frac{32}{d}+\frac{1024\delta9^d}{d^2}.
+\]
+\end{lemma}
+\begin{proof}
+Use the tapered polynomial
+\[
+ q_d(x)=\sum_{j=0}^{d-1}\left(1-\frac jd\right)L_j(x).
+\]
+Orthonormality and \eqref{recurrence} give
+\begin{align*}
+ \int q_d^2\,d\rho
+ &=\frac{(d+1)(2d+1)}{6d},\\
+ \int xq_d^2\,d\rho
+ &=\sum_{j=1}^{d}j\left(\frac1d\right)^2
+ =\frac{d+1}{2d}.
+\end{align*}
+Thus for $R_d(x)=(2/d-x)q_d(x)^2$,
+\[
+ \int R_d\,d\rho=\frac{(d+1)(d+2)}{6d^2}>\frac16.
+\]
+By \eqref{norms}, $\|q_d^2\|_*\le(\sum_{j<d}3^j)^2<9^d/4$,
+and hence $\|R_d\|_*\le d9^d$ for $d\ge2$.
+Equation \eqref{error} therefore gives $\int R_d\,d\nu>0$.
+Since $R_d\le0$ on $[2/d,\infty)$, some positive mass lies below
+$2/d$.
+
+For the atom bound, fix $x\in[0,2/d]$ and set $r=\lfloor d/8\rfloor$.
+For $0\le j\le r$, the coefficient formula yields
+\[
+ |L_j(x)-1|\le\sum_{u\ge1}\frac{(jx)^u}{u!}
+ \le e^{1/4}-1<\frac12.
+\]
+Also $|L_j(x)|\le e^{1/4}<2$. Therefore
+\[
+ S_x:=\sum_{j=0}^r L_j(x)^2\ge\frac{r+1}{4}\ge\frac d{32}.
+\]
+The polynomial
+\[
+ P_x(y)=\frac1{S_x}\sum_{j=0}^r L_j(x)L_j(y)
+\]
+satisfies $P_x(x)=1$ and $\int P_x^2\,d\rho=1/S_x\le32/d$.
+Its coefficient norm satisfies
+\[
+ \|P_x^2\|_*
+ \le\frac1{S_x^2}\left(\sum_{j=0}^r |L_j(x)|3^j\right)^2
+ \le\frac{1024}{d^2}9^{r+1}
+ \le\frac{1024}{d^2}9^d.
+\]
+The mass of an atom at $x$ is at most $\int P_x^2\,d\nu$.
+Apply \eqref{error} to finish the proof.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{main}]
+Take
+\[
+ d=\left\lfloor\frac{\log m}{8\log3}\right\rfloor,
+ \qquad \nu=\sum_{q\in G}\eta(q)\delta_{\lambda(q)}.
+\]
+For all sufficiently large $m$, $d\ge2$ and $2d-1\le\sqrt m$.
+Lemma~\ref{moments} gives the normalized-moment error
+$\delta\le4d/\sqrt m$ through degree $2d-1$. Since $9^d\le m^{1/4}$,
+\[
+ \delta d9^d\le4d^2m^{-1/4}\longrightarrow0,
+ \qquad
+ \frac{1024\delta9^d}{d^2}
+ \le\frac{4096m^{-1/4}}d=o(1/d).
+\]
+Lemma~\ref{laguerre} supplies a good row with $\lambda<2/d$.
+All odds decrease with the row, so the last row is good and has
+$\lambda(K)<2/d$. Its $\eta$-mass is bounded by the mass of the
+corresponding atom of $\nu$, and therefore is at most $33/d$ for all
+sufficiently large $m$.
+Finally,
+\[
+ A(K)=\prod_j\frac1{1+r_j(K)}\ge e^{-\lambda(K)}\ge e^{-2/d}.
+\]
+Consequently
+\[
+ (m+1)w_K e^{-2/d}\le\eta(K)\le\frac{33}d.
+\]
+Since $d\asymp\log m$, this proves the last-row bound. Reversing row
+order and replacing every $p_j$ by $1-p_j$ preserves \eqref{mixed}
+(by expansion, or by uniform comparison patterns), so it also proves
+the first-row bound. Equal weights now give $K\ge c m\log m$.
+\end{proof}
+
+\paragraph{Scope.}
+The argument uses only the monotone local comparison tensor. It needs
+neither rationality of its entries nor arithmetic divisibility. The
+construction with $O(n^2)$ faces on one die shows that a substantially
+stronger lower bound, if true, must remain compatible with that scale.
+\end{document}

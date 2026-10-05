@@ -1,0 +1,146 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\title{A quadratic-grid barrier for whole-copy insertion}
+\author{Research notes, 30 September 2026}
+\date{}
+\begin{document}
+\maketitle
+\noindent\textbf{Status.} Complete proofs below. This is a barrier for a
+specified construction framework, not a lower bound for arbitrary fair dice.
+The quadratic scale of positive equidistant quadrature is classical;
+the purpose here is a self-contained explicit bound and its consequence
+for the dice insertion scheme.
+
+\begin{theorem}[Positive quadrature requires a quadratic grid]
+Let $r\ge2$ and suppose nonnegative weights on a subset of
+$\{0,1/N,\ldots,1\}$ integrate every polynomial of degree at most $r$
+exactly for the uniform probability measure on $[0,1]$. Put
+$m=\lfloor(r-2)/2\rfloor$. Then
+\[
+ N\ge\frac{m^2+4m+6}{4}\ge\frac{r^2}{16}.
+\]
+The weights may be arbitrary real numbers; they need not be equal,
+rational, or positive at every grid point.
+\end{theorem}
+\begin{proof}
+Let $q(x)=P_m^{(0,3)}(2x-1)$, using the standard Jacobi normalization.
+The following two norm identities are proved below:
+\[
+ A_m:=\int_0^1xq(x)^2\,dx=\frac{m^2+4m+6}{12},
+ \qquad B_m:=\int_0^1x^2q(x)^2\,dx=\frac13.
+\]
+The degree of $f(x)=x(1/N-x)q(x)^2$ is $2m+2\le r$.
+At every grid point, $f$ is nonpositive. Positivity and exactness
+therefore imply
+\[
+ 0\ge\sum_i w_i f(i/N)=\int_0^1f(x)\,dx=A_m/N-B_m.
+\]
+This yields the first bound. For even $r$, $m=r/2-1$; for odd $r$,
+$m=(r-3)/2$. Direct substitution gives the second bound in both cases.
+\end{proof}
+
+Here is the promised verification of the Jacobi identities. Set
+$J_k^{(b)}(x)=P_k^{(0,b)}(2x-1)$. Orthogonality gives
+\[
+ \int_0^1x^bJ_k^{(b)}(x)J_\ell^{(b)}(x)\,dx
+   =\frac{\mathbf1_{k=\ell}}{2k+b+1}.
+\]
+The Jacobi contiguous relation, solved recursively, gives
+\begin{align*}
+ J_m^{(3)}
+ &=\frac1{D_m}\sum_{k=0}^m(-1)^{m-k}
+     (2k+3)(k+1)(k+2)J_k^{(2)},\\
+ J_k^{(2)}
+ &=\frac1{(k+1)(k+2)}\sum_{j=0}^k(-1)^{k-j}
+     2(j+1)^2J_j^{(1)},
+ \qquad D_m=(m+1)(m+2)(m+3).
+\end{align*}
+Thus
+\[
+ B_m=\frac1{D_m^2}\sum_{k=0}^m(2k+3)(k+1)^2(k+2)^2=\frac13;
+\]
+the sum telescopes because its summand is
+\[
+ \frac{(k+1)^2(k+2)^2(k+3)^2-k^2(k+1)^2(k+2)^2}{3}.
+\]
+Combining the two connection formulas yields
+\[
+ J_m^{(3)}=\frac2{D_m}\sum_{j=0}^m(-1)^{m-j}(j+1)^2
+   \bigl((m+2)^2-(j+1)^2\bigr)J_j^{(1)}.
+\]
+Consequently
+\[
+ A_m=\frac2{D_m^2}\sum_{\ell=1}^{m+1}\ell^3
+       \bigl((m+2)^2-\ell^2\bigr)^2
+     =\frac{m^2+4m+6}{12},
+\]
+where the last equality follows by summing the powers $\ell^3,\ell^5,
+\ell^7$ (or induction in $m$). The connection formulas follow directly
+from
+\[
+ (2k+b+1)J_k^{(b)}=(k+b+1)J_k^{(b+1)}+kJ_{k-1}^{(b+1)}.
+\]
+Standard normalization and the contiguous relation are recorded at
+\url{https://dlmf.nist.gov/18.3} and
+\url{https://dlmf.nist.gov/18.9.E5}.
+
+\begin{lemma}[Necessity of the insertion criterion]
+Let $s$ be a permutation-fair string on $r$ letters, with arbitrary
+multiplicities $c_1,\ldots,c_r$. Form $T$ from $N$ unchanged copies of
+$s$, and insert runs of the new letter in gaps $i=0,\ldots,N$,
+with nonnegative integer lengths $k_i$ and $K=\sum_i k_i>0$.
+Then $T$ is permutation-fair if and only if $w_i=k_i/K$ gives a
+degree-$r$ uniform quadrature on the grid $i/N$.
+\end{lemma}
+\begin{proof}
+The partial-pattern formula for a fair string, and its powers, is
+\[
+ C_\pi(s^a)=\frac{a^{|\pi|}}{|\pi|!}
+                  \prod_{\ell\in\pi}c_\ell.
+\]
+For a fixed full pattern of $T$ placing the new letter after $j$
+old letters, its count therefore equals
+\[
+ \frac{KN^r\prod_{\ell=1}^r c_\ell}{r!}
+  \sum_{i=0}^N w_i\binom rj(i/N)^j(1-i/N)^{r-j}.
+\]
+Its required fair count is
+$KN^r\prod_\ell c_\ell/(r+1)!$. Thus fairness is equivalent to
+the degree-$r$ Bernstein moment equations. Bernstein polynomials
+span all polynomials of degree at most $r$, proving the claim.
+\end{proof}
+
+\begin{corollary}[An intrinsic $n\log n$ insertion cost]
+Consider any sequence of constructions that starts from a one-letter
+string and adds one new letter at a time by placing runs of it between
+whole unchanged copies of the preceding string. Suppose every intermediate
+string is permutation-fair. The oldest die in the final $n$-letter string
+has at least
+\[
+ \prod_{r=2}^{n-1}\frac{r^2}{16}
+ =\frac{((n-1)!)^2}{16^{n-2}}
+ =\exp\bigl(2n\log n-O(n)\bigr)
+\]
+faces (the first displayed bound is merely weak when a factor is below $1$).
+In particular, no choice of quadrature weights or improved denominator
+estimate within this framework can give an $\exp(O(n))$ construction.
+\end{corollary}
+\begin{proof}
+The $r$-to-$(r+1)$ insertion uses $N_r\ge r^2/16$ copies by the
+preceding results. Every such insertion multiplies the oldest die's
+face count by $N_r$. Multiply these inequalities and use Stirling's
+formula.
+\end{proof}
+
+The same argument allows runs of zero length, hence omitted grid nodes,
+and any grouping of the unchanged copies into larger blocks. It also
+allows starting from an arbitrary fixed-size fair seed. It does not
+apply when the old string is rearranged or locally changed at an insertion,
+or when several letters are inserted jointly by a different mechanism.
+
+\end{document}

@@ -1,0 +1,55 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\title{An exact support bound for uniform triple minima}
+\author{Research proof; independently reviewed}
+\date{30 September 2026}
+\begin{document}\maketitle
+Let a probability distribution on permutations of $[n]$ have $q$ support
+points, all of positive weight. Require only that each member of every
+three-element subset is its earliest element with probability $1/3$.
+Pairwise rank balance is not assumed.
+\begin{theorem}
+For $n\ge4$, one has $q\ge n-1$. Arbitrary positive weights and repeated
+permutations are allowed (repetitions can be merged).
+The bound is attained at $n=4$ by the three ordered lists
+$1203$, $3201$, and $0213$, with equal weights.
+\end{theorem}
+\begin{proof}
+Fix a pivot $i$, and for $j\ne i$ let $v_j$ be the binary indicator of
+$i$ preceding $j$, viewed in the $q$-dimensional weighted Euclidean
+space of support points. Write $p_{ij}=\Pr(i<j)$.
+The Gram matrix on the $m=n-1$ columns is
+\[
+ G_i=D_i+\frac13\mathbf1\mathbf1^T,\qquad
+ (D_i)_{jj}=p_{ij}-\frac13\ge0.
+\]
+The off-diagonal entries follow from triple-minimum balance. The
+inequality on the diagonal follows because being earliest in a triple
+containing $i,j$ implies $i<j$.
+
+Suppose $q\le n-2$, so $m>q$. If every diagonal entry of $D_i$ were
+positive, then $G_i$ would be positive definite of rank $m$, impossible
+in a $q$-dimensional space. Thus some $a\ne i$ has $p_{ia}=1/3$.
+For every $j\notin\{i,a\}$,
+\[
+ \Pr(i<a,\ i>j)=\Pr(i<a)-\Pr(i<a,\ i<j)=0.
+\]
+Consequently the event $i<a$ implies that $i$ is globally first, up to
+a null event. In particular $\Pr(i\text{ globally first})\ge1/3$.
+This holds for every pivot $i$. Summing contradicts $n\ge4$.
+The displayed example is checked by restricting to its four triples.
+\end{proof}
+
+\paragraph{Attribution and scope.}
+The condition is called weakly three-restricted min-wise independence.
+The argument uses the classical diagonal-plus-constant Gram method.
+A 2011 abstract by M.~Vsemirnov states the more general bound
+$q\ge(n-k+2)/(k-1)$ for weakly $k$-restricted families; see
+\href{https://www.pdmi.ras.ru/EIMI/2011/RuFiDiM/booklet.pdf}{the primary conference booklet},
+p.~40. Priority of the sharper special-case application above has not
+been established. It is a bound for permutation distributions, not for
+general dice. For the concatenated two-face palindrome construction it
+implies at least $2n-2$ faces per die whenever triple fairness is exact.
+\end{document}

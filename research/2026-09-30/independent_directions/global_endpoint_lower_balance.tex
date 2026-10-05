@@ -1,0 +1,102 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newcommand{\E}{\mathbb E}
+\title{A global lower bound for every endpoint odds coordinate}
+\author{Asymptotic research note; independently reviewed}
+\date{30 September 2026}
+\begin{document}\maketitle
+Let $p_1,\ldots,p_m:[K]\to[0,1]$ be nondecreasing, with positive row
+weights $w_q$ summing to one, and suppose
+\[
+ \E_w\prod_{j\in S}p_j=\frac1{|S|+1}\quad(S\subseteq[m]).
+\]
+On rows where $A=\prod_jp_j>0$, write $r_j=(1-p_j)/p_j$ and
+$\lambda=\sum_jr_j$.
+
+\begin{theorem}
+For $m\ge2$, every row $q$ with $A(q)>0$ and $L=\lambda(q)\ge32$
+satisfies
+\[
+ r_i(q)\ge\frac{\min\{L,m-1\}}{32m}\qquad(1\le i\le m).
+\tag{1}
+\]
+\end{theorem}
+\begin{proof}
+Fix $i$. If $r_i(q)>L/2$, the assertion is immediate. Otherwise put
+$\ell=\lfloor\min\{L,m-1\}/16\rfloor$ and choose $J$ to consist of the
+$\ell$ smallest odds among the $m-1$ indices other than $i$, evaluated
+at row $q$. Then
+\[
+ \lambda_{-(J\cup\{i\})}(q)
+ \ge\left(1-\frac\ell{m-1}\right)(L-r_i(q))
+ \ge\frac{15L}{32}.
+\tag{2}
+\]
+For a failure set $T$, define the probability measure
+\[
+ \nu_T=(m+1)\binom m{|T|}\,w
+       \prod_{j\in T}(1-p_j)\prod_{j\notin T}p_j.
+\]
+The mixed moments imply this normalization. They also imply
+\[
+ \E_{\nu_T}\lambda_{-T}\le |T|+1.
+\tag{3}
+\]
+Indeed for each $j\notin T$ the expectation of $r_j$ is at most
+$(|T|+1)/(m-|T|)$, by the ratio of the probabilities of the specified
+failure patterns $T\cup\{j\}$ and $T$. The inequality permits zero
+$p_j$ rows, whose mass is counted only by the latter pattern.
+
+Use (3) for $T=J\cup\{i\}$. By monotonicity and (2), every row strictly
+before $q$ in the support of $\nu_T$ has remaining odds sum at least
+$15L/32$. As $\ell+2\le L/16+2\le L/8$, Markov's inequality gives
+\[
+ \nu_T(\{s<q\})\le\frac{\ell+2}{15L/32}\le\frac4{15}.
+\]
+In particular the suffix $s\ge q$ has $\nu_T$ mass at least $1/2$.
+All $p_j$ are positive on that suffix. Put $d=m-\ell$; there
+\[
+ \nu_T=\frac d{\ell+1}r_i\nu_J.
+\]
+Since $r_i(s)\le r_i(q)$ on the suffix, we obtain
+\[
+ \frac12\le\nu_T(\{s\ge q\})
+ \le\frac d{\ell+1}r_i(q)\nu_J(\{s\ge q\})
+ \le\frac d{\ell+1}r_i(q).
+\]
+Now $d\le m$ and $\ell+1>\min\{L,m-1\}/16$, proving (1).
+\end{proof}
+
+\begin{corollary}[Rows with zero success product]
+For $m\ge2$, if $A(q)=0$, then every column at that row satisfies
+\[
+ p_i(q)\le32/33.
+\]
+\end{corollary}
+\begin{proof}
+The claim is immediate if $p_i(q)=0$. Otherwise order the other odds
+using the value $+\infty$ for zero entries, put
+$\ell=\lfloor(m-1)/16\rfloor$, and let $J$ be the $\ell$ smallest of
+them. Since at least one of the other columns is zero and
+$\ell<m-1$, at least one zero remains outside $T=J\cup\{i\}$.
+Monotonicity implies that this column vanishes on every row up to $q$.
+Consequently $\nu_T$ gives all its mass to the strict suffix $s>q$.
+On that suffix $p_i>0$, so the identity
+$\nu_T=(m-\ell)r_i\nu_J/(\ell+1)$ is valid even if other columns
+vanish: both sides then vanish. Monotonicity of $r_i$ gives
+\[
+ 1\le\frac{m-\ell}{\ell+1}r_i(q),\qquad
+ r_i(q)\ge\frac{\ell+1}{m-\ell}
+ >\frac{m-1}{16m}\ge\frac1{32}.
+\]
+This is equivalent to the assertion.
+\end{proof}
+
+The argument uses a number of conditioned failures that grows with the
+row's odds sum, and chooses those failures among the smallest odds.
+It does not require an upper balance theorem and remains valid for
+$\lambda\gg m$. This is a structural comparison-tensor theorem, not
+by itself a new lower bound on the number of rows.
+\end{document}

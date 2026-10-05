@@ -1,0 +1,2151 @@
+                                              Milnor invariants of braids and welded braids
+                                                              up to homotopy
+                                                                              Jacques Darné
+                                                                               April 1st, 2020
+arXiv:1904.10677v2 [math.AT] 8 Apr 2020
+
+
+
+
+                                                                                   Abstract
+                                                    We consider the group of pure welded braids (also known as loop braids) up to
+                                                (link-)homotopy. The pure welded braid group classically identifies, via the Artin
+                                                action, with the group of basis-conjugating automorphisms of the free group, also
+                                                known as the McCool group P Σn . It has been shown recently that its quotient
+                                                by the homotopy relation identifies with the group hP Σn of basis-conjugating
+                                                automorphisms of the reduced free group. In the present paper, we describe a
+                                                decomposition of this quotient as an iterated semi-direct product which allows
+                                                us to solve the Andreadakis problem for this group, and to give a presentation by
+                                                generators and relations. The Andreadakis equality can be understood, in this
+                                                context, as a statement about Milnor invariants; a discussion of this question for
+                                                classical braids up to homotopy is also included.
+
+
+                                          Introduction
+                                          The present paper is a contribution to the theory of loop braids (also called welded
+                                          braids), via the study of their finite-type invariants. Finite-type invariants were defined
+                                          by Vassiliev in 1990 [Vas90] and were much studied during the 90’s (see for instance
+                                          [Kon93, Gus94]), giving birth to a whole field of research, which is still very active
+                                          nowdays. Finite-type invariants of string-links and braids have been the focus of several
+                                          papers in the late 90’s, by Stanford [Sta96, Sta98], Mostovoy and Willerton [MW02],
+                                          and Habegger and Masbaum [HM00]. By then, finite-type invariants of braids were
+                                          fairly well-understood. Meanwhile, a generalization of finite-type invariants to virtual
+                                          knotted objects was introduced in [GPV00]. However, it was only much later that
+                                          this definition was used and studied for welded knotted objects [BND16, BND17]. In
+                                          the meantime, the interest for welded knotted objects had grown, as the link between
+                                          welded diagrams, four-dimensional topology and automorphisms of the free group had
+                                          become more apparent [FRR97, Sat00, BWC07]; see [Dam17] for a survey of welded
+                                          braids. In recent years, the study of these objects has been flourishing; see for instance
+                                          [Kam07, BB14, Aud16, NNSY18, MY19, Dam19]. In particular, link-homotopy for
+                                          these objects (corresponding to self-virtualization moves in welded diagrams) has been
+                                          the focus of several recent papers [ABMW17, AMW17, AM19].
+                                              The invariants under scrutiny in this paper appear naturally as filtrations on groups.
+                                          Precisely, suppose given a group G, whose elements are the objects one is interested
+                                          in. For example, these could be mapping classes of a manifold, automorphisms of a
+                                          group, (welded) braids up to isotopy, (welded) braids up to homotopy, etc. Suppose
+                                          also given a filtration of G by subgroups: G = G1 ⊇ G2 ⊇ · · · . Then one can
+
+                                                                                        1
+consider the class [g]d of an element g ∈ G inside G/Gd+1 and hope to understand g
+through its approximations [g]d , which become finer and finer as d grows to infinity.
+These approximation are often easier to understand than g. For instance, [g]d could
+be described by a finite family of integers (or other simple mathematical objects), that
+we would call invariants of degree at most d.
+    With this point of view, the question of comparing different filtrations on the same
+group (such as the Andreadakis problem – see §0.1) can be interpreted as a problem
+of comparison between different kinds of invariants. Conversely, comparing different
+notions of invariants on elements of a group can often be interpreted as a problem of
+comparison between different filtrations on the group, provided that these invariants
+are indexed by some kind of degree measuring their accuracy, and that they possess
+some compatibility with the group structure. It is mainly the latter point of view that
+we adopt below, working with filtrations on groups, with a rather algebraic point of
+view, getting back to the language of invariants only to interpret our results. This is
+motivated by the fact that the invariants we consider are strongly compatible with the
+group structures: not only do they come from filtrations by subgroups, as described
+above, but these filtrations are strongly central, a very nice property allowing us to
+study them using Lie algebras. Moreover, all the filtrations we consider do have a
+natural algebraic definition.
+    We consider mainly three kinds of filtrations (or invariants):
+    • Minor invariants correspond to Andreadakis-like filtrations (or the Johnson
+      filtration for the Mapping Class Group). These are defined for automorphism
+      groups of groups, and there subgroups.
+    • Finite-type (or Vassiliev) invariants with coefficients in a fixed commutative
+      ring k correspond to the dimension filtration D∗k G = G ∩ (1 + I ∗ ), where I is the
+      augmentation ideal of the group ring kG.
+    • The lower central series on G is the minimal strongly central filtration on G.
+The minimality of the lower central series means that the corresponding invariants of
+degree d contain as much information as possible for invariants possessing this com-
+patibility with the group structure. Since the two other filtrations are also strongly
+central, and the Milnor invariants are of finite type, the above list goes from the coars-
+est invariants to the finest ones. Thus, although we will not always emphasize this
+in the sequel, the reader should keep in mind that a statement of the form “Milnor
+invariants of degree at most d distinguish classes of elements g ∈ G modulo Γd+1 G”
+implies that Milnor invariants of degree at most d are universal finite-type invariants of
+degree at most d, and that finite-type invariants of degree at most d distinguish classes
+of elements g ∈ G modulo Γd+1 G.
+
+
+Main results
+We are interested in the group of pure welded braids (or pure welded string-links) up to
+homotopy. This group identifies, through a version of the Artin action up to homotopy,
+with the group hP Σn of (pure) basis-conjugating automorphisms of the reduced free
+group RFn (see Def. 1.2). The key result of this paper is the decomposition theorem:
+
+Theorem 3.1. There is a decomposition of hP Σn into a semi-direct product:
+                      "               !             #
+             hP Σn ∼
+                          Y
+                    =       N (xn )/xi o (RFn /xn ) o hP Σn−1 ,
+                              i<n
+
+
+                                            2
+where N (xn )/xi is the normal closure of xn inside RFn /xi , and the action of RFn /xn ∼
+                                                                                        =
+RFn−1 on the product is the diagonal one. Moreover, the semi-direct product on the
+right is an almost direct one.
+
+    The reduced free group is studied in §1. In particular, using the version of the
+Magnus expansion for the reduced free groups introduced by Milnor, which takes values
+in the reduced free algebra, we are able to show an analogue of Magnus’ theorem:
+
+Theorem 1.12. The Lie ring of the reduced free group identifies with the reduced free
+algebra on the same set of generators.
+
+    The restriction hP Σn ∩ A∗ (RFn ) of the Andreadakis filtration A∗ (RFn ) of RFn
+encodes Milnor invariants of pure welded braids. We are able to determine the structure
+of the associated graded Lie algebra in §2.1:
+
+Theorem 2.9. The Lie algebra L (hP Σn ∩ A∗ (RFn )) identifies, via the Johnson mor-
+phism, to the algebra of tangential derivations of the reduced free algebra.
+
+    On the other hand, the decomposition of hP Σn (Theorem 3.1) induces a decompo-
+sition of its lower central series, which in turn gives a decomposition of the associated
+Lie algebra (Theorem 3.8). We are thus able to compare the lower central series and
+the Andreadakis filtrations via a comparison of their associated graded Lie algebras,
+getting the promised comparison result, which we also show for classical braids up to
+homotopy:
+
+Theorem 3.9. The Andreadakis equality holds for G = hPn and G = hP Σn :
+
+                                 G ∩ A∗ (RFn ) = Γ∗ G.
+
+In other words, Milnor invariants of degree at most d classify braids up to homotopy
+(resp. welded braids up to homotopy) up to elements of Γd+1 (hPn ) (resp. Γd+1 (hP Σn )).
+
+    Remark that there is no obvious link between this theorem and its analogue up
+to isotopy. On the one hand, for classical braids up to isotopy, the fact that Milnor
+invariants can detect the lower central series has been known for a long time [MW02,
+HM00], but the result up to homotopy is new, and cannot be deduced from the former
+(as far as I know). On the other hand, for welded braid (that is, for basis-conjugating
+automorphisms of the free group), the result up to isotopy is still opened. One feature
+of hPn and hP Σn which makes them very different from Pn and P Σn (and in fact,
+easier to handle) is their nilpotence, which is used throughout the paper.
+    Finally, we use our methods to give a presentation of the group hP Σn . A classi-
+cal result of McCool [McC86] asserts that the group P Σn of (pure) basis-conjugating
+automorphisms of the free group Fn is the group generated by generators χij (i 6= j)
+submitted to the McCool relations:
+                    
+                    [χik χjk , χij ] = 1 for i, j, k pairwise distinct,
+                    
+                      [χik , χjk ] = 1    for i, j, k pairwise distinct,
+                    
+                      [χij , χkl ] = 1    if {i, j} ∩ {k, l} = ∅,
+                    
+
+We show that we need to add three families of relation to get its quotient hP Σn :
+
+                                           3
+Theorem 5.8. The pure loop braid group up to homotopy hP Σn is the group generated
+by generators χij (i 6= j) submitted to the McCool relations on the χij , and the three
+families of relations:
+
+                    [χmi , w, χmi ] = [χim , w, χjm ] = [χim , w, χmi ] = 1,
+
+for i, j < m, i 6= j, and w ∈ hχmk ik<m .
+
+   The method used for the group can be adapted to the Lie algebra associated to the
+lower central series of hP Σn . We show in §5.3 that it admits a similar presentation.
+We also give a presentation of the Lie algebra of hPn in corollary 3.12.
+
+Acknowledgements: The author thanks warmly Jean-Baptiste Meilhan for having
+brought to his attention the group under scrutiny here, and for numerous helpful
+discussions about the topology involved. He thanks Sean Eberhard for his answer to
+the question he asked on MathOverflow about finite presentations of nilpotent groups.
+He also thanks Prof. T. Kohno for asking the question which lead to the results of §5.3.
+
+Contents
+0 Reminders: strongly central series and Lie rings                                      5
+  0.1 A very short introduction to the Andreadakis problem . . . . . . . . .            5
+  0.2 The case of the free group . . . . . . . . . . . . . . . . . . . . . . . . .      7
+
+1 The reduced free group and its Lie algebra                                            8
+  1.1 The reduced free group . . . . . . . . . . . . . . . . . . . . . . . . . . .      8
+  1.2 The reduced free algebra . . . . . . . . . . . . . . . . . . . . . . . . . .      9
+  1.3 Centralizers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   12
+
+2 Derivations and the Johnson morphism                                                 13
+  2.1 Derivations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    13
+  2.2 Tangential derivations . . . . . . . . . . . . . . . . . . . . . . . . . . .     15
+
+3 The Andreadakis problem                                                              17
+  3.1 A semi-direct product decomposition . . . . . . . . . . . . . . . . . . .        17
+  3.2 The Lie algebra of the reduced McCool group . . . . . . . . . . . . . .          21
+  3.3 The Andreadakis equality . . . . . . . . . . . . . . . . . . . . . . . . .       21
+  3.4 Braids up to homotopy . . . . . . . . . . . . . . . . . . . . . . . . . . .      22
+
+4 Topological interpretation                                                           25
+  4.1 Milnor invariants . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    26
+  4.2 Arrow calculus . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     27
+
+5 A presentation of the homotopy loop braid group                                      27
+  5.1 Generators of nilpotent groups . . . . . . . . . . . . . . . . . . . . . . .     28
+  5.2 The presentation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     30
+  5.3 A presentation of the associated Lie ring . . . . . . . . . . . . . . . . .      32
+
+6 Lyndon words and the free Lie algebra                                                33
+  6.A Lyndon words . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     33
+  6.B The Lyndon basis of the free Lie algebra . . . . . . . . . . . . . . . . .       34
+
+                                               4
+    6.C Primitive elements and the Milnor-Moore theorem . . . . . . . . . . . .          36
+    6.D Linear trees . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   37
+
+
+0     Reminders: strongly central series and Lie rings
+We give here a short introduction to the theory of strongly central filtrations and their
+associated Lie rings, whose foundations were laid by M. Lazard in [Laz54]. Details may
+be found in [Dar19b, Dar19a].
+
+0.1    A very short introduction to the Andreadakis problem
+Let G be an arbitrary group. The left and right action of G on itself by conjugation are
+denoted respectively by xy = y −1 xy and yx = yxy −1 . The commutator of two elements
+x and y in G is [x, y] := xyx−1 y −1 . If A and B are subsets of G, we denote by [A, B]
+the subgroup generated by all commutators [a, b] with (a, b) ∈ A × B. We denote the
+abelianization of G by Gab := G/[G, G] and its lower central series by Γ∗ (G), that is:
+
+               G = Γ1 (G) ⊇ [G, G] = Γ2 (G) ⊇ [G, Γ2 (G)] = Γ3 (G) ⊇ · · ·
+
+   The lower central series is a fundamental example of a strongly central filtration (or
+N-series) on a group G:
+Definition 0.1. A strongly central filtration G∗ on a group G is a nested sequence of
+subgroups G = G1 ⊇ G2 ⊇ G3 · · · such that [Gi , Gj ] ⊆ Gi+j for all i, j ⩾ 1.
+    In fact, the lower central series is the minimal such filtration on a given group G,
+as is easily shown by induction.
+                                                                       Li (G∗ ) := Gi /Gi+1
+    Recall that when G∗ is a strongly central filtration, the quotientsL
+are abelian groups, and the whole graded abelian group L(G∗ ) :=          Gi /Gi+1 is a Lie
+ring (i.e. a Lie algebra over Z), where Lie brackets are induced by group commutators.
+The lower central series of a group is usually difficult to understand, but we are often
+helped by the fact that its associated Lie algebra is always generated in degree one.
+Convention 0.2. If g is an element of a group G endowed with a (strongly central)
+filtration G∗ , the degree of g with respect to G∗ is the minimal integer
+                                                                       T       d such that
+g ∈ Gd − Gd+1 . Since most of the filtrations we consider satisfy G       Ti =  {1}, this is
+well-defined (if not, we could just say that d = ∞ for elements of Gi ). We often
+speak of the class g of g in the Lie algebra L(G∗ ), by which we mean the only non-
+trivial one, in Ld (G∗ ) = Gd /Gd+1 , where d is the degree of g with respect to G∗ , unless
+a fixed degree is specified.
+    When G∗ is a strongly central filtration on G = G1 , there is a universal way of
+defining a strongly central filtration on a group of automorphisms of G. Precisely, we
+get a strongly central filtration on a subgroup of Aut(G∗ ), the latter being the group
+of automorphisms of G preserving the filtration G∗ :
+
+                  Aj (G∗ ) := { σ ∈ Aut(G∗ ) | ∀i ⩾ 1, [σ, Gi ] ⊆ Gi+j } .           (0.2.1)
+
+The commutator is computed in G o Aut(G), which means that for σ ∈ Aut(G) and
+g ∈ G, [σ, g] = σ(g)g −1 . Thus, Aj (G∗ ) is the group of automorphisms of G∗ acting
+trivially on the quotients Gi /Gi+j (i ⩾ 1). For instance, A1 (G∗ ) is the group of
+
+                                             5
+automorphisms of G∗ acting trivially on L(G∗ ). When G∗ is the lower central series
+of a group G, then L(G) := L(Γ∗ (G)) is generated (as a Lie ring) by L1 (G) = Gab , so
+that A1 (G) identifies with the group IAG of automorphisms of G acting trivially on its
+abelianization Gab . Thus A∗ (G) := A∗ (Γ∗ (G)) is a strongly central filtration on IAG ,
+and we can try to understand how it compares to the minimal such filtration on IAG ,
+which is its lower central series:
+
+Problem 1 (Andreadakis). For a given group G, how close is the inclusion of Γ∗ (IAG )
+into A∗ (G) to be an equality ?
+
+   One way to attack this problem is to restrict to subgroups of IAG . Precisely, if
+K ⊆ IAG is a subgroup, we can consider the following three strongly central filtrations
+on K:
+                      Γ∗ (K) ⊆ K ∩ Γ∗ (IAG ) ⊆ K ∩ A∗ (G).
+
+Definition 0.3. We say that the Andreadakis equality holds for a subgroup K of IAG
+when Γ∗ (K) = K ∩ A∗ (G).
+
+   Our three main tools in calculating Lie algebras are the following:
+
+Lazard’s theorem [Laz54, Th. 3.1] (see also [Dar19b, Th. 1.36]): if A is a
+filtered ring (that is, A is filtered by ideals A = A0 ⊇ A1 ⊇ A2 ⊇ · · · such that
+Ai Aj ⊆ Ai+j ), the subgroup A× ∩ (1 + A1 ) of A× inherits a strongly central filtration
+A×        ×
+   ∗ := A ∩ (1 + A∗ ) whose Lie ring embeds into the graded ring gr(A∗ ), via:
+
+
+                                   L (A×
+                               
+                                        ∗ ) ,−→ gr(A∗ )
+                                      x     7−→ x − 1.
+
+If G is any group endowed with a morphism α : G → A× , then we can pull the filtration
+A×                     −1   ×                   ×
+  ∗ back to G, and L(α (A∗ )) embeds into L(A∗ ), thus into gr(A∗ ).
+
+
+
+Semi-direct product decompositions [Dar19a, §3.1]: If G∗ is a strongly central
+filtration, G∗ = H∗ o K∗ is a semi-direct product of strongly central filtrations if Gi =
+Hi o Ki is a semi-direct product of groups for all i, and [Ki , Hj ] ⊆ Hi+j for all i, j.
+Then the strong centrality of G∗ implies that H∗ and K∗ must be strongly central. This
+kind of decomposition is useful because it induces a decomposition of Lie algebras:
+
+                               L(G∗ ) = L(H∗ ) o L(K∗ ).
+
+    Now, if G = H o K is any semi-direct product of groups, then its lower central
+series decomposes into a semi-direct product Γ∗ (G) = ΓK
+                                                       ∗ (H) o Γ∗ (K) of strongly
+                            G
+central filtrations, where Γ∗ (H) is defined by:
+
+            H = ΓK                 K            K         K
+                 1 (H) ⊇ [G, H] = Γ2 (H) ⊇ [G, Γ2 (H)] = Γ3 (H) ⊇ · · ·
+
+
+When the semi-direct product is an almost-direct one, which means that K acts trivially
+on H ab , then ΓK
+                ∗ (H) = Γ∗ (H), so that is this case:
+
+
+                              L(H o K) = L(H) o L(K).
+
+                                           6
+The Johnson morphism [Dar19b, §1.4]: A very useful tool to study a filtration of
+the form A∗ (G∗ ) is the Johnson morphism, which encodes the fact that the associated
+graded Lie algebra L(Aj (G∗ )) acts faithfully on the graded Lie algebra L(G∗ ). It is
+defined by:                 
+                               L (A∗ (G∗ )) ,−→ Der (L(G∗ ))
+                         τ:
+                                   σ        7−→     [σ, −],
+which means that it is induced by σ 7→ (x 7→ σ(x)x−1 ). Its injectivity comes from the
+universality of the filtration A∗ (G∗ ).
+    If we want to compare the filtration A∗ (G∗ ) with another one, we can do it using
+comparison morphisms. For example, if K is a subgroup of Aut(G∗ ), the inclusion
+of Γ∗ K into K ∩ A∗ (G∗ ) induces a morphism i∗ : L(K) → L(K ∩ A∗ (G∗ )) which is
+injective if and only if Γ∗ K = K ∩A∗ (G∗ ). Thus we can show the Andreadakis equality
+by showing the injectivity of the morphism τ 0 := τ ◦ i∗ (τ 0 is also sometimes called the
+Johnson morphism).
+
+
+0.2    The case of the free group
+Before beginning our study of the Andreadakis problem for the reduced free group, it
+may be useful to recall some basic facts about the free group case. Here Fn denotes
+the free group on n generators x1 , ..., xn .
+
+Magnus expansions: The assignment xi 7→ 1 + Xi defines an embedding of Fn into
+the group of invertible power series on n non-commuting indeterminates X1 , ..., Xn
+with integral coefficients. In fact, it is easy to see that it defines a morphism to
+1 + (X1 , ..., Xn ), and that this induces (using universal properties) an isomorphism of
+completed rings:
+                                        ZdFn ∼= Td[n],
+where the group ring Z Fn is completed with respect to the filtration by the powers of its
+augmentation ideal, and the tensor algebra T [n] on n generators X1 , ..., Xn is completed
+with respect to the usual valuation. One shows that the above morphism from Fn to
+this ring is injective by showing directly that the image of a reduced non-trivial word
+must be non-trivial.
+
+Magnus’ theorem: Using Lazard’s theorem,       we can get a surjection of L(Fn ) onto
+the Lie ring generated in degree one inside gr Td[n] ∼
+                                                     = T [n], which is the free Lie ring
+L[n] on n generators. Using freeness, one shows that this surjection has to be injective
+as well:
+                                    L(Fn ) ∼= L[n].
+
+The Andreadakis problem and the Johnson morphism: In the case of the free
+group, the Johnson morphism defines an embedding of L(A∗ (Fn )) into the Lie ring of
+derivations of the free Lie ring.
+   The Andreadakis problem for automorphisms of free groups is a difficult problem.
+The two filtrations were first conjectured to be equal [And65, p. 253]. This was dis-
+proved very recently [Bar16], but the methods used do not give a good understanding of
+what is going on. The Andreadakis equality is known to hold for certain well-behaved
+subgroups, such as the pure braid group Pn [Sat17, Dar19a]. However, the problem
+
+                                            7
+stays largely open in general. In particular, it is open for the group P Σn of basis-
+conjugating automorphisms (that is, for the group of pure welded braids), of which our
+group hP Σn is a simpler version.
+
+
+1     The reduced free group and its Lie algebra
+In this first section, we introduce and study the reduced free group, which was first
+introduced by Milnor [Mil54] as the link group of the trivial link with n components.
+Using the Magnus expansion defined in [Mil54], we determine its Lie ring.
+
+Notation 1.1. Several of our constructions are functors on the category of sets. For
+such a functor Φ, we denote by Φ[X] its value at a set X. When X is finite with n
+elements, we will often denote Φ[X] by Φ[n], or by Φn .
+
+
+1.1    The reduced free group
+Definition 1.2. The reduced free group on a set X is the group defined by the following
+presentation:
+                 RF [X] := hX | ∀x ∈ X, ∀w ∈ F [X], [x, xw ] = 1i.
+This means that it is the largest group generated by X such that each element of X
+commutes with all its conjugates.
+
+   Since any x commutes with itself, the relations [x, xw ] of Definition 1.2 can also be
+written [x, [x, w]]. The next result and its proof are taken from [HL90, Lem. 1.3]:
+
+Proposition 1.3. For any integer n, the group RFn is n-nilpotent. For any set X,
+the group RF [X] is residually nilpotent.
+
+Proof. We use the fact that RF [−] is a functor on pointed sets. First, for a finite set
+X, we show by induction on n = |X| that RFn = RF [X] is n-nilpotent. This is obvious
+for n = 1, because RF1 ∼= Z. Suppose that RFn−1 is (n − 1)-nilpotent. If x ∈ X, the
+normal subgroup N (x) of RF [X] generated by x is the kernel of the projection px from
+RF [X] to RF [X − {x}] sending x to 1. We have an exact sequence:
+
+                        T                         p=(px )   Q
+              1              N (x)       RF [X]                   RF [X − {x}].
+                       x∈X                                  x∈X
+
+
+Since the group on the right is (n−1)-nilpotent by induction hypothesis,
+                                                                      T the morphism
+p must send Γn (RF [X]) to 1, so that Γn (RF [X]) is inside the kernel N (x). Moreover,
+                               T group, for every x ∈ X, all elements of N (x) commute
+by definition of the reduced free
+with x. Thus, an element of N (x) commutes with all x ∈ X, so it is in the center
+Z(RF [X]). As a conclusion, Γn (RF [X]) ⊆ Z(RF [X]), which means exactly that
+RF [X] is n-nilpotent.
+    Suppose now X infinite. Let w be an element of RF [X]. It can be written as a
+product of a finite number of elements of X and their inverses. Denote be W such a
+finite subset of X. Then w is inside the image of the canonical injection RF [W ] ,→
+RF [X], which is split by the projection from RF [X] to RF [W ] sending X − W to 1.
+Since RF [W ] is |W |-nilpotent, this construction provides a nilpotent quotient of RF [X]
+in which the image of w is non-trivial, whence the residual nilpotence of RF [X].
+
+                                            8
+1.2       The reduced free algebra
+Definition 1.4. Let Y be a set. If s ⩾ 2 is an integer, let us define ∆s (Y ) by:
+
+                                 ∆s (Y ) := {(yi ) ∈ Y s | ∃i 6= j, yi = yj }.
+
+The reduced free algebra on Y is the unitary associative ring defined by the following
+presentation:
+                    A[Y ] := hY | ∀s, ∀(yi ) ∈ ∆s (Y ), y1 · · · ys = 0i.
+   For short, we often forget the mention of Y when it is clear from the context, and
+write only A for A[Y ].
+Fact 1.5. The algebra A[Y ] is graded by the degree of monomials. As a Z-module,
+A[Y ] is a direct factor of the tensor algebra T [Y ]; a (finite) basis of A[Y ] is given by
+monomials without repetition on the generators y ∈ Y , which are monomials of the
+form y1 · · · ys with (yi ) ∈
+                            / ∆s (Y ).
+Proof. Let R be the (free) Z-submodule of T [Y ] generated by the y1 · · · ys such that
+(yi ) ∈ ∆s (Y ) (monomials with repetition). This module is clearly a homogeneous ideal
+of T [Y ]. As a consequence, A = T /R. Moreover, if we denote by S the (free) Z-
+submodule of T generated by monomials without repetition, then T = S ⊕ R as a
+Z-module, so that A ∼ = S.
+Definition 1.6. Let Y be a set. The reduced free Lie algebra on Y is the Lie algebra
+defined by the following presentation:
+
+                         RL[Y ] := hY | ∀s, ∀(yi ) ∈ ∆s (Y ), [y1 , ..., ys ] = 0i,
+
+where [y1 , ..., ys ] denotes [y1 , [y2 , [· · · [ys−1 , ys ]] · · · ].
+   The following result uses some of the combinatorics of the free Lie ring recalled in
+the appendix:
+Proposition 1.7. The Lie subalgebra of A[Y ] generated by Y identifies with RL[Y ].
+Proof. We need to prove that the intersection of the ideal R of relations defining A[Y ]
+and the free Lie algebra L[Y ] ⊂ T [Y ] is exactly the module S of relations defining
+RL[Y ]. The inclusion of S into R is clear: when we decompose a relation in S on
+the basis of T V , only monomials with exactly the same letters appears, counting rep-
+etitions. For the converse, let us first remark that thanks to Lemma 6.14, S is the
+submodule of L[Y ] generated by all Lie monomials with repetition.
+                                                                P      Let p 6= 0 be an
+element of R ∩ L[Y ], and let us consider its decomposition p =   λw Pw on the Lyndon
+basis of L[Y ]. Let w be the smaller Lyndon word such that λw 6= 0. It follows from
+Lemma 6.7 that λw must be the coefficient of w in the decomposition of p into a linear
+combination of monomials of T V . Since p ∈ R, the word w must be with repetition,
+so that Pw ∈ S. Then p − λw Pw ∈ R ∩ L[Y ] has less terms than p in its decomposition
+on the Lyndon basis, giving us the result by induction.
+Remark 1.8. When Y is a finite set with n elements, we can extract finite presenta-
+tions from the above presentations. Indeed, the ideal R and the Lie ideal S are both
+generated in degrees at most n + 1, since Rn+1 = T [n]n+1 and Sn+1 = L[n]n+1 (a word
+of length n + 1 must possess at least a repetition). As a consequence, the relations of
+degree at most n + 1 are enough do describe A[n] (resp. RL[n]), and there are finitely
+many of them.
+
+                                                            9
+Proposition 1.9. Lyndon monomials without repetition on the yi are a basis of RL[Y ].
+The rank of the degree-k part RL[n]k of RL[n] is (k − 1)! nk .
+Proof. Lemma 6.14 implies that the module S in the proof of Prop. 1.7 is the submod-
+ule generated by all Lyndon monomials with repetition, which are thus a basis of S.
+As a consequence, Lyndon monomials without repetition give a basis of the quotient
+RL[Y ] = L[Y ]/S.
+    In order to determine the ranks, we need to count Lyndon words without repetition
+of length k in y1 , ..., yn . A word without repetition is Lyndon if and only if its first
+letter is the smallest one. Such a word is determined by the choice of k letters, and
+a choice of ordering    of the (k − 1) letters left when the smallest one is removed. This
+               n
+                 
+gives (k − 1)! k such words, as announced.
+Proposition 1.10. In A[Y ]× , each element of 1 + Y commutes with all its conjugates.
+Proof. Let y be an element of Y . From the relation y 2 = 0, we deduce that 1 + y is
+invertible, with 1 − y as its inverse. Let u ∈ A× . Then u(1 + y)u−1 = 1 + uyu−1 . Since
+yAy = 0, we can write:
+                (1 + y)(1 + uyu−1 ) = 1 + y + uyu−1 = (1 + uyu−1 )(1 + y),
+which is the desired conclusion.
+Notation 1.11. From now on, we denote by X and Y two sets endowed with a
+bijection X ∼= Y that we will denote by xi 7→ yi (we consider both X and Y indexed
+by a bijection from a set of indices I). This notation will allow us to distinguish between
+the group-theoretic world and its algebraic counterpart.
+   From Proposition 1.10, we get a well-defined morphism, which is an analogue of
+the Magnus expansion, and was introduced by Milnor [Mil54, §4]:
+                                 RF [X] −→ A[Y ]×
+                              
+                           µ:                                             (1.11.1)
+                                   xi    7−→ 1 + yi .
+From Lazard’s theorem [Laz54, Th. 3.1] (see also [Dar19b, Th. 1.36]), we get an asso-
+ciated morphism between graded Lie algebras:
+                         L(RF [X]) −→ gr(A[Y ]) ∼
+                       
+                                                      = A[Y ]
+                    µ:                                                       (1.11.2)
+                             x̄i      7−→      yi .
+    From this we deduce our first main theorem:
+Theorem 1.12. The above morphism (1.11.2) induces a canonical isomorphism be-
+tween the Lie algebra of the reduced free group and the reduced free algebra:
+                                 L(RF [X]) ∼ = RL[Y ].
+Proof. Since L(RF [X]) is generated in degree 1 [Dar19b, Prop. 1.19] (that is, generated
+by the x̄i ), the morphism (1.11.2) defines a surjection from L(RF [X]) onto the Lie
+subalgebra of A generated by Y , which is RL[Y ] (Proposition 1.7). But L(RF [X]) is
+a reduced Lie algebra on X, by which we mean that the relations on the yi defining
+RL[Y ] are true for the classes x̄i . Indeed, in RF [X], the normal closure N (x) of a
+generator x ∈ X is commutative. As a consequence, if u is any element of N (x), then
+[x, u] = 1. Applying this to u = [xr+1 , ..., xs , x, w] ∈ N (x) (where our notation for
+iterated commutators is the same as above for iterated brackets in Lie algebras), we
+see that any [x1 , ..., xr , x, xr+1 , ..., xs , x, w] is trivial in the group, hence so is its class
+in the Lie algebra. Thus yi 7→ xi defines a section of our surjection, which has to be
+injective.
+
+                                                 10
+Corollary 1.13. The morphism µ : xi 7→ 1 + yi (1.11.1) from RF [X] to A[Y ]× is
+injective.
+Proof. Let w be an element of ker(µ). If w 6= 1, then, by residual nilpotence of RF [X]
+(Proposition 1.3), there exists an integer k such that w ∈ Γk − Γk+1 . Thus, w̄ is a
+non-trivial element of Lk (RF [X]), sent to 0 by µ. But µ is an isomorphism (Theorem
+1.12), so this is not possible: our element w must be trivial.
+
+Some remarks on finite presentations of nilpotent groups
+Every nilpotent group of finite type admits a finite presentation. This fact is easy
+to prove, by induction on the nilpotency class, using that finitely generated abelian
+groups are finitely presented, and that an extension of finitely presented groups is
+finitely presented. As a consequence, the reduced free group RFn on x1 , ..., xn must
+admit a finite presentation. Can we find a simple one ? Considering that we have
+a finite presentation of the associated Lie algebra, the problem does not seem to be
+difficult at first. Indeed, let Gn is the group admitting the same finite presentation as
+RLn (see Remark 1.8), where brackets are replaced by commutators. These relations
+are true in RFn (see the proof of Prop. 1.12), thus there is a map π from Gn onto RFn ,
+which must induce an isomorphism at the level of Lie rings. However, we can deduce
+that π is an isomorphism only if we know that both these groups are nilpotent. Which
+raises the question: do the relations defining Gn imply that it is nilpotent ?
+      Thus we are led to ask ourselves: what finite set of relation is needed to ensure
+that a group is nilpotent ? This question is strongly related to the following question:
+can we give a simple finite presentation of the free nilpotent group of class c ? (where
+“simple” is taken in some naive sense). This question is surprisingly difficult. The
+reader can convince himself that killing commutators of the form [xi0 , ..., xic ] (or even
+[x±           ±
+   i0 , ..., xic ]) does not seem to be enough, because the usual formulas of commutator
+calculus seem not to allow one to reduce to commutators of this particular form and
+length. Even killing all iterated commutators of length c + 1 of the generators is only
+conjectured to be enough [Sim87, Jac08].
+      To get a presentation known to work in general, we must take a much larger one.
+For instance, one can kill all iterated commutators of the generators of length between
+c + 1 and 2c. This can be improved slightly by killing only relations of the form [x, y],
+where x, y are iterated commutators of the generators of length at most c, whose length
+add up to at least c + 1. Indeed, all iterated commutators of length greater than c
+can be written as a product of conjugates of iterated commutators of the generators
+of length greater than c (by repeated use of the formulas [a, bc] = [a, b] · [a, c] · [[c, a], b]
+and [a, b−1 ] = [b, a]b ). And every such commutator has a sub-commutator of the given
+form (to see that, it can help to think of commutator words as rooted planar binary
+trees).
+    In order to avoid these problems, and to keep our presentations simple, we will only
+give a presentation of RFn as a nilpotent group, that is, we assume that the group Gn
+is the reasoning above is nilpotent, thus obtaining:
+Proposition 1.14. The reduced free group RFn is the quotient of the free n-nilpotent
+group on x1 , ..., xn by the following finite set of relations:
+
+                                ∀s ⩽ n, ∀(xi ) ∈ ∆s (X), [x1 , ..., xs ] = 1,
+
+where [x1 , ..., xs ] denotes [x1 , [x2 , [· · · [xs−1 , xs ]] · · · ].
+
+                                                          11
+   The subtlety of this situation was not perceived in [Coh95], where it was assumed
+that this presentation (with (n + 1)-commutators included) would automatically define
+a nilpotent group. Note that several results of the present paper give some insight on
+the group-theoretic results of [Coh95], which were stated only in terms of the underlying
+abelian groups, and become simpler when taking into account the Lie ring structure.
+
+
+1.3    Centralizers
+We will use corollary 1.13 to compute the centralizers of generators in RF [X]. First,
+we show a lemma about commutation relations in A[Y ]:
+
+Lemma 1.15. Let y ∈ Y , and let λ be an integer. Define the λ-centralizer Cλ (y) of y
+in A[Y ] to be:
+                       Cλ (y) := {u ∈ A[Y ] | uy = λyu}.
+If λ 6= 1, then Cλ (y) is exactly hyi. If λ = 1, then Cλ (y) = Z ·1⊕hyi. As a consequence,
+Z ·1 ⊕ hyi is the centralizer C(y) of y. Also, hyi is the annihilator Ann(y) of y, and it
+is also the set of elements u satisfying uy = −yu.
+
+Proof. If u is an element of hyi, then uy = λyu = 0. Moreover, obviously, 1 ∈ C1 (y).
+This proves one inclusion. Let us prove the converse. Let Pu be an element of C(y). Let
+us decompose u as a sum of monomials without repetition λα mα in A, and consider a
+monomial mα 6= 1 not containing y. Then λα is the coefficient of mα y in 0 = uy − λyu,
+so it must be zero. Also, if µ is the coefficient of 1 in m, then the coefficient of y in
+uy − λyu is (1 − λ)µ, hence µ = 0 if λ 6= 1. Thus all the monomials appearing in the
+decomposition of u (except possibly 1 if λ = 1) must contain y, so that u belongs to
+hyi (resp. to Z ⊕hyi if λ = 1).
+
+   The next lemma is [HL90, Lem. 1.10]:
+
+Lemma 1.16. Let x ∈ X. Let C(x) be the centralizer of x in RF [X]. Then C(x) is
+exactly the normal closure N (x) of x.
+
+Proof. The inclusion N (x) ⊆ C(x) follows from the definition of RF [X]. Let us
+prove the converse. From Corollary 1.13, we know that C(x) = C(1 + y) ∩ RF [X] =
+(Z ⊕hyi) ∩ RF [X]. Moreover, RF [X] ,→ A[Y ] takes values in 1 + A[Y ] (where A is the
+augmentation ideal of A, that is, the set of polynomials with no constant term). As a
+consequence, this intersection is (1 + hyi) ∩ RF [X]. But 1 + hyi is exactly the set of
+elements sent to 1 by the projection A[Y ]  A[Y − {y}]. This projection induces the
+projection from RF [X] to RF [X − {x}], whose kernel is N (x), whence the result.
+
+Lemma 1.17. Let y ∈ Y . Let CL (y) be the centralizer of y in RL[Y ]. Then CL (y) is
+exactly the Lie ideal hyi generated by y.
+
+Proof. If we now denote by hyiA the ideal generated by y in A (denoted by hyi above),
+we have that CL (y) = C1 (y) ∩ RL[Y ] = hyiA ∩ RL[Y ] is the submodule of RL[Y ]
+generated by Lie monomials in which y appears, which is exactly hyi.
+
+Proposition 1.18. The center of RFn is the intersection of the N (xi ), and also coin-
+cide with Γn (RFn ) ; it is free abelian of rank (n − 1)!
+
+                                           12
+                                     T
+Proof. The inclusions Γn (RFn ) ⊆ N (xi ) ⊆ Z(RFn ) were already established in the
+proof of Proposition 1.3. Let w be a non-trivial element of Z(RFn ). Since RFn is
+nilpotent, w ∈ Γk − Γk+1 for some k, and w is a non-trivial element in the center of
+L(RFn ) ∼= RLn (see Theorem 1.12). From Lemma 1.17, we deduce that w is in the
+Lie ideal hy1 i ∩ ... ∩ hyn i. As a consequence, all yi appear at least once in each Lie
+monomial of the decomposition of w̄. Thus its degree must be at least n, which means
+that w ∈ Γn (RFn ).
+    Moreover, Γn (RFn ) = Γn (RFn )/Γn+1 (RFn ) = Ln (RFn ) identifies with the degree-n
+part RL[n]n of RL[n], which is free abelian of rank (n − 1)! by Lemma 1.9.
+
+
+2     Derivations and the Johnson morphism
+In order to tackle the Andreadakis problem for RFn , we need to understand the as-
+sociated Johnson morphism, whose target is the algebra of derivations of the reduced
+free Lie algebra.
+
+2.1    Derivations
+We begin our study of derivations by those of A[Y ], which are quite easy to handle.
+Proposition 2.1. Any derivation d of A[Y ] sends each element y of Y to an element
+of the ideal hyi. Conversely, any application dY : Y → A[Y ] sending each y into hyi
+extends uniquely to a derivation of A[Y ].
+Proof. First, given a derivation d, we can apply it to the relation y 2 = 0. We get that
+(dy)y + y(dy) = 0. Thus dy ∈ C−1 (y), which means that dy ∈ hyi by Lemma 1.15.
+    Suppose now that we are given a map dY : Y → A[Y ] sending each y into hyi.
+Then dY extends uniquely to a derivation dT from T [Y ] to A[Y ] (the latter being a
+T [Y ]-bimodule in the obvious sense) in the usual way:
+                                          l
+                                          X
+                 dT (yi1 · · · yil ) :=         yi1 · · · yij−1 · dY (yij ) · yij−1 · · · yil .
+                                          j=1
+
+From the hypothesis on dY , we deduce that d vanished on the monomials with repetition
+(the sum on the left being a sum of monomials with repetition in this case), so that
+it induces a well defined derivation d : A[Y ] → A[Y ] extending dY . Unicity is obvious
+from the fact that Y generate the ring A[Y ].
+    We now turn to the study of derivations of RL[Y ]. We consider only derivations
+(strictly) increasing the degree, that is, sending Y into RL[Y ]⩾2 , . In fact, we will
+mostly be concerned with homogeneous such derivations (which raise the degree by
+a fixed amount), but we will see that this distinction is not important for RL[Y ]
+(Cor. 2.3).
+Proposition 2.2. Let d be a derivation of RL[Y ]. Then for any y ∈ Y :
+                                        \
+                            dy ∈ hyi +     hy 0 i =: Jy ,
+                                                      y 0 6=y
+
+where hyi is the Lie ideal generated by y. Conversely, any map from Y to RL[Y ]⩾2
+satisfying this condition can be extended uniquely to a derivation of RL[Y ].
+
+                                                      13
+    Let us remark that the homogeneous ideal Jy differs from hyi only in degree |Y | −
+1 (in particular, only when Y is finite), since the second term is generated by Lie
+monomials without repetition where all y 0 appear, save possibly y. Moreover, one
+easily sees that, for |Y | = n, the ideal Jy contains all of RL[n]n−1 .
+Proof of Prop. 2.2. For |Y | = 2, remark that RL[Y ]2 ⊂ hy1 i∩hy2 i and RL[Y ]⩾3 = {0}.
+As a consequence, any linear map raising the degree satisfies the condition and defines
+a derivation, so we have nothing to show.
+    Let us suppose that Y has at least three elements. Let d be a derivation of RL[Y ],
+and let y ∈ Y . Take z ∈ Y − {y}, and consider the relation 0 = d([y, z, y]) =
+[dy, z, y] + [y, z, dy]. Let us decompose dy as a sum of monomials in A[Y ]. Let m
+be a monomial which contains neither y nor z, and let λ be the coefficient of m in
+dy. Then the monomial mzy appears with coefficient 2λ in the decomposition of
+[dy, z, y] + [y, z, dy], so λ must be trivial. Since this is true for any z 6= y, the only
+monomials without repetition not containing y that can appear in dy are the ones
+containing every element of Y save y, which are exactly the generators of Jy modulo
+hyi. This shows that dy ∈ Jy .
+    To show the converse, we can restrict to homogeneous maps, since any map from Y
+to → RL[Y ]⩾2 is a sum of homogeneous ones, and a sum of derivations is a derivation.
+Suppose that we are given a homogeneous map dY : Y → RL[Y ]⩾2 sending each y into
+Jy . If dY is not of degree |Y | − 2, this condition amounts to dY (y) ∈ hyi. This Lie
+ideal stands inside the associative ideal hyi ⊂ A[Y ]. We can thus use Proposition 2.1
+to extend this map to a derivation of A[Y ]. This derivation sends Y into RL[Y ], hence
+it preserves RL[Y ] ⊂ A[Y ]. As a consequence, it restricts to a derivation of RL[Y ]
+extending dY .
+    We are left to study the case when Y has n elements and dY is of degree n−2. Then
+the conditions on the elements dY (y) are empty. We can still extend dY to a derivation
+from T [Y ] to A[Y ], as in the proof of Proposition 2.1, but it does not vanish on the
+relations defining A[Y ]. However, the induced Lie derivation from L[Y ] to RL[Y ] does
+vanish on the Lie monomials with repetition. Indeed, it vanishes on all elements of
+degree at least 3 (sent to RL[Y ]⩾n+1 = {0}), and there are no such monomials in degree
+2, since the elements [y, y] are already trivial in L[Y ]. As a consequence, it induces a
+well-defined derivation from RL[Y ] to itself. This derivation extends dy and is the only
+one to do so, since RL[Y ] is generated by Y .
+Corollary 2.3. Any derivation of RLn is the sum of homogeneous components:
+
+                           Der (Ln ) ∼
+                                       M
+                                     =    Derk (RLn ) .
+                                          k⩾1
+
+Proof. If d is such a derivation, Proposition 2.2 shows that the homogeneous compo-
+nents of its restriction to Y extend uniquely to derivations of RLn , whose sum coincide
+with d on Y , hence everywhere. Note that it makes sense to speak of this sum, be-
+cause Y is finite, so that the number of non-trivial homogeneous components of d|Y is
+finite.
+   The following theorem is an analogue of [Dar19b, Prop. 2.41], replacing free nilpo-
+tent groups by reduced free groups.
+Theorem 2.4. Let n ⩾ 2 be an integer. The Johnson morphism is an isomorphism:
+
+                               L (A∗ (RFn )) ∼
+                                             = Der(RLn ).
+
+                                           14
+Proof. Take |X| = |Y | = n. Let d be a derivation of RL[Y ], of degree k. We need to
+lift it to an automorphism ϕ of RF [X]. We first suppose that k 6= n − 2. Since d(yi ) ∈
+hyi i ∩ RLk+1 [Y ] (Proposition 2.2), we can write each d(yi ) as a linear combination of
+Lie monomials of length k + 1 containing yi . The corresponding product of brackets
+in RF [X] lifts d(yi ) to an element wi of Γk+1 (RF [X]) ∩ N (xi ). The element wi xi
+belongs to N (xi ), so it commutes with all its conjugates. As a consequence, xi 7→ wi xi
+defines an endomorphism ϕ of RF [X]. Since ϕ acts trivially on the abelianization of
+RF [X], which is nilpotent, it is an automorphism [Dar19b, Lem. 2.38]. Moreover, by
+construction, we have τ (ϕ̄) = d.
+      Suppose now that k = n − 2. Then d(yi ) can be any element of RLn−1 [Y ]. Choose
+any lift wi ∈ Γn−1 (RF [X]) of d(yi ). Using the usual formulas of commutator calcu-
+lus, we see that for any w ∈ RF [X], [wi xi , w, wi xi ] ≡ [xi , w, xi ] (mod Γn+1 ). Since
+[xi , w, xi ] = 1 and Γn+1 (RFn ) = {1}, we conclude that [wi xi , w, wi xi ] = 1, which means
+exactly that wi xi commutes with all its conjugate. The same construction as in the
+first case then gives an automorphism ϕ ∈ An−2 such that τ (ϕ̄) = d.
+
+2.2    Tangential derivations
+Definition 2.5. A tangential derivation of RL[Y ] is a derivation sending each y ∈ Y
+to an element of the form [y, wy ] (for some wy ∈ RL[Y ]).
+Fact 2.6. The subset Derτ (RL[Y ]) of tangential derivations is a Lie subalgebra of
+Der(RL[Y ]).
+Proof. Let d : y 7→ [y, wy ] and d0 : y 7→ [y, wy0 ]. Then an elementary calculation gives:
+
+                        [d, d0 ](y) = [y, [wy , wy0 ] + d(wy0 ) − d0 (wy )],          (2.6.1)
+
+whence the result.
+Proposition 2.7. Let n ⩾ 2 be an integer. The Lie subalgebra of Der(RLn ) generated
+in degree 1 is the subalgebra Derτ (RLn ) of tangential derivations.
+Proof. Consider the derivation dij sending yi to [yi , yj ] and all the other yk to 0. From
+Lemma 2.2, we know that these generate the module of derivations of degree 1. They
+are tangential derivations, so the Lie subalgebra they generate is inside Derτ (RL[Y ]).
+Consider the set Di of tangential derivations sending all yk to 0, save the i-th one.
+Such derivations vanish on all monomials which are not in hyi i, and preserve hyi i.
+Since elements of hyi i commute with yi , formula (2.6.1) implies that the following map
+is a morphism:                  
+                                  RL[Y ] −→            Di
+                           ci :
+                                    t     7−→ (yi 7→ [yi , t])).
+It is obviously surjective, so that Di is a Lie subalgebra of Derτ (RL[Y ]). Moreover,
+its kernel is hyi i (Lemma 1.17), so that Di ∼ = RL[Y ]/yi is in fact the free reduced Lie
+algebra on the ci (yj ) = dij (for j 6= i). Since Derτ (RL[Y ]) is the (linear) finite direct
+sum of the Di , it is indeed generated (as a Lie algebra) by the dij .
+   Recall that the McCool group P ΣX is the group of automorphisms of the free group
+F [X] on a set X fixing the conjugacy class of each generator x ∈ X.
+Definition 2.8. The reduced McCool group hP ΣX is the subgroup of Aut(RF [X])
+preserving the conjugacy class of each generator x ∈ X of RF [X].
+
+                                                15
+    This group hP ΣX is also called AutC (RFX ), but we prefer to think of it as version
+of P ΣX up to homotopy (this terminology will be explained in §4). When X is finite,
+we denote its elements by x1 , ..., xn and hP ΣX by hP Σn .
+    Consider the filtration A∗ (RFn ) on Aut(RFn ). It restricts to a filtration hP Σn ∩
+A∗ (RFn ) on hP ΣX . Moreover, since A∗ (RFn ) is strongly central on the subgroup
+A1 (RFn ) of automorphisms acting trivially on RFnab , and hP Σn ⊂ A1 (RFn ), this
+induced filtration is strongly central on hP Σn .
+Theorem 2.9. Let n ⩾ 2 be an integer. The Johnson morphism induces an isomor-
+phism:
+                     L (hP Σn ∩ A∗ (RFn )) ∼
+                                           = Derτ (RLn )
+Proof. Let ϕ : xi 7→ xw i be a basis-conjugating automorphism belonging to Ak − Ak+1 .
+                         i
+
+
+Then τ (ϕ)(yi ) = [yi , w̄i ] (where w̄i is the class of wi in Γk /Γk+1 ), so the Johnson
+morphism sends L(hP Σn ∩ A∗ (RFn )) into Derτ . Moreover, it is injective by Theorem
+2.4, and since τ (χij ) = dij , Proposition 2.7 implies that it is surjective.
+     Theorem 2.9, together with Proposition 2.7, have an interesting consequence: the
+group hP Σn is maximal among subgroups of Aut(RFn ) for which the An-
+dreadakis equality can be true. Indeed, let hP Σn ( G ⊆ Aut(RFn ), and consider
+the comparison morphism i∗ : L(G) → L(G ∩ A∗ ) obtained from the inclusion of Γ∗ G
+into G ∩ A∗ . On the one hand, the Lie algebra L(G ∩ A∗ ) contains L(hP Σn ∩ A∗ ), and
+this inclusion must be strict, otherwise we could argue as in the proof of Lemma 5.3
+to show that G = hP Σn . On the other hand, L(G) is generated in degree 1, so that
+i∗ (L(G)) ⊆ L(hP Σn ∩A∗ ), the latter being the subalgebra of L (A∗ (RFn )) ∼
+                                                                            = Der(RLn )
+generated by its degree one. As a consequence, i∗ cannot be surjective, whence the
+conclusion.
+   Here is another consequence of these theorems:
+Corollary 2.10. The group hP Σn is generated by the χij (i 6= j), and hP Σab
+                                                                          n identifies
+with the free abelian group generated by the χij .
+    In particular, the canonical morphism from P Σn to hP Σn is surjective. This means
+that that when it comes to basis-conjugating automorphisms, all automorphisms of RFn
+are tame. This is in striking contrast with the case of free nilpotent groups [Dar19b,
+§2.6]. This fact is in fact obvious from the geometrical interpretation (recalled in §4),
+but we give an algebraic proof here, using much less machinery.
+Proof of cor. 2.10. Thanks to Proposition 2.7 and Theorem 2.9, we know that the
+classes of the χij in L(A∗ ∩ hP Σn ) generate this Lie ring. By applying Lemma 5.3 to
+the finite filtration A∗ ∩ hP Σn , we deduce that the χij generate hP Σn .
+    As a consequence, the χij generate its abelianization. Moreover, the Johnson mor-
+phism from hP Σab   n to Der1 (RLn ) sends the χij to the linearly independant elements
+dij of Der1 (RLn ). Thus the χij are a basis of hP Σab
+                                                     n .
+
+    We can also use the proof of Proposition 2.7 to compute the Hirsch rank of the
+nilpotent group hP Σn (which is the rank of any associated Lie algebra). We recover
+the formula from [AMW17, Rk. 4.9]:
+Corollary 2.11. The Hirsch rank of the reduced McCool group is:
+                                                           n−1
+                                                           X          n!
+         rk(hP Σn ) = rk(Derτ (RLn )) = n · rk(RLn−1 ) =                         ·
+                                                           k=1
+                                                               (n − k −  1)! · k
+
+                                           16
+Proof. The first equality is a direct consequence of Theorem 2.9. The second one stems
+from the proof of Proposition 2.7, where we have shown that Derτ (RLn ) is (linearly) a
+direct sum of n copies Di of RLn−1 . The last one is a direct application of Proposition
+1.9.
+
+
+3     The Andreadakis problem
+                                                                     x
+The McCool group P Σn is generated by the elements χij : xi 7→ xi j (χij fixed all the
+other xt ). The following relations, called the McCool relations, are known to define
+a presentation of the McCool group P Σn [McC86]. The reader can easily check that
+they are satisfied in P Σn :
+                     
+                     [χik χjk , χij ] = 1 for i, j, k pairwise distinct,
+                     
+                       [χik , χjk ] = 1    for i, j, k pairwise distinct,
+                     
+                       [χij , χkl ] = 1    if {i, j} ∩ {k, l} = ∅,
+                     
+
+    Thanks to Corollary 2.10, we know that hP Σn is naturally a quotient of P Σn . We
+will give in §5 three families of relations that need to be added to a presentation of
+P Σn in order to get a presentation of P Σn . This will rely on the semi-direct product
+decomposition that we now describe.
+
+3.1    A semi-direct product decomposition
+The following decomposition theorem is the central result of the present paper. From
+it we will deduce the Andreadakis equality for hP Σn (§3.3) and a presentation of this
+group and of its Lie ring (§5):
+Theorem 3.1. There is a decomposition of hP Σn as a semi-direct product:
+                      "               !             #
+             hP Σn ∼
+                          Y
+                    =       N (xn )/xi o (RFn /xn ) o hP Σn−1 ,
+                              i<n
+
+where N (xn )/xi is the normal closure of xn inside RFn /xi , and the action of RFn /xn ∼
+                                                                                        =
+RFn−1 on the product is the diagonal one. Moreover, the semi-direct product on the
+right is an almost direct one.
+    We will prove this theorem in three steps. First, we show that hP Σn decomposes
+into a semi-direct product Kn o hP Σn−1 . Then we investigate the structure of Kn ,
+which decomposes as Kn0 o RFn−1 . Finally, we investigate the structure of Kn0 , which
+is abelian and decomposes as the direct product of the N (xn )/xi .
+
+Step 1: decomposition of hP Σn
+Elements of hP Σn preserve the conjugacy class of xn , so they preserve its normal
+closure N (xn ). As a consequence, any of these automorphisms induce a well-defined
+automorphism of RFn /N (xn ) ∼ = RFn−1 . In other words, the projection xn 7→ 1 from
+RFn onto RFn−1 induces a well-defined morphism pn from hP Σn to hP Σn−1 . Moreover,
+this morphism is a split projection, a splitting sn being the map extending automor-
+phisms by making them fix xn . Let us denote by Kn the kernel of pn . We thus get our
+first decomposition:
+                                hP Σn ∼= Kn o hP Σn−1                          (3.1.1)
+
+                                           17
+Moreover, it will follow from Lemma 3.3 that this is indeed an almost direct product:
+Knab is generated by the classes of the χin and the χni . From corollary 2.10, we know
+that these are sent to a linearly independant family in hP Σab  n , so that they freely
+generate Kn . We thus get a direct product decomposition hP Σab
+            ab                                                     ∼ ab         ab
+                                                                n = Kn ⊕ hP Σn−1 , as
+announced.
+
+Step 2: structure of Kn
+We first state an easy result on generators of factors in semi-direct products.
+
+Lemma 3.2. Let G = H o K be a semi-direct product of groups. Suppose given
+a family (hi ) of elements of H, and a family (kj ) of elements of K such that their
+reunion generate G. Then K is generated by the kj , and H is generated by the hki , for
+k ∈ K.
+
+Proof. Take an element g ∈ G and write it as a product of h±1i and kj±1 . Then use the
+formula kh = (kh)k to push the kj to the right. We obtain a decomposition g = h0 k,
+where h0 ∈ H is a product of conjugates of the h±1i  by elements of K, and k ∈ K is a
+                ±1
+product of the kj . This decomposition has to be the unique decomposition of g into a
+product of an element of H followed by and element of K. As a consequence, if g ∈ H,
+then g = h0 , whereas if g ∈ K, then g = k, proving our claim.
+
+    We can apply Lemma 3.2 to the χij in hP Σn ∼   = Kn o hP Σn−1 . Indeed, the χin and
+the χni are in Kn , and that the other χij belong to hP Σn−1 . Hence, Kn is generated by
+the conjugates of the χin and the χni by products of the other χij and their inverses.
+In fact, more is true:
+
+Lemma 3.3. The group Kn is generated by the χin and the χni .
+
+Proof. We use the above relations to show that the subgroup H of Kn generated by
+the χin and the χni is normal in hP Σn , that is: [hP Σn , H] ⊆ H.
+   The bracket [χin , χαβ ] is obviously in H if α = n or β = n. Otherwise, it is trivial,
+except possibly when α = i or β = i. In the first case (since χnβ and χiβ commute):
+
+                       1 = [χin , χnβ χiβ ] = [χin , χnβ ](χnβ[χin , χiβ ]),
+
+whence [χin , χiβ ] ∈ H. In the second case:
+
+                       1 = [χin χαn , χαi ] = (χin[χαn , χαi ])[χin , χαi ],
+
+so, using the first case: [χin , χαi ] ∈ H.
+    In a similar fashion, the bracket [χni , χαβ ] belongs to G if α = n or β = n. Other-
+wise, it is trivial, except when α = i. But in this case:
+
+                       1 = [χni , χiβ χnβ ] = [χni , χiβ ](χnβ[χin , χnβ ]),
+
+so that [χni , χiβ ] ∈ H. Thus, H is stable under conjugation by all generators of hP Σn ,
+so it is normal in hP Σn .
+
+Remark 3.4. We have used only the McCool relations here, so the analogue of Lemma
+3.3 is also true in P Σn .
+
+                                                18
+   By looking at how elements of Kn act on xn , we get a split projection qn from Kn
+onto RFn−1 . Namely, if ϕ ∈ Kn is an automorphism sending each xi to xw   i , qn sends
+                                                                           i
+
+
+ϕ onto the class wn ∈ RFn /xn ∼
+                              = RFn−1 . This is well-defined, because of Lemma 1.16:
+                              −1
+            xvn = xw    vw
+                   n ⇔ xn          = 1 ⇔ vw−1 ∈ C(xn ) = N (xn ) ⇔ v = w.
+
+Moreover, this defines a morphism. Indeed, if ϕ and ψ send xn respectively to xw
+                                                                               n and
+                                                                                n
+
+xvnn , then:
+                            ψϕ(xn ) = ψ(xw
+                                         n ) = xn
+                                           n      vn ψ(wn )
+                                                            ,
+and since ψ ∈ Kn , we have ψ(wn ) = wn , whence:
+
+                        qn (ψϕ) = vn ψ(wn ) = v n wn = qn (ψ)qn (ϕ).
+
+This morphism qn is a retraction of the inclusion tn of RFn−1 ∼  = RFn /xn into Kn
+sending w ∈ RFn to the automorphism fixing all xi save xn , which is sent to xw
+                                                                              n . If we
+call Kn0 the kernel of qn , we thus get a decomposition:
+
+                                     Kn = Kn0 o RFn−1 .                               (3.4.1)
+
+Lemma 3.5. The above decomposition is hP Σn−1 -equivariant, with respect to the ac-
+tion of hP Σn−1 on Kn (and on Kn0 ⊂ Kn ) coming from conjugation in hP Σn , and to the
+canonical action of hP Σn−1 on RFn−1 . Precisely, qn and tn are hP Σn−1 -equivariant
+morphisms.
+
+Proof. If ϕ ∈ Kn sends xi to xw
+                              i as above, and χ ∈ hP Σn−1 , then χϕχ
+                               i                                     −1
+                                                                        sends xn to
+ χ(wn )
+xn      , so that:
+                     qn (χϕχ−1 ) = χ(wn ) = χ(wn ) = χ(qn (ϕ)).
+As for the equivariance of tn , if w ∈ RFn−1 , both χ · tn (w) · χ−1 and tn (χ(w)) fix all xi
+                                     χ(w)
+save xn , the latter being sent to xn , hence they are equal.
+
+Remark 3.6. A similar decomposition holds in hP Σn , replacing RFn−1 by Fn−1 . The
+same proof works, replacing the equality C(xn ) = N (xn ) (which is not true in this
+case) by the inclusion C(xn ) ⊂ N (xn ).
+
+Step 3: structure of Kn0
+So far, we have not really used the fact that that we consider welded braids up to
+homotopy (that is, automorphisms of RFn , not of Fn ). In fact, the analogues of the
+decomposition results above are true in the group P Σn of welded braids (see Remarks
+3.4 and 3.6). We now come to the part where the homotopy relation plays a crucial
+role. That is, we are going to use the relations defining RFn in a crucial way. These
+relations, saying that each element xi of the fixed basis commutes with its conjugates,
+can be re-written as:
+                           ∀i ⩽ n, ∀s, t ∈ RFn , xisxi t = xst
+                                                            i .
+
+In other words, for w ∈ RFn , xw
+                               i depends only on the class of w modulo xi (that is,
+modulo the normal closure of xi ). These relations allow us us to say more about the
+above decomposition of Kn :
+
+                                             19
+Lemma 3.7. The kernel Kn0 of the projection qn : Kn  RFn−1 is an abelian group,
+isomorphic to the product of the N (xn )/xi , where N (xn )/xi is the normal closure of
+xn inside RFn /xi ∼
+                  = RFn−1 . Precisely, the identification of N (xn )/xi with a factor of
+  0
+Kn is induced by the map:
+                        
+                         N (xn ) −→
+                                             Kn0 (               !
+                   ci :                            xui  if j = i,
+                           u     7−→     xj 7→
+                                                  xj   else.
+which is a well-defined group morphism. Furthermore, ci is RFn−1 -equivariant, where
+RFn−1 ∼ = hχnj ij acts via automorphisms on the source, and via conjugation on the
+target.
+Proof. We identify elements w ∈ RFn−1 with their image by tn : RFn−1 → Kn , that is,
+we denote by w the automorphism fixing all xi save xn , which is sent to xw
+                                                                          n . Applying
+Lemma 3.2 to the semi-direct product decomposition (3.4.1), we see that Kn0 is gener-
+ated by the elements χw                                                   w
+                       in , which we now compute. The automorphism χin fixes xα if
+α∈/ {i, n}. On xi and xn , using that χin (w) ≡ w (mod xn ), we compute:
+                                                                   xw
+                                                  xxi n
+                     
+                w      xi 7−→ xi 7−→                        7−→ xi n ,
+               χin :
+                       xn 7−→ wxn 7−→ χin (w)xn = wxn 7−→ xn .
+                                                                    0
+From this calculation, we see that all χ = χw                           v
+                                            in commutes with every χ = χjn , showing
+that Kn0 is indeed abelian. If j 6= i, this is a consequence of the fact that these
+automorphisms act trivially modulo xn :
+                                                    χ0 (w)
+                                         xw                      xw
+                                    χ0 (xi n ) = xxi n       = xi n .
+For i = j, it follows from the fact that the conjugates of xn commute.
+      Consider now Ni the subgroup generated by the χw        in , for w ∈ RFn−1 . All the
+elements of Ni are automorphisms fixing all xj save xi , and sending xi to an element
+xui , for some u ∈ N (xn ). As a consequence, the map ci is a surjection from N (xn ) onto
+Ni . Since, by definition of the reduced free group, xisxi t = xsti for all s, t ∈ RFn , we see
+that ci (v) depends only on the class v of v in RFn−1 /xi . We use this to show that ci is
+a morphism:
+               ci (u)ci (v) : xi 7→ ci (u)(xvi ) = (xui )ci (u)(v) = xuv
+                                                                      i = ci (uv)(xi ).
+
+Now, the kernel of ci is C(xi ) ∩ N (xn ) = N (xi ) ∩ N (xn ) (using Lemma 1.16). It thus
+induces an isomorphism between N (xn )/(N (xi ) ∩ N (xn )) and Ni . Moreover, since it
+is the image of N (xn ) in RFn /N (xi ), this group identifies with the normal closure of
+xn inside RFn /xi ∼ = RFn−1 .
+    We are left to show that ci is RFn−1 -equivariant. It is enough to show that it
+commutes with the actions of the generators. If ϕ ∈ hχnj ij6=i , then xi does not appear
+in ϕ(xn ), so that:
+                                                                     ϕ(u)
+                          
+                       ϕ    xi 7−→       xi    7−→     xui    7−→ xi ,
+                 ci (u) :
+                            xn 7−→ ϕ(xn ) 7−→ ϕ(xn ) 7−→ xn ,
+showing that ci (u)ϕ = ci (ϕ(u)). It remains to check that ci (u)χni = ci (χni (u)).
+ci (χni (u)) identifies with ci (u), since χni acts trivially modulo xi . We thus need to
+check that χni commute with all ci (u) (which are all elements in Ni ). This comes from
+                             xu                               χ (u)
+the two relations xxni = xni (because u ∈ N (xn )) and xi ni = xui (because χni acts
+trivially modulo xi ).
+
+                                                  20
+3.2    The Lie algebra of the reduced McCool group
+The decomposition of hP Σn described in Theorem 3.1 induces a decomposition of its
+Lie algebra:
+
+Theorem 3.8. The Lie algebra L(hP Σn ) decomposes into a semi-direct product:
+                                 "         !       #
+                   L(hP Σn ) ∼
+                                     Y
+                             =        hyi i o RLn−1 o L(hP Σn−1 ),
+                                     i<n
+
+
+where hyi i is the ideal generated by yi inside RLn−1 , and the action of RLn−1 on the
+product is the diagonal one.
+
+Proof. From the almost-direct product decomposition hP Σn ∼     = Kn o hP Σn−1 , comes
+                                                ∼
+a decomposition of the Lie algebra L(hP Σn ) = L(Kn ) o L(hP Σn−1 ). In the decom-
+position of Kn described above (3.4.1), we can replace the normal closure N (xn )/xi of
+xn in RFn /xi by the normal closure N (xi )/xn of xi in RFn /xn ∼  = RFn−1 . Indeed, the
+automorphism of RFn exchanging xi and xn induces an isomorphism between these
+two, which is RFn−1 -equivariant, since xi acts trivially on both of them. We thus have
+to compute:
+                                     "             !          #
+                        L(Kn ) ∼
+                                        Y
+                               =L           N (xi ) o RFn−1 .
+                                           i<n
+
+Since this is not a decomposition into an almost direct product, we have to use [Dar19a,
+                               RF                                      Q RF
+§3.1]: we need to compute Γ∗ n−1 ( N (xi )), which is the product Γ∗ n−1 (N (xi )),
+                                     Q
+since RFn−1 acts diagonally. In order to do this, consider the split short exact sequence
+of groups:
+                        N (xi ) ,→ RFn−1  RFn−1 /xi ∼ = RFn−2 .
+From [Dar19a, Prop. 3.4], this gives rise to a decomposition of Γ∗ (RFn−1 ) into a semi-
+                  RF                                     RF
+direct product Γ∗ n−2 (N (xi )) o Γ∗ (RFn−2 ), where Γ∗ n−2 (N (xi )) is defined by taking
+commutators with N (xi ) o RFn−2 ∼
+                                                                              RF
+                                     = RFn−1 at each step, so is equal to Γ∗ n−1 (N (xi )).
+                                   RFn−1
+As a consequence, N∗ (xi ) := Γ∗          (N (xi )) is the intersection of Γ∗ (RFn−1 ) with
+N (xi ). Its associated Lie algebra fits into the short exact sequence:
+
+                         L(N∗ (xi )) ,→ L(RFn−1 )  L(RFn−2 ).
+
+Theorem 1.12 ensures that the projection on the right identifies with the projection of
+RLn−1 onto RLn−2 sending yi to 0, whose kernel is hyi i. Thus L(N∗ (xi )) ∼= hyi i, and
+L(N (xi ) o RFn−1 ) ∼
+                    = L(N∗ (xi )) o L(RFn−1 ) ∼
+                                              = hyi i o RLn−1 , ending the proof of the
+theorem.
+
+
+3.3    The Andreadakis equality
+Theorem 3.8 gives a complete description of the graded Lie ring associated to Γ∗ (hP Σn ).
+On the other hand, Theorem 2.9 describes the Lie ring associated with the Andreadakis
+filtration hP Σn ∩ A∗ (RFn ). Using these two results, we are now able to show:
+
+Theorem 3.9. The Andreadakis equality holds for hP Σn .
+
+                                                 21
+Proof. We want to show that the Johnson morphism τ 0 : L(hP Σn ) → Der(RLn ) is
+injective (see the end of §0.1). We make use of the following the commutative diagrams:
+
+                     L(Kn )         L(hP Σn )          L(hP Σn−1 )
+                        τ0                  τ0                τ0
+
+                       •           Derτ (RLn )        Derτ (RLn−1 ),
+
+Where the bottom projection is the one induced by yn 7→ 0. By induction (beginning
+at n = 2), using the snake lemma, we only have to prove that the left map is injective,
+that is, that τ 0 : L(Kn ) → Der(RLn ) is. Take an element
+                                                                    !
+                                      Y
+        ϕ = ((wi ), wn ) ∈ Γj (Kn ) =      (Γj (RFn ) ∩ N (xn )) /xi o Γj (RFn−1 ),
+                                      j<n
+
+
+meaning that ϕ is the automorphism conjugating xn by wn ∈ Γj (RFn−1 ) and xi by
+wi ∈ Γj (RFn ) ∩ N (xn ) for i < n, which depends only on the class of each wi modulo
+N (xi ). Then τj0 (ϕ) sends each yi (i ⩽ n) to [yi , wi ] ∈ Lj+1 (RFn ). As a consequence,
+the equality τj0 (ϕ) = 0 would mean that each wi commutes with yi in L(RFn ) ∼     = RLn .
+However, by Lemma 1.17, this would imply that wi ∈ hyi i. However, in the course of
+the proof of Theorem 3.8, we have shown that hyi i = L (Γ∗ (RFn ) ∩ N (xi )). Thus there
+exists vi in Γj (RFn ) ∩ N (xi ) such that v i = wi , that is, wi ≡ vi (mod Γj+1 (RFn )).
+But we can replace wi by wi vi−1 without changing ϕ, so that all the wi can be chosen
+to be in Γj+1 (RFn ). This implies that ϕ ∈ Γj+1 (hP Σn ), which means that ϕ = 0 in
+Lj (hP Σn ). This ends the proof that the kernel of τ 0 is trivial, and the proof of the
+Theorem.
+
+
+3.4     Braids up to homotopy
+Consider the (classical) pure braid group Pn . It can be embedded into the monoid of
+string-links on n strands. These string-links can be considered up to (link-)homotopy,
+which means that one adds to the isotopy relation the possibility for each strand to
+cross itself. This relation is obviously compatible with the monoid structure, and since
+every string-link is in fact homotopic to a braid, this quotient is a quotient of the pure
+braid group, called the group of braids up to homotopy, denoted by hPn .
+
+3.4.1   Decomposition and Lie algebra
+In [Gol74], Goldsmith described hPn as a quotient of Pn by a finite set of relations.
+These relations say exactly that for j < k, the generators Ajk commute with their
+conjugates by elements of hAik ii<k ∼
+                                    = Fk−1 . This means exactly that the free factors in
+the decomposition of Pn are replaced by reduced free groups:
+
+                                  hPn+1 ∼
+                                        = RFn o hPn .
+
+This decomposition first appeared explicitly in [HL90], where a more topological proof
+is described.
+    Such a decomposition is compatible with the decomposition of the (classical) pure
+braid group, which means that the canonical projections give a morphism of semi-direct
+
+                                                 22
+products:
+                             Fn           Pn+1           Pn
+                                                                                 (3.9.1)
+                            RFn          hPn+1          hPn .
+    Since Goldsmith’s relations are commutation relations, the projection from Pn+1
+                                                  ab           ab
+onto hPn+1 induces an isomorphism between Pn+1       onto hPn+1   . As a consequence,
+since the decomposition Pn+1 ∼ = nF  o P n is an almost-direct  product decomposition,
+                           ∼
+the decomposition hPn+1 = RFn o hPn also is. It thus induces a decomposition of
+the lower central series and of the corresponding Lie ring. Precisely, we get iterated
+semi-direct product decompositions:
+                           Γj (hPn+1 ) = Γj (RFn ) o Γj (hPn ),                  (3.9.2)
+which induces such decompositions on the associated graded Lie rings. Thus we get:
+Proposition 3.10. The group hPn+1 is n-nilpotent, and its Lie algebra decomposes as
+an iterated semi-direct product of reduced free Lie algebras:
+                   L(hPn+1 ) ∼
+                             = L(RFn ) o L(hPn ) ∼
+                                                 = RLn o L(hPn ).
+   From this, we can deduce the Hirsch rank of hPn , recovering Milnor’s formula, as
+quoted in [HL90, Section 3]:
+Corollary 3.11. The group hPn has no torsion and its Hirsch rank is:
+                                   n−1              
+                                   X              n
+                        rk(hPn ) =     (k − 1)!        .
+                                   k=1
+                                                 k+1
+
+Proof. That it has no torsion (even no torsion in its lower central series) comes from
+the fact that the RL[m] do not, according to Proposition 1.9. The same proposition
+gives us the ranks of the RL[m]k , allowing us to compute:
+                        n−1                         n−1                     
+                        X                           X    m                 n
+       rk (Lk (hPn )) =     rk (RL[m]k ) = (k − 1)!         = (k − 1)!           ,
+                        m=1                         m=1
+                                                         k               k + 1
+
+the last equality being obtained by iterating Pascal’s formula, or by a combinatorial
+proof (replacing the choice of k elements t1 , ..., tk among m elements, with m ranging
+from k to n − 1, by the choice of k + 1 elements t1 , ..., tk , m + 1 among n elements).
+    Let us also mention that we can deduce from the decomposition of L(hPn ) de-
+scribed in Proposition 3.10 and from the usual presentation of the pure braid group a
+presentation of this Lie ring, which is a quotient of the Drinfeld-Kohno Lie ring L(Pn )
+of infinitesimal braids (whose rational version was introduced in [Koh85]).
+Corollary 3.12. The Lie ring of hPn is generated by tij (1 ⩽ i, j ⩽ n), under the
+Drinfeld-Kohno relations:
+                     
+                     tij = tji , tii = 0 ∀i, j,
+                     
+                       [tij , tik + tkj ] = 0 ∀i, j, k,
+                     
+                       [tij , tkl ] = 0       if {i, j} ∩ {k, l} = ∅,
+                     
+
+to which are added, for each m, the vanishing of Lie monomials in the tim (i < m)
+with repetition.
+
+                                           23
+Proof. The proof in the classical case (see for instance to the appendix of [Dar19a])
+adapts verbatim, by considering reduced free Lie rings instead of free Lie rings.
+
+    Remark that as in the definition of the reduced free Lie ring (Definition 1.6 – see
+also Remark 1.8), one can give a simpler finite presentation by considering, for each
+m, only linear Lie monomials in the tim (i < m) of length at most m.
+
+3.4.2   The Andreadakis problem
+The semi-direct product RFn o hPn described above is the same thing as an action of
+hPn on RFn , also described by a morphism from hPn to Aut(RFn ). This is the homo-
+topy Artin action, that we now study, using the fact that it is encoded by conjugation
+inside Pn+1 = RFn o hPn .
+    First, remark that this action is by basis-conjugating automorphisms. In fact, the
+compatibility diagram (3.9.1) gives rise to a commutative diagram:
+
+                                 Pn          AutC (Fn )
+
+
+                                hPn         AutC (RFn ),
+
+the morphism on the left being surjective by 2.10. The top map, which is the Artin
+action, is injective (the action is faithful) and its image is exactly the subgroup of
+basis-conjugating automorphisms fixing the boundary element x1 · · · xn [Bir75, Th. 1.9].
+Habegger and Lin have shown that the analogous statements are true for hPn [HL90,
+Th. 1.7]: the homotopy Artin action induces an isomorphism between hPn and the
+group Aut∂C (RFn ) of basis-conjugating automorphisms of RFn preserving the product
+x1 · · · xn . In their proof, they show that this group admits the same decomposition as
+hPn , and the pieces of these decompositions identify under the Artin morphism. We
+will recover the faithfulness of the homotopy Artin action as part of our answer to the
+Andreadakis problem for hPn ⊂ AutC (RFn ) (see Cor. 3.14 below).
+
+Theorem 3.13. The Andreadakis equality holds for hPn , embedded into Aut(RFn ) via
+the Artin action.
+
+Proof. We adapt the proof for Pn given in [Dar19a]. Let w ∈ hPn , and suppose that
+w acts on RFn as an element of Aj . We want to show that it belongs to Γj (hPn ). Our
+hypothesis can be written as:
+
+                                 [w, RFn ] ⊆ Γj+1 (RFn ),
+
+where the bracket is computed in RFn o hPn , which is exactly hPn+1 . Moreover, from
+the decomposition of the lower central series of hPn+1 described above (§3.4.1), we
+deduce that Γj (hPn ) = hPn ∩ Γj (hPn+1 ), so that the conclusion we seek is in fact
+w ∈ Γj (hPn+1 ). Let us comb w: we write w = βn · · · β2 ∈ RFn−1 o (RFn−2 o (· · · o
+RF1 ) = hPn . Again, because of the decomposition of the lower central series of hPn ,
+we need to show that each βi is in Γj (Pn+1 ). In the rest of the proof, we often write Γk
+for Γk (hPn+1 ), its intersection with the subgroups we consider being their own lower
+central series, because of (3.9.2).
+    Let us suppose that w ∈  / Γj (hPn+1 ). Then w ∈ Γk − Γk+1 for some k < j. Let i be
+maximal such that βi ∈   / Γk+1 . On the one hand, the generator Ai,n+1 ∈ RFn commutes
+
+                                           24
+with all βk with k < i, so that [w, Ai,n+1 ] ≡ [βi , Ai,n+1 ] (mod Γk+2 ). Moreover, by
+hypothesis, [w, Ai,n+1 ] ∈ Γj+1 ⊆ Γk+2 , so that [βi , Ai,n+1 ] ∈ Γk+2 . Since βi has degree k
+and Ai,n+1 has degree 1 in the lower central series, this means that [βi , Ai,n+1 ] = 0 in
+the Lie algebra. On the other hand, βi and Ai,n+1 belong to another copy of RFn inside
+hPn+1 , namely hA1,i , ..., Ai−1,i , Ai,i+1 , ...Ai,n+1 i. We denote this copy by RF
+                                                                                  gn . Remark
+that the equality Γ∗ (RFgn ) = RF  gn ∩ Γ∗ (hPn+1 ) is also true for this copy of RFn , as one
+sees by switching the strands i and n + 1 in the reasoning above. But then we can
+apply Lemma 1.17: since βi commutes with the generator Ai,n+1 of L(RF            gn ) ∼
+                                                                                      = RLn , it
+must belong to the Lie ideal of L(RF     gn ) generated by Ai,n+1 . But this is impossible: by
+definition of βi , the generator Ai,n+1 cannot appear in βi . We thus get a contradiction,
+and our conclusion.
+
+    From this, we can recover the injectivity part of the result of Habegger and Lin:
+
+Corollary 3.14. [HL90, Th. 1.7]. The homotopy Artin action is faithful.
+
+Proof. If w ∈ hPn acts trivially on RFn , then w ∈ {1} = An (RFn ), so that w ∈
+Γn (hPn ) = 1.
+
+     This injectivity of hPn → hP Σn is weaker than our statement, which says that the
+lower central series are compatible, since they both are the trace of the Andreadakis
+filtration A∗ (RFn ):
+
+Corollary 3.15. For all n, hPn ∩ Γ∗ (hP Σn ) = Γ∗ (hPn ).
+
+Proof. Combine Theorems 3.13 and 3.9.
+
+
+4     Topological interpretation
+Consider the group Pn of pure braids. Via the decomposition Pn+1 ∼       = Fn o Pn , we get
+and action of Pn on the free group Fn , which is the classical Artin action. Geometrically,
+it is best understood as the action of Pn , which is the motion group of n points in a
+plane, on the fundamental group of the plane with n points removed. As mentioned
+above (§3.4.2), this action is faithful, giving an embedding of Pn into Aut(Fn ), whose
+image is exactly the subgroup Aut∂C (Fn ) of automorphisms fixing the conjugacy class
+of each generator xi , and preserving the boundary element x1 · · · xn [Bir75, Th. 1.9].
+    An analogous statement is true for the group P Σn of pure welded braids. This
+group is a group of tube-shaped braids in R4 , and can also be seen as the (pure)
+motion group of n unknotted circles in the three-dimensional space (see [Dam17] on
+the different definitions on this group). It acts on the fundamental group of R3 with n
+unknotted circles removed, which is again the free group Fn . This Artin action is again
+faithful, and its image is exactly the subgroup AutC (Fn ) of automorphisms fixing the
+conjugacy class of each generator xi [Gol81].
+    The same statements are true up to (link-)homotopy. These have been recalled for
+braids in §3.4. For welded braids, link-homotopy of string links also makes sense (in
+the four-dimensional space), and for welded diagrams (which are another point of view
+on these objects), this relation correspond to virtualization of self-crossings. It has
+been shown in [ABMW17, Th. 2.34] that the group of welded braids up to homotopy
+is isomorphic to the group AutC (RFn ) = hP Σn of automorphisms or RFn fixing the
+conjugacy class of each generator xi .
+
+                                              25
+   We sum up the situation in the following table:
+
+                      Up to isotopy                 Up to homotopy
+                           ∼
+                           =                              ∼
+                                                          =
+                    Pn          Aut∂C (Fn )        hPn         Aut∂C (RFn )
+                                                                                        (4.0.1)
+                           ∼
+                           =                              ∼
+                                                          =
+                   P Σn         AutC (Fn ).     hP Σn          AutC (RFn ).
+
+4.1     Milnor invariants
+Here we interpret our work in terms of Milnor invariants of welded braids up to ho-
+motopy. Milnor invariants were first defined in [Mil57] for links, as integers with some
+indeterminacy. It appeared later that they were more naturally defined for string links,
+for which they are proper integers, the indeterminacy previously observed correspond-
+ing exactly to a choice of presentation of a link as the closure of a string-link. Here we
+focus on their definition for braids, which is not a restrictive choice when working up
+to homotopy.
+     If β is a pure braid, we can look at its image via the Artin action, which is a
+basis-conjugating automorphism xi 7→ xw         i . The element wi is well-defined up to left
+                                                 i
+
+
+multiplication by x±1   i , so it is well-defined if we suppose that xi does not appear in
+the class wi ∈ Fnab . For each i, one can look at the image of the element wi ∈ Fn by
+the Magnus expansion µ : Fn ,→ Td          [n], getting an element of the completion of the
+free associative ring T [n] on n generators X1 , ..., Xn , which can be seen as the ring of
+                          d
+non-commutative power series on these generators. Recall that the Magnus expansion
+                                                                                        ×
+is defined by xi 7→ 1 + Xi , and it is is an injection of the free group Fn into Td  [n] . Then
+the Milnor invariants are the coefficients of the µ(wi ). Precisely, if i ⩽ n is an integer,
+and I = (i1 , ..., id ) is any list of positive integer, then µI,i (β) is the coefficient of the
+monomial Xi1 · · · Xid in µ(wi ). Moreover, we call d the degree of the Milnor invariant
+µI,i .
+     The first non-trivial Milnor invariants of β can also be obtained through the Johnson
+morphism. Namely, let d be the greatest integer such that β ∈ Ad (Fn ) (we identify β
+with its image via the Artin action). By definition of wi , xi does not appear in the
+class wi ∈ Fnab . Thus, we deduce from [Dar19a, Lem. 6.3] that for all j ⩾ 1, [xi , wi ] ∈
+Γj+1 (Fn ) ⇔ wi ∈ Γd (Fn ). This implies that d is maximal such that all wi belong to
+Γj (Fn ). The image of β ∈ Ad /Ad+1 by the Johnson morphism is the derivation of the
+free Lie algebra L[n] given by xi 7→ [xi , wi ], where wi ∈ Γd /Γd+1 (Fn ) ∼    = L[n]d is the
+class of wi , possibly trivial (but non-trivial for at least one i).
+     Now, we can watch the element wi as being inside T [n]d , and the inclusion of L[n]
+into T [n] is exactly the graded map induces by the Magnus expansion µ. Precisely, if
+we call Tb1d the ideal of T [n] defined by elements of valuation at least d (the valuation of
+a power series being the total degree of its least nontrivial monomial), then Γd (Fn ) =
+µ−1 (1 + Tb1d ), and the induced map µ : Γd /Γd+1 (Fn ) ,→ Tb1d /Tb1d+1 identifies with the
+canonical inclusion of L[n]d into T [n]d . As a consequence, the class wi is the degree-d
+part of µ(wi ), which has valuation at least d. We sum this up in the following:
+Proposition 4.1. The group Ad (Fn ) ∩ Pn is the set of braids with vanishing Milnor
+invariants of degree at most d − 1. Moreover, Milnor invariants of degree d of these
+braids can be recovered from their image by the Johnson morphism τ : Ad /Ad+1 ,→
+Derd (L[n]).
+
+                                              26
+    Obviously, since we have not used anywhere that the automorphism β preserves
+the boundary element, these constructions work for all welded braids (that is, for all
+basis-conjugating automorphisms of Fn ).
+    Let us now explain how to define Milnor invariants for (welded) braids up to ho-
+motopy. First, we need to replace Fn by RFn . Then we can assume that xi does not
+appear in wi (since xux i
+                          iv
+                             = xuv
+                                i in the reduced free group). The Magnus expansion
+must be replaced by the morphism (1.11.1), and we get only Milnor invariants without
+repetitions (that is, I must be without repetition in order to define a non-trivial µI,i ).
+Everything works as described above (using the work done in §1.2), so that Ad (Fn )
+is exactly the subgroup where invariants of degree at most d − 1 vanish. So we can
+reformulate our theorems 3.9 and 3.13 as:
+Theorem 4.2. Homotopy Milnor invariants of degree at most d classify braids up to
+homotopy (resp. welded braids up to homotopy) up to elements of Γd+1 (hPn ) (resp. up
+to elements of Γd+1 (hP Σn )).
+Remark 4.3. The group Γd+1 (hPn ) can also be seen as the set of braids which are
+homotopic to elements of Γd+1 (Pn ).
+
+4.2    Arrow calculus
+We now explain briefly the precise link between our work and the work of Meilhan and
+Yasuara in [MY19]. We will not give any definition here; the reader is referred to their
+paper for basic definitions and details.
+    Our understanding of the link between our work and theirs relies on the following
+remark: Ccalculus of arrows and w-trees is the same thing as commutator
+calculus in the welded braid group P Σn . Precisely, when attaching a tree T to a
+diagram D, one has to select the points where the root and leaves of T are attached.
+If we consider a little arc around each of these points, we see that doing so consists
+in choosing n strands (which inherit there orientation from D). Then the data of T
+describes an element of the braid group on these strands, and doing the surgery along
+T is exactly the same as inserting the braid described by T at the chosen spot on D,
+to get the new diagram DT . Namely, a single arrow from a strand j to a strand i
+describes the insertion of the braid χij , and a tree with root at i describes the insertion
+of a commutator between the χij , for varying j (note that any number of strands can
+be added).
+    In the light of this remark, we can see that many relations they describe corre-
+spond to algebraic relations written in the present paper. Also, two diagrams are
+wk -equivalent if and only if they can be obtained from one another by inserting braids
+in Γk (Pn ) (for varying n). And we can in fact deduce our Andreadakis equality (Theo-
+rem 4.2) from their classification theorem of welded string links up to homotopy [MY19,
+Th. 9.4]. They fell short of doing so, stating only their weaker corollary 9.5. In fact,
+they did not look for the precise identification between trees and commutator calculus
+that I have described here. They only knew that something of the sort should be true,
+but were interested in other matters at the time.
+
+
+5     A presentation of the homotopy loop braid group
+In [Gol74], Goldsmith gave a presentation of the braid group up to homotopy (see also
+§3.4). She proved that, to a presentation of the pure braid group with generators Aij ,
+
+                                            27
+one has to add the family of relations making each hA1k , ..., A(k−1)k i into a reduced
+free group. The goal of the present section is to give a similar presentation of the loop
+braid group up to homotopy. The situation here it more intricate: to a presentation of
+P Σn with generators χij , we have to add three families of relations:
+(R1) The relations saying that for all m, hχmk ik<m is reduced.
+(R2) [χim , w, χjm ] = 1, for i, j < m and w ∈ hχmk ik<m .
+(R3) [χim , w, χmi ] = 1, for i < m and w ∈ hχmk ik<m,k6=i .
+    Remark that because of the symmetry with respect to the generators of RFn , these
+relations are still true if we replace each symbol ” < ” by a symbol ” 6= ”, which would
+give a more symmetric set of relations.
+Remark 5.1. These relations also describe the quotient of the group wBn of all welded
+braids by the homotopy relation. Indeed, performing a homotopy cannot move end-
+points of string links, so that the subgroup of relations must be a subgroup of the pure
+welded braid group, like in the classical setting [Gol74, Lem. 1].
+
+5.1     Generators of nilpotent groups
+One key argument in the determination of a presentation of hP Σn consists in lifting
+generators from Lie rings to groups. Such generators will be obtained from combina-
+torics in the free Lie ring (see our appendix), and their lifting will use the nilpotence
+of the groups involved.
+Convention 5.2. By a finite filtration, we always mean a separating one: a strongly
+central series G∗ is finite if their exists a i ⩾ 1 such that Gi = {1}. In particular, if
+there exists a finite strongly central series on G, then G must be nilpotent (recall that
+Gi ⊇ Γi G).
+Lemma 5.3. Let G∗ be a finite strongly central filtration on a (nilpotent) group G.
+Suppose that the xα are elements of G such that their classes xα generate the Lie ring
+L(G∗ ). Then the xα generate G.
+Proof. Consider the subgroup K of G generated by the xα . The canonical morphism
+from L(G∗ ∩ K) to L(G∗ ) comes from an injection between filtrations, so it is injective.
+By hypothesis, it is also surjective. By induction (using the five-lemma), we deduce
+that K/(Gj ∩ K) = G/Gj , for all j. Since there exists j such that Gj = {1}, this
+proves that K = G, whence the conclusion.
+    The definition of the Lyndon monomials Pw (§6.B) makes sense in any group, if we
+interpret letters as elements of the group, and brackets as commutators.
+Proposition 5.4. Let G be a nilpotent group generated by a set X, and x ∈ X. Then
+the normal closure N (x) of x in G is generated by Lyndon monomials Pw , for Lyndon
+words w ∈ X ∗ containing x.
+Proof. By taking images in G, it is enough to show this for the free nilpotent group
+Fj [X] := F [X]/Γj+1 . In this case, N (x) is the kernel of the canonical projection from
+from Fj [X] to Fj [X − {x}]]. Setting N∗ (x) := N (x) ∩ Γ∗ (Fj [X]), we get a short exact
+sequence of filtrations translating into a short exact sequence of Lie rings:
+
+                   L(N∗ (x))         L(Fj [X])         L(Fj [X − {x}]).
+
+                                             28
+Since L(Fj [X]) is the j-th truncation of the free Lie algebra on Y = X, and the projec-
+tion p is the canonical one (sending y = x to 0), the subring L(N∗ (x)) identifies with
+the j-th truncation of the ideal hyi of L[Y ]. This ideal is linearly generated by Lyndon
+Lie monomials on Y containing y. Since these are the classes of the corresponding
+monomials in the group Fj [X], Lemma 5.3 gives the desired conclusion.
+Corollary 5.5. Let X be a set, and x ∈ X. The normal closure N (x) of x in RF [X] is
+free abelian on the Lyndon monomials Pw , for Lyndon words without repetition w ∈ X ∗
+containing x.
+Proof. It is enough to show this for X finite. Then RF [X] is nilpotent, and we can
+apply Proposition 5.4 to show that Lyndon monomials without repetition containing x
+generate N (x). Indeed, in RF [X], the only non-trivial Lyndon monomials in elements
+of X are those without repetition. Moreover, N (x) is abelian, by definition of RF [X].
+We are thus left with proving that these elements are linearly independent. But any
+non-trivial linear relation between them would give a non-trivial linear relation between
+Lyndon polynomials without repetition in L(RF [X]) (take l to be the minimal length
+of the monomials involves, and project the relation into Γl /Γl+1 ). Such a relation
+cannot hold (Proposition 1.9), so this proves the corollary.
+    If g, g1 , ..., gm are elements of a group, let us denote by Lynd(g; g1 , ..., gm ) the fam-
+ily of Lyndon monomials (Pw ), where w runs through Lyndon words without repeti-
+tion on the letters g, g1 , ..., gm which contain g. When considering these sets, we will
+choose an order on the letters making all gi greater than g. In that case, elements of
+Lynd(g; g1 , ..., gm ) are of the form [[g, Pv ], Pw ], where neither v nor w contains g. As
+usual, we denote by (g1 , ..., gbi , ..., gm ) the (m − 1)-tuple obtained from (g1 , ..., gm ) by
+removing the i-th component.
+    We now use Cor. 5.5 in order to get a basis of the group Kn0 introduced in §3 from
+the decomposition obtained in Lemma 3.7.
+Lemma 5.6. A basis of the abelian group Kn0 is given by:
+                      [
+                         Lynd(χin ; χn1 , ..., χc
+                                                ni , ..., χn,n−1 ).
+                               i
+
+Proof. We use notations from the proof of Lemma 3.7. Equivariance of the isomor-
+phism ci ensures that c−1      i      sends the set Lynd(χin ; χn1 , ..., χc
+                                                                           ni , ..., χn,n−1 ) to the set
+B := Lynd(xn ; χn1 , ..., χc  ni , ..., χ n,n−1 ), the latter brackets being computed in the semi-
+direct product (N (xn )/xi )ohχnj ij . If v ∈ RFn−1 , we denote by χv the automorphism of
+RFn sending xn to xvn and fixing all other generators (χv was denoted by tn (v) above).
+Elements of B are of the form [[xn , χv ], χw ], where χv and χw are Lyndon monomials
+in the χnj (j 6= i), which means exactly that v and w are Lyndon monomials in the
+xj (j 6= i, n), since tn : v 7→ χv is a morphism. Recall that the class of χv in the Lie
+algebra L(A∗ (RFn )) acts on the Lie algebra RLn via the tangential derivation τ (χv )
+induced by [χv , −], sending xn to [xn , v] and all other xi to 0. As a consequence, the
+class of [[xn , χv ], χw ] in the Lie algebra L(N∗ (xn )/xi ) ⊂ RLn is:
+                τ (χw )τ (χv )(xn ) = τ (χw )([v, xn ]) = [v, [w, xn ]] = [[xn , w], v],
+since the derivation τ (χw ) vanishes on v. As a consequence, the family B is another
+lift of the basis of L(N∗ (xn )/xi ) considered above, and the same proof as the proof of
+corollary 5.5 (in RFn /xi ∼ = RFn−1 ) shows that it is a basis of N (xn )/xi , whence the
+result.
+
+                                                  29
+Remark 5.7. In the semi-direct product (N (xn )/xi ) o hχnj ij which appears in the
+proof; the group hχnj ij is isomorphic to RFn−1 but its action is not the conjugation
+action.
+
+
+5.2     The presentation
+Let us recall the relations on the χij that will give a presentation of hP Σn :
+
+(R0) The McCool relations on the χij (see the Introduction).
+(R1) [χmi , w, χmi ] = 1, for i < m, and w ∈ hχmk ik<m .
+(R2) [χim , w, χjm ] = 1, for i, j < m and w ∈ hχmk ik<m .
+(R3) [χim , w, χmi ] = 1, for i < m and w ∈ hχmk ik<m,k6=i .
+
+    We now show that they indeed give the presentation that we were looking for:
+
+Theorem 5.8. The pure loop braid group up to homotopy hP Σn is the quotient of P Σn
+by relations (R1), (R2) and (R3). As a consequence, it admits the presentation:
+
+                    hP Σn ∼
+                          = hχij (i 6= j) | (R0), (R1), (R2), (R3)i
+
+Proof. Let Gn be the group defined by the presentation of the theorem. The χij in
+hP Σn satisfy the above relations. As a consequence, there is and obvious morphism π
+from Gn to hP Σn . Since the χij generate hP Σn (Cor. 2.10), this morphism is surjective.
+We need to show that it is an isomorphism. We will do that by showing that Gn admits
+a decomposition similar to that of hP Σn , and that the pieces in the two decompositions
+are isomorphic via π. We do this in three steps, parallel to the proof of Theorem 3.1.
+    Step 1. We define a projection p̃n from Gn to Gn−1 by sending χij to χij if n ∈
+                                                                                  / {i, j},
+and χin and χnj to 1. This morphism is well defined (from the presentations), and so
+is its obvious section s̃n : Gn−1 ,→ Gn . If we denote by K̃n the kernel of p̃n , we get a
+semi-direct product decomposition Gn = K̃n o Gn−1 that fits in the following diagram:
+
+                                                    s̃n
+
+                             K̃n          Gn          p̃n
+                                                                Gn−1
+                                            π             sn       π
+
+                             Kn         hP Σn         pn       hP Σn−1
+
+By induction (using the five-lemma), beginning with the isomorphism G2 ∼   = hP Σ2 ∼ = Z2
+(which is the group hχ12 , χ21 i of inner automorphisms of RF2 ), we only need to show
+that the induced morphism between the kernels are isomorphisms.
+    Step 2. We can apply Lemma 3.2 to the above decomposition of Gn ; the proof of
+Lemma 3.3 only used the McCool relations, so it carries over without change to show
+that K̃n is generated by the χin together with the χnj . This shows directly that the
+map from K̃n to Kn is surjective (this fact also comes from the snake lemma and the
+induction hypothesis). Consider the map K̃n → Kn  RFn , where the second map is
+the projection qn from Kn to RFn−1 defined in the proof of Theorem 3.1. This map
+sends the χin to 1 and the χnj to the xj . From the relations (R1), we know that the
+assignment xj 7→ χnj defines a section t̃n from RFn−1 to K̃n . This shows that the χnj
+generate a reduced free group inside K̃n . If we denote by K̃n0 the kernel of q̃n = qn ◦ π,
+
+                                               30
+we get a semi-direct product decomposition K̃n = K̃n0 o RFn−1 , similar to (3.4.1), that
+fits in the following diagram:
+
+                                                    t̃n
+
+                                 K̃n0       K̃n      q̃n
+                                                           RFn−1
+                                               π    tn       ∼
+                                                             =
+
+                                 Kn0        Kn       qn    RFn−1
+
+     Step 3. In order to show that the induced projection π : K̃n0 → Kn0 is an isomor-
+phism, we need to investigate the structure of K̃n0 . By Lemma 3.2, it is generated by
+the χw                    ∼
+       in for w ∈ hχnj i = RFn−1 , and the relations (R2) say exactly that these commute
+with each other. Thus K̃n is abelian. Let us fix i and denote by Ñi the subgroup gen-
+erated by the χw  in . It is the normal closure of χin in the subgroup M̃i generated by χin
+and the χnj . Relations (R1) and (R2) imply that χin and the χnj commute with their
+conjugates in Mi , which is thus a quotient of RFn . In particular, M̃i is nilpotent, and
+we can apply Proposition 5.4 to get that Ñi is generated by Lyndon monomials in χin
+and the χnj containing χin . We can even limit ourselves to the subset Lynd(χin ; (χnj )j )
+of monomials without repetitions, the other ones being trivial by the argument above.
+Furthermore, the relations (R3) say exactly that among these, the ones containing χni
+vanish. Thus, the abelian group Ñi is generated by Lynd(χin ; χn1 , ..., χc  ni , ..., χn,n−1 ).
+Because of Lemma 5.6, we know that these monomials are sent to linearly independant
+elements in Ni (in fact, to a basis of this abelian group), so they must be a basis of
+Ñi , and the projection π induced a isomorphism between Ñi and Ni . The projection
+π : K̃n0 → Kn0 , being the direct product of these isomorphisms, is thus an isomorphism,
+which is the desired conclusion.
+
+Remark 5.9. The same remarks made at the end of §1.2 for RFn holds true for hP Σn :
+it is finitely generated and nilpotent (of class n − 1), so it has a finite presentation.
+However, in order to write down such a finite presentation, we need a presentation
+of the free (n − 1)-nilpotent group on n2 generators χij . We can then add to such a
+presentation the relations relations similar to (R1), (R2) and (R3) that are iterated
+brackets of the generators (of any shape) of length at most n−1 to get an explicit finite
+presentation of hP Σn . In other words, the latter relations give a finite presentation of
+hP Σn as a (n − 1)-nilpotent group.
+
+
+
+
+                                               31
+5.3    A presentation of the associated Lie ring
+Using the above methods, one can also find a presentation of the Lie ring associated
+to hP Σn , similar to the presentation of L(hPn ) given in Corollary 3.12.
+
+Proposition 5.10. The Lie ring of hP Σn is generated by xij (1 ⩽ i 6= j ⩽ n), under
+the relations:  
+                [xik + xjk , xij ] = 0 for i, j, k pairwise distinct,
+                
+                  [xik , xjk ] = 0      for i, j, k pairwise distinct,
+                
+                  [xij , xkl ] = 0      if {i, j} ∩ {k, l} = ∅,
+                
+
+to which are added, for each m, the following families of relations:
+                               
+                               [xim , [xmi , t]] = 0,
+                               
+                                  [xim , [xjm , t]] = 0,
+                               
+                                  [xim , [xmi , t]] = 0,
+                               
+
+where, in each case, t describes Lie monomials in the xmk (k < m).
+
+Proof. Since it is very similar to the proof of Theorem 5.8, we only outline the proof.
+Let hpn be the Lie ring defined by the presentation of the theorem. The relations are
+true for the classes of the χij in L(hP Σn ) (as direct consequences of the relations in
+the group hP Σn ), so that xij 7→ χij defines a projection π from hpn onto L(hP Σn ).
+One shows that hpn admits a decomposition similar to the decomposition of L(hP Σn )
+described in Theorem 3.8. Indeed, the morphism from hpn to hpn−1 sending xij on
+xij if n ∈
+         / {i, j} and to 0 else is a well-defined projection p, which is split. From the
+relations, reasoning as in the proof of Lemma 3.3, one checks that the xin together with
+the xni generate an ideal of hpn , which has to be the kernel kn of p. They one argues
+exactly as in the proof of Theorem 5.8 to show (using the first family of relations) that
+kn decomposes as a semi-direct product k0n o RLn−1 . Moreover, the projection π is
+compatible with the decompositions of hpn and L(hP Σn ). Using the five lemma,      Q we
+                                                                             0
+see that we only have to check that π induces and isomorphism between kn and hyi i.
+Since we know a basis of the target, whose elements are Lie monomials on the χin and
+χni , we are left with showing that the corresponding Lie monomials on the xin and xni
+generate k0n . Like in the proof of Theorem 5.8, the last two families of relations ensure
+exactly that, so that π is indeed an isomorphism.
+
+Remark 5.11. In the presentation, one can consider only the relations where t is a
+linear monomial of length at most m.
+
+Remark 5.12. It is a difficult open question, very much related to the Andreadakis
+problem for P Σn , to decide whether the first three relations (the linearize McCool
+relations) define a presentation of the Lie ring of P Σn . It is only known to hold
+rationally [BP09].
+
+
+
+
+                                           32
+6     Lyndon words and the free Lie algebra
+For the comfort of the reader, we gather here some basic facts about Lyndon words.
+These describe a basis of the free Lie algebra, and we give a self-contained proof of
+this classical result involving as little machinery as possible. Our main sources for this
+appendix were Serre’s Lecture Notes [Ser06] and Reutenauer’s book [Reu03, 5.1].
+
+6.A      Lyndon words
+Let A be a set (called an alphabet) endowed with a fixed total order. We denote by
+A∗ the free monoid generated by A. Elements of A∗ are words in A, that is, finite
+sequence of elements of A. The set A∗ is endowed with the usual dictionary order
+induced by the order on A.
+   The length of a word w is denoted by |w|. If v and w are words, v is a suffix (resp.
+a prefix ) of w if there exists a word u such that w = uv (resp. w = vu). It is called
+proper when it is nonempty and different from w.
+Definition 6.1. The standard factorisation of a word w of length at least 2 is the
+factorisation w = uv where v is the smallest proper suffix of w.
+Definition 6.2. A Lyndon word is a nonempty word that is minimal among its
+nonempty suffixes.
+Lemma 6.3. If w = uv is a standard factorisation, then v is a Lyndon word, and if
+w is Lyndon then so is u.
+Proof. The fact that v is a Lyndon word is clear. Suppose that w is a Lyndon word.
+Let x be any proper suffix of u. Since uv = w < xv, if x is not a prefix of u, then
+u < x. Otherwise, u = xy for some nonempty y, but then xyv < xv implies yv < v,
+which contradicts the definition of v.
+    The following proposition is the most basic result in the theory of Lyndon words:
+Proposition 6.4. Every word w ∈ A∗ factorizes uniquely as a product l1 · · · ln where
+n is an integer, the li are Lyndon words and l1 ⩾ l2 ⩾ ... ⩾ ln . We call this the Lyndon
+factorization of w.
+Proof. We first prove unicity, by proving that in a factorization w = l1 · · · ln into a
+non-increasing product of Lyndon words, ln is the minimum nonempty suffix of w.
+Indeed, let v be a suffix of w. Decompose v as ylk+1 · · · ln where y is a nonempty suffix
+of lk (possibly equal to lk ). Then v ⩾ y ⩾ lk ⩾ ln .
+    We show existence by induction on the length of w: take ln to be the smallest
+nonempty suffix of w. Then w = w0 ln , and ln is a Lyndon word. Moreover, a nonempty
+suffix of w0 cannot be strictly smaller than ln . Indeed, if y is a nonempty suffix of w0
+such that y < ln , then either y is a (proper) prefix of ln or yln < ln . The second case
+contradicts the definition of ln . In the first case, by definition of ln , we get yln > ln = yu,
+whence ln > u. Thus both cases contradict the definition of ln : we must have y ⩾ ln .
+As a consequence, a factorisation of w0 satisfying the conditions of the proposition gives
+such a factorisation for w, whence the conclusion.
+   Proposition 6.4 allows us to identify the abelian group Z A∗ with the symmetric
+algebra SZ∗ (Lynd). Note that this linear identification does not preserve the ring struc-
+ture, since the Lyndon factorization of a product uv need not be the product of the
+Lyndon factorization of u with that of v.
+
+                                               33
+6.B      The Lyndon basis of the free Lie algebra
+In the sequel, V = Z{A} is the free abelian group generated by the alphabet A. We
+denote by LV the free Lie algebra on V and by T V the free associative algebra on
+V . Recall that their universal properties imply that T V is the enveloping algebra of
+LV . We denote by ι : LV → T V the canonical Lie morphism between them. Remark
+that we do not know a priori that this map is injective (we do not assume the PBW
+theorem to be known).
+    Define an application w 7→ Pw from the set Lynd of Lyndon word on A to LV as
+follows:
+    • Take Pa := a ∈ V for any letter a ∈ A;
+    • If w is a Lyndon word, consider its standard factorisation w = uv and define Pw
+      to be [Pu , Pv ] ∈ LV ;
+Lemma 6.5 (Standard factorization of a product of Lyndon words). Let u and v be
+Lyndon words. Then uv is a Lyndon word if and only if u < v. Moreover, suppose that
+u < v, and denote by u = xy be the standard factorization of u, if u is not a letter.
+Then the standard factorization of uv is u · v if u is a letter or v ⩽ y, and x · yv if
+v > y.
+Proof. If uv is a Lyndon word, then u < uv < v. Conversely, suppose that u < v.
+Then either uv < v or u is a prefix of v. But in this second case, v = uw, and v < w
+implies that uv < uw = v, so in both cases uv < v. Now, take a proper suffix w of uv.
+If w is a suffix of v, then w ⩾ v > uv. If not, then w = w0 v with w0 a proper suffix of u.
+Then u < w0 implies uv < w0 v = w, finishing the proof that uv is a Lyndon word.
+    If u is a letter, then v is clearly the minimal proper suffix of uv. Suppose that v ⩽ y.
+Take any proper suffix w of u. Since y is the smallest one, we have v ⩽ y ⩽ w < wv.
+As a consequence, v has to be the minimal proper suffix of uv, whence the result in
+this case. If v > y, then yv is a Lyndon word by the first part of the proof. Moreover,
+if w is a proper suffix of u, then y ⩽ w, so that yv ⩽ wv. Hence yv is the smallest
+suffix of uv, as needed.
+   The following proposition and its proof are adapted from [Ser06, Th. 5.3]. The
+proof is arguably the most technical one in the present appendix:
+Proposition 6.6. The Pw for w ∈ Lynd linearly generate LV .
+Proof. We only need to show that the Z-module generated by the Pw is a Lie subalge-
+bra. We show that if u and v are Lyndon words, then [Pu , Pv ] is a linear combination of
+Pw , with |w| = |u| + |v| and w < max(u, v), by induction on |u| + |v| and on max(u, v).
+To begin with, if u and v are letters, then we can suppose that u < v (otherwise, use
+the antisymmetry relation). Then [Pu , Pv ] = Puv , and uv < v.
+    Now, take (u, v) such that |u| + |v| > 2, and suppose that our claim is proven for
+every (u0 , v 0 ) such that |u0 | + |v 0 | < |u| + |v|, or |u0 | + |v 0 | = |u| + |v| and max(u0 , v 0 ) <
+max(u, v). Using antisymmetry if needed, we can assume that u < v. We then use
+Lemma 6.5. When u is not a letter, consider the standard factorization u = xy of
+u. If u is a letter or y ⩾ v, then u · v is the standard factorization of uv, whence
+[Pu , Pv ] = Puv , and uv < v, proving our claim. Suppose that y < v. Then:
+                    [Pu , Pv ] = [[Px , Py ], Pv ] = [[Px , Pv ], Py ] = [Px , [Py , Pv ]].
+Since |x|, |y| < |u|, we can use the induction hypothesis to write [Px , Pv ] (resp. [Py , Pv ])
+as a linear combination of Pw (resp. Pt ) such that |w| = |x| + |v| (resp. |t| = |y| + |v|),
+
+                                                     34
+and w < v (resp. t < v). Then, using that x, y < v (since x < xy = u < y < v), we
+can apply the induction hypothesis to [Pw , Py ] (resp. to [Px , Pt ]) to prove our claim,
+ending the proof of the proposition.
+
+    The application w 7→ Pw extends to a map from A∗ to T V defined as follows:
+    • Take Pa := a ∈ V for any letter a ∈ A;
+    • If w is a Lyndon word, consider its standard factorization w = uv and define Pw
+      to be [Pu , Pv ] ∈ LV ;
+    • If w is any word, consider its Lyndon factorization w = l1 · · · ln . Define Pw to be
+      Pl1 · · · Pln ∈ T V.
+    The next lemma [Reu03, Th. 5.1] will play a key role in what follows.
+
+Lemma 6.7. For any word w, the polynomial Pw is the sum of w and a linear combi-
+nation of greater words of the same length as w.
+
+Proof. Remark that if l is a Lyndon word and l = uv with u and v nonempty, then
+uv = l < v < vu.
+      We use this to show the lemma for Lyndon words, by induction on their length.
+For letters, the result is obvious. Let l be a Lyndon word, and consider its standard
+factorization l = uv. Then u and v are Lyndon word, and u < v (Lemmas 6.3 and 6.5).
+If the result is true for u and v, then Pl = [Pu , Pv ] is a linear combination of elements of
+the form [s, t] = st − ts, where |s| = |u|, |t| = |v|, s ⩾ u and t ⩾ v. Then ts ⩾ vu > uv,
+and st ⩾ uv, with equality if and only if s = u and t = v. Thus the word l = uv
+appears with coefficient 1 in the decomposition of Pl , and Pl − l is a linear combination
+of greater words, of the same length as l, which proves our claim.
+      Now, if w is any word, consider its Lyndon factorization w = l1 · · · ln . Then Pw :=
+Pl1 · · · Pln is a linear combination of x1 · · · xn , where each xi is a word satisfying |xi | =
+|li | and xi ⩾ li . As a consequence, |x1 · · · xn | = |l1 · · · ln |, and x1 · · · xn ⩾ l1 · · · ln , with
+equality if and only if each xi is equal to li . This last case only appears with coefficient
+1, so the lemma is proved.
+
+    The above application extends to a linear map P : Z A∗ → T V .
+
+Proposition 6.8. The application P : Z A∗ → T V defined above is injective.
+
+Proof. Let m be a linear combination of words in the kernel of P . Suppose that w is
+such that no word smaller that w appears in m. Let λ be the coefficient of w in m.
+Then by Lemma 6.7, λ is also the coefficient of w in Pm = 0, so it must be trivial.
+Thus, by induction, all coefficients of m have to be trivial, whence m = 0 and P is
+injective.
+
+    We can now sum this up as the main result of this appendix:
+
+Theorem 6.9. The map P induces a graded linear isomorphism:
+
+                                           Z{Lynd} ∼
+                                                   = LV.
+
+Otherwise said, the family (Pw )w∈Lynd is a linear basis of LV .
+
+Proof. The Pw generate LV (Prop. 6.6) and, since their images in T V are linearly
+independent (Prop. 6.6), they must be linearly independent.
+
+                                                    35
+6.C     Primitive elements and the Milnor-Moore theorem
+In proving the previous result, we have only used basic linear algebra, and the com-
+binatorics of Lyndon words. In order to convince the reader of how powerful these
+techniques are, we will now recover the Milnor-Moore theorem for the algebra T V ,
+using not much more machinery. The only additional tools we need are coalgebra
+structures and primitive elements.
+    The free commutative ring on the free abelian group V is denoted by S ∗ (V ). It is
+endowed with its usual Hopf algebra structure, whose coproduct is the only algebra
+morphism ∆ : S ∗ (V ) → S ∗ (V ) ⊗ S ∗ (V ) sending each element v of V to v ⊗ 1 + 1 ⊗ v.
+That is, it is the only bialgebra structure on S ∗ (V ) such that V consists of primitive
+elements. In fact, these are the only primitive elements in S ∗ (V ) [Ser06, Th. 5.4]:
+
+Proposition 6.10. The set of primitive elements of S ∗ (V ) is V .
+
+Proof. By definition of the coproduct of S ∗ (V ), the subspace V is made of primitive
+elements. To show the converse, it is helpful to see S ∗ (V ) as the algebra Z[Xi ] of
+polynomial in indeterminates Xi . Then S ∗ (V ) ⊗ S ∗ (V ) identifies with Z[Xi0 , Xi00 ], and
+the coproduct sends Xi to Xi0 + Xi00 . Since it is an algebra morphism, it sends a
+polynomial f (Xi ) to f (Xi0 + Xi00 ). Thus primitives elements are those f such that
+f (Xi0 + Xi00 ) = f (Xi0 ) + f (Xi00 ), i.e. additive ones. But since we work over Z, these are
+only the linear ones, which is the desired conclusion.
+
+     The algebra T V is endowed with a Hopf structure defined exactly as the one for S ∗ V :
+it is the unique bialgebra structure such that elements of V are primitive ones. Since
+primitive elements are a Lie subalgebra, they contain the Lie subalgebra generated
+by V (which is the image ι(LV ) of the canonical morphism ι : LV → T V ).
+     Recall that Proposition 6.4 allows us to identify Z A∗ with the symmetric algebra
+SZ∗ (Lynd). We will show the following:
+
+Theorem 6.11 (Milnor-Moore). The application P : SZ∗ (Lynd) → T V defined above
+in §6.B is an isomorphism of coalgebras.
+
+Proof. Injectivity has already been shown (Prop. 6.8). Let us first prove surjectivity.
+Let p 6= 0 be a homogeneous element of T V . Let w be the smallest monomial appearing
+in p, with coefficient λ. Then p − λPw is homogeneous and contains only monomials
+greater than Pw (see Lemma 6.7). By repeating this process, we can write p as a linear
+combination of Pw . Indeed, this process stops, since we consider only the finite set of
+words of fixed length (equal to the degree of p) whose letters appear in some monomial
+of p.
+    We are left to show that the application P : w 7→ Pw preserves the coproduct. We
+first remark that if l is a Lyndon word, then l is primitive in SZ∗ (Lynd), and Pl ∈ ι(LV )
+is primitive in T V . For any word w, consider its Lyndon factorization w = l1 · · · ln .
+Then we can write:
+
+                   ∆(Pw ) = ∆(Pl1 ) · · · ∆(Pln )
+                          = (Pl1 ⊗ 1 + 1 ⊗ Pl1 ) · · · (Pln ⊗ 1 + 1 ⊗ Pln )
+                             X
+                          =        Plx1 · · · Plxp ⊗ Ply1 · · · Plyq ,
+                              n=XtY
+
+
+
+                                              36
+where the sum is over all partitions of the set n = {1, ..., n} into subsets X = {x1 <
+· · · < xp } and Y = {y1 < · · · < yq }. As a consequence:
+                               X
+                  ∆(Pw ) =           Plx1 ···lxp ⊗ Ply1 ···lyq
+                             n=XtY
+                                                                               
+                                            X
+                          = (P ⊗ P )               lx1 · · · lxp ⊗ ly1 · · · lyq 
+                                           n=XtY
+
+                          = (P ⊗ P )(∆(l1 ) · · · ∆(ln )) = (P ⊗ P )(∆(w)),
+
+which ends the proof of the theorem.
+
+Corollary 6.12. The canonical map ι : LV → T V identify LV with the Lie algebra
+of primitive elements in T V .
+
+Proof. Thanks to Theorem 6.11 and Theorem 6.9, this map identifies with Z{Lynd} →
+SZ∗ (Lynd). But Proposition 6.10 ensures that the set of primitive elements of the
+coalgebra SZ∗ (Lynd) is exactly Z{Lynd}, whence the result.
+
+Remark 6.13. Neither our identification of the free abelian group Z{Lynd} with the
+primitives of T V nor our proof of Theorem 6.11 requires the use of the fact that Lyndon
+words generate LV (Prop. 6.6) : we only used that they are linearly independent
+(Prop. 6.8) for that. The full strength of Th. 6.9 is only used to see that P : ZA∗ ,→ T V
+coincides with ι : LV → T V (whence Cor. 6.12).
+
+
+6.D      Linear trees
+The free Lie algebra can be seen as a quotient of the free abelian group Z M(A) on
+the free magma M(A) on A by antisymmetry and the Jacobi identity. Elements of the
+free magma can be seen as parenthesized words in A, or as finite rooted planar binary
+trees, whose leaves are indexed by elements of A. The images of elements of the free
+magma in LV are called Lie monomials.
+    Lyndon words encode a family of rooted binary trees whose leaves are indexed by
+letters. Precisely, if w is a Lyndon word, the tree T (w) is just one leaf indexed by w,
+if w is a letter. If not, take the standard factorization w = uv. Then T (w) is given by
+a root, a left son T (u) and a right son T (v):
+
+
+
+                                     T (uv) =
+                                                   Tu        Tv
+
+
+The Lyndon basis of the free Lie algebras are the Lie monomials Pw obtained from
+such trees by interpreting nodes as Lie brackets. We call these Lyndon monomials
+   One can consider another family of Lie monomials, called linear Lie monomials,
+given by linear trees, that is, monomials which are letters or of the form [y1 , ..., yn ]
+(= [y1 , [y2 , [...[yn−1 , yn ]...]]). It is easy to see, by induction, using the Jacobi identity,
+
+                                                  37
+that these generate LV . In fact, the Jacobi identity can be written as:
+
+
+
+                             C            A                  B
+                                   =                   −                  .         (6.13.1)
+
+                    A      B                B      C           A      C
+
+Using this as a rewriting rule (from left to write), one can write any tree (that is, any
+Lie monomial) as a linear combination of trees whose left son is a leaf. Applying the
+induction hypothesis to the right sons, one gets a linear combination of linear trees.
+   There are n! linear Lie monomials in degree n, which is clearly strictly greater than
+the number of Lyndon words of length n, so they must be linearly dependent. It is
+the need to control this redundancy that leads to consider Lyndon words (or, more
+generally, Hall sets).
+Lemma 6.14. Any Lie monomial is a linear combination of linear Lie monomials with
+the same letters (counted with repetitions). Also, it is a linear combination of Lyndon
+monomials with the same letters.
+Proof. The first part follows from the rewriting process that we have just described.
+The second one is a bit trickier: although we know that a decomposition into a linear
+combination of Lyndon monomials exists (Prop 6.6), we did not give an algorithm to
+compute it. However, we can use a homogeneity argument, as follows: Z M(A) is
+N{A}-graded, the degree of an element of the free magma M(A) being its image in
+the free commutative monoid N{A} (which counts the number of appearance of each
+letter in a given non-associative word). Moreover, the antisymmetry and the Jacobi
+relations are homogeneous with respect to this degree, so that the quotient L[A] is
+again a graded abelian group with respect to this degree. As a consequence, if we
+write a Lie monomial m of degree d as a linear combination of Lyndon monomials,
+taking the homogeneous component of degree d results in an expression of m as a
+linear combination of Lyndon monomials of degree d ∈ N{A}, as claimed.
+   Remark that the expression of m obtained in the proof by taking the homogeneous
+component must in fact must be the same as the first one, because of Theorem 6.9.
+   Linear trees can be used to define a basis of the reduced free Lie ring RL[n] which
+could be used to replace the Lyndon basis in all our work (this is in fact the point of
+view used in [MY19]):
+Lemma 6.15. For all integer k ⩾ 2, a basis of RL[n]k is given by Lie monomials
+which are letters or of the form [yi1 , ..., yik ] where the ij ⩽ n are pairwise distinct and
+satisfy ik = max(ij ).
+              j
+
+Proof. Using antisymmetry, one sees that up to a sign, any Lie monomial without
+repetition is equal to a Lie monomial with the same letter where the right-most factor
+(the right-most leaf of the corresponding tree) bears the maximal index. Then we can
+use the re-writing rule (6.13.1) to get a linear combination of linear trees, and the
+right-most leaf stays the same throughout the process, as does the set of letters used.
+This shows that Lie monomials of the form described   in the lemma generate the abelian
+group RL[n]k . Moreover, there are (k − 1)! nk such monomials, which is already known
+                                              
+
+to be the rank of RL[n]k (Prop. 1.9), hence this family must be a basis of RL[n]k .
+
+                                              38
+References
+[ABMW17] Benjamin Audoux, Paolo Bellingeri, Jean-Baptiste Meilhan, and Emmanuel
+         Wagner. Homotopy classification of ribbon tubes and welded string links. Ann.
+         Sc. Norm. Super. Pisa, Cl. Sci. (5), 17(2):713–761, 2017. 1, 25
+[AM19]      Benjamin Audoux and Jean-Baptiste Meilhan. Characterization of the reduced
+            peripheral system of links. arXiv:1904.04763, 2019. 1
+[AMW17]     Benjamin Audoux, Jean-Baptiste Meilhan, and Emmanuel Wagner. On codi-
+            mension two embeddings up to link-homotopy. J. Topol., 10(4):1107–1123, 2017.
+            1, 16
+[And65]     Stylianos Andreadakis. On the automorphisms of free groups and free nilpotent
+            groups. Proc. London Math. Soc. (3), 15:239–268, 1965. 7
+[Aud16]     Benjamin Audoux. On the welded tube map. In Knot theory and its appli-
+            cations, volume 670 of Contemp. Math., pages 261–284. Amer. Math. Soc.,
+            Providence, RI, 2016. 1
+[Bar16]     Laurent Bartholdi. Automorphisms of free groups. I—erratum [ MR3084710].
+            New York J. Math., 22:1135–1137, 2016. 7
+[BB14]      Valeriy G. Bardakov and Paolo Bellingeri. Groups of virtual and welded links.
+            J. Knot Theory Ramifications, 23(3):1450014, 23, 2014. 1
+[Bir75]     Joan S. Birman. Braids, links, and mapping class groups. Based on lecture notes
+            by James Cannon., volume 82. Princeton University Press, Princeton, NJ, 1975.
+            24, 25
+[BND16]     Dror Bar-Natan and Zsuzsanna Dancso. Finite-type invariants of w-knotted
+            objects, I: w-knots and the Alexander polynomial. Algebr. Geom. Topol.,
+            16(2):1063–1133, 2016. 1
+[BND17]     Dror Bar-Natan and Zsuzsanna Dancso. Finite type invariants of w-knotted
+            objects II: tangles, foams and the Kashiwara-Vergne problem. Math. Ann.,
+            367(3-4):1517–1586, 2017. 1
+[BP09]      Barbu Berceanu and Ştefan Papadima. Universal representations of braid and
+            braid-permutation groups. J. Knot Theory Ramifications, 18(7):999–1019, 2009.
+            32
+[BWC07]     John C. Baez, Derek K. Wise, and Alissa S. Crans. Exotic statistics for strings
+            in 4D BF theory. Adv. Theor. Math. Phys., 11(5):707–749, 2007. 1
+[Coh95]     Frederick R. Cohen. On combinatorial group theory in homotopy. In Homo-
+            topy theory and its applications. A conference on algebraic topology in honor of
+            Samuel Gitler, August 9-13, 1993, Cocoyoc, Mexico, pages 49–55. Providence,
+            RI: American Mathematical Society, 1995. 12
+[Dam17]     Celeste Damiani. A journey through loop braid groups. Expo. Math., 35(3):252–
+            285, 2017. 1, 25
+[Dam19]     Celeste Damiani. Towards a version of Markov’s theorem for ribbon torus-
+            links in R4 . In Knots, low-dimensional topology and applications, volume 284
+            of Springer Proc. Math. Stat., pages 309–328. Springer, Cham, 2019. 1
+[Dar19a]    Jacques Darné. On the Andreadakis Problem for Subgroups of IAn . Interna-
+            tional Mathematics Research Notices, 11 2019. rnz237. 5, 6, 7, 21, 24, 26
+[Dar19b]    Jacques Darné. On the stable Andreadakis problem. J. Pure Appl. Algebra,
+            223(12):5484–5525, 2019. 5, 6, 7, 10, 14, 15, 16
+[FRR97]     Roger Fenn, Richárd Rimányi, and Colin Rourke. The braid-permutation group.
+            Topology, 36(1):123–135, 1997. 1
+
+                                           39
+[Gol74]    Deborah L. Goldsmith. Homotopy of braids - in answer to a question of E.
+           Artin. Topology Conf., Virginia polytechnic Inst. and State Univ. 1973, Lect.
+           Notes Math. 375, 91-96 (1974)., 1974. 22, 27, 28
+[Gol81]    Deborah L. Goldsmith. The theory of motion groups. Mich. Math. J., 28:3–17,
+           1981. 25
+[GPV00]    Mikhail Gusarov, Michael Polyak, and Oleg Viro. Finite-type invariants of
+           classical and virtual knots. Topology, 39(5):1045–1068, 2000. 1
+[Gus94]    Mikhail Gusarov. On n-equivalence of knots and invariants of finite degree.
+           In Topology of manifolds and varieties, volume 18 of Adv. Soviet Math., pages
+           173–192. Amer. Math. Soc., Providence, RI, 1994. 1
+[HL90]     Nathan Habegger and Xiao-Song Lin. The classification of links up to link-
+           homotopy. J. Am. Math. Soc., 3(2):389–419, 1990. 8, 12, 22, 23, 24, 25
+[HM00]     Nathan Habegger and Gregor Masbaum. The Kontsevich integral and Milnor’s
+           invariants. Topology, 39(6):1253–1289, 2000. 1, 3
+[Jac08]    David A. Jackson. Basic commutators in weights six and seven as relators.
+           Comm. Algebra, 36(8):2905–2909, 2008. 11
+[Kam07]    Seiichi Kamada. Braid presentation of virtual knots and welded knots. Osaka
+           J. Math., 44(2):441–458, 2007. 1
+[Koh85]    Toshitake Kohno. Série de Poincaré-Koszul associée aux groupes de tresses
+           pures. Invent. Math., 82(1):57–75, 1985. 23
+[Kon93]    Maxim Kontsevich. Vassiliev’s knot invariants. In I. M. Gel’fand Seminar,
+           volume 16 of Adv. Soviet Math., pages 137–150. Amer. Math. Soc., Providence,
+           RI, 1993. 1
+[Laz54]    Michel Lazard. Sur les groupes nilpotents et les anneaux de Lie. Ann. Sci.
+           Ecole Norm. Sup. (3), 71:101–190, 1954. 5, 6, 10
+[McC86]    James McCool. On basis-conjugating automorphisms of free groups. Canad. J.
+           Math., 38(6):1525–1529, 1986. 3, 17
+[Mil54]    John W. Milnor. Link groups. Ann. Math. (2), 59:177–195, 1954. 8, 10
+[Mil57]    John W. Milnor. Isotopy of links. Algebraic geometry and topology. In A
+           symposium in honor of S. Lefschetz, pages 280–306. Princeton University Press,
+           Princeton, N. J., 1957. 26
+[MW02]     Jacob Mostovoy and Simon Willerton. Free groups and finite-type invariants of
+           pure braids. Math. Proc. Cambridge Philos. Soc., 132(1):117–130, 2002. 1, 3
+[MY19]     Jean-Baptiste Meilhan and Emmanuel Yasuhara, Akira. Arrow calculus for
+           welded and classical links. Alg. Geom. Topol., 19:397–456, 2019. 1, 27, 38
+[NNSY18]   Takuji Nakamura, Yasutaka Nakanishi, Shin Satoh, and Akira Yasuhara. The
+           pass move is an unknotting operation for welded knots. Topology Appl., 247:9–
+           19, 2018. 1
+[Reu03]    Christophe Reutenauer. Free Lie algebras. In Handbook of algebra, Vol. 3, pages
+           887–903. North-Holland, Amsterdam, 2003. 33, 35
+[Sat00]    Shin Satoh. Virtual knot presentation of ribbon torus-knots. J. Knot Theory
+           Ramifications, 9(4):531–542, 2000. 1
+[Sat17]    Takao Satoh. On the Andreadakis conjecture restricted to the “lower-
+           triangular” automorphism groups of free groups.    J. Algebra Appl.,
+           16(5):1750099, 31, 2017. 7
+[Ser06]    Jean-Pierre Serre. Lie algebras and Lie groups, volume 1500 of Lecture Notes
+           in Mathematics. Springer-Verlag, Berlin, 2006. 1964 lectures given at Harvard
+           University, Corrected fifth printing of the second (1992) edition. 33, 34, 36
+
+                                          40
+[Sim87]   Charles C. Sims. Verifying nilpotence. J. Symbolic Comput., 3(3):231–247,
+          1987. 11
+[Sta96]   Ted Stanford. Braid commutators and Vassiliev invariants. Pacific J. Math.,
+          174(1):269–276, 1996. 1
+[Sta98]   Ted Stanford. Vassiliev invariants and knots modulo pure braid subgroups.
+          arXiv:9805092, 1998. 1
+[Vas90]   Viktor A. Vassiliev. Cohomology of knot spaces. In Theory of singularities and
+          its applications, volume 1 of Adv. Soviet Math., pages 23–69. Amer. Math. Soc.,
+          Providence, RI, 1990. 1
+
+
+
+
+                                         41
+

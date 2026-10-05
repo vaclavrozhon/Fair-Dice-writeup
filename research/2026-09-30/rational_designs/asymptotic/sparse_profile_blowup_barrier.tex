@@ -1,0 +1,85 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\title{An arithmetic barrier to sparse-profile integer blowups}
+\author{Complete elementary proof; independently reviewed}
+\date{30 September 2026}
+\begin{document}\maketitle
+\noindent\textbf{Status.} Full independent mathematical review by the root agent passed; this is not formal verification.
+
+A fair family with counts $c_1,\ldots,c_n$ remains fair when every face
+of die $i$ is replaced by $b_i$ adjacent copies, for positive integers
+$b_i$. Its new count vector is $(b_ic_i)_i$; relabeling permutes these
+coordinates. A proposed equalization mechanism might first create
+profiles that are constant except on a few coordinates, then cancel the
+remaining noncommutative defects. The following elementary obstruction
+concerns that \emph{first} step only.
+
+\begin{theorem}\label{barrier}
+Fix $n\ge2$ and $1\le k\le n$. There are fair families of arbitrarily
+large total size $A$ such that every relabeled integer blowup whose
+count vector has at least $k$ coordinates equal to one positive number
+$M$ satisfies
+\[
+ M\ge c_{n,F} A^k,
+\]
+where $F$ is the common count of any one fixed fair $n$-die family and
+$c_{n,F}>0$ is independent of $A$. In particular, a method requiring a
+single profile of the form
+$M(1,\ldots,1)+(a_1,\ldots,a_n)$ with at most $q$ nonzero $a_i$
+cannot have a bound $A^C$ uniform in $n$ when $n-q>C$.
+\end{theorem}
+\begin{proof}
+Start with a fair family having $F$ faces on each die. For an integer
+$L\ge n$, blow up die $i$ by $L+i$. The resulting counts are
+\[
+ c_i=F(L+i),\qquad
+ A=F\left(nL+\frac{n(n+1)}2\right)\le2nFL.
+\]
+They are counts of an actual fair family, not merely an arithmetically
+admissible vector. If a further integer blowup, with any relabeling,
+has $k$ counts equal to $M$, then for some $k$-element index set $I$,
+\[
+ M\ge\operatorname{lcm}_{i\in I}c_i
+ =F\operatorname{lcm}_{i\in I}(L+i).
+\]
+For arbitrary positive integers $a_1,\ldots,a_k$,
+\[
+ \operatorname{lcm}(a_1,\ldots,a_k)
+ \ge\frac{\prod_i a_i}{\prod_{i<j}\gcd(a_i,a_j)}.
+\]
+Indeed, at each prime the sum of all valuations except their maximum
+is at most the sum of the pairwise minimum valuations. Here
+$\gcd(L+i,L+j)$ divides $|i-j|$, and is at most $n$. Therefore
+\[
+ M\ge \frac{F L^k}{n^{k(k-1)/2}}
+ \ge\frac{F}{n^{k(k-1)/2}}
+       \left(\frac{A}{2nF}\right)^k.
+\]
+This proves the explicit assertion. For the final claim fix any
+$n,q$ with $k=n-q>C$ and let $L$ tend to infinity. Any factor depending
+only on $n$ is eventually dominated by $A^{k-C}$.
+\end{proof}
+
+\paragraph{Exact scope.}
+The obstruction applies to a single relabeling followed by coordinatewise
+integer blowups. It also applies to a scheme whose first nontrivial block
+must be such a near-constant profile. It does not exclude cancellation
+among many nonconstant profiles, rational continuous constructions,
+removing detectable redundant copies, or exploiting structural properties
+of a shortest family. In particular it is \emph{not} evidence against a
+polynomial relation between the arbitrary-count and equal-count optima.
+The input examples deliberately contain redundant integer blowups.
+
+\paragraph{Relation to positive splitting.}
+For a fair family, its reduced signature is
+$\exp(\sum_i c_iX_i)$. A profile with only one exceptional coordinate
+would give the attractive direction $MH+aX_i$, where $H=\sum_iX_i$.
+The theorem shows why obtaining such directions by integer blowups alone
+can already cost almost the full generic least-common-multiple bound.
+A polynomial equalization argument using this idea would have to replace
+exact sparsity by a different mechanism or use information beyond the
+count vector and allowed blowups.
+\end{document}

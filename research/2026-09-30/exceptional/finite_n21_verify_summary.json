@@ -1,0 +1,14 @@
+{
+  "mode": "verify",
+  "n": 21,
+  "distinguished_faces": 400,
+  "other_dice_equal": true,
+  "old_die_face_count_bits": 241481,
+  "mass_denominator_bits": 241334,
+  "base_insertion_moments_verified": 209,
+  "density_correction_moments_verified": 400,
+  "distinct_positive_rational_masses_checked": 16391,
+  "finite_certificate": "research/2026-09-30/exceptional/finite_n21.json",
+  "certificate_bytes": 254357,
+  "full_orders_enumerated": 0
+}

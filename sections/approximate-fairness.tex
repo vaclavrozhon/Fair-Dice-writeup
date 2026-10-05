@@ -1,0 +1,175 @@
+\section{Approximate permutation fairness}\label{sec:approximate}
+
+Exact permutation fairness forces exponentially many faces on most dice.
+We now ask how small the dice can be if every order is allowed a relative
+error of at most $\varepsilon$.  Thus the required inequality is
+\begin{equation}\label{eq:pointwise-approx}
+  \left|n!P(\pi)-1\right|\leq\varepsilon
+  \qquad\text{for every }\pi\in S_n.
+\end{equation}
+This controls even individually rare orders.  In particular, it implies
+$\lVert P-U\rVert_1\leq\varepsilon$ and
+$d_{\mathrm{TV}}(P,U)\leq\varepsilon/2$, where $U$ is uniform on $S_n$.
+
+\subsection{Classical shuffle constructions}
+
+The periodic word $(12\cdots n)^m$ realizes an inverse $m$-riffle shuffle:
+each letter independently chooses a uniform level in $[m]$, and ties are
+resolved in increasing letter order.  If $d=\operatorname{des}(\pi)$,
+the classical $P$-partition count gives
+\begin{equation}\label{eq:descent-count}
+  P(\pi)=\frac1{m^n}\binom{m+n-1-d}{n},
+  \qquad
+  n!P(\pi)=\prod_{k=-d}^{n-1-d}\left(1+\frac{k}{m}\right)
+  \quad(m\geq n).
+\end{equation}
+See Stanley~\cite{stanley1972} and Bayer and Diaconis~\cite{bayer-diaconis1992}.
+The product decreases with $d$.  Its two extreme values show that
+$m\geq n(n-1)/\varepsilon$ suffices for \eqref{eq:pointwise-approx} when
+$0<\varepsilon\leq1$: the increasing-order ratio is at most
+$e^{\varepsilon/2}\leq1+\varepsilon$, and the decreasing-order ratio is at
+least $1-\varepsilon/2$.  Conversely, for $0<\varepsilon<1$ the decreasing
+order forces $m\geq n$ and
+\[
+  m\geq\frac{n(n-1)}{2[-\log(1-\varepsilon)]}.
+\]
+Thus this periodic family requires $\Theta(n^2/\varepsilon)$ faces per
+die for $0<\varepsilon\leq1/2$.
+
+A better classical construction repeats a palindrome:
+\[
+  (12\cdots n\,n\cdots21)^m.
+\]
+Its order distribution is exactly the shelf shuffle of Diaconis, Fulman,
+and Holmes~\cite{diaconis-fulman-holmes2013}, as given by their
+Description~1.  Each die independently chooses one of the \(2m\)
+monotone runs uniformly; reading the chosen letters groups them by run,
+in increasing order within odd runs and decreasing order within even
+runs.  This is precisely their packet construction, so their
+Theorem~3.1 applies with the valleys of the output permutation itself.
+Their Theorem~3.4 gives, for fixed $c>0$ and $m\sim cn^{3/2}$,
+\[
+  \max_{\pi\in S_n}|n!P(\pi)-1|
+  \longrightarrow e^{1/(12c^2)}-1.
+\]
+Consequently, for each fixed positive error, $O(n^{3/2})$ faces per die
+suffice.  Our construction improves this bound by independently relabelling
+the palindrome blocks.
+
+\subsection{Independent palindrome blocks}
+
+For a permutation $\rho$, let $\rho^{\mathrm{rev}}$ be its reversal.
+Choose $\rho_1,\ldots,\rho_m$ independently and uniformly from $S_n$, and
+form the word
+\begin{equation}\label{eq:random-palindrome-word}
+  W=(\rho_1\rho_1^{\mathrm{rev}})
+       \concat\cdots\concat(\rho_m\rho_m^{\mathrm{rev}}).
+\end{equation}
+Every resulting die has exactly $2m$ faces.  The randomness here chooses
+the dice; after the word has been chosen, their order distribution $P_W$
+is fixed.
+
+\begin{theorem}[Approximate fairness from random palindromes]
+\label{thm:approximate}
+There is an absolute constant $C$ such that, for every $n\geq3$ and
+$0<\varepsilon\leq1$, if
+\[
+  m\geq Cn^{13/10}(\log n)^{1/5}\varepsilon^{-2/5},
+\]
+then the random word \eqref{eq:random-palindrome-word} satisfies
+\eqref{eq:pointwise-approx} simultaneously for all $\pi\in S_n$ with
+probability at least $1/2$.  In particular, there exist $n$ equal-sided
+dice with
+\[
+  O\!\left(n^{13/10}(\log n)^{1/5}\varepsilon^{-2/5}\right)
+\]
+faces each satisfying \eqref{eq:pointwise-approx}.
+\end{theorem}
+
+The palindrome structure makes every pair of letters exactly fair within
+each block.  Thus a block contributes no error unless at least three dice
+choose faces in it.  Independent relabelling centers the remaining errors;
+the proof controls their joint contribution, including interactions between
+several occupied blocks.
+
+Here is the exact expansion behind that argument.  Fix a target order
+$\sigma$.  Let $L=(L_1,\ldots,L_m)$ have the multinomial distribution with
+$n$ trials and $m$ equally likely cells, and split $\sigma$ into consecutive
+segments $A_i$ of lengths $L_i$.  For an ordered list $A$ of distinct
+letters, write $q_i(A)$ for the probability that these letters appear in
+the prescribed order when each chooses one of its two occurrences in
+block $i$.  Put
+\[
+  \delta_i(A)=|A|!q_i(A)-1,
+\]
+with $\delta_i(\varnothing)=0$.  Summing over the chosen block indices gives
+the identity
+\begin{equation}\label{eq:palindrome-expansion}
+  n!P_W(\sigma)=\mathbb E_L\prod_{i=1}^m(1+\delta_i(A_i)).
+\end{equation}
+For $|A|\leq2$, $\delta_i(A)=0$ identically.  For every fixed $A$,
+uniform relabelling gives $\mathbb E_{\rho_i}\delta_i(A)=0$.
+
+The following estimate controls the whole expansion.  Its proof, given in
+Appendix~\ref{app:approximate-proof}, combines hypercontractivity with a
+bound on multinomial collision probabilities.  The $L^p$ norm is over
+the independent random permutations defining $W$.
+
+\begin{lemma}[Uniform moment estimate]\label{lem:palindrome-moment}
+Let $n\geq3$, $2\leq p\leq n^2$, and
+$m\geq8n^{11/10}p^{1/5}$.  For every $\sigma\in S_n$,
+\[
+  \bigl\|n!P_W(\sigma)-1\bigr\|_p
+  \leq32\,\frac{n^{11/4}\sqrt p}{m^{5/2}}.
+\]
+\end{lemma}
+
+\begin{proof}[Proof of Theorem~\ref{thm:approximate}]
+Set
+\[
+  p=\max\left\{2,\frac{\log(2n!)}{\log3}\right\}.
+\]
+For $n\geq3$, we have $p\leq n^2$ and $p=O(n\log n)$.
+Choosing the absolute constant $C$ sufficiently large ensures
+$m\geq8n^{11/10}p^{1/5}\varepsilon^{-2/5}$.
+Lemma~\ref{lem:palindrome-moment} then gives, for every $\sigma$,
+\[
+  \bigl\|n!P_W(\sigma)-1\bigr\|_p
+  \leq\frac{32}{8^{5/2}}\varepsilon<\frac\varepsilon3.
+\]
+Markov's inequality and a union bound imply
+\[
+  \Pr\!\left(\exists\sigma\in S_n:
+      |n!P_W(\sigma)-1|>\varepsilon\right)
+  \leq n!3^{-p}\leq\frac12.
+\]
+Thus a single sampled collection satisfies all the required inequalities
+with the stated probability.
+\end{proof}
+
+\subsection{A lower bound for total size}
+
+For fixed error, quadratic total length is necessary even if only the
+first-place marginals are required to be approximately fair.  Suppose
+each die is first with probability at most $(1+\varepsilon)/n$.
+Order the letters as $i_1,\ldots,i_n$ according to the positions
+$p_1<\cdots<p_n$ of their first occurrences.  Let $E_k$ be the event
+that every earlier letter $i_j$, $j<k$, chooses an occurrence after
+$p_k$.  If $E_k$ fails, the first selected occurrence belongs to one
+of those $k-1$ letters.  Consequently,
+\[
+  \Pr(E_k)\geq1-\frac{(k-1)(1+\varepsilon)}n.
+\]
+The choice of a face of $i_k$ is independent of $E_k$.  If $i_k$
+chooses its first occurrence and $E_k$ holds, then $i_k$ is first.
+Writing $m_i$ for the face counts gives
+\begin{equation}\label{eq:approx-first-lower}
+  m_{i_k}\geq
+  \max\left\{0,\frac{n}{1+\varepsilon}-(k-1)\right\}.
+\end{equation}
+Summing over $k$ yields total length $\Omega(n^2)$ for fixed
+$\varepsilon$.  Condition~\eqref{eq:pointwise-approx} implies the marginal
+hypothesis by summing over the orders in which a specified die is first.
+Theorem~\ref{thm:approximate} gives total length
+$O(n^{23/10}(\log n)^{1/5})$ for fixed positive error, leaving a factor
+$O(n^{3/10}(\log n)^{1/5})$ between these upper and lower bounds.

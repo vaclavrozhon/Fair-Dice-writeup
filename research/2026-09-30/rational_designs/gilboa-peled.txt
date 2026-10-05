@@ -1,0 +1,1262 @@
+                                                          Chebyshev-type Quadratures for Doubling Weights
+                                                                               Shoni Gilboa∗               Ron Peled†
+arXiv:1507.01505v2 [math.CA] 17 Jun 2017
+
+
+
+
+                                                                                           August 3, 2018
+
+
+
+                                                                                              Abstract
+                                                       A Chebyshev-type quadrature for a given weight function is a quadrature formula with equal
+                                                   weights. In this work we show that a method presented by Kane may be used to determine the
+                                                   order of magnitude of the minimal number of nodes required in Chebyshev-type quadratures for
+                                                   doubling weight functions. This extends a long line of research on Chebyshev-type quadratures
+                                                   starting with the 1937 work of Bernstein.
+
+
+
+                                           1       Introduction
+                                                                                                                               R1
+                                           Let w be a non-negative, integrable function on the interval [−1, 1], such that −1 w(t)dt > 0. Such
+                                           a w will be called a weight function. A quadrature (formula) of degree n is a sequence of points
+                                           −1 ≤ t1 ≤ t2 ≤ . . . ≤ tN ≤ 1, called nodes, and a sequence of weights w1 , w2 , . . . , wN such that
+                                                                                    Z 1                  N
+                                                                                                         X
+                                                                                          p(t)w(t)dt =         wi p(ti )                                (1)
+                                                                                     −1                  i=1
+
+                                           for every polynomial p of degree at most n. If w1 = w2 = · · · = wN then the quadrature is called a
+                                           Chebyshev-type quadrature, or an equal-weight quadrature.
+                                               Given w and the location of the nodes, the equalities (1) reduce to a set of n linear equations
+                                           in N unknowns and it is simple to see from this that a quadrature formula exists whenever N ≥ n.
+                                           The situation becomes more complicated if we require the quadrature formula to have non-negative
+                                           weights. However, the celebrated Gaussian quadrature formula (see, e.g., [11, Chapter IV, Section
+                                           8]) satisfies this restriction and achieves the optimal degree n = 2N − 1.
+                                               Surprisingly, the situation changes dramatically if we require the quadrature to be of Chebyshev-
+                                           type, i.e., to have equal weights. This was established by Bernstein [2, 3] in 1937 who proved that for
+                                               ∗
+                                              Mathematics Department, The Open University of Israel, Raanana 43107, Israel.
+                                               †
+                                              School of Mathematical Sciences, Tel Aviv University, Tel-Aviv 69978, Israel. Supported by an ISF grant and an
+                                           IRG grant.
+                                              Keywords: Chebyshev-type quadrature formula, doubling weights, equal weight quadrature.
+                                              2010 Mathematics Subject Classification: 65D32, 41A55.
+
+
+                                                                                                  1
+a constant weight function the minimal possible number of nodes in a Chebyshev-type quadrature
+of degree n is of order n2 .
+    Bernstein’s result naturally raises the question of understanding the minimal number of required
+nodes in Chebyshev-type quadratures for other weight functions. For a weight function w and a
+positive integer n, we denote by Nw (n) the minimal number of nodes in a Chebyshev-type quadrature
+of degree n for w. The most well-studied case is that of the Jacobi weight function,
+
+                              wα,β (x) := (1 − x)α (1 + x)β ,   α, β > −1.                           (2)
+
+Kuijlaars [13] (see also [12]) generalized Bernstein’s result by proving that Nwα,β (n) is of order
+n2+2 max{α,β} when α, β ≥ 0. Kane [10] recently extended this result to α, β ≥ −1/2 (the case
+α = β = −1/2 is classical as the Gaussian quadrature itself already has equal weights). In the regime
+−1 < α, β ≤ − 21 , Kuijlaars [15] proved that there exists a λ0 > 0 such that if α = β = − 12 − λ or
+α = − 21 and β = − 21 −λ for some λ < λ0 then Nwα,β (n) has order n (and, moreover, Nwα,β (n) ≤ n+2).
+    Regarding results on general classes of weight functions, Kuijlaars proved a universality result in
+[14], showing that for every weight function w of the form h(x)(1 − x2 )−1/2 , where h is positive on
+[−1, 1] and analytic in a neighbourhood of [−1, 1], Nw (n) is of order n. Geronimus [9], continuing
+ideas of Bernstein and Akhiezer, gave lower bounds for Nw (n) for certain general classes of weight
+functions. Wagner [20] gave upper bounds on Nw (n) for weight functions which are bounded below by
+a constant multiple of the weight wα,α , α ≥ 0, and bounded above by a constant. The results in [20]
+are rather general in that no further assumptions are placed on the weight function (and, additionally,
+more general types of quadrature formulas are considered). They are, however, somewhat difficult
+to apply and may overestimate the order of magnitude of Nw (n) (as n tends to infinity). An upper
+bound with similar merits and disadvantages was given by Rabau and Bajnok [18] (inspired by [19]).
+In addition, the work [17] gives a simple upper bound on Nw (n) for every weight function (and more
+generally, every measure). The bound of [17] is, however, far from sharp in many interesting cases,
+being, for instance, exponential in n when w is the constant weight function.
+    In this work we determine the order of magnitude of Nw (n) (as n tends to infinity) in great
+generality, extending most of the previous results on this question. Our results are obtained by
+combining topological tools developed by Kane [10] with analytic properties of doubling weight
+functions given by Mastroianni and Totik [16].
+    A weight function w on [−1, 1] is called doubling if there is an L > 0 (necessarily L ≥ 2), called
+the doubling constant, such that for every δ > 0 and −1 ≤ a ≤ 1,
+                                    Z a+2δ            Z a+δ
+                                           w(t)dt ≤ L       w(t)dt,
+                                     a−2δ               a−δ
+
+where w(t) is interpreted as 0 for t ∈
+                                     / [−1, 1].
+   For a weight function w and a positive integer n, in addition to the definition of Nw (n) given above,
+we denote by N w (n) the minimal number such that for every N ≥ N w (n) there is a Chebyshev-type
+
+                                                    2
+quadrature of degree n for w with exactly N nodes. We trivially have Nw (n) ≤ N w (n) but it may
+happen that the two quantities have radically different orders of magnitudes; see Förster [6] for an
+example where Nw (n) is linear in n while N w (n) is exponential in n.
+
+Theorem 1.1. Suppose w is a doubling weight function on [−1, 1] with doubling constant L. Let
+                                                             R1
+                                                              −1 w(t)dt
+                                    Rw (n) :=                  R x+∆ (x)        ,
+                                                     inf −1≤x≤1 x−∆nn(x) w(t)dt
+                     √                 
+where ∆n (x) := n1        1 − x2 + n1       and w(t) is again interpreted as 0 for t ∈
+                                                                                     / [−1, 1]. Then
+
+                           c(L)Rw (n) ≤ Nw (n) ≤ N w (n) ≤ C(L)Rw (n),               n ≥ 1,
+
+where c(L) and C(L) are positive constants depending only on L.
+
+   Many of the weight functions that appear in analysis are doubling. These include the generalized
+Jacobi weight functions which are the weight functions having the form
+
+                                h(x)(1 − x)α (1 + x)β |x − s1 |γ1 . . . |x − sℓ |γℓ ,                  (3)
+
+with h a positive measurable function bounded away from zero and infinity, ℓ ≥ 0, −1 < s1 < . . . <
+sℓ < 1 and α, β, γ1 , · · · , γℓ > −1. The Jacobi weight function wα,β given by (2) is obtained by setting
+h ≡ 1 and ℓ = 0. Theorem 1.1 shows that weight functions w of this form satisfy that
+
+                both Nw (n) and N w (n) are of order nmax{1,2(α+1),2(β+1),γ1 +1,...,γℓ +1} .
+
+This extends the known results even in the Jacobi weight case, where the order of magnitude of
+Nwα,β (n) was not previously known for all values of −1 < α, β ≤ − 12 . Moreover, it shows that the
+special form of the Jacobi weight function plays no role in this problem beyond the type of its zeros
+and singularities.
+    Theorem 1.1 is a direct consequence of an analogous theorem for weight functions on the unit
+circle. This result, which we shall now describe, seems more natural in that the corresponding
+estimate takes a simpler form. A weight function on the unit circle, or 2π-periodic weight function,
+                                                                                              Rπ
+is a non-negative, 2π-periodic measurable function W on the real line, such that 0 < −π W (θ)dθ <
+∞. A trigonometric quadrature (formula) of degree n for such a W is a sequence of real numbers
+θ1 ≤ θ2 ≤ . . . ≤ θN , called nodes, and a sequence of weights w1 , w2 , . . . , wN such that
+                                            Z π                    N
+                                                                   X
+                                                   p(θ)W (θ)dθ =         wi p(θi )                     (4)
+                                              −π                   i=1
+
+for every trigonometric polynomial p of degree at most n. If w1 = w2 = · · · = wN then the
+quadrature is called a Chebyshev-type trigonometric quadrature. A 2π-periodic weight function W is
+
+                                                             3
+called doubling if there is an L > 0 (necessarily L ≥ 2), called the doubling constant, such that for
+every δ > 0 and real a,
+                                  Z a+2δ             Z a+δ
+                                         W (θ)dθ ≤ L       W (θ)dθ.
+                                   a−2δ                 a−δ
+                                                                                trig
+    For a 2π-periodic weight function W and a positive integer n, we denote by NW    (n) the min-
+imal number of nodes in a Chebyshev-type trigonometric quadrature of degree n for W . We also
+denote by N trig                                                 trig
+            W (n) the minimal number such that for every N ≥ N W (n) there is a Chebyshev-type
+trigonometric quadrature of degree n for W with exactly N nodes.
+
+Theorem 1.2. Suppose W is a doubling 2π-periodic weight function with doubling constant L. Let
+                                             Rπ
+                              trig            −π W (θ)dθ
+                             RW (n) :=         R x+ 1         .                            (5)
+                                        inf x∈R x− 1n W (θ)dθ
+                                                         n
+
+Then
+                         trig        trig
+                    c(L)RW    (n) ≤ NW    (n) ≤ N trig         trig
+                                                  W (n) ≤ C(L)RW (n),       n ≥ 1,
+where c(L) and C(L) are positive constants depending only on L.
+
+    Theorem 1.1 is deduced from Theorem 1.2 via the standard device of defining a 2π-periodic weight
+function W from a weight function w on [−1, 1] by W (θ) := w (cos θ) | sin θ|. Theorem 1.2 admits the
+following heuristic interpretation: A trigonometric polynomial of degree n ‘sees’ a doubling weight
+W at a resolution of n1 , as made precise by Mastroianni and Totik in [16, Theorem 3.1] (see also
+Theorem 2.2 below). Thus one may hope to obtain a trigonometric quadrature of degree n for W by
+placing n nodes at n roughly equi-distanced locations along the unit circle, in which case each node
+should, in a sense, replace W in a neighborhood of size n1 around it. In particular, the weight of
+each node should roughly equal the integral of W in that neighborhood, so that the minimal weight
+                    Rπ             trig
+would be of order −π W (θ)dθ/RW         (n). Such a trigonometric quadrature may then be converted
+                                                               trig
+into a Chebyshev-type trigonometric quadrature with N ≈ RW          (n) nodes by replacing each of the n
+                                        Rπ
+nodes by a cluster of nodes of weight −π W (θ)dθ/N , roughly preserving the weight at each location.
+    The paper is organized as follows. In Section 2 we list the ingredients we will use in our proofs: a
+proposition of Kane and some facts about doubling weight functions. Theorem 1.1 and Theorem 1.2
+are proved in Section 3. In Section 4 we remark upon extensions to non-doubling weight functions,
+providing a simple upper bound on the minimal number of nodes required in a Chebyshev-type
+quadrature and discussing some explicit examples. In Section 5 we discuss some open problems for
+future research.
+    Throughout the paper we adopt the following policy regarding constants. The constants C(L)
+and c(L) will always denote positive constants whose value depends only on L. The values of these
+constants will be allowed to change from line to line, even within the same calculation, with the value
+of C(L) increasing and the value of c(L) decreasing. We similarly use C and c to denote positive
+absolute constants whose value may change from line to line.
+
+                                                   4
+Acknowledgements We thank Lev Buhovski, Daniel M. Kane, Eli Levin, Mikhail Sodin and
+Sasha Sodin for fruitful discussions.
+
+
+2    Preliminaries
+In this section we gather several existing results which we rely upon in our proofs.
+    For a non-negative integer n, let Tn denote the set of real trigonometric polynomials of degree at
+most n, i.e., the linear space spanned by the 2n+1 functions {1, sin θ, cos θ, sin 2θ, cos 2θ, . . . , sin nθ, cos nθ}.
+Let Tn+ be the subset of Tn of non-negative trigonometric polynomials which are not identically zero.
+
+Kane’s bound on the size of Chebyshev-type quadratures
+
+The following proposition is a restriction of Proposition 20 in [10], adapted to our setup. For
+completeness, a proof is provided in Appendix A.
+
+Proposition 2.1. [10, Proposition 20] Let W be a 2π-periodic weight function and let n be a positive
+integer. Then for every integer N satisfying that
+                                   Rπ                   Rπ ′
+                                        W  (θ)dθ             |p (θ)| dθ
+                              N > −π              sup R π −π
+                                         2       p∈Tn+ −π p(θ)W (θ)dθ
+
+there is a Chebyshev-type trigonometric quadrature of degree n for W with N nodes. Equivalently,
+                                  $R π                 Rπ ′            %
+                         trig        −π W (θ)dθ          −π |p (θ)| dθ
+                       N W (n) ≤                 sup R π                 + 1.
+                                         2      p∈Tn+ −π p(θ)W (θ)dθ
+
+   We use this bound together with the classical L1 version of Bernstein’s inequality (see, e.g., [21,
+Vol. II, Theorem 3.16, p.11]),
+                               Z π              Z π
+                                    ′
+                                   p (θ) dθ ≤ n     |p(θ)|dθ, p ∈ Tn .                             (6)
+                                   −π                     −π
+
+
+Properties of doubling weight functions
+
+Given a 2π-periodic weight function W and a positive integer n, define
+                                                  Z x+ 1
+                                                          n
+                                    Wn (x) := n               W (θ)dθ,   x ∈ R.                               (7)
+                                                      1
+                                                   x− n
+
+Mastroianni and Totik [16] showed that the result of integrating powers of trigonometric polynomials
+of degree n against a doubling weight W remains unchanged, up to constants, if W is replaced by
+Wn . In our work we use only a one-sided bound of this form and only in the special case when the
+power is 1.
+
+
+                                                          5
+Theorem 2.2. [16, Special case of Theorem 3.1] Let W be a doubling 2π-periodic weight function
+with doubling constant L. Then
+                      Z π                        Z π
+                          |p(θ)| Wn (θ)dθ ≤ C(L)     |p(θ)| W (θ)dθ, p ∈ Tn .
+                           −π                                     −π
+
+    The following simple lemma allows to transfer results from the trigonometric to the algebraic
+setting.
+
+Lemma 2.3. Let w be a weight function on [−1, 1]. Define a 2π-periodic weight function W by
+
+                                           W (θ) := w(cos θ)| sin θ|,            θ ∈ R.                                          (8)
+
+If w is doubling with a doubling constant L then W is also doubling with a doubling constant C(L).
+
+Proof. For every real u and positive δ, let
+
+                                   a(u, δ) : = min{cos(u + t) | −δ ≤ t ≤ δ},
+                                    b(u, δ) : = max{cos(u + t) | −δ ≤ t ≤ δ},
+
+and note that, for every real t,
+
+                           cos(u + 4t) − cos u = 2 cos t(cos(u + 3t) − cos(u + t)).
+
+Therefore cos u − a(u, 4δ) ≤ 2(b(u, 3δ) − a(u, 3δ)) and b(u, 4δ) − cos u ≤ 2(b(u, 3δ) − a(u, 3δ)), whence
+b(u, 4δ) − a(u, 4δ) ≤ 4(b(u, 3δ) − a(u, 3δ)). Applying this bound iteratively three times yields that
+                                                                   
+          b(u, 2δ) − a(u, 2δ) ≤ 43 b u, (3/4)3 2δ − a u, (3/4)3 2δ ≤ 43 (b (u, δ) − a (u, δ)) ,
+
+from which it follows that
+                                                                                                        
+                         a(u, δ) + b(u, δ)   7 b(u, δ) − a(u, δ) a(u, δ) + b(u, δ)   7 b(u, δ) − a(u, δ)
+[a(u, 2δ), b(u, 2δ)] ⊆                     −2                   ,                  +2                      .
+                                 2                     2                 2                     2
+For δ < π we get, using the doubling property of w (and continuing to interpret w as 0 outside
+[−1, 1]),
+  Z u+2δ               Z u+2δ                                Z b(u,2δ)
+           W (θ)dθ =            w(cos θ)| sin θ|dθ ≤ 4                    w(t)dt ≤
+    u−2δ                 u−2δ                                 a(u,2δ)
+                  Z a(u,δ)+b(u,δ) +27 b(u,δ)−a(u,δ)                      Z a(u,δ)+b(u,δ) + b(u,δ)−a(u,δ)
+                          2                   2                                     2              2
+             ≤4                                        w(t)dt ≤ 4L7                                         w(t)dt =
+                   a(u,δ)+b(u,δ)
+                         2
+                                 −27 b(u,δ)−a(u,δ)
+                                           2
+                                                                              a(u,δ)+b(u,δ) b(u,δ)−a(u,δ)
+                                                                                    2
+                                                                                           −      2
+                                           Z b(u,δ)                     Z u+δ                                     Z u+δ
+                                       7                            7                                         7
+                                = 4L                  w(t)dt ≤ 4L                w(cos θ)| sin θ|dθ = 4L                  W (θ)dθ.
+                                            a(u,δ)                       u−δ                                       u−δ
+
+Furthermore, it is straightforward that for δ ≥ π we have
+                                 Z u+2δ              Z u+δ
+                                         W (θ)dθ ≤ 3       W (θ)dθ,
+                                            u−2δ                        u−δ
+
+completing the proof of the lemma.
+
+                                                              6
+    Lastly, we require the following immediate property of doubling weight functions.
+
+Lemma 2.4. If W is a doubling 2π-periodic weight function with doubling constant L, then for every
+real x, y and δ > 0,
+                          Z y+δ                            Z
+                                               |x − y| log2 L x+δ
+                           W (θ)dθ ≤ L 1 +                           W (θ)dθ.
+                       y−δ                        δ           x−δ
+                l             m
+Proof. Let r := log2 1 + |x−y|
+                           δ      . Then [y − δ, y + δ] ⊆ [x − 2r δ, x + 2r δ] and hence, by the dou-
+bling property,
+    Z y+δ               Z x+2r δ                  Z x+δ                            Z
+                                                                       |x − y| log2 L x+δ
+            W (θ)dθ ≤              W (θ)dθ ≤ Lr        W (θ)dθ ≤ L 1 +                    W (θ)dθ.
+      y−δ                x−2r δ                    x−δ                    δ           x−δ
+
+
+3    Proofs
+For every integer m ≥ 0, Let Fm be the following variant of the Fejér kernel,
+                                                                                !2
+                                                          sin (2m+1)θ
+                                                                 2
+                                        Fm (θ) :=                                    ,                (9)
+                                                      (2m + 1) sin 2θ
+
+which is a non-negative trigonometric polynomial of degree 2m. We frequently use that
+                                (              2 )
+                                          π
+                   Fm (θ) ≤ min 1,                   for every −π ≤ θ ≤ π                            (10)
+                                      (2m + 1)θ
+                                                           
+                                                       2π
+                   Fm is even, and decreasing on 0,           ,                                      (11)
+                                                     2m + 1
+                    2                        π   2 2
+                     2               π
+                           ≤ Fm            ≤ F1       =         for every m ≥ 1,                     (12)
+                     π            2m + 1          3       3
+                                                                                  −2
+                                                          π                     π
+where the inequalities in (12) follow by noting that Fm 2m+1  = (2m + 1) sin 2(2m+1)     decreases
+with m. The following lemma shows that when integrating powers of Fm against doubling weight
+functions the main contribution comes from a small neighborhood of the origin.
+
+Lemma 3.1. Let W be a doubling 2π-periodic weight function with doubling constant L. For every
+integers k, ℓ, m such that 0 < |k| ≤ m, ℓ ≥ 5 log2 L,
+                           Z 2k+1 π                                     ℓ Z      π
+                              2m+1
+                                            ℓ                      2             2m+1
+                                      Fm (θ) W (θ)dθ ≤                                   W (θ)dθ.
+                             2k−1
+                                  π                               3|k|              π
+                                                                                − 2m+1
+                             2m+1
+
+
+Proof. With no loss of generality assume k is positive. We have
+                                     2
+                                       2       2k − 1           2k + 1
+                          Fm (θ) ≤         ,            π≤θ≤           π.
+                                      3k       2m + 1          2m + 1
+
+                                                          7
+            2π                                         π         2π
+When θ ≥ 2m+1    this follows from (10) whereas when 2m+1 ≤ θ ≤ 2m+1 this follows from (11) and
+(12). Therefore, by Lemma 2.4,
+   Z 2k+1 π                                     2ℓ Z 2k+1 π                             2ℓ                         Z     π
+      2m+1
+                        ℓ                    2           2m+1                          2                      log2 L       2m+1
+              Fm (θ) W (θ)dθ ≤                                    W (θ)dθ ≤                      L (2k + 1)                             W (θ)dθ,
+    2k−1
+         π                                  3k        2k−1
+                                                           π                          3k                                   π
+                                                                                                                       − 2m+1
+    2m+1                                              2m+1
+
+
+and the lemma follows since for every k ≥ 1 and ℓ ≥ 5 log2 L,
+                       ℓ                                   5 log2 L                            2 !log2 L
+                    2                                     2                                        8  1
+                             L (2k + 1)log2 L ≤                           L (3k)log2 L =                       ≤ 1.
+                   3k                                    3k                                        9  k4
+
+   We proceed to prove our main theorems.
+                                        Rπ
+Proof of Theorem 1.2. Denote I := −π W (θ)dθ. Recall the definition of Wn from (7). Note that
+ trig
+RW    (n)Wn (θ) ≥ I · n for every real θ. For every p ∈ Tn+ , by (6) and Theorem 2.2,
+      Z π                   Z π                      Z π                              Z π
+                                            trig                             trig
+   I      p′ (θ) dθ ≤ I · n     p(θ)dθ ≤ RW      (n)     p(θ)Wn (θ)dθ ≤ C(L)RW    (n)     p(θ)W (θ)dθ
+      −π                           −π                                −π                                                    −π
+
+and the upper bound of the theorem follows by Proposition 2.1.
+   To get the lower bound we need to show that if θ1 ≤ θ2 ≤ . . . ≤ θN are the nodes of a Chebyshev-
+                                                                           R x+ 1
+type trigonometric quadrature of degree n for W , then for every real x, x− 1n W (θ)dθ ≥ c(L)I/N .
+                                                                                                                 n
+With no loss of generality we may assume that all nodes are in [−π, π] and that x = 0.
+   Let ℓ be a positive  integer and                                                            2
+                  h               i let m := ⌊n/2(ℓ + 1)⌋. We first show that if ℓ ≥ 5 log2 (π L)
+                       π       π
+then the interval − 2m+1   , 2m+1  contains at least one node of the Chebyshev-type trigonometric
+quadrature. This is obvious if m = 0 so we assume
+                                                 m ≥ 1 in the following calculation. Let p be the
+                          ℓ                 π
+polynomial p(θ) := Fm (θ) Fm (θ) − Fm ( 2m+1 ) . We note that
+                                                                                                      
+                                                                                π      π
+                                    p(θ) ≤ 0,         θ ∈ [−π, π] \ −               ,                                                          (13)
+                                                                              2m + 1 2m + 1
+
+as in this range,
+                                                    !2                                           !2                            
+                                  sin (2m+1)θ
+                                         2                                1                                        π
+              Fm (θ) =                                    ≤                      π                    = Fm                          .
+                                (2m + 1) sin θ2                  (2m + 1) sin 2(2m+1)                            2m + 1
+
+Therefore,
+h            if there
+                i     is no node of the Chebyshev-type trigonometric quadrature in the interval
+      π      π
+  − 2m+1 , 2m+1 , then, using that deg p = 2m(ℓ + 1) ≤ n,
+
+                                            Z π                               N
+                                                                          I X
+                                                   p(θ)W (θ)dθ =              p(θj ) ≤ 0.
+                                             −π                           N
+                                                                             j=1
+
+
+
+
+                                                                     8
+However, using (11) and the doubling property,
+Z     π                           Z       π
+    2m+1                               2(2m+1)
+             p(θ)W (θ)dθ ≥                        p(θ)W (θ)dθ ≥
+     π                                     π
+ − 2m+1                               − 2(2m+1)
+                                                                          ℓ Z      π
+                                         π                π                π           2(2m+1)
+                              ≥       Fm         − Fm             Fm                            W (θ)dθ ≥
+                                     2(2m + 1)          2m + 1         2(2m + 1)           π
+                                                                                      − 2(2m+1)
+                                       Z π
+                                1 8 ℓ 1 2m+1
+                              ≥                  W (θ)dθ.
+                                3 π2    L − π
+                                                        2m+1
+
+
+Moreover, by (13), (10) and using Lemma 3.1, if ℓ ≥ 5 log2 L then for every integer k such that
+0 < |k| ≤ m,
+            Z 2k+1 π                                           Z 2k+1 π                                    ℓ Z     π
+              2m+1                                      π          2m+1
+                                                                                     ℓ                  2            2m+1
+        −              p(θ)W (θ)dθ ≤ Fm                                     Fm (θ) W (θ)dθ ≤                                W (θ)dθ,
+             2k−1
+                  π                                   2m + 1      2k−1
+                                                                       π                               3|k|          π
+                                                                                                                 − 2m+1
+             2m+1                                                 2m+1
+
+
+whence, for ℓ ≥ 5 log2 (π 2 L) ≥ max{5 log2 L, log2 (π 2 L)/ log2 (12/π 2 )},
+Z π                           m Z 2k+1 π                                            ℓ       ℓ X
+                                                                                                  m
+                                                                                                        !Z π
+                              X   2m+1                                 1        8             2     1      2m+1
+        p(θ)W (θ)dθ =                             p(θ)W (θ)dθ ≥                           −2                    W (θ)dθ > 0.
+ −π                                     2k−1
+                                             π                        3L        π2            3     k 2
+                                                                                                          − π
+                              k=−m      2m+1                                                       k=1               2m+1
+
+
+Therefore, if ℓ ≥ 5 log2 (π 2hL) then there iis at least one node of the Chebyshev-type trigonometric
+                                  π      π
+quadrature in the interval − 2m+1    , 2m+1   . Let θj0 be one such node.
+                   ℓ = 2mℓ ≤ n, it follows, using (11), (12) and Lemma 3.1, that for ℓ ≥ 5 log (π 2 L),
+      Now, as deg Fm                                                                          2
+
+         2ℓ                   ℓ                      N             Z π
+    I     2      I           π         I       ℓ    I X             ℓ
+              ≤ Fm                  ≤ Fm (θj0 ) ≤           Fm (θj ) =      Fm (θ)ℓ W (θ)dθ =
+    N    π      N         2m + 1       N            N                    −π
+                                                        j=1
+            m Z  2k+1                                  m
+                                                               !Z π                    Z π
+            X                                         ℓ
+                 2m+1
+                       π
+                               ℓ                  2 X 1             2m+1                 2m+1
+        =                Fm (θ) W (θ)dθ ≤ 1 + 2                          W  (θ)dθ ≤  3        W (θ)dθ.
+                2k−1
+                     π                            3         kℓ    − π                   − π
+             k=−m      2m+1                                                 k=1             2m+1                       2m+1
+
+                                                                                                                      R 1/n
+Taking ℓ = ⌈5 log2 (π 2 L)⌉, the last inequality and the doubling property imply that                                  −1/n W (θ)dθ ≥
+c(L)I/N , as required.
+
+Proof of Theorem 1.1. Let W be the 2π-periodic weight function defined by W (θ) := w(cos θ)| sin θ|.
+It is easy to verify that if (θj )Nj=1 are the nodes of a Chebyshev-type trigonometric quadrature of
+                                   N
+degree n for W , then (cos θj )j=1 are the nodes of a Chebyshev-type quadrature of degree n for
+w, and conversly, if (tj )N
+                          j=1 are the nodes of a Chebyshev-type quadrature of degree n for w, then
+(arccos tj )j=1 ∪(− arccos tj )N
+            N
+                               j=1 are the nodes of a Chebyshev-type trigonometric quadrature of degree
+n for W (where the union is interpreted as a multiset union). Therefore
+                                               1 trig
+                                                N (n) ≤ Nw (n) ≤ N w (n) ≤ N trig
+                                                                             W (n).                                                    (14)
+                                               2 W
+
+                                                                     9
+By Lemma 2.3, W is doubling with doubling constant C(L). Therefore by Theorem 1.2,
+                                 trig        trig
+                            c(L)RW    (n) ≤ NW    (n) ≤ N trig         trig
+                                                          W (n) ≤ C(L)RW (n).                                         (15)
+
+For every u let
+
+                                  a(u) : = min{cos(u + δ) | −1/n ≤ δ ≤ 1/n},
+                                  b(u) : = max{cos(u + δ) | −1/n ≤ δ ≤ 1/n},
+
+then                     Z b(u)              Z u+ 1                               Z b(u)
+                                                     n
+                                  w(t)dt ≤               w(cos θ)| sin θ|dθ ≤ 2            w(t)dt.                    (16)
+                                                 1
+                           a(u)               u− n                                 a(u)
+
+Recall the definition of ∆n from the statement of the theorem. For every real u and −1/n ≤ δ ≤ 1/n,
+
+          | cos u − cos(u + δ)| = |(1 − cos δ) cos u + sin δ sin u| ≤ (1 − cos δ) + | sin δ| · | sin u| ≤
+                                                                        
+                                  δ2                     1 1
+                                ≤     + |δ| · | sin u| ≤       + | sin u| = ∆n (cos u).
+                                   2                     n n
+Therefore,
+                           [a(u), b(u)] ⊆ [cos u − ∆n (cos u), cos u + ∆n (cos u)] ,
+whence, using (16),
+       Z u+ 1           Z u+ 1                        Z b(u)            Z cos u+∆n (cos u)
+            n                n
+              W (θ)dθ =        w(cos θ)| sin θ|dθ ≤ 2        w(t)dt ≤ 2                    w(t)dt,
+             1                   1
+          u− n                u− n                                 a(u)                    cos u−∆n (cos u)
+                                                                                                              Rπ
+where here and below we again interpret w as 0 outside [−1, 1]. Therefore, since                              −π W (θ)dθ =
+Rπ                        R1
+ −π w(cos θ)| sin θ|dθ = 2 −1 w(t)dt,
+                                        trig
+                                      RW     (n) ≥ Rw (n).                                                            (17)
+For every real u,
+                                                                         
+                    1 1                 1 1                       1
+       ∆n (cos u) =        + | sin u| ≤         | cos u| + 1 +        | sin u| ≤
+                    n n                 n n                       n
+                      2                                
+                    π               1                       1
+                  ≤       1 − cos       | cos u| + π sin        | sin u| ≤
+                     2              n                       n
+                                                                 
+                    15               1                     1
+                  ≤        1 − cos        | cos u| + sin       | sin u| =
+                     2               n                     n
+                                                                             
+                    15                             1                           1      15
+                  =     max cos u − cos u −             , cos u − cos u +           ≤    (b(u) − a(u)) .
+                     2                             n                          n       2
+Therefore,
+
+  [cos u − ∆n (cos u), cos u + ∆n (cos u)] ⊆
+                                                                                                 
+                                        a(u) + b(u)      b(u) − a(u) a(u) + b(u)      b(u) − a(u)
+                                   ⊆                − 16            ,            + 16               ,
+                                             2                2           2                2
+
+
+                                                             10
+whence, using the doubling property of w and (16),
+    Z cos u+∆n (cos u)              Z a(u)+b(u) +16 b(u)−a(u)
+                                          2                  2
+                         w(t)dt ≤                                w(t)dt ≤
+                                     a(u)+b(u)
+      cos u−∆n (cos u)                   2
+                                               −16 b(u)−a(u)
+                                                       2
+                                                  Z b(u)                    Z u+ 1                                   Z u+ 1
+                                                                                    n                                        n
+                                              4                         4                                        4
+                                       ≤L                  w(t)dt ≤ L                   w(cos θ)| sin θ|dθ = L                   W (θ)dθ.
+                                                                                1                                        1
+                                                   a(u)                      u− n                                     u− n
+                              Rπ             R1
+Thus, using again that         −π W (θ)dθ = 2 −1 w(t)dt,
+
+                                                       trig
+                                                      RW    (n) ≤ 2L4 Rw (n).                                                          (18)
+
+The theorem follows by combining (14), (15), (17) and (18).
+
+
+4      Additional results for non-doubling weight functions
+In this section we briefly remark on Chebyshev-type quadratures for non-doubling weight functions.
+We shall write |A| to denote the Lebesgue measure of a Lebesgue measurable set A in the real line.
+
+4.1      A general upper bound
+Here we provide a simple upper bound on the minimal number of nodes required in a Chebyshev-type
+quadrature which is applicable for any weight function. The advantage of this bound is its generality
+and the fact that it is sharp in some cases, e.g., for generalized Jacobi weight functions on [−1, 1]
+(see (3)) as it has the same order of magnitude as the bound given in Theorem 1.1. Its disadvantage
+is that it is not sharp in general, e.g., for weight functions vanishing on an interval (see also [6, 17])
+or for the example given in Section 4.2 below.
+
+Theorem 4.1. Let n be a positive integer and let W be a 2π-periodic weight function. Then, for
+                                                                            2π
+every 0 < η < 1, and every measurable D ⊂ [−π, π] such that |D| ≤ (1 − η)2 2n+1 ,
+                                                Rπ
+                               trig     1        −π W (θ)dθ
+                             N W (n) ≤ ·                           n.
+                                        η ess inf θ∈[−π,π]\D W (θ)
+
+     We also provide an analogue of the theorem for weight functions on [−1, 1].
+
+Corollary 4.2. Let n be a positive integer and let w be a weight function on [−1, 1]. Then, for every
+                                                        R    dt                π
+0 < η < 1, and every measurable D ⊂ [−1, 1] such that D √1−t    2
+                                                                  ≤ (1 − η)2 2n+1 ,
+                                                           R1
+                                              2             −1 w(t)dt
+                                     N w (n) ≤ ·                  √            n.
+                                              η ess inf t∈[−1,1]\D 1 − t2 w(t)
+
+    Theorem 4.1 follows by combining Proposition 2.1, (6) and the following lemma. The lemma and
+its proof are inspired by [10, Lemma 23].
+
+                                                                 11
+Lemma 4.3. Let n be a positive integer and let W be a 2π-periodic weight function. Suppose
+                                                          2π
+D ⊂ [−π, π] is a measurable set such that |D| ≤ (1 − η)2 2n+1 for some 0 < η < 1. Then
+                   Z π                                    Z π
+                       p(θ)W (θ)dθ ≥ η ess inf W (θ) ·        p(θ)dθ, p ∈ Tn+ .
+                           −π                           θ∈[−π,π]\D                −π
+
+Proof. It is easy to verify that
+                           Z π                                 2n                 
+                                                      2π X                   2j
+                               q(θ)dθ =                    q                      π ,        q ∈ T2n .
+                                   −π               2n + 1                 2n + 1
+                                                               j=0
+
+Fix p ∈ Tn+ . As deg p ≤ n and p is non-negative,
+                                                                                                               2
+              Z π                           2n
+                                            X                    2                  2n
+                                                                                      X                    
+                                     2π                2j      2π             2j
+                     p(θ)2 dθ =                p            π          ≤           π  =
+                                                                                        p
+                −π                 2n + 1            2n + 1  2n + 1         2n + 1
+                                        j=0                          j=0
+                                                                 2
+                                                 2n                         Z π        2
+                                 2n + 1  2π X            2j           2n + 1
+                               =                    p          π  =                p(θ)dθ .
+                                   2π     2n + 1        2n + 1           2π      −π
+                                                         j=0
+
+Therefore, by the Cauchy-Schwartz inequality,
+             Z           sZ       sZ                    sZ
+                                                 p         π
+                p(θ)dθ ≤     dθ ·      p(θ)2 dθ ≤ |D| ·      p(θ)2 dθ ≤
+                    D                   D           D                                  −π
+                                   r                         r              Z π                          Z π
+                                                    2π           2n + 1
+                               ≤       (1 − η)2          ·                        p(θ)dθ = (1 − η)             p(θ)dθ.
+                                                  2n + 1           2π        −π                           −π
+
+Hence
+  Z π                      Z                                                           Z
+           p(θ)W (θ)dθ ≥                 p(θ)W (θ)dθ ≥           ess inf     W (θ) ·               p(θ)dθ ≥
+      −π                    [−π,π]\D                         θ∈[−π,π]\D                 [−π,π]\D
+                                                                                                                   Z π
+                                                                                    ≥ η ess inf          W (θ) ·          p(θ)dθ.
+                                                                                            θ∈[−π,π]\D               −π
+
+Proof of Corollary 4.2. Let W be the 2π-periodic weight function defined by W (θ) := w(cos θ)| sin θ|
+and set D̃ to be the subset of [−π, π] satisfying −D̃ = D̃ and cos(D̃) = D. The corollary fol-
+                                                                                          R
+lows from Theorem 4.1 by observing that N w (n) ≤ N trig                                    √ dt
+                                                              W (n) by (14), that |D̃| = 2 D 1−t2 , that
+                                              √                    Rπ               R1
+ess inf θ∈[−π,π]\D̃ W (θ) = ess inf t∈[−1,1]\D 1 − t2 w(t) and that −π W (θ)dθ = 2 −1 w(t)dt.
+
+4.2        Exponentially vanishing weights
+In this section we study a family of non-doubling weight functions which vanish as a stretched
+exponential at a point. For α > 0, let Wα be the 2π-periodic weight function defined for −π ≤ θ < π
+by                                             
+                                               e−|θ|−α θ 6= 0
+                                     Wα (θ) :=                 .                                (19)
+                                               0        θ=0
+
+                                                                  12
+Theorem 1.2 does not apply to this weight function as it is not doubling. Theorem 4.1 applies, and
+yields that N trig           α                                trig
+              Wα (n) ≤ exp(Cn ). As it turns out, however, N Wα (n) is considerably smaller.
+
+Theorem 4.4. Let Wα be the 2π-periodic weight function defined for −π ≤ θ < π by (19). Then
+                       α
+                                                                   α
+                                                                        
+                                trig         trig
+             exp c(α)n α+1 ≤ NW   α
+                                     (n) ≤ N Wα   (n) ≤ exp   C(α)n α+1   , n ≥ 1,
+
+where C(α), c(α) are positive constants depending only on α.
+
+    We mention that the technique used for the proof of the theorem uses similar ideas to the proof
+of Theorem 1.2 and may be applicable for certain other weight functions. For instance, for the 2π-
+periodic weight functions Wfα , α > 0, defined for 0 < |θ| ≤ π by W
+                                                                  fα (θ) := exp(− exp(|θ|−α )) we may
+show that
+                                                                              
+                         n            trig        trig                     n
+          exp c(α)                ≤ N f (n) ≤ N f (n) ≤ exp C(α)                   , n ≥ 1,
+                    (log n)1/α        Wα          Wα                  (log n)1/α
+where C(α), c(α) are positive constants depending only on α. It is also worth mentioning in this
+regard that it is known [17, Theorem 1.4] that for weight functions w on [−1, 1] which are bounded
+we have N w (n) ≤ exp(C(w)n) for a constant C(w) depending only on w.
+    As a second remark we point out that the fact that the bounds provided by Theorem 4.4 for
+  trig
+NWα (n) and N trig
+                 Wα (n) are not as close to each other as in Theorem 1.2 may be essential. Indeed, as
+mentioned before, there is an example [6] of a weight function w vanishing on an interval for which
+Nw (n) is linear in n while N w (n) is exponential in n.
+    The proof of Theorem 4.4 is obtained by combining Proposition 2.1 with the following Remez-type
+inequality for trigonometric polynomials.
+
+Theorem 4.5. [4, Theorem 5.1.2] Let p ∈ Tn and denote M := maxθ∈R |p(θ)|. Then
+
+                        |{−π ≤ θ < π : |p(θ)| ≥ M e−4ns }| ≥ s,   0 < s ≤ π/2.
+                                                                                 1
+Proof of Theorem 4.4. We first prove the upper bound. We may assume 3n− α+1 ≤ π/2. Fix p ∈ Tn+
+                                                                   1
+and denote M := maxθ∈R |p(θ)|. Applying Theorem 4.5 with s = 3n− α+1 yields that
+                     n                                  α
+                                                           o          1
+                      −π ≤ θ < π : |p(θ)| ≥ M exp −12n α+1      ≥ 3n− α+1 .
+
+Let                  n                                   o                   
+                                                        α             1       1
+                A := −π ≤ θ < π : |p(θ)| ≥ M exp −12n α+1     \ −n− α+1 , n− α+1 .
+                          1
+                                                 α
+                                                    
+It follows that |A| ≥ n− α+1 and Wα (θ) ≥ exp −n α+1 for every θ ∈ A, whence
+          Z π                    Z                                           
+                                                    1              α          α
+                p(θ)Wα (θ)dθ ≥   p(θ)Wα (θ)dθ ≥ n− α+1 M exp −12n α+1 exp −n α+1 ≥
+           −π                 A
+                                  1
+                                               α
+                                                    1 Z π
+                               − α+1
+                            ≥n       exp −13n  α+1         p(θ)dθ.
+                                                    2π −π
+
+
+                                                  13
+By Proposition 2.1 and (6) we get that
+                                                                     1
+                                                                                  α
+                                                                                      
+                                                N trig
+                                                  Wα   (n) ≤ C n 1+ α+1
+                                                                        exp   13n α+1
+
+
+
+and the upper bound follows.
+    To get the lower bound we need to show that if θ1 ≤ θ2 ≤ . . . ≤ θN are the nodes of a Chebyshev-
+                                                                               α
+type trigonometric quadrature of degree n for Wα , then log N ≥ c(α) n α+1 . Fix such a quadrature.
+                                                                                                 α    1
+                                                                                              1 α+1 α+1
+With no loss of generality we may assume that all nodes are in [−π, π]. Let m := ⌊ 12          6    n   ⌋,
+          1    α                     1                α
+ℓ := ⌊6 α+1 n α+1 − 1⌋, r := ⌊min{6 α+1 , α/6 α+1 }n α+1 ⌋. We may assune that n, and hence also m, ℓ
+and r are large enough, as functions of α, for the following calculation. h                  i
+                                                                                   π      π
+    As in the proof of Theorem 1.2 we first show that the interval − 2m+1             , 2m+1   contains at
+least one node of the Chebyshev-type
+                                         trigonometric quadrature. Let p be the polynomial p(θ) :=
+       ℓ                 π
+Fm (θ) Fm (θ) − Fm ( 2m+1 ) . Note that deg p = 2m(ℓ+1) ≤ n. If there is no node of the Chebyshev-
+                                                 h                i
+                                                       π       π
+type trigonometric quadrature in the interval − 2m+1       , 2m+1   then, as in the proof of Theorem 1.2,
+Rπ
+ −π p(θ)Wα (θ)dθ ≤ 0. However, using (11),
+
+Z         π                     Z       2π
+        2m+1                         3(2m+1)
+               p(θ)Wα (θ)dθ ≥                   p(θ)Wα (θ)dθ ≥
+                                       π
+    0                               3(2m+1)
+                                                                        ℓ               
+                     π                2π                π               2π                 π
+               ≥              Fm               − Fm             Fm                Wα               ≥
+                 3(2m + 1)         3(2m + 1)          2m + 1         3(2m + 1)         3(2m + 1)
+                             √ !2ℓ                     2ℓ
+                     c      3 3             3(2m + 1) α       3
+               ≥                   exp −                  ≥        .
+                   2m + 1    2π                 π             4
+
+In the last inequality we have used that
+                                                    
+                                   1 3(2m + 1) α    1 3 α    1
+                              lim                =        <
+                             n→∞ 2ℓ      π         12 π     12
+                                        √
+together with the fact that 32π3 e−1/12 > 34 . We also have, using (10),(11) and (12), that
+        Z π                          Z π                   ℓ Z π             2ℓ
+                                            π          π
+                                                       ℓ                  π
+  −      p(θ)Wα (θ)dθ ≤      Fm (θ) dθ ≤        Fm            +                     dθ ≤
+      π                   π              2m + 1      2m + 1       2π  (2m + 1)θ
+    2m+1                2m+1                                     2m+1
+                                2ℓ                        2ℓ
+                           π     2       (2m − 1)π 1 2ℓ        2
+                      ≤                +                 ≤π        ,
+                        2m + 1 3           2m + 1   2          3
+
+whence
+                                       Z π                         Z π
+                                                p(θ)Wα (θ)dθ = 2           p(θ)Wα (θ)dθ > 0.
+                                           −π                          0
+
+Therefore
+h           therei is at least one node of the Chebyshev-type trigonometric quadrature in the interval
+      π      π
+                                                       Rπ
+  − 2m+1 , 2m+1   . Let θj0 be one such node. Let I := −π Wα (θ)dθ. Now, since deg ((Fm )r ) = 2rm ≤
+
+                                                                  14
+n, it follows, using (11), (12) and (10), that
+
+         2r                r                         N              Z π
+    I    2      I         π        I          r       I X           r
+              ≤   Fm             ≤   Fm (θj0 ) ≤            Fm (θj ) =      Fm (θ)r Wα (θ)dθ ≤
+    N    π      N      2m + 1      N                 N                   −π
+                                                        j=1
+                          Z π           2r                               1/α !2r          π 2r
+                                   π           − |θ|1α                π     2r
+                        ≤                     e        dθ ≤ 2π                          < 2π         ,
+                            −π (2m + 1)θ                         2m + 1 eα                     6
+                                                               
+                                                            2r 2r/α
+where in the penultimate inequality we used that            eα      is the maximum of θ −2r exp (−|θ|−α ) and
+in the last inequality we used that
+                               1/α                           α     !1/α              α     !1/α
+                                                       α
+                π          2r              π      2 · 6α+1 · n α+1               π   6 α+1              π
+                                       ≤                                    −−−→                    <     .
+              2m + 1       eα            2m + 1          eα                 n→∞ 6     3e                6
+
+               I
+                           
+                       12 2r
+Therefore N > 2π       π 2   and the lower bound follows.
+
+
+5       Discussion and open questions
+In our work we find the order of magnitude of the minimal number of nodes required in Chebyshev-
+type quadratures for doubling weight functions, and also briefly discuss more general weight functions.
+It is natural to wonder whether any of the qualitative phenomena observed for doubling weight
+functions are in fact true in greater generality. In this section we briefly discuss some questions of
+this type. The questions are formulated in the trigonometric case but are natural also on the interval.
+
+Multiplication by a function
+
+Let h be a 2π-periodic measurable function satisfying that there exist M, m > 0 such that
+
+                                                  m < h(x) < M
+
+almost everywhere. Let W be a 2π-periodic weight function. Is it true that the minimal number of
+nodes required in Chebyshev-type quadratures for W and for hW is of the same order of magnitude?
+Precisely, that there exist C(M, m), c(M, m) > 0, depending only on M and m (in fact, only on
+M/m by homogeneity), such that
+
+                                   trig        trig               trig
+                           c(M, m)NW    (n) ≤ NhW   (n) ≤ C(M, m)NW    (n),          n ≥ 1,                   (20)
+                           c(M, m)N trig      trig              trig
+                                    W (n) ≤ N hW (n) ≤ C(M, m)N W (n),               n ≥ 1.                   (21)
+
+Our results show that this phenomenon holds for doubling weight functions.
+
+
+
+
+                                                         15
+Sharpness of Kane’s bound
+
+Our upper bounds on N trig W (n) are based on Kane’s general upper bound given in Proposition 2.1.
+In fact, we do not know any example of a 2π-periodic weight function which is non-zero almost
+everywhere for which this bound is not sharp up to constants. Does it give the correct order of
+magnitude of N trig
+                  W (n) (as n tends to infinity) for all such weight functions? A positive answer will
+also verify the relation (21) discussed in the previous question.
+    It is necessary to make some assumption on the support of the weight function. For instance, as
+pointed out to us by Kane, if W is the 2π-periodic weight function defined for −π ≤ θ < π by
+                                                  
+                                                  1 |θ| ≤ π
+                                                              6
+                                         W (θ) :=               .
+                                                  0 |θ| > π
+                                                             6
+
+
+For even n, the bound on N trig                                             n
+                              W (n) given by Proposition 2.1 is at least 2 , by considering the poly-
+                                                                         trig
+nomial p(θ) = (sin θ)n ∈ Tn+ . However, it is in fact true that cn2 ≤ NW      (n) ≤ N trig      2
+                                                                                      W (n) ≤ Cn . To
+see this, observe that W (θ) = w(cos θ)| sin θ| for the weight function w on [−1, 1] defined by
+                                                              √
+                                               √ 1       x ≥    3
+                                                    1−x 2       2
+                                    w(x) :=                    √ .
+                                               0         x< 3   2
+
+A Chebyshev-type trigonometric quadrature for W may be obtained from a Chebyshev-type quadra-
+ture for w (as in the proof of Theorem 1.1) by mapping the nodes (tj )N                             N
+                                                                       j=1 to the nodes (arccos tj )j=1 ∪
+(− arccos tj )N                                                                 2
+              j=1 (where the union is interpreted as a multiset union). Now, cn ≤ Nw (n) ≤ N w (n) ≤
+Cn2 as follows from Theorem 1.1 applied to w composed with an affine mapping.
+
+Locality
+                                                      trig
+Theorem 1.2 shows that the order of magnitude of NW        (n) and N trig                     trig
+                                                                     W (n) is given by RW (n) for
+                                                                         trig
+doubling 2π-periodic weight functions W . The order of magnitude of RW        (n), as a function of n, is
+                                    R x+ n1
+determined by the expression inf x∈R x− 1 W (θ)dθ. This gives a sense to the idea that the orders of
+                                          n
+                trig
+magnitude of NW      (n) and N trig
+                               W (n) depend only on local features of W . Is this property shared also
+by non-doubling weight functions?
+    To make this question precise, suppose W1 , W2 , . . . , Wm and W are 2π-periodic weight functions
+such that for every real x, W coincides with some Wi in a neighbourhood of x. Is it true that there
+exists a constant M , depending only on W1 , W2 , . . . , Wm and W , for which
+
+                                      trig              trig
+                                     NW    (n) ≤ M max NW i
+                                                             (n),
+                                                   1≤i≤m
+
+                                     N trig       max N trig
+                                       W (n) ≤ M 1≤i≤m  Wi (n)
+
+
+
+
+                                                   16
+for every n ≥ 1? One cannot expect similar inequalities in the opposite direction to hold, even in
+the doubling case, as no control is provided on Wi away from the neighbourhoods where it coincides
+                                                                               trig
+with W and Theorem 1.2 shows that changing Wi in these regions can increase NW   i
+                                                                                    (n) and N trig
+                                                                                              Wi (n)
+significantly.
+
+Numerical algorithms
+
+Our results provide bounds on the minimal number of nodes in Chebyshev-type quadratures for
+doubling weight functions. From a numerical analysis point of view it is of interest to complement
+these with efficient algorithms for finding such quadrature formulas. It appears that this problem
+has not received much attention in the literature and we are not aware of efficient algorithms for it.
+Research has been focused on identifying in the set of all Chebyshev-type quadratures with a given
+number of nodes and a given degree of accuracy, such formulas which are optimal in a specified sense.
+The interested reader is pointed to the recent book of Brass and Petras [5, Chapter 9], to the older
+survey of Gautschi [8], to the works of Anderson and Gautschi [1] and of Förster and Ostermeyer [7]
+and to the references there, for discussion of such notions and their properties. The work of Anderson
+and Gautschi suggests also an algorithm for finding a quadrature formula with certain optimality
+properties.
+
+Extensions
+
+Both the notions of quadrature formula and the notion of doubling are, in fact, defined for the measure
+given by w(t)dt (or W (θ)dθ in the trigonometric case). Thus these notions may be extended naturally
+to general finite, positive measures. With these extended notions, Theorem 1.1, Theorem 1.2 and
+their proofs continue to apply, mutatis mutandis, for the class of doubling measures.
+    Some authors extend the notion of quadrature formula further, allowing the nodes to be outside
+of [−1, 1] for weight functions on [−1, 1], or allowing the nodes to take complex values for 2π-periodic
+weight functions. We do not consider these extended notions here.
+
+
+References
+ [1] L. A. Anderson and W. Gautschi, Optimal weighted Chebyshev-type quadrature formulas, Cal-
+     colo 12 (1975), no. 3, 211–248.
+
+ [2] S. N. Bernstein, Sur les formules de quadrature de Cotes et Tchebycheff, C.R. Acad. Sci. URSS
+     14 (1937), 323–326.
+
+ [3] S. N. Bernstein, On quadrature formulas with positive coefficients, Izv. Akad. Nauk SSSR Ser.
+     Mat. 4 (1937), 479–503 (in Russian).
+
+
+
+                                                  17
+ [4] P. Borwein and T. Erdélyi, Polynomials and polynomial inequalities, Graduate Texts in Math-
+     ematics, 161, Springer, New York, 1995.
+
+ [5] H. Brass and K. Petras, Quadrature theory, Mathematical Surveys and Monographs, 178, Amer.
+     Math. Soc., Providence, RI, 2011.
+
+ [6] K.-J. Förster, On Chebyshev quadrature for a special class of weight functions, BIT 26 (1986),
+     no. 3, 327–332.
+
+ [7] K.-J. Förster and G.-P. Ostermeyer, On weighted Chebyshev-type quadrature formulas, Math.
+     Comp. 46 (1986), no. 174, 591–599, S21–S27.
+
+ [8] W. Gautschi, Advances in Chebyshev quadrature, in Numerical analysis (Proc. 6th Biennial
+     Dundee Conf., Univ. Dundee, Dundee, 1975), 100–121. Lecture Notes in Math., 506, Springer,
+     Berlin.
+
+ [9] L. Ya. Geronimus, On the Čebyšev quadrature formula, Izv. Akad. Nauk SSSR Ser. Mat. 33
+     (1969), 1182-1207; English transl. in Math. USSR-Izv. 3 (1969), 1115-1138.
+
+[10] D. M. Kane, Small designs for path-connected spaces and path-connected homogeneous spaces,
+     Trans. Amer. Math. Soc. 367 (2015), no. 9, 6387–6414.
+
+[11] S. Karlin and W. J. Studden, Tchebycheff systems: With applications in analysis and statistics,
+     Pure and Applied Mathematics, Vol. XV Interscience Publishers John Wiley & Sons, New York,
+     1966.
+
+[12] A. Kuijlaars, The minimal number of nodes in Chebyshev type quadrature formulas, Indag.
+     Math. (N.S.) 4 (1993), no. 3, 339–362.
+
+[13] A. Kuijlaars, Chebyshev-type quadrature for Jacobi weight functions, J. Comput. Appl. Math.
+     57 (1995), no. 1-2, 171–180.
+
+[14] A. Kuijlaars, Chebyshev-type quadrature for analytic weights on the circle and the interval,
+     Indag. Math. (N.S.) 6 (1995), no. 4, 419–432.
+
+[15] A. Kuijlaars, Chebyshev-type quadrature and zeros of Faber polynomials, J. Comput. Appl.
+     Math. 62 (1995), no. 2, 155–179.
+
+[16] G. Mastroianni and V. Totik, Weighted polynomial inequalities with doubling and A∞ weights,
+     Constr. Approx. 16 (2000), no. 1, 37–71.
+
+[17] R. Peled, Simple universal bounds for Chebyshev-type quadratures, J. Approx. Theory 162
+     (2010), no. 12, 2317–2348.
+
+
+                                                18
+[18] P. Rabau and B. Bajnok, Bounds for the number of nodes in Chebyshev type quadrature
+     formulas, J. Approx. Theory 67 (1991), no. 2, 199–214.
+
+[19] J. Arias de Reyna, A generalized mean-value theorem, Monatsh. Math. 106 (1988), no. 2, 95–97.
+
+[20] G. Wagner, On averaging sets, Monatsh. Math. 111 (1991), no. 1, 69–78.
+
+[21] A. Zygmund, Trigonometric series. Vol. I, II, third edition, Cambridge Mathematical Library,
+     Cambridge Univ. Press, Cambridge, 2002.
+
+
+A     Proof of Proposition 2.1
+In presenting the proof of Proposition 2.1, essentially following the proof in [10], we use the following
+three lemmas.
+
+Lemma A.1. Let W be a 2π-periodic weight function and let n and N be positive integers, such
+that                                 Z π                Rπ ′
+                                                            |p (θ)| dθ
+                               2N >      W (θ)dθ sup R π −π            .                       (22)
+                                      −π          p∈Tn+ −π p(θ)W (θ)dθ
+                                                                                Rπ
+Then there is a finite set S ⊂ [−π, π) such that every non-zero q ∈ Tn for which −π q(θ)W (θ)dθ = 0
+satisfies                                            Z    π
+                                     2N max q(x) >             q ′ (θ) dθ.                          (23)
+                                         x∈S              −π
+
+Proof. We consider Tn as a subset of the space of continuous 2π-periodic functions endowed with the
+                                     Rπ
+supremum norm. Let V := {r ∈ Tn | −π r(θ)W (θ)dθ = 0} and observe that
+
+                               a non-zero r ∈ V satisfies max r(x) > 0                              (24)
+                                                                 x
+
+as non-zero trigonometric polynomials cannot be zero on a set of positive measure. Let K := {r ∈
+V | maxx r(x) = 1}. We first prove that K is a compact set, for which it suffices to show that
+
+                                          sup max |r(x)| < ∞.                                       (25)
+                                          r∈K   x
+
+Let B := {q ∈ V | maxx |q(x)| = 1}. The set B is compact as a closed and bounded set in the
+finite-dimensional space Tn . Thus the continuous functional f 7→ maxx f (x) attains a minimum on
+B, which must be positive due to (24). This implies (25).
+    Take η > 1 such that 2N is still bigger than η times the right-hand side of (22). For every
+−π ≤ x < π let Ux := {r ∈ Tn | r(x) > 1/η}. Noting that {Ux }−π≤x<π is an open cover of
+the compact set K we conclude that there is a finite set S ⊂ [−π, π) such that K ⊆ ∪x∈S Ux .
+Consequently, using (24),
+                                  max q(x) ≤ η max q(x), q ∈ V.                               (26)
+                                     x              x∈S
+
+
+                                                    19
+   Finally, let q ∈ V be a non-zero trigonometric polynomial in V . Define p0 := η(maxx∈S q(x)) − q
+and note that p0 ∈ Tn+ by (26) and maxx∈S q(x) > 0 by (24) and (26). Thus,
+            Z π                Rπ ′               Z π           Rπ ′               Rπ ′
+                                 −π |p (θ)| dθ                    −π |p0 (θ)| dθ      |q (θ)| dθ
+   2N > η        W (θ)dθ sup R π               ≥η     W (θ)dθ R π                = −π            .
+             −π         p∈Tn+ −π p(θ)W (θ)dθ       −π          −π p0 (θ)W (θ)dθ
+                                                                                   maxx∈s q(x)
+
+Lemma A.2. Let v1 , v2 , . . . , vR be points in Rn , no n + 1 of which are on the same affine hyperplane,
+and let Q ⊂ Rn be their convex hull. Let −π ≤ x1 < x2 < . . . < xR < π and let N be a positive integer.
+Then there are continuous functions f1 , f2 , . . . , fN from Q to [−π, π) such that if v belongs to a facet
+of Q whose vertices are vi1 , vi2 , . . . , vin , 1 ≤ i1 < i2 < . . . < in ≤ R, then {f1 (v), f2 (v), . . . , fN (v)} ⊂
+[xi1 , xin ] and in each of the intervals (xi1 , xi2 ), . . . , (xin−1 , xin ) there is at most one member of the
+set {f1 (v), f2 (v), . . . , fN (v)}.
+
+Proof. Take some triangulation of Q. Let v ∈ Q. If v is in the simplex of the chosen triangulation
+whose vertices are vi0 , vi1 , . . . , vin then v can be uniquely presented as a convex combination v =
+Pn
+  j=0 αj vij . For every −π ≤ x < π let
+
+                                                      π+x    X
+                                          ρv (x) :=       +N   αj
+                                                       2π
+                                                                  0≤j≤n
+                                                                  xij ≤x
+
+
+and observe that this definition is independent of the choice of the simplex of the triangulation
+which contains v (if more than one exists). Define fi (v) := min{−π ≤ x < π | ρv (x) ≥ i}. It
+is easy to verify that each fi is continuous. Let v be a point on a facet of Q whose vertices are
+vi1 , vi2 , . . . , vin , 1 ≤ i1 < i2 < . . . < in ≤ R. Then ρv (x) < 1 for every −π ≤ x < xi1 and ρv (x) > N
+for every xin < x < π, whence {f1 (v), f2 (v), . . . , fN (v)} ⊂ [xi1 , xin ]. Also ρv (y) − ρv (x) < 1 for every
+xik−1 < x < y < xik , 1 < k ≤ n, whence in each of the intervals (xi1 , xi2 ), . . . , (xin−1 , xin ) there is at
+most one member of the set {f1 (v), f2 (v), . . . , fN (v)}.
+
+Lemma A.3. [10, Proposition 7] Let Q ⊂ Rn be a convex polytope with 0 in its interior. Let
+F : Q → Rn be a continuous function such that if {v ∈ Rn | u · v = 1} is an affine hyperplane
+containing a facet T of Q then u · F (v) > 0 for every v ∈ T . Then there is a v ∈ Q such that
+F (v) = 0.
+
+Proof. By way of contradiction, assume that F (v) 6= 0 for every v ∈ Q. Let B n := {x ∈ Rn | |x| ≤ 1}
+be the closed unit ball of Rn . For every u ∈ Rn let kukQ := min{λ > 0 | λ1 u ∈ Q} and define
+h : B n → B n by                                       
+                                         
+                                         
+                                                   |x|
+                                             F kxk x
+                                         
+                                         −  Q             x 6= 0
+                                                   |x|
+                                 h(x) :=     F kxk     x            .
+                                         
+                                         
+                                                     Q
+                                         
+                                         − F (0)
+                                            |F (0)|          x=0
+
+
+
+                                                          20
+The function h is continuous, so by Brouwer’s fixed point theorem, there exists an x0 ∈ B n such that
+h(x0 ) = x0 . Let y0 := kx|x00k|Q x0 . Since |h(x)| = 1 for every x ∈ B n we get that |x0 | = |h(x0 )| = 1, and
+therefore y0 = kx|x00k|Q x0 = kxx00kQ is on the boundary of Q. Therefore, y0 belongs to at least one facet
+T of Q. Suppose T is contained in the affine hyperplane {x ∈ Rn | u · x = 1}. Then u · F (y0 ) > 0
+and we get a contradiction since
+
+                        x0       1                1
+  1 = u · y0 = u ·           =        u · x0 =         u · h(x0 ) =
+                      kx0 kQ   kx0 kQ           kx0 kQ
+                                                                    
+                                              1             F (y0 )             1
+                                        =         u· −                 =−                  u · F (y0 ) < 0.
+                                           kx0 kQ          |F (y0 )|      kx0 kQ |F (y0 )|
+Proof of Proposition 2.1. Suppose N is a positive integer such that
+                                   Z π                 Rπ ′
+                                                           |p (θ)| dθ
+                             2N >      W (θ)dθ sup R π −π
+                                    −π          p∈Tn+ −π p(θ)W (θ)dθ
+
+and let S be the finite set provided by Lemma A.1. Let ϕ0 ≡ 1, ϕ1 , . . . , ϕ2n be a basis of Tn . For
+                                                      R                            Rπ                       2n
+                                                          π
+every −π ≤ x < π let E(x) be the vector                   −π W    (θ)dθ      ϕi (x) −  −π  ϕ i (θ)W      (θ)dθ       in R2n .
+                                                                                                                 i=1
+It is straightforward to check that no 2n + 1 elements of {E(x)}−π≤x<π , are on the same affine
+hyperplane. Define Q to be the convex hull of {E (x)}x∈S . We claim that 0 is in the interior of Q.
+Indeed, otherwise there exists a non-zero u ∈ R2n for which u · E(x) ≤ 0 for all x ∈ S. However, the
+                                                                                                   Rπ
+non-zero trigonometric polynomial in Tn defined by pu (x) := u · E(x) satisfies −π pu (θ)W (θ)dθ = 0
+and thus, by (23), we have that maxx∈S pu (x) > 0, a contradiction.
+    Suppose S = {x1 , x2 , . . . , xR } where −π ≤ x1 < x2 < . . . < xR < π. Let f1 , f2 , . . . , fN be the
+continuous functions from Q to [−π, π) guaranteed by Lemma A.2. Let v be a point on a facet
+of Q whose vertices are E (xi1 ) , E (xi2 ) , . . . , E (xi2n ), where 1 ≤ i1 < i2 < . . . < i2n ≤ R. Let
+{w ∈ Rn | u · w = 1} be the affine hyperplane containing the facet (using that 0 is in the interior
+of Q). Let q be the non-zero trigonometric polynomial in Tn defined by q(x) := u · E(x), so that
+Rπ
+ −π q(θ)W
+       Rπ ′
+            (θ)dθ = 0. Note that q(x) ≤ 1 for every x ∈ S as 0 is in the interior of Q, whence
+2N > −π |q θ)| dθ by Lemma A.1. Let J := {1 ≤ j ≤ N | fj (v) ∈                    / {xi1 , xi2 , . . . , xi2n }}. Note that
+Lemma A.2 implies that for every j ∈ J there is a 2 ≤ kj ≤ 2n such that fj (v) ∈ (xikj −1 , xikj ) and
+these kj are distinct. Then, since q (xik ) = 1 for every 1 ≤ k ≤ 2n,
+                                                                                
+          Z                            Z                    Z xi
+        1 π ′              1 X  fj (v) ′                          kj
+  N>            q (θ) dθ ≥                    q (t)dt +               q ′ (t)dt  =
+        2 −π               2            xi                    fj (v)
+                                   j∈J       kj −1
+
+
+                                  X q (fj (v)) − q(xikj −1 ) + q(xikj ) − q (fj (v))
+                              =                                                               =
+                                                                   2
+                                  j∈J
+
+                                                  X                          N
+                                                                             X                              N
+                                                                                                            X
+                                              =         |1 − q (fj (v))| =         |1 − q (fj (v))| ≥ N −         q (fj (v)) ,
+                                                  j∈J                        j=1                            j=1
+
+
+
+                                                              21
+           P                    PN
+whence u · N  j=1 E (fj (v)) =     j=1 q (fj (v)) > 0. Thus, if we define a function F : Q → R
+                                                                                               2n by
+        PN
+F (v) := j=1 E (fj (v)) then F satisfies the assumptions of Lemma A.3. Consequently, there is some
+                  P
+v ∈ Q such that N                                              N
+                     j=1 E (fj (v)) = F (v) = 0, i.e., {fj (v)}j=1 are the nodes of a Chebyshev-type
+trigonometric quadrature of degree n for W .
+
+
+
+
+                                                22
+

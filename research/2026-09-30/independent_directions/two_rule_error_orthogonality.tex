@@ -1,0 +1,89 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}\newtheorem{corollary}{Corollary}
+\title{Orthogonal error spaces for two ordered product quadratures}
+\author{Auxiliary exact identity; independently reviewed}\date{30 September 2026}
+\begin{document}\maketitle
+The sharp simultaneous two-die question remains open in this work.
+This note reformulates its real hybrid version as orthogonality of
+cumulative quadrature errors. It is not a new upper or lower size bound.
+
+Let $\mu_1,\mu_2$ be probability measures on $[0,1]$ with no common
+atoms, and put $\delta_i=\mu_i-dt$. For a polynomial $f$ define
+\[
+ E_{i,f}(t)=\int_{[0,t]}f(x)\,d\delta_i(x).
+\]
+Endpoint conventions do not affect the Lebesgue integrals below.
+
+\begin{theorem}\label{main}
+Suppose each $\mu_i$ integrates polynomials through degree $M+1$
+exactly as Lebesgue measure, and the product rule integrates every
+polynomial of total degree at most $M$ exactly on each open chamber
+$x<y$ and $y<x$. Then
+\begin{equation}\label{orthogonal}
+ \int_0^1 E_{1,f}(t)E_{2,g}(t)p(t)dt=0
+ \quad\text{if }\deg f+\deg g+\deg p\le M-1.
+\end{equation}
+In particular the two spaces
+\[
+ \mathcal E_i^{(r)}=\{E_{i,f}:\deg f\le r\}\subset L^2[0,1]
+\]
+are orthogonal whenever $2r\le M-1$. If $\mu_i$ is finitely supported,
+each of these spaces has dimension exactly $r+1$.
+\end{theorem}
+\begin{proof}
+For $\deg f+\deg g\le M$, expand the ordered product error as
+\[
+ C(f,g)=\int_{x<y}f(x)g(y)\,d\delta_1(x)d\delta_2(y).
+\]
+Its $\mu_1\otimes\mu_2$ and Lebesgue product terms are equal by the
+chamber assumption. Each mixed term also equals the Lebesgue integral:
+for example integrating $g(y)$ from $x$ to $1$ leaves a polynomial
+in $x$ of degree at most $\deg f+\deg g+1\le M+1$, to which the
+first marginal rule applies. Hence $C(f,g)=0$.
+The same argument applies to the reverse chamber and to every pair
+of polynomials within the degree budget. Since the measures have no
+common atoms, their cumulative error functions have no simultaneous
+jumps. It follows that
+\[
+ \int E_{1,f}\,dE_{2,g}=0,\qquad
+ \int E_{2,g}\,dE_{1,f}=0
+ \quad(\deg f+\deg g\le M).
+\]
+
+Let $h$ be an antiderivative of $p$. Stieltjes integration by parts
+for $h E_{1,f}E_{2,g}$ has no common-jump term. Its boundary term is
+zero: cumulative errors at $1$ vanish by marginal exactness, and at
+$0$ any endpoint masses cannot occur simultaneously. Therefore
+\[
+ \int p E_{1,f}E_{2,g}
+ =-\int E_{1,f}\,dE_{2,hg}
+  -\int E_{2,g}\,dE_{1,hf}=0,
+\]
+because $\deg f+\deg g+\deg h\le M$. This proves~\eqref{orthogonal}.
+For a finitely supported $\mu_i$, on the complement of its finitely
+many atoms the derivative of $E_{i,f}$ is $-f$. Thus $E_{i,f}=0$
+almost everywhere implies $f=0$, proving the dimension statement.
+\end{proof}
+
+\paragraph{Equivalent starting condition.}
+Under marginal exactness, the chamber condition is equivalent to
+$\int E_{1,f}\,dE_{2,g}=0$ for all
+$\deg f+\deg g\le M$; expanding $\delta_1\otimes\delta_2$ proves
+both implications. The Lebesgue orthogonality in~\eqref{orthogonal}
+is a consequence, not asserted to be sufficient by itself.
+
+\paragraph{Relevance and limitation.}
+Two small real discrete variables together with $u$ independent uniforms
+have scalar marginal exactness through degree $u$ and chamber exactness
+through degree $u$ (the conditional-order kernels form a Bernstein basis
+on each triangle). Thus the theorem applies with $M=u-1$, giving
+\eqref{orthogonal} through total degree $u-2$. The extra marginal degree
+in the theorem should not be inferred from chamber degree alone.
+Consequently matching their scalar quadrature moments separately is
+insufficient. The two cumulative-error spaces must also be orthogonal.
+The reviewed polynomial construction achieves this by positive density
+completion. No argument here reduces its counts to $O(M^2)$, nor rules
+out that sharper possibility.
+\end{document}

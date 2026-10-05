@@ -1,0 +1,234 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\E}{\mathbb E}
+\newcommand{\PP}{\mathcal P}
+\title{Polynomially conditioned rational ranks for a real quadrature}
+\author{Research proof; three independent full mathematical reviews completed}
+\date{30 September 2026}
+\begin{document}\maketitle
+All polynomial norms below use the uniform probability measure on $[0,1]$.
+Write $\phi_j(t)=\sqrt{2j+1}P_j(2t-1)$ for its orthonormal Legendre
+polynomials. Absolute constants may change between occurrences.
+
+\begin{theorem}\label{main}
+For every $m\ge1$ there exist $K=O((m+1)^4)$ real numbers
+$0<b_1<\cdots<b_K<1$ and strictly increasing rational numbers
+$0<r_1<\cdots<r_K<1$ with common denominator
+$L=O((m+1)^{160})$ such that
+\begin{align}
+ \frac1K\sum_{q=1}^K b_q^j&=\frac1{j+1}
+                                      &&(0\le j\le m+1),\label{mom}\\
+ \frac1K\sum_{q=1}^K r_q b_q^j&=\frac1{j+2}
+                                      &&(0\le j\le m).\label{rank}
+\end{align}
+Moreover, $b_{q+1}-b_q\ge c/K$ and
+$b_1,1-b_K\ge c/K$, and $\max_q|r_q-b_q|\le C(m+1)^{-20}$.
+The leading constant in this last bound may be made arbitrarily small
+by choosing the baseline perturbation constant smaller and then increasing
+the absolute constant in the bound for $L$. The $b_q$ may be taken arbitrarily close to
+nodes of a real equal-weight quadrature of degree $4m+2$, provided
+$L$ is increased; the theorem only asserts the stated polynomial bound.
+\end{theorem}
+
+These are the step-function compatibility equations needed when a
+second distribution has cumulative probabilities $r_q$ at the first
+one's atoms $b_q$. This theorem alone does not establish the full
+ordering law for two discrete distributions and other continuous dice.
+
+\begin{lemma}[Separated equal-weight starting rule]\label{grid}
+For every $D\ge1$ and every integer $K\ge C D^4$, a real uniform
+quadrature exact through degree $D$ exists at nodes
+\[
+ \left|b_q-\frac{q-1/2}{K}\right|\le\frac1{8K}.
+\]
+\end{lemma}
+\begin{proof}
+Put $t_q=(q-1/2)/K$ and
+$f_j(t)=\int_0^t\phi_{j-1}(z)\,dz$, $1\le j\le D$.
+The constraints
+\[
+ F_j(b)=K^{-1}\sum_q f_j(b_q)-\int_0^1 f_j(t)\,dt=0
+\]
+are equivalent to exactness through degree $D$.
+We use the elementary Legendre bounds
+\[
+ \|\phi_j\|_\infty\le\sqrt{2j+1},\qquad
+ \|\phi_j'\|_\infty\le C D^{5/2}\quad(j<D),
+ \qquad \sum_{j<D}\phi_j(t)^2\le D^2.
+\]
+They follow from $|P_j|\le1$ and Markov's derivative inequality.
+The midpoint error yields $\|F(t)\|_2\le C D^3/K^2$.
+If $A=DF(t)$, then
+\[
+ A_{jq}=\phi_{j-1}(t_q)/K,\qquad
+ KAA^T=K^{-1}\sum_q\Phi(t_q)\Phi(t_q)^T=:G.
+\]
+The entrywise rectangle estimate and the derivative bound give
+$\|G-I\|_{\rm op}\le C D^4/K$, so $G\ge I/2$ once $C$ is large.
+The right inverse $B=A^T(AA^T)^{-1}$ consequently satisfies
+$\|B\|_{2\to\infty}\le2D$.
+
+On $t+\operatorname{range}(B)$ consider $T(b)=b-BF(b)$.
+For $\|b-t\|_\infty\le R$, the derivative bounds imply
+\[
+ \|(DF(b)-A)v\|_2\le C D^3 R\|v\|_\infty.
+\]
+Since $BA$ is the identity on $\operatorname{range}(B)$, the map
+$T$ is a contraction there with constant at most $C D^4R$.
+Take $R=C' D^4/K^2$, with $C'$ sufficiently large to dominate twice
+$\|BF(t)\|_\infty$. Increasing the absolute lower-bound constant in
+$K\ge CD^4$ ensures $R\le1/(8K)$ and $CD^4R\le1/2$.
+The closed radius-$R$ ball in this affine subspace is preserved by
+$T$ and complete. Its fixed point gives the desired rule.
+\end{proof}
+
+\begin{lemma}[Polynomial conditioning of Legendre multiplication]\label{condition}
+Let $d\ge2$, $h(t)=P_d(2t-1)$, $p\in\PP_{d-1}$, and
+$q\in\PP_{d-1}$. Then
+\[
+ \|h q\|_2\ge c d^{-4}\|q\|_2.
+\]
+If additionally $\deg p\le m$, $\deg q\le m-1$, and
+$d\in\{m+1,m+2\}$, then for $0<\eta\le1$,
+\[
+ \|p+\eta hq\|_2\ge c\eta(m+1)^{-5}
+                    (\|p\|_2^2+\|q\|_2^2)^{1/2}.\tag{3}
+\]
+\end{lemma}
+\begin{proof}
+The $d$ zeros $z_i$ of $h$ are simple and interior. The positive
+Gauss--Legendre weights on $[0,1]$ satisfy
+\[
+ \omega_i=\frac1{z_i(1-z_i)h'(z_i)^2},\qquad
+ \sum_i\omega_i=1.
+\]
+In particular $|h'(z_i)|\ge2$. These standard Gaussian identities
+follow by integrating the squares of the cardinal Lagrange polynomials;
+see the primary reference \url{https://dlmf.nist.gov/3.5}.
+Markov's inequality twice gives $\|h''\|_\infty\le C d^4$.
+Therefore, on a radius $c_0d^{-4}$ neighborhood of each zero,
+$|h'|\ge1$. The neighborhoods can be chosen disjoint: between two
+zeros lies a zero of $h'$, requiring distance at least $c d^{-4}$
+from either endpoint under the same derivative bound.
+
+There is exactly one zero of $h'$ between each consecutive pair of
+zeros of $h$, and no others. Thus $|h|$ first increases and then
+decreases on each intervening interval; near the endpoints it is
+monotone, and $|h(0)|=|h(1)|=1$. It follows that for
+$a=c_1d^{-4}$, with sufficiently small absolute $c_1>0$,
+\[
+ |\{t:|h(t)|<a\}|\le2da.
+\]
+The elementary polynomial evaluation bound
+$\|q\|_\infty\le d\|q\|_2$, obtained by expanding in the
+$\phi_j$, shows that at most $2d^3a\le1/2$ of the squared norm of
+$q$ lies in that set. Hence $\|hq\|_2\ge a\|q\|_2/\sqrt2$.
+
+For (3), put $f=p+\eta hq$. Gaussian quadrature at the zeros of $h$
+is exact for $p^2$, since $2\deg p\le2d-2$. At those zeros $p=f$,
+so
+\[
+ \|p\|_2^2=\sum_i\omega_i f(z_i)^2
+       \le\|f\|_\infty^2\le C(m+1)^2\|f\|_2^2,
+\]
+as $\deg f\le2m+1$. Thus
+$\eta\|hq\|_2\le C(m+1)\|f\|_2$.
+The first assertion gives
+$\eta\|q\|_2\le C(m+1)^5\|f\|_2$, proving (3).
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{main}]
+Take $D=4m+2$ and a starting rule $b^0$ from Lemma~\ref{grid},
+with an integer $K$ between $C D^4$ and $2C D^4$.
+Let $d$ be the smallest odd integer at least $m+1$, so
+$d\in\{m+1,m+2\}$, and put
+\[
+ h(t)=P_d(2t-1),\qquad
+ \eta=c_*(m+1)^{-20},\qquad r^0_q=b^0_q-\eta h(b^0_q).
+\]
+Here $c_*>0$ is a sufficiently small fixed absolute constant.
+The function $t-\eta h(t)$ has derivative at least $3/4$, because
+$\|h'\|_\infty\le d(d+1)$. As $d$ is odd, its endpoint values are
+$\eta$ and $1-\eta$. Hence $r^0$ is strictly increasing inside
+$(0,1)$ and its consecutive gaps are at least $c/K$.
+The high-degree starting quadrature and Legendre orthogonality give
+\[
+ K^{-1}\sum b_q^{0j}=1/(j+1),\qquad
+ K^{-1}\sum r_q^0b_q^{0j}=1/(j+2)\quad(j\le m).
+\]
+In particular $\sum_q r_q^0=K/2$.
+
+Choose an even integer $L$ comparable to $C_2(m+1)^{160}$.
+There exist integers $a_q$ with
+\[
+ |a_q/L-r_q^0|\le1/L,\qquad\sum_q a_q=KL/2:
+\]
+round all $Lr_q^0$ down, then add one to as many of them as needed.
+The discrepancy in their total is an integer in $[0,K)$.
+Set $r_q=a_q/L$. For large enough $C_2$, these ranks remain strictly
+increasing and interior. Their mean is exactly $1/2$.
+
+It remains to correct $b$ while holding $r$ fixed.
+Set $f_j(t)=\int_0^t\phi_{j-1}(z)\,dz$ and
+$H_j(t)=\int_0^t z\phi_{j-1}(z)\,dz$.
+Use the $m+1$ ordinary constraints
+\[
+ K^{-1}\sum_q f_j(b_q)=\int_0^1f_j(t)\,dt
+                                  \quad(1\le j\le m+1)
+\]
+and the $m$ constraints
+\[
+ K^{-1}\sum_q\{r_qf_j(b_q)-H_j(b_q)\}
+       =\int_0^1\{t f_j(t)-H_j(t)\}\,dt
+                                  \quad(1\le j\le m).
+\]
+Because $\deg H_j\le m+1$ and the rank means already agree, these
+are equivalent to (\ref{mom})--(\ref{rank}). Let $F(b,r)$ be their
+vector of residuals, and let $A=D_bF(b^0,r^0)$.
+Its columns, multiplied by $K$, are evaluations of the $2m+1$
+polynomials
+\[
+ \phi_0,\ldots,\phi_m,\quad
+ -\eta h\phi_0,\ldots,-\eta h\phi_{m-1}.
+\]
+Their pairwise products have degree at most $4m+2$, so
+$G=KAA^T$ is their exact continuous Gram matrix.
+By (3) and $\eta\asymp(m+1)^{-20}$,
+\[
+ G\ge c(m+1)^{-50}I.
+\]
+The evaluation vector has Euclidean norm at most $C(m+1)$.
+Consequently the right inverse $B=A^T(AA^T)^{-1}$ obeys
+\[
+ \|B\|_{2\to\infty}\le C(m+1)^{51}.
+\]
+Since $\|f_j\|_\infty\le1$, rounding only the ranks gives
+$\|F(b^0,r)\|_2\le\sqrt m/L$.
+
+Use the fixed-inverse map $b\mapsto b-BF(b,r)$ on
+$b^0+\operatorname{range}(B)$. For
+$\|b-b^0\|_\infty\le R$ and $\|r-r^0\|_\infty\le1/L$,
+its deviation from the baseline derivative satisfies
+\[
+ \|(D_bF(b,r)-A)v\|_2
+       \le C\{(m+1)^3R+(m+1)/L\}\|v\|_\infty.
+\]
+Indeed the ordinary row derivatives are $\phi_j'$, and the derivative
+of $(r_q-b_q)\phi_j(b_q)$ in $b_q$ is
+$-\phi_j(b_q)+(r_q-b_q)\phi_j'(b_q)$; the displayed bound follows
+from the same elementary Legendre estimates used earlier.
+Take $R=C_3(m+1)^{52}/L$ large enough to dominate twice the initial
+Newton displacement. With $L\asymp C_2(m+1)^{160}$ and $C_2$
+sufficiently large, this is a contraction with constant at most
+$1/2$, preserves the closed radius-$R$ ball, and has
+$R\le1/(16K)$. Its fixed point proves all the desired moments.
+The latter displacement bound preserves both separation and the
+endpoint gaps of the starting rule. Finally
+$|r_q-b_q|\le\eta+L^{-1}+R\le2\eta$ after increasing $C_2$.
+The fixed constant $c_*$ may be chosen arbitrarily small; the other
+absolute constants then depend on that choice. All constants are absolute.
+\end{proof}
+\end{document}

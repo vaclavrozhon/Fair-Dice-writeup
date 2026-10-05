@@ -1,0 +1,1464 @@
+                                          The Annals of Applied Probability
+                                          2013, Vol. 23, No. 4, 1692–1720
+                                          DOI: 10.1214/12-AAP884
+                                           c Institute of Mathematical Statistics, 2013
+
+
+                                                  ANALYSIS OF CASINO SHELF SHUFFLING MACHINES
+arXiv:1107.2961v2 [math.CO] 23 Jul 2013
+
+
+
+
+                                                 By Persi Diaconis1 , Jason Fulman2 and Susan Holmes3
+                                                      Stanford University, University of Southern California and
+                                                                         Stanford University
+                                                           Many casinos routinely use mechanical card shuffling machines.
+                                                       We were asked to evaluate a new product, a shelf shuffler. This leads
+                                                       to new probability, new combinatorics and to some practical advice
+                                                       which was adopted by the manufacturer. The interplay between the-
+                                                       ory, computing, and real-world application is developed.
+
+
+                                             1. Introduction. We were contacted by a manufacturer of casino equip-
+                                          ment to evaluate a new design for a casino card-shuffling machine. The
+                                          machine, already built, was a sophisticated “shelf shuffler” consisting of an
+                                          opaque box containing ten shelves. A deck of cards is dropped into the top
+                                          of the box. An internal elevator moves the deck up and down within the box.
+                                          Cards are sequentially dealt from the bottom of the deck onto the shelves;
+                                          shelves are chosen uniformly at random at the command of a random num-
+                                          ber generator. Each card is randomly placed above or below previous cards
+                                          on the shelf with probability 1/2. At the end, each shelf contains about 1/10
+                                          of the deck. The ten piles are now assembled into one pile, in random order.
+                                          The manufacturer wanted to know if one pass through the machine would
+                                          yield a well-shuffled deck.
+                                             Testing for randomness is a basic task of statistics. A standard approach
+                                          is to design some ad hoc tests such as: Where do the original top and bottom
+                                          cards wind up? What is the distribution of cards that started out together?
+                                          What is the distribution, after one shuffle, of the relative order of groups
+                                          of consecutive cards? Such tests had been carried out by the engineers who
+                                          designed the machine, and seemed satisfactory.
+
+                                             Received August 2011; revised June 2012.
+                                             1
+                                               Supported in part by NSF Grant DMS-08-04324.
+                                             2
+                                               Supported in part by NSF Grant DMS-08-02082 and National Security Agency Grant
+                                          H98230-08-1-0133.
+                                             3
+                                               Supported in part by National Institutes of Health Grant R01 GM086884.
+                                             AMS 2000 subject classifications. Primary 60C05; secondary 05A15.
+                                             Key words and phrases. Riffle shuffling, testing for randomness, valleys in permuta-
+                                          tions.
+
+                                           This is an electronic reprint of the original article published by the
+                                           Institute of Mathematical Statistics in The Annals of Applied Probability,
+                                           2013, Vol. 23, No. 4, 1692–1720. This reprint differs from the original in
+                                           pagination and typographic detail.
+                                                                                     1
+2                  P. DIACONIS, J. FULMAN AND S. HOLMES
+
+   We find closed-form expressions for the probability of being at a given
+permutation after the shuffle. This gives exact expressions for various global
+distances to uniformity, for example, total variation. These suggest that the
+machine has flaws. The engineers (and their bosses) needed further convinc-
+ing; using our theory, we were able to show that a knowledgeable player
+could guess about 9 1/2 cards correctly in a single run through a 52-card
+deck. For a well-shuffled deck, the optimal strategy gets about 4 1/2 cards
+correct. This data did convince the company. The theory also suggested a
+useful remedy. Journalist accounts of our shuffling adventures can be found
+in Klarreich (2002, 2003), Mackenzie (2002).
+   Section 2 gives background on casino shufflers, needed probability and
+the literature of shuffling. Section 3 gives an analysis of a single shuffle; we
+give a closed formula for the chance that a deck of n cards passed through a
+machine with m shelves is in final order w. This is used to compute several
+classical distances to randomness. In particular it is shown that, for n cards,
+                                          2
+the l∞ distance is asymptotic to e1/12c − 1 if the number of shelves m =
+cn 3/2 and n is large. The combinatorics of shelf shufflers turns out to have
+connections to the “peak algebra” of algebraic combinatorics. This allows
+nice formulas for the distribution of several classical test statistics: the cycle
+structure (e.g., the number of fixed points), the descent structure and the
+length of the longest increasing subsequence.
+   Section 4 develops tools for analyzing repeated shelf shuffling. Section 5
+develops our “how many can be correctly guessed” tests. This section also
+contains our final conclusions.
+
+  2. Background. This section gives background and a literature review.
+Section 2.1 treats shuffling machines; Section 2.2 gives probability back-
+ground; Section 2.3 gives an overview of related literature and results on the
+mathematics of shuffling cards.
+
+   2.1. Card shuffling machines. Casinos worldwide routinely employ me-
+chanical card-shuffling machines for games such as blackjack and poker. For
+example, for a single deck game, two decks are used. While the dealer is
+using the first deck in the usual way, the shuffling machine mixes the second
+deck. When the first deck is used up (or perhaps half-used), the second deck
+is brought into play and the first deck is inserted into the machine. Two-,
+four-, and six-deck machines of various designs are also in active use.
+   The primary rationale seems to be that dealer shuffling takes time and
+use of a machine results in approximately 20% more hands per hour. The
+machines may also limit dealer cheating.
+   The machines in use are sophisticated, precision devices, rented to the
+casino (with service contracts) for approximately $500 per month per ma-
+chine. One company told us they had about 8000 such machines in active
+                             SHELF SHUFFLING                                 3
+
+use; this amounts to millions of dollars per year. The companies involved
+are substantial businesses, listed on the New York Stock Exchange.
+   One widely used machine simulates an ordinary riffle shuffle by pushing
+two halves of a single deck together using mechanical pressure to make the
+halves interlace. The randomness comes from slight physical differences in
+alignment and pressure. In contrast, the shelf shufflers we analyze here use
+computer-generated pseudo-random numbers as a source of their random-
+ness.
+   The pressure shufflers require multiple passes (perhaps seven to ten) to
+adequately mix 52 cards. Our manufacturer was keen to have a single pass
+through suffice.
+
+   2.2. Probability background. Let Sn denote the group of permutations
+of n objects. Let U (σ) = 1/n! denote the uniform distribution on Sn . If P
+is a probability on Sn , the total variation, separation, and l∞ distances to
+uniformity are
+                    1X
+     kP − U kTV =        |P (w) − U (w)| = max |P (A) − U (A)|
+                    2 w                    A⊆Sn
+
+                   1
+(2.1)            =     max |P (f ) − U (f )|,
+                   2 kf k∞ ≤1
+                                   
+                              P (w)                             P (w)
+         sep(P ) = max 1 −            ,     kP − U k∞ = max 1 −       .
+                     w        U (w)                      w      U (w)
+Note that kP − U kTV ≤ sep(P ) ≤ kP − U k∞ . The first two distances are less
+than 1; the k · k∞ norm can be as large as n! − 1.
+   If one of these distances is suitably small, then many test statistics eval-
+uate to approximately the same thing under P and U . This gives an alter-
+native to ad hoc tests. The methods developed below allow exact evaluation
+of these and many further distances (e.g., chi-square or entropy).
+   Repeated shuffling is modeled by convolution,
+                     X
+        P ∗ P (w) =      P (v)P (wv −1 ),   P ∗k (w) = P ∗ P ∗(k−1) (w).
+                     v
+   All of the shelf shufflers generate ergodic Markov chains (even if only one
+shelf is involved), and so P ∗k (w) → U (w) as k → ∞. One question of interest
+is the quantitative measurement of this convergence using one of the metrics
+above.
+
+  2.3. Previous work on shuffling.
+
+  Early work. The careful analysis of repeated shuffles of a deck of cards
+has challenged probabilists for over a century. The first efforts were made by
+Hadamard (1906) in his review of Gibbs book on statistical mechanics. Later,
+4                 P. DIACONIS, J. FULMAN AND S. HOLMES
+
+Poincaré (1912) studied the problem. These great mathematicians proved
+that in principle repeated shuffling would mix cards at an exponential rate
+but gave no examples or quantitative methods to get useful numbers in
+practical problems.
+   Borel and Chéron (1955) studied riffle shuffling and concluded heuristi-
+cally that about seven shuffles would be required to mix 52 cards. Emile
+Borel also reported joint work with Paul Levy, one of the great probabilists
+of the twentieth century; they posed some problems but were unable to make
+real progress.
+   Isolated but serious work on shuffling was reported in a 1955 Bell Lab-
+oratories report by Edgar Gilbert. He used information theory to attack
+the problems and gave some tools for riffle shuffling developed jointly with
+Claude Shannon.
+   They proposed what has come to be called the Gilbert–Shannon–Reeds
+model for riffle shuffling; this presaged much later work. Thorp (1973) pro-
+posed a less realistic model and showed how poor shuffling could be exploited
+in casino games. Thorp’s model is analyzed in Morris (2009). Epstein (1977)
+reports practical studies of how casino dealers shuffle with data gathered
+with a very precise microphone! The upshot of this work was a well-posed
+mathematics problem and some heuristics; further early history appears in
+Chapter 4 of Diaconis (1988).
+
+   The modern era. The modern era in quantitative analysis of shuffling
+begins with papers of Diaconis and Shahshahani (1981) and Aldous (1983).
+They introduced rigorous methods, Fourier analysis on groups and coupling.
+These gave sharp upper and lower bounds, suitably close, for real problems.
+In particular, Aldous sketched out a proof that 23 log2 n riffle shuffles mixed
+n cards. A more careful argument for riffle shuffling was presented by Aldous
+and Diaconis (1986). This introduced “strong stationary times,” a power-
+ful method of proof which has seen wide application. It is applied here in
+Section 4.
+   A definitive analysis of riffle shuffling was finally carried out in Bayer and
+Diaconis (1992) and Diaconis, McGrath and Pitman (1995). They were able
+to derive simple closed-form expressions for all quantities involved and do
+exact computations for n = 52 (or 32 or 104 or . . .). This results in the “seven
+shuffles theorem” explained below. A clear elementary account of these ideas
+is in Mann (1994, 1995) reprinted in Grinstead and Snell (1997). See Ethier
+(2010) for an informative textbook account.
+   The successful analysis of shuffling led to a host of developments, the
+techniques refined and extended. For example, it is natural to want not only
+the order of the cards, but also the “up-down pattern” of one-way backs to
+be randomized. Highlights include work of Bidigare, Hanlon and Rockmore
+(1999) and Brown and Diaconis (1998) who gave a geometric interpretation
+                              SHELF SHUFFLING                                 5
+
+of shuffling which had many extensions to which the same analysis applied.
+Lalley (1996, 1999) studied less random methods of riffle shuffling. Fulman
+(2000a, 2000b, 2001) showed that interspersing cuts does not materially
+effect things and gave high level explanations for miraculous accidents con-
+necting shuffling and Lie theory. The work is active and ongoing. Recent
+surveys are given by Diaconis (1996, 2003), Fulman (1998), Stark, Ganesh
+and O’Connell (2002).
+   In recent work, Diaconis, McGrath and Pitman (1995), Conger and Vis-
+wanath (2006) and Assaf, Diaconis and Soundararajan (2011) have studied
+the number of shuffles required to have selected features randomized (e.g.,
+the original top card, or the values but not the suits). Here, fewer shuffles
+suffice. Conger and Howald (2010) shows that the way the cards are dealt
+out after shuffling affects things. The mathematics of shuffling is closely
+connected to modern algebraic combinatorics through quasi-symmetric func-
+tions [Stanley (2001)]. The descent theory underlying shuffling makes equiv-
+alent appearances in the basic task of carries when adding integers [Diaconis
+and Fulman (2009a, 2009b, 2012)].
+
+   3. Analysis of one pass through a shelf shuffler. This section gives a
+fairly complete analysis of a single pass through a shelf shuffler. Section 3.1
+gives several equivalent descriptions of the shuffle. In Section 3.2, a closed-
+form formula for the chance of any permutation w is given. This in turn
+depends only on the number of “valleys” in w. The number of permutations
+with j valleys is easily calculated, and so exact computations for any of
+the distances above are available. Section 3.3 uses the exact formulas to get
+asymptotic rates of convergence for l∞ and separation distances. Section 3.4
+gives the distribution of such permutations by cycle type. Section 3.5 gives
+the distribution of the “shape” of such a permutation under the Robinson–
+Schensted–Knuth map. Section 3.6 gives the distribution of the number of
+descents. We find it surprising that a real-world applied problem makes novel
+contact with elegant combinatorics. In Section 4, iterations of a shelf shuffler
+are shown to be equivalent to shelf shuffling with more shelves. Thus all of
+the formulas of this section apply.
+
+   3.1. Alternative descriptions. Consider two basic shelf shufflers: for the
+first, a deck of n cards is sequentially distributed on one of m shelves. (Here,
+n = 52, m = 10, are possible choices.) Each time, the cards are taken from
+the bottom of the deck, a shelf is chosen at random from one to m, and the
+bottom card is placed on top of any previous cards on the shelf. At the end,
+the packets on the shelves are unloaded into a final deck of n. This may be
+done in order or at random; it turns out not to matter. Bayer and Diaconis
+(1992) called this an inverse m-shuffle.
+   The second shuffling scheme, that is the main object of the present study,
+is based on m shelves. At each stage that a card is placed on a shelf, the
+6                     P. DIACONIS, J. FULMAN AND S. HOLMES
+
+choice of whether to put it on the top or the bottom of the existing pile
+on that shelf is made at random (1/2 each side). This will be called a shelf
+shuffle. There are several equivalent descriptions of shelf shuffles:
+
+   Description 1 (Shelf shuffles). A deck of cards is initially in order
+1, 2, 3, . . . , n. Label the back of each card with n random numbers chosen at
+random between one and 2m. Remove all cards labeled 1 and place them on
+top, keeping them in the same relative order. Then remove all cards labeled
+2 and place them under the cards labeled 1, reversing their relative order.
+This continues with the cards labeled 3, labeled 4, and so on, reversing the
+order in each even labeled packet. If at any stage there are no cards with a
+given label, this empty packet still counts in the alternating pattern.
+   For example, a twelve-card deck with 2m = 4,
+                  Label 2 1 1 4 3 3 1 2 4                  3   4  1
+                  Card 1 2 3 4 5 6 7 8 9 10 11 12
+is reordered as
+                  2   3   7   12     8   1    5   6   10    11      9   4.
+
+   Description 2 (Inverse shelf shuffles). Cut a deck of n cards into 2m
+piles according to a multinomial distribution; thus the number of cards cut
+off in pile i has the same distribution as the number of balls in the ith
+box if n balls are dropped randomly into 2m boxes. Reverse the order of
+the even-numbered packets. Finally, riffle shuffle the 2m packets together by
+the Gilbert–Shannon–Reeds (GSR) distribution Bayer and Diaconis (1992)
+dropping each card sequentially with probability proportional to packet size.
+This makes all possible interleavings equally likely.
+
+   Description 3 (Geometric description). Consider the function fm (x)
+                                                                        1    3
+from [0, 1] to [0, 1] which has “tents,” each of slope ±2m centered at 2m , 2m ,
+ 5          2m−1
+2m , . . . , 2m . Figure 1 illustrates an example with m = 2. Place n labeled
+
+
+
+
+                          Fig. 1.   Two shelves in shelf shuffle.
+                               SHELF SHUFFLING                                    7
+
+points uniformly at random into the unit interval. Label them, from left to
+right, x1 , x2 , . . . , xn . Applying fm gives yi = fm (xi ). This gives the permu-
+tation
+                                1    2     ···   n
+                                π1   π2    ···   πn
+with π1 the relative position from the bottom of y1 , . . . , πi the relative po-
+sition from the bottom of yi among the other yj . This permutation has the
+distribution of an inverse shelf shuffle. It is important to note that the natu-
+ral distances to uniformity (total variation, separation, l∞ ) are the same for
+inverse shuffles and forward shuffles. In Section 4, this description is used
+to show that repeated shelf shuffling results in a shelf shuffle with more
+shelves.
+
+   3.2. Formula for the chance of a permutation produced by a shelf shuffler.
+To describe the main result, we call i a valley of the permutation w ∈ Sn
+if 1 < i < n and w(i − 1) > w(i) < w(i + 1). Thus w = 5136724 has two val-
+leys. The number of valleys is classically used as a test of randomness for
+time series. See Warren and Seneta (1996) and their references. If v(n, k) de-
+notes the number of permutations on n symbols with k valleys, then Warren
+and Seneta (1996) v(1, 0) = 1, v(n, k) = (2k + 2)v(n − 1, k) + (n − 2k)v(n −
+1, k − 1). So v(n, k) is easy to compute for numbers of practical interest.
+Asymptotics are in Warren and Seneta (1996) which also shows the close
+connections between valleys and descents.
+
+   Theorem 3.1. The chance that a shelf shuffler with m shelves and n
+cards outputs a permutation w is
+                     m−1 
+             4v(w)+1 X n + m − a − 1
+                                                    
+                                        n − 1 − 2v(w)
+                                                        ,
+             2(2m)n a=0          n         a − v(w)
+
+where v(w) is the number of valleys of w. This can be seen to be the coeffi-
+cient of tm in
+                                              v(w)+1
+                          (1 + t)n+1
+                                     
+                      1                   4t
+                                                      .
+                   2(2m)n (1 − t)n+1 (1 + t)2
+
+   Example. Suppose that m = 1. Then the theorem yields the uniform
+distribution on the 2n−1 permutations with no valleys; a permutation with
+one or more valleys occurs with probability 0. Permutations with no val-
+leys are also sometimes called unimodal permutations. These arise in social
+choice theory through Coombs’s “unfolding” hypothesis Diaconis (1988),
+Chapter 6. They also appear in dynamical systems and magic tricks see
+Diaconis and Graham (2012), Chapter 5.
+8                  P. DIACONIS, J. FULMAN AND S. HOLMES
+
+                                        Table 1
+                       Distances for various numbers of shelves m
+
+m           10    15     20     25     30     35       50   100   150       200   250   300
+
+kPm − U kTV 1 0.943 0.720 0.544 0.391 0.299 0.159 0.041 0.018 0.010 0.007 0.005
+sep(Pm )    1   1     1     1     1 0.996 0.910 0.431 0.219 0.130 0.085 0.060
+kPm − U k∞ ∞ ∞        ∞ 45,118 3961 716       39   1.9 0.615 0.313 0.192 0.130
+
+
+
+   Remark. By considering the cases m ≥ n and n ≥ m we see that, in the
+formula of Theorem 3.1, the range of summation can be taken up to n − 1
+instead of m − 1. This will be useful later.
+
+   Theorem 3.1 makes it easy to compute the distance to stationarity for
+any of the metrics in Section 2.2. Indeed, the separation and l∞ distance is
+attained at either permutations with a maximum number of valleys (when
+n = 52, this maximum is 25) or for permutations with 0 valleys. For the total
+variation distance, with Pm (v) denoting the probability in Theorem 3.1,
+                                      ⌊(n−1)/2⌋
+                               1        X                            1
+                 kPm − U kTV =                    v(n, a) Pm (a) −      .
+                               2        a=0
+                                                                     n!
+
+   Table 1 gives these distances when n = 52 for various numbers of shelves m.
+Larger values of m are of interest because of the convolution results explained
+in Section 4. These numbers show that ten shelves are woefully insufficient.
+Indeed, 50 shelves are hardly sufficient.
+   To prove Theorem 3.1, we will relate it to the following 2m-shuffle on the
+hyperoctahedral group Bn : cut the deck multinomially into 2m piles. Then
+flip over the odd numbered stacks, and riffle the piles together, by dropping
+one card at a time from one of the stacks (at each stage with probability
+proportional to stack size). When m = 1 this shuffle was studied in Bayer
+and Diaconis (1992), and for larger m it was studied in Fulman (2001).
+   It will be helpful to have a description of the inverse of this 2m-shuffle. To
+each of the numbers {1, . . . , n} is assigned independently and uniformly at
+random one of −1, 1, −2, 2, . . . , −m, m. Then a signed permutation is formed
+by starting with numbers mapped to −1 (in decreasing order and with neg-
+ative signs), continuing with the numbers mapped to 1 (in increasing order
+and with positive signs), then continuing to the numbers mapped to −2
+(in decreasing order and with negative signs), and so on. For example the
+assignment
+                  {1, 3, 8} 7→ −1,          {5} 7→ 1,       {2, 7} 7→ 2,
+(∗)
+                         {6} 7→ −3,         {4} 7→ 3
+                               SHELF SHUFFLING                                  9
+
+leads to the signed permutation
+(∗∗)                   −8 −3 −1 5 2            7 −6 4 .
+
+   The proof of Theorem 3.1 depends on an interesting relation with shuffles
+for signed permutations (hyperoctahedral group). This is given next followed
+by the proof of Theorem 3.1.
+   Theorem 3.2 gives a formula for the probability for w after a hyperocta-
+hedral 2m-shuffle, when one forgets signs. Here p(w) is the number of peaks
+of w, where i is said to be a peak of w if 1 < i < n and w(i − 1) < w(i) >
+w(i + 1). Also Λ(w) denotes the peak set of w and D(w) denotes the de-
+scent set of w [i.e., the set of points i such that w(i) > w(i + 1)]. Finally, let
+[n] = {1, . . . , n}.
+
+  Theorem 3.2. The chance of a permutation w obtained by performing
+a 2m shuffle on the hyperoctahedral group and then forgetting signs is
+               −1    m−1 
+           4p(w )+1 X n + m − a − 1         n − 1 − 2p(w−1 )
+                                                           
+                                                               ,
+            2(2m)n               n             a − p(w−1 )
+                    a=0
+where p(w ) is the number of peaks of w−1 .
+         −1
+
+
+   Proof. Let P ′ (m) denote the set of nonzero integers of absolute value
+at most m, totally ordered so that
+                      −1 ≺ 1 ≺ −2 ≺ 2 ≺ · · · ≺ −m ≺ m.
+Then given a permutation w = (w1 , . . . , wn ), page 768 of Stembridge (1997)
+defines a quantity ∆(w). (Stembridge calls it ∆(w, γ), but throughout we
+always choose γ to be the identity map on [n], and so suppress the symbol
+γ whenever he uses it.) By definition, ∆(w) enumerates the number of maps
+f : [n] 7→ P ′ (m) such that:
+• f (w1 )  · · ·  f (wn );
+• f (wi ) = f (wi+1 ) > 0 ⇒ i ∈
+                              / D(w);
+• f (wi ) = f (wi+1 ) < 0 ⇒ i ∈ D(w).
+  We claim that the number of maps f : [n] 7→ P ′ (m) with the above three
+properties is equal to (2m)n multiplied by the chance that a hyperoctahedral
+2m-shuffle results in the permutation w−1 . This is most clearly explained
+continuing example (∗), (∗∗) above let w, f be
+                   w= 8        3     1    5   2   7    6    4,
+                   f = −1     −1    −1    1   2   2   −3    3.
+Here, f is monotone read left to right, f (8) = f (3) = f (1) = −1 corresponds
+to the descents in the first two positions and f (2) = f (7) = 2 corresponds to
+the ascent. This f arises from the description of the inverse hyperoctahedral
+2m-shuffle in (∗), (∗∗) above, the assignment yields w. This proves the claim.
+10                  P. DIACONIS, J. FULMAN AND S. HOLMES
+
+  Let Λ(w) denote the set of peaks of w. From Proposition 3.5 of Stembridge
+(1997),
+                                          X
+               ∆(w) = 2p(w)+1                         LE .
+                                     E⊆[n−1] : Λ(w)⊆E△(E+1)
+
+Here E + 1 means the elements of E with one added to each,
+                                   X
+                         LE =              1.
+                                     1≤i1 ≤···≤in ≤m
+                                     k∈E⇒ik <ik+1
+
+Here LE is the number of ordered n-tuples (i1 , i2 , . . . , in ) of integers between
+1 and m which are nondecreasing, and strictly increasing at positions k in E.
+△ denotes symmetric difference, that is, A△B = (A − B) ∪ (B − A). Now a
+simple combinatorial argument shows that LE = ( n+m−|E|−1        n      ). Indeed, LE
+is equal to the number of integral i1 , . . . , in with 1 ≤ i1 ≤ · · · ≤ in ≤ m − |E|,
+which by a “stars and bars” argument is ( n+m−|E|−1   n      ). Thus
+                                                                          
+                                  X                    n + m − |E| − 1
+         ∆(w) = 2p(w)+1                                                      .
+                                                                n
+                           E⊆[n−1] : Λ(w)⊆E△(E+1)
+
+Now let us count the number of E of size a appearing in this sum. For each
+j ∈ Λ(w), exactly one of j or j − 1 must belong to E, and the remaining
+n − 1 − 2p(w) elements of [n − 1] can be independently and arbitrarily in-
+cluded in E. Thus the number of sets E of size a appearing in the sum is
+2p(w) ( n−1−2p(w)
+         a−p(w)
+                  ). Hence
+                             n−1 
+                     4p(w)+1 X n + m − a − 1
+                                                             
+                                                n − 1 − 2p(w)
+           ∆(w) =                                                ,
+                        2            n            a − p(w)
+                             a=0
+which completes the proof. 
+
+  Proof of Theorem 3.1. To deduce Theorem 3.1 from Theorem 3.2,
+we see that a shelf shuffle with m shelves is equivalent to taking w′ to be
+the inverse of a permutation after a hyperoctahedral 2m-shuffle (forgetting
+about signs), then taking a permutation w defined by w(i) = n − w′ (i) + 1.
+Thus the shelf shuffle formula is obtained from the hyperoctahedral 2m-
+shuffle formula by replacing peaks by valleys. 
+
+     Remarks.
+• The paper Fulman (2001) gives an explicit formula for the chance of a
+  signed permutation after a 2m-shuffle on Bn in terms of cyclic descents.
+  Namely it shows this probability to be
+                                                −1 )
+                                   ( m+n−cd(w
+                                         n             )
+                                                           ,
+                                       (2m)n
+                              SHELF SHUFFLING                                11
+
+  where cd(w) is the number of cyclic descents of w, defined as follows:
+  Ordering the integers 1 < 2 < 3 < · · · < · · · < −3 < −2 < −1:
+  − w has a cyclic descent at position i for 1 ≤ i ≤ n − 1 if w(i) > w(i + 1).
+  − w has a cyclic descent at position n if w(n) < 0.
+  − w has a cyclic descent at position 1 if w(1) > 0.
+  For example the permutation 3 1 − 2 4 5 has two cyclic descents at
+  position 1 and a cyclic descent at position 3, so cd(w) = 3.
+     This allows one to study aspects of shelf shufflers by lifting the problem
+  to Bn , using cyclic descents (where calculations are often easier), then
+  forgetting about signs. This idea was used in Fulman (2001) to study the
+  cycle structure of unimodal permutations, and in Aguiar, Bergeron and
+  Nyman (2004) to study peak algebras of types B and D.
+     The idea of lifting the problem to type Bn leads to a total variation
+  upper bound. Indeed, from the proof of Theorem 3.1 the total variation
+  distance after a shelf-shuffler with m shelves to uniform is equal to the
+  total variation distance of a hyperoctahedral 2m shuffle to uniform, after
+  one forgets about signs. Now from Bayer and Diaconis (1992) or Fulman
+  (2001), the total variation distance of a hyperoctahedral 2m shuffle to
+  uniform, when one does not forget about signs, is equal to the total vari-
+  ation distance of an ordinary m riffle shuffle to uniform on the symmetric
+  group—a quantity thoroughly studied in Bayer and Diaconis (1992). Thus
+  the total variation distance after a shelf-shuffler with m shelves to uniform
+  is at most the total variation distance of an ordinary m riffle shuffle to
+  uniform on the symmetric group.
+• The appearance of peaks in the study of shelf shufflers is interesting, as
+  peak algebras have appeared in various parts of mathematics. Nyman
+  (2003) proves that the peak algebra is a subalgebra of the symmetric
+  group algebra, and connections with geometry of polytopes can be found
+  in Aguiar, Bergeron and Sottile (2006) and Billera, Hsiao and van Willi-
+  genburg (2003). There are also close connections with the theory of P -
+  partitions [Petersen (2005, 2007), Stembridge (1997)].
+
+   The following corollary shows that for a shelf shuffler of n cards with m
+shelves, the chance of a permutation w with v valleys is monotone decreasing
+in v. Thus, the identity (or any other unimodal permutation) is most likely
+and an alternating permutation. . . (down, up, down, up, . . .) is least likely.
+From Theorem 3.1, the chance of a fixed permutation with v valleys is
+                            n−1 
+                     4v+1 X n + m − 1 − a
+                                                             
+                                                    n − 1 − 2v
+(3.1)       P (v) =                                               .
+                    2(2m)n              n              a−v
+                            a=0
+
+   Corollary 3.3.      For P (v) defined at (3.1), P (v) ≥ P (v + 1), 0 ≤ v ≤
+(n − 1)/2.
+12                  P. DIACONIS, J. FULMAN AND S. HOLMES
+
+  Proof. Canceling common terms, and setting a − v = j (so a = j +
+                             n
+v) in (3.1), we have 2(2m)
+                                      Pn−1−2v
+                         4v+1
+                               P (v) = j=0    f (j + v)( n−1−2v
+                                                            j   ) = 2n−1−2v ×
+E(f (Sn−1−2v + v)) with f (a) = ( n+m−1−a
+                                       n   ) and Sn−1−2v distributed as bi-
+nomial (n − 1 − 2v, 12 ). The proposed inequality is equivalent to
+(3.2)           E(f (Sn−1−2v + v)) ≥ E(f (Sn−1−2v−2 + v + 1)).
+To prove this, represent Sn−1−2v = Sn−1−2v−2 + Y1 + Y2 , with Yi independent
+taking values in {0, 1}, with probability 1/2. Then (3.2) is equivalent to
+       X 1              1                1
+                                                                       
+              f (j + v) + f (j + v + 1) + f (j + v + 2) − f (j + v + 1)
+            4            2                4
+        j
+(3.3)
+            × P {Sn−1−2v−2 = j} ≥ 0.
+Thus if 12 f (j + v) + 21 f (j + v + 2) ≥ f (j + v + 1), for example, f (a) is convex,
+we are done. Writing out the expression f (a) + f (a + 2) ≥ 2f (a + 1) and
+canceling common terms, it must be shown that
+           (m + n − 1 − a)(m + n − 2 − a) + (m − 1 − a)(m − 2 − a)
+(3.4)
+                ≥ 2(m + n − 2 − a)(m − 1 − a)
+for all 0 ≤ a ≤ n − 1. Subtracting the right-hand side from the left, the
+coefficients of a2 and a cancel, leaving n(n − 1) ≥ 0. 
+
+   3.3. Asymptotics for the kP − U k∞ and separation distances. Recall the
+                                  P (w)                           P (w)
+distances kP − U k∞ = maxw |1 − U   (w) | and sep(P ) = maxw (1 − U (w) ).
+
+  Theorem 3.4. Consider the shelf shuffling measure Pm with n cards
+and m shelves. Suppose that m = cn3/2 . Then, as n tends to infinity with
+0 < c < ∞ fixed,
+                                                  2
+                          kPm − U k∞ ∼ e1/(12c ) − 1,
+                                                        2
+                               sep(Pm ) ∼ 1 − e−1/(24c ) .
+
+   Remark. We find it surprising that this many shelves are needed. For
+                                                                           .
+example, when n = 52, to make the distance less than 1/100, m = 1085
+                                                  .
+shelves are required for kPm − U k∞ and m = 764 are required for sep(Pm ).
+               . 3/2
+The order m = n in Theorem 3.4 can be understood as follows: Bayer and
+                                           .
+Diaconis (1992) show that it takes k = 32 log2 n riffle shuffles to mix n cards
+in total variation. Now k riffle shuffles correspond to 2k = n3/2 shelves. Of
+course, the 32 in riffle shuffling is the result of a careful computation.
+
+  Proof. Using Corollary 3.3, the distance is achieved at the identity
+permutation or a permutation with ⌊(n − 1)/2⌋ valleys. For the identity,
+                                     SHELF SHUFFLING                         13
+
+consider n!Pm (id). Using Theorem 3.1,
+                               n−1                 
+                         2(n!) X m + n − a − 1    n−1
+(3.5)       n!Pm (id) =                                 .
+                        (2m)n          n           a
+                                       a=0
+
+To bound this sum, observe that ( n−1   a )/2
+                                              n−1 is the binomial probability
+
+density. To keep the bookkeeping simple, assume throughout that n is odd.
+The argument for even n is similar.
+   For a = n−1
+             2 + j, the local central limit theorem as in Feller [(1968), Chap-
+ter VII.2], shows
+                          n−1                2
+                     ( (n−1)/2+j )    e−2j /n
+(3.6)                                ∼p                  for j = o(n2/3 ).
+                         2n−1           πn/2
+In the following, we show further that
+                                                           √
+                                      
+                n! m + (n − 1)/2 − j        −1/(24c2 )+j/(c n)
+                                         ∼ e
+               mn            n
+(3.7)
+                                                       uniformly for j = o(n).
+Combining (3.6), (3.7), gives a Riemann sum for the integral
+                           2 Z
+                  e−1/(24c ) ∞ −2x2 +x/c              2
+                    p             e       dx = e1/(12c ) ,
+                      π/2      −∞
+
+the claimed result. This part of the argument follows Feller [(1968), Chap-
+ter VII.2], and we suppress further details. To complete the argument the
+tails of the sum in (3.5) must be bounded.
+   We first prove (3.7). From the definitions
+                                         (n−1)/2            
+             n! m − j + (n − 1)/2            Y         j     i
+                                      =              1− +
+             mn            n                           m m
+                                                     i=−(n−1)/2
+                             x2
+using log(1 − x) = −x − 2 + O(x3 ),
+        (n−1)/2               
+          X              j   i
+                 log 1 − +
+                         m m
+        i=−(n−1)/2
+
+                                   i 2
+               X j                       3 
+                     i     1X   j             n
+            =−   − +     −     − +     + nO
+                  m m      2    m m           m
+                     i                           i
+(3.8)
+              nj 1 nj 2    1 n(n2 − 1)
+                                              
+                                              1
+            =    −      +                +O √
+              m 2 m2      12    m2             n
+                      2
+                                         
+               j    j       1          1
+            = √ − 2 2−        2
+                                +O √ .
+              c n 2c n    24c           n
+14                  P. DIACONIS, J. FULMAN AND S. HOLMES
+
+The error term in (3.8) is uniform in j. For j = o(n), j 2 /n2 = o(1) and (3.7)
+follows.
+   To bound the tails √of the sum, first observe that (3.8) implies that
+ n! m−j+(n−1)/2
+mn (       n       ) = eO( n) for all j. From Bernstein’s inequality, if Xi = ±1
+                                                             2
+with probability 1/2, P (|X1 + · · · + Xn−1 | > a) ≤ 2e−a /(n−1) . Using this, the
+sum over |j| ≥ An3/4 is negligible for A sufficiently large.
+   The Gaussian approximation to the binomial works for j ≪ n2/3 . To
+bound the sum for |j| between n2/3 and n3/4 , observe from (3.8) that in this
+                                   1/4
+range, mn!n ( m−j+(n−1)/2
+                   n      ) = O(en ). Then Feller [(1968), page 195] shows
+                             
+                    n−1
+                (n − 1)/2 + j          1                            √
+                                             −(1/2)(j)2 /(n/4)−f (j/ n/4)
+                                ∼           e
+                     2n−1
+                                   p
+                                      πn/2
+               P∞      (1/2)a−1 +(−1/2)a−1                     4       6
+with f (x) =     a=3          a(a−1)       ( √1 )a−2 xa = c1 xn + c2 nx2 + · · · for ex-
+                                              n/4
+plicit constants c1 , c2 , . . . . For θ1 n2/3 ≤ |j| ≤ θ2 n3/4 , the sum under study is
+                                      1/6
+dominated by A j≥n2/3 e−Bj
+                  P
+                                           which tends to zero.
+   The separation distance is achieved at permutations with n−1             2   valleys
+(recall we are assuming that n is odd). From (3.1),
+                                                                    
+                                 n−1             n! m + (n − 1)/2
+               1 − n!Pm                   =1− n                          .
+                                   2            m              n
+The result now follows from (3.7) with j = 0. 
+
+   Remark. A similar argument allows asymptotic evaluation of total vari-
+ation. We have not carried out the details.
+
+   3.4. Distribution of cycle type. The number of fixed points and the num-
+ber of cycles are classic descriptive statistics of a permutation. More gener-
+ally, the number of i-cycles for 1 ≤ i ≤ n has been intensively studied [Shepp
+and Lloyd (1966), Diaconis, McGrath and Pitman (1995)]. This section in-
+vestigates the distribution of cycle type of a permutation w produced from
+a shelf shuffler with m shelves and n cards. Similar results for ordinary rif-
+fle shuffles appeared in Diaconis, McGrath and Pitman (1995), and closely
+related results in the type B case (not in the language of shelf-shuffling)
+appear in Fulman (2001, 2002). Recall also that in the case of one shelf, the
+shelf shuffler generates one of the 2n−1 unimodal permutations uniformly at
+random. The cycle structure of unimodal permutations has been studied in
+several papers in the literature: see Fulman (2001, 2002), Thibon (2001) for
+algebraic/combinatorial approaches and Gannon (2001), Rogers (1981) for
+approaches using dynamical systems.
+                              SHELF SHUFFLING                                 15
+
+  For what follows, we define
+                                   1 X
+                          fi,m =       µ(d)(2m)i/d ,
+                                   2i
+                                       d|i
+                                      d odd
+
+where µ is the Möbius function of elementary number theory: µ(d) = (−1)k
+if d is a square free number with k prime factors, µ(1) = 1 and µ(d) = 0
+otherwise.
+
+   Theorem 3.5. Let Pm (w) denote the probability that a shelf shuffler
+with m shelves produces a permutation w. Let Ni (w) denote the number of
+i-cycles of a permutation w in Sn . Then
+             X      X          Y N (w) Y 1 + xi (u/2m)i fi,m
+                  n
+(3.9) 1 +        u      Pm (w)   xi i =                         .
+                                             1 − xi (u/2m)i
+            n≥1    w∈Sn         i≥1           i≥1
+
+   Proof. By the proof of Theorem 3.1, a permutation produced by a shelf
+shuffler with m shelves is equivalent to forgetting signs after the inverse of a
+type B riffle shuffle with 2m piles, then conjugating by the longest element
+n, n − 1, . . . , 1. Since a permutation and its inverse have the same cycle type
+and conjugation leaves cycle type invariant, the result follows from either
+Fulman [(2001), Theorem 7] or Fulman [(2002), Theorem 9] both of which
+derived the generating function for cycle type after type B shuffles. 
+
+  Theorem 3.5 leads to several corollaries. We say that a random variable
+X is binomial (n, p) if P(X = j) = ( nj )pj (1 − p)n−j , 0 ≤ j ≤ n, and that X
+is negative binomial with parameters (f, p) if P(X = j) = ( f +j−1
+                                                                 j )pj (1 −
+  f
+p) , 0 ≤ j < ∞. As usual, the products in the generating function on the
+right of (3.9) correspond to the convolution of the corresponding measures.
+
+   Corollary 3.6.       Let Ni (w) be the number of i-cycles of a permuta-
+tion w.
+   (1) Fix u such that 0 < u < 1. Then choose a random number N of cards
+so that P(N = n) = (1 − u)un . Let w be produced by a shelf shuffler with
+m shelves and N cards. Then any finite number of the random variables
+{Ni } are independent, and Ni is distributed as the convolution of a binomial
+          (u/2m)i                                                             i
+(fi,m , 1+(u/2m)   i ) and a negative binomial with parameters (fi,m , (u/2m) ).
+
+   (2) Let w be produced by a shelf shuffler with m shelves and n cards.
+Then in the n → ∞ limit, any finite number of the random variables {Ni }
+are independent. The Ni are distributed as the convolution of a binomial
+(fi,m , (2m)1i +1 ) and a negative binomial with parameters (fi,m , (1/2m)i ).
+16                P. DIACONIS, J. FULMAN AND S. HOLMES
+
+   Proof. Setting all xi = 1 in equation (3.9) yields the equation
+                               Y 1 + (u/2m)i fi,m
+                         −1
+(3.10)            (1 − u) =                           .
+                                   1 − (u/2m)i
+                                  i≥1
+
+Taking reciprocals of equation (3.10) and multiplying by equation (3.9) gives
+the equality
+                     X             X           Y n (w)
+           (1 − u) +    (1 − u)un       Pm (w)   xi i
+                      n≥1           w∈Sn        i≥1
+(3.11)
+                  Y 1 + xi (u/2m)i fi,m  1 − (u/2m)i fi,m
+                =                        ·                    .
+                      1 + (u/2m)i          1 − xi (u/2m)i
+                   i≥1
+
+This proves part 1 of the theorem, the first term on the right corresponding
+to the convolution of binomials, and the second term to the convolution of
+negative binomials.
+   The second part follows from the claim that if a generating function f (u)
+has a Taylor series which converges at u = 1, then the n → ∞ limit of the
+coefficient     n
+         P∞of u in  f (u)/(1 − u) is f (1). Indeed, write the Taylor expansion
+f (u) = n=0 an u and observe that the coefficient of un in f (u)/(1 − u) is
+                  n
+P  n
+   i=0 ai . Now apply the claim to equation (3.11) with all but finitely many
+xi equal to 1. 
+
+   Remark. For example, when i = 1, fi,m = m; the number of fixed points
+                                           1                              1
+are distributed as a sum of binomial (m, 2m+1 ) and negative binomial(m, 2m ).
+Each of these converges to Poisson(1/2) and so the number of fixed points
+is approximately Poisson(1). A similar analysis holds for the other cycle
+counts. Corollary 3.6 could also be proved by the method of moments, along
+the lines of the arguments of Diaconis, McGrath and Pitman (1995) for the
+case of ordinary riffle shuffles.
+
+   For the next result, recall that the limiting distribution of the large cycles
+of a uniformly chosen permutation in Sn has been determined by Gontcharoff
+(1942, 1944), Shepp and Lloyd (1966), Vershik and Shmidt (1977, 1978), and
+others. For instance the average length of the longest cycle L1 is approxi-
+mately 0.63n and L1 /n has a known limiting distribution. The next result
+shows that even with a fixed number of shelves, the distribution of the large
+cycles approaches that of a uniform random permutation, as long as the
+number of cards is growing. We omit the proof, which goes exactly along
+the lines of the corresponding result for riffle shuffles in Diaconis, McGrath
+and Pitman (1995).
+
+   Corollary 3.7. Fix k and let L1 (w), L2 (w), . . . , Lk (w) be the lengths
+of the k longest cycles of w ∈ Sn produced by a shelf shuffler with m shelves.
+                                        SHELF SHUFFLING                                    17
+
+Then for m fixed, or growing with n, as n → ∞,
+     |Pm {L1 /n ≤ t1 , . . . , Lk /n ≤ tn } − P∞ {L1 /n ≤ t1 , . . . , Lk /n ≤ tn }| → 0
+uniformly in t1 , t2 , . . . , tk .
+
+   As a final corollary, we note that Theorems 3.1 and 3.5 give the following
+generating function for the joint distribution of permutations by valleys
+and cycle type. Note that this gives the joint generating function for the
+distribution of permutations by peaks and cycle type, since conjugating by
+the permutation n, n − 1, . . . , 1 preserves the cycle type and swaps valleys
+and peaks.
+
+   Corollary 3.8. Let v(w) denote the number of valleys of a permuta-
+tion w. Then
+          t    X    X 1 (1 + t)n+1  4t v(w)+1 Y N (w)
+             +   un                                     xi i
+         1−t            2 (1 − t)n+1 (1 + t)2
+                       n≥1       w∈Sn                                  i≥1
+
+                      X          Y 1 + xi ui fi,m
+                  =         tm                            .
+                                       1 − x i ui
+                      m≥1        i≥1
+The same result holds with v(w) replaced by p(w), the number of peaks of w.
+
+   Remark. There is a large literature on the joint distribution of per-
+mutations by cycles and descents [Gessel and Reutenauer (1993), Diaconis,
+McGrath and Pitman (1995), Reiner (1993), Fulman (2000b), Blessenohl,
+Hohlweg and Schocker (2005), Poirier (1998)] and by cycles and cyclic de-
+scents Fulman (2000a, 2001, 2002), but Corollary 3.8 seems to be the first
+result on the joint distribution by cycles and peaks.
+
+   3.5. Distribution of RSK shape. In this section we obtain the distribu-
+tion of the Robinson–Schensted–Knuth (RSK) shape of a permutation w
+produced from a shelf shuffler with m shelves and n cards. For background
+on the RSK algorithm, see Stanley (1999). The RSK bijection associates to
+a permutation w ∈ Sn a pair of standard Young tableaux (P (w), Q(w)) of
+the same shape and size n. Q(w) is called the recording tableau of w.
+   To state our main result, we use a symmetric function Sλ studied in
+Stembridge (1997) [a special case of the extended Schur functions in Kerov
+and Vershik (1986)]. One definition of the Sλ is as the determinant
+                                       Sλ (y) = det(qλi −i+j ),
+where q−r = 0 for r > 0 and for r ≥ 0, qr is defined by setting
+                          X            Y 1 + yi t
+                              q n tn =             .
+                                          1 − yi t
+                                       n≥0          i≥1
+We also let fλ denote the number of standard Young tableaux of shape λ.
+18                P. DIACONIS, J. FULMAN AND S. HOLMES
+
+  Theorem 3.9. The probability that a shelf shuffler with m shelves and
+n cards produces a permutation with recording tableau T is equal to
+                                             
+                             1      1       1
+                               Sλ     ,...,
+                            2n      m       m
+for any T of shape λ, where Sλ has m variables. Thus the probability that
+w has RSK shape λ is equal to
+                                                 
+                           fλ       1           1
+                              S λ     , . . . ,     .
+                           2n       m           m
+
+   Proof. By the proof of Theorem 3.1, a permutation produced by a
+shelf shuffler with m shelves is equivalent to forgetting signs after the in-
+verse of a type B 2m-shuffle, and then conjugating by the permutation
+n, n − 1, . . . , 1. Since a permutation and its inverse have the same RSK shape
+[Stanley (1999), Section 7.13], and conjugation by n, n − 1, . . . , 1 leaves the
+RSK shape unchanged [Stanley (1999), Theorem A1.2.10], the result follows
+from Fulman [(2002), Theorem 8], who studied RSK shape after type B riffle
+shuffles. 
+
+   3.6. Distribution of descents. A permutation w is said to have a descent
+at position i (1 ≤ i ≤ n − 1) if w(i) > w(i + 1). We let d(w) denote the
+total number of descents of w. For example the permutation 3 1 5 4 2 has
+d(w) = 3 and descent set 1, 3, 4. The purpose of this section is to derive a
+generating function for the number of descents in a permutation w produced
+by a shelf shuffler with m shelves and n cards. More precisely, we prove the
+following result.
+
+   Theorem 3.10. Let Pm (w) denote the probability that a shelf shuffler
+with m shelves and n cards produces a permutation w. Letting [un ]f (u) de-
+note the coefficient of un in a power series f (u), one has that
+           X                     (1 − t)n+1 X k n (1 + u/m)km
+(3.12)          Pm (w)td(w)+1 =                 t [u ]             .
+                                     2n                (1 − u/m)km
+           w∈Sn                              k≥1
+
+   The proof uses the result about RSK shape mentioned in Section 3.5, and
+symmetric function theory; background on these topics can be found in the
+texts by Stanley (1999) and Macdonald (1995), respectively.
+
+   Proof. Let w be a permutation produced by a shelf shuffler with m
+shelves and n cards. The RSK correspondence associates to w a pair of
+standard Young tableaux (P (w), Q(w)) of the same shape. Moreover, there
+is a notion of descent set for standard Young tableaux, and by Lemma 7.23.1
+of Stanley (1999), the descent set of w is equal to the descent set of Q(w).
+Let fλ (r) denote the number of standard Young tableaux of shape λ with r
+                                      SHELF SHUFFLING                                                  19
+
+descents. Then Theorem 3.9 implies that
+                              X fλ (r)  1         1
+                                                     
+                P(d(w) = r) =           Sλ   ,...,     .
+                                    2n     m       m
+                                           |λ|=n
+
+  By equation (7.96) of Stanley (1999), one has that
+               X                          X
+                  fλ (r)tr+1 = (1 − t)n+1    sλ (1, . . . , 1)tk ,
+                    r≥0                                   k≥1
+
+where in the kth summand, sλ (1, . . . , 1) denotes the Schur function with k
+variables specialized to 1. Thus
+     X
+         P(d(w) = r) · tr+1
+     r≥0
+               X X fλ (r)                            
+                                          1       1
+           =                     Sλ         ,...,         · tr+1
+                           2n             m       m
+               r≥0 |λ|=n
+
+             (1 − t)n+1 X k X
+                                            
+                                   1       1
+           =             t    Sλ     ,...,     sλ (1, . . . , 1)
+                 2n                m       m
+                           k≥1        |λ|=n
+
+               (1 − t)n+1 X
+                                                                         
+                                 k     n
+                                           X X                  1       1
+           =                     t [u ]                Sλ         ,...,     sλ (1, . . . , 1) · un .
+                   2n                                           m       m
+                           k≥1             n≥0 |λ|=n
+
+From Appendix A.4 of Stembridge (1997), if λ ranges over all partitions of
+all natural numbers, then
+                      X                  Y 1 + xi y j
+                          sλ (x)Sλ (y) =              .
+                                           1 − xi y j
+                            λ                         i,j≥1
+                                                  1
+Setting x1 = · · · = xk = u and y1 = · · · = ym = m   completes the proof of the
+theorem. 
+
+   For what follows we let An (t) = w∈Sn td(w)+1 be the generating function
+                                     P
+of elements in Sn by descents. This is known as the Eulerian polynomial,
+and from page 245 of Comtet (1974), one has that
+                                               X
+(3.13)                    An (t) = (1 − t)n+1     tk k n .
+                                                           k≥1
+
+This also follows by letting m → ∞ in equation (3.12).
+  The following corollary derives the mean and variance of the number of
+descents of a permutation produced by a shelf shuffler.
+
+  Corollary 3.11. Let w be a permutation produced by a shelf shuffler
+with m shelves and n ≥ 2 cards.
+20                   P. DIACONIS, J. FULMAN AND S. HOLMES
+
+     (1) The expected value of d(w) is n−1
+                                        2 .
+                                 n+1    n−2
+     (2) The variance of d(w) is 12 + 6m2 .
+                                                         km
+   Proof. The first step is to expand [un ] (1+u/m)
+                                                  (1−u/m)km
+                                                                as a series in k. One
+calculates that
+                      (1 + u/m)km
+                [un ]
+                      (1 − u/m)km
+                                                            
+                           1 X km          km + n − a − 1
+                       = n
+                         m            a          n−a
+                              a≥0
+                                                           
+                           1 X (km) · · · (km − a + 1)
+                       = n
+                         m                   a!
+                              a≥0
+                                                                 
+                                      (km + n − a − 1) · · · (km)
+                                 ×
+                                              (n − a)!
+                          1 n n 2n n(n − 1)(n − 2) n−2
+                                                                     
+                       =      2 k +                       k      + ··· ,
+                         n!                 12m2
+where the · · · in the last equation denote terms of lower order in k. Thus
+Theorem 3.10 gives
+     X
+        Pm (w)td(w)+1
+       w
+
+             (1 − t)n+1 X k n                        n−1 X
+                                                               
+                                n−2         2 (1 − t)       k n−2
+           =             t k +       (1 − t)               t k
+                 n!             12m2           (n − 2)!
+                            k≥1                                     k≥1
+                        3
+             + (1 − t) C(t),
+where C(t) is a polynomial in t. By equation (3.13), it follows that
+    X                   An (t)            n − 2 An−2 (t)
+       Pm (w)td(w)+1 =         + (1 − t)2     2 (n − 2)!
+                                                         + (1 − t)3 C(t).
+     w
+                          n!              12m
+Since the number of descents of a random permutation has mean (n − 1)/2
+                                                    ′
+and variance (n + 1)/12 for n ≥ 2, it follows that Ann!(1) = (n+1)
+                                                               2   and also that
+A′′
+ n (1)     2
+  n! = (3n + n − 2)/12. Thus
+                          X                   n−1
+                              Pm (w)d(w) =
+                           w
+                                                2
+and
+                 X                            3n2 + n − 2 n − 2
+                     Pm (w)d(w)[d(w) + 1] =              +      ,
+                 w
+                                                  12       6m2
+and the result follows. 
+                                 SHELF SHUFFLING                                  21
+
+
+
+
+             Fig. 2.   Left: m = 4, x = + + ++; Right: m = 4, x = + − −+.
+
+
+  Remarks.
+• Part 1 of Corollary 3.11 can be proved without generating functions simply
+  by noting that by the way the shelf shuffler works, w and its reversal are
+  equally likely to be produced.
+• Theorem 3.10 has an analog for ordinary riffle shuffles which is useful
+  in the study of carries in addition. See Diaconis and Fulman (2009a) for
+  details.
+
+   4. Iterated shuffling. This section shows how to analyze repeated shuf-
+fles. Section 4.1 shows how to combine shuffles. Section 4.2 gives a clean
+bound for the separation distance.
+
+   4.1. Combining shuffles. To describe what happens to various combi-
+nations of shuffles, we need the notion of a signed m-shuffle. This has the
+following geometric description: divide the unit interval into sub-intervals of
+         1
+length m   ; each sub-interval contains the graph of a straight line of slope ±m.
+The left-to-right pattern of signs ±s is indicated by a vector x of length m.
+Thus if m = 4 and x = + + ++, an x-shuffle is generated as shown on the
+left side of Figure 2. If m = 4 and x = + − −+, the graph becomes that of
+the right-hand side of Figure 2. Call this function fx .
+   The shuffle proceeds as in the figure with n points dropped at random
+into the unit interval, labeled left to right, y1 , y2 , . . . , yn and then permuted
+by fx . In each case there is a simple forward description: the deck is cut into
+m piles by a multinomial distribution and piles corresponding to negative
+coordinates are reversed. Finally, all packets are shuffled together by the
+GSR procedure in which one drops each card sequentially with probability
+proportional to packet size. Call the associated measure on permutations Px .
+
+  Remark. Thus, ordinary riffle shuffles are ++ shuffles. The shelf shuffle
+with 10 shelves is an inverse + − + − · · · + − (length 20) shuffle in this
+notation.
+22                      P. DIACONIS, J. FULMAN AND S. HOLMES
+
+   The following theorem reduces repeated shuffles to a single shuffle. To
+state it, one piece of notation is needed. Let x = (x1 , x2 , . . . , xa ) and y =
+(y1 , y2 , . . . , yb ) be two sequences of ± signs. Define a sequence of length ab as
+x ∗ y = y x1 , y x2 , . . . , y xa with (y1 , . . . , yb )1 = (y1 , . . . , yb ) and (y1 , . . . , yb )−1 =
+(−yb , −yb−1 , . . . , −y1 ). This is an associative product on strings; it is not
+commutative. Let Px be the measure induced on Sn (forward shuffles).
+
+     Example.
+                            (+ + +) ∗ (++) = + + + + ++,
+                                (+−) ∗ (+−) = + − +−,
+                          (+−) ∗ (+ + −+) = + + − + − + − −.
+
+   Theorem 4.1.             If x and y are ±1 sequences of length a and b, respec-
+tively, then
+                                          Px ∗ Py = Px∗y .
+
+   Proof. In outline, this follows most easily from the geometric descrip-
+tion underlying Figures 1 and 2. If a uniformly chosen point in [0, 1] is
+expressed base a, the “digits” are uniform and independently distributed in
+{0, 1, . . . , a − 1}. Because of this, iterating the maps on the same uniform
+points gives the convolution. The iterated maps have the claimed pattern of
+slopes by a simple geometric argument.
+   In more detail, consider a ± string x of length m. The function fx sends
+[0, 1] to itself by mapping η ∈ [ i−1       i
+                                       m , m ] to xi mη (mod 1). If xi is positive,
+all points in [ i−1     i
+                    m , m ] are sent to [0, 1] in an order preserving way. If xi is
+negative, the order is reversed. In either case, the map fx is m to 1 and
+measure preserving on [0, 1] (i.e., fx−1 preserves Lebesgue measure). Now
+consider fy ◦ fx (apply fx first, then fy ), where x is of length m and y is
+of length n. The composition sends all elements η ∈ [ i−1           i
+                                                              mn , mn ] to sgn(i) mnη
+(mod 1); where sgn(i) is ±1. A simple argument shows sgn(i) is given by
+the x ∗ y rule.
+   There is a subtle point: the convolution Px ∗ Py (first apply Px then in-
+dependently Py ) involves independent shuffles while fy ◦ fx and fx∗y are
+applied to a single random uniform set of points. The induced measures
+are the same because the digits of η ∈ [0, 1] base m are independent and
+uniformly distributed in {0, 1, . . . , m} and fx preserves measure. It follows
+that the image of independent uniform points in [0, 1] under fx are inde-
+pendent and uniform even conditional on the induced permutation which is
+determined by how many points fall in each [ i−1          i
+                                                      m , m ]. 
+
+   Corollary 4.2. The convolution of k + − shuffles is a + − + − · · · + −
+(2k terms) shuffle. Further, the convolution of a shelf shuffler with m1 and
+then m2 shelves is the same as a shelf shuffler with 2m1 m2 shelves.
+                               SHELF SHUFFLING                                 23
+
+   4.2. Bounds for separation distance. The following theorem gives a bound
+for separation (and so for total variation) for a general Px shuffle on Sn .
+
+   Theorem 4.3. For any ±1 sequence x of length a, with Px the associ-
+ated measure on Sn , and sep(Px ) from (2.1),
+                                       n−1
+                                       Y       
+                                              i
+(4.1)                   sep(Px ) ≤ 1 −     1−    .
+                                              a
+                                          i=1
+
+   Proof. It is easiest to argue using shuffles as in Description 1. There,
+the backs of cards are labeled, independently and uniformly, with symbols
+1, 2, . . . , a. For the inverse shuffle, all cards labeled 1 are removed, keeping
+them in their same relative order, and placed on top followed by the cards
+labeled 2 (placed under the 1s) and so on, with the following proviso: if the
+ith coordinate of x is −1, the cards labeled i have their order reversed; so
+if they are 1, 5, 17 from top down, they are placed in order 17, 5, 1. All of
+this results in a single permutation drawn from Px . Repeated shuffles are
+modeled by labeling each card with a vector of symbols. The kth shuffle is
+determined by the kth coordinate of this vector. The first time t that the first
+k coordinates of those n vectors are all distinct forms a strong stationary
+time. See Aldous and Diaconis (1986) or Fulman (1998) for further details.
+The usual bound for separation yields
+                    sep(Px ) ≤ P {all n labels are distinct}.
+The bound (4.1) now follows from the classical birthday problem. 
+
+  Remarks.
+• For a large with respect to n, the right-hand side is well-approximated by
+  1 − e−(n(n−1))/(2a) . This is small when n2 ≪ a.
+• The theorem gives a clean upper bound on the distance to uniformity. For
+  example, when n = 52, after 8 ordinary riffle shuffles (so x = + + · · · + +,
+  length 256), the bound (4.1) is sep(Px ) ≤ 0.997, in agreement with Table 1
+  of Assaf, Diaconis and Soundararajan (2011). For the actual shelf shuffle
+  with x = + − + − · · · + − (length 20), the bound gives sep(Px ) = 1 but
+  sep(Px ∗ Px ) ≤ 0.969 and sep(Px ∗ Px ∗ Px ) ≤ 0.153.
+• The bound in Theorem 4.3 is simple and general. However, it is not sharp
+  for the original shelf shuffler. The results of Section 3.3 show that m =
+  cn3/2 shelves suffice to make sep(Pm ) small when c is large. Theorem 4.3
+  shows that m = cn2 steps suffice.
+• The upper bound in (4.1) is achieved. If the length a sequence consists
+  only of + signs, we have the ordinary “riffle shuffle.” Then the formula
+  in Bayer and Diaconis (1992) for the chance of a permutation after an a
+  shuffle implies that the separation distance is attained for the permutation
+  n, n − 1, . . . , 1, and is equal to the right-hand side of (4.1).
+24                   P. DIACONIS, J. FULMAN AND S. HOLMES
+
+   5. Practical tests and conclusions. The engineers and executives who
+consulted us found it hard to understand the total variation distance. They
+asked for more down-to-earth notions of discrepancy. This section reports
+some ad hoc tests which convinced them that the machine had to be used
+differently. Section 5.1 describes the number of cards guessed correctly. Sec-
+tion 5.2 briefly describes three other tests. Section 5.3 describes conclusions
+and recommendations.
+
+   5.1. Card guessing with feedback. Suppose, after a shuffle, cards are dealt
+face-up, one at a time, onto the table. Before each card is shown, a guess is
+made at the value of the card. Let Xi , 1 ≤ i ≤ n, be one or zero as the ith
+guess is correct and Tn = X1 + · · · + Xn the total number of correct guesses.
+If the cards were perfectly mixed, the chance that X1 = 1 is 1/n, the chance
+that X2 = 1 is 1/(n − 1), . . . , that Xi = 1 is 1/(n − i + 1). Further, the Xi
+are independent. Thus elementary arguments give the following.
+
+  Proposition 5.1. Under the uniform distribution, the number of cards
+guessed correctly Tn satisfies:
+                                                                       .
+• E(Tn ) = n1 + n−11
+                       + · · · + 1 ∼ log n + γ + O( n1 ) with γ = 0.577 Euler’s con-
+  stant.
+                                                                                   2
+• var(Tn ) = n1 (1 − n1 ) + n−11       1
+                                 (1 − n−1 ) + · · · + 12 (1 − 21 ) ∼ log n + γ − π6 + O( n1 ).
+• Normalized by its mean and variance, Tn has an approximate normal dis-
+  tribution.
+
+   When n =√52, Tn has mean approximately 4.5, standard deviation ap-
+proximately 2.9 and the number of correct guesses is between 2.7 and 6.3,
+70% of the time.
+   Based on the theory developed in Section 3 we constructed a guessing
+strategy—conjectured to be optimal—for use after a shelf shuffle.
+   Strategy.
+• To begin, guess card 1.
+• If guess is correct, remove card 1 from the list of available cards. Then
+  guess card 2, card 3, . . . .
+• If guess is incorrect and card i is shown, remove card i from the list of
+  available cards and guess card i + 1, card i + 2, . . . .
+• Continue until a descent is observed (order reversal with the value of the
+  current card smaller than the value of the previously seen card). Then
+  change the guessing strategy to guess the next-smallest available card.
+• Continue until an ascent is observed, then guess the next-largest available
+  card, and so on.
+  A Monte Carlo experiment was run to determine the distribution of Tn for
+n = 52 with various values of m (10,000 runs for each value). Table 2 shows
+the mean and variance for various numbers of shelves. Thus for the actual
+                                     SHELF SHUFFLING                                          25
+
+                                       Table 2
+Mean and variance for n = 52 after a shelf shuffle with m shelves under the conjectured
+                                   optimal strategy
+
+m                     1              2              4             10            20            64
+
+Mean                 39             27             17.6           9.3           6.2          4.7
+Variance              3.2            5.6            6.0           4.7           3.8          3.1
+
+
+
+shuffler, m = 10 gives about 9.3 correct guesses versus 4.5 for a well-shuffled
+deck. A closely related study of optimal strategy for the GSR measure (with-
+out feedback) is carried out by Ciucu (1998).
+   5.2. Three other tests. For the shelf shuffler with m shelves, an easy
+argument shows that the chance that the original top card is still on top is
+at least 1/2m instead of 1/n. When n = 52, this is 1/20 versus 1/52. The
+                                                 1        1
+chance that card 2 is on top is approximately 2m    (1 − 2m ) while the chance
+                                                  1
+that card 2 is second from the top is roughly (2m)2 . The same probabilities
+hold for the bottom cards. While not as striking as the guessing test of
+Section 5.1, this still suggests that the machine is “off.”
+
+
+
+
+Fig. 3.    9 spacings from a 10-shelf shuffle; j varies from top left to bottom right, 1 ≤ j ≤ 9.
+26                    P. DIACONIS, J. FULMAN AND S. HOLMES
+
+
+
+
+Fig. 4.   9 spacings from a uniform shuffle; j varies from top left to bottom right, 1 ≤ j ≤ 9.
+
+   Our second test supposed that the deck was originally arranged with all
+the red cards on top and all the black cards at the bottom. The test statis-
+tic is the number of changes of color going through the shuffled deck. Under
+uniformity, simulations show this has mean 26 and standard deviation 3.6.
+With a 10-shelf machine, simulations showed 17 ± 1.83, a noticeable devia-
+tion. The third test is based on the spacings between cards originally near
+the top of the deck. Let wj denote the position of the card originally at po-
+sition j from the top. Let Dj = |wj − wj+1 |. Figure 3 shows a histogram of
+Dj for 1 ≤ j ≤ 9, from a simulation with n = 52 based on a 10-shelf shuffler.
+Figure 4 shows histograms for the same statistics for a well-shuffled deck;
+there are striking discrepancies.
+
+   5.3. Conclusions and recommendations. The study above shows that a
+single iteration of a 10-shelf shuffler is not sufficiently random. The president
+of the company responded, “We are not pleased with your conclusions, but
+we believe them and that’s what we hired you for.”
+   We suggested a simple alternative: use the machine twice. This results
+in a shuffle equivalent to a 200-shelf machine. Our mathematical analysis
+and further tests, not reported here, show that this is adequately random.
+                                 SHELF SHUFFLING                                      27
+
+Indeed, Table 1 shows, for total variation, this is equivalent to 8-to-9 ordinary
+riffle shuffles.
+
+  Acknowledgments. We thank the Editor and two anonymous referees for
+their constructive reviews.
+
+                                   REFERENCES
+Aguiar, M., Bergeron, N. and Nyman, K. (2004). The peak algebra and the descent
+  algebras of types B and D. Trans. Amer. Math. Soc. 356 2781–2824. MR2052597
+Aguiar, M., Bergeron, N. and Sottile, F. (2006). Combinatorial Hopf algebras and
+  generalized Dehn–Sommerville relations. Compos. Math. 142 1–30. MR2196760
+Aldous, D. (1983). Random walks on finite groups and rapidly mixing Markov chains. In
+  Seminar on Probability, XVII. Lecture Notes in Math. 986 243–297. Springer, Berlin.
+  MR0770418
+Aldous, D. and Diaconis, P. (1986). Shuffling cards and stopping times. Amer. Math.
+  Monthly 93 333–348. MR0841111
+Assaf, S., Diaconis, P. and Soundararajan, K. (2011). A rule of thumb for riffle
+  shuffling. Ann. Appl. Probab. 21 843–875. MR2830606
+Bayer, D. and Diaconis, P. (1992). Trailing the dovetail shuffle to its lair. Ann. Appl.
+  Probab. 2 294–313. MR1161056
+Bidigare, P., Hanlon, P. and Rockmore, D. (1999). A combinatorial description of
+  the spectrum for the Tsetlin library and its generalization to hyperplane arrangements.
+  Duke Math. J. 99 135–174. MR1700744
+Billera, L. J., Hsiao, S. K. and van Willigenburg, S. (2003). Peak quasisymmetric
+  functions and Eulerian enumeration. Adv. Math. 176 248–276. MR1982883
+Blessenohl, D., Hohlweg, C. and Schocker, M. (2005). A symmetry of the descent
+  algebra of a finite Coxeter group. Adv. Math. 193 416–437. MR2137290
+Borel, E. and Chéron, A. (1955). Théorie Mathématique du Bridge à la Portée de Tous,
+  2ème ed. Gauthier-Villars, Paris. MR0070896
+Brown, K. S. and Diaconis, P. (1998). Random walks and hyperplane arrangements.
+  Ann. Probab. 26 1813–1854. MR1675083
+Ciucu, M. (1998). No-feedback card guessing for dovetail shuffles. Ann. Appl. Probab. 8
+  1251–1269. MR1661184
+Comtet, L. (1974). Advanced Combinatorics: The Art of Finite and Infinite Expansions,
+  enlarged ed. Reidel, Dordrecht. MR0460128
+Conger, M. A. and Howald, J. (2010). A better way to deal the cards. Amer. Math.
+  Monthly 117 686–700. MR2732245
+Conger, M. and Viswanath, D. (2006). Riffle shuffles of decks with repeated cards.
+  Ann. Probab. 34 804–819. MR2223959
+Diaconis, P. (1988). Group Representations in Probability and Statistics. Institute of
+  Mathematical Statistics Lecture Notes—Monograph Series 11. IMS, Hayward, CA.
+  MR0964069
+Diaconis, P. (1996). The cutoff phenomenon in finite Markov chains. Proc. Natl. Acad.
+  Sci. USA 93 1659–1664. MR1374011
+Diaconis, P. (2003). Mathematical developments from the analysis of riffle shuffling. In
+  Groups, Combinatorics & Geometry (Durham, 2001) 73–97. World Sci. Publ., River
+  Edge, NJ. MR1994961
+Diaconis, P. and Fulman, J. (2009a). Carries, shuffling, and an amazing matrix. Amer.
+  Math. Monthly 116 788–803. MR2572087
+28                  P. DIACONIS, J. FULMAN AND S. HOLMES
+
+Diaconis, P. and Fulman, J. (2009b). Carries, shuffling, and symmetric functions. Adv.
+  in Appl. Math. 43 176–196. MR2531920
+Diaconis, P. and Fulman, J. (2012). Foulkes characters, Eulerian idempotents, and an
+  amazing matrix. J. Algebraic Combin. 36 425–440. MR2969071
+Diaconis, P. and Graham, R. (2012). Magical Mathematics. Princeton Univ. Press,
+  Princeton, NJ. MR2858033
+Diaconis, P., McGrath, M. and Pitman, J. (1995). Riffle shuffles, cycles, and descents.
+  Combinatorica 15 11–29. MR1325269
+Diaconis, P. and Shahshahani, M. (1981). Generating a random permutation with
+  random transpositions. Z. Wahrsch. Verw. Gebiete 57 159–179. MR0626813
+Epstein, R. A. (1977). The Theory of Gambling and Statistical Logic, revised ed. Aca-
+  demic Press, New York. MR0446535
+Ethier, S. N. (2010). The Doctrine of Chances: Probabilistic Aspects of Gambling.
+  Springer, Berlin. MR2656351
+Feller, W. (1968). An Introduction to Probability Theory and Its Applications. Vol. I,
+  3rd ed. Wiley, New York. MR0228020
+Fulman, J. (1998). The combinatorics of biased riffle shuffles. Combinatorica 18 173–184.
+  MR1656538
+Fulman, J. (2000a). Affine shuffles, shuffles with cuts, the Whitehouse module, and pa-
+  tience sorting. J. Algebra 231 614–639. MR1778162
+Fulman, J. (2000b). Semisimple orbits of Lie algebras and card-shuffling measures on
+  Coxeter groups. J. Algebra 224 151–165. MR1736699
+Fulman, J. (2001). Applications of the Brauer complex: Card shuffling, permutation
+  statistics, and dynamical systems. J. Algebra 243 96–122. MR1851655
+Fulman, J. (2002). Applications of symmetric functions to cycle and increasing subse-
+  quence structure after shuffles. J. Algebraic Combin. 16 165–194. MR1943587
+Gannon, T. (2001). The cyclic structure of unimodal permutations. Discrete Math. 237
+  149–161. MR1835657
+Gessel, I. M. and Reutenauer, C. (1993). Counting permutations with given cycle
+  structure and descent set. J. Combin. Theory Ser. A 64 189–215. MR1245159
+Gontcharoff, W. (1942). Sur la distribution des cycles dans les permutations. C. R.
+  (Doklady) Acad. Sci. URSS (N.S.) 35 267–269. MR0007207
+Gontcharoff, V. (1944). Du domaine de l’analyse combinatoire. Bull. Acad. Sci. URSS
+  Sér. Math. [Izvestia Akad. Nauk SSSR] 8 3–48. MR0010922
+Grinstead, C. M. and Snell, J. L. (1997). Introduction to Probability, 2nd ed. Amer.
+  Math. Soc., Providence, RI.
+Hadamard, J. (1906). Note de lecture sur J. Gibbs, “Elementary principles in statistical
+  mechanics”. Bull. Amer. Math. Soc 12 194–210.
+Kerov, S. V. and Vershik, A. M. (1986). The characters of the infinite symmetric
+  group and probability properties of the Robinson–Schensted–Knuth algorithm. SIAM
+  J. Algebraic Discrete Methods 7 116–124. MR0819713
+Klarreich, E. (2002). Coming up trumps. New Scientist 175 42–44.
+Klarreich, E. (2003). Within every math problem, for this mathematician, lurks
+  a card-shuffling problem. SIAM News 36. Available at http://www.siam.org/pdf/
+  news/295.pdf.
+Lalley, S. P. (1996). Cycle structure of riffle shuffles. Ann. Probab. 24 49–73. MR1387626
+Lalley, S. P. (1999). Riffle shuffles and their associated dynamical systems. J. Theoret.
+  Probab. 12 903–932. MR1729462
+Macdonald, I. G. (1995). Symmetric Functions and Hall Polynomials, 2nd ed. Oxford
+  Univ. Press, New York. MR1354144
+                                 SHELF SHUFFLING                                     29
+
+Mackenzie, D. (2002). The mathematics of . . . shuffling. DISCOVER. Available at
+  http://discovermagazine.com/2002/oct/featmath.
+Mann, B. (1994). How many times should you shuffle a deck of cards? UMAP J. 15
+  303–332. MR1439037
+Mann, B. (1995). How many times should you shuffle a deck of cards? In Topics in Con-
+  temporary Probability and Its Applications 261–289. CRC, Boca Raton, FL. MR1410540
+Morris, B. (2009). Improved mixing time bounds for the Thorp shuffle and L-reversal
+  chain. Ann. Probab. 37 453–477. MR2510013
+Nyman, K. L. (2003). The peak algebra of the symmetric group. J. Algebraic Combin.
+  17 309–322. MR2001673
+Petersen, T. K. (2005). Cyclic descents and P -partitions. J. Algebraic Combin. 22 343–
+  375. MR2181371
+Petersen, T. K. (2007). Enriched P -partitions and peak algebras. Adv. Math. 209 561–
+  610. MR2296309
+Poincaré, H. (1912). Calcul des probabilités. Georges Carré, Paris.
+Poirier, S. (1998). Cycle type and descent set in wreath products. In Proceedings of the
+  7th Conference on Formal Power Series and Algebraic Combinatorics (Noisy-le-Grand,
+  1995) 180 315–343. MR1603753
+Reiner, V. (1993). Signed permutation statistics and cycle type. European J. Combin.
+  14 569–579. MR1248064
+Rogers, T. D. (1981). Chaos in systems in population biology. In Progress in Theoretical
+  Biology, Vol. 6 91–146. Academic Press, New York. MR0697732
+Shepp, L. A. and Lloyd, S. P. (1966). Ordered cycle lengths in a random permutation.
+  Trans. Amer. Math. Soc. 121 340–357. MR0195117
+Stanley, R. P. (1999). Enumerative Combinatorics, Vol. 2. Cambridge Studies in Ad-
+  vanced Mathematics 62. Cambridge Univ. Press, Cambridge.
+Stanley, R. P. (2001). Generalized riffle shuffles and quasisymmetric functions. Ann.
+  Comb. 5 479–491. MR1897637
+Stark, D., Ganesh, A. and O’Connell, N. (2002). Information loss in riffle shuffling.
+  Combin. Probab. Comput. 11 79–95. MR1888184
+Stembridge, J. R. (1997). Enriched P -partitions. Trans. Amer. Math. Soc. 349 763–788.
+  MR1389788
+Thibon, J.-Y. (2001). The cycle enumerator of unimodal permutations. Ann. Comb. 5
+  493–500. MR1897638
+Thorp, E. O. (1973). Nonrandom shuffling with applications to the game of Faro.
+  J. Amer. Statist. Assoc. 68 842–847.
+Vershik, A. M. and Shmidt, A. A. (1977). Limit measures arising in the asymptotic
+  theory of symmetric groups, Vol. 1. Theory Probab. Appl. 22 70–85.
+Vershik, A. M. and Shmidt, A. A. (1978). Limit measures arising in the asymptotic
+  theory of symmetric groups, Vol. 2. Theory Probab. Appl. 23 36–49.
+Warren, D. and Seneta, E. (1996). Peaks and Eulerian numbers in a random sequence.
+  J. Appl. Probab. 33 101–114. MR1371957
+
+P. Diaconis                                         J. Fulman
+Departments of Mathematics and Statistics           Department of Mathematics
+Stanford University                                 University of Southern California
+Stanford, California 94305-4065                     Los Angeles, California 90089-2532
+USA                                                 USA
+E-mail: diaconis@math.stanford.edu                  E-mail: fulman@usc.edu
+30   P. DIACONIS, J. FULMAN AND S. HOLMES
+
+          S. Holmes
+          Department of Statistics
+          Stanford University
+          Stanford, California 94305-4065
+          E-mail: susan@stat.stanford.edu
+

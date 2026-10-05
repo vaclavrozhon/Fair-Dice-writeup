@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{proposition}{Proposition}
+\title{An integral 5-adic point on the five-row comparison variety}
+\author{Exact computational certificate; independently reviewed}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+\begin{proposition}
+The fifteen centered five-row, four-column comparison moment
+equations have a solution with all coordinates in $\mathbb Z_5$.
+\end{proposition}
+\begin{proof}
+For nonempty $S\subseteq\{1,2,3,4\}$ use the integer polynomials
+\[
+ F_S(x)=3\sum_{i=1}^5\prod_{j\in S}x_{j,i}-b_S,
+ \quad b_S=\begin{cases}5,&|S|=2,\\3,&|S|=4,\\0,&|S|\text{ odd}.\end{cases}
+\]
+Take the initial four columns
+\[
+ (22,15,33,31,24),\quad (97,65,58,31,124),
+ \quad(14,6,88,0,17),\quad(62,75,113,106,19).
+\]
+In subset order by size and then lexicographically their residuals are
+\[
+\begin{split}
+(375,1125,375,1125,26875,11125,29875,26875,69250,34750,\\
+764250,1740375,1085250,2190750,66855375).
+\end{split}
+\]
+All residuals are divisible by $125$. Flattening the variables
+column by column with indices $0,\ldots,19$, choose the fifteen
+Jacobian columns
+\[
+0,1,2,3,5,6,7,10,11,12,15,16,17,4,8.
+\]
+The resulting square matrix $J$ has determinant
+\[
+ -254169067184538400674529220966400,
+\]
+of 5-adic valuation two, and has rank thirteen modulo five. Hence
+every cofactor is divisible by five, so all entries of $J^{-1}$ lie
+in $5^{-1}\mathbb Z_5$.
+
+Fixing the other five variables, the map $y\mapsto y-J^{-1}F(y)$
+preserves the ball $x+25\mathbb Z_5^{15}$ and is a strict contraction
+there. Indeed its initial displacement has valuation at least two,
+and the change of the polynomial Jacobian throughout the ball has
+entries divisible by $25$. The contraction principle supplies an
+exact zero of all the moment polynomials.
+
+The integer certificate is stored in
+\texttt{general\_q5\_hensel\_certificate.json}; the script
+\texttt{lift\_general\_q5.py} reproduces the residual, determinant,
+and inverse valuation checks by exact rational arithmetic.
+\end{proof}
+This is a statement over $\mathbb Q_5$, with no assertion of a
+rational or real monotone point. Together with the separate 2-adic
+and 3-adic certificates, it rules out local insolubility at the three
+smallest primes as an obstruction to five-row local models.
+\end{document}

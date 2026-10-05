@@ -1,0 +1,231 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=24mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\PP}{\mathcal P}
+\title{Synchronized local completion with a fixed number of controlled moments}
+\author{Complete proof; three independent mathematical reviews completed}
+\date{30 September 2026}
+\begin{document}\maketitle
+Fix $q\ge1$ and positive constants $a,b$. Polynomial bounds below are
+in one parameter $P$, with exponents depending only on $q,a,b$ and the
+fixed input polynomial bounds. A single common denominator, rather
+than separate bounds on individual denominators, is part of the conclusion.
+
+\begin{theorem}\label{main}
+Consider polynomially many rational polynomial probability densities
+$w_\alpha$ on $[0,1]$, satisfying $a\le w_\alpha\le b$, with polynomial
+degrees, and let $m\ge\max(2,q)$ be polynomially bounded.
+Put $R=m+q+2+\max_\alpha\deg w_\alpha$.
+For each instance prescribe an integer $K_\alpha$ with
+\[
+ CR^4\le K_\alpha\le\operatorname{poly}(P).
+\]
+Suppose the numbers
+\begin{equation}\label{inputarithmetic}
+ K_\alpha\int_0^1t^j w_\alpha(t)dt,
+       \qquad 0\le j\le2q+1,
+\end{equation}
+have one polynomial common denominator. There exist one polynomial
+integer $L$ and, for every instance, rational pure densities
+$f_{A,\alpha},f_{B,\alpha}$ such that:
+\begin{enumerate}
+\item Their ordered polynomial moments through degree $m$ equal those
+of independent uniform and $w_\alpha$ variables, respectively.
+\item $B$ occupies $K_\alpha$ disjoint boxes, each of mass $1/K_\alpha$;
+$A$ occupies the complementary gaps. The endpoints of \emph{all}
+boxes and gaps across \emph{all} instances lie on one polynomial grid.
+\item On every $A$ gap, all unnormalized moments through $q$ are
+integers divided by $L$. On every $B$ box, all conditional moments
+through $q$ have one polynomial common denominator, shared across all
+boxes and all instances.
+\item The numbers of cells, reciprocal lengths, reciprocal positive
+masses, and polynomial degrees are polynomially bounded. Conditional
+densities, rescaled to their cells, have fixed positive upper and lower
+bounds depending only on $a,b,q$.
+\end{enumerate}
+No small-denominator claim is made for higher moments or coefficients.
+\end{theorem}
+
+\begin{lemma}[A fixed finite set of forced quadrature nodes]\label{forced}
+For each fixed $h$, one may strengthen the separated weighted quadrature
+lemma in \path{generalized_local_two_variable_completion.tex} by
+requiring nodes at the prescribed positions
+$\tau_i=i/(h+1)$, $1\le i\le h$.
+Every sufficiently large $K\ge C_h(D+d+1)^4$ is allowed for a degree-$D$
+rule of a degree-$d$ density with bounds $a,b$.
+All endpoint and consecutive gaps remain at least $c_h/K$.
+\end{lemma}
+\begin{proof}
+Begin with the midpoint quantile grid. For each $\tau_i$, replace a
+nearest grid point by $\tau_i$; these chosen points are distinct once
+$K$ is large. A nearest-point choice leaves distance at least half the
+minimum original grid spacing to every unchosen neighbor. Each move
+is $O_{a,b}(1/K)$. Its contribution to the normalized moment residual
+is $O(\operatorname{poly}(D+d)/K^2)$, and there are only $h$ moves.
+Run the same fixed-right-inverse Newton argument on the \emph{other}
+nodes, holding these $h$ coordinates fixed. Deleting $h$ columns from
+the ordinary Legendre derivative Gram changes it by at most $C_hD^2/K$;
+the forced moves produce another polynomially small error. The lower
+Gram bound survives. The correction radius is still
+$C_h(D+d+1)^4/K^2$, smaller than a prescribed small multiple of $1/K$.
+Thus the free nodes remain separated, and the fixed nodes are retained.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{main}]
+\emph{One universal feature family.}
+Use the cumulative-moment conditioning theorem in
+\path{../rational_designs/asymptotic/multiple_prefix_moment_conditioning.tex}.
+Choose the same $q$ separated Legendre bands for every instance, with
+the first degree larger than $\max\deg w_\alpha+J+q+1$, where
+$J=m+q+1$. All band degrees are $O_q(R)$.
+With one common sufficiently small inverse-polynomial $\eta$, put
+\[
+ f_*(t)=1-\eta\sum_{i=1}^qP_{d_i}(2t-1),\qquad
+ M_s(t)=\int_0^t u^s f_*(u)du\quad(0\le s\le q).
+\]
+These features are within $C_q\eta$ of $t^{s+1}/(s+1)$ and have
+polynomially bounded derivatives. Their polynomial-multiplier family
+$1,M_0,\ldots,M_q$, with multiplier degrees at most $J-1$, has an
+inverse-polynomial Gram lower bound. This holds uniformly with every
+weight $w_\alpha$ by the assumed density bounds.
+Legendre orthogonality gives
+\begin{equation}\label{compatbaseline}
+ \int t^j M_s(t)w_\alpha(t)dt
+  =\frac1{s+1}\int t^{j+s+1}w_\alpha(t)dt
+       \qquad(0\le j\le J,\ 0\le s\le q).
+\end{equation}
+
+Set $h=q+2$. Use Lemma~\ref{forced} to choose, for each prescribed
+$K_\alpha$, a separated real rule $b^0_{\alpha u}$ of sufficiently high
+degree $O_q(R)$. It is exact for every moment in
+\eqref{compatbaseline} and for squares of every feature-multiplier
+polynomial just described. It contains all $h$ universal control nodes
+$\tau_i=i/(h+1)$.
+
+\emph{Shared rational control features and exact rank sums.}
+Let $D_0$ clear the common denominators in \eqref{inputarithmetic}.
+Choose one large polynomial integer $L$ divisible by the PRODUCT
+$D_0(q+1)!$. At the $h$
+control indices, round the numbers $M_s(\tau_i)$ DOWN once to multiples
+of $1/L$, using identical values in every instance. These feature
+values, together with the constant feature $1$, form a square
+$h\times h$ matrix $\Psi_*$. It is a small perturbation of the fixed
+Vandermonde-type matrix with rows
+$1,\tau,\tau^2/2,\ldots,\tau^{q+1}/(q+1)$.
+Hence its inverse norm is bounded in terms of $q$ alone. Its rational
+inverse has one polynomial denominator, because $h$ is fixed and all
+entries have denominator dividing $L$.
+
+Round the other feature values $M_s(b^0_{\alpha u})$ to the same grid,
+and correct their sums to satisfy
+\[
+ \sum_u r_{s,\alpha u}
+ =\frac{K_\alpha}{s+1}\int t^{s+1}w_\alpha(t)dt.
+\]
+The desired sums multiplied by $L$ are integers by
+\eqref{inputarithmetic}. The control values remain fixed. After
+rounding down, at most $K_\alpha$ integer units are needed, so adding
+at most two units to each of the $K_\alpha-h$ free entries suffices
+for large enough $K_\alpha$. Thus every feature changes by at most
+$2/L$. The same assertion holds for each of the fixed number of
+feature rows independently.
+
+Hold all these rational features fixed and correct the nodes to
+restore every nonconstant ordinary and feature-weighted moment through
+$J$. In the antiderivative Legendre basis, the derivative evaluates
+$1,M_0,\ldots,M_q$ times the Legendre polynomials of degrees below $J$.
+Its baseline empirical Gram is exactly the weighted continuous Gram.
+The conditioning theorem, polynomial derivative bounds, and the
+$O(\operatorname{poly}(P)/L)$ rounding residual give the same
+fixed-right-inverse contraction as in the reviewed local two-variable
+proof. With a sufficiently large exponent for $L$, the node displacement
+is smaller than any prescribed inverse polynomial. All separations
+survive. The control \emph{nodes} may move at this step; their rational
+\emph{features} remain the identical columns of $\Psi_*$, which is
+what the denominator argument below requires.
+We now have exact ordinary moments and
+\begin{equation}\label{rankexact}
+ K_\alpha^{-1}\sum_u r_{s,\alpha u}b_{\alpha u}^j
+ =\frac1{s+1}\int t^{j+s+1}w_\alpha(t)dt,
+       \qquad 0\le j\le J.
+\end{equation}
+All feature arrays remain within $C_q\eta$ of the uniform prefix
+moments $b^{s+1}/(s+1)$, after choosing the rounding precision finer.
+
+\emph{Smoothing with one common low-moment denominator.}
+Apply the fixed-$q$ box-smoothing argument in
+\path{../rational_designs/asymptotic/polynomial_mean_box_smoothing.tex}
+using the feature rows $(1,r_0,\ldots,r_q)$.
+Choose one common inverse-polynomial halfwidth $\epsilon$ and one
+common polynomial center-rounding grid, sufficiently fine for all
+instances. Uniform bounds on all preceding condition numbers allow
+these choices. First solve the real uniform-box moment problem;
+then round centers and low conditional box moments through $q$ on
+common grids, and correct the low global moment totals using exactly
+the control minor $\Psi_*$ in each instance.
+
+Here is the arithmetic point in full. The control equations have form
+\[
+ \Psi_*\mu_{\rm control,j}
+ =K_\alpha T_{\alpha,j}
+       -\sum_{u\notin\mathrm{control}}\psi_{\alpha u}\mu_{\alpha u,j}.
+\]
+Every entry on the right has one common polynomial denominator across
+all instances. For the sum this follows from the common feature and
+moment grids. For the targets it follows from
+\eqref{inputarithmetic}, since ordinary targets are
+$K_\alpha\int t^j w_\alpha$ and feature targets are
+$K_\alpha\int t^{j+s+1}w_\alpha/(s+1)$, with $j\le q$ and
+$j+s+1\le2q+1$.
+The inverse of $\Psi_*$ is the SAME rational matrix in every instance.
+Therefore all corrected conditional low box moments share one
+polynomial denominator. No least common multiple of unrelated minors
+is used. The remaining high moments are corrected by the degree-$(q+1)$
+Legendre mode on each box; its rational coefficients may have unrestricted
+denominators. The reviewed argument gives positive conditional densities
+with fixed bounds, exact ordinary moments and exact \eqref{rankexact}.
+All box endpoints use the common center grid and halfwidth.
+
+\emph{Positive completion on the gaps.}
+Prescribe on the $A$ gaps cumulative moments $r_{s,\alpha u}$,
+$0\le s\le q$, before each $B$ box, with the endpoint values
+$0$ and $1/(s+1)$. All lie on the $1/L$ grid. On each gap realize
+the required moments by a polynomial of degree $q$, obtaining $g$.
+The elementary rescaled moment system gives
+\[
+ \|g-1\|_{L^\infty(\mathrm{gaps})}
+ \le \operatorname{poly}_q(P)(\eta+\epsilon+	ext{node/center errors}),
+\]
+while extending $g$ by zero on the boxes adds at most
+$\sqrt{2K_\alpha\epsilon}$ to $\|1-g\|_2$.
+The exact equations \eqref{rankexact}, and the ordinary box moments,
+are precisely the compatibility conditions on
+\[
+ \mathcal S_q=\PP_q+\operatorname{span}\{a^sS_t(a):s\le q,\ s+t\le m\}.
+\]
+Use the fixed-$q$ quantitative smoothed quotient and positive-completion
+extension in
+\path{../independent_directions/quantitative_smoothed_quotient.tex}.
+Its losses are polynomial for fixed $q$ and inverse-polynomial gap
+lengths. Choose first $\eta$ sufficiently small, then $\epsilon$,
+then all rounding precisions sufficiently fine. The resulting rational
+Riesz correction has zero moments through $q$ on every gap and produces
+$f_A$ between $1/4$ and $7/4$ there. Thus each gap moment through $q$
+is exactly a difference of entries of the $1/L$ prefix grids.
+The density is polynomial of degree at most $m$ on gaps; $B$ pieces
+have degree at most $q+1$. Lengths and masses are inverse-polynomial,
+and conditional density bounds follow by normalizing each cell.
+
+Finally, exact integration of
+$\PP_m+\operatorname{span}\{a^rS_s(a):r+s\le m\}$ gives
+\[
+ \mathbb E[A^rB^s\mathbf1_{A<B}]
+ =\frac1{r+1}\int b^{r+s+1}w_\alpha(b)db
+       \qquad(r+s\le m),
+\]
+and the ordinary and opposite-chamber moments follow as before.
+This proves the ordered target assertion and all denominator claims.
+\end{proof}
+\end{document}

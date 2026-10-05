@@ -1,0 +1,181 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=26mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\title{Local boundary rigidity for monotone scalar transfer}
+\author{Research note: a partial result, not the general transfer theorem}
+\date{30 September 2026}
+\begin{document}\maketitle
+
+For a $K\times m$ real array $x=(x_j(q))$, assume each column is weakly
+increasing and all distinct-coordinate mixed moments depend only on their
+degree:
+\[
+ K^{-1}\sum_q\prod_{j\in S}x_j(q)=\mu_{|S|}.
+\]
+The scalar-transfer question asks whether there are $K$ real numbers $t_q$
+with $K^{-1}\sum_qt_q^s=\mu_s$ for $1\le s\le m$, and, when the array lies
+in an interval, whether the $t_q$ can be chosen in that interval.
+The result below concerns regular scalar boundaries only.
+
+\begin{lemma}\label{abs}
+If $f,g$ are increasing functions on a probability interval, both with
+mean zero, then
+\[
+ E|fg|\le3E(fg).
+\]
+In particular their covariance is nonnegative; if both are nonconstant,
+it is strictly positive.
+\end{lemma}
+\begin{proof}
+Write an increasing mean-zero function as a positive Stieltjes combination
+of $h_s(u)={\bf1}_{u\ge s}-(1-s)$, $0<s<1$. For $s\le t$,
+\[
+ E(h_sh_t)=s(1-t),\qquad
+ E|h_sh_t|=s(1-t)[1+2(t-s)]\le3s(1-t).
+\]
+Integrate the first equality and the inequality against the two positive
+Stieltjes measures, using the triangle inequality for the absolute value.
+For finite ordered probability spaces this follows by embedding the
+functions as step functions. The covariance kernel is strictly positive
+at every pair of interior jumps, proving the last assertion.
+\end{proof}
+
+\begin{theorem}\label{local}
+Fix $m\ge2$ and a scalar array $a(q)$ with distinct levels
+$a_1<\cdots<a_r$, where $r\le m-1$. Let their multiplicities be $k_l$.
+Suppose a monic polynomial
+\[
+ P(t)=t^m+\sum_{s=0}^{m-1}\gamma_st^s
+\]
+satisfies $P'(a_l)=0$ at every level and $P''(a_l)>0$ at every level
+whose multiplicity is at least two. Then there is a neighborhood of the
+scalar array $(a(q),\ldots,a(q))$ with the following property.
+Every monotone exchangeable-moment array in that neighborhood satisfying
+\[
+ \mu_s=K^{-1}\sum_q a(q)^s\qquad(1\le s\le m-1)
+\]
+satisfies
+\[
+ \mu_m\ge K^{-1}\sum_q a(q)^m.
+\]
+If equality holds, then on each scalar level all but at most one column
+are constant, and every column has mean $a_l$ on that level. Such an
+array has exactly the same mixed moments as the scalar array in all
+degrees at most $m$.
+\end{theorem}
+\begin{proof}
+All estimates below have constants depending only on the fixed scalar
+array and $m$. On the block $B_l$ of $k_l$ rows write
+\[
+ x_j=a_l+b_{jl}+e_j,\qquad E_l e_j=0,
+\]
+where $E_l$ is the uniform mean on the block. Every $e_j$ is increasing
+there. Set
+\[
+ C_{lij}=E_l(e_ie_j)\ge0,
+ \quad S=\sum_l\sum_{i<j}C_{lij},
+ \quad B=\max_{j,l}|b_{jl}|,
+ \quad \delta=\max_{j,q}|x_j(q)-a(q)|.
+\]
+For any set $I$ of at least two indices, Lemma~\ref{abs} implies, for
+any two distinct $i,j\in I$,
+\[
+ \left|E_l\prod_{v\in I}e_v\right|
+ \le3(2\delta)^{|I|-2}C_{lij}.
+\tag{1}
+\]
+Thus the difference between any mixed moment of $x$ and the corresponding
+mixed moment of the block-constant means $a_l+b_{jl}$ is $O(S)$,
+uniformly for arrays in a fixed small neighborhood.
+
+We claim that $B=O(S)$. Consider the map from the $mr$ variables $b_{jl}$
+to all mixed moments of degrees $1,\ldots,m-1$ of the block-constant
+array. Its derivative at zero is injective. Indeed, a vector $b$ in its
+kernel satisfies, for every $s\le m-1$ and every $s$-element set $T$,
+\[
+ \sum_{j\in T}\sum_l(k_l/K)a_l^{s-1}b_{jl}=0.
+\]
+Since $1\le s<m$, comparing sets differing in one element shows that
+all the inner sums are equal, and then each is zero. For each fixed $j$,
+the first $r$ of these equations form an invertible weighted Vandermonde
+system, so every $b_{jl}=0$. The derivative therefore has a bounded left
+inverse. The prescribed lower mixed moments and (1) now give
+$B\le C(S+B^2)$; after shrinking the neighborhood this yields $B=O(S)$.
+
+For any polynomial $P$, its symmetric multiaffine polarization in $m$
+variables evaluated at $a_l+d_1,\ldots,a_l+d_m$ is
+\[
+ P(a_l)+\sum_{s=1}^m
+       \frac{P^{(s)}(a_l)}{s!}\,
+       \frac{e_s(d_1,\ldots,d_m)}{\binom ms}.
+\tag{2}
+\]
+Here $e_s$ is the elementary symmetric polynomial. Average (2) over
+rows, putting $d_j=b_{jl}+e_j$. The $s=1$ term vanishes because
+$P'(a_l)=0$. The quadratic term is
+\[
+ \sum_l\frac{k_l}{K}\frac{P''(a_l)}{m(m-1)}
+       \sum_{i<j} C_{lij}+O(S^2).
+\tag{3}
+\]
+By (1) and $B=O(S)$, every term of degree at least three has total
+absolute value $O(\delta S+S^2)$. On a singleton block all $C_{lij}$
+vanish. Hence the main term in (3) is at least $cS$ for some fixed
+$c>0$, unless there are no repeated levels, in which case $S=0$.
+For sufficiently small $\delta$, the full difference is nonnegative,
+and is strictly positive if $S>0$.
+
+By exchangeability of mixed moments, the average polarization is
+$\mu_m+\sum_{s<m}\gamma_s\mu_s$. The lower moments agree with those of
+$a$, giving the desired comparison of the degree-$m$ moments. If
+$S=0$, then $B=0$. Strictness in Lemma~\ref{abs} says that on each
+block at most one $e_j$ is nonconstant. Every distinct-coordinate
+product therefore has block mean $a_l^{|T|}$, as asserted.
+\end{proof}
+
+\begin{corollary}[Few-level rigidity]
+Suppose the scalar baseline has $r$ distinct levels and $2r\le m-1$.
+Every sufficiently nearby monotone exchangeable-moment array with the
+same first $m-1$ moments has exactly the same mixed moments in all
+degrees at most $m$. On each baseline level at most one column varies,
+and all column means there equal the baseline level.
+\end{corollary}
+\begin{proof}
+Use the proof of Theorem~\ref{local} with
+$Q(t)=\prod_{l=1}^r(t-a_l)^2$ in place of $P$. Its degree is at most
+$m-1$, so the expectation of its polarization is fixed by the prescribed
+lower moments. Also $Q'(a_l)=0$ and
+$Q''(a_l)=2\prod_{v\ne l}(a_l-a_v)^2>0$ at every level.
+The same expansion gives a difference at least $cS$ for small enough
+neighborhoods. Since the difference is zero, $S=0$, and the equality
+argument in Theorem~\ref{local} applies.
+\end{proof}
+
+At a regular scalar constrained local minimum of the $m$-th
+moment with the first $m-1$ moments fixed and $r=m-1$ distinct
+interior levels, the Lagrange multiplier polynomial has precisely the
+form in Theorem~\ref{local}.
+Its derivative vanishes at all interior levels. Splitting two equal
+nodes in opposite directions leaves the lower moments unchanged to
+first order; the scalar second-order necessary condition gives
+$P''(a_l)\ge0$ at every repeated level. At a regular boundary with
+$r=m-1$ distinct interior levels, the critical points are simple, so
+this inequality is strict. Thus the theorem rules out a local
+outward crossing at every such boundary.
+
+More precisely, when $r=m-1$, the map from the $r$ levels to the first
+$r$ scalar moments has an invertible weighted Vandermonde derivative.
+Nearby lower moments determine a nearby scalar branch with the same
+multiplicities. Applying Theorem~\ref{local} uniformly to that branch
+shows that nearby monotone tensors lie on its allowed side.
+
+This is \emph{not} a proof of general scalar transfer. It does not
+classify singular scalar boundary strata, endpoint strata, or global
+components of the tensor moment image. In particular affine contraction
+of all columns preserves exchangeability and can move a hypothetical
+real-line counterexample arbitrarily near a fully collapsed scalar
+array. The regular-boundary result alone cannot exclude that possibility.
+\end{document}

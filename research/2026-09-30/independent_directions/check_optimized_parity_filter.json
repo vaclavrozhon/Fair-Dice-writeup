@@ -1,0 +1,178 @@
+{
+  "status": "passed",
+  "degree_max": 40,
+  "normalization_depth_max": 8,
+  "filter_count": 160,
+  "odd_degree_valuation_checks": 152,
+  "equality_case_shifted_integral_checks": 120,
+  "small_filters": [
+    {
+      "degree": 2,
+      "normalization": 2,
+      "correction_index": 2,
+      "correction_scalar": "-1",
+      "coefficients_ascending": [
+        "0",
+        "4",
+        "-3"
+      ]
+    },
+    {
+      "degree": 4,
+      "normalization": 2,
+      "correction_index": 4,
+      "correction_scalar": "8",
+      "coefficients_ascending": [
+        "0",
+        "-80/3",
+        "52",
+        "-88/3",
+        "5"
+      ]
+    },
+    {
+      "degree": 6,
+      "normalization": 2,
+      "correction_index": 6,
+      "correction_scalar": "113/37",
+      "coefficients_ascending": [
+        "0",
+        "-10384/555",
+        "27124/555",
+        "-4856/111",
+        "1957/111",
+        "-1816/555",
+        "42/185"
+      ]
+    },
+    {
+      "degree": 8,
+      "normalization": 2,
+      "correction_index": 8,
+      "correction_scalar": "1504/833",
+      "coefficients_ascending": [
+        "0",
+        "-234496/12495",
+        "15851264/262395",
+        "-379648/5355",
+        "309856/7497",
+        "-70816/5355",
+        "88388/37485",
+        "-8224/37485",
+        "145/17493"
+      ]
+    },
+    {
+      "degree": 2,
+      "normalization": 4,
+      "correction_index": 0,
+      "correction_scalar": "1/3",
+      "coefficients_ascending": [
+        "4/3",
+        "2",
+        "-1"
+      ]
+    },
+    {
+      "degree": 4,
+      "normalization": 4,
+      "correction_index": 4,
+      "correction_scalar": "-4/7",
+      "coefficients_ascending": [
+        "0",
+        "160/21",
+        "-76/7",
+        "104/21",
+        "-5/7"
+      ]
+    },
+    {
+      "degree": 6,
+      "normalization": 4,
+      "correction_index": 4,
+      "correction_scalar": "-23/147",
+      "coefficients_ascending": [
+        "0",
+        "12032/735",
+        "-22124/735",
+        "972/49",
+        "-2585/441",
+        "4/5",
+        "-2/45"
+      ]
+    },
+    {
+      "degree": 8,
+      "normalization": 4,
+      "correction_index": 8,
+      "correction_scalar": "256/107",
+      "coefficients_ascending": [
+        "0",
+        "-421888/11235",
+        "3677696/33705",
+        "-577024/4815",
+        "64096/963",
+        "-98848/4815",
+        "17132/4815",
+        "-10912/33705",
+        "9/749"
+      ]
+    },
+    {
+      "degree": 2,
+      "normalization": 8,
+      "correction_index": 0,
+      "correction_scalar": "10/3",
+      "coefficients_ascending": [
+        "40/3",
+        "2",
+        "-1"
+      ]
+    },
+    {
+      "degree": 4,
+      "normalization": 8,
+      "correction_index": 0,
+      "correction_scalar": "148/45",
+      "coefficients_ascending": [
+        "2368/45",
+        "16/3",
+        "-20/3",
+        "8/3",
+        "-1/3"
+      ]
+    },
+    {
+      "degree": 6,
+      "normalization": 8,
+      "correction_index": 0,
+      "correction_scalar": "377/945",
+      "coefficients_ascending": [
+        "24128/945",
+        "208/15",
+        "-1148/45",
+        "52/3",
+        "-49/9",
+        "4/5",
+        "-2/45"
+      ]
+    },
+    {
+      "degree": 8,
+      "normalization": 8,
+      "correction_index": 8,
+      "correction_scalar": "-128/989",
+      "coefficients_ascending": [
+        "0",
+        "4481024/103845",
+        "-31195648/311535",
+        "4024832/44505",
+        "-372320/8901",
+        "483104/44505",
+        "-3092/1935",
+        "38816/311535",
+        "-83/20769"
+      ]
+    }
+  ]
+}

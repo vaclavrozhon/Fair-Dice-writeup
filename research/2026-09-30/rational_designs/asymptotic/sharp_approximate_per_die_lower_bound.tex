@@ -1,0 +1,316 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Pol}{\operatorname{Pol}}
+\title{A quadratic precision cutoff for approximately fair dice}
+\author{Research proof; three independent full mathematical reviews completed}
+\date{30 September 2026}
+\begin{document}\maketitle
+\noindent\textbf{Status.} Three independent full mathematical reviews completed
+with no gap identified; this is not formal verification.
+All constants below are absolute. Write $\log(1/0)=+\infty$.
+
+\begin{theorem}\label{main}
+Suppose $n\ge3$ independent equiprobable finite dice have no cross-die
+ties, and every strict order has probability in
+$[(1-\varepsilon)/n!,(1+\varepsilon)/n!]$, where
+$0\le\varepsilon\le1/2$. Every die has at least
+\[
+ c n\min\{n,\log(1/\varepsilon)\}
+\]
+faces, for an absolute $c>0$.
+\end{theorem}
+
+We prove the following tensor version. Let $p_1,\ldots,p_m:[K]\to[0,1]$
+be nondecreasing, with positive probability row weights $w$, and suppose
+all complete failure patterns satisfy
+\begin{equation}\label{approx}
+ \E_w\prod_{j\in F}(1-p_j)\prod_{j\notin F}p_j
+ \in\left[\frac{1-\varepsilon}{(m+1)\binom m{|F|}},
+           \frac{1+\varepsilon}{(m+1)\binom m{|F|}}\right].
+\end{equation}
+Then both endpoint weights are at most
+$C/[m\min\{m,H\}]$, where $H=\log(1/\varepsilon)$.
+For dice, the event specifying which dice exceed the distinguished die
+is a union of strict orders, so \eqref{approx} follows by summation.
+Equal row weights then prove Theorem~\ref{main}.
+
+Put $u_j=1-p_j$, $s=\sum_j u_j$, $\ell=\lfloor m/4\rfloor$,
+$N=m-\ell$, $\alpha=\ell/m$, $x=\alpha s$, and $\theta=1/16$.
+For a uniform $\ell$-subset $B$, let
+$A_B=\prod_{j\in B}p_j$, $\bar A=\E_B A_B$, and
+$v_B=N^{-1}\sum_{j\notin B}\ell u_j$.
+The positive measure $\mu=(\ell+1)w\bar A$ has mass in
+$[1-\varepsilon,1+\varepsilon]$; it is not normalized to probability.
+Let $\nu=mw$ on the coordinate $x$, and let $\beta$ have density
+\[
+ b_\ell(z)=\frac{\ell+1}{\ell}(1-z/\ell)^\ell
+                    \boldsymbol1_{[0,\ell]}(z).
+\]
+
+\begin{lemma}[Robust finite balance]\label{balance}
+There is an absolute $\varepsilon_0>0$ such that, for
+$\varepsilon\le\varepsilon_0$, the finite endpoint inputs hold with
+absolute constants:
+\begin{align}
+ \max_j u_j&\le C(s+1)/m,\label{rough}\\
+ \Pr_w(s\le S)&\le C(S+1)/m\quad(S\ge0),\label{mass}\\
+ \E_w(s+1)^k e^{-a s}&\le C_a^{k+1}k!/m
+                 \quad(k\ge0,a>0).\label{moments}
+\end{align}
+On $s\le c_0m$, all $p_j\ge1/2$, for an absolute $c_0>0$ and
+sufficiently large $m$.
+\end{lemma}
+\begin{proof}
+Summing \eqref{approx} over unspecified coordinates shows that every
+partial pattern with $a$ successes and $b$ failures has probability
+within relative $\varepsilon$ of
+$\int_0^1t^a(1-t)^b\,dt$. This observation will also be used below.
+
+Here are the quantitative changes to
+\path{finite_endpoint_odds_balance.tex}. Normalize each $\ell$-failure
+tilt by its actual mass, which is in $[1-\varepsilon,1+\varepsilon]$.
+All its undivided generating coefficients, including the coefficients
+with one specified derivative, then lie between the exact values
+times $(1-\varepsilon)/(1+\varepsilon)$ and their reciprocals.
+At a target row with $s\le m/256$, fix $i$ and choose
+$J\subseteq[m]\setminus\{i\}$, $|J|=\lceil8s\rceil+4$, containing
+all other columns with $p_j\le1/2$. Omit $i$ from the additional
+failure-generating factors, as in that proof. The remaining target
+odds sum is at most $2s\le|J|/4$.
+For $\varepsilon_0$ sufficiently small, the same coefficientwise
+bad-prefix bound with odds threshold one gives, for the good-row
+remaining odds variable $Z$,
+\[
+ \E Z\ge\tfrac34(|J|+1),\qquad
+ \E Z^2\le2(|J|+1)(|J|+3).
+\]
+Cauchy--Schwarz therefore gives probability at least $1/32$ on rows
+strictly before the target. The specified odds expectation is at most
+$2(|J|+1)/(m-|J|)$. As before, a zero target $p_i$ is impossible on
+that prefix, and monotonicity yields $r_i\le C(s+1)/m$.
+For larger $s$, (\ref{rough}) follows from $u_i\le1$.
+Choosing a smaller absolute $c_0$ gives $p_j\ge1/2$ on $s\le c_0m$.
+
+For (\ref{mass}), on $s\le S\le c_0m$ choose
+$k=\lfloor c m/(S+1)\rfloor$ with a sufficiently small absolute $c$.
+Every $k$-column success product is bounded below absolutely on that
+suffix, while its expectation is at most $(1+\varepsilon)/(k+1)$.
+This proves the mass bound; larger $S$ follow from total mass one.
+Laplace integration and a supremum bound for $(s+1)^k e^{-as/2}$
+prove (\ref{moments}). All constants are uniform in $\varepsilon$.
+\end{proof}
+
+\begin{lemma}[The source error has no dimension factor]\label{source}
+For a polynomial $P(z)=\sum_{k=0}^D a_kz^k$, $D\le N$,
+\[
+ \left|(\ell+1)\E_w\E_B[A_B\Pol_N(P)((\ell u_j)_{j\notin B})]
+                         -\beta(P)\right|
+ \le\varepsilon\sum_k|a_k|k!.                  \tag{3}
+\]
+For the analogous marked measure with one fixed failure outside $B$,
+normalization $(\ell+1)(\ell+2)$ and scalar density proportional to
+$z(1-z/\ell)^\ell$, the bound is
+$\varepsilon\sum_k|a_k|(k+1)!$.
+If $P=Q_1Q_2$ and the degree-$d$ sums
+$Q_b=\sum_{j\le d}c_{bj}L_j(\theta z)$ have coefficient sums $B_b$,
+these errors are at most $\varepsilon B_1B_2 C_1^d$, for an absolute
+$C_1>1$.
+\end{lemma}
+\begin{proof}
+A degree-$k$ polarized monomial uses $k$ distinct failures disjoint
+from the $\ell$ forced successes. Its exact normalized moment is
+\[
+ (\ell+1)\ell^k\int_0^1t^\ell(1-t)^k\,dt\le k!.
+\]
+The marked version has one more failure and its moment is at most
+$(k+1)!$. The partial-pattern observation in Lemma~\ref{balance}
+gives the relative error term by term, proving (3).
+Finally, if $\|P\|_*=\sum|a_k|k!$, the explicit Laguerre coefficients
+give
+\[
+ \|L_j(\theta z)L_k(\theta z)\|_*
+ \le\sum_{a,b}\binom ja\binom kb2^{a+b}\le3^{j+k},
+\]
+since $(a+b)!/(a!b!)\le2^{a+b}$ and $\theta\le1$.
+The marked norm costs only an additional factor $2d+1$, absorbed
+by increasing $C_1$. Constants and degree zero are also covered by
+increasing the prefactor when necessary.
+\end{proof}
+
+\begin{lemma}[Robust Gaussian comparison]\label{comparison}
+For $\varepsilon\le\varepsilon_0$, $d\le c_1m$ with an absolute
+$c_1>0$, and the Laguerre products of Lemma~\ref{source},
+\[
+ |\mu(Q_1Q_2)-\beta(Q_1Q_2)|
+ \le C B_1B_2\{d/m+e^{-cm}+\varepsilon C_1^d\}.   \tag{4}
+\]
+The same assertion holds for the marked comparison after deletion of
+one column. All constants are uniform in that column.
+\end{lemma}
+\begin{proof}
+The analytic comparison in \path{../../power_per_die_lower_bound.tex}
+uses only the finite bounds (\ref{rough})--(\ref{moments}), the
+algebraic success-weighted subset identities, Maclaurin's inequality,
+and the Gaussian Laguerre derivative and centered-variance estimates.
+All these inputs remain valid. Split the subset comparison at
+$s=c_0m$ rather than its former numerical cutoff. Its polarization
+series is bounded by
+$CB_1B_2\sum_{k\ge2}(C\sqrt{d/m})^k(k+1)^C$, so taking $c_1$
+sufficiently small gives $CB_1B_2d/m$ even through linear degrees.
+Lemma~\ref{source} adds the displayed source error.
+
+For the marked measure, deletion leaves an approximate tensor of
+$m-1$ columns by the partial-pattern observation. The original rough
+bound rearranges to $u_i\le C(s_{-i}+1)/m$. Thus its normalization
+$O(m^2)$ gives weighted factorial moments $C^{k+2}(k+1)!$, rather
+than $C^{k+1}k!$. This adds only a polynomial factor to the same
+geometric polarization series. The marked source error is precisely
+the second assertion of Lemma~\ref{source}. No probability
+normalization of $\mu$ is needed in this analytic argument.
+\end{proof}
+
+We retain the endpoint tests
+\[
+ T_d(y)=\sum_{j<d}(1-j/d)L_j(y),\quad
+ U_d(z)=d^{-2}T_d(\theta z)^2,\quad
+ R_d(z)=(2/(\theta d)-z)T_d(\theta z)^2.
+\]
+Their reviewed scalar properties are
+\[
+ \beta(R_d)\ge c>0,\quad \beta(U_d)\le C/d,
+ \quad U_d(z)\ge c\quad(0\le z\le c_2/d).
+ \tag{5}
+\]
+The coefficient product norm is $O(1)$ for $U_d$ and $O(d)$ for
+$R_d$, using $yT_d=d^{-1}\sum_{j<d}L_j-L_d$.
+
+\begin{lemma}[High-precision inputs]\label{high}
+Suppose $H\ge\sqrt m$. Then, for sufficiently large $m$,
+\begin{align}
+ \max_j u_j&\le C(s+\delta)/m,&\delta&=m^{-1/3},\label{improved}\\
+ \nu([0,t])&\le C(t+h),&h&=\max\{H^{-1},m^{-3/4}\}.\label{cdf}
+\end{align}
+For $\varepsilon=0$, take $H^{-1}=0$.
+\end{lemma}
+\begin{proof}
+First (4), applied to $U_d$ with $d\le c_3\sqrt m$, gives
+$\mu(U_d)\le C/d+Cd/m+\varepsilon C_1^d$. Choose $c_3>0$
+small enough that $\varepsilon C_1^d\le e^{-H/2}$. Near-zero
+positivity in (5), $\bar A\ge1-s$, and degree selection therefore
+give the initial CDF bound $\nu([0,t])\le C(t+m^{-1/2})$.
+
+For the relative balance, repeat the marked Laplace argument in
+\path{quantitative_relative_endpoint_balance.tex}. Truncate the
+geometric Laguerre expansion of $e^{-tz/2}$ at
+$D=\lfloor c_3\sqrt m\rfloor$, reducing $c_3$ further if needed.
+Its coefficients $c_j=(1-r)r^j$, $r=t/(t+2\theta)$, have sum at
+most one and weighted degree sum $O(t)$. Applying (4) entrywise to
+$L_jL_k$ therefore gives, for either marked or unmarked measure,
+\[
+ |\mu_a(e^{-t x})-\beta_a(e^{-tz})|
+ \le Ct/m+C e^{-c\sqrt m/t}+C e^{-H/2}.
+ \tag{6}
+\]
+This is uniform for $1/2\le t\le m^{1/3}$. The source errors were
+bounded by their maximum $\varepsilon C_1^D$, while the analytic
+errors use the weighted degree sum. Both measures may have masses
+$1\pm\varepsilon$; positivity and the displayed estimates suffice.
+Their Laplace bounds and the unmarked CDF bound give fixed constants
+$a,b,c,C$ with
+$\mu_0(a/t<x<b/t)\ge c/t$ and
+$\mu_1(x\le b/t)\le C/t^2$, exactly as in that note.
+The unchanged monotone density relation
+$d\mu_1=(\ell+2)u_i\,d\mu_0$ proves (\ref{improved}).
+
+For (\ref{cdf}), use the elementary all-orders $U_d$ comparison in
+\path{../../size_bounds/elementary_endpoint_cdf_bootstrap.tex}.
+Its analytic proof uses only the rough balance and initial CDF;
+by Lemma~\ref{source} the approximate version is
+\[
+ |\mu(U_d)-\beta(U_d)|
+ \le C\{m^{-1}+m^{-1/2}d/m+\log d/(dm)\}
+       +O(m^{-3})+\varepsilon C_1^d.
+ \tag{7}
+\]
+This holds for $m^{1/4}\le d\le c_4\min(H,m^{3/4})$, with
+$c_4$ a sufficiently small absolute constant. The source term is
+at most $e^{-H/2}$, and the right side is $O(1/d)$.
+The usual near-zero positivity and degree selection give
+$\nu([0,t])\le C(t+1/D_{max})$,
+$D_{max}=c_4\min(H,m^{3/4})$. This is (\ref{cdf}).
+\end{proof}
+
+\begin{proof}[Proof of the tensor bound and Theorem~\ref{main}]
+The previously reviewed approximate linear lower bound, proved in
+\path{approximate_per_die_lower_bound.tex}, covers bounded $H$ with
+endpoint weights $O(1/m)$, uniformly for $\varepsilon\le1/2$.
+Thus assume $H\ge H_0$, with $H_0$ a sufficiently large absolute
+constant, so $\varepsilon\le\varepsilon_0$. Small bounded $m$ are
+covered by enlarging constants.
+
+If $H\le\sqrt m$, choose $d=\lfloor c_5H\rfloor$. Equations
+(4)--(5) bound the $R_d$ error by
+\[
+ C d^2/m+C d e^{-cm}+C\varepsilon d C_1^d.
+\]
+First choose $c_5$ small, then $H_0$ large. The first term is at most
+$Cc_5^2$, and the source is at most $Cd e^{-H/2}$, so the error is
+less than half the positive scalar expectation. Therefore
+$x_K<2/(\theta d)$. Apply $U_r$, $r=\lfloor d/16\rfloor$;
+it is bounded below at $x_K$, and its comparison error is at most
+$Cr/m+Ce^{-cm}+C e^{-H/2}=O(1/d)$. Hence $\mu(K)\le C/d$.
+Since $s_K=O(1/d)$, $\bar A(K)\ge1/2$ after increasing $H_0$,
+and $w_K\le C/(md)\le C/(mH)$.
+
+Now let $H\ge\sqrt m$, and use Lemma~\ref{high}. Choose
+$d=\lfloor c_6\min(H,m)\rfloor$, with a sufficiently small fixed
+$c_6>0$. We record explicitly the uniform estimates obtained from
+\path{../../size_bounds/quadratic_per_die_lower_bound.tex} for this
+possibly sublinear degree. Its all-orders Gaussian argument, using
+(\ref{improved})--(\ref{cdf}), gives
+\begin{align*}
+ |\mu(R_d)-\beta(R_d)|
+ &\le C\frac d m(1+\delta\log(2d)+\delta hd)
+       +o(1)+C\varepsilon d C_1^d,\\
+ |\mu(U_d)-\beta(U_d)|
+ &\le C\left\{\frac{\log(2d)}{dm}+\frac hm
+                   +\frac\delta m+\frac{\delta hd}m\right\}
+       +o(m^{-2})+C\varepsilon C_1^d.             \tag{8}
+\end{align*}
+Here the little-oh tails are uniform for
+$c\sqrt m\le d\le c_6m$. To verify this without relying on a
+fixed proportional degree, the small-$x$ errors are respectively
+$C(d^2/m)(1/d+\delta)(1/d+h)$ and
+$C(d/m)(1/d+\delta)(1/d+h)$, absorbed in (8).
+The middle-region envelopes are
+$C(d/m)e^{-cx}(1+\delta/x)$ and
+$C(dm)^{-1}e^{-cx}(x^{-1}+\delta x^{-2})$.
+Their CDF integrals are precisely the terms in (8).
+Bad subsets have exponent at least $cm/(d\delta)\ge c m^{1/3}$;
+the outer region has exponent at least $cd\ge c\sqrt m$.
+Choose $c_6$ small enough for the same exponential margins as in
+the exact proof. Lemma~\ref{source} supplies the only additional
+terms, the displayed source errors.
+
+In this regime
+\[
+ \delta hd\le C m^{-1/3}\max\{1,m^{1/4}\}=O(m^{-1/12}),
+ \qquad \varepsilon C_1^d\le e^{-H/2}.
+\]
+Thus the first line of (8) is at most $Cc_6+o(1)$, made smaller
+than half the scalar positivity constant. Again $x_K<2/(\theta d)$.
+For $r=\lfloor d/16\rfloor$, the second line of (8) is $o(1/d)$:
+after multiplication by $d$, every displayed term tends to zero.
+Since $U_r(x_K)\ge c$ and $\beta(U_r)\le C/r$, we obtain
+$\mu(K)\le C/d$. The same endpoint conversion gives
+\[
+ w_K\le C/(md)\le C/[m\min(H,m)].
+\]
+Reversing rows and complementing all columns preserves the approximate
+pattern hypothesis and gives the same result for $w_1$.
+The tensor-to-dice reduction at the start completes the proof.
+\end{proof}
+\end{document}

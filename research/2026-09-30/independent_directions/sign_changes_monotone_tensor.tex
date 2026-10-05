@@ -1,0 +1,226 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\emergencystretch=2em
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\E}{\mathbb E}
+\newcommand{\V}{\operatorname{var}}
+\title{A sign-change bound for strictly increasing comparison columns}
+\author{Research note, 30 September 2026}
+\date{}
+\begin{document}
+\maketitle
+
+For a nonzero real vector $h$ on the ordered set $[K]$, write $\V(h)$
+for the number of sign changes after zero entries are deleted.
+Expectation below may use any strictly positive weights on $[K]$.
+
+\begin{lemma}[Products detect few sign changes]\label{variation}
+Let $f_1,\ldots,f_d$ be strictly increasing functions on $[K]$.
+If a nonzero vector $h$ satisfies
+\[
+ \E\left[h\prod_{j\in S}f_j\right]=0
+ \qquad\text{for every }S\subseteq[d],
+\]
+then $\V(h)\ge d+1$.
+\end{lemma}
+\begin{proof}
+Suppose $h$ has $r\le d$ sign changes. Assign a distinct $f_j$ to
+each sign change. If consecutive nonzero entries $h(q),h(q')$ have
+opposite signs, choose the threshold for its assigned function strictly
+between $f_j(q)$ and $f_j(q')$. The product of these $r$ factors
+$(f_j-\theta_j)$ changes sign at exactly the same places as $h$ on
+the support of $h$, and is nonzero there. Changing its overall sign
+if necessary gives a function $P$ such that $hP>0$ throughout that
+support. But $P$ expands into squarefree products of the $f_j$, so
+$\E[hP]=0$, a contradiction.
+\end{proof}
+
+\begin{lemma}[Variation of a product]\label{product}
+For nonzero vectors $h,g$ on $[K]$ whose pointwise product is nonzero,
+\[
+ \V(hg)\le 2K-2-\V(h)-\V(g).
+\]
+\end{lemma}
+\begin{proof}
+First suppose neither vector has a zero. An edge on which the product
+changes sign is an edge on which exactly one factor changes sign.
+Counting the four possible types of edge gives
+$\V(hg)\le2(K-1)-\V(h)-\V(g)$.
+
+For the general case, let $z_h,z_g$ be their numbers of zeros and let
+$z_0$ count their common zeros. Restrict both vectors to their common
+nonzero support, of size $N=K-z_h-z_g+z_0$.
+Deleting a nonzero entry reduces sign variation by at most two.
+The restricted variations are therefore at least
+$\V(h)-2(z_g-z_0)$ and $\V(g)-2(z_h-z_0)$.
+Applying the zero-free bound on the common support gives
+\[
+ \V(hg)\le2K-2-\V(h)-\V(g)-2z_0,
+\]
+which suffices.
+\end{proof}
+
+\begin{theorem}\label{structure}
+Let $m\ge4$. Suppose $p_1,\ldots,p_m$ are strictly increasing functions
+on $[K]$, and their mixed squarefree moments depend only on the number
+of factors:
+\[
+ \E\prod_{j\in S}p_j=\mu_{|S|}
+ \qquad(S\subseteq[m]).
+\]
+If $K<(3m-3)/2$, then at least $m-1$ of the functions are identical.
+\end{theorem}
+\begin{proof}
+For distinct indices $i,j$, the difference $h=p_i-p_j$ is orthogonal
+to all squarefree products of the remaining $m-2$ functions.
+Lemma~\ref{variation} shows that either $h=0$ or $\V(h)\ge m-1$.
+In particular every nonzero difference has at least $m$ nonzero entries.
+
+Suppose there are two disjoint pairs of indices with nonzero differences,
+say $h=p_i-p_j$ and $g=p_k-p_l$.
+Since $K<(3m-3)/2<2m$, their supports intersect and $hg\ne0$.
+Expanding the differences shows that $hg$ is orthogonal to all
+squarefree products of the remaining $m-4$ functions. Hence
+Lemma~\ref{variation} gives $\V(hg)\ge m-3$.
+But Lemma~\ref{product} gives
+\[
+ \V(hg)\le2K-2-2(m-1)=2(K-m)<m-3,
+\]
+a contradiction.
+
+Thus the graph joining indices with different functions has no matching
+of size two. It is a complete multipartite graph, its parts being the
+classes of identical functions. For $m\ge4$, such a graph can have
+matching number at most one only if one class has size at least $m-1$.
+\end{proof}
+
+\begin{corollary}[Rational uniform comparison tensors]\label{rational}
+Suppose additionally that all $p_j(q)$ are rational, the $K$ atoms have
+equal weight, and $\mu_s=1/(s+1)$.
+For $m\ge4$,
+\[
+ K\ge\left\lceil\frac{3m-3}{2}\right\rceil.
+\]
+Thus a permutation-fair collection of $n\ge5$ finite dice has this
+bound, with $m=n-1$, on a distinguished die whenever every other die
+has at least one face strictly between each consecutive pair of its
+faces.
+\end{corollary}
+\begin{proof}
+Otherwise Theorem~\ref{structure} supplies a common rational column
+occurring at least $m-1$ times. Its $K$ values are an equal-weight
+uniform-interval quadrature rule of degree $m-1$.
+For $m=4,5,6,7,8$, the odd-prime obstruction in
+\path{odd_prime_quadrature_obstruction.tex} gives, respectively,
+$K\ge6,10,10,14,14$, contradicting $K<(3m-3)/2$.
+For $m\ge9$, the bound $K\ge2^{\lfloor(m-1)/2\rfloor}$ from
+\path{../rational_designs/two_adic_lower_bound.tex} is already larger
+than $(3m-3)/2$.
+\end{proof}
+
+\begin{lemma}[A sparse-plateau version of Lemma~\ref{variation}]\label{hall}
+Let $f_1,\ldots,f_d$ be nondecreasing. Suppose each $f_j$ is flat
+on at most $b$ adjacent pairs of $[K]$, and at most $F$ of the functions
+are flat on any one adjacent pair. If $b+F\le d$, then the conclusion
+of Lemma~\ref{variation} still holds.
+\end{lemma}
+\begin{proof}
+Suppose a nonzero orthogonal $h$ has $r\le d$ sign changes. Form the
+bipartite graph from these $r$ cuts to the $d$ functions: a function is
+adjacent to a cut between consecutive nonzero entries $h(q),h(q')$ when
+$f_j(q)<f_j(q')$. Each cut has at least $d-F\ge b$ neighbors.
+Each function fails to be adjacent to at most $b$ cuts, because the cut
+intervals are disjoint and flatness across one consumes at least one of
+its flat adjacent pairs. A set of at most $b$ cuts therefore has at least
+as many neighbors, and a set of more than $b$ cuts has all $d$ functions
+as neighbors. Hall's theorem gives distinct functions for all cuts.
+The threshold-product proof of Lemma~\ref{variation} now applies.
+\end{proof}
+
+\begin{corollary}[Sparse plateaus at $K=m$]\label{equal-size-plateaus}
+Suppose the functions in Theorem~\ref{structure} are only nondecreasing,
+and $K=m$. Define $b$ as the largest number of flat adjacent pairs of
+one column, and $F$ as the largest number of columns flat on one adjacent
+pair. If $b+F\le m-2$, then at least $m-1$ columns are identical.
+In the rational uniform-interval setting, no such tensor exists for
+$m\ge4$.
+\end{corollary}
+\begin{proof}
+For any nonzero difference $h=p_i-p_j$, Lemma~\ref{hall} applies to
+the other $m-2$ columns. Thus $h$ changes sign at least $m-1$ times;
+as there are $m$ atoms, it is nonzero everywhere and strictly alternating.
+Two differences from disjoint pairs would then have a product with a
+constant nonzero sign. This contradicts their orthogonality to each
+other. The same complete multipartite graph argument as before gives
+$m-1$ identical columns.
+
+These common values give a rational equal-weight degree-$(m-1)$ rule
+with $m$ nodes. For $m=4$ the degree-three bound $K\ge6$ from
+\path{odd_prime_quadrature_obstruction.tex} excludes it. For $m\ge5$,
+\path{optimized_two_adic_filter.tex} gives
+$K\ge2^{2\lfloor(m-1)/2\rfloor}>m$.
+\end{proof}
+
+The proof of Theorem~\ref{structure} itself also extends to nondecreasing
+columns whenever $b+F\le m-4$: apply Lemma~\ref{hall} both to single
+differences and to products of two disjoint differences. Thus the same
+threshold $(3m-3)/2$ and its rational corollary remain valid under that
+sparse-plateau condition.
+
+\begin{corollary}[One flat edge per column]\label{one-flat}
+In the rational uniform-interval setting with $K=m\ge5$, some column
+must be flat on at least two adjacent pairs.
+\end{corollary}
+\begin{proof}
+Suppose every column is flat on at most one edge. If $F\le m-3$,
+Corollary~\ref{equal-size-plateaus} already gives a contradiction.
+Thus some edge $e$ has at least $m-2$ flat columns. There is at most one
+such edge, because two sets of $m-2$ columns would intersect for $m\ge5$.
+
+If exactly two columns $p_a,p_b$ increase at $e$, choose distinct flat
+columns $p_c,p_d$. Both differences $p_a-p_c$ and $p_b-p_d$ are nonzero.
+For each difference, the other $m-2$ columns include one increasing
+column at $e$. At every other edge at most two columns can be flat,
+so again the unused $m-2$ columns are not all flat.
+In each of the two cut-function graphs, every cut therefore has a
+neighbor, and every function misses at most one cut. The Hall argument
+in Lemma~\ref{hall}, with $b=1$, applies. Both differences must alternate
+on all $m$ atoms, contradicting the zero expectation of their product.
+
+If exactly one column increases at $e$, the same Hall argument applies
+to the difference of any two flat columns. Such a difference is flat
+across $e$, so it cannot alternate on all $m$ atoms. All $m-1$ flat
+columns are therefore identical, which gives the excluded rational
+degree-$(m-1)$ quadrature.
+
+Finally, if every column is flat at $e$, merge its two adjacent atoms.
+There are now at most $m-1$ ordered atoms with positive weights.
+The structural proof in \path{monotone_tensor.tex}, Theorem~1,
+works with arbitrary positive atom weights: its Gram argument,
+interpolation, and the equality case of the monotone covariance
+inequality use only positivity of those weights. It therefore gives
+a single column whose scalar moments through degree $m$ are uniform
+interval moments. Undoing the merge repeats its value and makes this
+an equal-weight rational rule with $m$ atoms, again impossible by
+\path{optimized_two_adic_filter.tex}.
+\end{proof}
+
+\paragraph{Scope and the unresolved plateau case.}
+Without a condition such as Lemma~\ref{hall}, strict increase is essential
+to the proof of Lemma~\ref{variation}:
+if an assigned function is flat across a sign change, its threshold
+factor can vanish on that entire plateau. A product of these factors
+can then vanish on all of the support of $h$, so there is no positivity
+contradiction. The theorem as written does not give a universal bound
+for arbitrary finite dice. Failure of the matching used above would
+need a separate structural analysis of common plateaus.
+In particular this note does not establish a quadratic per-die bound.
+For the unresolved case $m=K=5$, Corollary~\ref{equal-size-plateaus}
+shows that any rational counterexample must have $b+F\ge4$.
+Corollary~\ref{one-flat} further requires $b\ge2$, so at least one
+column has at most three distinct values.
+
+\end{document}

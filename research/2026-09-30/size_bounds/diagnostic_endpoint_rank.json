@@ -1,0 +1,35 @@
+[
+  {
+    "name": "three",
+    "n": 3,
+    "faces": 6,
+    "lie_dimension": 8,
+    "runs": 15,
+    "ranks_mod_prime": {
+      "1000000007": 8,
+      "1000000009": 8
+    }
+  },
+  {
+    "name": "four18",
+    "n": 4,
+    "faces": 18,
+    "lie_dimension": 24,
+    "runs": 61,
+    "ranks_mod_prime": {
+      "1000000007": 24,
+      "1000000009": 24
+    }
+  },
+  {
+    "name": "meyer5",
+    "n": 5,
+    "faces": 60,
+    "lie_dimension": 89,
+    "runs": 235,
+    "ranks_mod_prime": {
+      "1000000007": 78,
+      "1000000009": 78
+    }
+  }
+]

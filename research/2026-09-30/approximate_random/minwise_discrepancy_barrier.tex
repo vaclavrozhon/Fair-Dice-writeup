@@ -1,0 +1,127 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\title{A square-root barrier for short triple-minimum discrepancy}
+\author{Research note; independently reviewed by two other agents}
+\date{30 September 2026}
+\begin{document}
+\maketitle
+
+Let $\mu$ be any probability distribution supported on $q$ permutations
+of $[n]$, and put
+\[
+ \epsilon=\max_{\substack{i,j,k\text{ distinct}}}
+ \left|\Pr_{\rho\sim\mu}\bigl(\rho(i)<\rho(j),\rho(i)<\rho(k)\bigr)
+                       -\frac13\right|.
+\]
+Only minimum probabilities for triples are assumed; pairwise balance of
+$\mu$ is not assumed. The argument is a Gram-matrix rank bound, related
+to standard lower bounds for restricted min-wise independent families.
+No novelty is claimed for this general rank technique.
+For context, Alon's Theorem~7.4 with $k=3$ already proves the exact
+triple-only lower bound $q\ge(n-3)/2$; his Section~7.2 also discusses
+approximate restricted min-wise families, including the stronger
+logarithmic rank estimates of Alon--Itoh--Nagatani. The elementary
+weighted argument below is recorded for the particular short-window
+application, without a claim of a new general min-wise lower bound.
+
+\begin{theorem}\label{main}
+If $q\le(n-1)/64$, then
+\[
+ \epsilon\ge\frac1{32\sqrt q}.
+\]
+More generally, whenever $\epsilon<1/6$, writing $m=n-1$ gives
+\[
+ (m-1)(1/6-\epsilon)
+ \le \sqrt q\left(\frac23\sqrt m+
+                    \epsilon\sqrt{m(m-1)}\right).\tag{1}
+\]
+\end{theorem}
+\begin{proof}
+Write $p_{ij}=\Pr(\rho(i)<\rho(j))$. Since $p_{ij}+p_{ji}=1$,
+there is an index $i$ such that $\sum_{j\ne i}p_{ij}\ge m/2$.
+In the weighted Euclidean space on the support of $\mu$, take the
+$m$ vectors $v_j(\rho)=\mathbf1_{\rho(i)<\rho(j)}$, $j\ne i$.
+Their Gram matrix $G$ has rank at most $q$, diagonal entries $p_{ij}$,
+and off-diagonal entries in $[1/3-\epsilon,1/3+\epsilon]$.
+
+Let $P=I-m^{-1}{\bf1}{\bf1}^{T}$ and $R=PGP$. Then $R$ is positive
+semidefinite with rank at most $q$, and
+\[
+ \operatorname{tr}R
+ =\left(1-\frac1m\right)\sum_jG_{jj}
+       -\frac1m\sum_{j\ne k}G_{jk}
+ \ge(m-1)(1/6-\epsilon).
+\]
+Write $G=\frac13{\bf1}{\bf1}^{T}+D+E$, where
+$D=\operatorname{diag}(p_{ij}-1/3)$ and $E$ has zero diagonal.
+Since $|D_{jj}|\le2/3$ and $|E_{jk}|\le\epsilon$,
+\[
+ \|R\|_F\le\|D\|_F+\|E\|_F
+ \le\frac23\sqrt m+\epsilon\sqrt{m(m-1)}.
+\]
+The eigenvalue Cauchy--Schwarz inequality
+$\operatorname{tr}R\le\sqrt q\|R\|_F$ proves (1).
+
+If $\epsilon\ge1/6$, the stated bound is immediate. Otherwise rearrange
+(1) to obtain
+\[
+ \epsilon\ge
+ \frac{(m-1)/6-(2/3)\sqrt{qm}}
+      {(m-1)+\sqrt{qm(m-1)}}.
+\]
+Under $q\le m/64$ one has $m\ge64$, the numerator is at least
+$m/12-1/6\ge m/16$, and the denominator is at most
+$m(1+\sqrt q)\le2m\sqrt q$. This proves the theorem.
+\end{proof}
+
+\begin{corollary}[Every short interval has square-root discrepancy]
+Let $\rho_1,\ldots,\rho_M$ be an arbitrary ordered sequence of
+permutations of $[n]$. In every interval of $q\le(n-1)/64$ indices,
+some triple and distinguished member of that triple satisfy
+\[
+ \left|\#\{b:\text{the distinguished member is first in }\rho_b\}
+                    -\frac q3\right|\ge\frac{\sqrt q}{32}.
+\]
+Thus a uniform bound $o(\sqrt q)$ simultaneously for every triple and
+every such interval is impossible, even for optimally correlated or
+deterministically chosen permutations.
+\end{corollary}
+
+\begin{corollary}[Disjoint bad triples]
+Under the assumptions of Theorem~\ref{main}, one can greedily choose at
+least $\lfloor(n-64q)/3\rfloor$ disjoint triples, each with a member whose
+minimum probability exceeds $1/3$ by at least $1/(64\sqrt q)$.
+\end{corollary}
+\begin{proof}
+Restrict the same distribution to the unused labels while at least
+$64q+1$ labels remain. Theorem~\ref{main} supplies an absolute deviation
+at least $1/(32\sqrt q)$. The three minimum probabilities sum to one,
+so at least one positive deviation is at least half as large. Remove
+this triple and repeat.
+\end{proof}
+
+\paragraph{Scope for palindrome constructions.}
+The relevant binomial weights in the first error projection are
+concentrated on intervals of length about $M/\sqrt n$. At the random
+construction's threshold $M\asymp n^{13/10}(\log n)^{1/5}$, these
+intervals have length $n^{4/5}(\log n)^{1/5}=o(n)$. The theorem therefore
+rules out the proposed route of improving the construction by making
+\emph{every} short-interval triple-minimum discrepancy smaller than
+square-root scale. It is not a lower bound for all deterministic
+palindrome sequences: an improvement might use cancellations between
+different triples or between different positions, which the rank
+argument does not analyze.
+\begin{thebibliography}{9}
+\bibitem{alon}
+N. Alon, \emph{Perturbed identity matrices have high rank: proof and
+applications}, Combinatorics, Probability and Computing 18 (2009), 3--15.
+\href{https://web.math.princeton.edu/~nalon/PDFS/identity1.pdf}{Author's
+primary-source manuscript}, especially Section~7.2 and Theorem~7.4.
+\bibitem{ain}
+N. Alon, T. Itoh and T. Nagatani,
+\emph{On $(\epsilon,k)$-min-wise independent permutations},
+Random Structures and Algorithms 31 (2007), 384--389.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,141 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\begin{document}
+\title{Polynomial-size rational monotone models for the local comparison tensor}
+\author{Research note; complete proof candidate}
+\date{30 September 2026}
+\maketitle
+
+\begin{theorem}\label{thm:main}
+There is an absolute constant $C$ such that for every $m\geq1$ there are
+an integer $K\leq Cm^2$ and rational numbers $p_{j,q}$, $1\leq j\leq m$,
+$1\leq q\leq K$, satisfying
+\[
+ 0<p_{j,1}<p_{j,2}<\cdots<p_{j,K}<1\qquad(j\in[m])
+\]
+and
+\begin{equation}\label{eq:moments}
+ \frac1K\sum_{q=1}^K\prod_{j\in S}p_{j,q}=\frac1{|S|+1}
+ \qquad(S\subseteq[m]).
+\end{equation}
+Consequently the equal-weight product mixture with parameters $p_{j,q}$
+has precisely the comparison tensor induced by a uniform random ranking:
+\[
+ \frac1K\sum_{q=1}^K\prod_{j\in S}p_{j,q}
+                         \prod_{j\notin S}(1-p_{j,q})
+   =\int_0^1t^{|S|}(1-t)^{m-|S|}\,dt.
+\]
+\end{theorem}
+
+\paragraph{Scope.}
+Thus rationality, positivity, monotonicity in the distinguished face, equal
+face weights, and \emph{all} local comparison probabilities do not force
+an exponential number of faces. The exponential rational scalar-quadrature
+obstruction cannot be extended to these local hypotheses alone. A proof of
+an exponential per-die lower bound must use additional conditions involving
+the order among the other dice. This theorem does not produce a
+permutation-fair family.
+
+The only quantitative input is the classical real Chebyshev-type quadrature
+bound: degree $d$ admits an equal-weight interval quadrature with $O(d^2)$
+nodes. For example, this is a special case of Gilboa--Peled,
+\emph{Chebyshev-type quadratures for doubling weights}, Theorem 1.1,
+\href{https://arxiv.org/abs/1507.01505}{arXiv:1507.01505}.
+The following lemma makes the necessary distinctness and interiority
+explicit, without assuming these additional properties in that theorem.
+
+\begin{lemma}\label{lem:regular}
+For every $m\geq1$, there is a degree-$m$ real equal-weight quadrature
+with $K$ nodes satisfying
+\[
+ m^2\leq K=O(m^2),\qquad 0<u_1<\cdots<u_K<1.
+\]
+\end{lemma}
+\begin{proof}
+Take a degree-$(2m+2)$ real equal-weight rule with $K_0=O(m^2)$ nodes,
+allowing repetitions and endpoints. It has at least $m+2$ distinct support
+points: otherwise the square of the polynomial vanishing on its support
+would have degree at most $2m+2$, zero quadrature sum, and strictly positive
+integral. At least $m$ of the support points therefore lie in $(0,1)$.
+
+Repeat the entire rule $\lceil m^2/K_0\rceil$ times. Its new cardinality
+$K$ is at least $m^2$ and less than $m^2+K_0=O(m^2)$ (with a harmless
+nonstrict inequality when $m^2/K_0$ is integral). Select $m$ coordinates at
+distinct interior support points as pivot coordinates. The Jacobian of the
+first $m$ moment sums with respect to these pivots is an invertible scaled
+Vandermonde matrix. The analytic implicit function theorem therefore
+allows arbitrary sufficiently small perturbations of the other, free,
+coordinates, while uniquely adjusting the pivot coordinates to keep the
+first $m$ moments exact.
+
+All pivot coordinates remain interior and mutually distinct. Move each free
+endpoint slightly inward and choose the free perturbations generically to
+avoid collisions. Here is a precise verification that this is possible.
+Free--free collisions are proper affine hyperplanes. A pivot--free collision
+that holds at the starting rule is a nonzero analytic equation: varying only
+the colliding free coordinate, the derivative of its matching pivot is $-1$,
+by the invertible Jacobian and the equality of their moment-derivative
+columns. Their difference thus has derivative $-2$. Collisions not present
+at the starting point remain absent in a sufficiently small neighborhood.
+A finite union of proper real analytic zero sets cannot cover the open set
+of allowed inward perturbations. Sorting the resulting nodes gives the lemma.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Choose a rule $u=(u_q)_{q=1}^K$ from Lemma~\ref{lem:regular}.
+Choose pairwise disjoint sets $Q_1,\ldots,Q_m\subseteq[K]$ of size $m$;
+unused indices are permitted. Approximate $u$ arbitrarily closely by a
+strictly increasing rational vector $t=(t_q)_{q=1}^K\in(0,1)^K$.
+For $1\leq s\leq m$, put
+\[
+ \mu_s(t)=\frac1K\sum_{q=1}^Kt_q^s,
+ \qquad a_s(t)=\frac{1/(s+1)-\mu_s(t)}s.
+\]
+For each $j$, solve the $m$-by-$m$ Vandermonde system
+\begin{equation}\label{eq:correct}
+ \frac1K\sum_{q\in Q_j}f_j(q)t_q^{s-1}=a_s(t)
+          \qquad(1\leq s\leq m),
+\end{equation}
+and set $f_j(q)=0$ outside $Q_j$.
+The solution is rational. Moreover it depends continuously on $t$ near $u$,
+and it tends to zero as $t\to u$, because $a_s(u)=0$ and the limiting
+Vandermonde matrices are invertible.
+Set $p_{j,q}=t_q+f_j(q)$. For a sufficiently accurate rational approximation,
+all columns remain strictly increasing and lie strictly between zero and one.
+
+At every index $q$, at most one correction $f_j(q)$ is nonzero. Hence for
+$S\ne\varnothing$, writing $s=|S|$,
+\[
+ \prod_{j\in S}(t_q+f_j(q))
+   =t_q^s+t_q^{s-1}\sum_{j\in S}f_j(q).
+\]
+Averaging and using \eqref{eq:correct} gives
+\[
+ \frac1K\sum_q\prod_{j\in S}p_{j,q}
+   =\mu_s(t)+s a_s(t)=\frac1{s+1}.
+\]
+The empty-set identity is automatic. Expanding the complementary factors
+$1-p_{j,q}$ proves the claimed full comparison law.
+\end{proof}
+
+\begin{corollary}
+The parameters in Theorem~\ref{thm:main} can be realized by actual finite
+uniform dice: there are $m+1$ dice, one with $K=O(m^2)$ faces, for which
+all comparisons with that distinguished die have exactly the same joint
+law as under a uniform random ranking.
+\end{corollary}
+\begin{proof}
+Give the distinguished die ordered faces $q_1<\cdots<q_K$.
+For die $j$, assign its rational masses
+\[
+ p_{j,1},\ p_{j,2}-p_{j,1},\ldots,p_{j,K}-p_{j,K-1},\ 1-p_{j,K}
+\]
+to the $K+1$ gaps separated by those faces. Clearing denominators realizes
+these masses by equally likely faces; choose distinct labels for all faces
+inside each gap. Then $\Pr(D_j<q_q)=p_{j,q}$, as required.
+This assertion concerns only comparisons with the distinguished die.
+\end{proof}
+\end{document}

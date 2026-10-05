@@ -1,0 +1,7 @@
+{
+  "words": 192,
+  "columns": 23232,
+  "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+  "objective": 1.7763568394002505e-15,
+  "common_separator": false
+}

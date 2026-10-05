@@ -1,0 +1,261 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=26mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\PP}{\mathcal P}
+\title{A permutation-fair collection with one polynomial-size die}
+\author{Research notes, 30 September 2026}
+\date{}
+\begin{document}
+\maketitle
+\noindent\textbf{Status.} Complete proof with independent mathematical reviews completed
+by three collaborating agents. These reviews are not machine-checked formal
+verification. The theorem disproves the manuscript's conjecture that every
+die in a permutation-fair collection must have exponentially many faces.
+The other dice in the construction can be arbitrarily large; this does not
+improve the optimum total size.
+
+\begin{theorem}\label{thm:main}
+There is an absolute constant $C$ such that, for every $n\ge2$, there
+is a permutation-fair collection of $n$ finite uniform dice, with pairwise
+disjoint face labels, in which one distinguished die has at most $Cn^2$
+faces. The other $n-1$ dice can all be chosen with the same number of faces.
+\end{theorem}
+
+The argument first builds positive rational piecewise-constant densities
+for the other dice and a finite uniform distinguished die. It then replaces
+each constant-density interval by a finite permutation-fair block.
+
+Write $\PP_d$ for the real polynomials of degree at most $d$.
+
+\begin{lemma}[Regular real starting rule]\label{lem:real}
+For every $m\ge1$ there is a real equal-weight uniform-interval quadrature
+of degree $m$ with
+\[
+ m^2\le K=O(m^2),\qquad 0<u_1<\cdots<u_K<1.
+\]
+\end{lemma}
+\begin{proof}
+The classical Chebyshev-type quadrature bound gives an equal-weight
+degree-$(2m+2)$ rule with $K_0=O(m^2)$ nodes in $[0,1]$.
+For example, use the uniform-weight case of Gilboa--Peled, Theorem 1.1:
+\url{https://arxiv.org/abs/1507.01505}.
+It has at least $m+2$ distinct support points: otherwise the square of
+its support-vanishing polynomial would have degree at most $2m+2$,
+zero quadrature sum, and positive integral. At least $m$ support points
+are interior. Repeat the rule $\lceil m^2/K_0\rceil$ times so its
+cardinality $K$ is at least $m^2$ and still $O(m^2)$.
+
+Select $m$ coordinates at distinct interior support points as pivots.
+The Jacobian of the first $m$ moment sums with respect to them is an
+invertible scaled Vandermonde matrix. The implicit function theorem permits
+arbitrary small perturbations of the remaining coordinates, compensating
+with the pivots to preserve these moment sums. The pivots remain interior
+and mutually distinct. Move every free endpoint slightly inward.
+
+Free--free collisions are proper affine hyperplanes. If a free coordinate
+and a pivot coincide initially, varying just that free coordinate changes
+its matching pivot with derivative $-1$, since their Jacobian columns
+coincide; all other pivot derivatives are zero. Their difference therefore
+has derivative $-2$, so that collision is a proper analytic zero set.
+Initially absent collisions stay absent in a sufficiently small
+neighborhood. A finite union of proper analytic zero sets cannot cover
+the open set of permitted inward perturbations. Choose a collision-free
+perturbation, then sort the nodes.
+\end{proof}
+
+\begin{lemma}[Rational separated moment bumps]\label{lem:bumps}
+For the nodes in Lemma~\ref{lem:real}, one can choose pairwise disjoint open
+intervals $I_q\subset(0,1)$ around $u_q$, smaller neighborhoods
+$V_q\subset I_q$ around $u_q$, and bounded rational piecewise-constant
+functions $h_q$, with rational breakpoints and support in $I_q$, such that
+for every $t\in V_q$ and every $g\in\PP_{m-1}$,
+\[
+ \int_0^t h_q(x)g(x)\,dx=g(0),\qquad
+ \int_t^1 h_q(x)g(x)\,dx=-g(0).
+\]
+In particular $\int_0^1h_q(x)g(x)\,dx=0$.
+\end{lemma}
+\begin{proof}
+Choose disjoint rational-endpoint neighborhoods $I_q$. Inside each $I_q$,
+choose $m$ disjoint rational closed subintervals strictly to the left of
+$u_q$, and $m$ strictly to its right, all of positive length. Their union
+misses a neighborhood $V_q$ of $u_q$.
+
+For any $m$ ordered disjoint intervals $J_1<\cdots<J_m$, the rational
+matrix
+\[
+ M_{\ell a}=\int_{J_a}x^\ell\,dx\qquad
+ (0\le\ell\le m-1,\ 1\le a\le m)
+\]
+is invertible. Indeed, multilinearity of the determinant gives
+\[
+ \det M=\int_{J_1\times\cdots\times J_m}
+         \prod_{a<b}(x_b-x_a)\,dx_1\cdots dx_m>0.
+\]
+Solve $M\gamma=(1,0,\ldots,0)^T$ for the left intervals and
+$M\gamma=(-1,0,\ldots,0)^T$ for the right intervals. Use these rational
+coefficients as the constant values of $h_q$ on those intervals, and zero
+elsewhere. The claimed identities follow by linearity. No nonnegativity
+is claimed for $h_q$ itself.
+\end{proof}
+
+\begin{lemma}[Order response of disjoint moment bumps]\label{lem:response}
+Choose $t_q\in V_q$. Let $Q_1,\ldots,Q_m$ be pairwise disjoint subsets
+of $[K]$. Suppose
+\[
+ f_j(x)=1+\sum_{q\in Q_j}\delta_{j,q}h_q(x),\qquad j\in[m],
+\]
+are nonnegative densities. Let $X_j$ have density $f_j$, independently,
+and let $X_0$ be independent and uniform on $t_1,\ldots,t_K$.
+Define functionals on $\PP_{m-1}$ by
+\[
+ B_j(a)=\frac1K\sum_{q\in Q_j}\delta_{j,q}a(t_q).
+\]
+If all $B_j$ agree with one functional $B$, then every full ordering
+placing $X_0$ after exactly $k$ of the old variables has probability
+\begin{equation}\label{eq:response}
+ \frac1K\sum_{q=1}^Kp_k(t_q)+B(p_k'),\qquad
+ p_k(t)=\frac{t^k(1-t)^{m-k}}{k!(m-k)!}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Fix a full order and condition on $X_0=t_\ell$. Expand the product of
+the old densities. The term choosing no bumps has probability
+$p_k(t_\ell)$.
+
+Consider a term choosing bumps for a nonempty set of old variables,
+and expand each chosen density's sum over its indices. All chosen bumps
+have distinct indices because the $Q_j$ are disjoint. Their supporting
+intervals are therefore disjoint and ordered. If their order is inconsistent
+with the fixed full order, the term is zero. Otherwise their mutual ordering
+is automatic throughout those intervals. Integrate out the old variables
+whose density contribution was the constant $1$. If there are $b$ chosen
+bumps, the resulting kernel is a product of powers of the gaps between
+the chosen coordinates, $0$, $1$, and $t_\ell$, divided by factorials.
+It is a polynomial of total degree $m-b$ in the chosen coordinates and
+$t_\ell$ on each of the relevant regions.
+
+At most one supporting interval contains $t_\ell$, namely $I_\ell$.
+If $b\ge2$, at least one chosen bump has its entire support on one side
+of $t_\ell$. For fixed remaining coordinates, its integration runs over
+its entire support against a polynomial of degree at most $m-b\le m-1$.
+The full moment identities of Lemma~\ref{lem:bumps} make this integral
+zero. The same argument eliminates a one-bump term whose index is not
+$\ell$. Thus only the one-bump terms cut by the distinguished face remain.
+
+We calculate them. If the perturbed old variable is before $X_0$, let
+$a$ old variables precede it and $b$ lie between it and $X_0$, so
+$a+b=k-1$. Its kernel is
+\[
+ g^-_{a,b}(x,t)=
+ \frac{x^a(t-x)^b(1-t)^{m-k}}{a!b!(m-k)!}.
+\]
+Its integration against the left part of $h_q$ is $g^-_{a,b}(0,t)$.
+If the perturbed variable is after $X_0$, let $a$ old variables lie
+between them and $b$ follow it, so $a+b=m-k-1$. Its kernel is
+\[
+ g^+_{a,b}(x,t)=
+ \frac{t^k(x-t)^a(1-x)^b}{k!a!b!},
+\]
+whose integral against the right part of $h_q$ is $-g^+_{a,b}(0,t)$.
+These evaluated kernels have degree at most $m-1$ in $t$.
+
+Average over $X_0$ and sum over the old variables. Since all $B_j=B$,
+the resulting correction is $B$ applied to the sum of these kernel
+polynomials. The binomial theorem gives
+\begin{align*}
+ \sum_{a+b=k-1}g^-_{a,b}(x,t)
+  &=\frac{t^{k-1}(1-t)^{m-k}}{(k-1)!(m-k)!},\\
+ \sum_{a+b=m-k-1}g^+_{a,b}(x,t)
+  &=\frac{t^k(1-t)^{m-k-1}}{k!(m-k-1)!}.
+\end{align*}
+Use the first expression only when $k\ge1$ and the second only when
+$k\le m-1$. Their difference is $p_k'(t)$, including the endpoint
+cases. This proves~\eqref{eq:response}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}: continuous intermediate model]
+Put $m=n-1$ and choose the regular real rule and bumps above. Since
+$K\ge m^2$, choose disjoint sets $Q_1,\ldots,Q_m$, each of size $m$.
+Choose rational $t_q\in V_q$ arbitrarily close to $u_q$. Their ordering
+remains strict. For $1\le s\le m$, put
+\[
+ \mu_s(t)=\frac1K\sum_{q=1}^Kt_q^s,\qquad
+ a_s(t)=\frac{1/(s+1)-\mu_s(t)}s.
+\]
+For each $j$, solve the rational Vandermonde system
+\[
+ \frac1K\sum_{q\in Q_j}\delta_{j,q}t_q^{s-1}=a_s(t)
+       \qquad(1\le s\le m).
+\]
+The matrix is invertible because the $t_q$ are distinct. The solution
+depends continuously on $t$ near $u$ and tends to zero as $t\to u$,
+because $a_s(u)=0$. All $h_q$ are fixed bounded functions. Taking the
+rational approximation sufficiently close therefore guarantees
+$f_j(x)\ge1/2$ everywhere, where
+\[
+ f_j(x)=1+\sum_{q\in Q_j}\delta_{j,q}h_q(x).
+\]
+Their integrals are $1$ by the full zeroth-moment identity for the bumps.
+They are thus positive rational piecewise-constant probability densities.
+
+The functionals $B_j$ agree on the monomial basis of $\PP_{m-1}$,
+and hence agree with one functional $B$. For every $p\in\PP_m$,
+\[
+ B(p')=\int_0^1p(t)\,dt-\frac1K\sum_{q=1}^Kp(t_q),
+\]
+as follows by checking $p(t)=t^s$, $1\le s\le m$, and constants.
+Apply Lemma~\ref{lem:response} to $p_k$. Every full order has probability
+\[
+ \int_0^1p_k(t)\,dt=\frac1{(m+1)!}.
+\]
+This proves permutation fairness for the continuous old variables and the
+$K$-face distinguished variable.
+\end{proof}
+
+\begin{proof}[Finite realization, completing the theorem]
+Partition $[0,1]$ at every rational breakpoint of every $f_j$ and at all
+$t_q$. Ignore singleton boundary points, which have probability zero for
+the old variables. On each remaining interval $J_g$, each $f_j$ is a
+positive rational constant. The masses
+\[
+ \alpha_{j,g}=\int_{J_g}f_j(x)\,dx
+\]
+are positive rationals, and $\sum_g\alpha_{j,g}=1$ for each $j$.
+Choose a common positive integer $D$ clearing all their denominators.
+
+Take any finite equal-sided permutation-fair collection of $m$ dice,
+with $F$ faces each, whose existence is already proved in the manuscript.
+In interval $J_g$, put a copy of its fair word in which letter $j$ is
+blown up by the positive integer $D\alpha_{j,g}$. This block is
+permutation-fair, and contains $FD\alpha_{j,g}$ faces of old die $j$.
+Concatenate the blocks in interval order, with one distinguished face
+inserted at each boundary $t_q$. Every old die has exactly $FD$ faces;
+the distinguished die has exactly $K$.
+
+For each old die, its interval probabilities equal $\alpha_{j,g}$,
+exactly as in the continuous model. Conditional on the selected intervals,
+old variables in distinct intervals have a determined relative order.
+Those in a common interval are uniformly ordered in the continuous model,
+because their conditional distributions are all uniform on that interval.
+They are also uniformly ordered in the discrete model, by permutation
+fairness of that block and its restrictions. Different interval groups
+involve disjoint sets of independent dice, so their internal orders combine
+independently. Thus the entire order law, including the distinguished
+faces at the interval boundaries, is unchanged. Assign successive distinct
+integer labels to the concatenated word to obtain the required finite dice.
+\end{proof}
+
+\paragraph{What is and is not proved.}
+The distinguished die has $O(n^2)$ faces, while the sizes of the other
+dice are not bounded quantitatively here. The construction uses arbitrarily
+accurate rational approximation and correspondingly large denominator
+clearing only for those other dice. It does not conflict with the manuscript's
+result that almost all dice must be exponentially large, nor with the new
+exponential obstruction for rational scalar equal-weight interval designs.
+The local CDF vectors are deliberately different for different old dice.
+
+\end{document}

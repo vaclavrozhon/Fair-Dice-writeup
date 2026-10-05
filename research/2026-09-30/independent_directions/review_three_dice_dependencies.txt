@@ -1,0 +1,65 @@
+Independent-direction review record, 30 September 2026.
+
+FULL MATHEMATICAL REVIEW PASS:
+- rational_designs/asymptotic/polynomial_mean_box_smoothing.tex, both the
+  first-moment and fixed-s versions. Checked exact uniform-box Newton,
+  fixed-dimensional rational correction, invariant means / low moments,
+  higher-mode response, rational minimum-norm solution, positivity and
+  the single common polynomial denominator.
+- size_bounds/generalized_local_two_variable_completion.tex. Checked
+  quantile-midpoint residual/Gram/contraction estimates, arbitrary count
+  quantifiers, KL*mean integrality, weighted Legendre orthogonality,
+  fixed-rank correction, pure-cell positive completion and moment scope.
+- rational_designs/asymptotic/multiple_prefix_moment_conditioning.tex.
+  Checked primitive coefficients, Cauchy matrix factorization/inverse,
+  fixed polynomial multiplier estimate, recovery of all prefix features,
+  weighted baseline moment identities and stated arithmetic limitation.
+- General-q extension appended by rational-design agent to
+  independent_directions/quantitative_smoothed_quotient.tex. Checked
+  Taylor-kernel boundary jets, distributional derivative, recurrence,
+  higher-order quotient and positivity exponents. Added explicit
+  rational-piecewise-polynomial beta assumption to rational completion.
+
+Our THREE proof has separate FULL REVIEW PASS messages from root,
+size-bounds, and rational-design agents. The strengthened initial TWO
+and P0/P1 quantitative quotient have the same three independent passes.
+The final THREE atomization now uses the separated quantile Newton lemma
+rather than a duplicate-node regularization argument, so all quadrature
+nodes are directly interior and distinct.
+
+These are independent mathematical audits, not formal proof-assistant
+verification and not a literature priority assessment.
+
+Further complete independent reviews after the THREE result:
+- size_bounds/higher_prefix_positive_completion.tex: PASS; jet subtraction,
+  higher-order Poincare, fixed-q moment realization and positivity powers.
+- size_bounds/uniform_grid_moment_refinement.tex: PASS; universal translated
+  Vandermonde denominator, exact coarse low totals, Riesz high-moment repair.
+- size_bounds/synchronized_local_moment_completion.tex: PASS after two tiny
+  edits: L divisible by PRODUCT D0*(q+1)!, and floor the shared control
+  features. Verified both edits. All global denominator conclusions use
+  the same feature minor, not unrelated per-instance determinants.
+- size_bounds/order_doubling_prefix_completion.tex: PASS; sunflower bound,
+  equal-power-sum transport, t-wise signature average, nonlinear cutoff2p,
+  and dyadic total overhead. Independently checked primary KLP Theorem1.6:
+  https://arxiv.org/html/1302.4295v3 (all1<=t<=n, size<=(cn)^(ct)).
+
+The fixed-number-polynomial-dice assembly received unconditional full PASS
+from root, size-bounds, and rational-design agents after synchronized local
+completion was locked. Main theorem and FIXED_K_PROOF_GUIDE.txt now mark
+it complete. Final atomization exactness is explicitly at least both n
+and one more than the conditional density degree.
+
+2026-09-30 endpoint localization review: independently checked root localized_laguerre_kernel_derivatives.tex, size_bounds/localized_profile_maximum_principle.tex (conditional hypotheses explicit), and rational_designs/asymptotic/global_laguerre_spectral_truncation.tex including unmarked and off-annulus appendices. All pass. The direct marked note's all-tilt concentration, subset comparison and finite marked differential sum have full root, size and rational independent reviews.
+2026-09-30 22:06 UTC: sharp_interior_endpoint_profile.tex full theorem assembly independently reviewed and passed by root, size_bounds and rational_designs. Added explicit finite-balance coverage of any row entering the deleted-coordinate test annulus. The claimed sqrt(log(m)/m) rate is restricted to fixed 0<delta<=s<=L.
+
+2026-09-30 22:17 UTC: optimal_interior_endpoint_profile.tex (log-free O(m^-1/2) on fixed 0<delta<=s<=L) fully passed root, size_bounds and rational_designs reviews. All new inputs independently checked: root bernstein_walsh_polarization_tail.tex and rational finite_jackson_endpoint_kernel.tex including far derivative/off-annulus appendix. Final text distinguishes scalar global Jackson tails from the compact E_b envelope.
+2026-09-30 22:17 UTC: full independent review PASS of size_bounds/uniform_prefix_conditioning.tex and uniform_fixed_number_complexity.tex after correcting initial uniform-moment common denominator. The initial complexity is base^(O(2^k)), which is absorbed in final base^(exp(C k^2)).
+
+2026-09-30 22:30 UTC: natural_scale_endpoint_profile.tex full assembly and rational_designs/asymptotic/variable_jackson_endpoint_kernel.tex analytic input independently passed root, size_bounds, rational_designs reviews. Final theorem max_i|m(1-p_i)-s|<=C_L(sqrt(s/m)+1/m), all 0<=s<=L. Two-stage mass parameter choice and arbitrary angular displacement explicitly checked. Added elementary relative and opposite-endpoint corollaries; matching existing examples force each of the two terms.
+
+2026-09-30 22:42 UTC: intermediate_endpoint_sharpness.tex, including appended all-scales theorem, passed full root, size_bounds and rational_designs reviews. Actual finite uniform dice attain a constant multiple of R_m(lambda)=min(m lambda,sqrt(lambda/m)+1/m) with s comparable to lambda, for every lambda in (0,L]. No face-count bound. The lambda=1/m example shows ms->infinity is a sharp uniform relative-synchronization condition. Also fully reviewed rational_designs/asymptotic/natural_scale_row_atoms.tex, including Gaussian and Lobatto weighted sharpness.
+
+2026-09-30 final consolidation: prefix_signature_rank_obstruction.tex passed full root and rational-design reviews. Standard rational insertion gives all-n fully fair finite words with every normalized prefix coordinate F_{u c}, at a fixed length of u, identical at every cut. No Lie tangent annihilator is inferred from this raw-coordinate collapse. Independently reviewed rational_designs/asymptotic/squarefree_prefix_gram_barrier.tex: PASS for the rank-(r+1) PSD completion, diagonal continuous tangent bound, and failure of positivity after deleting repeated-letter products. Also checked the general truncated-surjectivity corollary in size_bounds/all_gap_singularity_inheritance.tex; it correctly uses the already certified singular seed and does not assert a large relative corank.
+
+2026-09-30 23:03 UTC: elementary_quadratic_atom_bound.tex passed FULL FILE reviews by root, rational_designs and size_bounds. This new three-page proof independently gives a_i>=1-pi^2/(m+1)^2 and terminal aggregate atom<=200/m^2. Completed monotone chain + first crossing supplies paired positive squarefree factors. Gaussian quadrature proves endpoint location; right Radau quadrature proves the atom bound. Both quadrature facts are proved internally, including the Legendre Jacobi-matrix sine-vector estimate and the Radau reproducing-kernel logarithmic derivative. No analytic endpoint chain or external asymptotic estimate is needed for this exact quadratic lower bound. Earlier analytic arguments remain useful for approximate fairness and detailed profiles.
